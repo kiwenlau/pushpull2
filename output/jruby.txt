@@ -1,0 +1,1787 @@
+
+pullpush benchmark: transfer jruby image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Thu Jul 23 02:07:22 JST 2015
+
+sudo docker images
+kiwenlau/jruby                  flat                bf3e233ba227        4 weeks ago         547.4 MB
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+sudo docker images
+kiwenlau/jruby                  flat                bf3e233ba227        4 weeks ago         547.4 MB
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+52699fa39abc        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+87847cccbfd6        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jruby (1 tags)
+1021894f267f: Pushing
+1021894f267f: Buffering to disk
+1021894f267f: Image successfully pushed
+c63978236aac: Pushing
+c63978236aac: Buffering to disk
+c63978236aac: Image successfully pushed
+546bcc1f950b: Pushing
+546bcc1f950b: Buffering to disk
+546bcc1f950b: Image successfully pushed
+f34f6c217212: Pushing
+f34f6c217212: Buffering to disk
+f34f6c217212: Image successfully pushed
+ca217f610c63: Pushing
+ca217f610c63: Buffering to disk
+ca217f610c63: Image successfully pushed
+cb521ad94585: Pushing
+cb521ad94585: Buffering to disk
+cb521ad94585: Image successfully pushed
+d336a77bd1b2: Pushing
+d336a77bd1b2: Buffering to disk
+d336a77bd1b2: Image successfully pushed
+d163542c0168: Pushing
+d163542c0168: Buffering to disk
+d163542c0168: Image successfully pushed
+69b0d7eb9e5a: Pushing
+69b0d7eb9e5a: Buffering to disk
+69b0d7eb9e5a: Image successfully pushed
+e75aeb597a7f: Pushing
+e75aeb597a7f: Buffering to disk
+e75aeb597a7f: Image successfully pushed
+5efdfd717e36: Pushing
+5efdfd717e36: Buffering to disk
+5efdfd717e36: Image successfully pushed
+1c9acea4bdc3: Pushing
+1c9acea4bdc3: Buffering to disk
+1c9acea4bdc3: Image successfully pushed
+0bad624eca9f: Pushing
+0bad624eca9f: Buffering to disk
+0bad624eca9f: Image successfully pushed
+3970dceb27de: Pushing
+3970dceb27de: Buffering to disk
+3970dceb27de: Image successfully pushed
+b662a23c9a99: Pushing
+b662a23c9a99: Buffering to disk
+b662a23c9a99: Image successfully pushed
+1f73c7b26f16: Pushing
+1f73c7b26f16: Buffering to disk
+1f73c7b26f16: Image successfully pushed
+ba66f7bfff65: Pushing
+ba66f7bfff65: Buffering to disk
+ba66f7bfff65: Image successfully pushed
+54a3de9935c3: Pushing
+54a3de9935c3: Buffering to disk
+54a3de9935c3: Image successfully pushed
+3b6c9f2a7111: Pushing
+3b6c9f2a7111: Buffering to disk
+3b6c9f2a7111: Image successfully pushed
+feb91815a223: Pushing
+feb91815a223: Buffering to disk
+feb91815a223: Image successfully pushed
+41988b514f35: Pushing
+41988b514f35: Buffering to disk
+41988b514f35: Image successfully pushed
+Pushing tag for rev [41988b514f35] on {http://136.187.101.80:5000/v1/repositories/jruby/tags/latest}
+
+real  106.85
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+Pulling repository 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby, endpoint: http://136.187.101.80:5000/v1/
+41988b514f35: Pulling dependent layers
+1021894f267f: Pulling metadata
+1021894f267f: Pulling fs layer
+1021894f267f: Download complete
+c63978236aac: Pulling metadata
+c63978236aac: Pulling fs layer
+c63978236aac: Download complete
+546bcc1f950b: Pulling metadata
+546bcc1f950b: Pulling fs layer
+546bcc1f950b: Download complete
+f34f6c217212: Pulling metadata
+f34f6c217212: Pulling fs layer
+f34f6c217212: Download complete
+ca217f610c63: Pulling metadata
+ca217f610c63: Pulling fs layer
+ca217f610c63: Download complete
+cb521ad94585: Pulling metadata
+cb521ad94585: Pulling fs layer
+cb521ad94585: Download complete
+d336a77bd1b2: Pulling metadata
+d336a77bd1b2: Pulling fs layer
+d336a77bd1b2: Download complete
+d163542c0168: Pulling metadata
+d163542c0168: Pulling fs layer
+d163542c0168: Download complete
+69b0d7eb9e5a: Pulling metadata
+69b0d7eb9e5a: Pulling fs layer
+69b0d7eb9e5a: Download complete
+e75aeb597a7f: Pulling metadata
+e75aeb597a7f: Pulling fs layer
+e75aeb597a7f: Download complete
+5efdfd717e36: Pulling metadata
+5efdfd717e36: Pulling fs layer
+5efdfd717e36: Download complete
+1c9acea4bdc3: Pulling metadata
+1c9acea4bdc3: Pulling fs layer
+1c9acea4bdc3: Download complete
+0bad624eca9f: Pulling metadata
+0bad624eca9f: Pulling fs layer
+0bad624eca9f: Download complete
+3970dceb27de: Pulling metadata
+3970dceb27de: Pulling fs layer
+3970dceb27de: Download complete
+b662a23c9a99: Pulling metadata
+b662a23c9a99: Pulling fs layer
+b662a23c9a99: Download complete
+1f73c7b26f16: Pulling metadata
+1f73c7b26f16: Pulling fs layer
+1f73c7b26f16: Download complete
+ba66f7bfff65: Pulling metadata
+ba66f7bfff65: Pulling fs layer
+ba66f7bfff65: Download complete
+54a3de9935c3: Pulling metadata
+54a3de9935c3: Pulling fs layer
+54a3de9935c3: Download complete
+3b6c9f2a7111: Pulling metadata
+3b6c9f2a7111: Pulling fs layer
+3b6c9f2a7111: Download complete
+feb91815a223: Pulling metadata
+feb91815a223: Pulling fs layer
+feb91815a223: Download complete
+41988b514f35: Pulling metadata
+41988b514f35: Pulling fs layer
+41988b514f35: Download complete
+41988b514f35: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  22.23
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+fc53b7de6df1        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jruby (1 tags)
+1021894f267f: Pushing
+1021894f267f: Buffering to disk
+1021894f267f: Image successfully pushed
+c63978236aac: Pushing
+c63978236aac: Buffering to disk
+c63978236aac: Image successfully pushed
+546bcc1f950b: Pushing
+546bcc1f950b: Buffering to disk
+546bcc1f950b: Image successfully pushed
+f34f6c217212: Pushing
+f34f6c217212: Buffering to disk
+f34f6c217212: Image successfully pushed
+ca217f610c63: Pushing
+ca217f610c63: Buffering to disk
+ca217f610c63: Image successfully pushed
+cb521ad94585: Pushing
+cb521ad94585: Buffering to disk
+cb521ad94585: Image successfully pushed
+d336a77bd1b2: Pushing
+d336a77bd1b2: Buffering to disk
+d336a77bd1b2: Image successfully pushed
+d163542c0168: Pushing
+d163542c0168: Buffering to disk
+d163542c0168: Image successfully pushed
+69b0d7eb9e5a: Pushing
+69b0d7eb9e5a: Buffering to disk
+69b0d7eb9e5a: Image successfully pushed
+e75aeb597a7f: Pushing
+e75aeb597a7f: Buffering to disk
+e75aeb597a7f: Image successfully pushed
+5efdfd717e36: Pushing
+5efdfd717e36: Buffering to disk
+5efdfd717e36: Image successfully pushed
+1c9acea4bdc3: Pushing
+1c9acea4bdc3: Buffering to disk
+1c9acea4bdc3: Image successfully pushed
+0bad624eca9f: Pushing
+0bad624eca9f: Buffering to disk
+0bad624eca9f: Image successfully pushed
+3970dceb27de: Pushing
+3970dceb27de: Buffering to disk
+3970dceb27de: Image successfully pushed
+b662a23c9a99: Pushing
+b662a23c9a99: Buffering to disk
+b662a23c9a99: Image successfully pushed
+1f73c7b26f16: Pushing
+1f73c7b26f16: Buffering to disk
+1f73c7b26f16: Image successfully pushed
+ba66f7bfff65: Pushing
+ba66f7bfff65: Buffering to disk
+ba66f7bfff65: Image successfully pushed
+54a3de9935c3: Pushing
+54a3de9935c3: Buffering to disk
+54a3de9935c3: Image successfully pushed
+3b6c9f2a7111: Pushing
+3b6c9f2a7111: Buffering to disk
+3b6c9f2a7111: Image successfully pushed
+feb91815a223: Pushing
+feb91815a223: Buffering to disk
+feb91815a223: Image successfully pushed
+41988b514f35: Pushing
+41988b514f35: Buffering to disk
+41988b514f35: Image successfully pushed
+Pushing tag for rev [41988b514f35] on {http://136.187.101.80:5000/v1/repositories/jruby/tags/latest}
+
+real  108.11
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+Pulling repository 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby, endpoint: http://136.187.101.80:5000/v1/
+41988b514f35: Pulling dependent layers
+1021894f267f: Pulling metadata
+1021894f267f: Pulling fs layer
+1021894f267f: Download complete
+c63978236aac: Pulling metadata
+c63978236aac: Pulling fs layer
+c63978236aac: Download complete
+546bcc1f950b: Pulling metadata
+546bcc1f950b: Pulling fs layer
+546bcc1f950b: Download complete
+f34f6c217212: Pulling metadata
+f34f6c217212: Pulling fs layer
+f34f6c217212: Download complete
+ca217f610c63: Pulling metadata
+ca217f610c63: Pulling fs layer
+ca217f610c63: Download complete
+cb521ad94585: Pulling metadata
+cb521ad94585: Pulling fs layer
+cb521ad94585: Download complete
+d336a77bd1b2: Pulling metadata
+d336a77bd1b2: Pulling fs layer
+d336a77bd1b2: Download complete
+d163542c0168: Pulling metadata
+d163542c0168: Pulling fs layer
+d163542c0168: Download complete
+69b0d7eb9e5a: Pulling metadata
+69b0d7eb9e5a: Pulling fs layer
+69b0d7eb9e5a: Download complete
+e75aeb597a7f: Pulling metadata
+e75aeb597a7f: Pulling fs layer
+e75aeb597a7f: Download complete
+5efdfd717e36: Pulling metadata
+5efdfd717e36: Pulling fs layer
+5efdfd717e36: Download complete
+1c9acea4bdc3: Pulling metadata
+1c9acea4bdc3: Pulling fs layer
+1c9acea4bdc3: Download complete
+0bad624eca9f: Pulling metadata
+0bad624eca9f: Pulling fs layer
+0bad624eca9f: Download complete
+3970dceb27de: Pulling metadata
+3970dceb27de: Pulling fs layer
+3970dceb27de: Download complete
+b662a23c9a99: Pulling metadata
+b662a23c9a99: Pulling fs layer
+b662a23c9a99: Download complete
+1f73c7b26f16: Pulling metadata
+1f73c7b26f16: Pulling fs layer
+1f73c7b26f16: Download complete
+ba66f7bfff65: Pulling metadata
+ba66f7bfff65: Pulling fs layer
+ba66f7bfff65: Download complete
+54a3de9935c3: Pulling metadata
+54a3de9935c3: Pulling fs layer
+54a3de9935c3: Download complete
+3b6c9f2a7111: Pulling metadata
+3b6c9f2a7111: Pulling fs layer
+3b6c9f2a7111: Download complete
+feb91815a223: Pulling metadata
+feb91815a223: Pulling fs layer
+feb91815a223: Download complete
+41988b514f35: Pulling metadata
+41988b514f35: Pulling fs layer
+41988b514f35: Download complete
+41988b514f35: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  22.57
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+279e59676332        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jruby (1 tags)
+1021894f267f: Pushing
+1021894f267f: Buffering to disk
+1021894f267f: Image successfully pushed
+c63978236aac: Pushing
+c63978236aac: Buffering to disk
+c63978236aac: Image successfully pushed
+546bcc1f950b: Pushing
+546bcc1f950b: Buffering to disk
+546bcc1f950b: Image successfully pushed
+f34f6c217212: Pushing
+f34f6c217212: Buffering to disk
+f34f6c217212: Image successfully pushed
+ca217f610c63: Pushing
+ca217f610c63: Buffering to disk
+ca217f610c63: Image successfully pushed
+cb521ad94585: Pushing
+cb521ad94585: Buffering to disk
+cb521ad94585: Image successfully pushed
+d336a77bd1b2: Pushing
+d336a77bd1b2: Buffering to disk
+d336a77bd1b2: Image successfully pushed
+d163542c0168: Pushing
+d163542c0168: Buffering to disk
+d163542c0168: Image successfully pushed
+69b0d7eb9e5a: Pushing
+69b0d7eb9e5a: Buffering to disk
+69b0d7eb9e5a: Image successfully pushed
+e75aeb597a7f: Pushing
+e75aeb597a7f: Buffering to disk
+e75aeb597a7f: Image successfully pushed
+5efdfd717e36: Pushing
+5efdfd717e36: Buffering to disk
+5efdfd717e36: Image successfully pushed
+1c9acea4bdc3: Pushing
+1c9acea4bdc3: Buffering to disk
+1c9acea4bdc3: Image successfully pushed
+0bad624eca9f: Pushing
+0bad624eca9f: Buffering to disk
+0bad624eca9f: Image successfully pushed
+3970dceb27de: Pushing
+3970dceb27de: Buffering to disk
+3970dceb27de: Image successfully pushed
+b662a23c9a99: Pushing
+b662a23c9a99: Buffering to disk
+b662a23c9a99: Image successfully pushed
+1f73c7b26f16: Pushing
+1f73c7b26f16: Buffering to disk
+1f73c7b26f16: Image successfully pushed
+ba66f7bfff65: Pushing
+ba66f7bfff65: Buffering to disk
+ba66f7bfff65: Image successfully pushed
+54a3de9935c3: Pushing
+54a3de9935c3: Buffering to disk
+54a3de9935c3: Image successfully pushed
+3b6c9f2a7111: Pushing
+3b6c9f2a7111: Buffering to disk
+3b6c9f2a7111: Image successfully pushed
+feb91815a223: Pushing
+feb91815a223: Buffering to disk
+feb91815a223: Image successfully pushed
+41988b514f35: Pushing
+41988b514f35: Buffering to disk
+41988b514f35: Image successfully pushed
+Pushing tag for rev [41988b514f35] on {http://136.187.101.80:5000/v1/repositories/jruby/tags/latest}
+
+real  106.83
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+Pulling repository 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby, endpoint: http://136.187.101.80:5000/v1/
+41988b514f35: Pulling dependent layers
+1021894f267f: Pulling metadata
+1021894f267f: Pulling fs layer
+1021894f267f: Download complete
+c63978236aac: Pulling metadata
+c63978236aac: Pulling fs layer
+c63978236aac: Download complete
+546bcc1f950b: Pulling metadata
+546bcc1f950b: Pulling fs layer
+546bcc1f950b: Download complete
+f34f6c217212: Pulling metadata
+f34f6c217212: Pulling fs layer
+f34f6c217212: Download complete
+ca217f610c63: Pulling metadata
+ca217f610c63: Pulling fs layer
+ca217f610c63: Download complete
+cb521ad94585: Pulling metadata
+cb521ad94585: Pulling fs layer
+cb521ad94585: Download complete
+d336a77bd1b2: Pulling metadata
+d336a77bd1b2: Pulling fs layer
+d336a77bd1b2: Download complete
+d163542c0168: Pulling metadata
+d163542c0168: Pulling fs layer
+d163542c0168: Download complete
+69b0d7eb9e5a: Pulling metadata
+69b0d7eb9e5a: Pulling fs layer
+69b0d7eb9e5a: Download complete
+e75aeb597a7f: Pulling metadata
+e75aeb597a7f: Pulling fs layer
+e75aeb597a7f: Download complete
+5efdfd717e36: Pulling metadata
+5efdfd717e36: Pulling fs layer
+5efdfd717e36: Download complete
+1c9acea4bdc3: Pulling metadata
+1c9acea4bdc3: Pulling fs layer
+1c9acea4bdc3: Download complete
+0bad624eca9f: Pulling metadata
+0bad624eca9f: Pulling fs layer
+0bad624eca9f: Download complete
+3970dceb27de: Pulling metadata
+3970dceb27de: Pulling fs layer
+3970dceb27de: Download complete
+b662a23c9a99: Pulling metadata
+b662a23c9a99: Pulling fs layer
+b662a23c9a99: Download complete
+1f73c7b26f16: Pulling metadata
+1f73c7b26f16: Pulling fs layer
+1f73c7b26f16: Download complete
+ba66f7bfff65: Pulling metadata
+ba66f7bfff65: Pulling fs layer
+ba66f7bfff65: Download complete
+54a3de9935c3: Pulling metadata
+54a3de9935c3: Pulling fs layer
+54a3de9935c3: Download complete
+3b6c9f2a7111: Pulling metadata
+3b6c9f2a7111: Pulling fs layer
+3b6c9f2a7111: Download complete
+feb91815a223: Pulling metadata
+feb91815a223: Pulling fs layer
+feb91815a223: Download complete
+41988b514f35: Pulling metadata
+41988b514f35: Pulling fs layer
+41988b514f35: Download complete
+41988b514f35: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  22.46
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c89167b8415a        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+14d110247b92        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jruby (1 tags)
+1021894f267f: Pushing
+1021894f267f: Buffering to disk
+1021894f267f: Image successfully pushed
+c63978236aac: Pushing
+c63978236aac: Buffering to disk
+c63978236aac: Image successfully pushed
+546bcc1f950b: Pushing
+546bcc1f950b: Buffering to disk
+546bcc1f950b: Image successfully pushed
+f34f6c217212: Pushing
+f34f6c217212: Buffering to disk
+f34f6c217212: Image successfully pushed
+ca217f610c63: Pushing
+ca217f610c63: Buffering to disk
+ca217f610c63: Image successfully pushed
+cb521ad94585: Pushing
+cb521ad94585: Buffering to disk
+cb521ad94585: Image successfully pushed
+d336a77bd1b2: Pushing
+d336a77bd1b2: Buffering to disk
+d336a77bd1b2: Image successfully pushed
+d163542c0168: Pushing
+d163542c0168: Buffering to disk
+d163542c0168: Image successfully pushed
+69b0d7eb9e5a: Pushing
+69b0d7eb9e5a: Buffering to disk
+69b0d7eb9e5a: Image successfully pushed
+e75aeb597a7f: Pushing
+e75aeb597a7f: Buffering to disk
+e75aeb597a7f: Image successfully pushed
+5efdfd717e36: Pushing
+5efdfd717e36: Buffering to disk
+5efdfd717e36: Image successfully pushed
+1c9acea4bdc3: Pushing
+1c9acea4bdc3: Buffering to disk
+1c9acea4bdc3: Image successfully pushed
+0bad624eca9f: Pushing
+0bad624eca9f: Buffering to disk
+0bad624eca9f: Image successfully pushed
+3970dceb27de: Pushing
+3970dceb27de: Buffering to disk
+3970dceb27de: Image successfully pushed
+b662a23c9a99: Pushing
+b662a23c9a99: Buffering to disk
+b662a23c9a99: Image successfully pushed
+1f73c7b26f16: Pushing
+1f73c7b26f16: Buffering to disk
+1f73c7b26f16: Image successfully pushed
+ba66f7bfff65: Pushing
+ba66f7bfff65: Buffering to disk
+ba66f7bfff65: Image successfully pushed
+54a3de9935c3: Pushing
+54a3de9935c3: Buffering to disk
+54a3de9935c3: Image successfully pushed
+3b6c9f2a7111: Pushing
+3b6c9f2a7111: Buffering to disk
+3b6c9f2a7111: Image successfully pushed
+feb91815a223: Pushing
+feb91815a223: Buffering to disk
+feb91815a223: Image successfully pushed
+41988b514f35: Pushing
+41988b514f35: Buffering to disk
+41988b514f35: Image successfully pushed
+Pushing tag for rev [41988b514f35] on {http://136.187.101.80:5000/v1/repositories/jruby/tags/latest}
+
+real  107.87
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+Pulling repository 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby, endpoint: http://136.187.101.80:5000/v1/
+41988b514f35: Pulling dependent layers
+1021894f267f: Pulling metadata
+1021894f267f: Pulling fs layer
+1021894f267f: Download complete
+c63978236aac: Pulling metadata
+c63978236aac: Pulling fs layer
+c63978236aac: Download complete
+546bcc1f950b: Pulling metadata
+546bcc1f950b: Pulling fs layer
+546bcc1f950b: Download complete
+f34f6c217212: Pulling metadata
+f34f6c217212: Pulling fs layer
+f34f6c217212: Download complete
+ca217f610c63: Pulling metadata
+ca217f610c63: Pulling fs layer
+ca217f610c63: Download complete
+cb521ad94585: Pulling metadata
+cb521ad94585: Pulling fs layer
+cb521ad94585: Download complete
+d336a77bd1b2: Pulling metadata
+d336a77bd1b2: Pulling fs layer
+d336a77bd1b2: Download complete
+d163542c0168: Pulling metadata
+d163542c0168: Pulling fs layer
+d163542c0168: Download complete
+69b0d7eb9e5a: Pulling metadata
+69b0d7eb9e5a: Pulling fs layer
+69b0d7eb9e5a: Download complete
+e75aeb597a7f: Pulling metadata
+e75aeb597a7f: Pulling fs layer
+e75aeb597a7f: Download complete
+5efdfd717e36: Pulling metadata
+5efdfd717e36: Pulling fs layer
+5efdfd717e36: Download complete
+1c9acea4bdc3: Pulling metadata
+1c9acea4bdc3: Pulling fs layer
+1c9acea4bdc3: Download complete
+0bad624eca9f: Pulling metadata
+0bad624eca9f: Pulling fs layer
+0bad624eca9f: Download complete
+3970dceb27de: Pulling metadata
+3970dceb27de: Pulling fs layer
+3970dceb27de: Download complete
+b662a23c9a99: Pulling metadata
+b662a23c9a99: Pulling fs layer
+b662a23c9a99: Download complete
+1f73c7b26f16: Pulling metadata
+1f73c7b26f16: Pulling fs layer
+1f73c7b26f16: Download complete
+ba66f7bfff65: Pulling metadata
+ba66f7bfff65: Pulling fs layer
+ba66f7bfff65: Download complete
+54a3de9935c3: Pulling metadata
+54a3de9935c3: Pulling fs layer
+54a3de9935c3: Download complete
+3b6c9f2a7111: Pulling metadata
+3b6c9f2a7111: Pulling fs layer
+3b6c9f2a7111: Download complete
+feb91815a223: Pulling metadata
+feb91815a223: Pulling fs layer
+feb91815a223: Download complete
+41988b514f35: Pulling metadata
+41988b514f35: Pulling fs layer
+41988b514f35: Download complete
+41988b514f35: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  22.22
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+fe97e1719f12        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+
+docker rm -f docker_registry
+
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+ecc2f2a2abeb        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jruby (1 tags)
+1021894f267f: Pushing
+1021894f267f: Buffering to disk
+1021894f267f: Image successfully pushed
+c63978236aac: Pushing
+c63978236aac: Buffering to disk
+c63978236aac: Image successfully pushed
+546bcc1f950b: Pushing
+546bcc1f950b: Buffering to disk
+546bcc1f950b: Image successfully pushed
+f34f6c217212: Pushing
+f34f6c217212: Buffering to disk
+f34f6c217212: Image successfully pushed
+ca217f610c63: Pushing
+ca217f610c63: Buffering to disk
+ca217f610c63: Image successfully pushed
+cb521ad94585: Pushing
+cb521ad94585: Buffering to disk
+cb521ad94585: Image successfully pushed
+d336a77bd1b2: Pushing
+d336a77bd1b2: Buffering to disk
+d336a77bd1b2: Image successfully pushed
+d163542c0168: Pushing
+d163542c0168: Buffering to disk
+d163542c0168: Image successfully pushed
+69b0d7eb9e5a: Pushing
+69b0d7eb9e5a: Buffering to disk
+69b0d7eb9e5a: Image successfully pushed
+e75aeb597a7f: Pushing
+e75aeb597a7f: Buffering to disk
+e75aeb597a7f: Image successfully pushed
+5efdfd717e36: Pushing
+5efdfd717e36: Buffering to disk
+5efdfd717e36: Image successfully pushed
+1c9acea4bdc3: Pushing
+1c9acea4bdc3: Buffering to disk
+1c9acea4bdc3: Image successfully pushed
+0bad624eca9f: Pushing
+0bad624eca9f: Buffering to disk
+0bad624eca9f: Image successfully pushed
+3970dceb27de: Pushing
+3970dceb27de: Buffering to disk
+3970dceb27de: Image successfully pushed
+b662a23c9a99: Pushing
+b662a23c9a99: Buffering to disk
+b662a23c9a99: Image successfully pushed
+1f73c7b26f16: Pushing
+1f73c7b26f16: Buffering to disk
+1f73c7b26f16: Image successfully pushed
+ba66f7bfff65: Pushing
+ba66f7bfff65: Buffering to disk
+ba66f7bfff65: Image successfully pushed
+54a3de9935c3: Pushing
+54a3de9935c3: Buffering to disk
+54a3de9935c3: Image successfully pushed
+3b6c9f2a7111: Pushing
+3b6c9f2a7111: Buffering to disk
+3b6c9f2a7111: Image successfully pushed
+feb91815a223: Pushing
+feb91815a223: Buffering to disk
+feb91815a223: Image successfully pushed
+41988b514f35: Pushing
+41988b514f35: Buffering to disk
+41988b514f35: Image successfully pushed
+Pushing tag for rev [41988b514f35] on {http://136.187.101.80:5000/v1/repositories/jruby/tags/latest}
+
+real  107.57
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+Pulling repository 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby, endpoint: http://136.187.101.80:5000/v1/
+41988b514f35: Pulling dependent layers
+1021894f267f: Pulling metadata
+1021894f267f: Pulling fs layer
+1021894f267f: Download complete
+c63978236aac: Pulling metadata
+c63978236aac: Pulling fs layer
+c63978236aac: Download complete
+546bcc1f950b: Pulling metadata
+546bcc1f950b: Pulling fs layer
+546bcc1f950b: Download complete
+f34f6c217212: Pulling metadata
+f34f6c217212: Pulling fs layer
+f34f6c217212: Download complete
+ca217f610c63: Pulling metadata
+ca217f610c63: Pulling fs layer
+ca217f610c63: Download complete
+cb521ad94585: Pulling metadata
+cb521ad94585: Pulling fs layer
+cb521ad94585: Download complete
+d336a77bd1b2: Pulling metadata
+d336a77bd1b2: Pulling fs layer
+d336a77bd1b2: Download complete
+d163542c0168: Pulling metadata
+d163542c0168: Pulling fs layer
+d163542c0168: Download complete
+69b0d7eb9e5a: Pulling metadata
+69b0d7eb9e5a: Pulling fs layer
+69b0d7eb9e5a: Download complete
+e75aeb597a7f: Pulling metadata
+e75aeb597a7f: Pulling fs layer
+e75aeb597a7f: Download complete
+5efdfd717e36: Pulling metadata
+5efdfd717e36: Pulling fs layer
+5efdfd717e36: Download complete
+1c9acea4bdc3: Pulling metadata
+1c9acea4bdc3: Pulling fs layer
+1c9acea4bdc3: Download complete
+0bad624eca9f: Pulling metadata
+0bad624eca9f: Pulling fs layer
+0bad624eca9f: Download complete
+3970dceb27de: Pulling metadata
+3970dceb27de: Pulling fs layer
+3970dceb27de: Download complete
+b662a23c9a99: Pulling metadata
+b662a23c9a99: Pulling fs layer
+b662a23c9a99: Download complete
+1f73c7b26f16: Pulling metadata
+1f73c7b26f16: Pulling fs layer
+1f73c7b26f16: Download complete
+ba66f7bfff65: Pulling metadata
+ba66f7bfff65: Pulling fs layer
+ba66f7bfff65: Download complete
+54a3de9935c3: Pulling metadata
+54a3de9935c3: Pulling fs layer
+54a3de9935c3: Download complete
+3b6c9f2a7111: Pulling metadata
+3b6c9f2a7111: Pulling fs layer
+3b6c9f2a7111: Download complete
+feb91815a223: Pulling metadata
+feb91815a223: Pulling fs layer
+feb91815a223: Download complete
+41988b514f35: Pulling metadata
+41988b514f35: Pulling fs layer
+41988b514f35: Download complete
+41988b514f35: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  21.82
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+6135bd9f7e9c        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jruby (1 tags)
+1021894f267f: Pushing
+1021894f267f: Buffering to disk
+1021894f267f: Image successfully pushed
+c63978236aac: Pushing
+c63978236aac: Buffering to disk
+c63978236aac: Image successfully pushed
+546bcc1f950b: Pushing
+546bcc1f950b: Buffering to disk
+546bcc1f950b: Image successfully pushed
+f34f6c217212: Pushing
+f34f6c217212: Buffering to disk
+f34f6c217212: Image successfully pushed
+ca217f610c63: Pushing
+ca217f610c63: Buffering to disk
+ca217f610c63: Image successfully pushed
+cb521ad94585: Pushing
+cb521ad94585: Buffering to disk
+cb521ad94585: Image successfully pushed
+d336a77bd1b2: Pushing
+d336a77bd1b2: Buffering to disk
+d336a77bd1b2: Image successfully pushed
+d163542c0168: Pushing
+d163542c0168: Buffering to disk
+d163542c0168: Image successfully pushed
+69b0d7eb9e5a: Pushing
+69b0d7eb9e5a: Buffering to disk
+69b0d7eb9e5a: Image successfully pushed
+e75aeb597a7f: Pushing
+e75aeb597a7f: Buffering to disk
+e75aeb597a7f: Image successfully pushed
+5efdfd717e36: Pushing
+5efdfd717e36: Buffering to disk
+5efdfd717e36: Image successfully pushed
+1c9acea4bdc3: Pushing
+1c9acea4bdc3: Buffering to disk
+1c9acea4bdc3: Image successfully pushed
+0bad624eca9f: Pushing
+0bad624eca9f: Buffering to disk
+0bad624eca9f: Image successfully pushed
+3970dceb27de: Pushing
+3970dceb27de: Buffering to disk
+3970dceb27de: Image successfully pushed
+b662a23c9a99: Pushing
+b662a23c9a99: Buffering to disk
+b662a23c9a99: Image successfully pushed
+1f73c7b26f16: Pushing
+1f73c7b26f16: Buffering to disk
+1f73c7b26f16: Image successfully pushed
+ba66f7bfff65: Pushing
+ba66f7bfff65: Buffering to disk
+ba66f7bfff65: Image successfully pushed
+54a3de9935c3: Pushing
+54a3de9935c3: Buffering to disk
+54a3de9935c3: Image successfully pushed
+3b6c9f2a7111: Pushing
+3b6c9f2a7111: Buffering to disk
+3b6c9f2a7111: Image successfully pushed
+feb91815a223: Pushing
+feb91815a223: Buffering to disk
+feb91815a223: Image successfully pushed
+41988b514f35: Pushing
+41988b514f35: Buffering to disk
+41988b514f35: Image successfully pushed
+Pushing tag for rev [41988b514f35] on {http://136.187.101.80:5000/v1/repositories/jruby/tags/latest}
+
+real  107.57
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+Pulling repository 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby, endpoint: http://136.187.101.80:5000/v1/
+41988b514f35: Pulling dependent layers
+1021894f267f: Pulling metadata
+1021894f267f: Pulling fs layer
+1021894f267f: Download complete
+c63978236aac: Pulling metadata
+c63978236aac: Pulling fs layer
+c63978236aac: Download complete
+546bcc1f950b: Pulling metadata
+546bcc1f950b: Pulling fs layer
+546bcc1f950b: Download complete
+f34f6c217212: Pulling metadata
+f34f6c217212: Pulling fs layer
+f34f6c217212: Download complete
+ca217f610c63: Pulling metadata
+ca217f610c63: Pulling fs layer
+ca217f610c63: Download complete
+cb521ad94585: Pulling metadata
+cb521ad94585: Pulling fs layer
+cb521ad94585: Download complete
+d336a77bd1b2: Pulling metadata
+d336a77bd1b2: Pulling fs layer
+d336a77bd1b2: Download complete
+d163542c0168: Pulling metadata
+d163542c0168: Pulling fs layer
+d163542c0168: Download complete
+69b0d7eb9e5a: Pulling metadata
+69b0d7eb9e5a: Pulling fs layer
+69b0d7eb9e5a: Download complete
+e75aeb597a7f: Pulling metadata
+e75aeb597a7f: Pulling fs layer
+e75aeb597a7f: Download complete
+5efdfd717e36: Pulling metadata
+5efdfd717e36: Pulling fs layer
+5efdfd717e36: Download complete
+1c9acea4bdc3: Pulling metadata
+1c9acea4bdc3: Pulling fs layer
+1c9acea4bdc3: Download complete
+0bad624eca9f: Pulling metadata
+0bad624eca9f: Pulling fs layer
+0bad624eca9f: Download complete
+3970dceb27de: Pulling metadata
+3970dceb27de: Pulling fs layer
+3970dceb27de: Download complete
+b662a23c9a99: Pulling metadata
+b662a23c9a99: Pulling fs layer
+b662a23c9a99: Download complete
+1f73c7b26f16: Pulling metadata
+1f73c7b26f16: Pulling fs layer
+1f73c7b26f16: Download complete
+ba66f7bfff65: Pulling metadata
+ba66f7bfff65: Pulling fs layer
+ba66f7bfff65: Download complete
+54a3de9935c3: Pulling metadata
+54a3de9935c3: Pulling fs layer
+54a3de9935c3: Download complete
+3b6c9f2a7111: Pulling metadata
+3b6c9f2a7111: Pulling fs layer
+3b6c9f2a7111: Download complete
+feb91815a223: Pulling metadata
+feb91815a223: Pulling fs layer
+feb91815a223: Download complete
+41988b514f35: Pulling metadata
+41988b514f35: Pulling fs layer
+41988b514f35: Download complete
+41988b514f35: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  21.90
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+5f37e8969f06        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jruby (1 tags)
+1021894f267f: Pushing
+1021894f267f: Buffering to disk
+1021894f267f: Image successfully pushed
+c63978236aac: Pushing
+c63978236aac: Buffering to disk
+c63978236aac: Image successfully pushed
+546bcc1f950b: Pushing
+546bcc1f950b: Buffering to disk
+546bcc1f950b: Image successfully pushed
+f34f6c217212: Pushing
+f34f6c217212: Buffering to disk
+f34f6c217212: Image successfully pushed
+ca217f610c63: Pushing
+ca217f610c63: Buffering to disk
+ca217f610c63: Image successfully pushed
+cb521ad94585: Pushing
+cb521ad94585: Buffering to disk
+cb521ad94585: Image successfully pushed
+d336a77bd1b2: Pushing
+d336a77bd1b2: Buffering to disk
+d336a77bd1b2: Image successfully pushed
+d163542c0168: Pushing
+d163542c0168: Buffering to disk
+d163542c0168: Image successfully pushed
+69b0d7eb9e5a: Pushing
+69b0d7eb9e5a: Buffering to disk
+69b0d7eb9e5a: Image successfully pushed
+e75aeb597a7f: Pushing
+e75aeb597a7f: Buffering to disk
+e75aeb597a7f: Image successfully pushed
+5efdfd717e36: Pushing
+5efdfd717e36: Buffering to disk
+5efdfd717e36: Image successfully pushed
+1c9acea4bdc3: Pushing
+1c9acea4bdc3: Buffering to disk
+1c9acea4bdc3: Image successfully pushed
+0bad624eca9f: Pushing
+0bad624eca9f: Buffering to disk
+0bad624eca9f: Image successfully pushed
+3970dceb27de: Pushing
+3970dceb27de: Buffering to disk
+3970dceb27de: Image successfully pushed
+b662a23c9a99: Pushing
+b662a23c9a99: Buffering to disk
+b662a23c9a99: Image successfully pushed
+1f73c7b26f16: Pushing
+1f73c7b26f16: Buffering to disk
+1f73c7b26f16: Image successfully pushed
+ba66f7bfff65: Pushing
+ba66f7bfff65: Buffering to disk
+ba66f7bfff65: Image successfully pushed
+54a3de9935c3: Pushing
+54a3de9935c3: Buffering to disk
+54a3de9935c3: Image successfully pushed
+3b6c9f2a7111: Pushing
+3b6c9f2a7111: Buffering to disk
+3b6c9f2a7111: Image successfully pushed
+feb91815a223: Pushing
+feb91815a223: Buffering to disk
+feb91815a223: Image successfully pushed
+41988b514f35: Pushing
+41988b514f35: Buffering to disk
+41988b514f35: Image successfully pushed
+Pushing tag for rev [41988b514f35] on {http://136.187.101.80:5000/v1/repositories/jruby/tags/latest}
+
+real  106.82
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+Pulling repository 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby, endpoint: http://136.187.101.80:5000/v1/
+41988b514f35: Pulling dependent layers
+1021894f267f: Pulling metadata
+1021894f267f: Pulling fs layer
+1021894f267f: Download complete
+c63978236aac: Pulling metadata
+c63978236aac: Pulling fs layer
+c63978236aac: Download complete
+546bcc1f950b: Pulling metadata
+546bcc1f950b: Pulling fs layer
+546bcc1f950b: Download complete
+f34f6c217212: Pulling metadata
+f34f6c217212: Pulling fs layer
+f34f6c217212: Download complete
+ca217f610c63: Pulling metadata
+ca217f610c63: Pulling fs layer
+ca217f610c63: Download complete
+cb521ad94585: Pulling metadata
+cb521ad94585: Pulling fs layer
+cb521ad94585: Download complete
+d336a77bd1b2: Pulling metadata
+d336a77bd1b2: Pulling fs layer
+d336a77bd1b2: Download complete
+d163542c0168: Pulling metadata
+d163542c0168: Pulling fs layer
+d163542c0168: Download complete
+69b0d7eb9e5a: Pulling metadata
+69b0d7eb9e5a: Pulling fs layer
+69b0d7eb9e5a: Download complete
+e75aeb597a7f: Pulling metadata
+e75aeb597a7f: Pulling fs layer
+e75aeb597a7f: Download complete
+5efdfd717e36: Pulling metadata
+5efdfd717e36: Pulling fs layer
+5efdfd717e36: Download complete
+1c9acea4bdc3: Pulling metadata
+1c9acea4bdc3: Pulling fs layer
+1c9acea4bdc3: Download complete
+0bad624eca9f: Pulling metadata
+0bad624eca9f: Pulling fs layer
+0bad624eca9f: Download complete
+3970dceb27de: Pulling metadata
+3970dceb27de: Pulling fs layer
+3970dceb27de: Download complete
+b662a23c9a99: Pulling metadata
+b662a23c9a99: Pulling fs layer
+b662a23c9a99: Download complete
+1f73c7b26f16: Pulling metadata
+1f73c7b26f16: Pulling fs layer
+1f73c7b26f16: Download complete
+ba66f7bfff65: Pulling metadata
+ba66f7bfff65: Pulling fs layer
+ba66f7bfff65: Download complete
+54a3de9935c3: Pulling metadata
+54a3de9935c3: Pulling fs layer
+54a3de9935c3: Download complete
+3b6c9f2a7111: Pulling metadata
+3b6c9f2a7111: Pulling fs layer
+3b6c9f2a7111: Download complete
+feb91815a223: Pulling metadata
+feb91815a223: Pulling fs layer
+feb91815a223: Download complete
+41988b514f35: Pulling metadata
+41988b514f35: Pulling fs layer
+41988b514f35: Download complete
+41988b514f35: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  22.50
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+81042834cd8c        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jruby (1 tags)
+1021894f267f: Pushing
+1021894f267f: Buffering to disk
+1021894f267f: Image successfully pushed
+c63978236aac: Pushing
+c63978236aac: Buffering to disk
+c63978236aac: Image successfully pushed
+546bcc1f950b: Pushing
+546bcc1f950b: Buffering to disk
+546bcc1f950b: Image successfully pushed
+f34f6c217212: Pushing
+f34f6c217212: Buffering to disk
+f34f6c217212: Image successfully pushed
+ca217f610c63: Pushing
+ca217f610c63: Buffering to disk
+ca217f610c63: Image successfully pushed
+cb521ad94585: Pushing
+cb521ad94585: Buffering to disk
+cb521ad94585: Image successfully pushed
+d336a77bd1b2: Pushing
+d336a77bd1b2: Buffering to disk
+d336a77bd1b2: Image successfully pushed
+d163542c0168: Pushing
+d163542c0168: Buffering to disk
+d163542c0168: Image successfully pushed
+69b0d7eb9e5a: Pushing
+69b0d7eb9e5a: Buffering to disk
+69b0d7eb9e5a: Image successfully pushed
+e75aeb597a7f: Pushing
+e75aeb597a7f: Buffering to disk
+e75aeb597a7f: Image successfully pushed
+5efdfd717e36: Pushing
+5efdfd717e36: Buffering to disk
+5efdfd717e36: Image successfully pushed
+1c9acea4bdc3: Pushing
+1c9acea4bdc3: Buffering to disk
+1c9acea4bdc3: Image successfully pushed
+0bad624eca9f: Pushing
+0bad624eca9f: Buffering to disk
+0bad624eca9f: Image successfully pushed
+3970dceb27de: Pushing
+3970dceb27de: Buffering to disk
+3970dceb27de: Image successfully pushed
+b662a23c9a99: Pushing
+b662a23c9a99: Buffering to disk
+b662a23c9a99: Image successfully pushed
+1f73c7b26f16: Pushing
+1f73c7b26f16: Buffering to disk
+1f73c7b26f16: Image successfully pushed
+ba66f7bfff65: Pushing
+ba66f7bfff65: Buffering to disk
+ba66f7bfff65: Image successfully pushed
+54a3de9935c3: Pushing
+54a3de9935c3: Buffering to disk
+54a3de9935c3: Image successfully pushed
+3b6c9f2a7111: Pushing
+3b6c9f2a7111: Buffering to disk
+3b6c9f2a7111: Image successfully pushed
+feb91815a223: Pushing
+feb91815a223: Buffering to disk
+feb91815a223: Image successfully pushed
+41988b514f35: Pushing
+41988b514f35: Buffering to disk
+41988b514f35: Image successfully pushed
+Pushing tag for rev [41988b514f35] on {http://136.187.101.80:5000/v1/repositories/jruby/tags/latest}
+
+real  107.19
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+Pulling repository 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby, endpoint: http://136.187.101.80:5000/v1/
+41988b514f35: Pulling dependent layers
+1021894f267f: Pulling metadata
+1021894f267f: Pulling fs layer
+1021894f267f: Download complete
+c63978236aac: Pulling metadata
+c63978236aac: Pulling fs layer
+c63978236aac: Download complete
+546bcc1f950b: Pulling metadata
+546bcc1f950b: Pulling fs layer
+546bcc1f950b: Download complete
+f34f6c217212: Pulling metadata
+f34f6c217212: Pulling fs layer
+f34f6c217212: Download complete
+ca217f610c63: Pulling metadata
+ca217f610c63: Pulling fs layer
+ca217f610c63: Download complete
+cb521ad94585: Pulling metadata
+cb521ad94585: Pulling fs layer
+cb521ad94585: Download complete
+d336a77bd1b2: Pulling metadata
+d336a77bd1b2: Pulling fs layer
+d336a77bd1b2: Download complete
+d163542c0168: Pulling metadata
+d163542c0168: Pulling fs layer
+d163542c0168: Download complete
+69b0d7eb9e5a: Pulling metadata
+69b0d7eb9e5a: Pulling fs layer
+69b0d7eb9e5a: Download complete
+e75aeb597a7f: Pulling metadata
+e75aeb597a7f: Pulling fs layer
+e75aeb597a7f: Download complete
+5efdfd717e36: Pulling metadata
+5efdfd717e36: Pulling fs layer
+5efdfd717e36: Download complete
+1c9acea4bdc3: Pulling metadata
+1c9acea4bdc3: Pulling fs layer
+1c9acea4bdc3: Download complete
+0bad624eca9f: Pulling metadata
+0bad624eca9f: Pulling fs layer
+0bad624eca9f: Download complete
+3970dceb27de: Pulling metadata
+3970dceb27de: Pulling fs layer
+3970dceb27de: Download complete
+b662a23c9a99: Pulling metadata
+b662a23c9a99: Pulling fs layer
+b662a23c9a99: Download complete
+1f73c7b26f16: Pulling metadata
+1f73c7b26f16: Pulling fs layer
+1f73c7b26f16: Download complete
+ba66f7bfff65: Pulling metadata
+ba66f7bfff65: Pulling fs layer
+ba66f7bfff65: Download complete
+54a3de9935c3: Pulling metadata
+54a3de9935c3: Pulling fs layer
+54a3de9935c3: Download complete
+3b6c9f2a7111: Pulling metadata
+3b6c9f2a7111: Pulling fs layer
+3b6c9f2a7111: Download complete
+feb91815a223: Pulling metadata
+feb91815a223: Pulling fs layer
+feb91815a223: Download complete
+41988b514f35: Pulling metadata
+41988b514f35: Pulling fs layer
+41988b514f35: Download complete
+41988b514f35: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  22.36
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b519b358ae7a        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+
+docker rm -f docker_registry
+
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+470ec7e97721        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jruby (1 tags)
+1021894f267f: Pushing
+1021894f267f: Buffering to disk
+1021894f267f: Image successfully pushed
+c63978236aac: Pushing
+c63978236aac: Buffering to disk
+c63978236aac: Image successfully pushed
+546bcc1f950b: Pushing
+546bcc1f950b: Buffering to disk
+546bcc1f950b: Image successfully pushed
+f34f6c217212: Pushing
+f34f6c217212: Buffering to disk
+f34f6c217212: Image successfully pushed
+ca217f610c63: Pushing
+ca217f610c63: Buffering to disk
+ca217f610c63: Image successfully pushed
+cb521ad94585: Pushing
+cb521ad94585: Buffering to disk
+cb521ad94585: Image successfully pushed
+d336a77bd1b2: Pushing
+d336a77bd1b2: Buffering to disk
+d336a77bd1b2: Image successfully pushed
+d163542c0168: Pushing
+d163542c0168: Buffering to disk
+d163542c0168: Image successfully pushed
+69b0d7eb9e5a: Pushing
+69b0d7eb9e5a: Buffering to disk
+69b0d7eb9e5a: Image successfully pushed
+e75aeb597a7f: Pushing
+e75aeb597a7f: Buffering to disk
+e75aeb597a7f: Image successfully pushed
+5efdfd717e36: Pushing
+5efdfd717e36: Buffering to disk
+5efdfd717e36: Image successfully pushed
+1c9acea4bdc3: Pushing
+1c9acea4bdc3: Buffering to disk
+1c9acea4bdc3: Image successfully pushed
+0bad624eca9f: Pushing
+0bad624eca9f: Buffering to disk
+0bad624eca9f: Image successfully pushed
+3970dceb27de: Pushing
+3970dceb27de: Buffering to disk
+3970dceb27de: Image successfully pushed
+b662a23c9a99: Pushing
+b662a23c9a99: Buffering to disk
+b662a23c9a99: Image successfully pushed
+1f73c7b26f16: Pushing
+1f73c7b26f16: Buffering to disk
+1f73c7b26f16: Image successfully pushed
+ba66f7bfff65: Pushing
+ba66f7bfff65: Buffering to disk
+ba66f7bfff65: Image successfully pushed
+54a3de9935c3: Pushing
+54a3de9935c3: Buffering to disk
+54a3de9935c3: Image successfully pushed
+3b6c9f2a7111: Pushing
+3b6c9f2a7111: Buffering to disk
+3b6c9f2a7111: Image successfully pushed
+feb91815a223: Pushing
+feb91815a223: Buffering to disk
+feb91815a223: Image successfully pushed
+41988b514f35: Pushing
+41988b514f35: Buffering to disk
+41988b514f35: Image successfully pushed
+Pushing tag for rev [41988b514f35] on {http://136.187.101.80:5000/v1/repositories/jruby/tags/latest}
+
+real  106.55
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+Pulling repository 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby, endpoint: http://136.187.101.80:5000/v1/
+41988b514f35: Pulling dependent layers
+1021894f267f: Pulling metadata
+1021894f267f: Pulling fs layer
+1021894f267f: Download complete
+c63978236aac: Pulling metadata
+c63978236aac: Pulling fs layer
+c63978236aac: Download complete
+546bcc1f950b: Pulling metadata
+546bcc1f950b: Pulling fs layer
+546bcc1f950b: Download complete
+f34f6c217212: Pulling metadata
+f34f6c217212: Pulling fs layer
+f34f6c217212: Download complete
+ca217f610c63: Pulling metadata
+ca217f610c63: Pulling fs layer
+ca217f610c63: Download complete
+cb521ad94585: Pulling metadata
+cb521ad94585: Pulling fs layer
+cb521ad94585: Download complete
+d336a77bd1b2: Pulling metadata
+d336a77bd1b2: Pulling fs layer
+d336a77bd1b2: Download complete
+d163542c0168: Pulling metadata
+d163542c0168: Pulling fs layer
+d163542c0168: Download complete
+69b0d7eb9e5a: Pulling metadata
+69b0d7eb9e5a: Pulling fs layer
+69b0d7eb9e5a: Download complete
+e75aeb597a7f: Pulling metadata
+e75aeb597a7f: Pulling fs layer
+e75aeb597a7f: Download complete
+5efdfd717e36: Pulling metadata
+5efdfd717e36: Pulling fs layer
+5efdfd717e36: Download complete
+1c9acea4bdc3: Pulling metadata
+1c9acea4bdc3: Pulling fs layer
+1c9acea4bdc3: Download complete
+0bad624eca9f: Pulling metadata
+0bad624eca9f: Pulling fs layer
+0bad624eca9f: Download complete
+3970dceb27de: Pulling metadata
+3970dceb27de: Pulling fs layer
+3970dceb27de: Download complete
+b662a23c9a99: Pulling metadata
+b662a23c9a99: Pulling fs layer
+b662a23c9a99: Download complete
+1f73c7b26f16: Pulling metadata
+1f73c7b26f16: Pulling fs layer
+1f73c7b26f16: Download complete
+ba66f7bfff65: Pulling metadata
+ba66f7bfff65: Pulling fs layer
+ba66f7bfff65: Download complete
+54a3de9935c3: Pulling metadata
+54a3de9935c3: Pulling fs layer
+54a3de9935c3: Download complete
+3b6c9f2a7111: Pulling metadata
+3b6c9f2a7111: Pulling fs layer
+3b6c9f2a7111: Download complete
+feb91815a223: Pulling metadata
+feb91815a223: Pulling fs layer
+feb91815a223: Download complete
+41988b514f35: Pulling metadata
+41988b514f35: Pulling fs layer
+41988b514f35: Download complete
+41988b514f35: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  22.71
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a61837d4bbcd        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jruby (1 tags)
+1021894f267f: Pushing
+1021894f267f: Buffering to disk
+1021894f267f: Image successfully pushed
+c63978236aac: Pushing
+c63978236aac: Buffering to disk
+c63978236aac: Image successfully pushed
+546bcc1f950b: Pushing
+546bcc1f950b: Buffering to disk
+546bcc1f950b: Image successfully pushed
+f34f6c217212: Pushing
+f34f6c217212: Buffering to disk
+f34f6c217212: Image successfully pushed
+ca217f610c63: Pushing
+ca217f610c63: Buffering to disk
+ca217f610c63: Image successfully pushed
+cb521ad94585: Pushing
+cb521ad94585: Buffering to disk
+cb521ad94585: Image successfully pushed
+d336a77bd1b2: Pushing
+d336a77bd1b2: Buffering to disk
+d336a77bd1b2: Image successfully pushed
+d163542c0168: Pushing
+d163542c0168: Buffering to disk
+d163542c0168: Image successfully pushed
+69b0d7eb9e5a: Pushing
+69b0d7eb9e5a: Buffering to disk
+69b0d7eb9e5a: Image successfully pushed
+e75aeb597a7f: Pushing
+e75aeb597a7f: Buffering to disk
+e75aeb597a7f: Image successfully pushed
+5efdfd717e36: Pushing
+5efdfd717e36: Buffering to disk
+5efdfd717e36: Image successfully pushed
+1c9acea4bdc3: Pushing
+1c9acea4bdc3: Buffering to disk
+1c9acea4bdc3: Image successfully pushed
+0bad624eca9f: Pushing
+0bad624eca9f: Buffering to disk
+0bad624eca9f: Image successfully pushed
+3970dceb27de: Pushing
+3970dceb27de: Buffering to disk
+3970dceb27de: Image successfully pushed
+b662a23c9a99: Pushing
+b662a23c9a99: Buffering to disk
+b662a23c9a99: Image successfully pushed
+1f73c7b26f16: Pushing
+1f73c7b26f16: Buffering to disk
+1f73c7b26f16: Image successfully pushed
+ba66f7bfff65: Pushing
+ba66f7bfff65: Buffering to disk
+ba66f7bfff65: Image successfully pushed
+54a3de9935c3: Pushing
+54a3de9935c3: Buffering to disk
+54a3de9935c3: Image successfully pushed
+3b6c9f2a7111: Pushing
+3b6c9f2a7111: Buffering to disk
+3b6c9f2a7111: Image successfully pushed
+feb91815a223: Pushing
+feb91815a223: Buffering to disk
+feb91815a223: Image successfully pushed
+41988b514f35: Pushing
+41988b514f35: Buffering to disk
+41988b514f35: Image successfully pushed
+Pushing tag for rev [41988b514f35] on {http://136.187.101.80:5000/v1/repositories/jruby/tags/latest}
+
+real  106.78
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+Pulling repository 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby
+41988b514f35: Pulling image (latest) from 136.187.101.80:5000/jruby, endpoint: http://136.187.101.80:5000/v1/
+41988b514f35: Pulling dependent layers
+1021894f267f: Pulling metadata
+1021894f267f: Pulling fs layer
+1021894f267f: Download complete
+c63978236aac: Pulling metadata
+c63978236aac: Pulling fs layer
+c63978236aac: Download complete
+546bcc1f950b: Pulling metadata
+546bcc1f950b: Pulling fs layer
+546bcc1f950b: Download complete
+f34f6c217212: Pulling metadata
+f34f6c217212: Pulling fs layer
+f34f6c217212: Download complete
+ca217f610c63: Pulling metadata
+ca217f610c63: Pulling fs layer
+ca217f610c63: Download complete
+cb521ad94585: Pulling metadata
+cb521ad94585: Pulling fs layer
+cb521ad94585: Download complete
+d336a77bd1b2: Pulling metadata
+d336a77bd1b2: Pulling fs layer
+d336a77bd1b2: Download complete
+d163542c0168: Pulling metadata
+d163542c0168: Pulling fs layer
+d163542c0168: Download complete
+69b0d7eb9e5a: Pulling metadata
+69b0d7eb9e5a: Pulling fs layer
+69b0d7eb9e5a: Download complete
+e75aeb597a7f: Pulling metadata
+e75aeb597a7f: Pulling fs layer
+e75aeb597a7f: Download complete
+5efdfd717e36: Pulling metadata
+5efdfd717e36: Pulling fs layer
+5efdfd717e36: Download complete
+1c9acea4bdc3: Pulling metadata
+1c9acea4bdc3: Pulling fs layer
+1c9acea4bdc3: Download complete
+0bad624eca9f: Pulling metadata
+0bad624eca9f: Pulling fs layer
+0bad624eca9f: Download complete
+3970dceb27de: Pulling metadata
+3970dceb27de: Pulling fs layer
+3970dceb27de: Download complete
+b662a23c9a99: Pulling metadata
+b662a23c9a99: Pulling fs layer
+b662a23c9a99: Download complete
+1f73c7b26f16: Pulling metadata
+1f73c7b26f16: Pulling fs layer
+1f73c7b26f16: Download complete
+ba66f7bfff65: Pulling metadata
+ba66f7bfff65: Pulling fs layer
+ba66f7bfff65: Download complete
+54a3de9935c3: Pulling metadata
+54a3de9935c3: Pulling fs layer
+54a3de9935c3: Download complete
+3b6c9f2a7111: Pulling metadata
+3b6c9f2a7111: Pulling fs layer
+3b6c9f2a7111: Download complete
+feb91815a223: Pulling metadata
+feb91815a223: Pulling fs layer
+feb91815a223: Download complete
+41988b514f35: Pulling metadata
+41988b514f35: Pulling fs layer
+41988b514f35: Download complete
+41988b514f35: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  22.67
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+end date: Thu Jul 23 02:31:35 JST 2015
+
+

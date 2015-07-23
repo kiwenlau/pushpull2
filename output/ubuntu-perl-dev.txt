@@ -1,0 +1,3467 @@
+
+pullpush benchmark: transfer ubuntu-perl-dev image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Thu Jul 23 08:47:30 JST 2015
+
+sudo docker images
+kiwenlau/ubuntu-perl-dev        flat                1c910dd78a83        4 weeks ago         1.047 GB
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+sudo docker images
+kiwenlau/ubuntu-perl-dev        flat                1c910dd78a83        4 weeks ago         1.047 GB
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1f66fe8193a3        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ubuntu-perl-dev (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+224cff62f074: Pushing
+224cff62f074: Buffering to disk
+224cff62f074: Image successfully pushed
+5eaba44ae0f7: Pushing
+5eaba44ae0f7: Buffering to disk
+5eaba44ae0f7: Image successfully pushed
+ba653eb93d0d: Pushing
+ba653eb93d0d: Buffering to disk
+ba653eb93d0d: Image successfully pushed
+809e81d6eb5d: Pushing
+809e81d6eb5d: Buffering to disk
+809e81d6eb5d: Image successfully pushed
+b5f46057eb39: Pushing
+b5f46057eb39: Buffering to disk
+b5f46057eb39: Image successfully pushed
+7970a8f05bea: Pushing
+7970a8f05bea: Buffering to disk
+7970a8f05bea: Image successfully pushed
+d48b1fa1dce0: Pushing
+d48b1fa1dce0: Buffering to disk
+d48b1fa1dce0: Image successfully pushed
+5edee12e7542: Pushing
+5edee12e7542: Buffering to disk
+5edee12e7542: Image successfully pushed
+9136c4220ca2: Pushing
+9136c4220ca2: Buffering to disk
+9136c4220ca2: Image successfully pushed
+c431cb0d6045: Pushing
+c431cb0d6045: Buffering to disk
+c431cb0d6045: Image successfully pushed
+88ec71c5ff9b: Pushing
+88ec71c5ff9b: Buffering to disk
+88ec71c5ff9b: Image successfully pushed
+f0d6f7824e21: Pushing
+f0d6f7824e21: Buffering to disk
+f0d6f7824e21: Image successfully pushed
+0508e1f50e5a: Pushing
+0508e1f50e5a: Buffering to disk
+0508e1f50e5a: Image successfully pushed
+d69a08bd3863: Pushing
+d69a08bd3863: Buffering to disk
+d69a08bd3863: Image successfully pushed
+2839d3c70c8f: Pushing
+2839d3c70c8f: Buffering to disk
+2839d3c70c8f: Image successfully pushed
+272c5a057149: Pushing
+272c5a057149: Buffering to disk
+272c5a057149: Image successfully pushed
+1770ae9a09fc: Pushing
+1770ae9a09fc: Buffering to disk
+1770ae9a09fc: Image successfully pushed
+274c2f00d964: Pushing
+274c2f00d964: Buffering to disk
+274c2f00d964: Image successfully pushed
+252daab403f6: Pushing
+252daab403f6: Buffering to disk
+252daab403f6: Image successfully pushed
+dc50dda9bdeb: Pushing
+dc50dda9bdeb: Buffering to disk
+dc50dda9bdeb: Image successfully pushed
+45e7757388f7: Pushing
+45e7757388f7: Buffering to disk
+45e7757388f7: Image successfully pushed
+3d91544a0e71: Pushing
+3d91544a0e71: Buffering to disk
+3d91544a0e71: Image successfully pushed
+35fd912c557f: Pushing
+35fd912c557f: Buffering to disk
+35fd912c557f: Image successfully pushed
+e23575e6f54b: Pushing
+e23575e6f54b: Buffering to disk
+e23575e6f54b: Image successfully pushed
+5984516c3790: Pushing
+5984516c3790: Buffering to disk
+5984516c3790: Image successfully pushed
+bf389e928900: Pushing
+bf389e928900: Buffering to disk
+bf389e928900: Image successfully pushed
+d2c813410b38: Pushing
+d2c813410b38: Buffering to disk
+d2c813410b38: Image successfully pushed
+7c9cd553cd00: Pushing
+7c9cd553cd00: Buffering to disk
+7c9cd553cd00: Image successfully pushed
+8a73df34a186: Pushing
+8a73df34a186: Buffering to disk
+8a73df34a186: Image successfully pushed
+db2f471f0af9: Pushing
+db2f471f0af9: Buffering to disk
+db2f471f0af9: Image successfully pushed
+5d75d48919ca: Pushing
+5d75d48919ca: Buffering to disk
+5d75d48919ca: Image successfully pushed
+3fd48ade5603: Pushing
+3fd48ade5603: Buffering to disk
+3fd48ade5603: Image successfully pushed
+81b86f949b5a: Pushing
+81b86f949b5a: Buffering to disk
+81b86f949b5a: Image successfully pushed
+5ce2fc837420: Pushing
+5ce2fc837420: Buffering to disk
+5ce2fc837420: Image successfully pushed
+a67ce2609044: Pushing
+a67ce2609044: Buffering to disk
+a67ce2609044: Image successfully pushed
+64c62a52738d: Pushing
+64c62a52738d: Buffering to disk
+64c62a52738d: Image successfully pushed
+d74baa5a3cc0: Pushing
+d74baa5a3cc0: Buffering to disk
+d74baa5a3cc0: Image successfully pushed
+9d5ee6459475: Pushing
+9d5ee6459475: Buffering to disk
+9d5ee6459475: Image successfully pushed
+0ab72e971305: Pushing
+0ab72e971305: Buffering to disk
+0ab72e971305: Image successfully pushed
+09c7f76ab8b1: Pushing
+09c7f76ab8b1: Buffering to disk
+09c7f76ab8b1: Image successfully pushed
+Pushing tag for rev [09c7f76ab8b1] on {http://136.187.101.80:5000/v1/repositories/ubuntu-perl-dev/tags/latest}
+
+real  201.25
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+Pulling repository 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev, endpoint: http://136.187.101.80:5000/v1/
+09c7f76ab8b1: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+224cff62f074: Pulling metadata
+224cff62f074: Pulling fs layer
+224cff62f074: Download complete
+5eaba44ae0f7: Pulling metadata
+5eaba44ae0f7: Pulling fs layer
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Pulling metadata
+ba653eb93d0d: Pulling fs layer
+ba653eb93d0d: Download complete
+809e81d6eb5d: Pulling metadata
+809e81d6eb5d: Pulling fs layer
+809e81d6eb5d: Download complete
+b5f46057eb39: Pulling metadata
+b5f46057eb39: Pulling fs layer
+b5f46057eb39: Download complete
+7970a8f05bea: Pulling metadata
+7970a8f05bea: Pulling fs layer
+7970a8f05bea: Download complete
+d48b1fa1dce0: Pulling metadata
+d48b1fa1dce0: Pulling fs layer
+d48b1fa1dce0: Download complete
+5edee12e7542: Pulling metadata
+5edee12e7542: Pulling fs layer
+5edee12e7542: Download complete
+9136c4220ca2: Pulling metadata
+9136c4220ca2: Pulling fs layer
+9136c4220ca2: Download complete
+c431cb0d6045: Pulling metadata
+c431cb0d6045: Pulling fs layer
+c431cb0d6045: Download complete
+88ec71c5ff9b: Pulling metadata
+88ec71c5ff9b: Pulling fs layer
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Pulling metadata
+f0d6f7824e21: Pulling fs layer
+f0d6f7824e21: Download complete
+0508e1f50e5a: Pulling metadata
+0508e1f50e5a: Pulling fs layer
+0508e1f50e5a: Download complete
+d69a08bd3863: Pulling metadata
+d69a08bd3863: Pulling fs layer
+d69a08bd3863: Download complete
+2839d3c70c8f: Pulling metadata
+2839d3c70c8f: Pulling fs layer
+2839d3c70c8f: Download complete
+272c5a057149: Pulling metadata
+272c5a057149: Pulling fs layer
+272c5a057149: Download complete
+1770ae9a09fc: Pulling metadata
+1770ae9a09fc: Pulling fs layer
+1770ae9a09fc: Download complete
+274c2f00d964: Pulling metadata
+274c2f00d964: Pulling fs layer
+274c2f00d964: Download complete
+252daab403f6: Pulling metadata
+252daab403f6: Pulling fs layer
+252daab403f6: Download complete
+dc50dda9bdeb: Pulling metadata
+dc50dda9bdeb: Pulling fs layer
+dc50dda9bdeb: Download complete
+45e7757388f7: Pulling metadata
+45e7757388f7: Pulling fs layer
+45e7757388f7: Download complete
+3d91544a0e71: Pulling metadata
+3d91544a0e71: Pulling fs layer
+3d91544a0e71: Download complete
+35fd912c557f: Pulling metadata
+35fd912c557f: Pulling fs layer
+35fd912c557f: Download complete
+e23575e6f54b: Pulling metadata
+e23575e6f54b: Pulling fs layer
+e23575e6f54b: Download complete
+5984516c3790: Pulling metadata
+5984516c3790: Pulling fs layer
+5984516c3790: Download complete
+bf389e928900: Pulling metadata
+bf389e928900: Pulling fs layer
+bf389e928900: Download complete
+d2c813410b38: Pulling metadata
+d2c813410b38: Pulling fs layer
+d2c813410b38: Download complete
+7c9cd553cd00: Pulling metadata
+7c9cd553cd00: Pulling fs layer
+7c9cd553cd00: Download complete
+8a73df34a186: Pulling metadata
+8a73df34a186: Pulling fs layer
+8a73df34a186: Download complete
+db2f471f0af9: Pulling metadata
+db2f471f0af9: Pulling fs layer
+db2f471f0af9: Download complete
+5d75d48919ca: Pulling metadata
+5d75d48919ca: Pulling fs layer
+5d75d48919ca: Download complete
+3fd48ade5603: Pulling metadata
+3fd48ade5603: Pulling fs layer
+3fd48ade5603: Download complete
+81b86f949b5a: Pulling metadata
+81b86f949b5a: Pulling fs layer
+81b86f949b5a: Download complete
+5ce2fc837420: Pulling metadata
+5ce2fc837420: Pulling fs layer
+5ce2fc837420: Download complete
+a67ce2609044: Pulling metadata
+a67ce2609044: Pulling fs layer
+a67ce2609044: Download complete
+64c62a52738d: Pulling metadata
+64c62a52738d: Pulling fs layer
+64c62a52738d: Download complete
+d74baa5a3cc0: Pulling metadata
+d74baa5a3cc0: Pulling fs layer
+d74baa5a3cc0: Download complete
+9d5ee6459475: Pulling metadata
+9d5ee6459475: Pulling fs layer
+9d5ee6459475: Download complete
+0ab72e971305: Pulling metadata
+0ab72e971305: Pulling fs layer
+0ab72e971305: Download complete
+09c7f76ab8b1: Pulling metadata
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  40.75
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+0ea4ab75c093        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ubuntu-perl-dev (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+224cff62f074: Pushing
+224cff62f074: Buffering to disk
+224cff62f074: Image successfully pushed
+5eaba44ae0f7: Pushing
+5eaba44ae0f7: Buffering to disk
+5eaba44ae0f7: Image successfully pushed
+ba653eb93d0d: Pushing
+ba653eb93d0d: Buffering to disk
+ba653eb93d0d: Image successfully pushed
+809e81d6eb5d: Pushing
+809e81d6eb5d: Buffering to disk
+809e81d6eb5d: Image successfully pushed
+b5f46057eb39: Pushing
+b5f46057eb39: Buffering to disk
+b5f46057eb39: Image successfully pushed
+7970a8f05bea: Pushing
+7970a8f05bea: Buffering to disk
+7970a8f05bea: Image successfully pushed
+d48b1fa1dce0: Pushing
+d48b1fa1dce0: Buffering to disk
+d48b1fa1dce0: Image successfully pushed
+5edee12e7542: Pushing
+5edee12e7542: Buffering to disk
+5edee12e7542: Image successfully pushed
+9136c4220ca2: Pushing
+9136c4220ca2: Buffering to disk
+9136c4220ca2: Image successfully pushed
+c431cb0d6045: Pushing
+c431cb0d6045: Buffering to disk
+c431cb0d6045: Image successfully pushed
+88ec71c5ff9b: Pushing
+88ec71c5ff9b: Buffering to disk
+88ec71c5ff9b: Image successfully pushed
+f0d6f7824e21: Pushing
+f0d6f7824e21: Buffering to disk
+f0d6f7824e21: Image successfully pushed
+0508e1f50e5a: Pushing
+0508e1f50e5a: Buffering to disk
+0508e1f50e5a: Image successfully pushed
+d69a08bd3863: Pushing
+d69a08bd3863: Buffering to disk
+d69a08bd3863: Image successfully pushed
+2839d3c70c8f: Pushing
+2839d3c70c8f: Buffering to disk
+2839d3c70c8f: Image successfully pushed
+272c5a057149: Pushing
+272c5a057149: Buffering to disk
+272c5a057149: Image successfully pushed
+1770ae9a09fc: Pushing
+1770ae9a09fc: Buffering to disk
+1770ae9a09fc: Image successfully pushed
+274c2f00d964: Pushing
+274c2f00d964: Buffering to disk
+274c2f00d964: Image successfully pushed
+252daab403f6: Pushing
+252daab403f6: Buffering to disk
+252daab403f6: Image successfully pushed
+dc50dda9bdeb: Pushing
+dc50dda9bdeb: Buffering to disk
+dc50dda9bdeb: Image successfully pushed
+45e7757388f7: Pushing
+45e7757388f7: Buffering to disk
+45e7757388f7: Image successfully pushed
+3d91544a0e71: Pushing
+3d91544a0e71: Buffering to disk
+3d91544a0e71: Image successfully pushed
+35fd912c557f: Pushing
+35fd912c557f: Buffering to disk
+35fd912c557f: Image successfully pushed
+e23575e6f54b: Pushing
+e23575e6f54b: Buffering to disk
+e23575e6f54b: Image successfully pushed
+5984516c3790: Pushing
+5984516c3790: Buffering to disk
+5984516c3790: Image successfully pushed
+bf389e928900: Pushing
+bf389e928900: Buffering to disk
+bf389e928900: Image successfully pushed
+d2c813410b38: Pushing
+d2c813410b38: Buffering to disk
+d2c813410b38: Image successfully pushed
+7c9cd553cd00: Pushing
+7c9cd553cd00: Buffering to disk
+7c9cd553cd00: Image successfully pushed
+8a73df34a186: Pushing
+8a73df34a186: Buffering to disk
+8a73df34a186: Image successfully pushed
+db2f471f0af9: Pushing
+db2f471f0af9: Buffering to disk
+db2f471f0af9: Image successfully pushed
+5d75d48919ca: Pushing
+5d75d48919ca: Buffering to disk
+5d75d48919ca: Image successfully pushed
+3fd48ade5603: Pushing
+3fd48ade5603: Buffering to disk
+3fd48ade5603: Image successfully pushed
+81b86f949b5a: Pushing
+81b86f949b5a: Buffering to disk
+81b86f949b5a: Image successfully pushed
+5ce2fc837420: Pushing
+5ce2fc837420: Buffering to disk
+5ce2fc837420: Image successfully pushed
+a67ce2609044: Pushing
+a67ce2609044: Buffering to disk
+a67ce2609044: Image successfully pushed
+64c62a52738d: Pushing
+64c62a52738d: Buffering to disk
+64c62a52738d: Image successfully pushed
+d74baa5a3cc0: Pushing
+d74baa5a3cc0: Buffering to disk
+d74baa5a3cc0: Image successfully pushed
+9d5ee6459475: Pushing
+9d5ee6459475: Buffering to disk
+9d5ee6459475: Image successfully pushed
+0ab72e971305: Pushing
+0ab72e971305: Buffering to disk
+0ab72e971305: Image successfully pushed
+09c7f76ab8b1: Pushing
+09c7f76ab8b1: Buffering to disk
+09c7f76ab8b1: Image successfully pushed
+Pushing tag for rev [09c7f76ab8b1] on {http://136.187.101.80:5000/v1/repositories/ubuntu-perl-dev/tags/latest}
+
+real  198.58
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+Pulling repository 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev, endpoint: http://136.187.101.80:5000/v1/
+09c7f76ab8b1: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+224cff62f074: Pulling metadata
+224cff62f074: Pulling fs layer
+224cff62f074: Download complete
+5eaba44ae0f7: Pulling metadata
+5eaba44ae0f7: Pulling fs layer
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Pulling metadata
+ba653eb93d0d: Pulling fs layer
+ba653eb93d0d: Download complete
+809e81d6eb5d: Pulling metadata
+809e81d6eb5d: Pulling fs layer
+809e81d6eb5d: Download complete
+b5f46057eb39: Pulling metadata
+b5f46057eb39: Pulling fs layer
+b5f46057eb39: Download complete
+7970a8f05bea: Pulling metadata
+7970a8f05bea: Pulling fs layer
+7970a8f05bea: Download complete
+d48b1fa1dce0: Pulling metadata
+d48b1fa1dce0: Pulling fs layer
+d48b1fa1dce0: Download complete
+5edee12e7542: Pulling metadata
+5edee12e7542: Pulling fs layer
+5edee12e7542: Download complete
+9136c4220ca2: Pulling metadata
+9136c4220ca2: Pulling fs layer
+9136c4220ca2: Download complete
+c431cb0d6045: Pulling metadata
+c431cb0d6045: Pulling fs layer
+c431cb0d6045: Download complete
+88ec71c5ff9b: Pulling metadata
+88ec71c5ff9b: Pulling fs layer
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Pulling metadata
+f0d6f7824e21: Pulling fs layer
+f0d6f7824e21: Download complete
+0508e1f50e5a: Pulling metadata
+0508e1f50e5a: Pulling fs layer
+0508e1f50e5a: Download complete
+d69a08bd3863: Pulling metadata
+d69a08bd3863: Pulling fs layer
+d69a08bd3863: Download complete
+2839d3c70c8f: Pulling metadata
+2839d3c70c8f: Pulling fs layer
+2839d3c70c8f: Download complete
+272c5a057149: Pulling metadata
+272c5a057149: Pulling fs layer
+272c5a057149: Download complete
+1770ae9a09fc: Pulling metadata
+1770ae9a09fc: Pulling fs layer
+1770ae9a09fc: Download complete
+274c2f00d964: Pulling metadata
+274c2f00d964: Pulling fs layer
+274c2f00d964: Download complete
+252daab403f6: Pulling metadata
+252daab403f6: Pulling fs layer
+252daab403f6: Download complete
+dc50dda9bdeb: Pulling metadata
+dc50dda9bdeb: Pulling fs layer
+dc50dda9bdeb: Download complete
+45e7757388f7: Pulling metadata
+45e7757388f7: Pulling fs layer
+45e7757388f7: Download complete
+3d91544a0e71: Pulling metadata
+3d91544a0e71: Pulling fs layer
+3d91544a0e71: Download complete
+35fd912c557f: Pulling metadata
+35fd912c557f: Pulling fs layer
+35fd912c557f: Download complete
+e23575e6f54b: Pulling metadata
+e23575e6f54b: Pulling fs layer
+e23575e6f54b: Download complete
+5984516c3790: Pulling metadata
+5984516c3790: Pulling fs layer
+5984516c3790: Download complete
+bf389e928900: Pulling metadata
+bf389e928900: Pulling fs layer
+bf389e928900: Download complete
+d2c813410b38: Pulling metadata
+d2c813410b38: Pulling fs layer
+d2c813410b38: Download complete
+7c9cd553cd00: Pulling metadata
+7c9cd553cd00: Pulling fs layer
+7c9cd553cd00: Download complete
+8a73df34a186: Pulling metadata
+8a73df34a186: Pulling fs layer
+8a73df34a186: Download complete
+db2f471f0af9: Pulling metadata
+db2f471f0af9: Pulling fs layer
+db2f471f0af9: Download complete
+5d75d48919ca: Pulling metadata
+5d75d48919ca: Pulling fs layer
+5d75d48919ca: Download complete
+3fd48ade5603: Pulling metadata
+3fd48ade5603: Pulling fs layer
+3fd48ade5603: Download complete
+81b86f949b5a: Pulling metadata
+81b86f949b5a: Pulling fs layer
+81b86f949b5a: Download complete
+5ce2fc837420: Pulling metadata
+5ce2fc837420: Pulling fs layer
+5ce2fc837420: Download complete
+a67ce2609044: Pulling metadata
+a67ce2609044: Pulling fs layer
+a67ce2609044: Download complete
+64c62a52738d: Pulling metadata
+64c62a52738d: Pulling fs layer
+64c62a52738d: Download complete
+d74baa5a3cc0: Pulling metadata
+d74baa5a3cc0: Pulling fs layer
+d74baa5a3cc0: Download complete
+9d5ee6459475: Pulling metadata
+9d5ee6459475: Pulling fs layer
+9d5ee6459475: Download complete
+0ab72e971305: Pulling metadata
+0ab72e971305: Pulling fs layer
+0ab72e971305: Download complete
+09c7f76ab8b1: Pulling metadata
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  41.07
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+60f738810f55        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker rm -f docker_registry
+
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+0757e4116079        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker rm -f docker_registry
+
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+beae69120be8        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ubuntu-perl-dev (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+224cff62f074: Pushing
+224cff62f074: Buffering to disk
+224cff62f074: Image successfully pushed
+5eaba44ae0f7: Pushing
+5eaba44ae0f7: Buffering to disk
+5eaba44ae0f7: Image successfully pushed
+ba653eb93d0d: Pushing
+ba653eb93d0d: Buffering to disk
+ba653eb93d0d: Image successfully pushed
+809e81d6eb5d: Pushing
+809e81d6eb5d: Buffering to disk
+809e81d6eb5d: Image successfully pushed
+b5f46057eb39: Pushing
+b5f46057eb39: Buffering to disk
+b5f46057eb39: Image successfully pushed
+7970a8f05bea: Pushing
+7970a8f05bea: Buffering to disk
+7970a8f05bea: Image successfully pushed
+d48b1fa1dce0: Pushing
+d48b1fa1dce0: Buffering to disk
+d48b1fa1dce0: Image successfully pushed
+5edee12e7542: Pushing
+5edee12e7542: Buffering to disk
+5edee12e7542: Image successfully pushed
+9136c4220ca2: Pushing
+9136c4220ca2: Buffering to disk
+9136c4220ca2: Image successfully pushed
+c431cb0d6045: Pushing
+c431cb0d6045: Buffering to disk
+c431cb0d6045: Image successfully pushed
+88ec71c5ff9b: Pushing
+88ec71c5ff9b: Buffering to disk
+88ec71c5ff9b: Image successfully pushed
+f0d6f7824e21: Pushing
+f0d6f7824e21: Buffering to disk
+f0d6f7824e21: Image successfully pushed
+0508e1f50e5a: Pushing
+0508e1f50e5a: Buffering to disk
+0508e1f50e5a: Image successfully pushed
+d69a08bd3863: Pushing
+d69a08bd3863: Buffering to disk
+d69a08bd3863: Image successfully pushed
+2839d3c70c8f: Pushing
+2839d3c70c8f: Buffering to disk
+2839d3c70c8f: Image successfully pushed
+272c5a057149: Pushing
+272c5a057149: Buffering to disk
+272c5a057149: Image successfully pushed
+1770ae9a09fc: Pushing
+1770ae9a09fc: Buffering to disk
+1770ae9a09fc: Image successfully pushed
+274c2f00d964: Pushing
+274c2f00d964: Buffering to disk
+274c2f00d964: Image successfully pushed
+252daab403f6: Pushing
+252daab403f6: Buffering to disk
+252daab403f6: Image successfully pushed
+dc50dda9bdeb: Pushing
+dc50dda9bdeb: Buffering to disk
+dc50dda9bdeb: Image successfully pushed
+45e7757388f7: Pushing
+45e7757388f7: Buffering to disk
+45e7757388f7: Image successfully pushed
+3d91544a0e71: Pushing
+3d91544a0e71: Buffering to disk
+3d91544a0e71: Image successfully pushed
+35fd912c557f: Pushing
+35fd912c557f: Buffering to disk
+35fd912c557f: Image successfully pushed
+e23575e6f54b: Pushing
+e23575e6f54b: Buffering to disk
+e23575e6f54b: Image successfully pushed
+5984516c3790: Pushing
+5984516c3790: Buffering to disk
+5984516c3790: Image successfully pushed
+bf389e928900: Pushing
+bf389e928900: Buffering to disk
+bf389e928900: Image successfully pushed
+d2c813410b38: Pushing
+d2c813410b38: Buffering to disk
+d2c813410b38: Image successfully pushed
+7c9cd553cd00: Pushing
+7c9cd553cd00: Buffering to disk
+7c9cd553cd00: Image successfully pushed
+8a73df34a186: Pushing
+8a73df34a186: Buffering to disk
+8a73df34a186: Image successfully pushed
+db2f471f0af9: Pushing
+db2f471f0af9: Buffering to disk
+db2f471f0af9: Image successfully pushed
+5d75d48919ca: Pushing
+5d75d48919ca: Buffering to disk
+5d75d48919ca: Image successfully pushed
+3fd48ade5603: Pushing
+3fd48ade5603: Buffering to disk
+3fd48ade5603: Image successfully pushed
+81b86f949b5a: Pushing
+81b86f949b5a: Buffering to disk
+81b86f949b5a: Image successfully pushed
+5ce2fc837420: Pushing
+5ce2fc837420: Buffering to disk
+5ce2fc837420: Image successfully pushed
+a67ce2609044: Pushing
+a67ce2609044: Buffering to disk
+a67ce2609044: Image successfully pushed
+64c62a52738d: Pushing
+64c62a52738d: Buffering to disk
+64c62a52738d: Image successfully pushed
+d74baa5a3cc0: Pushing
+d74baa5a3cc0: Buffering to disk
+d74baa5a3cc0: Image successfully pushed
+9d5ee6459475: Pushing
+9d5ee6459475: Buffering to disk
+9d5ee6459475: Image successfully pushed
+0ab72e971305: Pushing
+0ab72e971305: Buffering to disk
+0ab72e971305: Image successfully pushed
+09c7f76ab8b1: Pushing
+09c7f76ab8b1: Buffering to disk
+09c7f76ab8b1: Image successfully pushed
+Pushing tag for rev [09c7f76ab8b1] on {http://136.187.101.80:5000/v1/repositories/ubuntu-perl-dev/tags/latest}
+
+real  200.82
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+Pulling repository 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev, endpoint: http://136.187.101.80:5000/v1/
+09c7f76ab8b1: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+224cff62f074: Pulling metadata
+224cff62f074: Pulling fs layer
+224cff62f074: Download complete
+5eaba44ae0f7: Pulling metadata
+5eaba44ae0f7: Pulling fs layer
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Pulling metadata
+ba653eb93d0d: Pulling fs layer
+ba653eb93d0d: Download complete
+809e81d6eb5d: Pulling metadata
+809e81d6eb5d: Pulling fs layer
+809e81d6eb5d: Download complete
+b5f46057eb39: Pulling metadata
+b5f46057eb39: Pulling fs layer
+b5f46057eb39: Download complete
+7970a8f05bea: Pulling metadata
+7970a8f05bea: Pulling fs layer
+7970a8f05bea: Download complete
+d48b1fa1dce0: Pulling metadata
+d48b1fa1dce0: Pulling fs layer
+d48b1fa1dce0: Download complete
+5edee12e7542: Pulling metadata
+5edee12e7542: Pulling fs layer
+5edee12e7542: Download complete
+9136c4220ca2: Pulling metadata
+9136c4220ca2: Pulling fs layer
+9136c4220ca2: Download complete
+c431cb0d6045: Pulling metadata
+c431cb0d6045: Pulling fs layer
+c431cb0d6045: Download complete
+88ec71c5ff9b: Pulling metadata
+88ec71c5ff9b: Pulling fs layer
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Pulling metadata
+f0d6f7824e21: Pulling fs layer
+f0d6f7824e21: Download complete
+0508e1f50e5a: Pulling metadata
+0508e1f50e5a: Pulling fs layer
+0508e1f50e5a: Download complete
+d69a08bd3863: Pulling metadata
+d69a08bd3863: Pulling fs layer
+d69a08bd3863: Download complete
+2839d3c70c8f: Pulling metadata
+2839d3c70c8f: Pulling fs layer
+2839d3c70c8f: Download complete
+272c5a057149: Pulling metadata
+272c5a057149: Pulling fs layer
+272c5a057149: Download complete
+1770ae9a09fc: Pulling metadata
+1770ae9a09fc: Pulling fs layer
+1770ae9a09fc: Download complete
+274c2f00d964: Pulling metadata
+274c2f00d964: Pulling fs layer
+274c2f00d964: Download complete
+252daab403f6: Pulling metadata
+252daab403f6: Pulling fs layer
+252daab403f6: Download complete
+dc50dda9bdeb: Pulling metadata
+dc50dda9bdeb: Pulling fs layer
+dc50dda9bdeb: Download complete
+45e7757388f7: Pulling metadata
+45e7757388f7: Pulling fs layer
+45e7757388f7: Download complete
+3d91544a0e71: Pulling metadata
+3d91544a0e71: Pulling fs layer
+3d91544a0e71: Download complete
+35fd912c557f: Pulling metadata
+35fd912c557f: Pulling fs layer
+35fd912c557f: Download complete
+e23575e6f54b: Pulling metadata
+e23575e6f54b: Pulling fs layer
+e23575e6f54b: Download complete
+5984516c3790: Pulling metadata
+5984516c3790: Pulling fs layer
+5984516c3790: Download complete
+bf389e928900: Pulling metadata
+bf389e928900: Pulling fs layer
+bf389e928900: Download complete
+d2c813410b38: Pulling metadata
+d2c813410b38: Pulling fs layer
+d2c813410b38: Download complete
+7c9cd553cd00: Pulling metadata
+7c9cd553cd00: Pulling fs layer
+7c9cd553cd00: Download complete
+8a73df34a186: Pulling metadata
+8a73df34a186: Pulling fs layer
+8a73df34a186: Download complete
+db2f471f0af9: Pulling metadata
+db2f471f0af9: Pulling fs layer
+db2f471f0af9: Download complete
+5d75d48919ca: Pulling metadata
+5d75d48919ca: Pulling fs layer
+5d75d48919ca: Download complete
+3fd48ade5603: Pulling metadata
+3fd48ade5603: Pulling fs layer
+3fd48ade5603: Download complete
+81b86f949b5a: Pulling metadata
+81b86f949b5a: Pulling fs layer
+81b86f949b5a: Download complete
+5ce2fc837420: Pulling metadata
+5ce2fc837420: Pulling fs layer
+5ce2fc837420: Download complete
+a67ce2609044: Pulling metadata
+a67ce2609044: Pulling fs layer
+a67ce2609044: Download complete
+64c62a52738d: Pulling metadata
+64c62a52738d: Pulling fs layer
+64c62a52738d: Download complete
+d74baa5a3cc0: Pulling metadata
+d74baa5a3cc0: Pulling fs layer
+d74baa5a3cc0: Download complete
+9d5ee6459475: Pulling metadata
+9d5ee6459475: Pulling fs layer
+9d5ee6459475: Download complete
+0ab72e971305: Pulling metadata
+0ab72e971305: Pulling fs layer
+0ab72e971305: Download complete
+09c7f76ab8b1: Pulling metadata
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  41.60
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+4ed528a804aa        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+cdd35cc70b9d        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3764bf155ddb        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+9856efdd1ad4        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ubuntu-perl-dev (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+224cff62f074: Pushing
+224cff62f074: Buffering to disk
+224cff62f074: Image successfully pushed
+5eaba44ae0f7: Pushing
+5eaba44ae0f7: Buffering to disk
+5eaba44ae0f7: Image successfully pushed
+ba653eb93d0d: Pushing
+ba653eb93d0d: Buffering to disk
+ba653eb93d0d: Image successfully pushed
+809e81d6eb5d: Pushing
+809e81d6eb5d: Buffering to disk
+809e81d6eb5d: Image successfully pushed
+b5f46057eb39: Pushing
+b5f46057eb39: Buffering to disk
+b5f46057eb39: Image successfully pushed
+7970a8f05bea: Pushing
+7970a8f05bea: Buffering to disk
+7970a8f05bea: Image successfully pushed
+d48b1fa1dce0: Pushing
+d48b1fa1dce0: Buffering to disk
+d48b1fa1dce0: Image successfully pushed
+5edee12e7542: Pushing
+5edee12e7542: Buffering to disk
+5edee12e7542: Image successfully pushed
+9136c4220ca2: Pushing
+9136c4220ca2: Buffering to disk
+9136c4220ca2: Image successfully pushed
+c431cb0d6045: Pushing
+c431cb0d6045: Buffering to disk
+c431cb0d6045: Image successfully pushed
+88ec71c5ff9b: Pushing
+88ec71c5ff9b: Buffering to disk
+88ec71c5ff9b: Image successfully pushed
+f0d6f7824e21: Pushing
+f0d6f7824e21: Buffering to disk
+f0d6f7824e21: Image successfully pushed
+0508e1f50e5a: Pushing
+0508e1f50e5a: Buffering to disk
+0508e1f50e5a: Image successfully pushed
+d69a08bd3863: Pushing
+d69a08bd3863: Buffering to disk
+d69a08bd3863: Image successfully pushed
+2839d3c70c8f: Pushing
+2839d3c70c8f: Buffering to disk
+2839d3c70c8f: Image successfully pushed
+272c5a057149: Pushing
+272c5a057149: Buffering to disk
+272c5a057149: Image successfully pushed
+1770ae9a09fc: Pushing
+1770ae9a09fc: Buffering to disk
+1770ae9a09fc: Image successfully pushed
+274c2f00d964: Pushing
+274c2f00d964: Buffering to disk
+274c2f00d964: Image successfully pushed
+252daab403f6: Pushing
+252daab403f6: Buffering to disk
+252daab403f6: Image successfully pushed
+dc50dda9bdeb: Pushing
+dc50dda9bdeb: Buffering to disk
+dc50dda9bdeb: Image successfully pushed
+45e7757388f7: Pushing
+45e7757388f7: Buffering to disk
+45e7757388f7: Image successfully pushed
+3d91544a0e71: Pushing
+3d91544a0e71: Buffering to disk
+3d91544a0e71: Image successfully pushed
+35fd912c557f: Pushing
+35fd912c557f: Buffering to disk
+35fd912c557f: Image successfully pushed
+e23575e6f54b: Pushing
+e23575e6f54b: Buffering to disk
+e23575e6f54b: Image successfully pushed
+5984516c3790: Pushing
+5984516c3790: Buffering to disk
+5984516c3790: Image successfully pushed
+bf389e928900: Pushing
+bf389e928900: Buffering to disk
+bf389e928900: Image successfully pushed
+d2c813410b38: Pushing
+d2c813410b38: Buffering to disk
+d2c813410b38: Image successfully pushed
+7c9cd553cd00: Pushing
+7c9cd553cd00: Buffering to disk
+7c9cd553cd00: Image successfully pushed
+8a73df34a186: Pushing
+8a73df34a186: Buffering to disk
+8a73df34a186: Image successfully pushed
+db2f471f0af9: Pushing
+db2f471f0af9: Buffering to disk
+db2f471f0af9: Image successfully pushed
+5d75d48919ca: Pushing
+5d75d48919ca: Buffering to disk
+5d75d48919ca: Image successfully pushed
+3fd48ade5603: Pushing
+3fd48ade5603: Buffering to disk
+3fd48ade5603: Image successfully pushed
+81b86f949b5a: Pushing
+81b86f949b5a: Buffering to disk
+81b86f949b5a: Image successfully pushed
+5ce2fc837420: Pushing
+5ce2fc837420: Buffering to disk
+5ce2fc837420: Image successfully pushed
+a67ce2609044: Pushing
+a67ce2609044: Buffering to disk
+a67ce2609044: Image successfully pushed
+64c62a52738d: Pushing
+64c62a52738d: Buffering to disk
+64c62a52738d: Image successfully pushed
+d74baa5a3cc0: Pushing
+d74baa5a3cc0: Buffering to disk
+d74baa5a3cc0: Image successfully pushed
+9d5ee6459475: Pushing
+9d5ee6459475: Buffering to disk
+9d5ee6459475: Image successfully pushed
+0ab72e971305: Pushing
+0ab72e971305: Buffering to disk
+0ab72e971305: Image successfully pushed
+09c7f76ab8b1: Pushing
+09c7f76ab8b1: Buffering to disk
+09c7f76ab8b1: Image successfully pushed
+Pushing tag for rev [09c7f76ab8b1] on {http://136.187.101.80:5000/v1/repositories/ubuntu-perl-dev/tags/latest}
+
+real  197.21
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+Pulling repository 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev, endpoint: http://136.187.101.80:5000/v1/
+09c7f76ab8b1: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+224cff62f074: Pulling metadata
+224cff62f074: Pulling fs layer
+224cff62f074: Download complete
+5eaba44ae0f7: Pulling metadata
+5eaba44ae0f7: Pulling fs layer
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Pulling metadata
+ba653eb93d0d: Pulling fs layer
+ba653eb93d0d: Download complete
+809e81d6eb5d: Pulling metadata
+809e81d6eb5d: Pulling fs layer
+809e81d6eb5d: Download complete
+b5f46057eb39: Pulling metadata
+b5f46057eb39: Pulling fs layer
+b5f46057eb39: Download complete
+7970a8f05bea: Pulling metadata
+7970a8f05bea: Pulling fs layer
+7970a8f05bea: Download complete
+d48b1fa1dce0: Pulling metadata
+d48b1fa1dce0: Pulling fs layer
+d48b1fa1dce0: Download complete
+5edee12e7542: Pulling metadata
+5edee12e7542: Pulling fs layer
+5edee12e7542: Download complete
+9136c4220ca2: Pulling metadata
+9136c4220ca2: Pulling fs layer
+9136c4220ca2: Download complete
+c431cb0d6045: Pulling metadata
+c431cb0d6045: Pulling fs layer
+c431cb0d6045: Download complete
+88ec71c5ff9b: Pulling metadata
+88ec71c5ff9b: Pulling fs layer
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Pulling metadata
+f0d6f7824e21: Pulling fs layer
+f0d6f7824e21: Download complete
+0508e1f50e5a: Pulling metadata
+0508e1f50e5a: Pulling fs layer
+0508e1f50e5a: Download complete
+d69a08bd3863: Pulling metadata
+d69a08bd3863: Pulling fs layer
+d69a08bd3863: Download complete
+2839d3c70c8f: Pulling metadata
+2839d3c70c8f: Pulling fs layer
+2839d3c70c8f: Download complete
+272c5a057149: Pulling metadata
+272c5a057149: Pulling fs layer
+272c5a057149: Download complete
+1770ae9a09fc: Pulling metadata
+1770ae9a09fc: Pulling fs layer
+1770ae9a09fc: Download complete
+274c2f00d964: Pulling metadata
+274c2f00d964: Pulling fs layer
+274c2f00d964: Download complete
+252daab403f6: Pulling metadata
+252daab403f6: Pulling fs layer
+252daab403f6: Download complete
+dc50dda9bdeb: Pulling metadata
+dc50dda9bdeb: Pulling fs layer
+dc50dda9bdeb: Download complete
+45e7757388f7: Pulling metadata
+45e7757388f7: Pulling fs layer
+45e7757388f7: Download complete
+3d91544a0e71: Pulling metadata
+3d91544a0e71: Pulling fs layer
+3d91544a0e71: Download complete
+35fd912c557f: Pulling metadata
+35fd912c557f: Pulling fs layer
+35fd912c557f: Download complete
+e23575e6f54b: Pulling metadata
+e23575e6f54b: Pulling fs layer
+e23575e6f54b: Download complete
+5984516c3790: Pulling metadata
+5984516c3790: Pulling fs layer
+5984516c3790: Download complete
+bf389e928900: Pulling metadata
+bf389e928900: Pulling fs layer
+bf389e928900: Download complete
+d2c813410b38: Pulling metadata
+d2c813410b38: Pulling fs layer
+d2c813410b38: Download complete
+7c9cd553cd00: Pulling metadata
+7c9cd553cd00: Pulling fs layer
+7c9cd553cd00: Download complete
+8a73df34a186: Pulling metadata
+8a73df34a186: Pulling fs layer
+8a73df34a186: Download complete
+db2f471f0af9: Pulling metadata
+db2f471f0af9: Pulling fs layer
+db2f471f0af9: Download complete
+5d75d48919ca: Pulling metadata
+5d75d48919ca: Pulling fs layer
+5d75d48919ca: Download complete
+3fd48ade5603: Pulling metadata
+3fd48ade5603: Pulling fs layer
+3fd48ade5603: Download complete
+81b86f949b5a: Pulling metadata
+81b86f949b5a: Pulling fs layer
+81b86f949b5a: Download complete
+5ce2fc837420: Pulling metadata
+5ce2fc837420: Pulling fs layer
+5ce2fc837420: Download complete
+a67ce2609044: Pulling metadata
+a67ce2609044: Pulling fs layer
+a67ce2609044: Download complete
+64c62a52738d: Pulling metadata
+64c62a52738d: Pulling fs layer
+64c62a52738d: Download complete
+d74baa5a3cc0: Pulling metadata
+d74baa5a3cc0: Pulling fs layer
+d74baa5a3cc0: Download complete
+9d5ee6459475: Pulling metadata
+9d5ee6459475: Pulling fs layer
+9d5ee6459475: Download complete
+0ab72e971305: Pulling metadata
+0ab72e971305: Pulling fs layer
+0ab72e971305: Download complete
+09c7f76ab8b1: Pulling metadata
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  42.06
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+e9644b5c2b6e        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker rm -f docker_registry
+
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+0c1acff6b9af        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker rm -f docker_registry
+
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+18179fc5fac9        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker rm -f docker_registry
+
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1c054d521470        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker rm -f docker_registry
+
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+bd59f9195c0f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ubuntu-perl-dev (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+224cff62f074: Pushing
+224cff62f074: Buffering to disk
+224cff62f074: Image successfully pushed
+5eaba44ae0f7: Pushing
+5eaba44ae0f7: Buffering to disk
+5eaba44ae0f7: Image successfully pushed
+ba653eb93d0d: Pushing
+ba653eb93d0d: Buffering to disk
+ba653eb93d0d: Image successfully pushed
+809e81d6eb5d: Pushing
+809e81d6eb5d: Buffering to disk
+809e81d6eb5d: Image successfully pushed
+b5f46057eb39: Pushing
+b5f46057eb39: Buffering to disk
+b5f46057eb39: Image successfully pushed
+7970a8f05bea: Pushing
+7970a8f05bea: Buffering to disk
+7970a8f05bea: Image successfully pushed
+d48b1fa1dce0: Pushing
+d48b1fa1dce0: Buffering to disk
+d48b1fa1dce0: Image successfully pushed
+5edee12e7542: Pushing
+5edee12e7542: Buffering to disk
+5edee12e7542: Image successfully pushed
+9136c4220ca2: Pushing
+9136c4220ca2: Buffering to disk
+9136c4220ca2: Image successfully pushed
+c431cb0d6045: Pushing
+c431cb0d6045: Buffering to disk
+c431cb0d6045: Image successfully pushed
+88ec71c5ff9b: Pushing
+88ec71c5ff9b: Buffering to disk
+88ec71c5ff9b: Image successfully pushed
+f0d6f7824e21: Pushing
+f0d6f7824e21: Buffering to disk
+f0d6f7824e21: Image successfully pushed
+0508e1f50e5a: Pushing
+0508e1f50e5a: Buffering to disk
+0508e1f50e5a: Image successfully pushed
+d69a08bd3863: Pushing
+d69a08bd3863: Buffering to disk
+d69a08bd3863: Image successfully pushed
+2839d3c70c8f: Pushing
+2839d3c70c8f: Buffering to disk
+2839d3c70c8f: Image successfully pushed
+272c5a057149: Pushing
+272c5a057149: Buffering to disk
+272c5a057149: Image successfully pushed
+1770ae9a09fc: Pushing
+1770ae9a09fc: Buffering to disk
+1770ae9a09fc: Image successfully pushed
+274c2f00d964: Pushing
+274c2f00d964: Buffering to disk
+274c2f00d964: Image successfully pushed
+252daab403f6: Pushing
+252daab403f6: Buffering to disk
+252daab403f6: Image successfully pushed
+dc50dda9bdeb: Pushing
+dc50dda9bdeb: Buffering to disk
+dc50dda9bdeb: Image successfully pushed
+45e7757388f7: Pushing
+45e7757388f7: Buffering to disk
+45e7757388f7: Image successfully pushed
+3d91544a0e71: Pushing
+3d91544a0e71: Buffering to disk
+3d91544a0e71: Image successfully pushed
+35fd912c557f: Pushing
+35fd912c557f: Buffering to disk
+35fd912c557f: Image successfully pushed
+e23575e6f54b: Pushing
+e23575e6f54b: Buffering to disk
+e23575e6f54b: Image successfully pushed
+5984516c3790: Pushing
+5984516c3790: Buffering to disk
+5984516c3790: Image successfully pushed
+bf389e928900: Pushing
+bf389e928900: Buffering to disk
+bf389e928900: Image successfully pushed
+d2c813410b38: Pushing
+d2c813410b38: Buffering to disk
+d2c813410b38: Image successfully pushed
+7c9cd553cd00: Pushing
+7c9cd553cd00: Buffering to disk
+7c9cd553cd00: Image successfully pushed
+8a73df34a186: Pushing
+8a73df34a186: Buffering to disk
+8a73df34a186: Image successfully pushed
+db2f471f0af9: Pushing
+db2f471f0af9: Buffering to disk
+db2f471f0af9: Image successfully pushed
+5d75d48919ca: Pushing
+5d75d48919ca: Buffering to disk
+5d75d48919ca: Image successfully pushed
+3fd48ade5603: Pushing
+3fd48ade5603: Buffering to disk
+3fd48ade5603: Image successfully pushed
+81b86f949b5a: Pushing
+81b86f949b5a: Buffering to disk
+81b86f949b5a: Image successfully pushed
+5ce2fc837420: Pushing
+5ce2fc837420: Buffering to disk
+5ce2fc837420: Image successfully pushed
+a67ce2609044: Pushing
+a67ce2609044: Buffering to disk
+a67ce2609044: Image successfully pushed
+64c62a52738d: Pushing
+64c62a52738d: Buffering to disk
+64c62a52738d: Image successfully pushed
+d74baa5a3cc0: Pushing
+d74baa5a3cc0: Buffering to disk
+d74baa5a3cc0: Image successfully pushed
+9d5ee6459475: Pushing
+9d5ee6459475: Buffering to disk
+9d5ee6459475: Image successfully pushed
+0ab72e971305: Pushing
+0ab72e971305: Buffering to disk
+0ab72e971305: Image successfully pushed
+09c7f76ab8b1: Pushing
+09c7f76ab8b1: Buffering to disk
+09c7f76ab8b1: Image successfully pushed
+Pushing tag for rev [09c7f76ab8b1] on {http://136.187.101.80:5000/v1/repositories/ubuntu-perl-dev/tags/latest}
+
+real  196.51
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+Pulling repository 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev, endpoint: http://136.187.101.80:5000/v1/
+09c7f76ab8b1: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+224cff62f074: Pulling metadata
+224cff62f074: Pulling fs layer
+224cff62f074: Download complete
+5eaba44ae0f7: Pulling metadata
+5eaba44ae0f7: Pulling fs layer
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Pulling metadata
+ba653eb93d0d: Pulling fs layer
+ba653eb93d0d: Download complete
+809e81d6eb5d: Pulling metadata
+809e81d6eb5d: Pulling fs layer
+809e81d6eb5d: Download complete
+b5f46057eb39: Pulling metadata
+b5f46057eb39: Pulling fs layer
+b5f46057eb39: Download complete
+7970a8f05bea: Pulling metadata
+7970a8f05bea: Pulling fs layer
+7970a8f05bea: Download complete
+d48b1fa1dce0: Pulling metadata
+d48b1fa1dce0: Pulling fs layer
+d48b1fa1dce0: Download complete
+5edee12e7542: Pulling metadata
+5edee12e7542: Pulling fs layer
+5edee12e7542: Download complete
+9136c4220ca2: Pulling metadata
+9136c4220ca2: Pulling fs layer
+9136c4220ca2: Download complete
+c431cb0d6045: Pulling metadata
+c431cb0d6045: Pulling fs layer
+c431cb0d6045: Download complete
+88ec71c5ff9b: Pulling metadata
+88ec71c5ff9b: Pulling fs layer
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Pulling metadata
+f0d6f7824e21: Pulling fs layer
+f0d6f7824e21: Download complete
+0508e1f50e5a: Pulling metadata
+0508e1f50e5a: Pulling fs layer
+0508e1f50e5a: Download complete
+d69a08bd3863: Pulling metadata
+d69a08bd3863: Pulling fs layer
+d69a08bd3863: Download complete
+2839d3c70c8f: Pulling metadata
+2839d3c70c8f: Pulling fs layer
+2839d3c70c8f: Download complete
+272c5a057149: Pulling metadata
+272c5a057149: Pulling fs layer
+272c5a057149: Download complete
+1770ae9a09fc: Pulling metadata
+1770ae9a09fc: Pulling fs layer
+1770ae9a09fc: Download complete
+274c2f00d964: Pulling metadata
+274c2f00d964: Pulling fs layer
+274c2f00d964: Download complete
+252daab403f6: Pulling metadata
+252daab403f6: Pulling fs layer
+252daab403f6: Download complete
+dc50dda9bdeb: Pulling metadata
+dc50dda9bdeb: Pulling fs layer
+dc50dda9bdeb: Download complete
+45e7757388f7: Pulling metadata
+45e7757388f7: Pulling fs layer
+45e7757388f7: Download complete
+3d91544a0e71: Pulling metadata
+3d91544a0e71: Pulling fs layer
+3d91544a0e71: Download complete
+35fd912c557f: Pulling metadata
+35fd912c557f: Pulling fs layer
+35fd912c557f: Download complete
+e23575e6f54b: Pulling metadata
+e23575e6f54b: Pulling fs layer
+e23575e6f54b: Download complete
+5984516c3790: Pulling metadata
+5984516c3790: Pulling fs layer
+5984516c3790: Download complete
+bf389e928900: Pulling metadata
+bf389e928900: Pulling fs layer
+bf389e928900: Download complete
+d2c813410b38: Pulling metadata
+d2c813410b38: Pulling fs layer
+d2c813410b38: Download complete
+7c9cd553cd00: Pulling metadata
+7c9cd553cd00: Pulling fs layer
+7c9cd553cd00: Download complete
+8a73df34a186: Pulling metadata
+8a73df34a186: Pulling fs layer
+8a73df34a186: Download complete
+db2f471f0af9: Pulling metadata
+db2f471f0af9: Pulling fs layer
+db2f471f0af9: Download complete
+5d75d48919ca: Pulling metadata
+5d75d48919ca: Pulling fs layer
+5d75d48919ca: Download complete
+3fd48ade5603: Pulling metadata
+3fd48ade5603: Pulling fs layer
+3fd48ade5603: Download complete
+81b86f949b5a: Pulling metadata
+81b86f949b5a: Pulling fs layer
+81b86f949b5a: Download complete
+5ce2fc837420: Pulling metadata
+5ce2fc837420: Pulling fs layer
+5ce2fc837420: Download complete
+a67ce2609044: Pulling metadata
+a67ce2609044: Pulling fs layer
+a67ce2609044: Download complete
+64c62a52738d: Pulling metadata
+64c62a52738d: Pulling fs layer
+64c62a52738d: Download complete
+d74baa5a3cc0: Pulling metadata
+d74baa5a3cc0: Pulling fs layer
+d74baa5a3cc0: Download complete
+9d5ee6459475: Pulling metadata
+9d5ee6459475: Pulling fs layer
+9d5ee6459475: Download complete
+0ab72e971305: Pulling metadata
+0ab72e971305: Pulling fs layer
+0ab72e971305: Download complete
+09c7f76ab8b1: Pulling metadata
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  40.92
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+597fe1503587        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ubuntu-perl-dev (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+224cff62f074: Pushing
+224cff62f074: Buffering to disk
+224cff62f074: Image successfully pushed
+5eaba44ae0f7: Pushing
+5eaba44ae0f7: Buffering to disk
+5eaba44ae0f7: Image successfully pushed
+ba653eb93d0d: Pushing
+ba653eb93d0d: Buffering to disk
+ba653eb93d0d: Image successfully pushed
+809e81d6eb5d: Pushing
+809e81d6eb5d: Buffering to disk
+809e81d6eb5d: Image successfully pushed
+b5f46057eb39: Pushing
+b5f46057eb39: Buffering to disk
+b5f46057eb39: Image successfully pushed
+7970a8f05bea: Pushing
+7970a8f05bea: Buffering to disk
+7970a8f05bea: Image successfully pushed
+d48b1fa1dce0: Pushing
+d48b1fa1dce0: Buffering to disk
+d48b1fa1dce0: Image successfully pushed
+5edee12e7542: Pushing
+5edee12e7542: Buffering to disk
+5edee12e7542: Image successfully pushed
+9136c4220ca2: Pushing
+9136c4220ca2: Buffering to disk
+9136c4220ca2: Image successfully pushed
+c431cb0d6045: Pushing
+c431cb0d6045: Buffering to disk
+c431cb0d6045: Image successfully pushed
+88ec71c5ff9b: Pushing
+88ec71c5ff9b: Buffering to disk
+88ec71c5ff9b: Image successfully pushed
+f0d6f7824e21: Pushing
+f0d6f7824e21: Buffering to disk
+f0d6f7824e21: Image successfully pushed
+0508e1f50e5a: Pushing
+0508e1f50e5a: Buffering to disk
+0508e1f50e5a: Image successfully pushed
+d69a08bd3863: Pushing
+d69a08bd3863: Buffering to disk
+d69a08bd3863: Image successfully pushed
+2839d3c70c8f: Pushing
+2839d3c70c8f: Buffering to disk
+2839d3c70c8f: Image successfully pushed
+272c5a057149: Pushing
+272c5a057149: Buffering to disk
+272c5a057149: Image successfully pushed
+1770ae9a09fc: Pushing
+1770ae9a09fc: Buffering to disk
+1770ae9a09fc: Image successfully pushed
+274c2f00d964: Pushing
+274c2f00d964: Buffering to disk
+274c2f00d964: Image successfully pushed
+252daab403f6: Pushing
+252daab403f6: Buffering to disk
+252daab403f6: Image successfully pushed
+dc50dda9bdeb: Pushing
+dc50dda9bdeb: Buffering to disk
+dc50dda9bdeb: Image successfully pushed
+45e7757388f7: Pushing
+45e7757388f7: Buffering to disk
+45e7757388f7: Image successfully pushed
+3d91544a0e71: Pushing
+3d91544a0e71: Buffering to disk
+3d91544a0e71: Image successfully pushed
+35fd912c557f: Pushing
+35fd912c557f: Buffering to disk
+35fd912c557f: Image successfully pushed
+e23575e6f54b: Pushing
+e23575e6f54b: Buffering to disk
+e23575e6f54b: Image successfully pushed
+5984516c3790: Pushing
+5984516c3790: Buffering to disk
+5984516c3790: Image successfully pushed
+bf389e928900: Pushing
+bf389e928900: Buffering to disk
+bf389e928900: Image successfully pushed
+d2c813410b38: Pushing
+d2c813410b38: Buffering to disk
+d2c813410b38: Image successfully pushed
+7c9cd553cd00: Pushing
+7c9cd553cd00: Buffering to disk
+7c9cd553cd00: Image successfully pushed
+8a73df34a186: Pushing
+8a73df34a186: Buffering to disk
+8a73df34a186: Image successfully pushed
+db2f471f0af9: Pushing
+db2f471f0af9: Buffering to disk
+db2f471f0af9: Image successfully pushed
+5d75d48919ca: Pushing
+5d75d48919ca: Buffering to disk
+5d75d48919ca: Image successfully pushed
+3fd48ade5603: Pushing
+3fd48ade5603: Buffering to disk
+3fd48ade5603: Image successfully pushed
+81b86f949b5a: Pushing
+81b86f949b5a: Buffering to disk
+81b86f949b5a: Image successfully pushed
+5ce2fc837420: Pushing
+5ce2fc837420: Buffering to disk
+5ce2fc837420: Image successfully pushed
+a67ce2609044: Pushing
+a67ce2609044: Buffering to disk
+a67ce2609044: Image successfully pushed
+64c62a52738d: Pushing
+64c62a52738d: Buffering to disk
+64c62a52738d: Image successfully pushed
+d74baa5a3cc0: Pushing
+d74baa5a3cc0: Buffering to disk
+d74baa5a3cc0: Image successfully pushed
+9d5ee6459475: Pushing
+9d5ee6459475: Buffering to disk
+9d5ee6459475: Image successfully pushed
+0ab72e971305: Pushing
+0ab72e971305: Buffering to disk
+0ab72e971305: Image successfully pushed
+09c7f76ab8b1: Pushing
+09c7f76ab8b1: Buffering to disk
+09c7f76ab8b1: Image successfully pushed
+Pushing tag for rev [09c7f76ab8b1] on {http://136.187.101.80:5000/v1/repositories/ubuntu-perl-dev/tags/latest}
+
+real  196.90
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+Pulling repository 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev, endpoint: http://136.187.101.80:5000/v1/
+09c7f76ab8b1: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+224cff62f074: Pulling metadata
+224cff62f074: Pulling fs layer
+224cff62f074: Download complete
+5eaba44ae0f7: Pulling metadata
+5eaba44ae0f7: Pulling fs layer
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Pulling metadata
+ba653eb93d0d: Pulling fs layer
+ba653eb93d0d: Download complete
+809e81d6eb5d: Pulling metadata
+809e81d6eb5d: Pulling fs layer
+809e81d6eb5d: Download complete
+b5f46057eb39: Pulling metadata
+b5f46057eb39: Pulling fs layer
+b5f46057eb39: Download complete
+7970a8f05bea: Pulling metadata
+7970a8f05bea: Pulling fs layer
+7970a8f05bea: Download complete
+d48b1fa1dce0: Pulling metadata
+d48b1fa1dce0: Pulling fs layer
+d48b1fa1dce0: Download complete
+5edee12e7542: Pulling metadata
+5edee12e7542: Pulling fs layer
+5edee12e7542: Download complete
+9136c4220ca2: Pulling metadata
+9136c4220ca2: Pulling fs layer
+9136c4220ca2: Download complete
+c431cb0d6045: Pulling metadata
+c431cb0d6045: Pulling fs layer
+c431cb0d6045: Download complete
+88ec71c5ff9b: Pulling metadata
+88ec71c5ff9b: Pulling fs layer
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Pulling metadata
+f0d6f7824e21: Pulling fs layer
+f0d6f7824e21: Download complete
+0508e1f50e5a: Pulling metadata
+0508e1f50e5a: Pulling fs layer
+0508e1f50e5a: Download complete
+d69a08bd3863: Pulling metadata
+d69a08bd3863: Pulling fs layer
+d69a08bd3863: Download complete
+2839d3c70c8f: Pulling metadata
+2839d3c70c8f: Pulling fs layer
+2839d3c70c8f: Download complete
+272c5a057149: Pulling metadata
+272c5a057149: Pulling fs layer
+272c5a057149: Download complete
+1770ae9a09fc: Pulling metadata
+1770ae9a09fc: Pulling fs layer
+1770ae9a09fc: Download complete
+274c2f00d964: Pulling metadata
+274c2f00d964: Pulling fs layer
+274c2f00d964: Download complete
+252daab403f6: Pulling metadata
+252daab403f6: Pulling fs layer
+252daab403f6: Download complete
+dc50dda9bdeb: Pulling metadata
+dc50dda9bdeb: Pulling fs layer
+dc50dda9bdeb: Download complete
+45e7757388f7: Pulling metadata
+45e7757388f7: Pulling fs layer
+45e7757388f7: Download complete
+3d91544a0e71: Pulling metadata
+3d91544a0e71: Pulling fs layer
+3d91544a0e71: Download complete
+35fd912c557f: Pulling metadata
+35fd912c557f: Pulling fs layer
+35fd912c557f: Download complete
+e23575e6f54b: Pulling metadata
+e23575e6f54b: Pulling fs layer
+e23575e6f54b: Download complete
+5984516c3790: Pulling metadata
+5984516c3790: Pulling fs layer
+5984516c3790: Download complete
+bf389e928900: Pulling metadata
+bf389e928900: Pulling fs layer
+bf389e928900: Download complete
+d2c813410b38: Pulling metadata
+d2c813410b38: Pulling fs layer
+d2c813410b38: Download complete
+7c9cd553cd00: Pulling metadata
+7c9cd553cd00: Pulling fs layer
+7c9cd553cd00: Download complete
+8a73df34a186: Pulling metadata
+8a73df34a186: Pulling fs layer
+8a73df34a186: Download complete
+db2f471f0af9: Pulling metadata
+db2f471f0af9: Pulling fs layer
+db2f471f0af9: Download complete
+5d75d48919ca: Pulling metadata
+5d75d48919ca: Pulling fs layer
+5d75d48919ca: Download complete
+3fd48ade5603: Pulling metadata
+3fd48ade5603: Pulling fs layer
+3fd48ade5603: Download complete
+81b86f949b5a: Pulling metadata
+81b86f949b5a: Pulling fs layer
+81b86f949b5a: Download complete
+5ce2fc837420: Pulling metadata
+5ce2fc837420: Pulling fs layer
+5ce2fc837420: Download complete
+a67ce2609044: Pulling metadata
+a67ce2609044: Pulling fs layer
+a67ce2609044: Download complete
+64c62a52738d: Pulling metadata
+64c62a52738d: Pulling fs layer
+64c62a52738d: Download complete
+d74baa5a3cc0: Pulling metadata
+d74baa5a3cc0: Pulling fs layer
+d74baa5a3cc0: Download complete
+9d5ee6459475: Pulling metadata
+9d5ee6459475: Pulling fs layer
+9d5ee6459475: Download complete
+0ab72e971305: Pulling metadata
+0ab72e971305: Pulling fs layer
+0ab72e971305: Download complete
+09c7f76ab8b1: Pulling metadata
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  40.94
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+0e2249505bbe        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker rm -f docker_registry
+
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+89081623387b        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ubuntu-perl-dev (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+224cff62f074: Pushing
+224cff62f074: Buffering to disk
+224cff62f074: Image successfully pushed
+5eaba44ae0f7: Pushing
+5eaba44ae0f7: Buffering to disk
+5eaba44ae0f7: Image successfully pushed
+ba653eb93d0d: Pushing
+ba653eb93d0d: Buffering to disk
+ba653eb93d0d: Image successfully pushed
+809e81d6eb5d: Pushing
+809e81d6eb5d: Buffering to disk
+809e81d6eb5d: Image successfully pushed
+b5f46057eb39: Pushing
+b5f46057eb39: Buffering to disk
+b5f46057eb39: Image successfully pushed
+7970a8f05bea: Pushing
+7970a8f05bea: Buffering to disk
+7970a8f05bea: Image successfully pushed
+d48b1fa1dce0: Pushing
+d48b1fa1dce0: Buffering to disk
+d48b1fa1dce0: Image successfully pushed
+5edee12e7542: Pushing
+5edee12e7542: Buffering to disk
+5edee12e7542: Image successfully pushed
+9136c4220ca2: Pushing
+9136c4220ca2: Buffering to disk
+9136c4220ca2: Image successfully pushed
+c431cb0d6045: Pushing
+c431cb0d6045: Buffering to disk
+c431cb0d6045: Image successfully pushed
+88ec71c5ff9b: Pushing
+88ec71c5ff9b: Buffering to disk
+88ec71c5ff9b: Image successfully pushed
+f0d6f7824e21: Pushing
+f0d6f7824e21: Buffering to disk
+f0d6f7824e21: Image successfully pushed
+0508e1f50e5a: Pushing
+0508e1f50e5a: Buffering to disk
+0508e1f50e5a: Image successfully pushed
+d69a08bd3863: Pushing
+d69a08bd3863: Buffering to disk
+d69a08bd3863: Image successfully pushed
+2839d3c70c8f: Pushing
+2839d3c70c8f: Buffering to disk
+2839d3c70c8f: Image successfully pushed
+272c5a057149: Pushing
+272c5a057149: Buffering to disk
+272c5a057149: Image successfully pushed
+1770ae9a09fc: Pushing
+1770ae9a09fc: Buffering to disk
+1770ae9a09fc: Image successfully pushed
+274c2f00d964: Pushing
+274c2f00d964: Buffering to disk
+274c2f00d964: Image successfully pushed
+252daab403f6: Pushing
+252daab403f6: Buffering to disk
+252daab403f6: Image successfully pushed
+dc50dda9bdeb: Pushing
+dc50dda9bdeb: Buffering to disk
+dc50dda9bdeb: Image successfully pushed
+45e7757388f7: Pushing
+45e7757388f7: Buffering to disk
+45e7757388f7: Image successfully pushed
+3d91544a0e71: Pushing
+3d91544a0e71: Buffering to disk
+3d91544a0e71: Image successfully pushed
+35fd912c557f: Pushing
+35fd912c557f: Buffering to disk
+35fd912c557f: Image successfully pushed
+e23575e6f54b: Pushing
+e23575e6f54b: Buffering to disk
+e23575e6f54b: Image successfully pushed
+5984516c3790: Pushing
+5984516c3790: Buffering to disk
+5984516c3790: Image successfully pushed
+bf389e928900: Pushing
+bf389e928900: Buffering to disk
+bf389e928900: Image successfully pushed
+d2c813410b38: Pushing
+d2c813410b38: Buffering to disk
+d2c813410b38: Image successfully pushed
+7c9cd553cd00: Pushing
+7c9cd553cd00: Buffering to disk
+7c9cd553cd00: Image successfully pushed
+8a73df34a186: Pushing
+8a73df34a186: Buffering to disk
+8a73df34a186: Image successfully pushed
+db2f471f0af9: Pushing
+db2f471f0af9: Buffering to disk
+db2f471f0af9: Image successfully pushed
+5d75d48919ca: Pushing
+5d75d48919ca: Buffering to disk
+5d75d48919ca: Image successfully pushed
+3fd48ade5603: Pushing
+3fd48ade5603: Buffering to disk
+3fd48ade5603: Image successfully pushed
+81b86f949b5a: Pushing
+81b86f949b5a: Buffering to disk
+81b86f949b5a: Image successfully pushed
+5ce2fc837420: Pushing
+5ce2fc837420: Buffering to disk
+5ce2fc837420: Image successfully pushed
+a67ce2609044: Pushing
+a67ce2609044: Buffering to disk
+a67ce2609044: Image successfully pushed
+64c62a52738d: Pushing
+64c62a52738d: Buffering to disk
+64c62a52738d: Image successfully pushed
+d74baa5a3cc0: Pushing
+d74baa5a3cc0: Buffering to disk
+d74baa5a3cc0: Image successfully pushed
+9d5ee6459475: Pushing
+9d5ee6459475: Buffering to disk
+9d5ee6459475: Image successfully pushed
+0ab72e971305: Pushing
+0ab72e971305: Buffering to disk
+0ab72e971305: Image successfully pushed
+09c7f76ab8b1: Pushing
+09c7f76ab8b1: Buffering to disk
+09c7f76ab8b1: Image successfully pushed
+Pushing tag for rev [09c7f76ab8b1] on {http://136.187.101.80:5000/v1/repositories/ubuntu-perl-dev/tags/latest}
+
+real  192.57
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+Pulling repository 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev, endpoint: http://136.187.101.80:5000/v1/
+09c7f76ab8b1: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+224cff62f074: Pulling metadata
+224cff62f074: Pulling fs layer
+224cff62f074: Download complete
+5eaba44ae0f7: Pulling metadata
+5eaba44ae0f7: Pulling fs layer
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Pulling metadata
+ba653eb93d0d: Pulling fs layer
+ba653eb93d0d: Download complete
+809e81d6eb5d: Pulling metadata
+809e81d6eb5d: Pulling fs layer
+809e81d6eb5d: Download complete
+b5f46057eb39: Pulling metadata
+b5f46057eb39: Pulling fs layer
+b5f46057eb39: Download complete
+7970a8f05bea: Pulling metadata
+7970a8f05bea: Pulling fs layer
+7970a8f05bea: Download complete
+d48b1fa1dce0: Pulling metadata
+d48b1fa1dce0: Pulling fs layer
+d48b1fa1dce0: Download complete
+5edee12e7542: Pulling metadata
+5edee12e7542: Pulling fs layer
+5edee12e7542: Download complete
+9136c4220ca2: Pulling metadata
+9136c4220ca2: Pulling fs layer
+9136c4220ca2: Download complete
+c431cb0d6045: Pulling metadata
+c431cb0d6045: Pulling fs layer
+c431cb0d6045: Download complete
+88ec71c5ff9b: Pulling metadata
+88ec71c5ff9b: Pulling fs layer
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Pulling metadata
+f0d6f7824e21: Pulling fs layer
+f0d6f7824e21: Download complete
+0508e1f50e5a: Pulling metadata
+0508e1f50e5a: Pulling fs layer
+0508e1f50e5a: Download complete
+d69a08bd3863: Pulling metadata
+d69a08bd3863: Pulling fs layer
+d69a08bd3863: Download complete
+2839d3c70c8f: Pulling metadata
+2839d3c70c8f: Pulling fs layer
+2839d3c70c8f: Download complete
+272c5a057149: Pulling metadata
+272c5a057149: Pulling fs layer
+272c5a057149: Download complete
+1770ae9a09fc: Pulling metadata
+1770ae9a09fc: Pulling fs layer
+1770ae9a09fc: Download complete
+274c2f00d964: Pulling metadata
+274c2f00d964: Pulling fs layer
+274c2f00d964: Download complete
+252daab403f6: Pulling metadata
+252daab403f6: Pulling fs layer
+252daab403f6: Download complete
+dc50dda9bdeb: Pulling metadata
+dc50dda9bdeb: Pulling fs layer
+dc50dda9bdeb: Download complete
+45e7757388f7: Pulling metadata
+45e7757388f7: Pulling fs layer
+45e7757388f7: Download complete
+3d91544a0e71: Pulling metadata
+3d91544a0e71: Pulling fs layer
+3d91544a0e71: Download complete
+35fd912c557f: Pulling metadata
+35fd912c557f: Pulling fs layer
+35fd912c557f: Download complete
+e23575e6f54b: Pulling metadata
+e23575e6f54b: Pulling fs layer
+e23575e6f54b: Download complete
+5984516c3790: Pulling metadata
+5984516c3790: Pulling fs layer
+5984516c3790: Download complete
+bf389e928900: Pulling metadata
+bf389e928900: Pulling fs layer
+bf389e928900: Download complete
+d2c813410b38: Pulling metadata
+d2c813410b38: Pulling fs layer
+d2c813410b38: Download complete
+7c9cd553cd00: Pulling metadata
+7c9cd553cd00: Pulling fs layer
+7c9cd553cd00: Download complete
+8a73df34a186: Pulling metadata
+8a73df34a186: Pulling fs layer
+8a73df34a186: Download complete
+db2f471f0af9: Pulling metadata
+db2f471f0af9: Pulling fs layer
+db2f471f0af9: Download complete
+5d75d48919ca: Pulling metadata
+5d75d48919ca: Pulling fs layer
+5d75d48919ca: Download complete
+3fd48ade5603: Pulling metadata
+3fd48ade5603: Pulling fs layer
+3fd48ade5603: Download complete
+81b86f949b5a: Pulling metadata
+81b86f949b5a: Pulling fs layer
+81b86f949b5a: Download complete
+5ce2fc837420: Pulling metadata
+5ce2fc837420: Pulling fs layer
+5ce2fc837420: Download complete
+a67ce2609044: Pulling metadata
+a67ce2609044: Pulling fs layer
+a67ce2609044: Download complete
+64c62a52738d: Pulling metadata
+64c62a52738d: Pulling fs layer
+64c62a52738d: Download complete
+d74baa5a3cc0: Pulling metadata
+d74baa5a3cc0: Pulling fs layer
+d74baa5a3cc0: Download complete
+9d5ee6459475: Pulling metadata
+9d5ee6459475: Pulling fs layer
+9d5ee6459475: Download complete
+0ab72e971305: Pulling metadata
+0ab72e971305: Pulling fs layer
+0ab72e971305: Download complete
+09c7f76ab8b1: Pulling metadata
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  39.48
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+e2f4eeca47a3        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ubuntu-perl-dev (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+224cff62f074: Pushing
+224cff62f074: Buffering to disk
+224cff62f074: Image successfully pushed
+5eaba44ae0f7: Pushing
+5eaba44ae0f7: Buffering to disk
+5eaba44ae0f7: Image successfully pushed
+ba653eb93d0d: Pushing
+ba653eb93d0d: Buffering to disk
+ba653eb93d0d: Image successfully pushed
+809e81d6eb5d: Pushing
+809e81d6eb5d: Buffering to disk
+809e81d6eb5d: Image successfully pushed
+b5f46057eb39: Pushing
+b5f46057eb39: Buffering to disk
+b5f46057eb39: Image successfully pushed
+7970a8f05bea: Pushing
+7970a8f05bea: Buffering to disk
+7970a8f05bea: Image successfully pushed
+d48b1fa1dce0: Pushing
+d48b1fa1dce0: Buffering to disk
+d48b1fa1dce0: Image successfully pushed
+5edee12e7542: Pushing
+5edee12e7542: Buffering to disk
+5edee12e7542: Image successfully pushed
+9136c4220ca2: Pushing
+9136c4220ca2: Buffering to disk
+9136c4220ca2: Image successfully pushed
+c431cb0d6045: Pushing
+c431cb0d6045: Buffering to disk
+c431cb0d6045: Image successfully pushed
+88ec71c5ff9b: Pushing
+88ec71c5ff9b: Buffering to disk
+88ec71c5ff9b: Image successfully pushed
+f0d6f7824e21: Pushing
+f0d6f7824e21: Buffering to disk
+f0d6f7824e21: Image successfully pushed
+0508e1f50e5a: Pushing
+0508e1f50e5a: Buffering to disk
+0508e1f50e5a: Image successfully pushed
+d69a08bd3863: Pushing
+d69a08bd3863: Buffering to disk
+d69a08bd3863: Image successfully pushed
+2839d3c70c8f: Pushing
+2839d3c70c8f: Buffering to disk
+2839d3c70c8f: Image successfully pushed
+272c5a057149: Pushing
+272c5a057149: Buffering to disk
+272c5a057149: Image successfully pushed
+1770ae9a09fc: Pushing
+1770ae9a09fc: Buffering to disk
+1770ae9a09fc: Image successfully pushed
+274c2f00d964: Pushing
+274c2f00d964: Buffering to disk
+274c2f00d964: Image successfully pushed
+252daab403f6: Pushing
+252daab403f6: Buffering to disk
+252daab403f6: Image successfully pushed
+dc50dda9bdeb: Pushing
+dc50dda9bdeb: Buffering to disk
+dc50dda9bdeb: Image successfully pushed
+45e7757388f7: Pushing
+45e7757388f7: Buffering to disk
+45e7757388f7: Image successfully pushed
+3d91544a0e71: Pushing
+3d91544a0e71: Buffering to disk
+3d91544a0e71: Image successfully pushed
+35fd912c557f: Pushing
+35fd912c557f: Buffering to disk
+35fd912c557f: Image successfully pushed
+e23575e6f54b: Pushing
+e23575e6f54b: Buffering to disk
+e23575e6f54b: Image successfully pushed
+5984516c3790: Pushing
+5984516c3790: Buffering to disk
+5984516c3790: Image successfully pushed
+bf389e928900: Pushing
+bf389e928900: Buffering to disk
+bf389e928900: Image successfully pushed
+d2c813410b38: Pushing
+d2c813410b38: Buffering to disk
+d2c813410b38: Image successfully pushed
+7c9cd553cd00: Pushing
+7c9cd553cd00: Buffering to disk
+7c9cd553cd00: Image successfully pushed
+8a73df34a186: Pushing
+8a73df34a186: Buffering to disk
+8a73df34a186: Image successfully pushed
+db2f471f0af9: Pushing
+db2f471f0af9: Buffering to disk
+db2f471f0af9: Image successfully pushed
+5d75d48919ca: Pushing
+5d75d48919ca: Buffering to disk
+5d75d48919ca: Image successfully pushed
+3fd48ade5603: Pushing
+3fd48ade5603: Buffering to disk
+3fd48ade5603: Image successfully pushed
+81b86f949b5a: Pushing
+81b86f949b5a: Buffering to disk
+81b86f949b5a: Image successfully pushed
+5ce2fc837420: Pushing
+5ce2fc837420: Buffering to disk
+5ce2fc837420: Image successfully pushed
+a67ce2609044: Pushing
+a67ce2609044: Buffering to disk
+a67ce2609044: Image successfully pushed
+64c62a52738d: Pushing
+64c62a52738d: Buffering to disk
+64c62a52738d: Image successfully pushed
+d74baa5a3cc0: Pushing
+d74baa5a3cc0: Buffering to disk
+d74baa5a3cc0: Image successfully pushed
+9d5ee6459475: Pushing
+9d5ee6459475: Buffering to disk
+9d5ee6459475: Image successfully pushed
+0ab72e971305: Pushing
+0ab72e971305: Buffering to disk
+0ab72e971305: Image successfully pushed
+09c7f76ab8b1: Pushing
+09c7f76ab8b1: Buffering to disk
+09c7f76ab8b1: Image successfully pushed
+Pushing tag for rev [09c7f76ab8b1] on {http://136.187.101.80:5000/v1/repositories/ubuntu-perl-dev/tags/latest}
+
+real  195.20
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+Pulling repository 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev, endpoint: http://136.187.101.80:5000/v1/
+09c7f76ab8b1: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+224cff62f074: Pulling metadata
+224cff62f074: Pulling fs layer
+224cff62f074: Download complete
+5eaba44ae0f7: Pulling metadata
+5eaba44ae0f7: Pulling fs layer
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Pulling metadata
+ba653eb93d0d: Pulling fs layer
+ba653eb93d0d: Download complete
+809e81d6eb5d: Pulling metadata
+809e81d6eb5d: Pulling fs layer
+809e81d6eb5d: Download complete
+b5f46057eb39: Pulling metadata
+b5f46057eb39: Pulling fs layer
+b5f46057eb39: Download complete
+7970a8f05bea: Pulling metadata
+7970a8f05bea: Pulling fs layer
+7970a8f05bea: Download complete
+d48b1fa1dce0: Pulling metadata
+d48b1fa1dce0: Pulling fs layer
+d48b1fa1dce0: Download complete
+5edee12e7542: Pulling metadata
+5edee12e7542: Pulling fs layer
+5edee12e7542: Download complete
+9136c4220ca2: Pulling metadata
+9136c4220ca2: Pulling fs layer
+9136c4220ca2: Download complete
+c431cb0d6045: Pulling metadata
+c431cb0d6045: Pulling fs layer
+c431cb0d6045: Download complete
+88ec71c5ff9b: Pulling metadata
+88ec71c5ff9b: Pulling fs layer
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Pulling metadata
+f0d6f7824e21: Pulling fs layer
+f0d6f7824e21: Download complete
+0508e1f50e5a: Pulling metadata
+0508e1f50e5a: Pulling fs layer
+0508e1f50e5a: Download complete
+d69a08bd3863: Pulling metadata
+d69a08bd3863: Pulling fs layer
+d69a08bd3863: Download complete
+2839d3c70c8f: Pulling metadata
+2839d3c70c8f: Pulling fs layer
+2839d3c70c8f: Download complete
+272c5a057149: Pulling metadata
+272c5a057149: Pulling fs layer
+272c5a057149: Download complete
+1770ae9a09fc: Pulling metadata
+1770ae9a09fc: Pulling fs layer
+1770ae9a09fc: Download complete
+274c2f00d964: Pulling metadata
+274c2f00d964: Pulling fs layer
+274c2f00d964: Download complete
+252daab403f6: Pulling metadata
+252daab403f6: Pulling fs layer
+252daab403f6: Download complete
+dc50dda9bdeb: Pulling metadata
+dc50dda9bdeb: Pulling fs layer
+dc50dda9bdeb: Download complete
+45e7757388f7: Pulling metadata
+45e7757388f7: Pulling fs layer
+45e7757388f7: Download complete
+3d91544a0e71: Pulling metadata
+3d91544a0e71: Pulling fs layer
+3d91544a0e71: Download complete
+35fd912c557f: Pulling metadata
+35fd912c557f: Pulling fs layer
+35fd912c557f: Download complete
+e23575e6f54b: Pulling metadata
+e23575e6f54b: Pulling fs layer
+e23575e6f54b: Download complete
+5984516c3790: Pulling metadata
+5984516c3790: Pulling fs layer
+5984516c3790: Download complete
+bf389e928900: Pulling metadata
+bf389e928900: Pulling fs layer
+bf389e928900: Download complete
+d2c813410b38: Pulling metadata
+d2c813410b38: Pulling fs layer
+d2c813410b38: Download complete
+7c9cd553cd00: Pulling metadata
+7c9cd553cd00: Pulling fs layer
+7c9cd553cd00: Download complete
+8a73df34a186: Pulling metadata
+8a73df34a186: Pulling fs layer
+8a73df34a186: Download complete
+db2f471f0af9: Pulling metadata
+db2f471f0af9: Pulling fs layer
+db2f471f0af9: Download complete
+5d75d48919ca: Pulling metadata
+5d75d48919ca: Pulling fs layer
+5d75d48919ca: Download complete
+3fd48ade5603: Pulling metadata
+3fd48ade5603: Pulling fs layer
+3fd48ade5603: Download complete
+81b86f949b5a: Pulling metadata
+81b86f949b5a: Pulling fs layer
+81b86f949b5a: Download complete
+5ce2fc837420: Pulling metadata
+5ce2fc837420: Pulling fs layer
+5ce2fc837420: Download complete
+a67ce2609044: Pulling metadata
+a67ce2609044: Pulling fs layer
+a67ce2609044: Download complete
+64c62a52738d: Pulling metadata
+64c62a52738d: Pulling fs layer
+64c62a52738d: Download complete
+d74baa5a3cc0: Pulling metadata
+d74baa5a3cc0: Pulling fs layer
+d74baa5a3cc0: Download complete
+9d5ee6459475: Pulling metadata
+9d5ee6459475: Pulling fs layer
+9d5ee6459475: Download complete
+0ab72e971305: Pulling metadata
+0ab72e971305: Pulling fs layer
+0ab72e971305: Download complete
+09c7f76ab8b1: Pulling metadata
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  40.83
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+71f04a768346        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ubuntu-perl-dev (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+224cff62f074: Pushing
+224cff62f074: Buffering to disk
+224cff62f074: Image successfully pushed
+5eaba44ae0f7: Pushing
+5eaba44ae0f7: Buffering to disk
+5eaba44ae0f7: Image successfully pushed
+ba653eb93d0d: Pushing
+ba653eb93d0d: Buffering to disk
+ba653eb93d0d: Image successfully pushed
+809e81d6eb5d: Pushing
+809e81d6eb5d: Buffering to disk
+809e81d6eb5d: Image successfully pushed
+b5f46057eb39: Pushing
+b5f46057eb39: Buffering to disk
+b5f46057eb39: Image successfully pushed
+7970a8f05bea: Pushing
+7970a8f05bea: Buffering to disk
+7970a8f05bea: Image successfully pushed
+d48b1fa1dce0: Pushing
+d48b1fa1dce0: Buffering to disk
+d48b1fa1dce0: Image successfully pushed
+5edee12e7542: Pushing
+5edee12e7542: Buffering to disk
+5edee12e7542: Image successfully pushed
+9136c4220ca2: Pushing
+9136c4220ca2: Buffering to disk
+9136c4220ca2: Image successfully pushed
+c431cb0d6045: Pushing
+c431cb0d6045: Buffering to disk
+c431cb0d6045: Image successfully pushed
+88ec71c5ff9b: Pushing
+88ec71c5ff9b: Buffering to disk
+88ec71c5ff9b: Image successfully pushed
+f0d6f7824e21: Pushing
+f0d6f7824e21: Buffering to disk
+f0d6f7824e21: Image successfully pushed
+0508e1f50e5a: Pushing
+0508e1f50e5a: Buffering to disk
+0508e1f50e5a: Image successfully pushed
+d69a08bd3863: Pushing
+d69a08bd3863: Buffering to disk
+d69a08bd3863: Image successfully pushed
+2839d3c70c8f: Pushing
+2839d3c70c8f: Buffering to disk
+2839d3c70c8f: Image successfully pushed
+272c5a057149: Pushing
+272c5a057149: Buffering to disk
+272c5a057149: Image successfully pushed
+1770ae9a09fc: Pushing
+1770ae9a09fc: Buffering to disk
+1770ae9a09fc: Image successfully pushed
+274c2f00d964: Pushing
+274c2f00d964: Buffering to disk
+274c2f00d964: Image successfully pushed
+252daab403f6: Pushing
+252daab403f6: Buffering to disk
+252daab403f6: Image successfully pushed
+dc50dda9bdeb: Pushing
+dc50dda9bdeb: Buffering to disk
+dc50dda9bdeb: Image successfully pushed
+45e7757388f7: Pushing
+45e7757388f7: Buffering to disk
+45e7757388f7: Image successfully pushed
+3d91544a0e71: Pushing
+3d91544a0e71: Buffering to disk
+3d91544a0e71: Image successfully pushed
+35fd912c557f: Pushing
+35fd912c557f: Buffering to disk
+35fd912c557f: Image successfully pushed
+e23575e6f54b: Pushing
+e23575e6f54b: Buffering to disk
+e23575e6f54b: Image successfully pushed
+5984516c3790: Pushing
+5984516c3790: Buffering to disk
+5984516c3790: Image successfully pushed
+bf389e928900: Pushing
+bf389e928900: Buffering to disk
+bf389e928900: Image successfully pushed
+d2c813410b38: Pushing
+d2c813410b38: Buffering to disk
+d2c813410b38: Image successfully pushed
+7c9cd553cd00: Pushing
+7c9cd553cd00: Buffering to disk
+7c9cd553cd00: Image successfully pushed
+8a73df34a186: Pushing
+8a73df34a186: Buffering to disk
+8a73df34a186: Image successfully pushed
+db2f471f0af9: Pushing
+db2f471f0af9: Buffering to disk
+db2f471f0af9: Image successfully pushed
+5d75d48919ca: Pushing
+5d75d48919ca: Buffering to disk
+5d75d48919ca: Image successfully pushed
+3fd48ade5603: Pushing
+3fd48ade5603: Buffering to disk
+3fd48ade5603: Image successfully pushed
+81b86f949b5a: Pushing
+81b86f949b5a: Buffering to disk
+81b86f949b5a: Image successfully pushed
+5ce2fc837420: Pushing
+5ce2fc837420: Buffering to disk
+5ce2fc837420: Image successfully pushed
+a67ce2609044: Pushing
+a67ce2609044: Buffering to disk
+a67ce2609044: Image successfully pushed
+64c62a52738d: Pushing
+64c62a52738d: Buffering to disk
+64c62a52738d: Image successfully pushed
+d74baa5a3cc0: Pushing
+d74baa5a3cc0: Buffering to disk
+d74baa5a3cc0: Image successfully pushed
+9d5ee6459475: Pushing
+9d5ee6459475: Buffering to disk
+9d5ee6459475: Image successfully pushed
+0ab72e971305: Pushing
+0ab72e971305: Buffering to disk
+0ab72e971305: Image successfully pushed
+09c7f76ab8b1: Pushing
+09c7f76ab8b1: Buffering to disk
+09c7f76ab8b1: Image successfully pushed
+Pushing tag for rev [09c7f76ab8b1] on {http://136.187.101.80:5000/v1/repositories/ubuntu-perl-dev/tags/latest}
+
+real  197.73
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+Pulling repository 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev, endpoint: http://136.187.101.80:5000/v1/
+09c7f76ab8b1: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+224cff62f074: Pulling metadata
+224cff62f074: Pulling fs layer
+224cff62f074: Download complete
+5eaba44ae0f7: Pulling metadata
+5eaba44ae0f7: Pulling fs layer
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Pulling metadata
+ba653eb93d0d: Pulling fs layer
+ba653eb93d0d: Download complete
+809e81d6eb5d: Pulling metadata
+809e81d6eb5d: Pulling fs layer
+809e81d6eb5d: Download complete
+b5f46057eb39: Pulling metadata
+b5f46057eb39: Pulling fs layer
+b5f46057eb39: Download complete
+7970a8f05bea: Pulling metadata
+7970a8f05bea: Pulling fs layer
+7970a8f05bea: Download complete
+d48b1fa1dce0: Pulling metadata
+d48b1fa1dce0: Pulling fs layer
+d48b1fa1dce0: Download complete
+5edee12e7542: Pulling metadata
+5edee12e7542: Pulling fs layer
+5edee12e7542: Download complete
+9136c4220ca2: Pulling metadata
+9136c4220ca2: Pulling fs layer
+9136c4220ca2: Download complete
+c431cb0d6045: Pulling metadata
+c431cb0d6045: Pulling fs layer
+c431cb0d6045: Download complete
+88ec71c5ff9b: Pulling metadata
+88ec71c5ff9b: Pulling fs layer
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Pulling metadata
+f0d6f7824e21: Pulling fs layer
+f0d6f7824e21: Download complete
+0508e1f50e5a: Pulling metadata
+0508e1f50e5a: Pulling fs layer
+0508e1f50e5a: Download complete
+d69a08bd3863: Pulling metadata
+d69a08bd3863: Pulling fs layer
+d69a08bd3863: Download complete
+2839d3c70c8f: Pulling metadata
+2839d3c70c8f: Pulling fs layer
+2839d3c70c8f: Download complete
+272c5a057149: Pulling metadata
+272c5a057149: Pulling fs layer
+272c5a057149: Download complete
+1770ae9a09fc: Pulling metadata
+1770ae9a09fc: Pulling fs layer
+1770ae9a09fc: Download complete
+274c2f00d964: Pulling metadata
+274c2f00d964: Pulling fs layer
+274c2f00d964: Download complete
+252daab403f6: Pulling metadata
+252daab403f6: Pulling fs layer
+252daab403f6: Download complete
+dc50dda9bdeb: Pulling metadata
+dc50dda9bdeb: Pulling fs layer
+dc50dda9bdeb: Download complete
+45e7757388f7: Pulling metadata
+45e7757388f7: Pulling fs layer
+45e7757388f7: Download complete
+3d91544a0e71: Pulling metadata
+3d91544a0e71: Pulling fs layer
+3d91544a0e71: Download complete
+35fd912c557f: Pulling metadata
+35fd912c557f: Pulling fs layer
+35fd912c557f: Download complete
+e23575e6f54b: Pulling metadata
+e23575e6f54b: Pulling fs layer
+e23575e6f54b: Download complete
+5984516c3790: Pulling metadata
+5984516c3790: Pulling fs layer
+5984516c3790: Download complete
+bf389e928900: Pulling metadata
+bf389e928900: Pulling fs layer
+bf389e928900: Download complete
+d2c813410b38: Pulling metadata
+d2c813410b38: Pulling fs layer
+d2c813410b38: Download complete
+7c9cd553cd00: Pulling metadata
+7c9cd553cd00: Pulling fs layer
+7c9cd553cd00: Download complete
+8a73df34a186: Pulling metadata
+8a73df34a186: Pulling fs layer
+8a73df34a186: Download complete
+db2f471f0af9: Pulling metadata
+db2f471f0af9: Pulling fs layer
+db2f471f0af9: Download complete
+5d75d48919ca: Pulling metadata
+5d75d48919ca: Pulling fs layer
+5d75d48919ca: Download complete
+3fd48ade5603: Pulling metadata
+3fd48ade5603: Pulling fs layer
+3fd48ade5603: Download complete
+81b86f949b5a: Pulling metadata
+81b86f949b5a: Pulling fs layer
+81b86f949b5a: Download complete
+5ce2fc837420: Pulling metadata
+5ce2fc837420: Pulling fs layer
+5ce2fc837420: Download complete
+a67ce2609044: Pulling metadata
+a67ce2609044: Pulling fs layer
+a67ce2609044: Download complete
+64c62a52738d: Pulling metadata
+64c62a52738d: Pulling fs layer
+64c62a52738d: Download complete
+d74baa5a3cc0: Pulling metadata
+d74baa5a3cc0: Pulling fs layer
+d74baa5a3cc0: Download complete
+9d5ee6459475: Pulling metadata
+9d5ee6459475: Pulling fs layer
+9d5ee6459475: Download complete
+0ab72e971305: Pulling metadata
+0ab72e971305: Pulling fs layer
+0ab72e971305: Download complete
+09c7f76ab8b1: Pulling metadata
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  41.52
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a5a5aea5e20d        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ubuntu-perl-dev (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+224cff62f074: Pushing
+224cff62f074: Buffering to disk
+224cff62f074: Image successfully pushed
+5eaba44ae0f7: Pushing
+5eaba44ae0f7: Buffering to disk
+5eaba44ae0f7: Image successfully pushed
+ba653eb93d0d: Pushing
+ba653eb93d0d: Buffering to disk
+ba653eb93d0d: Image successfully pushed
+809e81d6eb5d: Pushing
+809e81d6eb5d: Buffering to disk
+809e81d6eb5d: Image successfully pushed
+b5f46057eb39: Pushing
+b5f46057eb39: Buffering to disk
+b5f46057eb39: Image successfully pushed
+7970a8f05bea: Pushing
+7970a8f05bea: Buffering to disk
+7970a8f05bea: Image successfully pushed
+d48b1fa1dce0: Pushing
+d48b1fa1dce0: Buffering to disk
+d48b1fa1dce0: Image successfully pushed
+5edee12e7542: Pushing
+5edee12e7542: Buffering to disk
+5edee12e7542: Image successfully pushed
+9136c4220ca2: Pushing
+9136c4220ca2: Buffering to disk
+9136c4220ca2: Image successfully pushed
+c431cb0d6045: Pushing
+c431cb0d6045: Buffering to disk
+c431cb0d6045: Image successfully pushed
+88ec71c5ff9b: Pushing
+88ec71c5ff9b: Buffering to disk
+88ec71c5ff9b: Image successfully pushed
+f0d6f7824e21: Pushing
+f0d6f7824e21: Buffering to disk
+f0d6f7824e21: Image successfully pushed
+0508e1f50e5a: Pushing
+0508e1f50e5a: Buffering to disk
+0508e1f50e5a: Image successfully pushed
+d69a08bd3863: Pushing
+d69a08bd3863: Buffering to disk
+d69a08bd3863: Image successfully pushed
+2839d3c70c8f: Pushing
+2839d3c70c8f: Buffering to disk
+2839d3c70c8f: Image successfully pushed
+272c5a057149: Pushing
+272c5a057149: Buffering to disk
+272c5a057149: Image successfully pushed
+1770ae9a09fc: Pushing
+1770ae9a09fc: Buffering to disk
+1770ae9a09fc: Image successfully pushed
+274c2f00d964: Pushing
+274c2f00d964: Buffering to disk
+274c2f00d964: Image successfully pushed
+252daab403f6: Pushing
+252daab403f6: Buffering to disk
+252daab403f6: Image successfully pushed
+dc50dda9bdeb: Pushing
+dc50dda9bdeb: Buffering to disk
+dc50dda9bdeb: Image successfully pushed
+45e7757388f7: Pushing
+45e7757388f7: Buffering to disk
+45e7757388f7: Image successfully pushed
+3d91544a0e71: Pushing
+3d91544a0e71: Buffering to disk
+3d91544a0e71: Image successfully pushed
+35fd912c557f: Pushing
+35fd912c557f: Buffering to disk
+35fd912c557f: Image successfully pushed
+e23575e6f54b: Pushing
+e23575e6f54b: Buffering to disk
+e23575e6f54b: Image successfully pushed
+5984516c3790: Pushing
+5984516c3790: Buffering to disk
+5984516c3790: Image successfully pushed
+bf389e928900: Pushing
+bf389e928900: Buffering to disk
+bf389e928900: Image successfully pushed
+d2c813410b38: Pushing
+d2c813410b38: Buffering to disk
+d2c813410b38: Image successfully pushed
+7c9cd553cd00: Pushing
+7c9cd553cd00: Buffering to disk
+7c9cd553cd00: Image successfully pushed
+8a73df34a186: Pushing
+8a73df34a186: Buffering to disk
+8a73df34a186: Image successfully pushed
+db2f471f0af9: Pushing
+db2f471f0af9: Buffering to disk
+db2f471f0af9: Image successfully pushed
+5d75d48919ca: Pushing
+5d75d48919ca: Buffering to disk
+5d75d48919ca: Image successfully pushed
+3fd48ade5603: Pushing
+3fd48ade5603: Buffering to disk
+3fd48ade5603: Image successfully pushed
+81b86f949b5a: Pushing
+81b86f949b5a: Buffering to disk
+81b86f949b5a: Image successfully pushed
+5ce2fc837420: Pushing
+5ce2fc837420: Buffering to disk
+5ce2fc837420: Image successfully pushed
+a67ce2609044: Pushing
+a67ce2609044: Buffering to disk
+a67ce2609044: Image successfully pushed
+64c62a52738d: Pushing
+64c62a52738d: Buffering to disk
+64c62a52738d: Image successfully pushed
+d74baa5a3cc0: Pushing
+d74baa5a3cc0: Buffering to disk
+d74baa5a3cc0: Image successfully pushed
+9d5ee6459475: Pushing
+9d5ee6459475: Buffering to disk
+9d5ee6459475: Image successfully pushed
+0ab72e971305: Pushing
+0ab72e971305: Buffering to disk
+0ab72e971305: Image successfully pushed
+09c7f76ab8b1: Pushing
+09c7f76ab8b1: Buffering to disk
+09c7f76ab8b1: Image successfully pushed
+Pushing tag for rev [09c7f76ab8b1] on {http://136.187.101.80:5000/v1/repositories/ubuntu-perl-dev/tags/latest}
+
+real  199.69
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+Pulling repository 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev
+09c7f76ab8b1: Pulling image (latest) from 136.187.101.80:5000/ubuntu-perl-dev, endpoint: http://136.187.101.80:5000/v1/
+09c7f76ab8b1: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+224cff62f074: Pulling metadata
+224cff62f074: Pulling fs layer
+224cff62f074: Download complete
+5eaba44ae0f7: Pulling metadata
+5eaba44ae0f7: Pulling fs layer
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Pulling metadata
+ba653eb93d0d: Pulling fs layer
+ba653eb93d0d: Download complete
+809e81d6eb5d: Pulling metadata
+809e81d6eb5d: Pulling fs layer
+809e81d6eb5d: Download complete
+b5f46057eb39: Pulling metadata
+b5f46057eb39: Pulling fs layer
+b5f46057eb39: Download complete
+7970a8f05bea: Pulling metadata
+7970a8f05bea: Pulling fs layer
+7970a8f05bea: Download complete
+d48b1fa1dce0: Pulling metadata
+d48b1fa1dce0: Pulling fs layer
+d48b1fa1dce0: Download complete
+5edee12e7542: Pulling metadata
+5edee12e7542: Pulling fs layer
+5edee12e7542: Download complete
+9136c4220ca2: Pulling metadata
+9136c4220ca2: Pulling fs layer
+9136c4220ca2: Download complete
+c431cb0d6045: Pulling metadata
+c431cb0d6045: Pulling fs layer
+c431cb0d6045: Download complete
+88ec71c5ff9b: Pulling metadata
+88ec71c5ff9b: Pulling fs layer
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Pulling metadata
+f0d6f7824e21: Pulling fs layer
+f0d6f7824e21: Download complete
+0508e1f50e5a: Pulling metadata
+0508e1f50e5a: Pulling fs layer
+0508e1f50e5a: Download complete
+d69a08bd3863: Pulling metadata
+d69a08bd3863: Pulling fs layer
+d69a08bd3863: Download complete
+2839d3c70c8f: Pulling metadata
+2839d3c70c8f: Pulling fs layer
+2839d3c70c8f: Download complete
+272c5a057149: Pulling metadata
+272c5a057149: Pulling fs layer
+272c5a057149: Download complete
+1770ae9a09fc: Pulling metadata
+1770ae9a09fc: Pulling fs layer
+1770ae9a09fc: Download complete
+274c2f00d964: Pulling metadata
+274c2f00d964: Pulling fs layer
+274c2f00d964: Download complete
+252daab403f6: Pulling metadata
+252daab403f6: Pulling fs layer
+252daab403f6: Download complete
+dc50dda9bdeb: Pulling metadata
+dc50dda9bdeb: Pulling fs layer
+dc50dda9bdeb: Download complete
+45e7757388f7: Pulling metadata
+45e7757388f7: Pulling fs layer
+45e7757388f7: Download complete
+3d91544a0e71: Pulling metadata
+3d91544a0e71: Pulling fs layer
+3d91544a0e71: Download complete
+35fd912c557f: Pulling metadata
+35fd912c557f: Pulling fs layer
+35fd912c557f: Download complete
+e23575e6f54b: Pulling metadata
+e23575e6f54b: Pulling fs layer
+e23575e6f54b: Download complete
+5984516c3790: Pulling metadata
+5984516c3790: Pulling fs layer
+5984516c3790: Download complete
+bf389e928900: Pulling metadata
+bf389e928900: Pulling fs layer
+bf389e928900: Download complete
+d2c813410b38: Pulling metadata
+d2c813410b38: Pulling fs layer
+d2c813410b38: Download complete
+7c9cd553cd00: Pulling metadata
+7c9cd553cd00: Pulling fs layer
+7c9cd553cd00: Download complete
+8a73df34a186: Pulling metadata
+8a73df34a186: Pulling fs layer
+8a73df34a186: Download complete
+db2f471f0af9: Pulling metadata
+db2f471f0af9: Pulling fs layer
+db2f471f0af9: Download complete
+5d75d48919ca: Pulling metadata
+5d75d48919ca: Pulling fs layer
+5d75d48919ca: Download complete
+3fd48ade5603: Pulling metadata
+3fd48ade5603: Pulling fs layer
+3fd48ade5603: Download complete
+81b86f949b5a: Pulling metadata
+81b86f949b5a: Pulling fs layer
+81b86f949b5a: Download complete
+5ce2fc837420: Pulling metadata
+5ce2fc837420: Pulling fs layer
+5ce2fc837420: Download complete
+a67ce2609044: Pulling metadata
+a67ce2609044: Pulling fs layer
+a67ce2609044: Download complete
+64c62a52738d: Pulling metadata
+64c62a52738d: Pulling fs layer
+64c62a52738d: Download complete
+d74baa5a3cc0: Pulling metadata
+d74baa5a3cc0: Pulling fs layer
+d74baa5a3cc0: Download complete
+9d5ee6459475: Pulling metadata
+9d5ee6459475: Pulling fs layer
+9d5ee6459475: Download complete
+0ab72e971305: Pulling metadata
+0ab72e971305: Pulling fs layer
+0ab72e971305: Download complete
+09c7f76ab8b1: Pulling metadata
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  40.46
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+end date: Thu Jul 23 09:32:34 JST 2015
+
+
