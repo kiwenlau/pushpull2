@@ -1,0 +1,1685 @@
+
+pullpush benchmark: transfer quickstart-python image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Fri Jul 24 04:12:04 JST 2015
+
+sudo docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+sudo docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+83afc975f8eb        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/quickstart-python (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+8771fbfe935c: Pushing
+8771fbfe935c: Buffering to disk
+8771fbfe935c: Image successfully pushed
+0e30e84e9513: Pushing
+0e30e84e9513: Buffering to disk
+0e30e84e9513: Image successfully pushed
+c90a56bfe7dd: Pushing
+c90a56bfe7dd: Buffering to disk
+c90a56bfe7dd: Image successfully pushed
+6b030fdd4748: Pushing
+6b030fdd4748: Buffering to disk
+6b030fdd4748: Image successfully pushed
+787349ce806c: Pushing
+787349ce806c: Buffering to disk
+787349ce806c: Image successfully pushed
+5c8d97a24744: Pushing
+5c8d97a24744: Buffering to disk
+5c8d97a24744: Image successfully pushed
+d71de2a8c19e: Pushing
+d71de2a8c19e: Buffering to disk
+d71de2a8c19e: Image successfully pushed
+2ef4015863b9: Pushing
+2ef4015863b9: Buffering to disk
+2ef4015863b9: Image successfully pushed
+db22e489f994: Pushing
+db22e489f994: Buffering to disk
+db22e489f994: Image successfully pushed
+64b7a6332aa2: Pushing
+64b7a6332aa2: Buffering to disk
+64b7a6332aa2: Image successfully pushed
+c3f654c083c1: Pushing
+c3f654c083c1: Buffering to disk
+c3f654c083c1: Image successfully pushed
+31ff30c97af1: Pushing
+31ff30c97af1: Buffering to disk
+31ff30c97af1: Image successfully pushed
+3447f41b5989: Pushing
+3447f41b5989: Buffering to disk
+3447f41b5989: Image successfully pushed
+e8bdef776ac9: Pushing
+e8bdef776ac9: Buffering to disk
+e8bdef776ac9: Image successfully pushed
+59f1480dafb0: Pushing
+59f1480dafb0: Buffering to disk
+59f1480dafb0: Image successfully pushed
+86e7a3e12a13: Pushing
+86e7a3e12a13: Buffering to disk
+86e7a3e12a13: Image successfully pushed
+72c0311f6ea0: Pushing
+72c0311f6ea0: Buffering to disk
+72c0311f6ea0: Image successfully pushed
+d50f305a58b3: Pushing
+d50f305a58b3: Buffering to disk
+d50f305a58b3: Image successfully pushed
+Pushing tag for rev [d50f305a58b3] on {http://136.187.101.80:5000/v1/repositories/quickstart-python/tags/latest}
+
+real  124.05
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+Pulling repository 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python, endpoint: http://136.187.101.80:5000/v1/
+d50f305a58b3: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+8771fbfe935c: Pulling metadata
+8771fbfe935c: Pulling fs layer
+8771fbfe935c: Download complete
+0e30e84e9513: Pulling metadata
+0e30e84e9513: Pulling fs layer
+0e30e84e9513: Download complete
+c90a56bfe7dd: Pulling metadata
+c90a56bfe7dd: Pulling fs layer
+c90a56bfe7dd: Download complete
+6b030fdd4748: Pulling metadata
+6b030fdd4748: Pulling fs layer
+6b030fdd4748: Download complete
+787349ce806c: Pulling metadata
+787349ce806c: Pulling fs layer
+787349ce806c: Download complete
+5c8d97a24744: Pulling metadata
+5c8d97a24744: Pulling fs layer
+5c8d97a24744: Download complete
+d71de2a8c19e: Pulling metadata
+d71de2a8c19e: Pulling fs layer
+d71de2a8c19e: Download complete
+2ef4015863b9: Pulling metadata
+2ef4015863b9: Pulling fs layer
+2ef4015863b9: Download complete
+db22e489f994: Pulling metadata
+db22e489f994: Pulling fs layer
+db22e489f994: Download complete
+64b7a6332aa2: Pulling metadata
+64b7a6332aa2: Pulling fs layer
+64b7a6332aa2: Download complete
+c3f654c083c1: Pulling metadata
+c3f654c083c1: Pulling fs layer
+c3f654c083c1: Download complete
+31ff30c97af1: Pulling metadata
+31ff30c97af1: Pulling fs layer
+31ff30c97af1: Download complete
+3447f41b5989: Pulling metadata
+3447f41b5989: Pulling fs layer
+3447f41b5989: Download complete
+e8bdef776ac9: Pulling metadata
+e8bdef776ac9: Pulling fs layer
+e8bdef776ac9: Download complete
+59f1480dafb0: Pulling metadata
+59f1480dafb0: Pulling fs layer
+59f1480dafb0: Download complete
+86e7a3e12a13: Pulling metadata
+86e7a3e12a13: Pulling fs layer
+86e7a3e12a13: Download complete
+72c0311f6ea0: Pulling metadata
+72c0311f6ea0: Pulling fs layer
+72c0311f6ea0: Download complete
+d50f305a58b3: Pulling metadata
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  27.98
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+496e987dfede        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/quickstart-python (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+8771fbfe935c: Pushing
+8771fbfe935c: Buffering to disk
+8771fbfe935c: Image successfully pushed
+0e30e84e9513: Pushing
+0e30e84e9513: Buffering to disk
+0e30e84e9513: Image successfully pushed
+c90a56bfe7dd: Pushing
+c90a56bfe7dd: Buffering to disk
+c90a56bfe7dd: Image successfully pushed
+6b030fdd4748: Pushing
+6b030fdd4748: Buffering to disk
+6b030fdd4748: Image successfully pushed
+787349ce806c: Pushing
+787349ce806c: Buffering to disk
+787349ce806c: Image successfully pushed
+5c8d97a24744: Pushing
+5c8d97a24744: Buffering to disk
+5c8d97a24744: Image successfully pushed
+d71de2a8c19e: Pushing
+d71de2a8c19e: Buffering to disk
+d71de2a8c19e: Image successfully pushed
+2ef4015863b9: Pushing
+2ef4015863b9: Buffering to disk
+2ef4015863b9: Image successfully pushed
+db22e489f994: Pushing
+db22e489f994: Buffering to disk
+db22e489f994: Image successfully pushed
+64b7a6332aa2: Pushing
+64b7a6332aa2: Buffering to disk
+64b7a6332aa2: Image successfully pushed
+c3f654c083c1: Pushing
+c3f654c083c1: Buffering to disk
+c3f654c083c1: Image successfully pushed
+31ff30c97af1: Pushing
+31ff30c97af1: Buffering to disk
+31ff30c97af1: Image successfully pushed
+3447f41b5989: Pushing
+3447f41b5989: Buffering to disk
+3447f41b5989: Image successfully pushed
+e8bdef776ac9: Pushing
+e8bdef776ac9: Buffering to disk
+e8bdef776ac9: Image successfully pushed
+59f1480dafb0: Pushing
+59f1480dafb0: Buffering to disk
+59f1480dafb0: Image successfully pushed
+86e7a3e12a13: Pushing
+86e7a3e12a13: Buffering to disk
+86e7a3e12a13: Image successfully pushed
+72c0311f6ea0: Pushing
+72c0311f6ea0: Buffering to disk
+72c0311f6ea0: Image successfully pushed
+d50f305a58b3: Pushing
+d50f305a58b3: Buffering to disk
+d50f305a58b3: Image successfully pushed
+Pushing tag for rev [d50f305a58b3] on {http://136.187.101.80:5000/v1/repositories/quickstart-python/tags/latest}
+
+real  118.20
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+Pulling repository 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python, endpoint: http://136.187.101.80:5000/v1/
+d50f305a58b3: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+8771fbfe935c: Pulling metadata
+8771fbfe935c: Pulling fs layer
+8771fbfe935c: Download complete
+0e30e84e9513: Pulling metadata
+0e30e84e9513: Pulling fs layer
+0e30e84e9513: Download complete
+c90a56bfe7dd: Pulling metadata
+c90a56bfe7dd: Pulling fs layer
+c90a56bfe7dd: Download complete
+6b030fdd4748: Pulling metadata
+6b030fdd4748: Pulling fs layer
+6b030fdd4748: Download complete
+787349ce806c: Pulling metadata
+787349ce806c: Pulling fs layer
+787349ce806c: Download complete
+5c8d97a24744: Pulling metadata
+5c8d97a24744: Pulling fs layer
+5c8d97a24744: Download complete
+d71de2a8c19e: Pulling metadata
+d71de2a8c19e: Pulling fs layer
+d71de2a8c19e: Download complete
+2ef4015863b9: Pulling metadata
+2ef4015863b9: Pulling fs layer
+2ef4015863b9: Download complete
+db22e489f994: Pulling metadata
+db22e489f994: Pulling fs layer
+db22e489f994: Download complete
+64b7a6332aa2: Pulling metadata
+64b7a6332aa2: Pulling fs layer
+64b7a6332aa2: Download complete
+c3f654c083c1: Pulling metadata
+c3f654c083c1: Pulling fs layer
+c3f654c083c1: Download complete
+31ff30c97af1: Pulling metadata
+31ff30c97af1: Pulling fs layer
+31ff30c97af1: Download complete
+3447f41b5989: Pulling metadata
+3447f41b5989: Pulling fs layer
+3447f41b5989: Download complete
+e8bdef776ac9: Pulling metadata
+e8bdef776ac9: Pulling fs layer
+e8bdef776ac9: Download complete
+59f1480dafb0: Pulling metadata
+59f1480dafb0: Pulling fs layer
+59f1480dafb0: Download complete
+86e7a3e12a13: Pulling metadata
+86e7a3e12a13: Pulling fs layer
+86e7a3e12a13: Download complete
+72c0311f6ea0: Pulling metadata
+72c0311f6ea0: Pulling fs layer
+72c0311f6ea0: Download complete
+d50f305a58b3: Pulling metadata
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  27.18
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+bece434bf7ef        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+
+docker rm -f docker_registry
+
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+7339669e7392        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+
+docker rm -f docker_registry
+
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c57fe9256b33        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/quickstart-python (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+8771fbfe935c: Pushing
+8771fbfe935c: Buffering to disk
+8771fbfe935c: Image successfully pushed
+0e30e84e9513: Pushing
+0e30e84e9513: Buffering to disk
+0e30e84e9513: Image successfully pushed
+c90a56bfe7dd: Pushing
+c90a56bfe7dd: Buffering to disk
+c90a56bfe7dd: Image successfully pushed
+6b030fdd4748: Pushing
+6b030fdd4748: Buffering to disk
+6b030fdd4748: Image successfully pushed
+787349ce806c: Pushing
+787349ce806c: Buffering to disk
+787349ce806c: Image successfully pushed
+5c8d97a24744: Pushing
+5c8d97a24744: Buffering to disk
+5c8d97a24744: Image successfully pushed
+d71de2a8c19e: Pushing
+d71de2a8c19e: Buffering to disk
+d71de2a8c19e: Image successfully pushed
+2ef4015863b9: Pushing
+2ef4015863b9: Buffering to disk
+2ef4015863b9: Image successfully pushed
+db22e489f994: Pushing
+db22e489f994: Buffering to disk
+db22e489f994: Image successfully pushed
+64b7a6332aa2: Pushing
+64b7a6332aa2: Buffering to disk
+64b7a6332aa2: Image successfully pushed
+c3f654c083c1: Pushing
+c3f654c083c1: Buffering to disk
+c3f654c083c1: Image successfully pushed
+31ff30c97af1: Pushing
+31ff30c97af1: Buffering to disk
+31ff30c97af1: Image successfully pushed
+3447f41b5989: Pushing
+3447f41b5989: Buffering to disk
+3447f41b5989: Image successfully pushed
+e8bdef776ac9: Pushing
+e8bdef776ac9: Buffering to disk
+e8bdef776ac9: Image successfully pushed
+59f1480dafb0: Pushing
+59f1480dafb0: Buffering to disk
+59f1480dafb0: Image successfully pushed
+86e7a3e12a13: Pushing
+86e7a3e12a13: Buffering to disk
+86e7a3e12a13: Image successfully pushed
+72c0311f6ea0: Pushing
+72c0311f6ea0: Buffering to disk
+72c0311f6ea0: Image successfully pushed
+d50f305a58b3: Pushing
+d50f305a58b3: Buffering to disk
+d50f305a58b3: Image successfully pushed
+Pushing tag for rev [d50f305a58b3] on {http://136.187.101.80:5000/v1/repositories/quickstart-python/tags/latest}
+
+real  116.35
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+Pulling repository 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python, endpoint: http://136.187.101.80:5000/v1/
+d50f305a58b3: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+8771fbfe935c: Pulling metadata
+8771fbfe935c: Pulling fs layer
+8771fbfe935c: Download complete
+0e30e84e9513: Pulling metadata
+0e30e84e9513: Pulling fs layer
+0e30e84e9513: Download complete
+c90a56bfe7dd: Pulling metadata
+c90a56bfe7dd: Pulling fs layer
+c90a56bfe7dd: Download complete
+6b030fdd4748: Pulling metadata
+6b030fdd4748: Pulling fs layer
+6b030fdd4748: Download complete
+787349ce806c: Pulling metadata
+787349ce806c: Pulling fs layer
+787349ce806c: Download complete
+5c8d97a24744: Pulling metadata
+5c8d97a24744: Pulling fs layer
+5c8d97a24744: Download complete
+d71de2a8c19e: Pulling metadata
+d71de2a8c19e: Pulling fs layer
+d71de2a8c19e: Download complete
+2ef4015863b9: Pulling metadata
+2ef4015863b9: Pulling fs layer
+2ef4015863b9: Download complete
+db22e489f994: Pulling metadata
+db22e489f994: Pulling fs layer
+db22e489f994: Download complete
+64b7a6332aa2: Pulling metadata
+64b7a6332aa2: Pulling fs layer
+64b7a6332aa2: Download complete
+c3f654c083c1: Pulling metadata
+c3f654c083c1: Pulling fs layer
+c3f654c083c1: Download complete
+31ff30c97af1: Pulling metadata
+31ff30c97af1: Pulling fs layer
+31ff30c97af1: Download complete
+3447f41b5989: Pulling metadata
+3447f41b5989: Pulling fs layer
+3447f41b5989: Download complete
+e8bdef776ac9: Pulling metadata
+e8bdef776ac9: Pulling fs layer
+e8bdef776ac9: Download complete
+59f1480dafb0: Pulling metadata
+59f1480dafb0: Pulling fs layer
+59f1480dafb0: Download complete
+86e7a3e12a13: Pulling metadata
+86e7a3e12a13: Pulling fs layer
+86e7a3e12a13: Download complete
+72c0311f6ea0: Pulling metadata
+72c0311f6ea0: Pulling fs layer
+72c0311f6ea0: Download complete
+d50f305a58b3: Pulling metadata
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  28.26
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+04e5ef7567e7        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/quickstart-python (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+8771fbfe935c: Pushing
+8771fbfe935c: Buffering to disk
+8771fbfe935c: Image successfully pushed
+0e30e84e9513: Pushing
+0e30e84e9513: Buffering to disk
+0e30e84e9513: Image successfully pushed
+c90a56bfe7dd: Pushing
+c90a56bfe7dd: Buffering to disk
+c90a56bfe7dd: Image successfully pushed
+6b030fdd4748: Pushing
+6b030fdd4748: Buffering to disk
+6b030fdd4748: Image successfully pushed
+787349ce806c: Pushing
+787349ce806c: Buffering to disk
+787349ce806c: Image successfully pushed
+5c8d97a24744: Pushing
+5c8d97a24744: Buffering to disk
+5c8d97a24744: Image successfully pushed
+d71de2a8c19e: Pushing
+d71de2a8c19e: Buffering to disk
+d71de2a8c19e: Image successfully pushed
+2ef4015863b9: Pushing
+2ef4015863b9: Buffering to disk
+2ef4015863b9: Image successfully pushed
+db22e489f994: Pushing
+db22e489f994: Buffering to disk
+db22e489f994: Image successfully pushed
+64b7a6332aa2: Pushing
+64b7a6332aa2: Buffering to disk
+64b7a6332aa2: Image successfully pushed
+c3f654c083c1: Pushing
+c3f654c083c1: Buffering to disk
+c3f654c083c1: Image successfully pushed
+31ff30c97af1: Pushing
+31ff30c97af1: Buffering to disk
+31ff30c97af1: Image successfully pushed
+3447f41b5989: Pushing
+3447f41b5989: Buffering to disk
+3447f41b5989: Image successfully pushed
+e8bdef776ac9: Pushing
+e8bdef776ac9: Buffering to disk
+e8bdef776ac9: Image successfully pushed
+59f1480dafb0: Pushing
+59f1480dafb0: Buffering to disk
+59f1480dafb0: Image successfully pushed
+86e7a3e12a13: Pushing
+86e7a3e12a13: Buffering to disk
+86e7a3e12a13: Image successfully pushed
+72c0311f6ea0: Pushing
+72c0311f6ea0: Buffering to disk
+72c0311f6ea0: Image successfully pushed
+d50f305a58b3: Pushing
+d50f305a58b3: Buffering to disk
+d50f305a58b3: Image successfully pushed
+Pushing tag for rev [d50f305a58b3] on {http://136.187.101.80:5000/v1/repositories/quickstart-python/tags/latest}
+
+real  113.77
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+Pulling repository 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python, endpoint: http://136.187.101.80:5000/v1/
+d50f305a58b3: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+8771fbfe935c: Pulling metadata
+8771fbfe935c: Pulling fs layer
+8771fbfe935c: Download complete
+0e30e84e9513: Pulling metadata
+0e30e84e9513: Pulling fs layer
+0e30e84e9513: Download complete
+c90a56bfe7dd: Pulling metadata
+c90a56bfe7dd: Pulling fs layer
+c90a56bfe7dd: Download complete
+6b030fdd4748: Pulling metadata
+6b030fdd4748: Pulling fs layer
+6b030fdd4748: Download complete
+787349ce806c: Pulling metadata
+787349ce806c: Pulling fs layer
+787349ce806c: Download complete
+5c8d97a24744: Pulling metadata
+5c8d97a24744: Pulling fs layer
+5c8d97a24744: Download complete
+d71de2a8c19e: Pulling metadata
+d71de2a8c19e: Pulling fs layer
+d71de2a8c19e: Download complete
+2ef4015863b9: Pulling metadata
+2ef4015863b9: Pulling fs layer
+2ef4015863b9: Download complete
+db22e489f994: Pulling metadata
+db22e489f994: Pulling fs layer
+db22e489f994: Download complete
+64b7a6332aa2: Pulling metadata
+64b7a6332aa2: Pulling fs layer
+64b7a6332aa2: Download complete
+c3f654c083c1: Pulling metadata
+c3f654c083c1: Pulling fs layer
+c3f654c083c1: Download complete
+31ff30c97af1: Pulling metadata
+31ff30c97af1: Pulling fs layer
+31ff30c97af1: Download complete
+3447f41b5989: Pulling metadata
+3447f41b5989: Pulling fs layer
+3447f41b5989: Download complete
+e8bdef776ac9: Pulling metadata
+e8bdef776ac9: Pulling fs layer
+e8bdef776ac9: Download complete
+59f1480dafb0: Pulling metadata
+59f1480dafb0: Pulling fs layer
+59f1480dafb0: Download complete
+86e7a3e12a13: Pulling metadata
+86e7a3e12a13: Pulling fs layer
+86e7a3e12a13: Download complete
+72c0311f6ea0: Pulling metadata
+72c0311f6ea0: Pulling fs layer
+72c0311f6ea0: Download complete
+d50f305a58b3: Pulling metadata
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  28.35
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+9c04b3f77f7e        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/quickstart-python (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+8771fbfe935c: Pushing
+8771fbfe935c: Buffering to disk
+8771fbfe935c: Image successfully pushed
+0e30e84e9513: Pushing
+0e30e84e9513: Buffering to disk
+0e30e84e9513: Image successfully pushed
+c90a56bfe7dd: Pushing
+c90a56bfe7dd: Buffering to disk
+c90a56bfe7dd: Image successfully pushed
+6b030fdd4748: Pushing
+6b030fdd4748: Buffering to disk
+6b030fdd4748: Image successfully pushed
+787349ce806c: Pushing
+787349ce806c: Buffering to disk
+787349ce806c: Image successfully pushed
+5c8d97a24744: Pushing
+5c8d97a24744: Buffering to disk
+5c8d97a24744: Image successfully pushed
+d71de2a8c19e: Pushing
+d71de2a8c19e: Buffering to disk
+d71de2a8c19e: Image successfully pushed
+2ef4015863b9: Pushing
+2ef4015863b9: Buffering to disk
+2ef4015863b9: Image successfully pushed
+db22e489f994: Pushing
+db22e489f994: Buffering to disk
+db22e489f994: Image successfully pushed
+64b7a6332aa2: Pushing
+64b7a6332aa2: Buffering to disk
+64b7a6332aa2: Image successfully pushed
+c3f654c083c1: Pushing
+c3f654c083c1: Buffering to disk
+c3f654c083c1: Image successfully pushed
+31ff30c97af1: Pushing
+31ff30c97af1: Buffering to disk
+31ff30c97af1: Image successfully pushed
+3447f41b5989: Pushing
+3447f41b5989: Buffering to disk
+3447f41b5989: Image successfully pushed
+e8bdef776ac9: Pushing
+e8bdef776ac9: Buffering to disk
+e8bdef776ac9: Image successfully pushed
+59f1480dafb0: Pushing
+59f1480dafb0: Buffering to disk
+59f1480dafb0: Image successfully pushed
+86e7a3e12a13: Pushing
+86e7a3e12a13: Buffering to disk
+86e7a3e12a13: Image successfully pushed
+72c0311f6ea0: Pushing
+72c0311f6ea0: Buffering to disk
+72c0311f6ea0: Image successfully pushed
+d50f305a58b3: Pushing
+d50f305a58b3: Buffering to disk
+d50f305a58b3: Image successfully pushed
+Pushing tag for rev [d50f305a58b3] on {http://136.187.101.80:5000/v1/repositories/quickstart-python/tags/latest}
+
+real  114.62
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+Pulling repository 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python, endpoint: http://136.187.101.80:5000/v1/
+d50f305a58b3: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+8771fbfe935c: Pulling metadata
+8771fbfe935c: Pulling fs layer
+8771fbfe935c: Download complete
+0e30e84e9513: Pulling metadata
+0e30e84e9513: Pulling fs layer
+0e30e84e9513: Download complete
+c90a56bfe7dd: Pulling metadata
+c90a56bfe7dd: Pulling fs layer
+c90a56bfe7dd: Download complete
+6b030fdd4748: Pulling metadata
+6b030fdd4748: Pulling fs layer
+6b030fdd4748: Download complete
+787349ce806c: Pulling metadata
+787349ce806c: Pulling fs layer
+787349ce806c: Download complete
+5c8d97a24744: Pulling metadata
+5c8d97a24744: Pulling fs layer
+5c8d97a24744: Download complete
+d71de2a8c19e: Pulling metadata
+d71de2a8c19e: Pulling fs layer
+d71de2a8c19e: Download complete
+2ef4015863b9: Pulling metadata
+2ef4015863b9: Pulling fs layer
+2ef4015863b9: Download complete
+db22e489f994: Pulling metadata
+db22e489f994: Pulling fs layer
+db22e489f994: Download complete
+64b7a6332aa2: Pulling metadata
+64b7a6332aa2: Pulling fs layer
+64b7a6332aa2: Download complete
+c3f654c083c1: Pulling metadata
+c3f654c083c1: Pulling fs layer
+c3f654c083c1: Download complete
+31ff30c97af1: Pulling metadata
+31ff30c97af1: Pulling fs layer
+31ff30c97af1: Download complete
+3447f41b5989: Pulling metadata
+3447f41b5989: Pulling fs layer
+3447f41b5989: Download complete
+e8bdef776ac9: Pulling metadata
+e8bdef776ac9: Pulling fs layer
+e8bdef776ac9: Download complete
+59f1480dafb0: Pulling metadata
+59f1480dafb0: Pulling fs layer
+59f1480dafb0: Download complete
+86e7a3e12a13: Pulling metadata
+86e7a3e12a13: Pulling fs layer
+86e7a3e12a13: Download complete
+72c0311f6ea0: Pulling metadata
+72c0311f6ea0: Pulling fs layer
+72c0311f6ea0: Download complete
+d50f305a58b3: Pulling metadata
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  28.26
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+fb038ad2385a        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/quickstart-python (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+8771fbfe935c: Pushing
+8771fbfe935c: Buffering to disk
+8771fbfe935c: Image successfully pushed
+0e30e84e9513: Pushing
+0e30e84e9513: Buffering to disk
+0e30e84e9513: Image successfully pushed
+c90a56bfe7dd: Pushing
+c90a56bfe7dd: Buffering to disk
+c90a56bfe7dd: Image successfully pushed
+6b030fdd4748: Pushing
+6b030fdd4748: Buffering to disk
+6b030fdd4748: Image successfully pushed
+787349ce806c: Pushing
+787349ce806c: Buffering to disk
+787349ce806c: Image successfully pushed
+5c8d97a24744: Pushing
+5c8d97a24744: Buffering to disk
+5c8d97a24744: Image successfully pushed
+d71de2a8c19e: Pushing
+d71de2a8c19e: Buffering to disk
+d71de2a8c19e: Image successfully pushed
+2ef4015863b9: Pushing
+2ef4015863b9: Buffering to disk
+2ef4015863b9: Image successfully pushed
+db22e489f994: Pushing
+db22e489f994: Buffering to disk
+db22e489f994: Image successfully pushed
+64b7a6332aa2: Pushing
+64b7a6332aa2: Buffering to disk
+64b7a6332aa2: Image successfully pushed
+c3f654c083c1: Pushing
+c3f654c083c1: Buffering to disk
+c3f654c083c1: Image successfully pushed
+31ff30c97af1: Pushing
+31ff30c97af1: Buffering to disk
+31ff30c97af1: Image successfully pushed
+3447f41b5989: Pushing
+3447f41b5989: Buffering to disk
+3447f41b5989: Image successfully pushed
+e8bdef776ac9: Pushing
+e8bdef776ac9: Buffering to disk
+e8bdef776ac9: Image successfully pushed
+59f1480dafb0: Pushing
+59f1480dafb0: Buffering to disk
+59f1480dafb0: Image successfully pushed
+86e7a3e12a13: Pushing
+86e7a3e12a13: Buffering to disk
+86e7a3e12a13: Image successfully pushed
+72c0311f6ea0: Pushing
+72c0311f6ea0: Buffering to disk
+72c0311f6ea0: Image successfully pushed
+d50f305a58b3: Pushing
+d50f305a58b3: Buffering to disk
+d50f305a58b3: Image successfully pushed
+Pushing tag for rev [d50f305a58b3] on {http://136.187.101.80:5000/v1/repositories/quickstart-python/tags/latest}
+
+real  113.29
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+Pulling repository 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python, endpoint: http://136.187.101.80:5000/v1/
+d50f305a58b3: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+8771fbfe935c: Pulling metadata
+8771fbfe935c: Pulling fs layer
+8771fbfe935c: Download complete
+0e30e84e9513: Pulling metadata
+0e30e84e9513: Pulling fs layer
+0e30e84e9513: Download complete
+c90a56bfe7dd: Pulling metadata
+c90a56bfe7dd: Pulling fs layer
+c90a56bfe7dd: Download complete
+6b030fdd4748: Pulling metadata
+6b030fdd4748: Pulling fs layer
+6b030fdd4748: Download complete
+787349ce806c: Pulling metadata
+787349ce806c: Pulling fs layer
+787349ce806c: Download complete
+5c8d97a24744: Pulling metadata
+5c8d97a24744: Pulling fs layer
+5c8d97a24744: Download complete
+d71de2a8c19e: Pulling metadata
+d71de2a8c19e: Pulling fs layer
+d71de2a8c19e: Download complete
+2ef4015863b9: Pulling metadata
+2ef4015863b9: Pulling fs layer
+2ef4015863b9: Download complete
+db22e489f994: Pulling metadata
+db22e489f994: Pulling fs layer
+db22e489f994: Download complete
+64b7a6332aa2: Pulling metadata
+64b7a6332aa2: Pulling fs layer
+64b7a6332aa2: Download complete
+c3f654c083c1: Pulling metadata
+c3f654c083c1: Pulling fs layer
+c3f654c083c1: Download complete
+31ff30c97af1: Pulling metadata
+31ff30c97af1: Pulling fs layer
+31ff30c97af1: Download complete
+3447f41b5989: Pulling metadata
+3447f41b5989: Pulling fs layer
+3447f41b5989: Download complete
+e8bdef776ac9: Pulling metadata
+e8bdef776ac9: Pulling fs layer
+e8bdef776ac9: Download complete
+59f1480dafb0: Pulling metadata
+59f1480dafb0: Pulling fs layer
+59f1480dafb0: Download complete
+86e7a3e12a13: Pulling metadata
+86e7a3e12a13: Pulling fs layer
+86e7a3e12a13: Download complete
+72c0311f6ea0: Pulling metadata
+72c0311f6ea0: Pulling fs layer
+72c0311f6ea0: Download complete
+d50f305a58b3: Pulling metadata
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  28.44
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+4aca1cdbbdb8        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/quickstart-python (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+8771fbfe935c: Pushing
+8771fbfe935c: Buffering to disk
+8771fbfe935c: Image successfully pushed
+0e30e84e9513: Pushing
+0e30e84e9513: Buffering to disk
+0e30e84e9513: Image successfully pushed
+c90a56bfe7dd: Pushing
+c90a56bfe7dd: Buffering to disk
+c90a56bfe7dd: Image successfully pushed
+6b030fdd4748: Pushing
+6b030fdd4748: Buffering to disk
+6b030fdd4748: Image successfully pushed
+787349ce806c: Pushing
+787349ce806c: Buffering to disk
+787349ce806c: Image successfully pushed
+5c8d97a24744: Pushing
+5c8d97a24744: Buffering to disk
+5c8d97a24744: Image successfully pushed
+d71de2a8c19e: Pushing
+d71de2a8c19e: Buffering to disk
+d71de2a8c19e: Image successfully pushed
+2ef4015863b9: Pushing
+2ef4015863b9: Buffering to disk
+2ef4015863b9: Image successfully pushed
+db22e489f994: Pushing
+db22e489f994: Buffering to disk
+db22e489f994: Image successfully pushed
+64b7a6332aa2: Pushing
+64b7a6332aa2: Buffering to disk
+64b7a6332aa2: Image successfully pushed
+c3f654c083c1: Pushing
+c3f654c083c1: Buffering to disk
+c3f654c083c1: Image successfully pushed
+31ff30c97af1: Pushing
+31ff30c97af1: Buffering to disk
+31ff30c97af1: Image successfully pushed
+3447f41b5989: Pushing
+3447f41b5989: Buffering to disk
+3447f41b5989: Image successfully pushed
+e8bdef776ac9: Pushing
+e8bdef776ac9: Buffering to disk
+e8bdef776ac9: Image successfully pushed
+59f1480dafb0: Pushing
+59f1480dafb0: Buffering to disk
+59f1480dafb0: Image successfully pushed
+86e7a3e12a13: Pushing
+86e7a3e12a13: Buffering to disk
+86e7a3e12a13: Image successfully pushed
+72c0311f6ea0: Pushing
+72c0311f6ea0: Buffering to disk
+72c0311f6ea0: Image successfully pushed
+d50f305a58b3: Pushing
+d50f305a58b3: Buffering to disk
+d50f305a58b3: Image successfully pushed
+Pushing tag for rev [d50f305a58b3] on {http://136.187.101.80:5000/v1/repositories/quickstart-python/tags/latest}
+
+real  114.76
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+Pulling repository 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python, endpoint: http://136.187.101.80:5000/v1/
+d50f305a58b3: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+8771fbfe935c: Pulling metadata
+8771fbfe935c: Pulling fs layer
+8771fbfe935c: Download complete
+0e30e84e9513: Pulling metadata
+0e30e84e9513: Pulling fs layer
+0e30e84e9513: Download complete
+c90a56bfe7dd: Pulling metadata
+c90a56bfe7dd: Pulling fs layer
+c90a56bfe7dd: Download complete
+6b030fdd4748: Pulling metadata
+6b030fdd4748: Pulling fs layer
+6b030fdd4748: Download complete
+787349ce806c: Pulling metadata
+787349ce806c: Pulling fs layer
+787349ce806c: Download complete
+5c8d97a24744: Pulling metadata
+5c8d97a24744: Pulling fs layer
+5c8d97a24744: Download complete
+d71de2a8c19e: Pulling metadata
+d71de2a8c19e: Pulling fs layer
+d71de2a8c19e: Download complete
+2ef4015863b9: Pulling metadata
+2ef4015863b9: Pulling fs layer
+2ef4015863b9: Download complete
+db22e489f994: Pulling metadata
+db22e489f994: Pulling fs layer
+db22e489f994: Download complete
+64b7a6332aa2: Pulling metadata
+64b7a6332aa2: Pulling fs layer
+64b7a6332aa2: Download complete
+c3f654c083c1: Pulling metadata
+c3f654c083c1: Pulling fs layer
+c3f654c083c1: Download complete
+31ff30c97af1: Pulling metadata
+31ff30c97af1: Pulling fs layer
+31ff30c97af1: Download complete
+3447f41b5989: Pulling metadata
+3447f41b5989: Pulling fs layer
+3447f41b5989: Download complete
+e8bdef776ac9: Pulling metadata
+e8bdef776ac9: Pulling fs layer
+e8bdef776ac9: Download complete
+59f1480dafb0: Pulling metadata
+59f1480dafb0: Pulling fs layer
+59f1480dafb0: Download complete
+86e7a3e12a13: Pulling metadata
+86e7a3e12a13: Pulling fs layer
+86e7a3e12a13: Download complete
+72c0311f6ea0: Pulling metadata
+72c0311f6ea0: Pulling fs layer
+72c0311f6ea0: Download complete
+d50f305a58b3: Pulling metadata
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  28.43
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+d018a6a91c0f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+
+docker rm -f docker_registry
+
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+7628ddf82f80        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+
+docker rm -f docker_registry
+
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+19f502bebc6f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/quickstart-python (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+8771fbfe935c: Pushing
+8771fbfe935c: Buffering to disk
+8771fbfe935c: Image successfully pushed
+0e30e84e9513: Pushing
+0e30e84e9513: Buffering to disk
+0e30e84e9513: Image successfully pushed
+c90a56bfe7dd: Pushing
+c90a56bfe7dd: Buffering to disk
+c90a56bfe7dd: Image successfully pushed
+6b030fdd4748: Pushing
+6b030fdd4748: Buffering to disk
+6b030fdd4748: Image successfully pushed
+787349ce806c: Pushing
+787349ce806c: Buffering to disk
+787349ce806c: Image successfully pushed
+5c8d97a24744: Pushing
+5c8d97a24744: Buffering to disk
+5c8d97a24744: Image successfully pushed
+d71de2a8c19e: Pushing
+d71de2a8c19e: Buffering to disk
+d71de2a8c19e: Image successfully pushed
+2ef4015863b9: Pushing
+2ef4015863b9: Buffering to disk
+2ef4015863b9: Image successfully pushed
+db22e489f994: Pushing
+db22e489f994: Buffering to disk
+db22e489f994: Image successfully pushed
+64b7a6332aa2: Pushing
+64b7a6332aa2: Buffering to disk
+64b7a6332aa2: Image successfully pushed
+c3f654c083c1: Pushing
+c3f654c083c1: Buffering to disk
+c3f654c083c1: Image successfully pushed
+31ff30c97af1: Pushing
+31ff30c97af1: Buffering to disk
+31ff30c97af1: Image successfully pushed
+3447f41b5989: Pushing
+3447f41b5989: Buffering to disk
+3447f41b5989: Image successfully pushed
+e8bdef776ac9: Pushing
+e8bdef776ac9: Buffering to disk
+e8bdef776ac9: Image successfully pushed
+59f1480dafb0: Pushing
+59f1480dafb0: Buffering to disk
+59f1480dafb0: Image successfully pushed
+86e7a3e12a13: Pushing
+86e7a3e12a13: Buffering to disk
+86e7a3e12a13: Image successfully pushed
+72c0311f6ea0: Pushing
+72c0311f6ea0: Buffering to disk
+72c0311f6ea0: Image successfully pushed
+d50f305a58b3: Pushing
+d50f305a58b3: Buffering to disk
+d50f305a58b3: Image successfully pushed
+Pushing tag for rev [d50f305a58b3] on {http://136.187.101.80:5000/v1/repositories/quickstart-python/tags/latest}
+
+real  112.92
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+Pulling repository 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python, endpoint: http://136.187.101.80:5000/v1/
+d50f305a58b3: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+8771fbfe935c: Pulling metadata
+8771fbfe935c: Pulling fs layer
+8771fbfe935c: Download complete
+0e30e84e9513: Pulling metadata
+0e30e84e9513: Pulling fs layer
+0e30e84e9513: Download complete
+c90a56bfe7dd: Pulling metadata
+c90a56bfe7dd: Pulling fs layer
+c90a56bfe7dd: Download complete
+6b030fdd4748: Pulling metadata
+6b030fdd4748: Pulling fs layer
+6b030fdd4748: Download complete
+787349ce806c: Pulling metadata
+787349ce806c: Pulling fs layer
+787349ce806c: Download complete
+5c8d97a24744: Pulling metadata
+5c8d97a24744: Pulling fs layer
+5c8d97a24744: Download complete
+d71de2a8c19e: Pulling metadata
+d71de2a8c19e: Pulling fs layer
+d71de2a8c19e: Download complete
+2ef4015863b9: Pulling metadata
+2ef4015863b9: Pulling fs layer
+2ef4015863b9: Download complete
+db22e489f994: Pulling metadata
+db22e489f994: Pulling fs layer
+db22e489f994: Download complete
+64b7a6332aa2: Pulling metadata
+64b7a6332aa2: Pulling fs layer
+64b7a6332aa2: Download complete
+c3f654c083c1: Pulling metadata
+c3f654c083c1: Pulling fs layer
+c3f654c083c1: Download complete
+31ff30c97af1: Pulling metadata
+31ff30c97af1: Pulling fs layer
+31ff30c97af1: Download complete
+3447f41b5989: Pulling metadata
+3447f41b5989: Pulling fs layer
+3447f41b5989: Download complete
+e8bdef776ac9: Pulling metadata
+e8bdef776ac9: Pulling fs layer
+e8bdef776ac9: Download complete
+59f1480dafb0: Pulling metadata
+59f1480dafb0: Pulling fs layer
+59f1480dafb0: Download complete
+86e7a3e12a13: Pulling metadata
+86e7a3e12a13: Pulling fs layer
+86e7a3e12a13: Download complete
+72c0311f6ea0: Pulling metadata
+72c0311f6ea0: Pulling fs layer
+72c0311f6ea0: Download complete
+d50f305a58b3: Pulling metadata
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  28.45
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+f1e9799a1b8f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/quickstart-python (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+8771fbfe935c: Pushing
+8771fbfe935c: Buffering to disk
+8771fbfe935c: Image successfully pushed
+0e30e84e9513: Pushing
+0e30e84e9513: Buffering to disk
+0e30e84e9513: Image successfully pushed
+c90a56bfe7dd: Pushing
+c90a56bfe7dd: Buffering to disk
+c90a56bfe7dd: Image successfully pushed
+6b030fdd4748: Pushing
+6b030fdd4748: Buffering to disk
+6b030fdd4748: Image successfully pushed
+787349ce806c: Pushing
+787349ce806c: Buffering to disk
+787349ce806c: Image successfully pushed
+5c8d97a24744: Pushing
+5c8d97a24744: Buffering to disk
+5c8d97a24744: Image successfully pushed
+d71de2a8c19e: Pushing
+d71de2a8c19e: Buffering to disk
+d71de2a8c19e: Image successfully pushed
+2ef4015863b9: Pushing
+2ef4015863b9: Buffering to disk
+2ef4015863b9: Image successfully pushed
+db22e489f994: Pushing
+db22e489f994: Buffering to disk
+db22e489f994: Image successfully pushed
+64b7a6332aa2: Pushing
+64b7a6332aa2: Buffering to disk
+64b7a6332aa2: Image successfully pushed
+c3f654c083c1: Pushing
+c3f654c083c1: Buffering to disk
+c3f654c083c1: Image successfully pushed
+31ff30c97af1: Pushing
+31ff30c97af1: Buffering to disk
+31ff30c97af1: Image successfully pushed
+3447f41b5989: Pushing
+3447f41b5989: Buffering to disk
+3447f41b5989: Image successfully pushed
+e8bdef776ac9: Pushing
+e8bdef776ac9: Buffering to disk
+e8bdef776ac9: Image successfully pushed
+59f1480dafb0: Pushing
+59f1480dafb0: Buffering to disk
+59f1480dafb0: Image successfully pushed
+86e7a3e12a13: Pushing
+86e7a3e12a13: Buffering to disk
+86e7a3e12a13: Image successfully pushed
+72c0311f6ea0: Pushing
+72c0311f6ea0: Buffering to disk
+72c0311f6ea0: Image successfully pushed
+d50f305a58b3: Pushing
+d50f305a58b3: Buffering to disk
+d50f305a58b3: Image successfully pushed
+Pushing tag for rev [d50f305a58b3] on {http://136.187.101.80:5000/v1/repositories/quickstart-python/tags/latest}
+
+real  114.18
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+Pulling repository 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python, endpoint: http://136.187.101.80:5000/v1/
+d50f305a58b3: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+8771fbfe935c: Pulling metadata
+8771fbfe935c: Pulling fs layer
+8771fbfe935c: Download complete
+0e30e84e9513: Pulling metadata
+0e30e84e9513: Pulling fs layer
+0e30e84e9513: Download complete
+c90a56bfe7dd: Pulling metadata
+c90a56bfe7dd: Pulling fs layer
+c90a56bfe7dd: Download complete
+6b030fdd4748: Pulling metadata
+6b030fdd4748: Pulling fs layer
+6b030fdd4748: Download complete
+787349ce806c: Pulling metadata
+787349ce806c: Pulling fs layer
+787349ce806c: Download complete
+5c8d97a24744: Pulling metadata
+5c8d97a24744: Pulling fs layer
+5c8d97a24744: Download complete
+d71de2a8c19e: Pulling metadata
+d71de2a8c19e: Pulling fs layer
+d71de2a8c19e: Download complete
+2ef4015863b9: Pulling metadata
+2ef4015863b9: Pulling fs layer
+2ef4015863b9: Download complete
+db22e489f994: Pulling metadata
+db22e489f994: Pulling fs layer
+db22e489f994: Download complete
+64b7a6332aa2: Pulling metadata
+64b7a6332aa2: Pulling fs layer
+64b7a6332aa2: Download complete
+c3f654c083c1: Pulling metadata
+c3f654c083c1: Pulling fs layer
+c3f654c083c1: Download complete
+31ff30c97af1: Pulling metadata
+31ff30c97af1: Pulling fs layer
+31ff30c97af1: Download complete
+3447f41b5989: Pulling metadata
+3447f41b5989: Pulling fs layer
+3447f41b5989: Download complete
+e8bdef776ac9: Pulling metadata
+e8bdef776ac9: Pulling fs layer
+e8bdef776ac9: Download complete
+59f1480dafb0: Pulling metadata
+59f1480dafb0: Pulling fs layer
+59f1480dafb0: Download complete
+86e7a3e12a13: Pulling metadata
+86e7a3e12a13: Pulling fs layer
+86e7a3e12a13: Download complete
+72c0311f6ea0: Pulling metadata
+72c0311f6ea0: Pulling fs layer
+72c0311f6ea0: Download complete
+d50f305a58b3: Pulling metadata
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  27.55
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+33546442012f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+
+docker rm -f docker_registry
+
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+05bec030c16d        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/quickstart-python (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+8771fbfe935c: Pushing
+8771fbfe935c: Buffering to disk
+8771fbfe935c: Image successfully pushed
+0e30e84e9513: Pushing
+0e30e84e9513: Buffering to disk
+0e30e84e9513: Image successfully pushed
+c90a56bfe7dd: Pushing
+c90a56bfe7dd: Buffering to disk
+c90a56bfe7dd: Image successfully pushed
+6b030fdd4748: Pushing
+6b030fdd4748: Buffering to disk
+6b030fdd4748: Image successfully pushed
+787349ce806c: Pushing
+787349ce806c: Buffering to disk
+787349ce806c: Image successfully pushed
+5c8d97a24744: Pushing
+5c8d97a24744: Buffering to disk
+5c8d97a24744: Image successfully pushed
+d71de2a8c19e: Pushing
+d71de2a8c19e: Buffering to disk
+d71de2a8c19e: Image successfully pushed
+2ef4015863b9: Pushing
+2ef4015863b9: Buffering to disk
+2ef4015863b9: Image successfully pushed
+db22e489f994: Pushing
+db22e489f994: Buffering to disk
+db22e489f994: Image successfully pushed
+64b7a6332aa2: Pushing
+64b7a6332aa2: Buffering to disk
+64b7a6332aa2: Image successfully pushed
+c3f654c083c1: Pushing
+c3f654c083c1: Buffering to disk
+c3f654c083c1: Image successfully pushed
+31ff30c97af1: Pushing
+31ff30c97af1: Buffering to disk
+31ff30c97af1: Image successfully pushed
+3447f41b5989: Pushing
+3447f41b5989: Buffering to disk
+3447f41b5989: Image successfully pushed
+e8bdef776ac9: Pushing
+e8bdef776ac9: Buffering to disk
+e8bdef776ac9: Image successfully pushed
+59f1480dafb0: Pushing
+59f1480dafb0: Buffering to disk
+59f1480dafb0: Image successfully pushed
+86e7a3e12a13: Pushing
+86e7a3e12a13: Buffering to disk
+86e7a3e12a13: Image successfully pushed
+72c0311f6ea0: Pushing
+72c0311f6ea0: Buffering to disk
+72c0311f6ea0: Image successfully pushed
+d50f305a58b3: Pushing
+d50f305a58b3: Buffering to disk
+d50f305a58b3: Image successfully pushed
+Pushing tag for rev [d50f305a58b3] on {http://136.187.101.80:5000/v1/repositories/quickstart-python/tags/latest}
+
+real  113.27
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+Pulling repository 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python
+d50f305a58b3: Pulling image (latest) from 136.187.101.80:5000/quickstart-python, endpoint: http://136.187.101.80:5000/v1/
+d50f305a58b3: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+8771fbfe935c: Pulling metadata
+8771fbfe935c: Pulling fs layer
+8771fbfe935c: Download complete
+0e30e84e9513: Pulling metadata
+0e30e84e9513: Pulling fs layer
+0e30e84e9513: Download complete
+c90a56bfe7dd: Pulling metadata
+c90a56bfe7dd: Pulling fs layer
+c90a56bfe7dd: Download complete
+6b030fdd4748: Pulling metadata
+6b030fdd4748: Pulling fs layer
+6b030fdd4748: Download complete
+787349ce806c: Pulling metadata
+787349ce806c: Pulling fs layer
+787349ce806c: Download complete
+5c8d97a24744: Pulling metadata
+5c8d97a24744: Pulling fs layer
+5c8d97a24744: Download complete
+d71de2a8c19e: Pulling metadata
+d71de2a8c19e: Pulling fs layer
+d71de2a8c19e: Download complete
+2ef4015863b9: Pulling metadata
+2ef4015863b9: Pulling fs layer
+2ef4015863b9: Download complete
+db22e489f994: Pulling metadata
+db22e489f994: Pulling fs layer
+db22e489f994: Download complete
+64b7a6332aa2: Pulling metadata
+64b7a6332aa2: Pulling fs layer
+64b7a6332aa2: Download complete
+c3f654c083c1: Pulling metadata
+c3f654c083c1: Pulling fs layer
+c3f654c083c1: Download complete
+31ff30c97af1: Pulling metadata
+31ff30c97af1: Pulling fs layer
+31ff30c97af1: Download complete
+3447f41b5989: Pulling metadata
+3447f41b5989: Pulling fs layer
+3447f41b5989: Download complete
+e8bdef776ac9: Pulling metadata
+e8bdef776ac9: Pulling fs layer
+e8bdef776ac9: Download complete
+59f1480dafb0: Pulling metadata
+59f1480dafb0: Pulling fs layer
+59f1480dafb0: Download complete
+86e7a3e12a13: Pulling metadata
+86e7a3e12a13: Pulling fs layer
+86e7a3e12a13: Download complete
+72c0311f6ea0: Pulling metadata
+72c0311f6ea0: Pulling fs layer
+72c0311f6ea0: Download complete
+d50f305a58b3: Pulling metadata
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  27.44
+
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@52.68.197.112 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+end date: Fri Jul 24 04:38:44 JST 2015
+
+

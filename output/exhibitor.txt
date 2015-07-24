@@ -1,0 +1,1267 @@
+
+pullpush benchmark: transfer exhibitor image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Fri Jul 24 04:38:44 JST 2015
+
+sudo docker images
+kiwenlau/exhibitor              flat                67653d07f4e0        4 weeks ago         771.8 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+sudo docker images
+kiwenlau/exhibitor              flat                67653d07f4e0        4 weeks ago         771.8 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3d47b51bf0db        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+75382d611c18        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c9c663b8d51d        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+The push refers to a repository [136.187.101.80:5000/exhibitor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/exhibitor (1 tags)
+8dbd9e392a96: Pushing
+8dbd9e392a96: Buffering to disk
+8dbd9e392a96: Image successfully pushed
+b5b01e3e232a: Pushing
+b5b01e3e232a: Buffering to disk
+b5b01e3e232a: Image successfully pushed
+d805670613ea: Pushing
+d805670613ea: Buffering to disk
+d805670613ea: Image successfully pushed
+114e0dcb406f: Pushing
+114e0dcb406f: Buffering to disk
+114e0dcb406f: Image successfully pushed
+2fffa8c5858e: Pushing
+2fffa8c5858e: Buffering to disk
+2fffa8c5858e: Image successfully pushed
+5b993c4993d9: Pushing
+5b993c4993d9: Buffering to disk
+5b993c4993d9: Image successfully pushed
+1b01b6f0afb1: Pushing
+1b01b6f0afb1: Buffering to disk
+1b01b6f0afb1: Image successfully pushed
+fae836222695: Pushing
+fae836222695: Buffering to disk
+fae836222695: Image successfully pushed
+5f6ce5f6e095: Pushing
+5f6ce5f6e095: Buffering to disk
+5f6ce5f6e095: Image successfully pushed
+28ec051e3029: Pushing
+28ec051e3029: Buffering to disk
+28ec051e3029: Image successfully pushed
+416878e8870f: Pushing
+416878e8870f: Buffering to disk
+416878e8870f: Image successfully pushed
+78dd7be45db5: Pushing
+78dd7be45db5: Buffering to disk
+78dd7be45db5: Image successfully pushed
+Pushing tag for rev [78dd7be45db5] on {http://136.187.101.80:5000/v1/repositories/exhibitor/tags/latest}
+
+real  104.20
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker pull 136.187.101.80:5000/exhibitor:latest
+Pulling repository 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor, endpoint: http://136.187.101.80:5000/v1/
+78dd7be45db5: Pulling dependent layers
+8dbd9e392a96: Pulling metadata
+8dbd9e392a96: Pulling fs layer
+8dbd9e392a96: Download complete
+b5b01e3e232a: Pulling metadata
+b5b01e3e232a: Pulling fs layer
+b5b01e3e232a: Download complete
+d805670613ea: Pulling metadata
+d805670613ea: Pulling fs layer
+d805670613ea: Download complete
+114e0dcb406f: Pulling metadata
+114e0dcb406f: Pulling fs layer
+114e0dcb406f: Download complete
+2fffa8c5858e: Pulling metadata
+2fffa8c5858e: Pulling fs layer
+2fffa8c5858e: Download complete
+5b993c4993d9: Pulling metadata
+5b993c4993d9: Pulling fs layer
+5b993c4993d9: Download complete
+1b01b6f0afb1: Pulling metadata
+1b01b6f0afb1: Pulling fs layer
+1b01b6f0afb1: Download complete
+fae836222695: Pulling metadata
+fae836222695: Pulling fs layer
+fae836222695: Download complete
+5f6ce5f6e095: Pulling metadata
+5f6ce5f6e095: Pulling fs layer
+5f6ce5f6e095: Download complete
+28ec051e3029: Pulling metadata
+28ec051e3029: Pulling fs layer
+28ec051e3029: Download complete
+416878e8870f: Pulling metadata
+416878e8870f: Pulling fs layer
+416878e8870f: Download complete
+78dd7be45db5: Pulling metadata
+78dd7be45db5: Pulling fs layer
+78dd7be45db5: Download complete
+78dd7be45db5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/exhibitor:latest
+
+real  27.45
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.5 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/exhibitor:latest"
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+91653da0711a        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+939bfade3f90        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+The push refers to a repository [136.187.101.80:5000/exhibitor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/exhibitor (1 tags)
+8dbd9e392a96: Pushing
+8dbd9e392a96: Buffering to disk
+8dbd9e392a96: Image successfully pushed
+b5b01e3e232a: Pushing
+b5b01e3e232a: Buffering to disk
+b5b01e3e232a: Image successfully pushed
+d805670613ea: Pushing
+d805670613ea: Buffering to disk
+d805670613ea: Image successfully pushed
+114e0dcb406f: Pushing
+114e0dcb406f: Buffering to disk
+114e0dcb406f: Image successfully pushed
+2fffa8c5858e: Pushing
+2fffa8c5858e: Buffering to disk
+2fffa8c5858e: Image successfully pushed
+5b993c4993d9: Pushing
+5b993c4993d9: Buffering to disk
+5b993c4993d9: Image successfully pushed
+1b01b6f0afb1: Pushing
+1b01b6f0afb1: Buffering to disk
+1b01b6f0afb1: Image successfully pushed
+fae836222695: Pushing
+fae836222695: Buffering to disk
+fae836222695: Image successfully pushed
+5f6ce5f6e095: Pushing
+5f6ce5f6e095: Buffering to disk
+5f6ce5f6e095: Image successfully pushed
+28ec051e3029: Pushing
+28ec051e3029: Buffering to disk
+28ec051e3029: Image successfully pushed
+416878e8870f: Pushing
+416878e8870f: Buffering to disk
+416878e8870f: Image successfully pushed
+78dd7be45db5: Pushing
+78dd7be45db5: Buffering to disk
+78dd7be45db5: Image successfully pushed
+Pushing tag for rev [78dd7be45db5] on {http://136.187.101.80:5000/v1/repositories/exhibitor/tags/latest}
+
+real  102.60
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker pull 136.187.101.80:5000/exhibitor:latest
+Pulling repository 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor, endpoint: http://136.187.101.80:5000/v1/
+78dd7be45db5: Pulling dependent layers
+8dbd9e392a96: Pulling metadata
+8dbd9e392a96: Pulling fs layer
+8dbd9e392a96: Download complete
+b5b01e3e232a: Pulling metadata
+b5b01e3e232a: Pulling fs layer
+b5b01e3e232a: Download complete
+d805670613ea: Pulling metadata
+d805670613ea: Pulling fs layer
+d805670613ea: Download complete
+114e0dcb406f: Pulling metadata
+114e0dcb406f: Pulling fs layer
+114e0dcb406f: Download complete
+2fffa8c5858e: Pulling metadata
+2fffa8c5858e: Pulling fs layer
+2fffa8c5858e: Download complete
+5b993c4993d9: Pulling metadata
+5b993c4993d9: Pulling fs layer
+5b993c4993d9: Download complete
+1b01b6f0afb1: Pulling metadata
+1b01b6f0afb1: Pulling fs layer
+1b01b6f0afb1: Download complete
+fae836222695: Pulling metadata
+fae836222695: Pulling fs layer
+fae836222695: Download complete
+5f6ce5f6e095: Pulling metadata
+5f6ce5f6e095: Pulling fs layer
+5f6ce5f6e095: Download complete
+28ec051e3029: Pulling metadata
+28ec051e3029: Pulling fs layer
+28ec051e3029: Download complete
+416878e8870f: Pulling metadata
+416878e8870f: Pulling fs layer
+416878e8870f: Download complete
+78dd7be45db5: Pulling metadata
+78dd7be45db5: Pulling fs layer
+78dd7be45db5: Download complete
+78dd7be45db5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/exhibitor:latest
+
+real  28.39
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.5 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/exhibitor:latest"
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+04efc1c76c40        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+The push refers to a repository [136.187.101.80:5000/exhibitor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/exhibitor (1 tags)
+8dbd9e392a96: Pushing
+8dbd9e392a96: Buffering to disk
+8dbd9e392a96: Image successfully pushed
+b5b01e3e232a: Pushing
+b5b01e3e232a: Buffering to disk
+b5b01e3e232a: Image successfully pushed
+d805670613ea: Pushing
+d805670613ea: Buffering to disk
+d805670613ea: Image successfully pushed
+114e0dcb406f: Pushing
+114e0dcb406f: Buffering to disk
+114e0dcb406f: Image successfully pushed
+2fffa8c5858e: Pushing
+2fffa8c5858e: Buffering to disk
+2fffa8c5858e: Image successfully pushed
+5b993c4993d9: Pushing
+5b993c4993d9: Buffering to disk
+5b993c4993d9: Image successfully pushed
+1b01b6f0afb1: Pushing
+1b01b6f0afb1: Buffering to disk
+1b01b6f0afb1: Image successfully pushed
+fae836222695: Pushing
+fae836222695: Buffering to disk
+fae836222695: Image successfully pushed
+5f6ce5f6e095: Pushing
+5f6ce5f6e095: Buffering to disk
+5f6ce5f6e095: Image successfully pushed
+28ec051e3029: Pushing
+28ec051e3029: Buffering to disk
+28ec051e3029: Image successfully pushed
+416878e8870f: Pushing
+416878e8870f: Buffering to disk
+416878e8870f: Image successfully pushed
+78dd7be45db5: Pushing
+78dd7be45db5: Buffering to disk
+78dd7be45db5: Image successfully pushed
+Pushing tag for rev [78dd7be45db5] on {http://136.187.101.80:5000/v1/repositories/exhibitor/tags/latest}
+
+real  105.18
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker pull 136.187.101.80:5000/exhibitor:latest
+Pulling repository 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor, endpoint: http://136.187.101.80:5000/v1/
+78dd7be45db5: Pulling dependent layers
+8dbd9e392a96: Pulling metadata
+8dbd9e392a96: Pulling fs layer
+8dbd9e392a96: Download complete
+b5b01e3e232a: Pulling metadata
+b5b01e3e232a: Pulling fs layer
+b5b01e3e232a: Download complete
+d805670613ea: Pulling metadata
+d805670613ea: Pulling fs layer
+d805670613ea: Download complete
+114e0dcb406f: Pulling metadata
+114e0dcb406f: Pulling fs layer
+114e0dcb406f: Download complete
+2fffa8c5858e: Pulling metadata
+2fffa8c5858e: Pulling fs layer
+2fffa8c5858e: Download complete
+5b993c4993d9: Pulling metadata
+5b993c4993d9: Pulling fs layer
+5b993c4993d9: Download complete
+1b01b6f0afb1: Pulling metadata
+1b01b6f0afb1: Pulling fs layer
+1b01b6f0afb1: Download complete
+fae836222695: Pulling metadata
+fae836222695: Pulling fs layer
+fae836222695: Download complete
+5f6ce5f6e095: Pulling metadata
+5f6ce5f6e095: Pulling fs layer
+5f6ce5f6e095: Download complete
+28ec051e3029: Pulling metadata
+28ec051e3029: Pulling fs layer
+28ec051e3029: Download complete
+416878e8870f: Pulling metadata
+416878e8870f: Pulling fs layer
+416878e8870f: Download complete
+78dd7be45db5: Pulling metadata
+78dd7be45db5: Pulling fs layer
+78dd7be45db5: Download complete
+78dd7be45db5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/exhibitor:latest
+
+real  27.91
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.5 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/exhibitor:latest"
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3f620b9280d3        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+bc5283a395dc        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+The push refers to a repository [136.187.101.80:5000/exhibitor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/exhibitor (1 tags)
+8dbd9e392a96: Pushing
+8dbd9e392a96: Buffering to disk
+8dbd9e392a96: Image successfully pushed
+b5b01e3e232a: Pushing
+b5b01e3e232a: Buffering to disk
+b5b01e3e232a: Image successfully pushed
+d805670613ea: Pushing
+d805670613ea: Buffering to disk
+d805670613ea: Image successfully pushed
+114e0dcb406f: Pushing
+114e0dcb406f: Buffering to disk
+114e0dcb406f: Image successfully pushed
+2fffa8c5858e: Pushing
+2fffa8c5858e: Buffering to disk
+2fffa8c5858e: Image successfully pushed
+5b993c4993d9: Pushing
+5b993c4993d9: Buffering to disk
+5b993c4993d9: Image successfully pushed
+1b01b6f0afb1: Pushing
+1b01b6f0afb1: Buffering to disk
+1b01b6f0afb1: Image successfully pushed
+fae836222695: Pushing
+fae836222695: Buffering to disk
+fae836222695: Image successfully pushed
+5f6ce5f6e095: Pushing
+5f6ce5f6e095: Buffering to disk
+5f6ce5f6e095: Image successfully pushed
+28ec051e3029: Pushing
+28ec051e3029: Buffering to disk
+28ec051e3029: Image successfully pushed
+416878e8870f: Pushing
+416878e8870f: Buffering to disk
+416878e8870f: Image successfully pushed
+78dd7be45db5: Pushing
+78dd7be45db5: Buffering to disk
+78dd7be45db5: Image successfully pushed
+Pushing tag for rev [78dd7be45db5] on {http://136.187.101.80:5000/v1/repositories/exhibitor/tags/latest}
+
+real  101.29
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker pull 136.187.101.80:5000/exhibitor:latest
+Pulling repository 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor, endpoint: http://136.187.101.80:5000/v1/
+78dd7be45db5: Pulling dependent layers
+8dbd9e392a96: Pulling metadata
+8dbd9e392a96: Pulling fs layer
+8dbd9e392a96: Download complete
+b5b01e3e232a: Pulling metadata
+b5b01e3e232a: Pulling fs layer
+b5b01e3e232a: Download complete
+d805670613ea: Pulling metadata
+d805670613ea: Pulling fs layer
+d805670613ea: Download complete
+114e0dcb406f: Pulling metadata
+114e0dcb406f: Pulling fs layer
+114e0dcb406f: Download complete
+2fffa8c5858e: Pulling metadata
+2fffa8c5858e: Pulling fs layer
+2fffa8c5858e: Download complete
+5b993c4993d9: Pulling metadata
+5b993c4993d9: Pulling fs layer
+5b993c4993d9: Download complete
+1b01b6f0afb1: Pulling metadata
+1b01b6f0afb1: Pulling fs layer
+1b01b6f0afb1: Download complete
+fae836222695: Pulling metadata
+fae836222695: Pulling fs layer
+fae836222695: Download complete
+5f6ce5f6e095: Pulling metadata
+5f6ce5f6e095: Pulling fs layer
+5f6ce5f6e095: Download complete
+28ec051e3029: Pulling metadata
+28ec051e3029: Pulling fs layer
+28ec051e3029: Download complete
+416878e8870f: Pulling metadata
+416878e8870f: Pulling fs layer
+416878e8870f: Download complete
+78dd7be45db5: Pulling metadata
+78dd7be45db5: Pulling fs layer
+78dd7be45db5: Download complete
+78dd7be45db5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/exhibitor:latest
+
+real  27.39
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.5 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/exhibitor:latest"
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+805ae2da6171        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+The push refers to a repository [136.187.101.80:5000/exhibitor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/exhibitor (1 tags)
+8dbd9e392a96: Pushing
+8dbd9e392a96: Buffering to disk
+8dbd9e392a96: Image successfully pushed
+b5b01e3e232a: Pushing
+b5b01e3e232a: Buffering to disk
+b5b01e3e232a: Image successfully pushed
+d805670613ea: Pushing
+d805670613ea: Buffering to disk
+d805670613ea: Image successfully pushed
+114e0dcb406f: Pushing
+114e0dcb406f: Buffering to disk
+114e0dcb406f: Image successfully pushed
+2fffa8c5858e: Pushing
+2fffa8c5858e: Buffering to disk
+2fffa8c5858e: Image successfully pushed
+5b993c4993d9: Pushing
+5b993c4993d9: Buffering to disk
+5b993c4993d9: Image successfully pushed
+1b01b6f0afb1: Pushing
+1b01b6f0afb1: Buffering to disk
+1b01b6f0afb1: Image successfully pushed
+fae836222695: Pushing
+fae836222695: Buffering to disk
+fae836222695: Image successfully pushed
+5f6ce5f6e095: Pushing
+5f6ce5f6e095: Buffering to disk
+5f6ce5f6e095: Image successfully pushed
+28ec051e3029: Pushing
+28ec051e3029: Buffering to disk
+28ec051e3029: Image successfully pushed
+416878e8870f: Pushing
+416878e8870f: Buffering to disk
+416878e8870f: Image successfully pushed
+78dd7be45db5: Pushing
+78dd7be45db5: Buffering to disk
+78dd7be45db5: Image successfully pushed
+Pushing tag for rev [78dd7be45db5] on {http://136.187.101.80:5000/v1/repositories/exhibitor/tags/latest}
+
+real  101.46
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker pull 136.187.101.80:5000/exhibitor:latest
+Pulling repository 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor, endpoint: http://136.187.101.80:5000/v1/
+78dd7be45db5: Pulling dependent layers
+8dbd9e392a96: Pulling metadata
+8dbd9e392a96: Pulling fs layer
+8dbd9e392a96: Download complete
+b5b01e3e232a: Pulling metadata
+b5b01e3e232a: Pulling fs layer
+b5b01e3e232a: Download complete
+d805670613ea: Pulling metadata
+d805670613ea: Pulling fs layer
+d805670613ea: Download complete
+114e0dcb406f: Pulling metadata
+114e0dcb406f: Pulling fs layer
+114e0dcb406f: Download complete
+2fffa8c5858e: Pulling metadata
+2fffa8c5858e: Pulling fs layer
+2fffa8c5858e: Download complete
+5b993c4993d9: Pulling metadata
+5b993c4993d9: Pulling fs layer
+5b993c4993d9: Download complete
+1b01b6f0afb1: Pulling metadata
+1b01b6f0afb1: Pulling fs layer
+1b01b6f0afb1: Download complete
+fae836222695: Pulling metadata
+fae836222695: Pulling fs layer
+fae836222695: Download complete
+5f6ce5f6e095: Pulling metadata
+5f6ce5f6e095: Pulling fs layer
+5f6ce5f6e095: Download complete
+28ec051e3029: Pulling metadata
+28ec051e3029: Pulling fs layer
+28ec051e3029: Download complete
+416878e8870f: Pulling metadata
+416878e8870f: Pulling fs layer
+416878e8870f: Download complete
+78dd7be45db5: Pulling metadata
+78dd7be45db5: Pulling fs layer
+78dd7be45db5: Download complete
+78dd7be45db5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/exhibitor:latest
+
+real  28.25
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.5 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/exhibitor:latest"
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+0ee9e177186d        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+The push refers to a repository [136.187.101.80:5000/exhibitor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/exhibitor (1 tags)
+8dbd9e392a96: Pushing
+8dbd9e392a96: Buffering to disk
+8dbd9e392a96: Image successfully pushed
+b5b01e3e232a: Pushing
+b5b01e3e232a: Buffering to disk
+b5b01e3e232a: Image successfully pushed
+d805670613ea: Pushing
+d805670613ea: Buffering to disk
+d805670613ea: Image successfully pushed
+114e0dcb406f: Pushing
+114e0dcb406f: Buffering to disk
+114e0dcb406f: Image successfully pushed
+2fffa8c5858e: Pushing
+2fffa8c5858e: Buffering to disk
+2fffa8c5858e: Image successfully pushed
+5b993c4993d9: Pushing
+5b993c4993d9: Buffering to disk
+5b993c4993d9: Image successfully pushed
+1b01b6f0afb1: Pushing
+1b01b6f0afb1: Buffering to disk
+1b01b6f0afb1: Image successfully pushed
+fae836222695: Pushing
+fae836222695: Buffering to disk
+fae836222695: Image successfully pushed
+5f6ce5f6e095: Pushing
+5f6ce5f6e095: Buffering to disk
+5f6ce5f6e095: Image successfully pushed
+28ec051e3029: Pushing
+28ec051e3029: Buffering to disk
+28ec051e3029: Image successfully pushed
+416878e8870f: Pushing
+416878e8870f: Buffering to disk
+416878e8870f: Image successfully pushed
+78dd7be45db5: Pushing
+78dd7be45db5: Buffering to disk
+78dd7be45db5: Image successfully pushed
+Pushing tag for rev [78dd7be45db5] on {http://136.187.101.80:5000/v1/repositories/exhibitor/tags/latest}
+
+real  100.43
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker pull 136.187.101.80:5000/exhibitor:latest
+Pulling repository 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor, endpoint: http://136.187.101.80:5000/v1/
+78dd7be45db5: Pulling dependent layers
+8dbd9e392a96: Pulling metadata
+8dbd9e392a96: Pulling fs layer
+8dbd9e392a96: Download complete
+b5b01e3e232a: Pulling metadata
+b5b01e3e232a: Pulling fs layer
+b5b01e3e232a: Download complete
+d805670613ea: Pulling metadata
+d805670613ea: Pulling fs layer
+d805670613ea: Download complete
+114e0dcb406f: Pulling metadata
+114e0dcb406f: Pulling fs layer
+114e0dcb406f: Download complete
+2fffa8c5858e: Pulling metadata
+2fffa8c5858e: Pulling fs layer
+2fffa8c5858e: Download complete
+5b993c4993d9: Pulling metadata
+5b993c4993d9: Pulling fs layer
+5b993c4993d9: Download complete
+1b01b6f0afb1: Pulling metadata
+1b01b6f0afb1: Pulling fs layer
+1b01b6f0afb1: Download complete
+fae836222695: Pulling metadata
+fae836222695: Pulling fs layer
+fae836222695: Download complete
+5f6ce5f6e095: Pulling metadata
+5f6ce5f6e095: Pulling fs layer
+5f6ce5f6e095: Download complete
+28ec051e3029: Pulling metadata
+28ec051e3029: Pulling fs layer
+28ec051e3029: Download complete
+416878e8870f: Pulling metadata
+416878e8870f: Pulling fs layer
+416878e8870f: Download complete
+78dd7be45db5: Pulling metadata
+78dd7be45db5: Pulling fs layer
+78dd7be45db5: Download complete
+78dd7be45db5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/exhibitor:latest
+
+real  28.33
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.5 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/exhibitor:latest"
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+fb44ba1f0694        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+The push refers to a repository [136.187.101.80:5000/exhibitor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/exhibitor (1 tags)
+8dbd9e392a96: Pushing
+8dbd9e392a96: Buffering to disk
+8dbd9e392a96: Image successfully pushed
+b5b01e3e232a: Pushing
+b5b01e3e232a: Buffering to disk
+b5b01e3e232a: Image successfully pushed
+d805670613ea: Pushing
+d805670613ea: Buffering to disk
+d805670613ea: Image successfully pushed
+114e0dcb406f: Pushing
+114e0dcb406f: Buffering to disk
+114e0dcb406f: Image successfully pushed
+2fffa8c5858e: Pushing
+2fffa8c5858e: Buffering to disk
+2fffa8c5858e: Image successfully pushed
+5b993c4993d9: Pushing
+5b993c4993d9: Buffering to disk
+5b993c4993d9: Image successfully pushed
+1b01b6f0afb1: Pushing
+1b01b6f0afb1: Buffering to disk
+1b01b6f0afb1: Image successfully pushed
+fae836222695: Pushing
+fae836222695: Buffering to disk
+fae836222695: Image successfully pushed
+5f6ce5f6e095: Pushing
+5f6ce5f6e095: Buffering to disk
+5f6ce5f6e095: Image successfully pushed
+28ec051e3029: Pushing
+28ec051e3029: Buffering to disk
+28ec051e3029: Image successfully pushed
+416878e8870f: Pushing
+416878e8870f: Buffering to disk
+416878e8870f: Image successfully pushed
+78dd7be45db5: Pushing
+78dd7be45db5: Buffering to disk
+78dd7be45db5: Image successfully pushed
+Pushing tag for rev [78dd7be45db5] on {http://136.187.101.80:5000/v1/repositories/exhibitor/tags/latest}
+
+real  103.06
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker pull 136.187.101.80:5000/exhibitor:latest
+Pulling repository 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor, endpoint: http://136.187.101.80:5000/v1/
+78dd7be45db5: Pulling dependent layers
+8dbd9e392a96: Pulling metadata
+8dbd9e392a96: Pulling fs layer
+8dbd9e392a96: Download complete
+b5b01e3e232a: Pulling metadata
+b5b01e3e232a: Pulling fs layer
+b5b01e3e232a: Download complete
+d805670613ea: Pulling metadata
+d805670613ea: Pulling fs layer
+d805670613ea: Download complete
+114e0dcb406f: Pulling metadata
+114e0dcb406f: Pulling fs layer
+114e0dcb406f: Download complete
+2fffa8c5858e: Pulling metadata
+2fffa8c5858e: Pulling fs layer
+2fffa8c5858e: Download complete
+5b993c4993d9: Pulling metadata
+5b993c4993d9: Pulling fs layer
+5b993c4993d9: Download complete
+1b01b6f0afb1: Pulling metadata
+1b01b6f0afb1: Pulling fs layer
+1b01b6f0afb1: Download complete
+fae836222695: Pulling metadata
+fae836222695: Pulling fs layer
+fae836222695: Download complete
+5f6ce5f6e095: Pulling metadata
+5f6ce5f6e095: Pulling fs layer
+5f6ce5f6e095: Download complete
+28ec051e3029: Pulling metadata
+28ec051e3029: Pulling fs layer
+28ec051e3029: Download complete
+416878e8870f: Pulling metadata
+416878e8870f: Pulling fs layer
+416878e8870f: Download complete
+78dd7be45db5: Pulling metadata
+78dd7be45db5: Pulling fs layer
+78dd7be45db5: Download complete
+78dd7be45db5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/exhibitor:latest
+
+real  27.37
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.5 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/exhibitor:latest"
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+9858b7ec23f6        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+The push refers to a repository [136.187.101.80:5000/exhibitor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/exhibitor (1 tags)
+8dbd9e392a96: Pushing
+8dbd9e392a96: Buffering to disk
+8dbd9e392a96: Image successfully pushed
+b5b01e3e232a: Pushing
+b5b01e3e232a: Buffering to disk
+b5b01e3e232a: Image successfully pushed
+d805670613ea: Pushing
+d805670613ea: Buffering to disk
+d805670613ea: Image successfully pushed
+114e0dcb406f: Pushing
+114e0dcb406f: Buffering to disk
+114e0dcb406f: Image successfully pushed
+2fffa8c5858e: Pushing
+2fffa8c5858e: Buffering to disk
+2fffa8c5858e: Image successfully pushed
+5b993c4993d9: Pushing
+5b993c4993d9: Buffering to disk
+5b993c4993d9: Image successfully pushed
+1b01b6f0afb1: Pushing
+1b01b6f0afb1: Buffering to disk
+1b01b6f0afb1: Image successfully pushed
+fae836222695: Pushing
+fae836222695: Buffering to disk
+fae836222695: Image successfully pushed
+5f6ce5f6e095: Pushing
+5f6ce5f6e095: Buffering to disk
+5f6ce5f6e095: Image successfully pushed
+28ec051e3029: Pushing
+28ec051e3029: Buffering to disk
+28ec051e3029: Image successfully pushed
+416878e8870f: Pushing
+416878e8870f: Buffering to disk
+416878e8870f: Image successfully pushed
+78dd7be45db5: Pushing
+78dd7be45db5: Buffering to disk
+78dd7be45db5: Image successfully pushed
+Pushing tag for rev [78dd7be45db5] on {http://136.187.101.80:5000/v1/repositories/exhibitor/tags/latest}
+
+real  101.55
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker pull 136.187.101.80:5000/exhibitor:latest
+Pulling repository 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor, endpoint: http://136.187.101.80:5000/v1/
+78dd7be45db5: Pulling dependent layers
+8dbd9e392a96: Pulling metadata
+8dbd9e392a96: Pulling fs layer
+8dbd9e392a96: Download complete
+b5b01e3e232a: Pulling metadata
+b5b01e3e232a: Pulling fs layer
+b5b01e3e232a: Download complete
+d805670613ea: Pulling metadata
+d805670613ea: Pulling fs layer
+d805670613ea: Download complete
+114e0dcb406f: Pulling metadata
+114e0dcb406f: Pulling fs layer
+114e0dcb406f: Download complete
+2fffa8c5858e: Pulling metadata
+2fffa8c5858e: Pulling fs layer
+2fffa8c5858e: Download complete
+5b993c4993d9: Pulling metadata
+5b993c4993d9: Pulling fs layer
+5b993c4993d9: Download complete
+1b01b6f0afb1: Pulling metadata
+1b01b6f0afb1: Pulling fs layer
+1b01b6f0afb1: Download complete
+fae836222695: Pulling metadata
+fae836222695: Pulling fs layer
+fae836222695: Download complete
+5f6ce5f6e095: Pulling metadata
+5f6ce5f6e095: Pulling fs layer
+5f6ce5f6e095: Download complete
+28ec051e3029: Pulling metadata
+28ec051e3029: Pulling fs layer
+28ec051e3029: Download complete
+416878e8870f: Pulling metadata
+416878e8870f: Pulling fs layer
+416878e8870f: Download complete
+78dd7be45db5: Pulling metadata
+78dd7be45db5: Pulling fs layer
+78dd7be45db5: Download complete
+78dd7be45db5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/exhibitor:latest
+
+real  28.12
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.5 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/exhibitor:latest"
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+510c9770faf7        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b02e439fc471        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+The push refers to a repository [136.187.101.80:5000/exhibitor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/exhibitor (1 tags)
+8dbd9e392a96: Pushing
+8dbd9e392a96: Buffering to disk
+8dbd9e392a96: Image successfully pushed
+b5b01e3e232a: Pushing
+b5b01e3e232a: Buffering to disk
+b5b01e3e232a: Image successfully pushed
+d805670613ea: Pushing
+d805670613ea: Buffering to disk
+d805670613ea: Image successfully pushed
+114e0dcb406f: Pushing
+114e0dcb406f: Buffering to disk
+114e0dcb406f: Image successfully pushed
+2fffa8c5858e: Pushing
+2fffa8c5858e: Buffering to disk
+2fffa8c5858e: Image successfully pushed
+5b993c4993d9: Pushing
+5b993c4993d9: Buffering to disk
+5b993c4993d9: Image successfully pushed
+1b01b6f0afb1: Pushing
+1b01b6f0afb1: Buffering to disk
+1b01b6f0afb1: Image successfully pushed
+fae836222695: Pushing
+fae836222695: Buffering to disk
+fae836222695: Image successfully pushed
+5f6ce5f6e095: Pushing
+5f6ce5f6e095: Buffering to disk
+5f6ce5f6e095: Image successfully pushed
+28ec051e3029: Pushing
+28ec051e3029: Buffering to disk
+28ec051e3029: Image successfully pushed
+416878e8870f: Pushing
+416878e8870f: Buffering to disk
+416878e8870f: Image successfully pushed
+78dd7be45db5: Pushing
+78dd7be45db5: Buffering to disk
+78dd7be45db5: Image successfully pushed
+Pushing tag for rev [78dd7be45db5] on {http://136.187.101.80:5000/v1/repositories/exhibitor/tags/latest}
+
+real  99.44
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker pull 136.187.101.80:5000/exhibitor:latest
+Pulling repository 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor, endpoint: http://136.187.101.80:5000/v1/
+78dd7be45db5: Pulling dependent layers
+8dbd9e392a96: Pulling metadata
+8dbd9e392a96: Pulling fs layer
+8dbd9e392a96: Download complete
+b5b01e3e232a: Pulling metadata
+b5b01e3e232a: Pulling fs layer
+b5b01e3e232a: Download complete
+d805670613ea: Pulling metadata
+d805670613ea: Pulling fs layer
+d805670613ea: Download complete
+114e0dcb406f: Pulling metadata
+114e0dcb406f: Pulling fs layer
+114e0dcb406f: Download complete
+2fffa8c5858e: Pulling metadata
+2fffa8c5858e: Pulling fs layer
+2fffa8c5858e: Download complete
+5b993c4993d9: Pulling metadata
+5b993c4993d9: Pulling fs layer
+5b993c4993d9: Download complete
+1b01b6f0afb1: Pulling metadata
+1b01b6f0afb1: Pulling fs layer
+1b01b6f0afb1: Download complete
+fae836222695: Pulling metadata
+fae836222695: Pulling fs layer
+fae836222695: Download complete
+5f6ce5f6e095: Pulling metadata
+5f6ce5f6e095: Pulling fs layer
+5f6ce5f6e095: Download complete
+28ec051e3029: Pulling metadata
+28ec051e3029: Pulling fs layer
+28ec051e3029: Download complete
+416878e8870f: Pulling metadata
+416878e8870f: Pulling fs layer
+416878e8870f: Download complete
+78dd7be45db5: Pulling metadata
+78dd7be45db5: Pulling fs layer
+78dd7be45db5: Download complete
+78dd7be45db5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/exhibitor:latest
+
+real  27.75
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.5 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/exhibitor:latest"
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 exhibitor
+
+docker images
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker tag kiwenlau/exhibitor:latest 136.187.101.80:5000/exhibitor:latest
+
+docker images
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.6 MB
+kiwenlau/exhibitor              latest              78dd7be45db5        20 months ago       806.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+ce0fcb99b149        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/exhibitor:latest
+The push refers to a repository [136.187.101.80:5000/exhibitor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/exhibitor (1 tags)
+8dbd9e392a96: Pushing
+8dbd9e392a96: Buffering to disk
+8dbd9e392a96: Image successfully pushed
+b5b01e3e232a: Pushing
+b5b01e3e232a: Buffering to disk
+b5b01e3e232a: Image successfully pushed
+d805670613ea: Pushing
+d805670613ea: Buffering to disk
+d805670613ea: Image successfully pushed
+114e0dcb406f: Pushing
+114e0dcb406f: Buffering to disk
+114e0dcb406f: Image successfully pushed
+2fffa8c5858e: Pushing
+2fffa8c5858e: Buffering to disk
+2fffa8c5858e: Image successfully pushed
+5b993c4993d9: Pushing
+5b993c4993d9: Buffering to disk
+5b993c4993d9: Image successfully pushed
+1b01b6f0afb1: Pushing
+1b01b6f0afb1: Buffering to disk
+1b01b6f0afb1: Image successfully pushed
+fae836222695: Pushing
+fae836222695: Buffering to disk
+fae836222695: Image successfully pushed
+5f6ce5f6e095: Pushing
+5f6ce5f6e095: Buffering to disk
+5f6ce5f6e095: Image successfully pushed
+28ec051e3029: Pushing
+28ec051e3029: Buffering to disk
+28ec051e3029: Image successfully pushed
+416878e8870f: Pushing
+416878e8870f: Buffering to disk
+416878e8870f: Image successfully pushed
+78dd7be45db5: Pushing
+78dd7be45db5: Buffering to disk
+78dd7be45db5: Image successfully pushed
+Pushing tag for rev [78dd7be45db5] on {http://136.187.101.80:5000/v1/repositories/exhibitor/tags/latest}
+
+real  101.79
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker pull 136.187.101.80:5000/exhibitor:latest
+Pulling repository 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor
+78dd7be45db5: Pulling image (latest) from 136.187.101.80:5000/exhibitor, endpoint: http://136.187.101.80:5000/v1/
+78dd7be45db5: Pulling dependent layers
+8dbd9e392a96: Pulling metadata
+8dbd9e392a96: Pulling fs layer
+8dbd9e392a96: Download complete
+b5b01e3e232a: Pulling metadata
+b5b01e3e232a: Pulling fs layer
+b5b01e3e232a: Download complete
+d805670613ea: Pulling metadata
+d805670613ea: Pulling fs layer
+d805670613ea: Download complete
+114e0dcb406f: Pulling metadata
+114e0dcb406f: Pulling fs layer
+114e0dcb406f: Download complete
+2fffa8c5858e: Pulling metadata
+2fffa8c5858e: Pulling fs layer
+2fffa8c5858e: Download complete
+5b993c4993d9: Pulling metadata
+5b993c4993d9: Pulling fs layer
+5b993c4993d9: Download complete
+1b01b6f0afb1: Pulling metadata
+1b01b6f0afb1: Pulling fs layer
+1b01b6f0afb1: Download complete
+fae836222695: Pulling metadata
+fae836222695: Pulling fs layer
+fae836222695: Download complete
+5f6ce5f6e095: Pulling metadata
+5f6ce5f6e095: Pulling fs layer
+5f6ce5f6e095: Download complete
+28ec051e3029: Pulling metadata
+28ec051e3029: Pulling fs layer
+28ec051e3029: Download complete
+416878e8870f: Pulling metadata
+416878e8870f: Pulling fs layer
+416878e8870f: Download complete
+78dd7be45db5: Pulling metadata
+78dd7be45db5: Pulling fs layer
+78dd7be45db5: Download complete
+78dd7be45db5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/exhibitor:latest
+
+real  27.75
+
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+136.187.101.80:5000/exhibitor   latest              78dd7be45db5        20 months ago       806.5 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/exhibitor:latest"
+ssh kai@52.68.197.112 "docker images | grep exhibitor"
+
+docker rm -f docker_registry
+
+end date: Fri Jul 24 05:02:38 JST 2015
+
+

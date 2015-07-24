@@ -1,0 +1,1847 @@
+
+pullpush benchmark: transfer glassfish image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Fri Jul 24 03:18:34 JST 2015
+
+sudo docker images
+kiwenlau/glassfish              flat                1b5e41e2fa5c        4 weeks ago         604.9 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+sudo docker images
+kiwenlau/glassfish              flat                1b5e41e2fa5c        4 weeks ago         604.9 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+bbb8a8d89675        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/glassfish (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+3e9890d3403b: Pushing
+3e9890d3403b: Buffering to disk
+3e9890d3403b: Image successfully pushed
+b9192a10c580: Pushing
+b9192a10c580: Buffering to disk
+b9192a10c580: Image successfully pushed
+28e5e6a80860: Pushing
+28e5e6a80860: Buffering to disk
+28e5e6a80860: Image successfully pushed
+2128079f9b8f: Pushing
+2128079f9b8f: Buffering to disk
+2128079f9b8f: Image successfully pushed
+976f7cce7de0: Pushing
+976f7cce7de0: Buffering to disk
+976f7cce7de0: Image successfully pushed
+2b3ef6d2a341: Pushing
+2b3ef6d2a341: Buffering to disk
+2b3ef6d2a341: Image successfully pushed
+5f52a2b74e30: Pushing
+5f52a2b74e30: Buffering to disk
+5f52a2b74e30: Image successfully pushed
+0894ebc19e86: Pushing
+0894ebc19e86: Buffering to disk
+0894ebc19e86: Image successfully pushed
+339951c44fef: Pushing
+339951c44fef: Buffering to disk
+339951c44fef: Image successfully pushed
+d0d174e641a6: Pushing
+d0d174e641a6: Buffering to disk
+d0d174e641a6: Image successfully pushed
+f2ec86814c07: Pushing
+f2ec86814c07: Buffering to disk
+f2ec86814c07: Image successfully pushed
+a6bd7bd28c24: Pushing
+a6bd7bd28c24: Buffering to disk
+a6bd7bd28c24: Image successfully pushed
+5587574e22e4: Pushing
+5587574e22e4: Buffering to disk
+5587574e22e4: Image successfully pushed
+3b7fbc5c9b4b: Pushing
+3b7fbc5c9b4b: Buffering to disk
+3b7fbc5c9b4b: Image successfully pushed
+Pushing tag for rev [3b7fbc5c9b4b] on {http://136.187.101.80:5000/v1/repositories/glassfish/tags/latest}
+
+real  107.46
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+Pulling repository 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish, endpoint: http://136.187.101.80:5000/v1/
+3b7fbc5c9b4b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+3e9890d3403b: Pulling metadata
+3e9890d3403b: Pulling fs layer
+3e9890d3403b: Download complete
+b9192a10c580: Pulling metadata
+b9192a10c580: Pulling fs layer
+b9192a10c580: Download complete
+28e5e6a80860: Pulling metadata
+28e5e6a80860: Pulling fs layer
+28e5e6a80860: Download complete
+2128079f9b8f: Pulling metadata
+2128079f9b8f: Pulling fs layer
+2128079f9b8f: Download complete
+976f7cce7de0: Pulling metadata
+976f7cce7de0: Pulling fs layer
+976f7cce7de0: Download complete
+2b3ef6d2a341: Pulling metadata
+2b3ef6d2a341: Pulling fs layer
+2b3ef6d2a341: Download complete
+5f52a2b74e30: Pulling metadata
+5f52a2b74e30: Pulling fs layer
+5f52a2b74e30: Download complete
+0894ebc19e86: Pulling metadata
+0894ebc19e86: Pulling fs layer
+0894ebc19e86: Download complete
+339951c44fef: Pulling metadata
+339951c44fef: Pulling fs layer
+339951c44fef: Download complete
+d0d174e641a6: Pulling metadata
+d0d174e641a6: Pulling fs layer
+d0d174e641a6: Download complete
+f2ec86814c07: Pulling metadata
+f2ec86814c07: Pulling fs layer
+f2ec86814c07: Download complete
+a6bd7bd28c24: Pulling metadata
+a6bd7bd28c24: Pulling fs layer
+a6bd7bd28c24: Download complete
+5587574e22e4: Pulling metadata
+5587574e22e4: Pulling fs layer
+5587574e22e4: Download complete
+3b7fbc5c9b4b: Pulling metadata
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  25.36
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+4ae1decd9a8b        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+
+docker rm -f docker_registry
+
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1a6a97edbba5        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+
+docker rm -f docker_registry
+
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+9bb34958ee8a        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/glassfish (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+3e9890d3403b: Pushing
+3e9890d3403b: Buffering to disk
+3e9890d3403b: Image successfully pushed
+b9192a10c580: Pushing
+b9192a10c580: Buffering to disk
+b9192a10c580: Image successfully pushed
+28e5e6a80860: Pushing
+28e5e6a80860: Buffering to disk
+28e5e6a80860: Image successfully pushed
+2128079f9b8f: Pushing
+2128079f9b8f: Buffering to disk
+2128079f9b8f: Image successfully pushed
+976f7cce7de0: Pushing
+976f7cce7de0: Buffering to disk
+976f7cce7de0: Image successfully pushed
+2b3ef6d2a341: Pushing
+2b3ef6d2a341: Buffering to disk
+2b3ef6d2a341: Image successfully pushed
+5f52a2b74e30: Pushing
+5f52a2b74e30: Buffering to disk
+5f52a2b74e30: Image successfully pushed
+0894ebc19e86: Pushing
+0894ebc19e86: Buffering to disk
+0894ebc19e86: Image successfully pushed
+339951c44fef: Pushing
+339951c44fef: Buffering to disk
+339951c44fef: Image successfully pushed
+d0d174e641a6: Pushing
+d0d174e641a6: Buffering to disk
+d0d174e641a6: Image successfully pushed
+f2ec86814c07: Pushing
+f2ec86814c07: Buffering to disk
+f2ec86814c07: Image successfully pushed
+a6bd7bd28c24: Pushing
+a6bd7bd28c24: Buffering to disk
+a6bd7bd28c24: Image successfully pushed
+5587574e22e4: Pushing
+5587574e22e4: Buffering to disk
+5587574e22e4: Image successfully pushed
+3b7fbc5c9b4b: Pushing
+3b7fbc5c9b4b: Buffering to disk
+3b7fbc5c9b4b: Image successfully pushed
+Pushing tag for rev [3b7fbc5c9b4b] on {http://136.187.101.80:5000/v1/repositories/glassfish/tags/latest}
+
+real  107.25
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+Pulling repository 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish, endpoint: http://136.187.101.80:5000/v1/
+3b7fbc5c9b4b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+3e9890d3403b: Pulling metadata
+3e9890d3403b: Pulling fs layer
+3e9890d3403b: Download complete
+b9192a10c580: Pulling metadata
+b9192a10c580: Pulling fs layer
+b9192a10c580: Download complete
+28e5e6a80860: Pulling metadata
+28e5e6a80860: Pulling fs layer
+28e5e6a80860: Download complete
+2128079f9b8f: Pulling metadata
+2128079f9b8f: Pulling fs layer
+2128079f9b8f: Download complete
+976f7cce7de0: Pulling metadata
+976f7cce7de0: Pulling fs layer
+976f7cce7de0: Download complete
+2b3ef6d2a341: Pulling metadata
+2b3ef6d2a341: Pulling fs layer
+2b3ef6d2a341: Download complete
+5f52a2b74e30: Pulling metadata
+5f52a2b74e30: Pulling fs layer
+5f52a2b74e30: Download complete
+0894ebc19e86: Pulling metadata
+0894ebc19e86: Pulling fs layer
+0894ebc19e86: Download complete
+339951c44fef: Pulling metadata
+339951c44fef: Pulling fs layer
+339951c44fef: Download complete
+d0d174e641a6: Pulling metadata
+d0d174e641a6: Pulling fs layer
+d0d174e641a6: Download complete
+f2ec86814c07: Pulling metadata
+f2ec86814c07: Pulling fs layer
+f2ec86814c07: Download complete
+a6bd7bd28c24: Pulling metadata
+a6bd7bd28c24: Pulling fs layer
+a6bd7bd28c24: Download complete
+5587574e22e4: Pulling metadata
+5587574e22e4: Pulling fs layer
+5587574e22e4: Download complete
+3b7fbc5c9b4b: Pulling metadata
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  25.00
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+86700d9b02d8        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+
+docker rm -f docker_registry
+
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+99aad2963f12        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/glassfish (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+3e9890d3403b: Pushing
+3e9890d3403b: Buffering to disk
+3e9890d3403b: Image successfully pushed
+b9192a10c580: Pushing
+b9192a10c580: Buffering to disk
+b9192a10c580: Image successfully pushed
+28e5e6a80860: Pushing
+28e5e6a80860: Buffering to disk
+28e5e6a80860: Image successfully pushed
+2128079f9b8f: Pushing
+2128079f9b8f: Buffering to disk
+2128079f9b8f: Image successfully pushed
+976f7cce7de0: Pushing
+976f7cce7de0: Buffering to disk
+976f7cce7de0: Image successfully pushed
+2b3ef6d2a341: Pushing
+2b3ef6d2a341: Buffering to disk
+2b3ef6d2a341: Image successfully pushed
+5f52a2b74e30: Pushing
+5f52a2b74e30: Buffering to disk
+5f52a2b74e30: Image successfully pushed
+0894ebc19e86: Pushing
+0894ebc19e86: Buffering to disk
+0894ebc19e86: Image successfully pushed
+339951c44fef: Pushing
+339951c44fef: Buffering to disk
+339951c44fef: Image successfully pushed
+d0d174e641a6: Pushing
+d0d174e641a6: Buffering to disk
+d0d174e641a6: Image successfully pushed
+f2ec86814c07: Pushing
+f2ec86814c07: Buffering to disk
+f2ec86814c07: Image successfully pushed
+a6bd7bd28c24: Pushing
+a6bd7bd28c24: Buffering to disk
+a6bd7bd28c24: Image successfully pushed
+5587574e22e4: Pushing
+5587574e22e4: Buffering to disk
+5587574e22e4: Image successfully pushed
+3b7fbc5c9b4b: Pushing
+3b7fbc5c9b4b: Buffering to disk
+3b7fbc5c9b4b: Image successfully pushed
+Pushing tag for rev [3b7fbc5c9b4b] on {http://136.187.101.80:5000/v1/repositories/glassfish/tags/latest}
+
+real  103.92
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+Pulling repository 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish, endpoint: http://136.187.101.80:5000/v1/
+3b7fbc5c9b4b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+3e9890d3403b: Pulling metadata
+3e9890d3403b: Pulling fs layer
+3e9890d3403b: Download complete
+b9192a10c580: Pulling metadata
+b9192a10c580: Pulling fs layer
+b9192a10c580: Download complete
+28e5e6a80860: Pulling metadata
+28e5e6a80860: Pulling fs layer
+28e5e6a80860: Download complete
+2128079f9b8f: Pulling metadata
+2128079f9b8f: Pulling fs layer
+2128079f9b8f: Download complete
+976f7cce7de0: Pulling metadata
+976f7cce7de0: Pulling fs layer
+976f7cce7de0: Download complete
+2b3ef6d2a341: Pulling metadata
+2b3ef6d2a341: Pulling fs layer
+2b3ef6d2a341: Download complete
+5f52a2b74e30: Pulling metadata
+5f52a2b74e30: Pulling fs layer
+5f52a2b74e30: Download complete
+0894ebc19e86: Pulling metadata
+0894ebc19e86: Pulling fs layer
+0894ebc19e86: Download complete
+339951c44fef: Pulling metadata
+339951c44fef: Pulling fs layer
+339951c44fef: Download complete
+d0d174e641a6: Pulling metadata
+d0d174e641a6: Pulling fs layer
+d0d174e641a6: Download complete
+f2ec86814c07: Pulling metadata
+f2ec86814c07: Pulling fs layer
+f2ec86814c07: Download complete
+a6bd7bd28c24: Pulling metadata
+a6bd7bd28c24: Pulling fs layer
+a6bd7bd28c24: Download complete
+5587574e22e4: Pulling metadata
+5587574e22e4: Pulling fs layer
+5587574e22e4: Download complete
+3b7fbc5c9b4b: Pulling metadata
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  25.72
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+271d777225aa        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+e61d287162cc        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/glassfish (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+3e9890d3403b: Pushing
+3e9890d3403b: Buffering to disk
+3e9890d3403b: Image successfully pushed
+b9192a10c580: Pushing
+b9192a10c580: Buffering to disk
+b9192a10c580: Image successfully pushed
+28e5e6a80860: Pushing
+28e5e6a80860: Buffering to disk
+28e5e6a80860: Image successfully pushed
+2128079f9b8f: Pushing
+2128079f9b8f: Buffering to disk
+2128079f9b8f: Image successfully pushed
+976f7cce7de0: Pushing
+976f7cce7de0: Buffering to disk
+976f7cce7de0: Image successfully pushed
+2b3ef6d2a341: Pushing
+2b3ef6d2a341: Buffering to disk
+2b3ef6d2a341: Image successfully pushed
+5f52a2b74e30: Pushing
+5f52a2b74e30: Buffering to disk
+5f52a2b74e30: Image successfully pushed
+0894ebc19e86: Pushing
+0894ebc19e86: Buffering to disk
+0894ebc19e86: Image successfully pushed
+339951c44fef: Pushing
+339951c44fef: Buffering to disk
+339951c44fef: Image successfully pushed
+d0d174e641a6: Pushing
+d0d174e641a6: Buffering to disk
+d0d174e641a6: Image successfully pushed
+f2ec86814c07: Pushing
+f2ec86814c07: Buffering to disk
+f2ec86814c07: Image successfully pushed
+a6bd7bd28c24: Pushing
+a6bd7bd28c24: Buffering to disk
+a6bd7bd28c24: Image successfully pushed
+5587574e22e4: Pushing
+5587574e22e4: Buffering to disk
+5587574e22e4: Image successfully pushed
+3b7fbc5c9b4b: Pushing
+3b7fbc5c9b4b: Buffering to disk
+3b7fbc5c9b4b: Image successfully pushed
+Pushing tag for rev [3b7fbc5c9b4b] on {http://136.187.101.80:5000/v1/repositories/glassfish/tags/latest}
+
+real  106.93
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+Pulling repository 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish, endpoint: http://136.187.101.80:5000/v1/
+3b7fbc5c9b4b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+3e9890d3403b: Pulling metadata
+3e9890d3403b: Pulling fs layer
+3e9890d3403b: Download complete
+b9192a10c580: Pulling metadata
+b9192a10c580: Pulling fs layer
+b9192a10c580: Download complete
+28e5e6a80860: Pulling metadata
+28e5e6a80860: Pulling fs layer
+28e5e6a80860: Download complete
+2128079f9b8f: Pulling metadata
+2128079f9b8f: Pulling fs layer
+2128079f9b8f: Download complete
+976f7cce7de0: Pulling metadata
+976f7cce7de0: Pulling fs layer
+976f7cce7de0: Download complete
+2b3ef6d2a341: Pulling metadata
+2b3ef6d2a341: Pulling fs layer
+2b3ef6d2a341: Download complete
+5f52a2b74e30: Pulling metadata
+5f52a2b74e30: Pulling fs layer
+5f52a2b74e30: Download complete
+0894ebc19e86: Pulling metadata
+0894ebc19e86: Pulling fs layer
+0894ebc19e86: Download complete
+339951c44fef: Pulling metadata
+339951c44fef: Pulling fs layer
+339951c44fef: Download complete
+d0d174e641a6: Pulling metadata
+d0d174e641a6: Pulling fs layer
+d0d174e641a6: Download complete
+f2ec86814c07: Pulling metadata
+f2ec86814c07: Pulling fs layer
+f2ec86814c07: Download complete
+a6bd7bd28c24: Pulling metadata
+a6bd7bd28c24: Pulling fs layer
+a6bd7bd28c24: Download complete
+5587574e22e4: Pulling metadata
+5587574e22e4: Pulling fs layer
+5587574e22e4: Download complete
+3b7fbc5c9b4b: Pulling metadata
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  24.85
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3be9ad63f2a5        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/glassfish (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+3e9890d3403b: Pushing
+3e9890d3403b: Buffering to disk
+3e9890d3403b: Image successfully pushed
+b9192a10c580: Pushing
+b9192a10c580: Buffering to disk
+b9192a10c580: Image successfully pushed
+28e5e6a80860: Pushing
+28e5e6a80860: Buffering to disk
+28e5e6a80860: Image successfully pushed
+2128079f9b8f: Pushing
+2128079f9b8f: Buffering to disk
+2128079f9b8f: Image successfully pushed
+976f7cce7de0: Pushing
+976f7cce7de0: Buffering to disk
+976f7cce7de0: Image successfully pushed
+2b3ef6d2a341: Pushing
+2b3ef6d2a341: Buffering to disk
+2b3ef6d2a341: Image successfully pushed
+5f52a2b74e30: Pushing
+5f52a2b74e30: Buffering to disk
+5f52a2b74e30: Image successfully pushed
+0894ebc19e86: Pushing
+0894ebc19e86: Buffering to disk
+0894ebc19e86: Image successfully pushed
+339951c44fef: Pushing
+339951c44fef: Buffering to disk
+339951c44fef: Image successfully pushed
+d0d174e641a6: Pushing
+d0d174e641a6: Buffering to disk
+d0d174e641a6: Image successfully pushed
+f2ec86814c07: Pushing
+f2ec86814c07: Buffering to disk
+f2ec86814c07: Image successfully pushed
+a6bd7bd28c24: Pushing
+a6bd7bd28c24: Buffering to disk
+a6bd7bd28c24: Image successfully pushed
+5587574e22e4: Pushing
+5587574e22e4: Buffering to disk
+5587574e22e4: Image successfully pushed
+3b7fbc5c9b4b: Pushing
+3b7fbc5c9b4b: Buffering to disk
+3b7fbc5c9b4b: Image successfully pushed
+Pushing tag for rev [3b7fbc5c9b4b] on {http://136.187.101.80:5000/v1/repositories/glassfish/tags/latest}
+
+real  104.68
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+Pulling repository 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish, endpoint: http://136.187.101.80:5000/v1/
+3b7fbc5c9b4b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+3e9890d3403b: Pulling metadata
+3e9890d3403b: Pulling fs layer
+3e9890d3403b: Download complete
+b9192a10c580: Pulling metadata
+b9192a10c580: Pulling fs layer
+b9192a10c580: Download complete
+28e5e6a80860: Pulling metadata
+28e5e6a80860: Pulling fs layer
+28e5e6a80860: Download complete
+2128079f9b8f: Pulling metadata
+2128079f9b8f: Pulling fs layer
+2128079f9b8f: Download complete
+976f7cce7de0: Pulling metadata
+976f7cce7de0: Pulling fs layer
+976f7cce7de0: Download complete
+2b3ef6d2a341: Pulling metadata
+2b3ef6d2a341: Pulling fs layer
+2b3ef6d2a341: Download complete
+5f52a2b74e30: Pulling metadata
+5f52a2b74e30: Pulling fs layer
+5f52a2b74e30: Download complete
+0894ebc19e86: Pulling metadata
+0894ebc19e86: Pulling fs layer
+0894ebc19e86: Download complete
+339951c44fef: Pulling metadata
+339951c44fef: Pulling fs layer
+339951c44fef: Download complete
+d0d174e641a6: Pulling metadata
+d0d174e641a6: Pulling fs layer
+d0d174e641a6: Download complete
+f2ec86814c07: Pulling metadata
+f2ec86814c07: Pulling fs layer
+f2ec86814c07: Download complete
+a6bd7bd28c24: Pulling metadata
+a6bd7bd28c24: Pulling fs layer
+a6bd7bd28c24: Download complete
+5587574e22e4: Pulling metadata
+5587574e22e4: Pulling fs layer
+5587574e22e4: Download complete
+3b7fbc5c9b4b: Pulling metadata
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  25.36
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+e18f9f9fb978        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+
+docker rm -f docker_registry
+
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+fbf4424aaa26        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/glassfish (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+3e9890d3403b: Pushing
+3e9890d3403b: Buffering to disk
+3e9890d3403b: Image successfully pushed
+b9192a10c580: Pushing
+b9192a10c580: Buffering to disk
+b9192a10c580: Image successfully pushed
+28e5e6a80860: Pushing
+28e5e6a80860: Buffering to disk
+28e5e6a80860: Image successfully pushed
+2128079f9b8f: Pushing
+2128079f9b8f: Buffering to disk
+2128079f9b8f: Image successfully pushed
+976f7cce7de0: Pushing
+976f7cce7de0: Buffering to disk
+976f7cce7de0: Image successfully pushed
+2b3ef6d2a341: Pushing
+2b3ef6d2a341: Buffering to disk
+2b3ef6d2a341: Image successfully pushed
+5f52a2b74e30: Pushing
+5f52a2b74e30: Buffering to disk
+5f52a2b74e30: Image successfully pushed
+0894ebc19e86: Pushing
+0894ebc19e86: Buffering to disk
+0894ebc19e86: Image successfully pushed
+339951c44fef: Pushing
+339951c44fef: Buffering to disk
+339951c44fef: Image successfully pushed
+d0d174e641a6: Pushing
+d0d174e641a6: Buffering to disk
+d0d174e641a6: Image successfully pushed
+f2ec86814c07: Pushing
+f2ec86814c07: Buffering to disk
+f2ec86814c07: Image successfully pushed
+a6bd7bd28c24: Pushing
+a6bd7bd28c24: Buffering to disk
+a6bd7bd28c24: Image successfully pushed
+5587574e22e4: Pushing
+5587574e22e4: Buffering to disk
+5587574e22e4: Image successfully pushed
+3b7fbc5c9b4b: Pushing
+3b7fbc5c9b4b: Buffering to disk
+3b7fbc5c9b4b: Image successfully pushed
+Pushing tag for rev [3b7fbc5c9b4b] on {http://136.187.101.80:5000/v1/repositories/glassfish/tags/latest}
+
+real  107.66
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+Pulling repository 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish, endpoint: http://136.187.101.80:5000/v1/
+3b7fbc5c9b4b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+3e9890d3403b: Pulling metadata
+3e9890d3403b: Pulling fs layer
+3e9890d3403b: Download complete
+b9192a10c580: Pulling metadata
+b9192a10c580: Pulling fs layer
+b9192a10c580: Download complete
+28e5e6a80860: Pulling metadata
+28e5e6a80860: Pulling fs layer
+28e5e6a80860: Download complete
+2128079f9b8f: Pulling metadata
+2128079f9b8f: Pulling fs layer
+2128079f9b8f: Download complete
+976f7cce7de0: Pulling metadata
+976f7cce7de0: Pulling fs layer
+976f7cce7de0: Download complete
+2b3ef6d2a341: Pulling metadata
+2b3ef6d2a341: Pulling fs layer
+2b3ef6d2a341: Download complete
+5f52a2b74e30: Pulling metadata
+5f52a2b74e30: Pulling fs layer
+5f52a2b74e30: Download complete
+0894ebc19e86: Pulling metadata
+0894ebc19e86: Pulling fs layer
+0894ebc19e86: Download complete
+339951c44fef: Pulling metadata
+339951c44fef: Pulling fs layer
+339951c44fef: Download complete
+d0d174e641a6: Pulling metadata
+d0d174e641a6: Pulling fs layer
+d0d174e641a6: Download complete
+f2ec86814c07: Pulling metadata
+f2ec86814c07: Pulling fs layer
+f2ec86814c07: Download complete
+a6bd7bd28c24: Pulling metadata
+a6bd7bd28c24: Pulling fs layer
+a6bd7bd28c24: Download complete
+5587574e22e4: Pulling metadata
+5587574e22e4: Pulling fs layer
+5587574e22e4: Download complete
+3b7fbc5c9b4b: Pulling metadata
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  24.98
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a934e2a0484f        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+
+docker rm -f docker_registry
+
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+92d0e3dc89b4        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+
+docker rm -f docker_registry
+
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3e9886aa1d4f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/glassfish (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+3e9890d3403b: Pushing
+3e9890d3403b: Buffering to disk
+3e9890d3403b: Image successfully pushed
+b9192a10c580: Pushing
+b9192a10c580: Buffering to disk
+b9192a10c580: Image successfully pushed
+28e5e6a80860: Pushing
+28e5e6a80860: Buffering to disk
+28e5e6a80860: Image successfully pushed
+2128079f9b8f: Pushing
+2128079f9b8f: Buffering to disk
+2128079f9b8f: Image successfully pushed
+976f7cce7de0: Pushing
+976f7cce7de0: Buffering to disk
+976f7cce7de0: Image successfully pushed
+2b3ef6d2a341: Pushing
+2b3ef6d2a341: Buffering to disk
+2b3ef6d2a341: Image successfully pushed
+5f52a2b74e30: Pushing
+5f52a2b74e30: Buffering to disk
+5f52a2b74e30: Image successfully pushed
+0894ebc19e86: Pushing
+0894ebc19e86: Buffering to disk
+0894ebc19e86: Image successfully pushed
+339951c44fef: Pushing
+339951c44fef: Buffering to disk
+339951c44fef: Image successfully pushed
+d0d174e641a6: Pushing
+d0d174e641a6: Buffering to disk
+d0d174e641a6: Image successfully pushed
+f2ec86814c07: Pushing
+f2ec86814c07: Buffering to disk
+f2ec86814c07: Image successfully pushed
+a6bd7bd28c24: Pushing
+a6bd7bd28c24: Buffering to disk
+a6bd7bd28c24: Image successfully pushed
+5587574e22e4: Pushing
+5587574e22e4: Buffering to disk
+5587574e22e4: Image successfully pushed
+3b7fbc5c9b4b: Pushing
+3b7fbc5c9b4b: Buffering to disk
+3b7fbc5c9b4b: Image successfully pushed
+Pushing tag for rev [3b7fbc5c9b4b] on {http://136.187.101.80:5000/v1/repositories/glassfish/tags/latest}
+
+real  107.12
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+Pulling repository 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish, endpoint: http://136.187.101.80:5000/v1/
+3b7fbc5c9b4b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+3e9890d3403b: Pulling metadata
+3e9890d3403b: Pulling fs layer
+3e9890d3403b: Download complete
+b9192a10c580: Pulling metadata
+b9192a10c580: Pulling fs layer
+b9192a10c580: Download complete
+28e5e6a80860: Pulling metadata
+28e5e6a80860: Pulling fs layer
+28e5e6a80860: Download complete
+2128079f9b8f: Pulling metadata
+2128079f9b8f: Pulling fs layer
+2128079f9b8f: Download complete
+976f7cce7de0: Pulling metadata
+976f7cce7de0: Pulling fs layer
+976f7cce7de0: Download complete
+2b3ef6d2a341: Pulling metadata
+2b3ef6d2a341: Pulling fs layer
+2b3ef6d2a341: Download complete
+5f52a2b74e30: Pulling metadata
+5f52a2b74e30: Pulling fs layer
+5f52a2b74e30: Download complete
+0894ebc19e86: Pulling metadata
+0894ebc19e86: Pulling fs layer
+0894ebc19e86: Download complete
+339951c44fef: Pulling metadata
+339951c44fef: Pulling fs layer
+339951c44fef: Download complete
+d0d174e641a6: Pulling metadata
+d0d174e641a6: Pulling fs layer
+d0d174e641a6: Download complete
+f2ec86814c07: Pulling metadata
+f2ec86814c07: Pulling fs layer
+f2ec86814c07: Download complete
+a6bd7bd28c24: Pulling metadata
+a6bd7bd28c24: Pulling fs layer
+a6bd7bd28c24: Download complete
+5587574e22e4: Pulling metadata
+5587574e22e4: Pulling fs layer
+5587574e22e4: Download complete
+3b7fbc5c9b4b: Pulling metadata
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  25.08
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3bef51c2748a        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/glassfish (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+3e9890d3403b: Pushing
+3e9890d3403b: Buffering to disk
+3e9890d3403b: Image successfully pushed
+b9192a10c580: Pushing
+b9192a10c580: Buffering to disk
+b9192a10c580: Image successfully pushed
+28e5e6a80860: Pushing
+28e5e6a80860: Buffering to disk
+28e5e6a80860: Image successfully pushed
+2128079f9b8f: Pushing
+2128079f9b8f: Buffering to disk
+2128079f9b8f: Image successfully pushed
+976f7cce7de0: Pushing
+976f7cce7de0: Buffering to disk
+976f7cce7de0: Image successfully pushed
+2b3ef6d2a341: Pushing
+2b3ef6d2a341: Buffering to disk
+2b3ef6d2a341: Image successfully pushed
+5f52a2b74e30: Pushing
+5f52a2b74e30: Buffering to disk
+5f52a2b74e30: Image successfully pushed
+0894ebc19e86: Pushing
+0894ebc19e86: Buffering to disk
+0894ebc19e86: Image successfully pushed
+339951c44fef: Pushing
+339951c44fef: Buffering to disk
+339951c44fef: Image successfully pushed
+d0d174e641a6: Pushing
+d0d174e641a6: Buffering to disk
+d0d174e641a6: Image successfully pushed
+f2ec86814c07: Pushing
+f2ec86814c07: Buffering to disk
+f2ec86814c07: Image successfully pushed
+a6bd7bd28c24: Pushing
+a6bd7bd28c24: Buffering to disk
+a6bd7bd28c24: Image successfully pushed
+5587574e22e4: Pushing
+5587574e22e4: Buffering to disk
+5587574e22e4: Image successfully pushed
+3b7fbc5c9b4b: Pushing
+3b7fbc5c9b4b: Buffering to disk
+3b7fbc5c9b4b: Image successfully pushed
+Pushing tag for rev [3b7fbc5c9b4b] on {http://136.187.101.80:5000/v1/repositories/glassfish/tags/latest}
+
+real  106.66
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+Pulling repository 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish, endpoint: http://136.187.101.80:5000/v1/
+3b7fbc5c9b4b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+3e9890d3403b: Pulling metadata
+3e9890d3403b: Pulling fs layer
+3e9890d3403b: Download complete
+b9192a10c580: Pulling metadata
+b9192a10c580: Pulling fs layer
+b9192a10c580: Download complete
+28e5e6a80860: Pulling metadata
+28e5e6a80860: Pulling fs layer
+28e5e6a80860: Download complete
+2128079f9b8f: Pulling metadata
+2128079f9b8f: Pulling fs layer
+2128079f9b8f: Download complete
+976f7cce7de0: Pulling metadata
+976f7cce7de0: Pulling fs layer
+976f7cce7de0: Download complete
+2b3ef6d2a341: Pulling metadata
+2b3ef6d2a341: Pulling fs layer
+2b3ef6d2a341: Download complete
+5f52a2b74e30: Pulling metadata
+5f52a2b74e30: Pulling fs layer
+5f52a2b74e30: Download complete
+0894ebc19e86: Pulling metadata
+0894ebc19e86: Pulling fs layer
+0894ebc19e86: Download complete
+339951c44fef: Pulling metadata
+339951c44fef: Pulling fs layer
+339951c44fef: Download complete
+d0d174e641a6: Pulling metadata
+d0d174e641a6: Pulling fs layer
+d0d174e641a6: Download complete
+f2ec86814c07: Pulling metadata
+f2ec86814c07: Pulling fs layer
+f2ec86814c07: Download complete
+a6bd7bd28c24: Pulling metadata
+a6bd7bd28c24: Pulling fs layer
+a6bd7bd28c24: Download complete
+5587574e22e4: Pulling metadata
+5587574e22e4: Pulling fs layer
+5587574e22e4: Download complete
+3b7fbc5c9b4b: Pulling metadata
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  25.01
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+94a15fd68136        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/glassfish (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+3e9890d3403b: Pushing
+3e9890d3403b: Buffering to disk
+3e9890d3403b: Image successfully pushed
+b9192a10c580: Pushing
+b9192a10c580: Buffering to disk
+b9192a10c580: Image successfully pushed
+28e5e6a80860: Pushing
+28e5e6a80860: Buffering to disk
+28e5e6a80860: Image successfully pushed
+2128079f9b8f: Pushing
+2128079f9b8f: Buffering to disk
+2128079f9b8f: Image successfully pushed
+976f7cce7de0: Pushing
+976f7cce7de0: Buffering to disk
+976f7cce7de0: Image successfully pushed
+2b3ef6d2a341: Pushing
+2b3ef6d2a341: Buffering to disk
+2b3ef6d2a341: Image successfully pushed
+5f52a2b74e30: Pushing
+5f52a2b74e30: Buffering to disk
+5f52a2b74e30: Image successfully pushed
+0894ebc19e86: Pushing
+0894ebc19e86: Buffering to disk
+0894ebc19e86: Image successfully pushed
+339951c44fef: Pushing
+339951c44fef: Buffering to disk
+339951c44fef: Image successfully pushed
+d0d174e641a6: Pushing
+d0d174e641a6: Buffering to disk
+d0d174e641a6: Image successfully pushed
+f2ec86814c07: Pushing
+f2ec86814c07: Buffering to disk
+f2ec86814c07: Image successfully pushed
+a6bd7bd28c24: Pushing
+a6bd7bd28c24: Buffering to disk
+a6bd7bd28c24: Image successfully pushed
+5587574e22e4: Pushing
+5587574e22e4: Buffering to disk
+5587574e22e4: Image successfully pushed
+3b7fbc5c9b4b: Pushing
+3b7fbc5c9b4b: Buffering to disk
+3b7fbc5c9b4b: Image successfully pushed
+Pushing tag for rev [3b7fbc5c9b4b] on {http://136.187.101.80:5000/v1/repositories/glassfish/tags/latest}
+
+real  99.84
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+Pulling repository 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish, endpoint: http://136.187.101.80:5000/v1/
+3b7fbc5c9b4b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+3e9890d3403b: Pulling metadata
+3e9890d3403b: Pulling fs layer
+3e9890d3403b: Download complete
+b9192a10c580: Pulling metadata
+b9192a10c580: Pulling fs layer
+b9192a10c580: Download complete
+28e5e6a80860: Pulling metadata
+28e5e6a80860: Pulling fs layer
+28e5e6a80860: Download complete
+2128079f9b8f: Pulling metadata
+2128079f9b8f: Pulling fs layer
+2128079f9b8f: Download complete
+976f7cce7de0: Pulling metadata
+976f7cce7de0: Pulling fs layer
+976f7cce7de0: Download complete
+2b3ef6d2a341: Pulling metadata
+2b3ef6d2a341: Pulling fs layer
+2b3ef6d2a341: Download complete
+5f52a2b74e30: Pulling metadata
+5f52a2b74e30: Pulling fs layer
+5f52a2b74e30: Download complete
+0894ebc19e86: Pulling metadata
+0894ebc19e86: Pulling fs layer
+0894ebc19e86: Download complete
+339951c44fef: Pulling metadata
+339951c44fef: Pulling fs layer
+339951c44fef: Download complete
+d0d174e641a6: Pulling metadata
+d0d174e641a6: Pulling fs layer
+d0d174e641a6: Download complete
+f2ec86814c07: Pulling metadata
+f2ec86814c07: Pulling fs layer
+f2ec86814c07: Download complete
+a6bd7bd28c24: Pulling metadata
+a6bd7bd28c24: Pulling fs layer
+a6bd7bd28c24: Download complete
+5587574e22e4: Pulling metadata
+5587574e22e4: Pulling fs layer
+5587574e22e4: Download complete
+3b7fbc5c9b4b: Pulling metadata
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  27.76
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        10 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+f05dd266a500        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/glassfish (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+3e9890d3403b: Pushing
+3e9890d3403b: Buffering to disk
+3e9890d3403b: Image successfully pushed
+b9192a10c580: Pushing
+b9192a10c580: Buffering to disk
+b9192a10c580: Image successfully pushed
+28e5e6a80860: Pushing
+28e5e6a80860: Buffering to disk
+28e5e6a80860: Image successfully pushed
+2128079f9b8f: Pushing
+2128079f9b8f: Buffering to disk
+2128079f9b8f: Image successfully pushed
+976f7cce7de0: Pushing
+976f7cce7de0: Buffering to disk
+976f7cce7de0: Image successfully pushed
+2b3ef6d2a341: Pushing
+2b3ef6d2a341: Buffering to disk
+2b3ef6d2a341: Image successfully pushed
+5f52a2b74e30: Pushing
+5f52a2b74e30: Buffering to disk
+5f52a2b74e30: Image successfully pushed
+0894ebc19e86: Pushing
+0894ebc19e86: Buffering to disk
+0894ebc19e86: Image successfully pushed
+339951c44fef: Pushing
+339951c44fef: Buffering to disk
+339951c44fef: Image successfully pushed
+d0d174e641a6: Pushing
+d0d174e641a6: Buffering to disk
+d0d174e641a6: Image successfully pushed
+f2ec86814c07: Pushing
+f2ec86814c07: Buffering to disk
+f2ec86814c07: Image successfully pushed
+a6bd7bd28c24: Pushing
+a6bd7bd28c24: Buffering to disk
+a6bd7bd28c24: Image successfully pushed
+5587574e22e4: Pushing
+5587574e22e4: Buffering to disk
+5587574e22e4: Image successfully pushed
+3b7fbc5c9b4b: Pushing
+3b7fbc5c9b4b: Buffering to disk
+3b7fbc5c9b4b: Image successfully pushed
+Pushing tag for rev [3b7fbc5c9b4b] on {http://136.187.101.80:5000/v1/repositories/glassfish/tags/latest}
+
+real  104.47
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+Pulling repository 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish
+3b7fbc5c9b4b: Pulling image (latest) from 136.187.101.80:5000/glassfish, endpoint: http://136.187.101.80:5000/v1/
+3b7fbc5c9b4b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+3e9890d3403b: Pulling metadata
+3e9890d3403b: Pulling fs layer
+3e9890d3403b: Download complete
+b9192a10c580: Pulling metadata
+b9192a10c580: Pulling fs layer
+b9192a10c580: Download complete
+28e5e6a80860: Pulling metadata
+28e5e6a80860: Pulling fs layer
+28e5e6a80860: Download complete
+2128079f9b8f: Pulling metadata
+2128079f9b8f: Pulling fs layer
+2128079f9b8f: Download complete
+976f7cce7de0: Pulling metadata
+976f7cce7de0: Pulling fs layer
+976f7cce7de0: Download complete
+2b3ef6d2a341: Pulling metadata
+2b3ef6d2a341: Pulling fs layer
+2b3ef6d2a341: Download complete
+5f52a2b74e30: Pulling metadata
+5f52a2b74e30: Pulling fs layer
+5f52a2b74e30: Download complete
+0894ebc19e86: Pulling metadata
+0894ebc19e86: Pulling fs layer
+0894ebc19e86: Download complete
+339951c44fef: Pulling metadata
+339951c44fef: Pulling fs layer
+339951c44fef: Download complete
+d0d174e641a6: Pulling metadata
+d0d174e641a6: Pulling fs layer
+d0d174e641a6: Download complete
+f2ec86814c07: Pulling metadata
+f2ec86814c07: Pulling fs layer
+f2ec86814c07: Download complete
+a6bd7bd28c24: Pulling metadata
+a6bd7bd28c24: Pulling fs layer
+a6bd7bd28c24: Download complete
+5587574e22e4: Pulling metadata
+5587574e22e4: Pulling fs layer
+5587574e22e4: Download complete
+3b7fbc5c9b4b: Pulling metadata
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  25.93
+
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        10 months ago       651.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@52.68.197.112 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+end date: Fri Jul 24 03:43:28 JST 2015
+
+

@@ -1,0 +1,865 @@
+
+pullpush benchmark: transfer dnsutils image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Fri Jul 24 00:24:13 JST 2015
+
+sudo docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+sudo docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+767ad19c602c        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/dnsutils (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+f0dde87450ec: Pushing
+f0dde87450ec: Buffering to disk
+f0dde87450ec: Image successfully pushed
+76b658ecb564: Pushing
+76b658ecb564: Buffering to disk
+76b658ecb564: Image successfully pushed
+4faa69f72743: Pushing
+4faa69f72743: Buffering to disk
+4faa69f72743: Image successfully pushed
+2103b00b3fdf: Pushing
+2103b00b3fdf: Buffering to disk
+2103b00b3fdf: Image successfully pushed
+b2e8b927eefe: Pushing
+b2e8b927eefe: Buffering to disk
+b2e8b927eefe: Image successfully pushed
+Pushing tag for rev [b2e8b927eefe] on {http://136.187.101.80:5000/v1/repositories/dnsutils/tags/latest}
+
+real  33.51
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+Pulling repository 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils, endpoint: http://136.187.101.80:5000/v1/
+b2e8b927eefe: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+f0dde87450ec: Pulling metadata
+f0dde87450ec: Pulling fs layer
+f0dde87450ec: Download complete
+76b658ecb564: Pulling metadata
+76b658ecb564: Pulling fs layer
+76b658ecb564: Download complete
+4faa69f72743: Pulling metadata
+4faa69f72743: Pulling fs layer
+4faa69f72743: Download complete
+2103b00b3fdf: Pulling metadata
+2103b00b3fdf: Pulling fs layer
+2103b00b3fdf: Download complete
+b2e8b927eefe: Pulling metadata
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  11.15
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+34bfbf31b3d7        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+
+docker rm -f docker_registry
+
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+f3b9d546e311        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/dnsutils (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+f0dde87450ec: Pushing
+f0dde87450ec: Buffering to disk
+f0dde87450ec: Image successfully pushed
+76b658ecb564: Pushing
+76b658ecb564: Buffering to disk
+76b658ecb564: Image successfully pushed
+4faa69f72743: Pushing
+4faa69f72743: Buffering to disk
+4faa69f72743: Image successfully pushed
+2103b00b3fdf: Pushing
+2103b00b3fdf: Buffering to disk
+2103b00b3fdf: Image successfully pushed
+b2e8b927eefe: Pushing
+b2e8b927eefe: Buffering to disk
+b2e8b927eefe: Image successfully pushed
+Pushing tag for rev [b2e8b927eefe] on {http://136.187.101.80:5000/v1/repositories/dnsutils/tags/latest}
+
+real  32.44
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+Pulling repository 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils, endpoint: http://136.187.101.80:5000/v1/
+b2e8b927eefe: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+f0dde87450ec: Pulling metadata
+f0dde87450ec: Pulling fs layer
+f0dde87450ec: Download complete
+76b658ecb564: Pulling metadata
+76b658ecb564: Pulling fs layer
+76b658ecb564: Download complete
+4faa69f72743: Pulling metadata
+4faa69f72743: Pulling fs layer
+4faa69f72743: Download complete
+2103b00b3fdf: Pulling metadata
+2103b00b3fdf: Pulling fs layer
+2103b00b3fdf: Download complete
+b2e8b927eefe: Pulling metadata
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  11.33
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+d27aae6370c2        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/dnsutils (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+f0dde87450ec: Pushing
+f0dde87450ec: Buffering to disk
+f0dde87450ec: Image successfully pushed
+76b658ecb564: Pushing
+76b658ecb564: Buffering to disk
+76b658ecb564: Image successfully pushed
+4faa69f72743: Pushing
+4faa69f72743: Buffering to disk
+4faa69f72743: Image successfully pushed
+2103b00b3fdf: Pushing
+2103b00b3fdf: Buffering to disk
+2103b00b3fdf: Image successfully pushed
+b2e8b927eefe: Pushing
+b2e8b927eefe: Buffering to disk
+b2e8b927eefe: Image successfully pushed
+Pushing tag for rev [b2e8b927eefe] on {http://136.187.101.80:5000/v1/repositories/dnsutils/tags/latest}
+
+real  33.58
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+Pulling repository 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils, endpoint: http://136.187.101.80:5000/v1/
+b2e8b927eefe: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+f0dde87450ec: Pulling metadata
+f0dde87450ec: Pulling fs layer
+f0dde87450ec: Download complete
+76b658ecb564: Pulling metadata
+76b658ecb564: Pulling fs layer
+76b658ecb564: Download complete
+4faa69f72743: Pulling metadata
+4faa69f72743: Pulling fs layer
+4faa69f72743: Download complete
+2103b00b3fdf: Pulling metadata
+2103b00b3fdf: Pulling fs layer
+2103b00b3fdf: Download complete
+b2e8b927eefe: Pulling metadata
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  11.06
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c4376ede7d7b        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/dnsutils (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+f0dde87450ec: Pushing
+f0dde87450ec: Buffering to disk
+f0dde87450ec: Image successfully pushed
+76b658ecb564: Pushing
+76b658ecb564: Buffering to disk
+76b658ecb564: Image successfully pushed
+4faa69f72743: Pushing
+4faa69f72743: Buffering to disk
+4faa69f72743: Image successfully pushed
+2103b00b3fdf: Pushing
+2103b00b3fdf: Buffering to disk
+2103b00b3fdf: Image successfully pushed
+b2e8b927eefe: Pushing
+b2e8b927eefe: Buffering to disk
+b2e8b927eefe: Image successfully pushed
+Pushing tag for rev [b2e8b927eefe] on {http://136.187.101.80:5000/v1/repositories/dnsutils/tags/latest}
+
+real  32.98
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+Pulling repository 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils, endpoint: http://136.187.101.80:5000/v1/
+b2e8b927eefe: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+f0dde87450ec: Pulling metadata
+f0dde87450ec: Pulling fs layer
+f0dde87450ec: Download complete
+76b658ecb564: Pulling metadata
+76b658ecb564: Pulling fs layer
+76b658ecb564: Download complete
+4faa69f72743: Pulling metadata
+4faa69f72743: Pulling fs layer
+4faa69f72743: Download complete
+2103b00b3fdf: Pulling metadata
+2103b00b3fdf: Pulling fs layer
+2103b00b3fdf: Download complete
+b2e8b927eefe: Pulling metadata
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  11.02
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c23484273634        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/dnsutils (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+f0dde87450ec: Pushing
+f0dde87450ec: Buffering to disk
+f0dde87450ec: Image successfully pushed
+76b658ecb564: Pushing
+76b658ecb564: Buffering to disk
+76b658ecb564: Image successfully pushed
+4faa69f72743: Pushing
+4faa69f72743: Buffering to disk
+4faa69f72743: Image successfully pushed
+2103b00b3fdf: Pushing
+2103b00b3fdf: Buffering to disk
+2103b00b3fdf: Image successfully pushed
+b2e8b927eefe: Pushing
+b2e8b927eefe: Buffering to disk
+b2e8b927eefe: Image successfully pushed
+Pushing tag for rev [b2e8b927eefe] on {http://136.187.101.80:5000/v1/repositories/dnsutils/tags/latest}
+
+real  32.85
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+Pulling repository 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils, endpoint: http://136.187.101.80:5000/v1/
+b2e8b927eefe: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+f0dde87450ec: Pulling metadata
+f0dde87450ec: Pulling fs layer
+f0dde87450ec: Download complete
+76b658ecb564: Pulling metadata
+76b658ecb564: Pulling fs layer
+76b658ecb564: Download complete
+4faa69f72743: Pulling metadata
+4faa69f72743: Pulling fs layer
+4faa69f72743: Download complete
+2103b00b3fdf: Pulling metadata
+2103b00b3fdf: Pulling fs layer
+2103b00b3fdf: Download complete
+b2e8b927eefe: Pulling metadata
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  10.84
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+ec9aed3c33f0        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/dnsutils (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+f0dde87450ec: Pushing
+f0dde87450ec: Buffering to disk
+f0dde87450ec: Image successfully pushed
+76b658ecb564: Pushing
+76b658ecb564: Buffering to disk
+76b658ecb564: Image successfully pushed
+4faa69f72743: Pushing
+4faa69f72743: Buffering to disk
+4faa69f72743: Image successfully pushed
+2103b00b3fdf: Pushing
+2103b00b3fdf: Buffering to disk
+2103b00b3fdf: Image successfully pushed
+b2e8b927eefe: Pushing
+b2e8b927eefe: Buffering to disk
+b2e8b927eefe: Image successfully pushed
+Pushing tag for rev [b2e8b927eefe] on {http://136.187.101.80:5000/v1/repositories/dnsutils/tags/latest}
+
+real  34.31
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+Pulling repository 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils, endpoint: http://136.187.101.80:5000/v1/
+b2e8b927eefe: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+f0dde87450ec: Pulling metadata
+f0dde87450ec: Pulling fs layer
+f0dde87450ec: Download complete
+76b658ecb564: Pulling metadata
+76b658ecb564: Pulling fs layer
+76b658ecb564: Download complete
+4faa69f72743: Pulling metadata
+4faa69f72743: Pulling fs layer
+4faa69f72743: Download complete
+2103b00b3fdf: Pulling metadata
+2103b00b3fdf: Pulling fs layer
+2103b00b3fdf: Download complete
+b2e8b927eefe: Pulling metadata
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  10.98
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+090aff5fba09        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/dnsutils (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+f0dde87450ec: Pushing
+f0dde87450ec: Buffering to disk
+f0dde87450ec: Image successfully pushed
+76b658ecb564: Pushing
+76b658ecb564: Buffering to disk
+76b658ecb564: Image successfully pushed
+4faa69f72743: Pushing
+4faa69f72743: Buffering to disk
+4faa69f72743: Image successfully pushed
+2103b00b3fdf: Pushing
+2103b00b3fdf: Buffering to disk
+2103b00b3fdf: Image successfully pushed
+b2e8b927eefe: Pushing
+b2e8b927eefe: Buffering to disk
+b2e8b927eefe: Image successfully pushed
+Pushing tag for rev [b2e8b927eefe] on {http://136.187.101.80:5000/v1/repositories/dnsutils/tags/latest}
+
+real  33.49
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+Pulling repository 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils, endpoint: http://136.187.101.80:5000/v1/
+b2e8b927eefe: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+f0dde87450ec: Pulling metadata
+f0dde87450ec: Pulling fs layer
+f0dde87450ec: Download complete
+76b658ecb564: Pulling metadata
+76b658ecb564: Pulling fs layer
+76b658ecb564: Download complete
+4faa69f72743: Pulling metadata
+4faa69f72743: Pulling fs layer
+4faa69f72743: Download complete
+2103b00b3fdf: Pulling metadata
+2103b00b3fdf: Pulling fs layer
+2103b00b3fdf: Download complete
+b2e8b927eefe: Pulling metadata
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  10.80
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+acb3b5fba80b        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/dnsutils (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+f0dde87450ec: Pushing
+f0dde87450ec: Buffering to disk
+f0dde87450ec: Image successfully pushed
+76b658ecb564: Pushing
+76b658ecb564: Buffering to disk
+76b658ecb564: Image successfully pushed
+4faa69f72743: Pushing
+4faa69f72743: Buffering to disk
+4faa69f72743: Image successfully pushed
+2103b00b3fdf: Pushing
+2103b00b3fdf: Buffering to disk
+2103b00b3fdf: Image successfully pushed
+b2e8b927eefe: Pushing
+b2e8b927eefe: Buffering to disk
+b2e8b927eefe: Image successfully pushed
+Pushing tag for rev [b2e8b927eefe] on {http://136.187.101.80:5000/v1/repositories/dnsutils/tags/latest}
+
+real  34.24
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+Pulling repository 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils, endpoint: http://136.187.101.80:5000/v1/
+b2e8b927eefe: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+f0dde87450ec: Pulling metadata
+f0dde87450ec: Pulling fs layer
+f0dde87450ec: Download complete
+76b658ecb564: Pulling metadata
+76b658ecb564: Pulling fs layer
+76b658ecb564: Download complete
+4faa69f72743: Pulling metadata
+4faa69f72743: Pulling fs layer
+4faa69f72743: Download complete
+2103b00b3fdf: Pulling metadata
+2103b00b3fdf: Pulling fs layer
+2103b00b3fdf: Download complete
+b2e8b927eefe: Pulling metadata
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  10.86
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+62bdc9a63abd        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+
+docker rm -f docker_registry
+
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b3030d871c13        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/dnsutils (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+f0dde87450ec: Pushing
+f0dde87450ec: Buffering to disk
+f0dde87450ec: Image successfully pushed
+76b658ecb564: Pushing
+76b658ecb564: Buffering to disk
+76b658ecb564: Image successfully pushed
+4faa69f72743: Pushing
+4faa69f72743: Buffering to disk
+4faa69f72743: Image successfully pushed
+2103b00b3fdf: Pushing
+2103b00b3fdf: Buffering to disk
+2103b00b3fdf: Image successfully pushed
+b2e8b927eefe: Pushing
+b2e8b927eefe: Buffering to disk
+b2e8b927eefe: Image successfully pushed
+Pushing tag for rev [b2e8b927eefe] on {http://136.187.101.80:5000/v1/repositories/dnsutils/tags/latest}
+
+real  33.42
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+Pulling repository 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils, endpoint: http://136.187.101.80:5000/v1/
+b2e8b927eefe: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+f0dde87450ec: Pulling metadata
+f0dde87450ec: Pulling fs layer
+f0dde87450ec: Download complete
+76b658ecb564: Pulling metadata
+76b658ecb564: Pulling fs layer
+76b658ecb564: Download complete
+4faa69f72743: Pulling metadata
+4faa69f72743: Pulling fs layer
+4faa69f72743: Download complete
+2103b00b3fdf: Pulling metadata
+2103b00b3fdf: Pulling fs layer
+2103b00b3fdf: Download complete
+b2e8b927eefe: Pulling metadata
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  10.69
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+5f498319313e        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+
+docker rm -f docker_registry
+
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a61b9d83b3f4        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/dnsutils (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+f0dde87450ec: Pushing
+f0dde87450ec: Buffering to disk
+f0dde87450ec: Image successfully pushed
+76b658ecb564: Pushing
+76b658ecb564: Buffering to disk
+76b658ecb564: Image successfully pushed
+4faa69f72743: Pushing
+4faa69f72743: Buffering to disk
+4faa69f72743: Image successfully pushed
+2103b00b3fdf: Pushing
+2103b00b3fdf: Buffering to disk
+2103b00b3fdf: Image successfully pushed
+b2e8b927eefe: Pushing
+b2e8b927eefe: Buffering to disk
+b2e8b927eefe: Image successfully pushed
+Pushing tag for rev [b2e8b927eefe] on {http://136.187.101.80:5000/v1/repositories/dnsutils/tags/latest}
+
+real  33.19
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+Pulling repository 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils
+b2e8b927eefe: Pulling image (latest) from 136.187.101.80:5000/dnsutils, endpoint: http://136.187.101.80:5000/v1/
+b2e8b927eefe: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+f0dde87450ec: Pulling metadata
+f0dde87450ec: Pulling fs layer
+f0dde87450ec: Download complete
+76b658ecb564: Pulling metadata
+76b658ecb564: Pulling fs layer
+76b658ecb564: Download complete
+4faa69f72743: Pulling metadata
+4faa69f72743: Pulling fs layer
+4faa69f72743: Download complete
+2103b00b3fdf: Pulling metadata
+2103b00b3fdf: Pulling fs layer
+2103b00b3fdf: Download complete
+b2e8b927eefe: Pulling metadata
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  10.80
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+end date: Fri Jul 24 00:33:11 JST 2015
+
+

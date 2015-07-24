@@ -1,0 +1,1047 @@
+
+pullpush benchmark: transfer axle-base image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Fri Jul 24 00:00:47 JST 2015
+
+sudo docker images
+kiwenlau/axle-base              flat                9d9bb83d76c0        4 weeks ago         1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+sudo docker images
+kiwenlau/axle-base              flat                9d9bb83d76c0        4 weeks ago         1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+ca5627211d8d        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/axle-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+295b7d206de2: Pushing
+295b7d206de2: Buffering to disk
+295b7d206de2: Image successfully pushed
+48b900fad9ea: Pushing
+48b900fad9ea: Buffering to disk
+48b900fad9ea: Image successfully pushed
+dbe5a83302f6: Pushing
+dbe5a83302f6: Buffering to disk
+dbe5a83302f6: Image successfully pushed
+566182799f15: Pushing
+566182799f15: Buffering to disk
+566182799f15: Image successfully pushed
+156b1db431fa: Pushing
+156b1db431fa: Buffering to disk
+156b1db431fa: Image successfully pushed
+cfd8f94a1a66: Pushing
+cfd8f94a1a66: Buffering to disk
+cfd8f94a1a66: Image successfully pushed
+b74328811047: Pushing
+b74328811047: Buffering to disk
+b74328811047: Image successfully pushed
+f55c403b8bb9: Pushing
+f55c403b8bb9: Buffering to disk
+f55c403b8bb9: Image successfully pushed
+Pushing tag for rev [f55c403b8bb9] on {http://136.187.101.80:5000/v1/repositories/axle-base/tags/latest}
+
+real  4.81
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+Pulling repository 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base, endpoint: http://136.187.101.80:5000/v1/
+f55c403b8bb9: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+295b7d206de2: Pulling metadata
+295b7d206de2: Pulling fs layer
+295b7d206de2: Download complete
+48b900fad9ea: Pulling metadata
+48b900fad9ea: Pulling fs layer
+48b900fad9ea: Download complete
+dbe5a83302f6: Pulling metadata
+dbe5a83302f6: Pulling fs layer
+dbe5a83302f6: Download complete
+566182799f15: Pulling metadata
+566182799f15: Pulling fs layer
+566182799f15: Download complete
+156b1db431fa: Pulling metadata
+156b1db431fa: Pulling fs layer
+156b1db431fa: Download complete
+cfd8f94a1a66: Pulling metadata
+cfd8f94a1a66: Pulling fs layer
+cfd8f94a1a66: Download complete
+b74328811047: Pulling metadata
+b74328811047: Pulling fs layer
+b74328811047: Download complete
+f55c403b8bb9: Pulling metadata
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  5.08
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.27 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3c7224c0bb24        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/axle-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+295b7d206de2: Pushing
+295b7d206de2: Buffering to disk
+295b7d206de2: Image successfully pushed
+48b900fad9ea: Pushing
+48b900fad9ea: Buffering to disk
+48b900fad9ea: Image successfully pushed
+dbe5a83302f6: Pushing
+dbe5a83302f6: Buffering to disk
+dbe5a83302f6: Image successfully pushed
+566182799f15: Pushing
+566182799f15: Buffering to disk
+566182799f15: Image successfully pushed
+156b1db431fa: Pushing
+156b1db431fa: Buffering to disk
+156b1db431fa: Image successfully pushed
+cfd8f94a1a66: Pushing
+cfd8f94a1a66: Buffering to disk
+cfd8f94a1a66: Image successfully pushed
+b74328811047: Pushing
+b74328811047: Buffering to disk
+b74328811047: Image successfully pushed
+f55c403b8bb9: Pushing
+f55c403b8bb9: Buffering to disk
+f55c403b8bb9: Image successfully pushed
+Pushing tag for rev [f55c403b8bb9] on {http://136.187.101.80:5000/v1/repositories/axle-base/tags/latest}
+
+real  4.81
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+Pulling repository 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base, endpoint: http://136.187.101.80:5000/v1/
+f55c403b8bb9: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+295b7d206de2: Pulling metadata
+295b7d206de2: Pulling fs layer
+295b7d206de2: Download complete
+48b900fad9ea: Pulling metadata
+48b900fad9ea: Pulling fs layer
+48b900fad9ea: Download complete
+dbe5a83302f6: Pulling metadata
+dbe5a83302f6: Pulling fs layer
+dbe5a83302f6: Download complete
+566182799f15: Pulling metadata
+566182799f15: Pulling fs layer
+566182799f15: Download complete
+156b1db431fa: Pulling metadata
+156b1db431fa: Pulling fs layer
+156b1db431fa: Download complete
+cfd8f94a1a66: Pulling metadata
+cfd8f94a1a66: Pulling fs layer
+cfd8f94a1a66: Download complete
+b74328811047: Pulling metadata
+b74328811047: Pulling fs layer
+b74328811047: Download complete
+f55c403b8bb9: Pulling metadata
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  5.06
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.27 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+69d674d475d3        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/axle-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+295b7d206de2: Pushing
+295b7d206de2: Buffering to disk
+295b7d206de2: Image successfully pushed
+48b900fad9ea: Pushing
+48b900fad9ea: Buffering to disk
+48b900fad9ea: Image successfully pushed
+dbe5a83302f6: Pushing
+dbe5a83302f6: Buffering to disk
+dbe5a83302f6: Image successfully pushed
+566182799f15: Pushing
+566182799f15: Buffering to disk
+566182799f15: Image successfully pushed
+156b1db431fa: Pushing
+156b1db431fa: Buffering to disk
+156b1db431fa: Image successfully pushed
+cfd8f94a1a66: Pushing
+cfd8f94a1a66: Buffering to disk
+cfd8f94a1a66: Image successfully pushed
+b74328811047: Pushing
+b74328811047: Buffering to disk
+b74328811047: Image successfully pushed
+f55c403b8bb9: Pushing
+f55c403b8bb9: Buffering to disk
+f55c403b8bb9: Image successfully pushed
+Pushing tag for rev [f55c403b8bb9] on {http://136.187.101.80:5000/v1/repositories/axle-base/tags/latest}
+
+real  4.81
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+Pulling repository 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base, endpoint: http://136.187.101.80:5000/v1/
+f55c403b8bb9: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+295b7d206de2: Pulling metadata
+295b7d206de2: Pulling fs layer
+295b7d206de2: Download complete
+48b900fad9ea: Pulling metadata
+48b900fad9ea: Pulling fs layer
+48b900fad9ea: Download complete
+dbe5a83302f6: Pulling metadata
+dbe5a83302f6: Pulling fs layer
+dbe5a83302f6: Download complete
+566182799f15: Pulling metadata
+566182799f15: Pulling fs layer
+566182799f15: Download complete
+156b1db431fa: Pulling metadata
+156b1db431fa: Pulling fs layer
+156b1db431fa: Download complete
+cfd8f94a1a66: Pulling metadata
+cfd8f94a1a66: Pulling fs layer
+cfd8f94a1a66: Download complete
+b74328811047: Pulling metadata
+b74328811047: Pulling fs layer
+b74328811047: Download complete
+f55c403b8bb9: Pulling metadata
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  5.07
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.27 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a81c1187ad78        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/axle-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+295b7d206de2: Pushing
+295b7d206de2: Buffering to disk
+295b7d206de2: Image successfully pushed
+48b900fad9ea: Pushing
+48b900fad9ea: Buffering to disk
+48b900fad9ea: Image successfully pushed
+dbe5a83302f6: Pushing
+dbe5a83302f6: Buffering to disk
+dbe5a83302f6: Image successfully pushed
+566182799f15: Pushing
+566182799f15: Buffering to disk
+566182799f15: Image successfully pushed
+156b1db431fa: Pushing
+156b1db431fa: Buffering to disk
+156b1db431fa: Image successfully pushed
+cfd8f94a1a66: Pushing
+cfd8f94a1a66: Buffering to disk
+cfd8f94a1a66: Image successfully pushed
+b74328811047: Pushing
+b74328811047: Buffering to disk
+b74328811047: Image successfully pushed
+f55c403b8bb9: Pushing
+f55c403b8bb9: Buffering to disk
+f55c403b8bb9: Image successfully pushed
+Pushing tag for rev [f55c403b8bb9] on {http://136.187.101.80:5000/v1/repositories/axle-base/tags/latest}
+
+real  4.83
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+Pulling repository 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base, endpoint: http://136.187.101.80:5000/v1/
+f55c403b8bb9: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+295b7d206de2: Pulling metadata
+295b7d206de2: Pulling fs layer
+295b7d206de2: Download complete
+48b900fad9ea: Pulling metadata
+48b900fad9ea: Pulling fs layer
+48b900fad9ea: Download complete
+dbe5a83302f6: Pulling metadata
+dbe5a83302f6: Pulling fs layer
+dbe5a83302f6: Download complete
+566182799f15: Pulling metadata
+566182799f15: Pulling fs layer
+566182799f15: Download complete
+156b1db431fa: Pulling metadata
+156b1db431fa: Pulling fs layer
+156b1db431fa: Download complete
+cfd8f94a1a66: Pulling metadata
+cfd8f94a1a66: Pulling fs layer
+cfd8f94a1a66: Download complete
+b74328811047: Pulling metadata
+b74328811047: Pulling fs layer
+b74328811047: Download complete
+f55c403b8bb9: Pulling metadata
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  5.20
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.27 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1c80a0ec2997        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/axle-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+295b7d206de2: Pushing
+295b7d206de2: Buffering to disk
+295b7d206de2: Image successfully pushed
+48b900fad9ea: Pushing
+48b900fad9ea: Buffering to disk
+48b900fad9ea: Image successfully pushed
+dbe5a83302f6: Pushing
+dbe5a83302f6: Buffering to disk
+dbe5a83302f6: Image successfully pushed
+566182799f15: Pushing
+566182799f15: Buffering to disk
+566182799f15: Image successfully pushed
+156b1db431fa: Pushing
+156b1db431fa: Buffering to disk
+156b1db431fa: Image successfully pushed
+cfd8f94a1a66: Pushing
+cfd8f94a1a66: Buffering to disk
+cfd8f94a1a66: Image successfully pushed
+b74328811047: Pushing
+b74328811047: Buffering to disk
+b74328811047: Image successfully pushed
+f55c403b8bb9: Pushing
+f55c403b8bb9: Buffering to disk
+f55c403b8bb9: Image successfully pushed
+Pushing tag for rev [f55c403b8bb9] on {http://136.187.101.80:5000/v1/repositories/axle-base/tags/latest}
+
+real  4.83
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+Pulling repository 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base, endpoint: http://136.187.101.80:5000/v1/
+f55c403b8bb9: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+295b7d206de2: Pulling metadata
+295b7d206de2: Pulling fs layer
+295b7d206de2: Download complete
+48b900fad9ea: Pulling metadata
+48b900fad9ea: Pulling fs layer
+48b900fad9ea: Download complete
+dbe5a83302f6: Pulling metadata
+dbe5a83302f6: Pulling fs layer
+dbe5a83302f6: Download complete
+566182799f15: Pulling metadata
+566182799f15: Pulling fs layer
+566182799f15: Download complete
+156b1db431fa: Pulling metadata
+156b1db431fa: Pulling fs layer
+156b1db431fa: Download complete
+cfd8f94a1a66: Pulling metadata
+cfd8f94a1a66: Pulling fs layer
+cfd8f94a1a66: Download complete
+b74328811047: Pulling metadata
+b74328811047: Pulling fs layer
+b74328811047: Download complete
+f55c403b8bb9: Pulling metadata
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  5.00
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.27 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+2332fca81d1e        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+821839aa02f7        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/axle-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+295b7d206de2: Pushing
+295b7d206de2: Buffering to disk
+295b7d206de2: Image successfully pushed
+48b900fad9ea: Pushing
+48b900fad9ea: Buffering to disk
+48b900fad9ea: Image successfully pushed
+dbe5a83302f6: Pushing
+dbe5a83302f6: Buffering to disk
+dbe5a83302f6: Image successfully pushed
+566182799f15: Pushing
+566182799f15: Buffering to disk
+566182799f15: Image successfully pushed
+156b1db431fa: Pushing
+156b1db431fa: Buffering to disk
+156b1db431fa: Image successfully pushed
+cfd8f94a1a66: Pushing
+cfd8f94a1a66: Buffering to disk
+cfd8f94a1a66: Image successfully pushed
+b74328811047: Pushing
+b74328811047: Buffering to disk
+b74328811047: Image successfully pushed
+f55c403b8bb9: Pushing
+f55c403b8bb9: Buffering to disk
+f55c403b8bb9: Image successfully pushed
+Pushing tag for rev [f55c403b8bb9] on {http://136.187.101.80:5000/v1/repositories/axle-base/tags/latest}
+
+real  4.82
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+Pulling repository 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base, endpoint: http://136.187.101.80:5000/v1/
+f55c403b8bb9: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+295b7d206de2: Pulling metadata
+295b7d206de2: Pulling fs layer
+295b7d206de2: Download complete
+48b900fad9ea: Pulling metadata
+48b900fad9ea: Pulling fs layer
+48b900fad9ea: Download complete
+dbe5a83302f6: Pulling metadata
+dbe5a83302f6: Pulling fs layer
+dbe5a83302f6: Download complete
+566182799f15: Pulling metadata
+566182799f15: Pulling fs layer
+566182799f15: Download complete
+156b1db431fa: Pulling metadata
+156b1db431fa: Pulling fs layer
+156b1db431fa: Download complete
+cfd8f94a1a66: Pulling metadata
+cfd8f94a1a66: Pulling fs layer
+cfd8f94a1a66: Download complete
+b74328811047: Pulling metadata
+b74328811047: Pulling fs layer
+b74328811047: Download complete
+f55c403b8bb9: Pulling metadata
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  5.08
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.27 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+fd2ff3334780        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/axle-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+295b7d206de2: Pushing
+295b7d206de2: Buffering to disk
+295b7d206de2: Image successfully pushed
+48b900fad9ea: Pushing
+48b900fad9ea: Buffering to disk
+48b900fad9ea: Image successfully pushed
+dbe5a83302f6: Pushing
+dbe5a83302f6: Buffering to disk
+dbe5a83302f6: Image successfully pushed
+566182799f15: Pushing
+566182799f15: Buffering to disk
+566182799f15: Image successfully pushed
+156b1db431fa: Pushing
+156b1db431fa: Buffering to disk
+156b1db431fa: Image successfully pushed
+cfd8f94a1a66: Pushing
+cfd8f94a1a66: Buffering to disk
+cfd8f94a1a66: Image successfully pushed
+b74328811047: Pushing
+b74328811047: Buffering to disk
+b74328811047: Image successfully pushed
+f55c403b8bb9: Pushing
+f55c403b8bb9: Buffering to disk
+f55c403b8bb9: Image successfully pushed
+Pushing tag for rev [f55c403b8bb9] on {http://136.187.101.80:5000/v1/repositories/axle-base/tags/latest}
+
+real  4.82
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+Pulling repository 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base, endpoint: http://136.187.101.80:5000/v1/
+f55c403b8bb9: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+295b7d206de2: Pulling metadata
+295b7d206de2: Pulling fs layer
+295b7d206de2: Download complete
+48b900fad9ea: Pulling metadata
+48b900fad9ea: Pulling fs layer
+48b900fad9ea: Download complete
+dbe5a83302f6: Pulling metadata
+dbe5a83302f6: Pulling fs layer
+dbe5a83302f6: Download complete
+566182799f15: Pulling metadata
+566182799f15: Pulling fs layer
+566182799f15: Download complete
+156b1db431fa: Pulling metadata
+156b1db431fa: Pulling fs layer
+156b1db431fa: Download complete
+cfd8f94a1a66: Pulling metadata
+cfd8f94a1a66: Pulling fs layer
+cfd8f94a1a66: Download complete
+b74328811047: Pulling metadata
+b74328811047: Pulling fs layer
+b74328811047: Download complete
+f55c403b8bb9: Pulling metadata
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  5.08
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.27 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+0cd78cd5e4ab        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+19def1e78e08        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b59fcc0adbf5        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/axle-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+295b7d206de2: Pushing
+295b7d206de2: Buffering to disk
+295b7d206de2: Image successfully pushed
+48b900fad9ea: Pushing
+48b900fad9ea: Buffering to disk
+48b900fad9ea: Image successfully pushed
+dbe5a83302f6: Pushing
+dbe5a83302f6: Buffering to disk
+dbe5a83302f6: Image successfully pushed
+566182799f15: Pushing
+566182799f15: Buffering to disk
+566182799f15: Image successfully pushed
+156b1db431fa: Pushing
+156b1db431fa: Buffering to disk
+156b1db431fa: Image successfully pushed
+cfd8f94a1a66: Pushing
+cfd8f94a1a66: Buffering to disk
+cfd8f94a1a66: Image successfully pushed
+b74328811047: Pushing
+b74328811047: Buffering to disk
+b74328811047: Image successfully pushed
+f55c403b8bb9: Pushing
+f55c403b8bb9: Buffering to disk
+f55c403b8bb9: Image successfully pushed
+Pushing tag for rev [f55c403b8bb9] on {http://136.187.101.80:5000/v1/repositories/axle-base/tags/latest}
+
+real  4.84
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+Pulling repository 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base, endpoint: http://136.187.101.80:5000/v1/
+f55c403b8bb9: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+295b7d206de2: Pulling metadata
+295b7d206de2: Pulling fs layer
+295b7d206de2: Download complete
+48b900fad9ea: Pulling metadata
+48b900fad9ea: Pulling fs layer
+48b900fad9ea: Download complete
+dbe5a83302f6: Pulling metadata
+dbe5a83302f6: Pulling fs layer
+dbe5a83302f6: Download complete
+566182799f15: Pulling metadata
+566182799f15: Pulling fs layer
+566182799f15: Download complete
+156b1db431fa: Pulling metadata
+156b1db431fa: Pulling fs layer
+156b1db431fa: Download complete
+cfd8f94a1a66: Pulling metadata
+cfd8f94a1a66: Pulling fs layer
+cfd8f94a1a66: Download complete
+b74328811047: Pulling metadata
+b74328811047: Pulling fs layer
+b74328811047: Download complete
+f55c403b8bb9: Pulling metadata
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  5.08
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.27 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+0467a8ea4c24        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/axle-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+295b7d206de2: Pushing
+295b7d206de2: Buffering to disk
+295b7d206de2: Image successfully pushed
+48b900fad9ea: Pushing
+48b900fad9ea: Buffering to disk
+48b900fad9ea: Image successfully pushed
+dbe5a83302f6: Pushing
+dbe5a83302f6: Buffering to disk
+dbe5a83302f6: Image successfully pushed
+566182799f15: Pushing
+566182799f15: Buffering to disk
+566182799f15: Image successfully pushed
+156b1db431fa: Pushing
+156b1db431fa: Buffering to disk
+156b1db431fa: Image successfully pushed
+cfd8f94a1a66: Pushing
+cfd8f94a1a66: Buffering to disk
+cfd8f94a1a66: Image successfully pushed
+b74328811047: Pushing
+b74328811047: Buffering to disk
+b74328811047: Image successfully pushed
+f55c403b8bb9: Pushing
+f55c403b8bb9: Buffering to disk
+f55c403b8bb9: Image successfully pushed
+Pushing tag for rev [f55c403b8bb9] on {http://136.187.101.80:5000/v1/repositories/axle-base/tags/latest}
+
+real  4.78
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+Pulling repository 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base, endpoint: http://136.187.101.80:5000/v1/
+f55c403b8bb9: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+295b7d206de2: Pulling metadata
+295b7d206de2: Pulling fs layer
+295b7d206de2: Download complete
+48b900fad9ea: Pulling metadata
+48b900fad9ea: Pulling fs layer
+48b900fad9ea: Download complete
+dbe5a83302f6: Pulling metadata
+dbe5a83302f6: Pulling fs layer
+dbe5a83302f6: Download complete
+566182799f15: Pulling metadata
+566182799f15: Pulling fs layer
+566182799f15: Download complete
+156b1db431fa: Pulling metadata
+156b1db431fa: Pulling fs layer
+156b1db431fa: Download complete
+cfd8f94a1a66: Pulling metadata
+cfd8f94a1a66: Pulling fs layer
+cfd8f94a1a66: Download complete
+b74328811047: Pulling metadata
+b74328811047: Pulling fs layer
+b74328811047: Download complete
+f55c403b8bb9: Pulling metadata
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  5.02
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.27 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        10 months ago       1.273 MB
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+90fc0379f6ea        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/axle-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+295b7d206de2: Pushing
+295b7d206de2: Buffering to disk
+295b7d206de2: Image successfully pushed
+48b900fad9ea: Pushing
+48b900fad9ea: Buffering to disk
+48b900fad9ea: Image successfully pushed
+dbe5a83302f6: Pushing
+dbe5a83302f6: Buffering to disk
+dbe5a83302f6: Image successfully pushed
+566182799f15: Pushing
+566182799f15: Buffering to disk
+566182799f15: Image successfully pushed
+156b1db431fa: Pushing
+156b1db431fa: Buffering to disk
+156b1db431fa: Image successfully pushed
+cfd8f94a1a66: Pushing
+cfd8f94a1a66: Buffering to disk
+cfd8f94a1a66: Image successfully pushed
+b74328811047: Pushing
+b74328811047: Buffering to disk
+b74328811047: Image successfully pushed
+f55c403b8bb9: Pushing
+f55c403b8bb9: Buffering to disk
+f55c403b8bb9: Image successfully pushed
+Pushing tag for rev [f55c403b8bb9] on {http://136.187.101.80:5000/v1/repositories/axle-base/tags/latest}
+
+real  4.81
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+Pulling repository 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base
+f55c403b8bb9: Pulling image (latest) from 136.187.101.80:5000/axle-base, endpoint: http://136.187.101.80:5000/v1/
+f55c403b8bb9: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+295b7d206de2: Pulling metadata
+295b7d206de2: Pulling fs layer
+295b7d206de2: Download complete
+48b900fad9ea: Pulling metadata
+48b900fad9ea: Pulling fs layer
+48b900fad9ea: Download complete
+dbe5a83302f6: Pulling metadata
+dbe5a83302f6: Pulling fs layer
+dbe5a83302f6: Download complete
+566182799f15: Pulling metadata
+566182799f15: Pulling fs layer
+566182799f15: Download complete
+156b1db431fa: Pulling metadata
+156b1db431fa: Pulling fs layer
+156b1db431fa: Download complete
+cfd8f94a1a66: Pulling metadata
+cfd8f94a1a66: Pulling fs layer
+cfd8f94a1a66: Download complete
+b74328811047: Pulling metadata
+b74328811047: Pulling fs layer
+b74328811047: Download complete
+f55c403b8bb9: Pulling metadata
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  5.00
+
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        10 months ago       1.27 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@52.68.197.112 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+end date: Fri Jul 24 00:04:05 JST 2015
+
+
