@@ -1,0 +1,1005 @@
+
+pullpush benchmark: transfer ruby-base image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Sun Jul 26 00:48:33 JST 2015
+
+sudo docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+sudo docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 ruby-base
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker tag kiwenlau/ruby-base:latest 136.187.101.80:5000/ruby-base:latest
+
+docker images
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.8 MB
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+fbb281273d75        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ruby-base:latest
+The push refers to a repository [136.187.101.80:5000/ruby-base] (len: 1)
+1f54124cf60b: Buffering to Disk
+1f54124cf60b: Image successfully pushed
+1f54124cf60b: Image already exists
+237da86f80ae: Buffering to Disk
+237da86f80ae: Image successfully pushed
+6bc8b2cc73bb: Buffering to Disk
+6bc8b2cc73bb: Image successfully pushed
+0a974e326c0c: Buffering to Disk
+0a974e326c0c: Image successfully pushed
+c16281490785: Image already exists
+b314890c6b6b: Image already exists
+2a0c07d7c0ae: Buffering to Disk
+2a0c07d7c0ae: Image successfully pushed
+672054a98d48: Image already exists
+b96d1548a24e: Image already exists
+7a3e804ed6c0: Buffering to Disk
+7a3e804ed6c0: Image successfully pushed
+Digest: sha256:0217cfcc45f97658dca3831b413415acdf94fb1f746fa615c43c6b612d2bf6c0
+
+real  57.70
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker pull 136.187.101.80:5000/ruby-base:latest
+latest: Pulling from 136.187.101.80:5000/ruby-base
+7a3e804ed6c0: Pulling fs layer
+b96d1548a24e: Pulling fs layer
+672054a98d48: Pulling fs layer
+2a0c07d7c0ae: Pulling fs layer
+b314890c6b6b: Pulling fs layer
+c16281490785: Pulling fs layer
+0a974e326c0c: Pulling fs layer
+6bc8b2cc73bb: Pulling fs layer
+237da86f80ae: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Layer already being pulled by another client. Waiting.
+672054a98d48: Verifying Checksum
+672054a98d48: Download complete
+b96d1548a24e: Verifying Checksum
+b96d1548a24e: Download complete
+0a974e326c0c: Verifying Checksum
+0a974e326c0c: Download complete
+1f54124cf60b: Verifying Checksum
+1f54124cf60b: Download complete
+1f54124cf60b: Download complete
+b314890c6b6b: Verifying Checksum
+b314890c6b6b: Download complete
+c16281490785: Verifying Checksum
+c16281490785: Download complete
+237da86f80ae: Verifying Checksum
+237da86f80ae: Download complete
+2a0c07d7c0ae: Verifying Checksum
+2a0c07d7c0ae: Download complete
+6bc8b2cc73bb: Verifying Checksum
+6bc8b2cc73bb: Download complete
+7a3e804ed6c0: Verifying Checksum
+7a3e804ed6c0: Download complete
+7a3e804ed6c0: Pull complete
+b96d1548a24e: Pull complete
+672054a98d48: Pull complete
+2a0c07d7c0ae: Pull complete
+b314890c6b6b: Pull complete
+c16281490785: Pull complete
+0a974e326c0c: Pull complete
+6bc8b2cc73bb: Pull complete
+237da86f80ae: Pull complete
+1f54124cf60b: Pull complete
+1f54124cf60b: Already exists
+Digest: sha256:0217cfcc45f97658dca3831b413415acdf94fb1f746fa615c43c6b612d2bf6c0
+Status: Downloaded newer image for 136.187.101.80:5000/ruby-base:latest
+
+real  12.11
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ruby-base:latest"
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 ruby-base
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker tag kiwenlau/ruby-base:latest 136.187.101.80:5000/ruby-base:latest
+
+docker images
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.8 MB
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+91c78a855a09        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ruby-base:latest
+The push refers to a repository [136.187.101.80:5000/ruby-base] (len: 1)
+1f54124cf60b: Buffering to Disk
+1f54124cf60b: Image successfully pushed
+1f54124cf60b: Image already exists
+237da86f80ae: Buffering to Disk
+237da86f80ae: Image successfully pushed
+6bc8b2cc73bb: Buffering to Disk
+6bc8b2cc73bb: Image successfully pushed
+0a974e326c0c: Buffering to Disk
+0a974e326c0c: Image successfully pushed
+c16281490785: Image already exists
+b314890c6b6b: Image already exists
+2a0c07d7c0ae: Buffering to Disk
+2a0c07d7c0ae: Image successfully pushed
+672054a98d48: Image already exists
+b96d1548a24e: Image already exists
+7a3e804ed6c0: Buffering to Disk
+7a3e804ed6c0: Image successfully pushed
+Digest: sha256:9a6faa0877d0577f42c80601f540d4b29335179732e1d6d8bccf995d1d8dece9
+
+real  56.66
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker pull 136.187.101.80:5000/ruby-base:latest
+latest: Pulling from 136.187.101.80:5000/ruby-base
+7a3e804ed6c0: Pulling fs layer
+b96d1548a24e: Pulling fs layer
+672054a98d48: Pulling fs layer
+2a0c07d7c0ae: Pulling fs layer
+b314890c6b6b: Pulling fs layer
+c16281490785: Pulling fs layer
+0a974e326c0c: Pulling fs layer
+6bc8b2cc73bb: Pulling fs layer
+237da86f80ae: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Layer already being pulled by another client. Waiting.
+b96d1548a24e: Verifying Checksum
+b96d1548a24e: Download complete
+672054a98d48: Verifying Checksum
+672054a98d48: Download complete
+b314890c6b6b: Verifying Checksum
+b314890c6b6b: Download complete
+c16281490785: Verifying Checksum
+c16281490785: Download complete
+1f54124cf60b: Verifying Checksum
+1f54124cf60b: Download complete
+1f54124cf60b: Download complete
+0a974e326c0c: Verifying Checksum
+0a974e326c0c: Download complete
+237da86f80ae: Verifying Checksum
+237da86f80ae: Download complete
+7a3e804ed6c0: Verifying Checksum
+7a3e804ed6c0: Download complete
+6bc8b2cc73bb: Verifying Checksum
+6bc8b2cc73bb: Download complete
+2a0c07d7c0ae: Verifying Checksum
+2a0c07d7c0ae: Download complete
+7a3e804ed6c0: Pull complete
+b96d1548a24e: Pull complete
+672054a98d48: Pull complete
+2a0c07d7c0ae: Pull complete
+b314890c6b6b: Pull complete
+c16281490785: Pull complete
+0a974e326c0c: Pull complete
+6bc8b2cc73bb: Pull complete
+237da86f80ae: Pull complete
+1f54124cf60b: Pull complete
+1f54124cf60b: Already exists
+Digest: sha256:9a6faa0877d0577f42c80601f540d4b29335179732e1d6d8bccf995d1d8dece9
+Status: Downloaded newer image for 136.187.101.80:5000/ruby-base:latest
+
+real  11.82
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ruby-base:latest"
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 ruby-base
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker tag kiwenlau/ruby-base:latest 136.187.101.80:5000/ruby-base:latest
+
+docker images
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.8 MB
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+c8d139571edf        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ruby-base:latest
+The push refers to a repository [136.187.101.80:5000/ruby-base] (len: 1)
+1f54124cf60b: Buffering to Disk
+1f54124cf60b: Image successfully pushed
+1f54124cf60b: Image already exists
+237da86f80ae: Buffering to Disk
+237da86f80ae: Image successfully pushed
+6bc8b2cc73bb: Buffering to Disk
+6bc8b2cc73bb: Image successfully pushed
+0a974e326c0c: Buffering to Disk
+0a974e326c0c: Image successfully pushed
+c16281490785: Image already exists
+b314890c6b6b: Image already exists
+2a0c07d7c0ae: Buffering to Disk
+2a0c07d7c0ae: Image successfully pushed
+672054a98d48: Image already exists
+b96d1548a24e: Image already exists
+7a3e804ed6c0: Buffering to Disk
+7a3e804ed6c0: Image successfully pushed
+Digest: sha256:0d9fb5c2b31dece7d7bfab985510782d337743ce0e6289afd6978d14534920a9
+
+real  58.95
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker pull 136.187.101.80:5000/ruby-base:latest
+latest: Pulling from 136.187.101.80:5000/ruby-base
+7a3e804ed6c0: Pulling fs layer
+b96d1548a24e: Pulling fs layer
+672054a98d48: Pulling fs layer
+2a0c07d7c0ae: Pulling fs layer
+b314890c6b6b: Pulling fs layer
+c16281490785: Pulling fs layer
+0a974e326c0c: Pulling fs layer
+6bc8b2cc73bb: Pulling fs layer
+237da86f80ae: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Layer already being pulled by another client. Waiting.
+672054a98d48: Verifying Checksum
+672054a98d48: Download complete
+b96d1548a24e: Verifying Checksum
+b96d1548a24e: Download complete
+b314890c6b6b: Verifying Checksum
+b314890c6b6b: Download complete
+0a974e326c0c: Verifying Checksum
+0a974e326c0c: Download complete
+c16281490785: Verifying Checksum
+c16281490785: Download complete
+1f54124cf60b: Verifying Checksum
+1f54124cf60b: Download complete
+1f54124cf60b: Download complete
+237da86f80ae: Verifying Checksum
+237da86f80ae: Download complete
+6bc8b2cc73bb: Verifying Checksum
+6bc8b2cc73bb: Download complete
+7a3e804ed6c0: Verifying Checksum
+7a3e804ed6c0: Download complete
+2a0c07d7c0ae: Verifying Checksum
+2a0c07d7c0ae: Download complete
+7a3e804ed6c0: Pull complete
+b96d1548a24e: Pull complete
+672054a98d48: Pull complete
+2a0c07d7c0ae: Pull complete
+b314890c6b6b: Pull complete
+c16281490785: Pull complete
+0a974e326c0c: Pull complete
+6bc8b2cc73bb: Pull complete
+237da86f80ae: Pull complete
+1f54124cf60b: Pull complete
+1f54124cf60b: Already exists
+Digest: sha256:0d9fb5c2b31dece7d7bfab985510782d337743ce0e6289afd6978d14534920a9
+Status: Downloaded newer image for 136.187.101.80:5000/ruby-base:latest
+
+real  12.06
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ruby-base:latest"
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 ruby-base
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker tag kiwenlau/ruby-base:latest 136.187.101.80:5000/ruby-base:latest
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+46a9428142c5        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ruby-base:latest
+The push refers to a repository [136.187.101.80:5000/ruby-base] (len: 1)
+1f54124cf60b: Buffering to Disk
+1f54124cf60b: Image successfully pushed
+1f54124cf60b: Image already exists
+237da86f80ae: Buffering to Disk
+237da86f80ae: Image successfully pushed
+6bc8b2cc73bb: Buffering to Disk
+6bc8b2cc73bb: Image successfully pushed
+0a974e326c0c: Buffering to Disk
+0a974e326c0c: Image successfully pushed
+c16281490785: Image already exists
+b314890c6b6b: Image already exists
+2a0c07d7c0ae: Buffering to Disk
+2a0c07d7c0ae: Image successfully pushed
+672054a98d48: Image already exists
+b96d1548a24e: Image already exists
+7a3e804ed6c0: Buffering to Disk
+7a3e804ed6c0: Image successfully pushed
+Digest: sha256:d8e526cbbf0b609f1ce59589ac7037f727fc6dd62aa7df653912d52a0a3f8ee4
+
+real  61.12
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker pull 136.187.101.80:5000/ruby-base:latest
+latest: Pulling from 136.187.101.80:5000/ruby-base
+7a3e804ed6c0: Pulling fs layer
+b96d1548a24e: Pulling fs layer
+672054a98d48: Pulling fs layer
+2a0c07d7c0ae: Pulling fs layer
+b314890c6b6b: Pulling fs layer
+c16281490785: Pulling fs layer
+0a974e326c0c: Pulling fs layer
+6bc8b2cc73bb: Pulling fs layer
+237da86f80ae: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Layer already being pulled by another client. Waiting.
+b96d1548a24e: Verifying Checksum
+b96d1548a24e: Download complete
+b314890c6b6b: Verifying Checksum
+b314890c6b6b: Download complete
+0a974e326c0c: Verifying Checksum
+0a974e326c0c: Download complete
+c16281490785: Verifying Checksum
+c16281490785: Download complete
+1f54124cf60b: Verifying Checksum
+1f54124cf60b: Download complete
+1f54124cf60b: Download complete
+672054a98d48: Verifying Checksum
+672054a98d48: Download complete
+237da86f80ae: Verifying Checksum
+237da86f80ae: Download complete
+7a3e804ed6c0: Verifying Checksum
+7a3e804ed6c0: Download complete
+6bc8b2cc73bb: Verifying Checksum
+6bc8b2cc73bb: Download complete
+2a0c07d7c0ae: Verifying Checksum
+2a0c07d7c0ae: Download complete
+7a3e804ed6c0: Pull complete
+b96d1548a24e: Pull complete
+672054a98d48: Pull complete
+2a0c07d7c0ae: Pull complete
+b314890c6b6b: Pull complete
+c16281490785: Pull complete
+0a974e326c0c: Pull complete
+6bc8b2cc73bb: Pull complete
+237da86f80ae: Pull complete
+1f54124cf60b: Pull complete
+1f54124cf60b: Already exists
+Digest: sha256:d8e526cbbf0b609f1ce59589ac7037f727fc6dd62aa7df653912d52a0a3f8ee4
+Status: Downloaded newer image for 136.187.101.80:5000/ruby-base:latest
+
+real  12.21
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ruby-base:latest"
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 ruby-base
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker tag kiwenlau/ruby-base:latest 136.187.101.80:5000/ruby-base:latest
+
+docker images
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.8 MB
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+c943f3a3502a        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ruby-base:latest
+The push refers to a repository [136.187.101.80:5000/ruby-base] (len: 1)
+1f54124cf60b: Buffering to Disk
+1f54124cf60b: Image successfully pushed
+1f54124cf60b: Image already exists
+237da86f80ae: Buffering to Disk
+237da86f80ae: Image successfully pushed
+6bc8b2cc73bb: Buffering to Disk
+6bc8b2cc73bb: Image successfully pushed
+0a974e326c0c: Buffering to Disk
+0a974e326c0c: Image successfully pushed
+c16281490785: Image already exists
+b314890c6b6b: Image already exists
+2a0c07d7c0ae: Buffering to Disk
+2a0c07d7c0ae: Image successfully pushed
+672054a98d48: Image already exists
+b96d1548a24e: Image already exists
+7a3e804ed6c0: Buffering to Disk
+7a3e804ed6c0: Image successfully pushed
+Digest: sha256:0217cfcc45f97658dca3831b413415acdf94fb1f746fa615c43c6b612d2bf6c0
+
+real  58.10
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker pull 136.187.101.80:5000/ruby-base:latest
+latest: Pulling from 136.187.101.80:5000/ruby-base
+7a3e804ed6c0: Pulling fs layer
+b96d1548a24e: Pulling fs layer
+672054a98d48: Pulling fs layer
+2a0c07d7c0ae: Pulling fs layer
+b314890c6b6b: Pulling fs layer
+c16281490785: Pulling fs layer
+0a974e326c0c: Pulling fs layer
+6bc8b2cc73bb: Pulling fs layer
+237da86f80ae: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Layer already being pulled by another client. Waiting.
+b96d1548a24e: Verifying Checksum
+b96d1548a24e: Download complete
+672054a98d48: Verifying Checksum
+672054a98d48: Download complete
+b314890c6b6b: Verifying Checksum
+b314890c6b6b: Download complete
+c16281490785: Verifying Checksum
+c16281490785: Download complete
+1f54124cf60b: Verifying Checksum
+1f54124cf60b: Download complete
+1f54124cf60b: Download complete
+0a974e326c0c: Verifying Checksum
+0a974e326c0c: Download complete
+237da86f80ae: Verifying Checksum
+237da86f80ae: Download complete
+7a3e804ed6c0: Verifying Checksum
+7a3e804ed6c0: Download complete
+6bc8b2cc73bb: Verifying Checksum
+6bc8b2cc73bb: Download complete
+2a0c07d7c0ae: Verifying Checksum
+2a0c07d7c0ae: Download complete
+7a3e804ed6c0: Pull complete
+b96d1548a24e: Pull complete
+672054a98d48: Pull complete
+2a0c07d7c0ae: Pull complete
+b314890c6b6b: Pull complete
+c16281490785: Pull complete
+0a974e326c0c: Pull complete
+6bc8b2cc73bb: Pull complete
+237da86f80ae: Pull complete
+1f54124cf60b: Pull complete
+1f54124cf60b: Already exists
+Digest: sha256:0217cfcc45f97658dca3831b413415acdf94fb1f746fa615c43c6b612d2bf6c0
+Status: Downloaded newer image for 136.187.101.80:5000/ruby-base:latest
+
+real  12.30
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ruby-base:latest"
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 ruby-base
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker tag kiwenlau/ruby-base:latest 136.187.101.80:5000/ruby-base:latest
+
+docker images
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.8 MB
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+ee1113c11dc3        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ruby-base:latest
+The push refers to a repository [136.187.101.80:5000/ruby-base] (len: 1)
+1f54124cf60b: Buffering to Disk
+1f54124cf60b: Image successfully pushed
+1f54124cf60b: Image already exists
+237da86f80ae: Buffering to Disk
+237da86f80ae: Image successfully pushed
+6bc8b2cc73bb: Buffering to Disk
+6bc8b2cc73bb: Image successfully pushed
+0a974e326c0c: Buffering to Disk
+0a974e326c0c: Image successfully pushed
+c16281490785: Image already exists
+b314890c6b6b: Image already exists
+2a0c07d7c0ae: Buffering to Disk
+2a0c07d7c0ae: Image successfully pushed
+672054a98d48: Image already exists
+b96d1548a24e: Image already exists
+7a3e804ed6c0: Buffering to Disk
+7a3e804ed6c0: Image successfully pushed
+Digest: sha256:d8e526cbbf0b609f1ce59589ac7037f727fc6dd62aa7df653912d52a0a3f8ee4
+
+real  60.64
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker pull 136.187.101.80:5000/ruby-base:latest
+latest: Pulling from 136.187.101.80:5000/ruby-base
+7a3e804ed6c0: Pulling fs layer
+b96d1548a24e: Pulling fs layer
+672054a98d48: Pulling fs layer
+2a0c07d7c0ae: Pulling fs layer
+b314890c6b6b: Pulling fs layer
+c16281490785: Pulling fs layer
+0a974e326c0c: Pulling fs layer
+6bc8b2cc73bb: Pulling fs layer
+237da86f80ae: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Layer already being pulled by another client. Waiting.
+672054a98d48: Verifying Checksum
+672054a98d48: Download complete
+b96d1548a24e: Verifying Checksum
+b96d1548a24e: Download complete
+b314890c6b6b: Verifying Checksum
+b314890c6b6b: Download complete
+0a974e326c0c: Verifying Checksum
+0a974e326c0c: Download complete
+c16281490785: Verifying Checksum
+c16281490785: Download complete
+1f54124cf60b: Verifying Checksum
+1f54124cf60b: Download complete
+1f54124cf60b: Download complete
+237da86f80ae: Verifying Checksum
+237da86f80ae: Download complete
+7a3e804ed6c0: Verifying Checksum
+7a3e804ed6c0: Download complete
+6bc8b2cc73bb: Verifying Checksum
+6bc8b2cc73bb: Download complete
+2a0c07d7c0ae: Verifying Checksum
+2a0c07d7c0ae: Download complete
+7a3e804ed6c0: Pull complete
+b96d1548a24e: Pull complete
+672054a98d48: Pull complete
+2a0c07d7c0ae: Pull complete
+b314890c6b6b: Pull complete
+c16281490785: Pull complete
+0a974e326c0c: Pull complete
+6bc8b2cc73bb: Pull complete
+237da86f80ae: Pull complete
+1f54124cf60b: Pull complete
+1f54124cf60b: Already exists
+Digest: sha256:d8e526cbbf0b609f1ce59589ac7037f727fc6dd62aa7df653912d52a0a3f8ee4
+Status: Downloaded newer image for 136.187.101.80:5000/ruby-base:latest
+
+real  11.86
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ruby-base:latest"
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 ruby-base
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker tag kiwenlau/ruby-base:latest 136.187.101.80:5000/ruby-base:latest
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+26283f690364        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ruby-base:latest
+The push refers to a repository [136.187.101.80:5000/ruby-base] (len: 1)
+1f54124cf60b: Buffering to Disk
+1f54124cf60b: Image successfully pushed
+1f54124cf60b: Image already exists
+237da86f80ae: Buffering to Disk
+237da86f80ae: Image successfully pushed
+6bc8b2cc73bb: Buffering to Disk
+6bc8b2cc73bb: Image successfully pushed
+0a974e326c0c: Buffering to Disk
+0a974e326c0c: Image successfully pushed
+c16281490785: Image already exists
+b314890c6b6b: Image already exists
+2a0c07d7c0ae: Buffering to Disk
+2a0c07d7c0ae: Image successfully pushed
+672054a98d48: Image already exists
+b96d1548a24e: Image already exists
+7a3e804ed6c0: Buffering to Disk
+7a3e804ed6c0: Image successfully pushed
+Digest: sha256:0217cfcc45f97658dca3831b413415acdf94fb1f746fa615c43c6b612d2bf6c0
+
+real  60.19
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker pull 136.187.101.80:5000/ruby-base:latest
+latest: Pulling from 136.187.101.80:5000/ruby-base
+7a3e804ed6c0: Pulling fs layer
+b96d1548a24e: Pulling fs layer
+672054a98d48: Pulling fs layer
+2a0c07d7c0ae: Pulling fs layer
+b314890c6b6b: Pulling fs layer
+c16281490785: Pulling fs layer
+0a974e326c0c: Pulling fs layer
+6bc8b2cc73bb: Pulling fs layer
+237da86f80ae: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Layer already being pulled by another client. Waiting.
+b314890c6b6b: Verifying Checksum
+b314890c6b6b: Download complete
+672054a98d48: Verifying Checksum
+672054a98d48: Download complete
+b96d1548a24e: Verifying Checksum
+b96d1548a24e: Download complete
+0a974e326c0c: Verifying Checksum
+0a974e326c0c: Download complete
+c16281490785: Verifying Checksum
+c16281490785: Download complete
+1f54124cf60b: Verifying Checksum
+1f54124cf60b: Download complete
+1f54124cf60b: Download complete
+237da86f80ae: Verifying Checksum
+237da86f80ae: Download complete
+6bc8b2cc73bb: Verifying Checksum
+6bc8b2cc73bb: Download complete
+7a3e804ed6c0: Verifying Checksum
+7a3e804ed6c0: Download complete
+2a0c07d7c0ae: Verifying Checksum
+2a0c07d7c0ae: Download complete
+7a3e804ed6c0: Pull complete
+b96d1548a24e: Pull complete
+672054a98d48: Pull complete
+2a0c07d7c0ae: Pull complete
+b314890c6b6b: Pull complete
+c16281490785: Pull complete
+0a974e326c0c: Pull complete
+6bc8b2cc73bb: Pull complete
+237da86f80ae: Pull complete
+1f54124cf60b: Pull complete
+1f54124cf60b: Already exists
+Digest: sha256:0217cfcc45f97658dca3831b413415acdf94fb1f746fa615c43c6b612d2bf6c0
+Status: Downloaded newer image for 136.187.101.80:5000/ruby-base:latest
+
+real  12.03
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ruby-base:latest"
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 ruby-base
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker tag kiwenlau/ruby-base:latest 136.187.101.80:5000/ruby-base:latest
+
+docker images
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.8 MB
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+a54d30600ba3        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ruby-base:latest
+The push refers to a repository [136.187.101.80:5000/ruby-base] (len: 1)
+1f54124cf60b: Buffering to Disk
+1f54124cf60b: Image successfully pushed
+1f54124cf60b: Image already exists
+237da86f80ae: Buffering to Disk
+237da86f80ae: Image successfully pushed
+6bc8b2cc73bb: Buffering to Disk
+6bc8b2cc73bb: Image successfully pushed
+0a974e326c0c: Buffering to Disk
+0a974e326c0c: Image successfully pushed
+c16281490785: Image already exists
+b314890c6b6b: Image already exists
+2a0c07d7c0ae: Buffering to Disk
+2a0c07d7c0ae: Image successfully pushed
+672054a98d48: Image already exists
+b96d1548a24e: Image already exists
+7a3e804ed6c0: Buffering to Disk
+7a3e804ed6c0: Image successfully pushed
+Digest: sha256:0d9fb5c2b31dece7d7bfab985510782d337743ce0e6289afd6978d14534920a9
+
+real  57.63
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker pull 136.187.101.80:5000/ruby-base:latest
+latest: Pulling from 136.187.101.80:5000/ruby-base
+7a3e804ed6c0: Pulling fs layer
+b96d1548a24e: Pulling fs layer
+672054a98d48: Pulling fs layer
+2a0c07d7c0ae: Pulling fs layer
+b314890c6b6b: Pulling fs layer
+c16281490785: Pulling fs layer
+0a974e326c0c: Pulling fs layer
+6bc8b2cc73bb: Pulling fs layer
+237da86f80ae: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Layer already being pulled by another client. Waiting.
+b96d1548a24e: Verifying Checksum
+b96d1548a24e: Download complete
+672054a98d48: Verifying Checksum
+672054a98d48: Download complete
+b314890c6b6b: Verifying Checksum
+b314890c6b6b: Download complete
+c16281490785: Verifying Checksum
+c16281490785: Download complete
+0a974e326c0c: Verifying Checksum
+0a974e326c0c: Download complete
+1f54124cf60b: Verifying Checksum
+1f54124cf60b: Download complete
+1f54124cf60b: Download complete
+237da86f80ae: Verifying Checksum
+237da86f80ae: Download complete
+7a3e804ed6c0: Verifying Checksum
+7a3e804ed6c0: Download complete
+2a0c07d7c0ae: Verifying Checksum
+2a0c07d7c0ae: Download complete
+6bc8b2cc73bb: Verifying Checksum
+6bc8b2cc73bb: Download complete
+7a3e804ed6c0: Pull complete
+b96d1548a24e: Pull complete
+672054a98d48: Pull complete
+2a0c07d7c0ae: Pull complete
+b314890c6b6b: Pull complete
+c16281490785: Pull complete
+0a974e326c0c: Pull complete
+6bc8b2cc73bb: Pull complete
+237da86f80ae: Pull complete
+1f54124cf60b: Pull complete
+1f54124cf60b: Already exists
+Digest: sha256:0d9fb5c2b31dece7d7bfab985510782d337743ce0e6289afd6978d14534920a9
+Status: Downloaded newer image for 136.187.101.80:5000/ruby-base:latest
+
+real  11.86
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ruby-base:latest"
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 ruby-base
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker tag kiwenlau/ruby-base:latest 136.187.101.80:5000/ruby-base:latest
+
+docker images
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.8 MB
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+eb6afda34f8b        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ruby-base:latest
+The push refers to a repository [136.187.101.80:5000/ruby-base] (len: 1)
+1f54124cf60b: Buffering to Disk
+1f54124cf60b: Image successfully pushed
+1f54124cf60b: Image already exists
+237da86f80ae: Buffering to Disk
+237da86f80ae: Image successfully pushed
+6bc8b2cc73bb: Buffering to Disk
+6bc8b2cc73bb: Image successfully pushed
+0a974e326c0c: Buffering to Disk
+0a974e326c0c: Image successfully pushed
+c16281490785: Image already exists
+b314890c6b6b: Image already exists
+2a0c07d7c0ae: Buffering to Disk
+2a0c07d7c0ae: Image successfully pushed
+672054a98d48: Image already exists
+b96d1548a24e: Image already exists
+7a3e804ed6c0: Buffering to Disk
+7a3e804ed6c0: Image successfully pushed
+Digest: sha256:43eab700a900dbde722bf994432d8f24cb3d40bcfd1d6dd058dc813045086379
+
+real  55.75
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker pull 136.187.101.80:5000/ruby-base:latest
+latest: Pulling from 136.187.101.80:5000/ruby-base
+7a3e804ed6c0: Pulling fs layer
+b96d1548a24e: Pulling fs layer
+672054a98d48: Pulling fs layer
+2a0c07d7c0ae: Pulling fs layer
+b314890c6b6b: Pulling fs layer
+c16281490785: Pulling fs layer
+0a974e326c0c: Pulling fs layer
+6bc8b2cc73bb: Pulling fs layer
+237da86f80ae: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Layer already being pulled by another client. Waiting.
+b96d1548a24e: Verifying Checksum
+b96d1548a24e: Download complete
+672054a98d48: Verifying Checksum
+672054a98d48: Download complete
+c16281490785: Verifying Checksum
+c16281490785: Download complete
+b314890c6b6b: Verifying Checksum
+b314890c6b6b: Download complete
+0a974e326c0c: Verifying Checksum
+0a974e326c0c: Download complete
+1f54124cf60b: Verifying Checksum
+1f54124cf60b: Download complete
+1f54124cf60b: Download complete
+237da86f80ae: Verifying Checksum
+237da86f80ae: Download complete
+6bc8b2cc73bb: Verifying Checksum
+6bc8b2cc73bb: Download complete
+2a0c07d7c0ae: Verifying Checksum
+2a0c07d7c0ae: Download complete
+7a3e804ed6c0: Verifying Checksum
+7a3e804ed6c0: Download complete
+7a3e804ed6c0: Pull complete
+b96d1548a24e: Pull complete
+672054a98d48: Pull complete
+2a0c07d7c0ae: Pull complete
+b314890c6b6b: Pull complete
+c16281490785: Pull complete
+0a974e326c0c: Pull complete
+6bc8b2cc73bb: Pull complete
+237da86f80ae: Pull complete
+1f54124cf60b: Pull complete
+1f54124cf60b: Already exists
+Digest: sha256:43eab700a900dbde722bf994432d8f24cb3d40bcfd1d6dd058dc813045086379
+Status: Downloaded newer image for 136.187.101.80:5000/ruby-base:latest
+
+real  12.10
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ruby-base:latest"
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 ruby-base
+
+docker images
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker tag kiwenlau/ruby-base:latest 136.187.101.80:5000/ruby-base:latest
+
+docker images
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.8 MB
+kiwenlau/ruby-base              latest              1f54124cf60b        8 weeks ago         349.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+71efbf39dc94        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ruby-base:latest
+The push refers to a repository [136.187.101.80:5000/ruby-base] (len: 1)
+1f54124cf60b: Buffering to Disk
+1f54124cf60b: Image successfully pushed
+1f54124cf60b: Image already exists
+237da86f80ae: Buffering to Disk
+237da86f80ae: Image successfully pushed
+6bc8b2cc73bb: Buffering to Disk
+6bc8b2cc73bb: Image successfully pushed
+0a974e326c0c: Buffering to Disk
+0a974e326c0c: Image successfully pushed
+c16281490785: Image already exists
+b314890c6b6b: Image already exists
+2a0c07d7c0ae: Buffering to Disk
+2a0c07d7c0ae: Image successfully pushed
+672054a98d48: Image already exists
+b96d1548a24e: Image already exists
+7a3e804ed6c0: Buffering to Disk
+7a3e804ed6c0: Image successfully pushed
+Digest: sha256:0217cfcc45f97658dca3831b413415acdf94fb1f746fa615c43c6b612d2bf6c0
+
+real  57.54
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker pull 136.187.101.80:5000/ruby-base:latest
+latest: Pulling from 136.187.101.80:5000/ruby-base
+7a3e804ed6c0: Pulling fs layer
+b96d1548a24e: Pulling fs layer
+672054a98d48: Pulling fs layer
+2a0c07d7c0ae: Pulling fs layer
+b314890c6b6b: Pulling fs layer
+c16281490785: Pulling fs layer
+0a974e326c0c: Pulling fs layer
+6bc8b2cc73bb: Pulling fs layer
+237da86f80ae: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Pulling fs layer
+1f54124cf60b: Layer already being pulled by another client. Waiting.
+672054a98d48: Verifying Checksum
+672054a98d48: Download complete
+b314890c6b6b: Verifying Checksum
+b314890c6b6b: Download complete
+b96d1548a24e: Verifying Checksum
+b96d1548a24e: Download complete
+0a974e326c0c: Verifying Checksum
+0a974e326c0c: Download complete
+c16281490785: Verifying Checksum
+c16281490785: Download complete
+1f54124cf60b: Verifying Checksum
+1f54124cf60b: Download complete
+1f54124cf60b: Download complete
+237da86f80ae: Verifying Checksum
+237da86f80ae: Download complete
+7a3e804ed6c0: Verifying Checksum
+7a3e804ed6c0: Download complete
+6bc8b2cc73bb: Verifying Checksum
+6bc8b2cc73bb: Download complete
+2a0c07d7c0ae: Verifying Checksum
+2a0c07d7c0ae: Download complete
+7a3e804ed6c0: Pull complete
+b96d1548a24e: Pull complete
+672054a98d48: Pull complete
+2a0c07d7c0ae: Pull complete
+b314890c6b6b: Pull complete
+c16281490785: Pull complete
+0a974e326c0c: Pull complete
+6bc8b2cc73bb: Pull complete
+237da86f80ae: Pull complete
+1f54124cf60b: Pull complete
+1f54124cf60b: Already exists
+Digest: sha256:0217cfcc45f97658dca3831b413415acdf94fb1f746fa615c43c6b612d2bf6c0
+Status: Downloaded newer image for 136.187.101.80:5000/ruby-base:latest
+
+real  11.99
+
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+136.187.101.80:5000/ruby-base   latest              1f54124cf60b        8 weeks ago         349.7 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ruby-base:latest"
+ssh kai@52.68.197.112 "docker images | grep ruby-base"
+
+docker rm -f docker_registry
+
+end date: Sun Jul 26 01:01:51 JST 2015
+
+

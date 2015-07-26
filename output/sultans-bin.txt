@@ -1,0 +1,997 @@
+
+pullpush benchmark: transfer sultans-bin image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Sun Jul 26 00:01:52 JST 2015
+
+sudo docker images
+kiwenlau/sultans-bin            flat                1c7fe48cf548        4 weeks ago         43.85 MB
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+sudo docker images
+kiwenlau/sultans-bin            flat                1c7fe48cf548        4 weeks ago         43.85 MB
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 sultans-bin
+
+docker images
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker tag kiwenlau/sultans-bin:latest 136.187.101.80:5000/sultans-bin:latest
+
+docker images
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.89 MB
+kiwenlau/sultans-bin              latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+1e5930cd2d99        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/sultans-bin:latest
+The push refers to a repository [136.187.101.80:5000/sultans-bin] (len: 1)
+3f4ed987e157: Buffering to Disk
+3f4ed987e157: Image successfully pushed
+3f4ed987e157: Image already exists
+8f135c1aa359: Buffering to Disk
+8f135c1aa359: Image successfully pushed
+0404f3130598: Image already exists
+e69c9739c916: Buffering to Disk
+e69c9739c916: Image successfully pushed
+41c62756a0bd: Image already exists
+93bd9c6e212d: Buffering to Disk
+93bd9c6e212d: Image successfully pushed
+b68de37d4ed1: Image already exists
+d0484a74dd3b: Image already exists
+79f1c40f7ff6: Buffering to Disk
+79f1c40f7ff6: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:4487decf2e1b373712d8fe671401688ebb367cfb3d7a386c6185d0318597a4cb
+
+real  9.07
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker pull 136.187.101.80:5000/sultans-bin:latest
+latest: Pulling from 136.187.101.80:5000/sultans-bin
+511136ea3c5a: Pulling fs layer
+79f1c40f7ff6: Pulling fs layer
+d0484a74dd3b: Pulling fs layer
+b68de37d4ed1: Pulling fs layer
+93bd9c6e212d: Pulling fs layer
+41c62756a0bd: Pulling fs layer
+e69c9739c916: Pulling fs layer
+0404f3130598: Pulling fs layer
+8f135c1aa359: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d0484a74dd3b: Verifying Checksum
+d0484a74dd3b: Download complete
+b68de37d4ed1: Verifying Checksum
+b68de37d4ed1: Download complete
+41c62756a0bd: Verifying Checksum
+41c62756a0bd: Download complete
+0404f3130598: Verifying Checksum
+0404f3130598: Download complete
+3f4ed987e157: Verifying Checksum
+3f4ed987e157: Download complete
+3f4ed987e157: Download complete
+511136ea3c5a: Pull complete
+e69c9739c916: Verifying Checksum
+e69c9739c916: Download complete
+79f1c40f7ff6: Verifying Checksum
+79f1c40f7ff6: Download complete
+93bd9c6e212d: Verifying Checksum
+93bd9c6e212d: Download complete
+8f135c1aa359: Verifying Checksum
+8f135c1aa359: Download complete
+79f1c40f7ff6: Pull complete
+d0484a74dd3b: Pull complete
+b68de37d4ed1: Pull complete
+93bd9c6e212d: Pull complete
+41c62756a0bd: Pull complete
+e69c9739c916: Pull complete
+0404f3130598: Pull complete
+8f135c1aa359: Pull complete
+3f4ed987e157: Pull complete
+3f4ed987e157: Already exists
+Digest: sha256:4487decf2e1b373712d8fe671401688ebb367cfb3d7a386c6185d0318597a4cb
+Status: Downloaded newer image for 136.187.101.80:5000/sultans-bin:latest
+
+real  2.53
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.87 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/sultans-bin:latest"
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 sultans-bin
+
+docker images
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker tag kiwenlau/sultans-bin:latest 136.187.101.80:5000/sultans-bin:latest
+
+docker images
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.89 MB
+kiwenlau/sultans-bin              latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+704f051b34f7        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/sultans-bin:latest
+The push refers to a repository [136.187.101.80:5000/sultans-bin] (len: 1)
+3f4ed987e157: Buffering to Disk
+3f4ed987e157: Image successfully pushed
+3f4ed987e157: Image already exists
+8f135c1aa359: Buffering to Disk
+8f135c1aa359: Image successfully pushed
+0404f3130598: Image already exists
+e69c9739c916: Buffering to Disk
+e69c9739c916: Image successfully pushed
+41c62756a0bd: Image already exists
+93bd9c6e212d: Buffering to Disk
+93bd9c6e212d: Image successfully pushed
+b68de37d4ed1: Image already exists
+d0484a74dd3b: Image already exists
+79f1c40f7ff6: Buffering to Disk
+79f1c40f7ff6: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:eb9898bcab1c59da054d597742283a90bc87c2456ff91b1a57c5d53b936dcaab
+
+real  8.27
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker pull 136.187.101.80:5000/sultans-bin:latest
+latest: Pulling from 136.187.101.80:5000/sultans-bin
+511136ea3c5a: Pulling fs layer
+79f1c40f7ff6: Pulling fs layer
+d0484a74dd3b: Pulling fs layer
+b68de37d4ed1: Pulling fs layer
+93bd9c6e212d: Pulling fs layer
+41c62756a0bd: Pulling fs layer
+e69c9739c916: Pulling fs layer
+0404f3130598: Pulling fs layer
+8f135c1aa359: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d0484a74dd3b: Verifying Checksum
+d0484a74dd3b: Download complete
+b68de37d4ed1: Verifying Checksum
+b68de37d4ed1: Download complete
+41c62756a0bd: Verifying Checksum
+41c62756a0bd: Download complete
+0404f3130598: Verifying Checksum
+0404f3130598: Download complete
+3f4ed987e157: Verifying Checksum
+3f4ed987e157: Download complete
+3f4ed987e157: Download complete
+511136ea3c5a: Pull complete
+e69c9739c916: Verifying Checksum
+e69c9739c916: Download complete
+79f1c40f7ff6: Verifying Checksum
+79f1c40f7ff6: Download complete
+79f1c40f7ff6: Pull complete
+93bd9c6e212d: Verifying Checksum
+93bd9c6e212d: Download complete
+8f135c1aa359: Verifying Checksum
+8f135c1aa359: Download complete
+d0484a74dd3b: Pull complete
+b68de37d4ed1: Pull complete
+93bd9c6e212d: Pull complete
+41c62756a0bd: Pull complete
+e69c9739c916: Pull complete
+0404f3130598: Pull complete
+8f135c1aa359: Pull complete
+3f4ed987e157: Pull complete
+3f4ed987e157: Already exists
+Digest: sha256:eb9898bcab1c59da054d597742283a90bc87c2456ff91b1a57c5d53b936dcaab
+Status: Downloaded newer image for 136.187.101.80:5000/sultans-bin:latest
+
+real  2.54
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.87 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/sultans-bin:latest"
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 sultans-bin
+
+docker images
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker tag kiwenlau/sultans-bin:latest 136.187.101.80:5000/sultans-bin:latest
+
+docker images
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.89 MB
+kiwenlau/sultans-bin              latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+e870cf711be6        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/sultans-bin:latest
+The push refers to a repository [136.187.101.80:5000/sultans-bin] (len: 1)
+3f4ed987e157: Buffering to Disk
+3f4ed987e157: Image successfully pushed
+3f4ed987e157: Image already exists
+8f135c1aa359: Buffering to Disk
+8f135c1aa359: Image successfully pushed
+0404f3130598: Image already exists
+e69c9739c916: Buffering to Disk
+e69c9739c916: Image successfully pushed
+41c62756a0bd: Image already exists
+93bd9c6e212d: Buffering to Disk
+93bd9c6e212d: Image successfully pushed
+b68de37d4ed1: Image already exists
+d0484a74dd3b: Image already exists
+79f1c40f7ff6: Buffering to Disk
+79f1c40f7ff6: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:4487decf2e1b373712d8fe671401688ebb367cfb3d7a386c6185d0318597a4cb
+
+real  9.35
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker pull 136.187.101.80:5000/sultans-bin:latest
+latest: Pulling from 136.187.101.80:5000/sultans-bin
+511136ea3c5a: Pulling fs layer
+79f1c40f7ff6: Pulling fs layer
+d0484a74dd3b: Pulling fs layer
+b68de37d4ed1: Pulling fs layer
+93bd9c6e212d: Pulling fs layer
+41c62756a0bd: Pulling fs layer
+e69c9739c916: Pulling fs layer
+0404f3130598: Pulling fs layer
+8f135c1aa359: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d0484a74dd3b: Verifying Checksum
+d0484a74dd3b: Download complete
+41c62756a0bd: Verifying Checksum
+41c62756a0bd: Download complete
+b68de37d4ed1: Verifying Checksum
+b68de37d4ed1: Download complete
+0404f3130598: Verifying Checksum
+0404f3130598: Download complete
+3f4ed987e157: Verifying Checksum
+3f4ed987e157: Download complete
+3f4ed987e157: Download complete
+511136ea3c5a: Pull complete
+e69c9739c916: Verifying Checksum
+e69c9739c916: Download complete
+79f1c40f7ff6: Verifying Checksum
+79f1c40f7ff6: Download complete
+8f135c1aa359: Verifying Checksum
+8f135c1aa359: Download complete
+93bd9c6e212d: Verifying Checksum
+93bd9c6e212d: Download complete
+79f1c40f7ff6: Pull complete
+d0484a74dd3b: Pull complete
+b68de37d4ed1: Pull complete
+93bd9c6e212d: Pull complete
+41c62756a0bd: Pull complete
+e69c9739c916: Pull complete
+0404f3130598: Pull complete
+8f135c1aa359: Pull complete
+3f4ed987e157: Pull complete
+3f4ed987e157: Already exists
+Digest: sha256:4487decf2e1b373712d8fe671401688ebb367cfb3d7a386c6185d0318597a4cb
+Status: Downloaded newer image for 136.187.101.80:5000/sultans-bin:latest
+
+real  2.53
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.87 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/sultans-bin:latest"
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 sultans-bin
+
+docker images
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker tag kiwenlau/sultans-bin:latest 136.187.101.80:5000/sultans-bin:latest
+
+docker images
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.89 MB
+kiwenlau/sultans-bin              latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+9b6f4ff5373d        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/sultans-bin:latest
+The push refers to a repository [136.187.101.80:5000/sultans-bin] (len: 1)
+3f4ed987e157: Buffering to Disk
+3f4ed987e157: Image successfully pushed
+3f4ed987e157: Image already exists
+8f135c1aa359: Buffering to Disk
+8f135c1aa359: Image successfully pushed
+0404f3130598: Image already exists
+e69c9739c916: Buffering to Disk
+e69c9739c916: Image successfully pushed
+41c62756a0bd: Image already exists
+93bd9c6e212d: Buffering to Disk
+93bd9c6e212d: Image successfully pushed
+b68de37d4ed1: Image already exists
+d0484a74dd3b: Image already exists
+79f1c40f7ff6: Buffering to Disk
+79f1c40f7ff6: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:08531c72ed1bb2a4560cd24bd2d13c8012907c2ec49385c762897da382a9a9ff
+
+real  8.65
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker pull 136.187.101.80:5000/sultans-bin:latest
+latest: Pulling from 136.187.101.80:5000/sultans-bin
+511136ea3c5a: Pulling fs layer
+79f1c40f7ff6: Pulling fs layer
+d0484a74dd3b: Pulling fs layer
+b68de37d4ed1: Pulling fs layer
+93bd9c6e212d: Pulling fs layer
+41c62756a0bd: Pulling fs layer
+e69c9739c916: Pulling fs layer
+0404f3130598: Pulling fs layer
+8f135c1aa359: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d0484a74dd3b: Verifying Checksum
+d0484a74dd3b: Download complete
+b68de37d4ed1: Verifying Checksum
+b68de37d4ed1: Download complete
+41c62756a0bd: Verifying Checksum
+41c62756a0bd: Download complete
+0404f3130598: Verifying Checksum
+0404f3130598: Download complete
+3f4ed987e157: Verifying Checksum
+3f4ed987e157: Download complete
+3f4ed987e157: Download complete
+511136ea3c5a: Pull complete
+e69c9739c916: Verifying Checksum
+e69c9739c916: Download complete
+79f1c40f7ff6: Verifying Checksum
+79f1c40f7ff6: Download complete
+93bd9c6e212d: Verifying Checksum
+93bd9c6e212d: Download complete
+79f1c40f7ff6: Pull complete
+8f135c1aa359: Verifying Checksum
+8f135c1aa359: Download complete
+d0484a74dd3b: Pull complete
+b68de37d4ed1: Pull complete
+93bd9c6e212d: Pull complete
+41c62756a0bd: Pull complete
+e69c9739c916: Pull complete
+0404f3130598: Pull complete
+8f135c1aa359: Pull complete
+3f4ed987e157: Pull complete
+3f4ed987e157: Already exists
+Digest: sha256:08531c72ed1bb2a4560cd24bd2d13c8012907c2ec49385c762897da382a9a9ff
+Status: Downloaded newer image for 136.187.101.80:5000/sultans-bin:latest
+
+real  2.50
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.87 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/sultans-bin:latest"
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 sultans-bin
+
+docker images
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker tag kiwenlau/sultans-bin:latest 136.187.101.80:5000/sultans-bin:latest
+
+docker images
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.89 MB
+kiwenlau/sultans-bin              latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+5532600f4ee5        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/sultans-bin:latest
+The push refers to a repository [136.187.101.80:5000/sultans-bin] (len: 1)
+3f4ed987e157: Buffering to Disk
+3f4ed987e157: Image successfully pushed
+3f4ed987e157: Image already exists
+8f135c1aa359: Buffering to Disk
+8f135c1aa359: Image successfully pushed
+0404f3130598: Image already exists
+e69c9739c916: Buffering to Disk
+e69c9739c916: Image successfully pushed
+41c62756a0bd: Image already exists
+93bd9c6e212d: Buffering to Disk
+93bd9c6e212d: Image successfully pushed
+b68de37d4ed1: Image already exists
+d0484a74dd3b: Image already exists
+79f1c40f7ff6: Buffering to Disk
+79f1c40f7ff6: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:4487decf2e1b373712d8fe671401688ebb367cfb3d7a386c6185d0318597a4cb
+
+real  7.91
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker pull 136.187.101.80:5000/sultans-bin:latest
+latest: Pulling from 136.187.101.80:5000/sultans-bin
+511136ea3c5a: Pulling fs layer
+79f1c40f7ff6: Pulling fs layer
+d0484a74dd3b: Pulling fs layer
+b68de37d4ed1: Pulling fs layer
+93bd9c6e212d: Pulling fs layer
+41c62756a0bd: Pulling fs layer
+e69c9739c916: Pulling fs layer
+0404f3130598: Pulling fs layer
+8f135c1aa359: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d0484a74dd3b: Verifying Checksum
+d0484a74dd3b: Download complete
+b68de37d4ed1: Verifying Checksum
+b68de37d4ed1: Download complete
+0404f3130598: Verifying Checksum
+0404f3130598: Download complete
+41c62756a0bd: Verifying Checksum
+41c62756a0bd: Download complete
+3f4ed987e157: Verifying Checksum
+3f4ed987e157: Download complete
+3f4ed987e157: Download complete
+511136ea3c5a: Pull complete
+e69c9739c916: Verifying Checksum
+e69c9739c916: Download complete
+79f1c40f7ff6: Verifying Checksum
+79f1c40f7ff6: Download complete
+93bd9c6e212d: Verifying Checksum
+93bd9c6e212d: Download complete
+79f1c40f7ff6: Pull complete
+8f135c1aa359: Verifying Checksum
+8f135c1aa359: Download complete
+d0484a74dd3b: Pull complete
+b68de37d4ed1: Pull complete
+93bd9c6e212d: Pull complete
+41c62756a0bd: Pull complete
+e69c9739c916: Pull complete
+0404f3130598: Pull complete
+8f135c1aa359: Pull complete
+3f4ed987e157: Pull complete
+3f4ed987e157: Already exists
+Digest: sha256:4487decf2e1b373712d8fe671401688ebb367cfb3d7a386c6185d0318597a4cb
+Status: Downloaded newer image for 136.187.101.80:5000/sultans-bin:latest
+
+real  2.45
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.87 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/sultans-bin:latest"
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 sultans-bin
+
+docker images
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker tag kiwenlau/sultans-bin:latest 136.187.101.80:5000/sultans-bin:latest
+
+docker images
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.89 MB
+kiwenlau/sultans-bin              latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+0fa7665a87cd        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/sultans-bin:latest
+The push refers to a repository [136.187.101.80:5000/sultans-bin] (len: 1)
+3f4ed987e157: Buffering to Disk
+3f4ed987e157: Image successfully pushed
+3f4ed987e157: Image already exists
+8f135c1aa359: Buffering to Disk
+8f135c1aa359: Image successfully pushed
+0404f3130598: Image already exists
+e69c9739c916: Buffering to Disk
+e69c9739c916: Image successfully pushed
+41c62756a0bd: Image already exists
+93bd9c6e212d: Buffering to Disk
+93bd9c6e212d: Image successfully pushed
+b68de37d4ed1: Image already exists
+d0484a74dd3b: Image already exists
+79f1c40f7ff6: Buffering to Disk
+79f1c40f7ff6: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:3fce027ba690e8fd0e317facceeba626f9889c746a5e2015e1abb18d774c4e70
+
+real  8.91
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker pull 136.187.101.80:5000/sultans-bin:latest
+latest: Pulling from 136.187.101.80:5000/sultans-bin
+511136ea3c5a: Pulling fs layer
+79f1c40f7ff6: Pulling fs layer
+d0484a74dd3b: Pulling fs layer
+b68de37d4ed1: Pulling fs layer
+93bd9c6e212d: Pulling fs layer
+41c62756a0bd: Pulling fs layer
+e69c9739c916: Pulling fs layer
+0404f3130598: Pulling fs layer
+8f135c1aa359: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+0404f3130598: Verifying Checksum
+0404f3130598: Download complete
+d0484a74dd3b: Verifying Checksum
+d0484a74dd3b: Download complete
+41c62756a0bd: Verifying Checksum
+41c62756a0bd: Download complete
+b68de37d4ed1: Verifying Checksum
+b68de37d4ed1: Download complete
+3f4ed987e157: Verifying Checksum
+3f4ed987e157: Download complete
+3f4ed987e157: Download complete
+511136ea3c5a: Pull complete
+e69c9739c916: Verifying Checksum
+e69c9739c916: Download complete
+79f1c40f7ff6: Verifying Checksum
+79f1c40f7ff6: Download complete
+93bd9c6e212d: Verifying Checksum
+93bd9c6e212d: Download complete
+79f1c40f7ff6: Pull complete
+8f135c1aa359: Verifying Checksum
+8f135c1aa359: Download complete
+d0484a74dd3b: Pull complete
+b68de37d4ed1: Pull complete
+93bd9c6e212d: Pull complete
+41c62756a0bd: Pull complete
+e69c9739c916: Pull complete
+0404f3130598: Pull complete
+8f135c1aa359: Pull complete
+3f4ed987e157: Pull complete
+3f4ed987e157: Already exists
+Digest: sha256:3fce027ba690e8fd0e317facceeba626f9889c746a5e2015e1abb18d774c4e70
+Status: Downloaded newer image for 136.187.101.80:5000/sultans-bin:latest
+
+real  2.44
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.87 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/sultans-bin:latest"
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 sultans-bin
+
+docker images
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker tag kiwenlau/sultans-bin:latest 136.187.101.80:5000/sultans-bin:latest
+
+docker images
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.89 MB
+kiwenlau/sultans-bin              latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+0d0f5a30731a        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/sultans-bin:latest
+The push refers to a repository [136.187.101.80:5000/sultans-bin] (len: 1)
+3f4ed987e157: Buffering to Disk
+3f4ed987e157: Image successfully pushed
+3f4ed987e157: Image already exists
+8f135c1aa359: Buffering to Disk
+8f135c1aa359: Image successfully pushed
+0404f3130598: Image already exists
+e69c9739c916: Buffering to Disk
+e69c9739c916: Image successfully pushed
+41c62756a0bd: Image already exists
+93bd9c6e212d: Buffering to Disk
+93bd9c6e212d: Image successfully pushed
+b68de37d4ed1: Image already exists
+d0484a74dd3b: Image already exists
+79f1c40f7ff6: Buffering to Disk
+79f1c40f7ff6: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:4487decf2e1b373712d8fe671401688ebb367cfb3d7a386c6185d0318597a4cb
+
+real  8.83
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker pull 136.187.101.80:5000/sultans-bin:latest
+latest: Pulling from 136.187.101.80:5000/sultans-bin
+511136ea3c5a: Pulling fs layer
+79f1c40f7ff6: Pulling fs layer
+d0484a74dd3b: Pulling fs layer
+b68de37d4ed1: Pulling fs layer
+93bd9c6e212d: Pulling fs layer
+41c62756a0bd: Pulling fs layer
+e69c9739c916: Pulling fs layer
+0404f3130598: Pulling fs layer
+8f135c1aa359: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+41c62756a0bd: Verifying Checksum
+41c62756a0bd: Download complete
+d0484a74dd3b: Verifying Checksum
+d0484a74dd3b: Download complete
+b68de37d4ed1: Verifying Checksum
+b68de37d4ed1: Download complete
+0404f3130598: Verifying Checksum
+0404f3130598: Download complete
+3f4ed987e157: Verifying Checksum
+3f4ed987e157: Download complete
+3f4ed987e157: Download complete
+511136ea3c5a: Pull complete
+e69c9739c916: Verifying Checksum
+e69c9739c916: Download complete
+79f1c40f7ff6: Verifying Checksum
+79f1c40f7ff6: Download complete
+93bd9c6e212d: Verifying Checksum
+93bd9c6e212d: Download complete
+79f1c40f7ff6: Pull complete
+8f135c1aa359: Verifying Checksum
+8f135c1aa359: Download complete
+d0484a74dd3b: Pull complete
+b68de37d4ed1: Pull complete
+93bd9c6e212d: Pull complete
+41c62756a0bd: Pull complete
+e69c9739c916: Pull complete
+0404f3130598: Pull complete
+8f135c1aa359: Pull complete
+3f4ed987e157: Pull complete
+3f4ed987e157: Already exists
+Digest: sha256:4487decf2e1b373712d8fe671401688ebb367cfb3d7a386c6185d0318597a4cb
+Status: Downloaded newer image for 136.187.101.80:5000/sultans-bin:latest
+
+real  2.43
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.87 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/sultans-bin:latest"
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 sultans-bin
+
+docker images
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker tag kiwenlau/sultans-bin:latest 136.187.101.80:5000/sultans-bin:latest
+
+docker images
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.89 MB
+kiwenlau/sultans-bin              latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+f9a75b0688c6        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/sultans-bin:latest
+The push refers to a repository [136.187.101.80:5000/sultans-bin] (len: 1)
+3f4ed987e157: Buffering to Disk
+3f4ed987e157: Image successfully pushed
+3f4ed987e157: Image already exists
+8f135c1aa359: Buffering to Disk
+8f135c1aa359: Image successfully pushed
+0404f3130598: Image already exists
+e69c9739c916: Buffering to Disk
+e69c9739c916: Image successfully pushed
+41c62756a0bd: Image already exists
+93bd9c6e212d: Buffering to Disk
+93bd9c6e212d: Image successfully pushed
+b68de37d4ed1: Image already exists
+d0484a74dd3b: Image already exists
+79f1c40f7ff6: Buffering to Disk
+79f1c40f7ff6: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:53084503fd9cda3fde7b5eed23cddae712fb00ec56b70c2003fe759666502429
+
+real  8.24
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker pull 136.187.101.80:5000/sultans-bin:latest
+latest: Pulling from 136.187.101.80:5000/sultans-bin
+511136ea3c5a: Pulling fs layer
+79f1c40f7ff6: Pulling fs layer
+d0484a74dd3b: Pulling fs layer
+b68de37d4ed1: Pulling fs layer
+93bd9c6e212d: Pulling fs layer
+41c62756a0bd: Pulling fs layer
+e69c9739c916: Pulling fs layer
+0404f3130598: Pulling fs layer
+8f135c1aa359: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d0484a74dd3b: Verifying Checksum
+d0484a74dd3b: Download complete
+b68de37d4ed1: Verifying Checksum
+b68de37d4ed1: Download complete
+41c62756a0bd: Verifying Checksum
+41c62756a0bd: Download complete
+3f4ed987e157: Verifying Checksum
+3f4ed987e157: Download complete
+3f4ed987e157: Download complete
+0404f3130598: Verifying Checksum
+0404f3130598: Download complete
+511136ea3c5a: Pull complete
+e69c9739c916: Verifying Checksum
+e69c9739c916: Download complete
+79f1c40f7ff6: Verifying Checksum
+79f1c40f7ff6: Download complete
+93bd9c6e212d: Verifying Checksum
+93bd9c6e212d: Download complete
+79f1c40f7ff6: Pull complete
+8f135c1aa359: Verifying Checksum
+8f135c1aa359: Download complete
+d0484a74dd3b: Pull complete
+b68de37d4ed1: Pull complete
+93bd9c6e212d: Pull complete
+41c62756a0bd: Pull complete
+e69c9739c916: Pull complete
+0404f3130598: Pull complete
+8f135c1aa359: Pull complete
+3f4ed987e157: Pull complete
+3f4ed987e157: Already exists
+Digest: sha256:53084503fd9cda3fde7b5eed23cddae712fb00ec56b70c2003fe759666502429
+Status: Downloaded newer image for 136.187.101.80:5000/sultans-bin:latest
+
+real  2.48
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.87 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/sultans-bin:latest"
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 sultans-bin
+
+docker images
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker tag kiwenlau/sultans-bin:latest 136.187.101.80:5000/sultans-bin:latest
+
+docker images
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.89 MB
+kiwenlau/sultans-bin              latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+96088071512c        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/sultans-bin:latest
+The push refers to a repository [136.187.101.80:5000/sultans-bin] (len: 1)
+3f4ed987e157: Buffering to Disk
+3f4ed987e157: Image successfully pushed
+3f4ed987e157: Image already exists
+8f135c1aa359: Buffering to Disk
+8f135c1aa359: Image successfully pushed
+0404f3130598: Image already exists
+e69c9739c916: Buffering to Disk
+e69c9739c916: Image successfully pushed
+41c62756a0bd: Image already exists
+93bd9c6e212d: Buffering to Disk
+93bd9c6e212d: Image successfully pushed
+b68de37d4ed1: Image already exists
+d0484a74dd3b: Image already exists
+79f1c40f7ff6: Buffering to Disk
+79f1c40f7ff6: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:4487decf2e1b373712d8fe671401688ebb367cfb3d7a386c6185d0318597a4cb
+
+real  9.47
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker pull 136.187.101.80:5000/sultans-bin:latest
+latest: Pulling from 136.187.101.80:5000/sultans-bin
+511136ea3c5a: Pulling fs layer
+79f1c40f7ff6: Pulling fs layer
+d0484a74dd3b: Pulling fs layer
+b68de37d4ed1: Pulling fs layer
+93bd9c6e212d: Pulling fs layer
+41c62756a0bd: Pulling fs layer
+e69c9739c916: Pulling fs layer
+0404f3130598: Pulling fs layer
+8f135c1aa359: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Layer already being pulled by another client. Waiting.
+b68de37d4ed1: Verifying Checksum
+b68de37d4ed1: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d0484a74dd3b: Verifying Checksum
+d0484a74dd3b: Download complete
+41c62756a0bd: Verifying Checksum
+41c62756a0bd: Download complete
+0404f3130598: Verifying Checksum
+0404f3130598: Download complete
+3f4ed987e157: Verifying Checksum
+3f4ed987e157: Download complete
+3f4ed987e157: Download complete
+e69c9739c916: Verifying Checksum
+e69c9739c916: Download complete
+511136ea3c5a: Pull complete
+79f1c40f7ff6: Verifying Checksum
+79f1c40f7ff6: Download complete
+8f135c1aa359: Verifying Checksum
+8f135c1aa359: Download complete
+93bd9c6e212d: Verifying Checksum
+93bd9c6e212d: Download complete
+79f1c40f7ff6: Pull complete
+d0484a74dd3b: Pull complete
+b68de37d4ed1: Pull complete
+93bd9c6e212d: Pull complete
+41c62756a0bd: Pull complete
+e69c9739c916: Pull complete
+0404f3130598: Pull complete
+8f135c1aa359: Pull complete
+3f4ed987e157: Pull complete
+3f4ed987e157: Already exists
+Digest: sha256:4487decf2e1b373712d8fe671401688ebb367cfb3d7a386c6185d0318597a4cb
+Status: Downloaded newer image for 136.187.101.80:5000/sultans-bin:latest
+
+real  2.47
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.87 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/sultans-bin:latest"
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 sultans-bin
+
+docker images
+kiwenlau/sultans-bin            latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker tag kiwenlau/sultans-bin:latest 136.187.101.80:5000/sultans-bin:latest
+
+docker images
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.89 MB
+kiwenlau/sultans-bin              latest              3f4ed987e157        7 weeks ago         43.89 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+ea2b51e27d13        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/sultans-bin:latest
+The push refers to a repository [136.187.101.80:5000/sultans-bin] (len: 1)
+3f4ed987e157: Buffering to Disk
+3f4ed987e157: Image successfully pushed
+3f4ed987e157: Image already exists
+8f135c1aa359: Buffering to Disk
+8f135c1aa359: Image successfully pushed
+0404f3130598: Image already exists
+e69c9739c916: Buffering to Disk
+e69c9739c916: Image successfully pushed
+41c62756a0bd: Image already exists
+93bd9c6e212d: Buffering to Disk
+93bd9c6e212d: Image successfully pushed
+b68de37d4ed1: Image already exists
+d0484a74dd3b: Image already exists
+79f1c40f7ff6: Buffering to Disk
+79f1c40f7ff6: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:6a8cb4c87c7c4d245741e452541f4d90d484c9cb85614f2b79b896adf4a52447
+
+real  9.05
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker pull 136.187.101.80:5000/sultans-bin:latest
+latest: Pulling from 136.187.101.80:5000/sultans-bin
+511136ea3c5a: Pulling fs layer
+79f1c40f7ff6: Pulling fs layer
+d0484a74dd3b: Pulling fs layer
+b68de37d4ed1: Pulling fs layer
+93bd9c6e212d: Pulling fs layer
+41c62756a0bd: Pulling fs layer
+e69c9739c916: Pulling fs layer
+0404f3130598: Pulling fs layer
+8f135c1aa359: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Pulling fs layer
+3f4ed987e157: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d0484a74dd3b: Verifying Checksum
+d0484a74dd3b: Download complete
+0404f3130598: Verifying Checksum
+0404f3130598: Download complete
+b68de37d4ed1: Verifying Checksum
+b68de37d4ed1: Download complete
+3f4ed987e157: Verifying Checksum
+3f4ed987e157: Download complete
+3f4ed987e157: Download complete
+41c62756a0bd: Verifying Checksum
+41c62756a0bd: Download complete
+511136ea3c5a: Pull complete
+e69c9739c916: Verifying Checksum
+e69c9739c916: Download complete
+79f1c40f7ff6: Verifying Checksum
+79f1c40f7ff6: Download complete
+79f1c40f7ff6: Pull complete
+93bd9c6e212d: Verifying Checksum
+93bd9c6e212d: Download complete
+8f135c1aa359: Verifying Checksum
+8f135c1aa359: Download complete
+d0484a74dd3b: Pull complete
+b68de37d4ed1: Pull complete
+93bd9c6e212d: Pull complete
+41c62756a0bd: Pull complete
+e69c9739c916: Pull complete
+0404f3130598: Pull complete
+8f135c1aa359: Pull complete
+3f4ed987e157: Pull complete
+3f4ed987e157: Already exists
+Digest: sha256:6a8cb4c87c7c4d245741e452541f4d90d484c9cb85614f2b79b896adf4a52447
+Status: Downloaded newer image for 136.187.101.80:5000/sultans-bin:latest
+
+real  2.50
+
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+136.187.101.80:5000/sultans-bin   latest              3f4ed987e157        7 weeks ago         43.87 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/sultans-bin:latest"
+ssh kai@52.68.197.112 "docker images | grep sultans-bin"
+
+docker rm -f docker_registry
+
+end date: Sun Jul 26 00:05:12 JST 2015
+
+

@@ -1,0 +1,1597 @@
+
+pullpush benchmark: transfer jruby image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Sun Jul 26 01:52:00 JST 2015
+
+sudo docker images
+kiwenlau/jruby                  flat                bf3e233ba227        4 weeks ago         547.4 MB
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+sudo docker images
+kiwenlau/jruby                  flat                bf3e233ba227        4 weeks ago         547.4 MB
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+f5cc0cde58b5        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+41988b514f35: Buffering to Disk
+41988b514f35: Image successfully pushed
+41988b514f35: Image already exists
+feb91815a223: Image already exists
+3b6c9f2a7111: Buffering to Disk
+3b6c9f2a7111: Image successfully pushed
+54a3de9935c3: Image already exists
+ba66f7bfff65: Image already exists
+1f73c7b26f16: Buffering to Disk
+1f73c7b26f16: Image successfully pushed
+b662a23c9a99: Image already exists
+3970dceb27de: Buffering to Disk
+3970dceb27de: Image successfully pushed
+0bad624eca9f: Image already exists
+1c9acea4bdc3: Image already exists
+5efdfd717e36: Buffering to Disk
+5efdfd717e36: Image successfully pushed
+e75aeb597a7f: Buffering to Disk
+e75aeb597a7f: Image successfully pushed
+69b0d7eb9e5a: Buffering to Disk
+69b0d7eb9e5a: Image successfully pushed
+d163542c0168: Image already exists
+d336a77bd1b2: Image already exists
+cb521ad94585: Image already exists
+ca217f610c63: Image already exists
+f34f6c217212: Buffering to Disk
+f34f6c217212: Image successfully pushed
+546bcc1f950b: Buffering to Disk
+546bcc1f950b: Image successfully pushed
+c63978236aac: Image already exists
+1021894f267f: Buffering to Disk
+1021894f267f: Image successfully pushed
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+
+real  91.00
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+latest: Pulling from 136.187.101.80:5000/jruby
+1021894f267f: Pulling fs layer
+c63978236aac: Pulling fs layer
+546bcc1f950b: Pulling fs layer
+f34f6c217212: Pulling fs layer
+ca217f610c63: Pulling fs layer
+cb521ad94585: Pulling fs layer
+d336a77bd1b2: Pulling fs layer
+d163542c0168: Pulling fs layer
+69b0d7eb9e5a: Pulling fs layer
+e75aeb597a7f: Pulling fs layer
+5efdfd717e36: Pulling fs layer
+1c9acea4bdc3: Pulling fs layer
+0bad624eca9f: Pulling fs layer
+3970dceb27de: Pulling fs layer
+b662a23c9a99: Pulling fs layer
+1f73c7b26f16: Pulling fs layer
+ba66f7bfff65: Pulling fs layer
+54a3de9935c3: Pulling fs layer
+3b6c9f2a7111: Pulling fs layer
+feb91815a223: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Layer already being pulled by another client. Waiting.
+ca217f610c63: Verifying Checksum
+ca217f610c63: Download complete
+c63978236aac: Verifying Checksum
+c63978236aac: Download complete
+d336a77bd1b2: Verifying Checksum
+d336a77bd1b2: Download complete
+cb521ad94585: Verifying Checksum
+cb521ad94585: Download complete
+0bad624eca9f: Verifying Checksum
+0bad624eca9f: Download complete
+1c9acea4bdc3: Verifying Checksum
+1c9acea4bdc3: Download complete
+b662a23c9a99: Verifying Checksum
+b662a23c9a99: Download complete
+1f73c7b26f16: Verifying Checksum
+1f73c7b26f16: Download complete
+d163542c0168: Verifying Checksum
+d163542c0168: Download complete
+ba66f7bfff65: Verifying Checksum
+ba66f7bfff65: Download complete
+54a3de9935c3: Verifying Checksum
+54a3de9935c3: Download complete
+41988b514f35: Verifying Checksum
+41988b514f35: Download complete
+41988b514f35: Download complete
+feb91815a223: Verifying Checksum
+feb91815a223: Download complete
+e75aeb597a7f: Verifying Checksum
+e75aeb597a7f: Download complete
+f34f6c217212: Verifying Checksum
+f34f6c217212: Download complete
+3b6c9f2a7111: Verifying Checksum
+3b6c9f2a7111: Download complete
+5efdfd717e36: Verifying Checksum
+5efdfd717e36: Download complete
+546bcc1f950b: Verifying Checksum
+546bcc1f950b: Download complete
+3970dceb27de: Verifying Checksum
+3970dceb27de: Download complete
+1021894f267f: Verifying Checksum
+1021894f267f: Download complete
+69b0d7eb9e5a: Verifying Checksum
+69b0d7eb9e5a: Download complete
+1021894f267f: Pull complete
+c63978236aac: Pull complete
+546bcc1f950b: Pull complete
+f34f6c217212: Pull complete
+ca217f610c63: Pull complete
+cb521ad94585: Pull complete
+d336a77bd1b2: Pull complete
+d163542c0168: Pull complete
+69b0d7eb9e5a: Pull complete
+e75aeb597a7f: Pull complete
+5efdfd717e36: Pull complete
+1c9acea4bdc3: Pull complete
+0bad624eca9f: Pull complete
+3970dceb27de: Pull complete
+b662a23c9a99: Pull complete
+1f73c7b26f16: Pull complete
+ba66f7bfff65: Pull complete
+54a3de9935c3: Pull complete
+3b6c9f2a7111: Pull complete
+feb91815a223: Pull complete
+41988b514f35: Pull complete
+41988b514f35: Already exists
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  18.93
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+34b1968aa816        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+41988b514f35: Buffering to Disk
+41988b514f35: Image successfully pushed
+41988b514f35: Image already exists
+feb91815a223: Image already exists
+3b6c9f2a7111: Buffering to Disk
+3b6c9f2a7111: Image successfully pushed
+54a3de9935c3: Image already exists
+ba66f7bfff65: Image already exists
+1f73c7b26f16: Buffering to Disk
+1f73c7b26f16: Image successfully pushed
+b662a23c9a99: Image already exists
+3970dceb27de: Buffering to Disk
+3970dceb27de: Image successfully pushed
+0bad624eca9f: Image already exists
+1c9acea4bdc3: Image already exists
+5efdfd717e36: Buffering to Disk
+5efdfd717e36: Image successfully pushed
+e75aeb597a7f: Buffering to Disk
+e75aeb597a7f: Image successfully pushed
+69b0d7eb9e5a: Buffering to Disk
+69b0d7eb9e5a: Image successfully pushed
+d163542c0168: Image already exists
+d336a77bd1b2: Image already exists
+cb521ad94585: Image already exists
+ca217f610c63: Image already exists
+f34f6c217212: Buffering to Disk
+f34f6c217212: Image successfully pushed
+546bcc1f950b: Buffering to Disk
+546bcc1f950b: Image successfully pushed
+c63978236aac: Image already exists
+1021894f267f: Buffering to Disk
+1021894f267f: Image successfully pushed
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+
+real  90.32
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+latest: Pulling from 136.187.101.80:5000/jruby
+1021894f267f: Pulling fs layer
+c63978236aac: Pulling fs layer
+546bcc1f950b: Pulling fs layer
+f34f6c217212: Pulling fs layer
+ca217f610c63: Pulling fs layer
+cb521ad94585: Pulling fs layer
+d336a77bd1b2: Pulling fs layer
+d163542c0168: Pulling fs layer
+69b0d7eb9e5a: Pulling fs layer
+e75aeb597a7f: Pulling fs layer
+5efdfd717e36: Pulling fs layer
+1c9acea4bdc3: Pulling fs layer
+0bad624eca9f: Pulling fs layer
+3970dceb27de: Pulling fs layer
+b662a23c9a99: Pulling fs layer
+1f73c7b26f16: Pulling fs layer
+ba66f7bfff65: Pulling fs layer
+54a3de9935c3: Pulling fs layer
+3b6c9f2a7111: Pulling fs layer
+feb91815a223: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Layer already being pulled by another client. Waiting.
+c63978236aac: Verifying Checksum
+c63978236aac: Download complete
+d336a77bd1b2: Verifying Checksum
+d336a77bd1b2: Download complete
+d163542c0168: Verifying Checksum
+d163542c0168: Download complete
+1c9acea4bdc3: Verifying Checksum
+1c9acea4bdc3: Download complete
+1f73c7b26f16: Verifying Checksum
+1f73c7b26f16: Download complete
+b662a23c9a99: Verifying Checksum
+b662a23c9a99: Download complete
+0bad624eca9f: Verifying Checksum
+0bad624eca9f: Download complete
+ba66f7bfff65: Verifying Checksum
+ba66f7bfff65: Download complete
+feb91815a223: Verifying Checksum
+feb91815a223: Download complete
+54a3de9935c3: Verifying Checksum
+54a3de9935c3: Download complete
+ca217f610c63: Verifying Checksum
+ca217f610c63: Download complete
+f34f6c217212: Verifying Checksum
+f34f6c217212: Download complete
+cb521ad94585: Verifying Checksum
+cb521ad94585: Download complete
+41988b514f35: Verifying Checksum
+41988b514f35: Download complete
+41988b514f35: Download complete
+e75aeb597a7f: Verifying Checksum
+e75aeb597a7f: Download complete
+3b6c9f2a7111: Verifying Checksum
+3b6c9f2a7111: Download complete
+5efdfd717e36: Verifying Checksum
+5efdfd717e36: Download complete
+546bcc1f950b: Verifying Checksum
+546bcc1f950b: Download complete
+3970dceb27de: Verifying Checksum
+3970dceb27de: Download complete
+1021894f267f: Verifying Checksum
+1021894f267f: Download complete
+69b0d7eb9e5a: Verifying Checksum
+69b0d7eb9e5a: Download complete
+1021894f267f: Pull complete
+c63978236aac: Pull complete
+546bcc1f950b: Pull complete
+f34f6c217212: Pull complete
+ca217f610c63: Pull complete
+cb521ad94585: Pull complete
+d336a77bd1b2: Pull complete
+d163542c0168: Pull complete
+69b0d7eb9e5a: Pull complete
+e75aeb597a7f: Pull complete
+5efdfd717e36: Pull complete
+1c9acea4bdc3: Pull complete
+0bad624eca9f: Pull complete
+3970dceb27de: Pull complete
+b662a23c9a99: Pull complete
+1f73c7b26f16: Pull complete
+ba66f7bfff65: Pull complete
+54a3de9935c3: Pull complete
+3b6c9f2a7111: Pull complete
+feb91815a223: Pull complete
+41988b514f35: Pull complete
+41988b514f35: Already exists
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  19.07
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+b06465af5409        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+41988b514f35: Buffering to Disk
+41988b514f35: Image successfully pushed
+41988b514f35: Image already exists
+feb91815a223: Image already exists
+3b6c9f2a7111: Buffering to Disk
+3b6c9f2a7111: Image successfully pushed
+54a3de9935c3: Image already exists
+ba66f7bfff65: Image already exists
+1f73c7b26f16: Buffering to Disk
+1f73c7b26f16: Image successfully pushed
+b662a23c9a99: Image already exists
+3970dceb27de: Buffering to Disk
+3970dceb27de: Image successfully pushed
+0bad624eca9f: Image already exists
+1c9acea4bdc3: Image already exists
+5efdfd717e36: Buffering to Disk
+5efdfd717e36: Image successfully pushed
+e75aeb597a7f: Buffering to Disk
+e75aeb597a7f: Image successfully pushed
+69b0d7eb9e5a: Buffering to Disk
+69b0d7eb9e5a: Image successfully pushed
+d163542c0168: Image already exists
+d336a77bd1b2: Image already exists
+cb521ad94585: Image already exists
+ca217f610c63: Image already exists
+f34f6c217212: Buffering to Disk
+f34f6c217212: Image successfully pushed
+546bcc1f950b: Buffering to Disk
+546bcc1f950b: Image successfully pushed
+c63978236aac: Image already exists
+1021894f267f: Buffering to Disk
+1021894f267f: Image successfully pushed
+Digest: sha256:d3b87c15dd93c43377c71ba113feed0d914de2519b1febee65f55de0ce5806c9
+
+real  87.92
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+latest: Pulling from 136.187.101.80:5000/jruby
+1021894f267f: Pulling fs layer
+c63978236aac: Pulling fs layer
+546bcc1f950b: Pulling fs layer
+f34f6c217212: Pulling fs layer
+ca217f610c63: Pulling fs layer
+cb521ad94585: Pulling fs layer
+d336a77bd1b2: Pulling fs layer
+d163542c0168: Pulling fs layer
+69b0d7eb9e5a: Pulling fs layer
+e75aeb597a7f: Pulling fs layer
+5efdfd717e36: Pulling fs layer
+1c9acea4bdc3: Pulling fs layer
+0bad624eca9f: Pulling fs layer
+3970dceb27de: Pulling fs layer
+b662a23c9a99: Pulling fs layer
+1f73c7b26f16: Pulling fs layer
+ba66f7bfff65: Pulling fs layer
+54a3de9935c3: Pulling fs layer
+3b6c9f2a7111: Pulling fs layer
+feb91815a223: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Layer already being pulled by another client. Waiting.
+c63978236aac: Verifying Checksum
+c63978236aac: Download complete
+cb521ad94585: Verifying Checksum
+cb521ad94585: Download complete
+ca217f610c63: Verifying Checksum
+ca217f610c63: Download complete
+d336a77bd1b2: Verifying Checksum
+d336a77bd1b2: Download complete
+d163542c0168: Verifying Checksum
+d163542c0168: Download complete
+1c9acea4bdc3: Verifying Checksum
+1c9acea4bdc3: Download complete
+0bad624eca9f: Verifying Checksum
+0bad624eca9f: Download complete
+b662a23c9a99: Verifying Checksum
+b662a23c9a99: Download complete
+1f73c7b26f16: Verifying Checksum
+1f73c7b26f16: Download complete
+ba66f7bfff65: Verifying Checksum
+ba66f7bfff65: Download complete
+54a3de9935c3: Verifying Checksum
+54a3de9935c3: Download complete
+feb91815a223: Verifying Checksum
+feb91815a223: Download complete
+41988b514f35: Verifying Checksum
+41988b514f35: Download complete
+41988b514f35: Download complete
+f34f6c217212: Verifying Checksum
+f34f6c217212: Download complete
+e75aeb597a7f: Verifying Checksum
+e75aeb597a7f: Download complete
+3b6c9f2a7111: Verifying Checksum
+3b6c9f2a7111: Download complete
+5efdfd717e36: Verifying Checksum
+5efdfd717e36: Download complete
+3970dceb27de: Verifying Checksum
+3970dceb27de: Download complete
+546bcc1f950b: Verifying Checksum
+546bcc1f950b: Download complete
+1021894f267f: Verifying Checksum
+1021894f267f: Download complete
+69b0d7eb9e5a: Verifying Checksum
+69b0d7eb9e5a: Download complete
+1021894f267f: Pull complete
+c63978236aac: Pull complete
+546bcc1f950b: Pull complete
+f34f6c217212: Pull complete
+ca217f610c63: Pull complete
+cb521ad94585: Pull complete
+d336a77bd1b2: Pull complete
+d163542c0168: Pull complete
+69b0d7eb9e5a: Pull complete
+e75aeb597a7f: Pull complete
+5efdfd717e36: Pull complete
+1c9acea4bdc3: Pull complete
+0bad624eca9f: Pull complete
+3970dceb27de: Pull complete
+b662a23c9a99: Pull complete
+1f73c7b26f16: Pull complete
+ba66f7bfff65: Pull complete
+54a3de9935c3: Pull complete
+3b6c9f2a7111: Pull complete
+feb91815a223: Pull complete
+41988b514f35: Pull complete
+41988b514f35: Already exists
+Digest: sha256:d3b87c15dd93c43377c71ba113feed0d914de2519b1febee65f55de0ce5806c9
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  19.08
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+30b0e852bc18        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+41988b514f35: Buffering to Disk
+41988b514f35: Image successfully pushed
+41988b514f35: Image already exists
+feb91815a223: Image already exists
+3b6c9f2a7111: Buffering to Disk
+3b6c9f2a7111: Image successfully pushed
+54a3de9935c3: Image already exists
+ba66f7bfff65: Image already exists
+1f73c7b26f16: Buffering to Disk
+1f73c7b26f16: Image successfully pushed
+b662a23c9a99: Image already exists
+3970dceb27de: Buffering to Disk
+3970dceb27de: Image successfully pushed
+0bad624eca9f: Image already exists
+1c9acea4bdc3: Image already exists
+5efdfd717e36: Buffering to Disk
+5efdfd717e36: Image successfully pushed
+e75aeb597a7f: Buffering to Disk
+e75aeb597a7f: Image successfully pushed
+69b0d7eb9e5a: Buffering to Disk
+69b0d7eb9e5a: Image successfully pushed
+d163542c0168: Image already exists
+d336a77bd1b2: Image already exists
+cb521ad94585: Image already exists
+ca217f610c63: Image already exists
+f34f6c217212: Buffering to Disk
+f34f6c217212: Image successfully pushed
+546bcc1f950b: Buffering to Disk
+546bcc1f950b: Image successfully pushed
+c63978236aac: Image already exists
+1021894f267f: Buffering to Disk
+1021894f267f: Image successfully pushed
+Digest: sha256:3fea5d48a7dae1cb75b934edc2eef60ba4048367161d754a45b1c632f888d7ee
+
+real  86.60
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+latest: Pulling from 136.187.101.80:5000/jruby
+1021894f267f: Pulling fs layer
+c63978236aac: Pulling fs layer
+546bcc1f950b: Pulling fs layer
+f34f6c217212: Pulling fs layer
+ca217f610c63: Pulling fs layer
+cb521ad94585: Pulling fs layer
+d336a77bd1b2: Pulling fs layer
+d163542c0168: Pulling fs layer
+69b0d7eb9e5a: Pulling fs layer
+e75aeb597a7f: Pulling fs layer
+5efdfd717e36: Pulling fs layer
+1c9acea4bdc3: Pulling fs layer
+0bad624eca9f: Pulling fs layer
+3970dceb27de: Pulling fs layer
+b662a23c9a99: Pulling fs layer
+1f73c7b26f16: Pulling fs layer
+ba66f7bfff65: Pulling fs layer
+54a3de9935c3: Pulling fs layer
+3b6c9f2a7111: Pulling fs layer
+feb91815a223: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Layer already being pulled by another client. Waiting.
+c63978236aac: Verifying Checksum
+c63978236aac: Download complete
+ca217f610c63: Verifying Checksum
+ca217f610c63: Download complete
+cb521ad94585: Verifying Checksum
+cb521ad94585: Download complete
+d163542c0168: Verifying Checksum
+d163542c0168: Download complete
+d336a77bd1b2: Verifying Checksum
+d336a77bd1b2: Download complete
+0bad624eca9f: Verifying Checksum
+0bad624eca9f: Download complete
+ba66f7bfff65: Verifying Checksum
+ba66f7bfff65: Download complete
+b662a23c9a99: Verifying Checksum
+b662a23c9a99: Download complete
+1c9acea4bdc3: Verifying Checksum
+1c9acea4bdc3: Download complete
+1f73c7b26f16: Verifying Checksum
+1f73c7b26f16: Download complete
+54a3de9935c3: Verifying Checksum
+54a3de9935c3: Download complete
+feb91815a223: Verifying Checksum
+feb91815a223: Download complete
+41988b514f35: Verifying Checksum
+41988b514f35: Download complete
+41988b514f35: Download complete
+f34f6c217212: Verifying Checksum
+f34f6c217212: Download complete
+e75aeb597a7f: Verifying Checksum
+e75aeb597a7f: Download complete
+3b6c9f2a7111: Verifying Checksum
+3b6c9f2a7111: Download complete
+5efdfd717e36: Verifying Checksum
+5efdfd717e36: Download complete
+546bcc1f950b: Verifying Checksum
+546bcc1f950b: Download complete
+1021894f267f: Verifying Checksum
+1021894f267f: Download complete
+3970dceb27de: Verifying Checksum
+3970dceb27de: Download complete
+69b0d7eb9e5a: Verifying Checksum
+69b0d7eb9e5a: Download complete
+1021894f267f: Pull complete
+c63978236aac: Pull complete
+546bcc1f950b: Pull complete
+f34f6c217212: Pull complete
+ca217f610c63: Pull complete
+cb521ad94585: Pull complete
+d336a77bd1b2: Pull complete
+d163542c0168: Pull complete
+69b0d7eb9e5a: Pull complete
+e75aeb597a7f: Pull complete
+5efdfd717e36: Pull complete
+1c9acea4bdc3: Pull complete
+0bad624eca9f: Pull complete
+3970dceb27de: Pull complete
+b662a23c9a99: Pull complete
+1f73c7b26f16: Pull complete
+ba66f7bfff65: Pull complete
+54a3de9935c3: Pull complete
+3b6c9f2a7111: Pull complete
+feb91815a223: Pull complete
+41988b514f35: Pull complete
+41988b514f35: Already exists
+Digest: sha256:3fea5d48a7dae1cb75b934edc2eef60ba4048367161d754a45b1c632f888d7ee
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  18.98
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+5f4a4c3ccecb        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+41988b514f35: Buffering to Disk
+41988b514f35: Image successfully pushed
+41988b514f35: Image already exists
+feb91815a223: Image already exists
+3b6c9f2a7111: Buffering to Disk
+3b6c9f2a7111: Image successfully pushed
+54a3de9935c3: Image already exists
+ba66f7bfff65: Image already exists
+1f73c7b26f16: Buffering to Disk
+1f73c7b26f16: Image successfully pushed
+b662a23c9a99: Image already exists
+3970dceb27de: Buffering to Disk
+3970dceb27de: Image successfully pushed
+0bad624eca9f: Image already exists
+1c9acea4bdc3: Image already exists
+5efdfd717e36: Buffering to Disk
+5efdfd717e36: Image successfully pushed
+e75aeb597a7f: Buffering to Disk
+e75aeb597a7f: Image successfully pushed
+69b0d7eb9e5a: Buffering to Disk
+69b0d7eb9e5a: Image successfully pushed
+d163542c0168: Image already exists
+d336a77bd1b2: Image already exists
+cb521ad94585: Image already exists
+ca217f610c63: Image already exists
+f34f6c217212: Buffering to Disk
+f34f6c217212: Image successfully pushed
+546bcc1f950b: Buffering to Disk
+546bcc1f950b: Image successfully pushed
+c63978236aac: Image already exists
+1021894f267f: Buffering to Disk
+1021894f267f: Image successfully pushed
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+
+real  85.43
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+latest: Pulling from 136.187.101.80:5000/jruby
+1021894f267f: Pulling fs layer
+c63978236aac: Pulling fs layer
+546bcc1f950b: Pulling fs layer
+f34f6c217212: Pulling fs layer
+ca217f610c63: Pulling fs layer
+cb521ad94585: Pulling fs layer
+d336a77bd1b2: Pulling fs layer
+d163542c0168: Pulling fs layer
+69b0d7eb9e5a: Pulling fs layer
+e75aeb597a7f: Pulling fs layer
+5efdfd717e36: Pulling fs layer
+1c9acea4bdc3: Pulling fs layer
+0bad624eca9f: Pulling fs layer
+3970dceb27de: Pulling fs layer
+b662a23c9a99: Pulling fs layer
+1f73c7b26f16: Pulling fs layer
+ba66f7bfff65: Pulling fs layer
+54a3de9935c3: Pulling fs layer
+3b6c9f2a7111: Pulling fs layer
+feb91815a223: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Layer already being pulled by another client. Waiting.
+c63978236aac: Verifying Checksum
+c63978236aac: Download complete
+ca217f610c63: Verifying Checksum
+ca217f610c63: Download complete
+d336a77bd1b2: Verifying Checksum
+d336a77bd1b2: Download complete
+cb521ad94585: Verifying Checksum
+cb521ad94585: Download complete
+d163542c0168: Verifying Checksum
+d163542c0168: Download complete
+0bad624eca9f: Verifying Checksum
+0bad624eca9f: Download complete
+1f73c7b26f16: Verifying Checksum
+1f73c7b26f16: Download complete
+b662a23c9a99: Verifying Checksum
+b662a23c9a99: Download complete
+ba66f7bfff65: Verifying Checksum
+ba66f7bfff65: Download complete
+1c9acea4bdc3: Verifying Checksum
+1c9acea4bdc3: Download complete
+feb91815a223: Verifying Checksum
+feb91815a223: Download complete
+41988b514f35: Verifying Checksum
+41988b514f35: Download complete
+54a3de9935c3: Verifying Checksum
+54a3de9935c3: Download complete
+41988b514f35: Download complete
+e75aeb597a7f: Verifying Checksum
+e75aeb597a7f: Download complete
+f34f6c217212: Verifying Checksum
+f34f6c217212: Download complete
+3b6c9f2a7111: Verifying Checksum
+3b6c9f2a7111: Download complete
+5efdfd717e36: Verifying Checksum
+5efdfd717e36: Download complete
+3970dceb27de: Verifying Checksum
+3970dceb27de: Download complete
+1021894f267f: Verifying Checksum
+1021894f267f: Download complete
+546bcc1f950b: Verifying Checksum
+546bcc1f950b: Download complete
+69b0d7eb9e5a: Verifying Checksum
+69b0d7eb9e5a: Download complete
+1021894f267f: Pull complete
+c63978236aac: Pull complete
+546bcc1f950b: Pull complete
+f34f6c217212: Pull complete
+ca217f610c63: Pull complete
+cb521ad94585: Pull complete
+d336a77bd1b2: Pull complete
+d163542c0168: Pull complete
+69b0d7eb9e5a: Pull complete
+e75aeb597a7f: Pull complete
+5efdfd717e36: Pull complete
+1c9acea4bdc3: Pull complete
+0bad624eca9f: Pull complete
+3970dceb27de: Pull complete
+b662a23c9a99: Pull complete
+1f73c7b26f16: Pull complete
+ba66f7bfff65: Pull complete
+54a3de9935c3: Pull complete
+3b6c9f2a7111: Pull complete
+feb91815a223: Pull complete
+41988b514f35: Pull complete
+41988b514f35: Already exists
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  18.88
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+8476bc3ddc65        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+41988b514f35: Buffering to Disk
+41988b514f35: Image successfully pushed
+41988b514f35: Image already exists
+feb91815a223: Image already exists
+3b6c9f2a7111: Buffering to Disk
+3b6c9f2a7111: Image successfully pushed
+54a3de9935c3: Image already exists
+ba66f7bfff65: Image already exists
+1f73c7b26f16: Buffering to Disk
+1f73c7b26f16: Image successfully pushed
+b662a23c9a99: Image already exists
+3970dceb27de: Buffering to Disk
+3970dceb27de: Image successfully pushed
+0bad624eca9f: Image already exists
+1c9acea4bdc3: Image already exists
+5efdfd717e36: Buffering to Disk
+5efdfd717e36: Image successfully pushed
+e75aeb597a7f: Buffering to Disk
+e75aeb597a7f: Image successfully pushed
+69b0d7eb9e5a: Buffering to Disk
+69b0d7eb9e5a: Image successfully pushed
+d163542c0168: Image already exists
+d336a77bd1b2: Image already exists
+cb521ad94585: Image already exists
+ca217f610c63: Image already exists
+f34f6c217212: Buffering to Disk
+f34f6c217212: Image successfully pushed
+546bcc1f950b: Buffering to Disk
+546bcc1f950b: Image successfully pushed
+c63978236aac: Image already exists
+1021894f267f: Buffering to Disk
+1021894f267f: Image successfully pushed
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+
+real  84.21
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+latest: Pulling from 136.187.101.80:5000/jruby
+1021894f267f: Pulling fs layer
+c63978236aac: Pulling fs layer
+546bcc1f950b: Pulling fs layer
+f34f6c217212: Pulling fs layer
+ca217f610c63: Pulling fs layer
+cb521ad94585: Pulling fs layer
+d336a77bd1b2: Pulling fs layer
+d163542c0168: Pulling fs layer
+69b0d7eb9e5a: Pulling fs layer
+e75aeb597a7f: Pulling fs layer
+5efdfd717e36: Pulling fs layer
+1c9acea4bdc3: Pulling fs layer
+0bad624eca9f: Pulling fs layer
+3970dceb27de: Pulling fs layer
+b662a23c9a99: Pulling fs layer
+1f73c7b26f16: Pulling fs layer
+ba66f7bfff65: Pulling fs layer
+54a3de9935c3: Pulling fs layer
+3b6c9f2a7111: Pulling fs layer
+feb91815a223: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Layer already being pulled by another client. Waiting.
+ca217f610c63: Verifying Checksum
+ca217f610c63: Download complete
+c63978236aac: Verifying Checksum
+c63978236aac: Download complete
+d336a77bd1b2: Verifying Checksum
+d336a77bd1b2: Download complete
+cb521ad94585: Verifying Checksum
+cb521ad94585: Download complete
+d163542c0168: Verifying Checksum
+d163542c0168: Download complete
+0bad624eca9f: Verifying Checksum
+0bad624eca9f: Download complete
+b662a23c9a99: Verifying Checksum
+b662a23c9a99: Download complete
+1c9acea4bdc3: Verifying Checksum
+1c9acea4bdc3: Download complete
+41988b514f35: Verifying Checksum
+41988b514f35: Download complete
+41988b514f35: Download complete
+54a3de9935c3: Verifying Checksum
+54a3de9935c3: Download complete
+1f73c7b26f16: Verifying Checksum
+1f73c7b26f16: Download complete
+ba66f7bfff65: Verifying Checksum
+ba66f7bfff65: Download complete
+feb91815a223: Verifying Checksum
+feb91815a223: Download complete
+f34f6c217212: Verifying Checksum
+f34f6c217212: Download complete
+e75aeb597a7f: Verifying Checksum
+e75aeb597a7f: Download complete
+3b6c9f2a7111: Verifying Checksum
+3b6c9f2a7111: Download complete
+5efdfd717e36: Verifying Checksum
+5efdfd717e36: Download complete
+546bcc1f950b: Verifying Checksum
+546bcc1f950b: Download complete
+3970dceb27de: Verifying Checksum
+3970dceb27de: Download complete
+1021894f267f: Verifying Checksum
+1021894f267f: Download complete
+69b0d7eb9e5a: Verifying Checksum
+69b0d7eb9e5a: Download complete
+1021894f267f: Pull complete
+c63978236aac: Pull complete
+546bcc1f950b: Pull complete
+f34f6c217212: Pull complete
+ca217f610c63: Pull complete
+cb521ad94585: Pull complete
+d336a77bd1b2: Pull complete
+d163542c0168: Pull complete
+69b0d7eb9e5a: Pull complete
+e75aeb597a7f: Pull complete
+5efdfd717e36: Pull complete
+1c9acea4bdc3: Pull complete
+0bad624eca9f: Pull complete
+3970dceb27de: Pull complete
+b662a23c9a99: Pull complete
+1f73c7b26f16: Pull complete
+ba66f7bfff65: Pull complete
+54a3de9935c3: Pull complete
+3b6c9f2a7111: Pull complete
+feb91815a223: Pull complete
+41988b514f35: Pull complete
+41988b514f35: Already exists
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  19.15
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+09a10f7993b3        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+41988b514f35: Buffering to Disk
+41988b514f35: Image successfully pushed
+41988b514f35: Image already exists
+feb91815a223: Image already exists
+3b6c9f2a7111: Buffering to Disk
+3b6c9f2a7111: Image successfully pushed
+54a3de9935c3: Image already exists
+ba66f7bfff65: Image already exists
+1f73c7b26f16: Buffering to Disk
+1f73c7b26f16: Image successfully pushed
+b662a23c9a99: Image already exists
+3970dceb27de: Buffering to Disk
+3970dceb27de: Image successfully pushed
+0bad624eca9f: Image already exists
+1c9acea4bdc3: Image already exists
+5efdfd717e36: Buffering to Disk
+5efdfd717e36: Image successfully pushed
+e75aeb597a7f: Buffering to Disk
+e75aeb597a7f: Image successfully pushed
+69b0d7eb9e5a: Buffering to Disk
+69b0d7eb9e5a: Image successfully pushed
+d163542c0168: Image already exists
+d336a77bd1b2: Image already exists
+cb521ad94585: Image already exists
+ca217f610c63: Image already exists
+f34f6c217212: Buffering to Disk
+f34f6c217212: Image successfully pushed
+546bcc1f950b: Buffering to Disk
+546bcc1f950b: Image successfully pushed
+c63978236aac: Image already exists
+1021894f267f: Buffering to Disk
+1021894f267f: Image successfully pushed
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+
+real  85.94
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+latest: Pulling from 136.187.101.80:5000/jruby
+1021894f267f: Pulling fs layer
+c63978236aac: Pulling fs layer
+546bcc1f950b: Pulling fs layer
+f34f6c217212: Pulling fs layer
+ca217f610c63: Pulling fs layer
+cb521ad94585: Pulling fs layer
+d336a77bd1b2: Pulling fs layer
+d163542c0168: Pulling fs layer
+69b0d7eb9e5a: Pulling fs layer
+e75aeb597a7f: Pulling fs layer
+5efdfd717e36: Pulling fs layer
+1c9acea4bdc3: Pulling fs layer
+0bad624eca9f: Pulling fs layer
+3970dceb27de: Pulling fs layer
+b662a23c9a99: Pulling fs layer
+1f73c7b26f16: Pulling fs layer
+ba66f7bfff65: Pulling fs layer
+54a3de9935c3: Pulling fs layer
+3b6c9f2a7111: Pulling fs layer
+feb91815a223: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Layer already being pulled by another client. Waiting.
+d163542c0168: Verifying Checksum
+d163542c0168: Download complete
+1c9acea4bdc3: Verifying Checksum
+1c9acea4bdc3: Download complete
+1f73c7b26f16: Verifying Checksum
+1f73c7b26f16: Download complete
+c63978236aac: Verifying Checksum
+c63978236aac: Download complete
+cb521ad94585: Verifying Checksum
+cb521ad94585: Download complete
+d336a77bd1b2: Verifying Checksum
+d336a77bd1b2: Download complete
+ca217f610c63: Verifying Checksum
+ca217f610c63: Download complete
+0bad624eca9f: Verifying Checksum
+0bad624eca9f: Download complete
+ba66f7bfff65: Verifying Checksum
+ba66f7bfff65: Download complete
+b662a23c9a99: Verifying Checksum
+b662a23c9a99: Download complete
+54a3de9935c3: Verifying Checksum
+54a3de9935c3: Download complete
+feb91815a223: Verifying Checksum
+feb91815a223: Download complete
+41988b514f35: Verifying Checksum
+41988b514f35: Download complete
+41988b514f35: Download complete
+f34f6c217212: Verifying Checksum
+f34f6c217212: Download complete
+e75aeb597a7f: Verifying Checksum
+e75aeb597a7f: Download complete
+3b6c9f2a7111: Verifying Checksum
+3b6c9f2a7111: Download complete
+5efdfd717e36: Verifying Checksum
+5efdfd717e36: Download complete
+546bcc1f950b: Verifying Checksum
+546bcc1f950b: Download complete
+3970dceb27de: Verifying Checksum
+3970dceb27de: Download complete
+1021894f267f: Verifying Checksum
+1021894f267f: Download complete
+69b0d7eb9e5a: Verifying Checksum
+69b0d7eb9e5a: Download complete
+1021894f267f: Pull complete
+c63978236aac: Pull complete
+546bcc1f950b: Pull complete
+f34f6c217212: Pull complete
+ca217f610c63: Pull complete
+cb521ad94585: Pull complete
+d336a77bd1b2: Pull complete
+d163542c0168: Pull complete
+69b0d7eb9e5a: Pull complete
+e75aeb597a7f: Pull complete
+5efdfd717e36: Pull complete
+1c9acea4bdc3: Pull complete
+0bad624eca9f: Pull complete
+3970dceb27de: Pull complete
+b662a23c9a99: Pull complete
+1f73c7b26f16: Pull complete
+ba66f7bfff65: Pull complete
+54a3de9935c3: Pull complete
+3b6c9f2a7111: Pull complete
+feb91815a223: Pull complete
+41988b514f35: Pull complete
+41988b514f35: Already exists
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  19.00
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+477831cc7525        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+41988b514f35: Buffering to Disk
+41988b514f35: Image successfully pushed
+41988b514f35: Image already exists
+feb91815a223: Image already exists
+3b6c9f2a7111: Buffering to Disk
+3b6c9f2a7111: Image successfully pushed
+54a3de9935c3: Image already exists
+ba66f7bfff65: Image already exists
+1f73c7b26f16: Buffering to Disk
+1f73c7b26f16: Image successfully pushed
+b662a23c9a99: Image already exists
+3970dceb27de: Buffering to Disk
+3970dceb27de: Image successfully pushed
+0bad624eca9f: Image already exists
+1c9acea4bdc3: Image already exists
+5efdfd717e36: Buffering to Disk
+5efdfd717e36: Image successfully pushed
+e75aeb597a7f: Buffering to Disk
+e75aeb597a7f: Image successfully pushed
+69b0d7eb9e5a: Buffering to Disk
+69b0d7eb9e5a: Image successfully pushed
+d163542c0168: Image already exists
+d336a77bd1b2: Image already exists
+cb521ad94585: Image already exists
+ca217f610c63: Image already exists
+f34f6c217212: Buffering to Disk
+f34f6c217212: Image successfully pushed
+546bcc1f950b: Buffering to Disk
+546bcc1f950b: Image successfully pushed
+c63978236aac: Image already exists
+1021894f267f: Buffering to Disk
+1021894f267f: Image successfully pushed
+Digest: sha256:01356a99b9d9e3b2e87b11101572425090a1689e68c2dc783d863f2639d20fcc
+
+real  85.79
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+latest: Pulling from 136.187.101.80:5000/jruby
+1021894f267f: Pulling fs layer
+c63978236aac: Pulling fs layer
+546bcc1f950b: Pulling fs layer
+f34f6c217212: Pulling fs layer
+ca217f610c63: Pulling fs layer
+cb521ad94585: Pulling fs layer
+d336a77bd1b2: Pulling fs layer
+d163542c0168: Pulling fs layer
+69b0d7eb9e5a: Pulling fs layer
+e75aeb597a7f: Pulling fs layer
+5efdfd717e36: Pulling fs layer
+1c9acea4bdc3: Pulling fs layer
+0bad624eca9f: Pulling fs layer
+3970dceb27de: Pulling fs layer
+b662a23c9a99: Pulling fs layer
+1f73c7b26f16: Pulling fs layer
+ba66f7bfff65: Pulling fs layer
+54a3de9935c3: Pulling fs layer
+3b6c9f2a7111: Pulling fs layer
+feb91815a223: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Layer already being pulled by another client. Waiting.
+c63978236aac: Verifying Checksum
+c63978236aac: Download complete
+ca217f610c63: Verifying Checksum
+ca217f610c63: Download complete
+cb521ad94585: Verifying Checksum
+cb521ad94585: Download complete
+d163542c0168: Verifying Checksum
+d163542c0168: Download complete
+d336a77bd1b2: Verifying Checksum
+d336a77bd1b2: Download complete
+1c9acea4bdc3: Verifying Checksum
+1c9acea4bdc3: Download complete
+b662a23c9a99: Verifying Checksum
+b662a23c9a99: Download complete
+1f73c7b26f16: Verifying Checksum
+1f73c7b26f16: Download complete
+ba66f7bfff65: Verifying Checksum
+ba66f7bfff65: Download complete
+f34f6c217212: Verifying Checksum
+f34f6c217212: Download complete
+54a3de9935c3: Verifying Checksum
+54a3de9935c3: Download complete
+feb91815a223: Verifying Checksum
+feb91815a223: Download complete
+41988b514f35: Verifying Checksum
+41988b514f35: Download complete
+41988b514f35: Download complete
+0bad624eca9f: Verifying Checksum
+0bad624eca9f: Download complete
+e75aeb597a7f: Verifying Checksum
+e75aeb597a7f: Download complete
+3b6c9f2a7111: Verifying Checksum
+3b6c9f2a7111: Download complete
+5efdfd717e36: Verifying Checksum
+5efdfd717e36: Download complete
+546bcc1f950b: Verifying Checksum
+546bcc1f950b: Download complete
+3970dceb27de: Verifying Checksum
+3970dceb27de: Download complete
+1021894f267f: Verifying Checksum
+1021894f267f: Download complete
+69b0d7eb9e5a: Verifying Checksum
+69b0d7eb9e5a: Download complete
+1021894f267f: Pull complete
+c63978236aac: Pull complete
+546bcc1f950b: Pull complete
+f34f6c217212: Pull complete
+ca217f610c63: Pull complete
+cb521ad94585: Pull complete
+d336a77bd1b2: Pull complete
+d163542c0168: Pull complete
+69b0d7eb9e5a: Pull complete
+e75aeb597a7f: Pull complete
+5efdfd717e36: Pull complete
+1c9acea4bdc3: Pull complete
+0bad624eca9f: Pull complete
+3970dceb27de: Pull complete
+b662a23c9a99: Pull complete
+1f73c7b26f16: Pull complete
+ba66f7bfff65: Pull complete
+54a3de9935c3: Pull complete
+3b6c9f2a7111: Pull complete
+feb91815a223: Pull complete
+41988b514f35: Pull complete
+41988b514f35: Already exists
+Digest: sha256:01356a99b9d9e3b2e87b11101572425090a1689e68c2dc783d863f2639d20fcc
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  18.58
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+471b6036812b        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+41988b514f35: Buffering to Disk
+41988b514f35: Image successfully pushed
+41988b514f35: Image already exists
+feb91815a223: Image already exists
+3b6c9f2a7111: Buffering to Disk
+3b6c9f2a7111: Image successfully pushed
+54a3de9935c3: Image already exists
+ba66f7bfff65: Image already exists
+1f73c7b26f16: Buffering to Disk
+1f73c7b26f16: Image successfully pushed
+b662a23c9a99: Image already exists
+3970dceb27de: Buffering to Disk
+3970dceb27de: Image successfully pushed
+0bad624eca9f: Image already exists
+1c9acea4bdc3: Image already exists
+5efdfd717e36: Buffering to Disk
+5efdfd717e36: Image successfully pushed
+e75aeb597a7f: Buffering to Disk
+e75aeb597a7f: Image successfully pushed
+69b0d7eb9e5a: Buffering to Disk
+69b0d7eb9e5a: Image successfully pushed
+d163542c0168: Image already exists
+d336a77bd1b2: Image already exists
+cb521ad94585: Image already exists
+ca217f610c63: Image already exists
+f34f6c217212: Buffering to Disk
+f34f6c217212: Image successfully pushed
+546bcc1f950b: Buffering to Disk
+546bcc1f950b: Image successfully pushed
+c63978236aac: Image already exists
+1021894f267f: Buffering to Disk
+1021894f267f: Image successfully pushed
+Digest: sha256:c89fd821297d4e99a8317133cca50c7bbbd37deb0dc2b7b735d16cec8ccb41db
+
+real  86.66
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+latest: Pulling from 136.187.101.80:5000/jruby
+1021894f267f: Pulling fs layer
+c63978236aac: Pulling fs layer
+546bcc1f950b: Pulling fs layer
+f34f6c217212: Pulling fs layer
+ca217f610c63: Pulling fs layer
+cb521ad94585: Pulling fs layer
+d336a77bd1b2: Pulling fs layer
+d163542c0168: Pulling fs layer
+69b0d7eb9e5a: Pulling fs layer
+e75aeb597a7f: Pulling fs layer
+5efdfd717e36: Pulling fs layer
+1c9acea4bdc3: Pulling fs layer
+0bad624eca9f: Pulling fs layer
+3970dceb27de: Pulling fs layer
+b662a23c9a99: Pulling fs layer
+1f73c7b26f16: Pulling fs layer
+ba66f7bfff65: Pulling fs layer
+54a3de9935c3: Pulling fs layer
+3b6c9f2a7111: Pulling fs layer
+feb91815a223: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Layer already being pulled by another client. Waiting.
+d336a77bd1b2: Verifying Checksum
+d336a77bd1b2: Download complete
+c63978236aac: Verifying Checksum
+c63978236aac: Download complete
+1f73c7b26f16: Verifying Checksum
+1f73c7b26f16: Download complete
+ca217f610c63: Verifying Checksum
+ca217f610c63: Download complete
+1c9acea4bdc3: Verifying Checksum
+1c9acea4bdc3: Download complete
+cb521ad94585: Verifying Checksum
+cb521ad94585: Download complete
+d163542c0168: Verifying Checksum
+d163542c0168: Download complete
+0bad624eca9f: Verifying Checksum
+0bad624eca9f: Download complete
+b662a23c9a99: Verifying Checksum
+b662a23c9a99: Download complete
+54a3de9935c3: Verifying Checksum
+54a3de9935c3: Download complete
+e75aeb597a7f: Verifying Checksum
+e75aeb597a7f: Download complete
+feb91815a223: Verifying Checksum
+feb91815a223: Download complete
+41988b514f35: Verifying Checksum
+41988b514f35: Download complete
+41988b514f35: Download complete
+f34f6c217212: Verifying Checksum
+f34f6c217212: Download complete
+ba66f7bfff65: Verifying Checksum
+ba66f7bfff65: Download complete
+3b6c9f2a7111: Verifying Checksum
+3b6c9f2a7111: Download complete
+5efdfd717e36: Verifying Checksum
+5efdfd717e36: Download complete
+546bcc1f950b: Verifying Checksum
+546bcc1f950b: Download complete
+3970dceb27de: Verifying Checksum
+3970dceb27de: Download complete
+1021894f267f: Verifying Checksum
+1021894f267f: Download complete
+69b0d7eb9e5a: Verifying Checksum
+69b0d7eb9e5a: Download complete
+1021894f267f: Pull complete
+c63978236aac: Pull complete
+546bcc1f950b: Pull complete
+f34f6c217212: Pull complete
+ca217f610c63: Pull complete
+cb521ad94585: Pull complete
+d336a77bd1b2: Pull complete
+d163542c0168: Pull complete
+69b0d7eb9e5a: Pull complete
+e75aeb597a7f: Pull complete
+5efdfd717e36: Pull complete
+1c9acea4bdc3: Pull complete
+0bad624eca9f: Pull complete
+3970dceb27de: Pull complete
+b662a23c9a99: Pull complete
+1f73c7b26f16: Pull complete
+ba66f7bfff65: Pull complete
+54a3de9935c3: Pull complete
+3b6c9f2a7111: Pull complete
+feb91815a223: Pull complete
+41988b514f35: Pull complete
+41988b514f35: Already exists
+Digest: sha256:c89fd821297d4e99a8317133cca50c7bbbd37deb0dc2b7b735d16cec8ccb41db
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  19.05
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 jruby
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+
+docker tag kiwenlau/jruby:latest 136.187.101.80:5000/jruby:latest
+
+docker images
+kiwenlau/jruby                  latest              41988b514f35        11 weeks ago        552 MB
+136.187.101.80:5000/jruby       latest              41988b514f35        11 weeks ago        552 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+869cd4c22c39        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jruby:latest
+The push refers to a repository [136.187.101.80:5000/jruby] (len: 1)
+41988b514f35: Buffering to Disk
+41988b514f35: Image successfully pushed
+41988b514f35: Image already exists
+feb91815a223: Image already exists
+3b6c9f2a7111: Buffering to Disk
+3b6c9f2a7111: Image successfully pushed
+54a3de9935c3: Image already exists
+ba66f7bfff65: Image already exists
+1f73c7b26f16: Buffering to Disk
+1f73c7b26f16: Image successfully pushed
+b662a23c9a99: Image already exists
+3970dceb27de: Buffering to Disk
+3970dceb27de: Image successfully pushed
+0bad624eca9f: Image already exists
+1c9acea4bdc3: Image already exists
+5efdfd717e36: Buffering to Disk
+5efdfd717e36: Image successfully pushed
+e75aeb597a7f: Buffering to Disk
+e75aeb597a7f: Image successfully pushed
+69b0d7eb9e5a: Buffering to Disk
+69b0d7eb9e5a: Image successfully pushed
+d163542c0168: Image already exists
+d336a77bd1b2: Image already exists
+cb521ad94585: Image already exists
+ca217f610c63: Image already exists
+f34f6c217212: Buffering to Disk
+f34f6c217212: Image successfully pushed
+546bcc1f950b: Buffering to Disk
+546bcc1f950b: Image successfully pushed
+c63978236aac: Image already exists
+1021894f267f: Buffering to Disk
+1021894f267f: Image successfully pushed
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+
+real  87.09
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker pull 136.187.101.80:5000/jruby:latest
+latest: Pulling from 136.187.101.80:5000/jruby
+1021894f267f: Pulling fs layer
+c63978236aac: Pulling fs layer
+546bcc1f950b: Pulling fs layer
+f34f6c217212: Pulling fs layer
+ca217f610c63: Pulling fs layer
+cb521ad94585: Pulling fs layer
+d336a77bd1b2: Pulling fs layer
+d163542c0168: Pulling fs layer
+69b0d7eb9e5a: Pulling fs layer
+e75aeb597a7f: Pulling fs layer
+5efdfd717e36: Pulling fs layer
+1c9acea4bdc3: Pulling fs layer
+0bad624eca9f: Pulling fs layer
+3970dceb27de: Pulling fs layer
+b662a23c9a99: Pulling fs layer
+1f73c7b26f16: Pulling fs layer
+ba66f7bfff65: Pulling fs layer
+54a3de9935c3: Pulling fs layer
+3b6c9f2a7111: Pulling fs layer
+feb91815a223: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Pulling fs layer
+41988b514f35: Layer already being pulled by another client. Waiting.
+c63978236aac: Verifying Checksum
+c63978236aac: Download complete
+cb521ad94585: Verifying Checksum
+cb521ad94585: Download complete
+ca217f610c63: Verifying Checksum
+ca217f610c63: Download complete
+d336a77bd1b2: Verifying Checksum
+d336a77bd1b2: Download complete
+54a3de9935c3: Verifying Checksum
+54a3de9935c3: Download complete
+d163542c0168: Verifying Checksum
+d163542c0168: Download complete
+ba66f7bfff65: Verifying Checksum
+ba66f7bfff65: Download complete
+1f73c7b26f16: Verifying Checksum
+1f73c7b26f16: Download complete
+feb91815a223: Verifying Checksum
+feb91815a223: Download complete
+0bad624eca9f: Verifying Checksum
+0bad624eca9f: Download complete
+41988b514f35: Verifying Checksum
+41988b514f35: Download complete
+41988b514f35: Download complete
+1c9acea4bdc3: Verifying Checksum
+1c9acea4bdc3: Download complete
+b662a23c9a99: Verifying Checksum
+b662a23c9a99: Download complete
+f34f6c217212: Verifying Checksum
+f34f6c217212: Download complete
+e75aeb597a7f: Verifying Checksum
+e75aeb597a7f: Download complete
+3b6c9f2a7111: Verifying Checksum
+3b6c9f2a7111: Download complete
+5efdfd717e36: Verifying Checksum
+5efdfd717e36: Download complete
+546bcc1f950b: Verifying Checksum
+546bcc1f950b: Download complete
+3970dceb27de: Verifying Checksum
+3970dceb27de: Download complete
+1021894f267f: Verifying Checksum
+1021894f267f: Download complete
+69b0d7eb9e5a: Verifying Checksum
+69b0d7eb9e5a: Download complete
+1021894f267f: Pull complete
+c63978236aac: Pull complete
+546bcc1f950b: Pull complete
+f34f6c217212: Pull complete
+ca217f610c63: Pull complete
+cb521ad94585: Pull complete
+d336a77bd1b2: Pull complete
+d163542c0168: Pull complete
+69b0d7eb9e5a: Pull complete
+e75aeb597a7f: Pull complete
+5efdfd717e36: Pull complete
+1c9acea4bdc3: Pull complete
+0bad624eca9f: Pull complete
+3970dceb27de: Pull complete
+b662a23c9a99: Pull complete
+1f73c7b26f16: Pull complete
+ba66f7bfff65: Pull complete
+54a3de9935c3: Pull complete
+3b6c9f2a7111: Pull complete
+feb91815a223: Pull complete
+41988b514f35: Pull complete
+41988b514f35: Already exists
+Digest: sha256:771d1a4f9d180976cdb6f99cfe5b5489d1593a5703483309e9470173e2bd2c22
+Status: Downloaded newer image for 136.187.101.80:5000/jruby:latest
+
+real  19.05
+
+ssh kai@52.68.197.112 "docker images | grep jruby"
+136.187.101.80:5000/jruby   latest              41988b514f35        11 weeks ago        551.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jruby:latest"
+ssh kai@52.68.197.112 "docker images | grep jruby"
+
+docker rm -f docker_registry
+
+end date: Sun Jul 26 02:11:53 JST 2015
+
+
