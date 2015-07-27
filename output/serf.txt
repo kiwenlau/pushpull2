@@ -2,7 +2,7 @@
 pullpush benchmark: transfer serf image to 52.68.197.112 host
  
 hostname: kuruwa-gw
-begin date: Sun Jul 26 05:11:20 JST 2015
+begin date: Mon Jul 27 05:14:27 JST 2015
 
 sudo docker images
 kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
@@ -23,7 +23,7 @@ docker images
 kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-926ce6131cce        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+9eff9d02c9f5        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/serf:latest
 The push refers to a repository [136.187.101.80:5000/serf] (len: 1)
@@ -60,9 +60,9 @@ b7822357f520: Image successfully pushed
 47fb1b41ad2f: Image already exists
 89b52f216c6c: Buffering to Disk
 89b52f216c6c: Image successfully pushed
-Digest: sha256:ab245d598e0250bae97271b97e569f6048d2444853bf879cefe549e73e54ecf7
+Digest: sha256:d20b30f9a0c02ed124aa6a0ca19ced89174d99e449d77a3d0453eb3185c188ac
 
-real  135.91
+real  128.10
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 
@@ -88,39 +88,39 @@ af1b08109992: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Layer already being pulled by another client. Waiting.
-08f25e6d880b: Verifying Checksum
-08f25e6d880b: Download complete
+af1b08109992: Verifying Checksum
+af1b08109992: Download complete
 47fb1b41ad2f: Verifying Checksum
 47fb1b41ad2f: Download complete
+08f25e6d880b: Verifying Checksum
+08f25e6d880b: Download complete
+39150769ad52: Verifying Checksum
+39150769ad52: Download complete
 6db61134ec96: Verifying Checksum
 6db61134ec96: Download complete
 dd2b2e9acaae: Verifying Checksum
 dd2b2e9acaae: Download complete
-39150769ad52: Verifying Checksum
-39150769ad52: Download complete
-b9c57fb0a9b3: Verifying Checksum
-b9c57fb0a9b3: Download complete
-af1b08109992: Verifying Checksum
-af1b08109992: Download complete
-03f374be6b99: Verifying Checksum
-03f374be6b99: Download complete
 0169c9130d45: Verifying Checksum
 0169c9130d45: Download complete
+03f374be6b99: Verifying Checksum
+03f374be6b99: Download complete
+b9c57fb0a9b3: Verifying Checksum
+b9c57fb0a9b3: Download complete
 eaa9926e8e86: Verifying Checksum
 eaa9926e8e86: Download complete
 eaa9926e8e86: Download complete
-b1e58a832efd: Verifying Checksum
-b1e58a832efd: Download complete
 5bc3a847e4e4: Verifying Checksum
 5bc3a847e4e4: Download complete
-b7c2fd737a85: Verifying Checksum
-b7c2fd737a85: Download complete
+b1e58a832efd: Verifying Checksum
+b1e58a832efd: Download complete
 9df0a016daf1: Verifying Checksum
 9df0a016daf1: Download complete
-89b52f216c6c: Verifying Checksum
-89b52f216c6c: Download complete
+b7c2fd737a85: Verifying Checksum
+b7c2fd737a85: Download complete
 189cb885ba89: Verifying Checksum
 189cb885ba89: Download complete
+89b52f216c6c: Verifying Checksum
+89b52f216c6c: Download complete
 5032be9f808a: Verifying Checksum
 5032be9f808a: Download complete
 b7822357f520: Verifying Checksum
@@ -144,10 +144,10 @@ af1b08109992: Pull complete
 03f374be6b99: Pull complete
 eaa9926e8e86: Pull complete
 eaa9926e8e86: Already exists
-Digest: sha256:ab245d598e0250bae97271b97e569f6048d2444853bf879cefe549e73e54ecf7
+Digest: sha256:d20b30f9a0c02ed124aa6a0ca19ced89174d99e449d77a3d0453eb3185c188ac
 Status: Downloaded newer image for 136.187.101.80:5000/serf:latest
 
-real  29.64
+real  32.30
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 136.187.101.80:5000/serf   latest              eaa9926e8e86        5 months ago        951.6 MB
@@ -170,7 +170,7 @@ docker images
 kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-b3c632a2114e        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+2708b4030cc5        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/serf:latest
 The push refers to a repository [136.187.101.80:5000/serf] (len: 1)
@@ -207,9 +207,9 @@ b7822357f520: Image successfully pushed
 47fb1b41ad2f: Image already exists
 89b52f216c6c: Buffering to Disk
 89b52f216c6c: Image successfully pushed
-Digest: sha256:4410724d6bea6808135b93b65d9489cf9428b2d0f7479f32ea113b5bd9ca0d8c
+Digest: sha256:b37a55c0873359842dd2d3f93ab10180ae0dad93fad60e047effbcd9eb7176f1
 
-real  136.98
+real  124.89
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 
@@ -243,6 +243,8 @@ eaa9926e8e86: Layer already being pulled by another client. Waiting.
 39150769ad52: Download complete
 dd2b2e9acaae: Verifying Checksum
 dd2b2e9acaae: Download complete
+6db61134ec96: Verifying Checksum
+6db61134ec96: Download complete
 0169c9130d45: Verifying Checksum
 0169c9130d45: Download complete
 03f374be6b99: Verifying Checksum
@@ -252,8 +254,6 @@ b9c57fb0a9b3: Download complete
 eaa9926e8e86: Verifying Checksum
 eaa9926e8e86: Download complete
 eaa9926e8e86: Download complete
-6db61134ec96: Verifying Checksum
-6db61134ec96: Download complete
 af1b08109992: Verifying Checksum
 af1b08109992: Download complete
 5bc3a847e4e4: Verifying Checksum
@@ -266,10 +266,10 @@ b7c2fd737a85: Verifying Checksum
 b7c2fd737a85: Download complete
 189cb885ba89: Verifying Checksum
 189cb885ba89: Download complete
-5032be9f808a: Verifying Checksum
-5032be9f808a: Download complete
 89b52f216c6c: Verifying Checksum
 89b52f216c6c: Download complete
+5032be9f808a: Verifying Checksum
+5032be9f808a: Download complete
 b7822357f520: Verifying Checksum
 b7822357f520: Download complete
 89b52f216c6c: Pull complete
@@ -291,10 +291,10 @@ af1b08109992: Pull complete
 03f374be6b99: Pull complete
 eaa9926e8e86: Pull complete
 eaa9926e8e86: Already exists
-Digest: sha256:4410724d6bea6808135b93b65d9489cf9428b2d0f7479f32ea113b5bd9ca0d8c
+Digest: sha256:b37a55c0873359842dd2d3f93ab10180ae0dad93fad60e047effbcd9eb7176f1
 Status: Downloaded newer image for 136.187.101.80:5000/serf:latest
 
-real  32.54
+real  30.53
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 136.187.101.80:5000/serf   latest              eaa9926e8e86        5 months ago        951.6 MB
@@ -317,7 +317,7 @@ docker images
 kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-20959351be40        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+fd26a724508f        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/serf:latest
 The push refers to a repository [136.187.101.80:5000/serf] (len: 1)
@@ -354,9 +354,9 @@ b7822357f520: Image successfully pushed
 47fb1b41ad2f: Image already exists
 89b52f216c6c: Buffering to Disk
 89b52f216c6c: Image successfully pushed
-Digest: sha256:f0b28b23abc855e353bf348e43ccb1f21116cb4910350a2f4404c287ed307193
+Digest: sha256:d1b87dbce196871b3bbd9a09634553691a5cdf9cd0a8324e51b192b69b4a01e8
 
-real  138.21
+real  125.97
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 
@@ -386,27 +386,27 @@ eaa9926e8e86: Layer already being pulled by another client. Waiting.
 08f25e6d880b: Download complete
 47fb1b41ad2f: Verifying Checksum
 47fb1b41ad2f: Download complete
-6db61134ec96: Verifying Checksum
-6db61134ec96: Download complete
-39150769ad52: Verifying Checksum
-39150769ad52: Download complete
-dd2b2e9acaae: Verifying Checksum
-dd2b2e9acaae: Download complete
-b9c57fb0a9b3: Verifying Checksum
-b9c57fb0a9b3: Download complete
-0169c9130d45: Verifying Checksum
-0169c9130d45: Download complete
+03f374be6b99: Verifying Checksum
+03f374be6b99: Download complete
 eaa9926e8e86: Verifying Checksum
 eaa9926e8e86: Download complete
 eaa9926e8e86: Download complete
-03f374be6b99: Verifying Checksum
-03f374be6b99: Download complete
 af1b08109992: Verifying Checksum
 af1b08109992: Download complete
-b1e58a832efd: Verifying Checksum
-b1e58a832efd: Download complete
+6db61134ec96: Verifying Checksum
+6db61134ec96: Download complete
+dd2b2e9acaae: Verifying Checksum
+dd2b2e9acaae: Download complete
+39150769ad52: Verifying Checksum
+39150769ad52: Download complete
+0169c9130d45: Verifying Checksum
+0169c9130d45: Download complete
+b9c57fb0a9b3: Verifying Checksum
+b9c57fb0a9b3: Download complete
 5bc3a847e4e4: Verifying Checksum
 5bc3a847e4e4: Download complete
+b1e58a832efd: Verifying Checksum
+b1e58a832efd: Download complete
 9df0a016daf1: Verifying Checksum
 9df0a016daf1: Download complete
 b7c2fd737a85: Verifying Checksum
@@ -438,10 +438,10 @@ af1b08109992: Pull complete
 03f374be6b99: Pull complete
 eaa9926e8e86: Pull complete
 eaa9926e8e86: Already exists
-Digest: sha256:f0b28b23abc855e353bf348e43ccb1f21116cb4910350a2f4404c287ed307193
+Digest: sha256:d1b87dbce196871b3bbd9a09634553691a5cdf9cd0a8324e51b192b69b4a01e8
 Status: Downloaded newer image for 136.187.101.80:5000/serf:latest
 
-real  30.56
+real  30.22
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 136.187.101.80:5000/serf   latest              eaa9926e8e86        5 months ago        951.6 MB
@@ -464,7 +464,7 @@ docker images
 kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-0b00f3f84680        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+3233b0030c22        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/serf:latest
 The push refers to a repository [136.187.101.80:5000/serf] (len: 1)
@@ -501,9 +501,9 @@ b7822357f520: Image successfully pushed
 47fb1b41ad2f: Image already exists
 89b52f216c6c: Buffering to Disk
 89b52f216c6c: Image successfully pushed
-Digest: sha256:f7f08a57551729ed6ba6f09372a2131f48939907cc6513aa43b60cb183d4bb21
+Digest: sha256:d4e2b2e1c39aec7ca53d37293468e06c0f9fb4012dc8a4ef3254cd26fd7a963b
 
-real  136.34
+real  125.46
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 
@@ -531,37 +531,37 @@ eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Layer already being pulled by another client. Waiting.
 47fb1b41ad2f: Verifying Checksum
 47fb1b41ad2f: Download complete
+0169c9130d45: Verifying Checksum
+0169c9130d45: Download complete
 08f25e6d880b: Verifying Checksum
 08f25e6d880b: Download complete
 b9c57fb0a9b3: Verifying Checksum
 b9c57fb0a9b3: Download complete
-af1b08109992: Verifying Checksum
-af1b08109992: Download complete
-0169c9130d45: Verifying Checksum
-0169c9130d45: Download complete
+39150769ad52: Verifying Checksum
+39150769ad52: Download complete
+6db61134ec96: Verifying Checksum
+6db61134ec96: Download complete
 03f374be6b99: Verifying Checksum
 03f374be6b99: Download complete
+dd2b2e9acaae: Verifying Checksum
+dd2b2e9acaae: Download complete
 eaa9926e8e86: Verifying Checksum
 eaa9926e8e86: Download complete
 eaa9926e8e86: Download complete
-39150769ad52: Verifying Checksum
-39150769ad52: Download complete
-dd2b2e9acaae: Verifying Checksum
-dd2b2e9acaae: Download complete
-6db61134ec96: Verifying Checksum
-6db61134ec96: Download complete
-5bc3a847e4e4: Verifying Checksum
-5bc3a847e4e4: Download complete
+af1b08109992: Verifying Checksum
+af1b08109992: Download complete
 b1e58a832efd: Verifying Checksum
 b1e58a832efd: Download complete
+5bc3a847e4e4: Verifying Checksum
+5bc3a847e4e4: Download complete
 9df0a016daf1: Verifying Checksum
 9df0a016daf1: Download complete
 b7c2fd737a85: Verifying Checksum
 b7c2fd737a85: Download complete
-189cb885ba89: Verifying Checksum
-189cb885ba89: Download complete
 89b52f216c6c: Verifying Checksum
 89b52f216c6c: Download complete
+189cb885ba89: Verifying Checksum
+189cb885ba89: Download complete
 5032be9f808a: Verifying Checksum
 5032be9f808a: Download complete
 b7822357f520: Verifying Checksum
@@ -585,10 +585,10 @@ af1b08109992: Pull complete
 03f374be6b99: Pull complete
 eaa9926e8e86: Pull complete
 eaa9926e8e86: Already exists
-Digest: sha256:f7f08a57551729ed6ba6f09372a2131f48939907cc6513aa43b60cb183d4bb21
+Digest: sha256:d4e2b2e1c39aec7ca53d37293468e06c0f9fb4012dc8a4ef3254cd26fd7a963b
 Status: Downloaded newer image for 136.187.101.80:5000/serf:latest
 
-real  30.26
+real  30.08
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 136.187.101.80:5000/serf   latest              eaa9926e8e86        5 months ago        951.6 MB
@@ -611,7 +611,7 @@ docker images
 kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-b8e562da2baa        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+10ad07390712        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/serf:latest
 The push refers to a repository [136.187.101.80:5000/serf] (len: 1)
@@ -648,9 +648,9 @@ b7822357f520: Image successfully pushed
 47fb1b41ad2f: Image already exists
 89b52f216c6c: Buffering to Disk
 89b52f216c6c: Image successfully pushed
-Digest: sha256:db1a60c5b89454fa41265ac953a1a62968c40b354de4d03069d8bfe02c51d263
+Digest: sha256:b9914fd97a9eee7769e537e2b0804b6394748eb43f5e98a07626a6c1662d3c19
 
-real  137.47
+real  125.53
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 
@@ -676,27 +676,27 @@ af1b08109992: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Layer already being pulled by another client. Waiting.
-08f25e6d880b: Verifying Checksum
-08f25e6d880b: Download complete
 47fb1b41ad2f: Verifying Checksum
 47fb1b41ad2f: Download complete
-03f374be6b99: Verifying Checksum
-03f374be6b99: Download complete
+08f25e6d880b: Verifying Checksum
+08f25e6d880b: Download complete
+39150769ad52: Verifying Checksum
+39150769ad52: Download complete
 6db61134ec96: Verifying Checksum
 6db61134ec96: Download complete
 af1b08109992: Verifying Checksum
 af1b08109992: Download complete
+dd2b2e9acaae: Verifying Checksum
+dd2b2e9acaae: Download complete
+b9c57fb0a9b3: Verifying Checksum
+b9c57fb0a9b3: Download complete
 0169c9130d45: Verifying Checksum
 0169c9130d45: Download complete
 eaa9926e8e86: Verifying Checksum
 eaa9926e8e86: Download complete
 eaa9926e8e86: Download complete
-dd2b2e9acaae: Verifying Checksum
-dd2b2e9acaae: Download complete
-39150769ad52: Verifying Checksum
-39150769ad52: Download complete
-b9c57fb0a9b3: Verifying Checksum
-b9c57fb0a9b3: Download complete
+03f374be6b99: Verifying Checksum
+03f374be6b99: Download complete
 b1e58a832efd: Verifying Checksum
 b1e58a832efd: Download complete
 5bc3a847e4e4: Verifying Checksum
@@ -732,10 +732,10 @@ af1b08109992: Pull complete
 03f374be6b99: Pull complete
 eaa9926e8e86: Pull complete
 eaa9926e8e86: Already exists
-Digest: sha256:db1a60c5b89454fa41265ac953a1a62968c40b354de4d03069d8bfe02c51d263
+Digest: sha256:b9914fd97a9eee7769e537e2b0804b6394748eb43f5e98a07626a6c1662d3c19
 Status: Downloaded newer image for 136.187.101.80:5000/serf:latest
 
-real  30.41
+real  30.63
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 136.187.101.80:5000/serf   latest              eaa9926e8e86        5 months ago        951.6 MB
@@ -758,7 +758,7 @@ docker images
 kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-41fef8e36fbf        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+65d8cc3f490a        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/serf:latest
 The push refers to a repository [136.187.101.80:5000/serf] (len: 1)
@@ -795,9 +795,9 @@ b7822357f520: Image successfully pushed
 47fb1b41ad2f: Image already exists
 89b52f216c6c: Buffering to Disk
 89b52f216c6c: Image successfully pushed
-Digest: sha256:da6a74fc681b90a502371195ffa8e93065c3a848f95fedd36a3ab51ba830e482
+Digest: sha256:a9d386beb94ba457288951cac40a7227f6be5a724a874bf1141417fbb12b34fd
 
-real  142.97
+real  124.61
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 
@@ -823,31 +823,31 @@ af1b08109992: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Layer already being pulled by another client. Waiting.
+47fb1b41ad2f: Verifying Checksum
+47fb1b41ad2f: Download complete
 eaa9926e8e86: Verifying Checksum
 eaa9926e8e86: Download complete
 eaa9926e8e86: Download complete
 08f25e6d880b: Verifying Checksum
 08f25e6d880b: Download complete
-47fb1b41ad2f: Verifying Checksum
-47fb1b41ad2f: Download complete
-0169c9130d45: Verifying Checksum
-0169c9130d45: Download complete
 6db61134ec96: Verifying Checksum
 6db61134ec96: Download complete
-39150769ad52: Verifying Checksum
-39150769ad52: Download complete
 dd2b2e9acaae: Verifying Checksum
 dd2b2e9acaae: Download complete
-b9c57fb0a9b3: Verifying Checksum
-b9c57fb0a9b3: Download complete
 af1b08109992: Verifying Checksum
 af1b08109992: Download complete
+39150769ad52: Verifying Checksum
+39150769ad52: Download complete
+0169c9130d45: Verifying Checksum
+0169c9130d45: Download complete
+b9c57fb0a9b3: Verifying Checksum
+b9c57fb0a9b3: Download complete
 03f374be6b99: Verifying Checksum
 03f374be6b99: Download complete
-b1e58a832efd: Verifying Checksum
-b1e58a832efd: Download complete
 5bc3a847e4e4: Verifying Checksum
 5bc3a847e4e4: Download complete
+b1e58a832efd: Verifying Checksum
+b1e58a832efd: Download complete
 9df0a016daf1: Verifying Checksum
 9df0a016daf1: Download complete
 b7c2fd737a85: Verifying Checksum
@@ -879,10 +879,10 @@ af1b08109992: Pull complete
 03f374be6b99: Pull complete
 eaa9926e8e86: Pull complete
 eaa9926e8e86: Already exists
-Digest: sha256:da6a74fc681b90a502371195ffa8e93065c3a848f95fedd36a3ab51ba830e482
+Digest: sha256:a9d386beb94ba457288951cac40a7227f6be5a724a874bf1141417fbb12b34fd
 Status: Downloaded newer image for 136.187.101.80:5000/serf:latest
 
-real  31.62
+real  30.89
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 136.187.101.80:5000/serf   latest              eaa9926e8e86        5 months ago        951.6 MB
@@ -901,11 +901,11 @@ kiwenlau/serf                   latest              eaa9926e8e86        5 months
 docker tag kiwenlau/serf:latest 136.187.101.80:5000/serf:latest
 
 docker images
-136.187.101.80:5000/serf        latest              eaa9926e8e86        5 months ago        951.6 MB
 kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
+136.187.101.80:5000/serf        latest              eaa9926e8e86        5 months ago        951.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-7786d139bce6        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+15a5e83677d5        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/serf:latest
 The push refers to a repository [136.187.101.80:5000/serf] (len: 1)
@@ -942,9 +942,9 @@ b7822357f520: Image successfully pushed
 47fb1b41ad2f: Image already exists
 89b52f216c6c: Buffering to Disk
 89b52f216c6c: Image successfully pushed
-Digest: sha256:995a2c18c2a8a3e3d33a7be1546283f0c05ade915883262a2a1e005251821e8d
+Digest: sha256:b43b247b710708c16e4f2e9a1f04348efec1e92670858a12fbb2fc4dce1b9847
 
-real  137.88
+real  127.65
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 
@@ -970,41 +970,41 @@ af1b08109992: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Layer already being pulled by another client. Waiting.
-08f25e6d880b: Verifying Checksum
-08f25e6d880b: Download complete
 47fb1b41ad2f: Verifying Checksum
 47fb1b41ad2f: Download complete
-39150769ad52: Verifying Checksum
-39150769ad52: Download complete
+08f25e6d880b: Verifying Checksum
+08f25e6d880b: Download complete
 6db61134ec96: Verifying Checksum
 6db61134ec96: Download complete
+39150769ad52: Verifying Checksum
+39150769ad52: Download complete
 dd2b2e9acaae: Verifying Checksum
 dd2b2e9acaae: Download complete
-0169c9130d45: Verifying Checksum
-0169c9130d45: Download complete
-b9c57fb0a9b3: Verifying Checksum
-b9c57fb0a9b3: Download complete
-eaa9926e8e86: Verifying Checksum
-eaa9926e8e86: Download complete
-eaa9926e8e86: Download complete
-af1b08109992: Verifying Checksum
-af1b08109992: Download complete
 03f374be6b99: Verifying Checksum
 03f374be6b99: Download complete
+af1b08109992: Verifying Checksum
+af1b08109992: Download complete
+eaa9926e8e86: Verifying Checksum
+eaa9926e8e86: Download complete
+0169c9130d45: Verifying Checksum
+0169c9130d45: Download complete
+eaa9926e8e86: Download complete
+b9c57fb0a9b3: Verifying Checksum
+b9c57fb0a9b3: Download complete
 b1e58a832efd: Verifying Checksum
 b1e58a832efd: Download complete
 5bc3a847e4e4: Verifying Checksum
 5bc3a847e4e4: Download complete
-9df0a016daf1: Verifying Checksum
-9df0a016daf1: Download complete
 b7c2fd737a85: Verifying Checksum
 b7c2fd737a85: Download complete
+9df0a016daf1: Verifying Checksum
+9df0a016daf1: Download complete
 189cb885ba89: Verifying Checksum
 189cb885ba89: Download complete
-5032be9f808a: Verifying Checksum
-5032be9f808a: Download complete
 89b52f216c6c: Verifying Checksum
 89b52f216c6c: Download complete
+5032be9f808a: Verifying Checksum
+5032be9f808a: Download complete
 b7822357f520: Verifying Checksum
 b7822357f520: Download complete
 89b52f216c6c: Pull complete
@@ -1026,10 +1026,10 @@ af1b08109992: Pull complete
 03f374be6b99: Pull complete
 eaa9926e8e86: Pull complete
 eaa9926e8e86: Already exists
-Digest: sha256:995a2c18c2a8a3e3d33a7be1546283f0c05ade915883262a2a1e005251821e8d
+Digest: sha256:b43b247b710708c16e4f2e9a1f04348efec1e92670858a12fbb2fc4dce1b9847
 Status: Downloaded newer image for 136.187.101.80:5000/serf:latest
 
-real  30.56
+real  30.48
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 136.187.101.80:5000/serf   latest              eaa9926e8e86        5 months ago        951.6 MB
@@ -1052,7 +1052,7 @@ docker images
 kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-fd78cbde8464        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+2c291c439cf8        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/serf:latest
 The push refers to a repository [136.187.101.80:5000/serf] (len: 1)
@@ -1089,9 +1089,9 @@ b7822357f520: Image successfully pushed
 47fb1b41ad2f: Image already exists
 89b52f216c6c: Buffering to Disk
 89b52f216c6c: Image successfully pushed
-Digest: sha256:9e66deaad19cbfb75d06fa49d500853c0db046c6b8b82b9f11d11508ac04116b
+Digest: sha256:03e616817afbd198d77a23b7e9245b7b7415a0b64c87919a63e955fd766a92fb
 
-real  141.34
+real  122.09
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 
@@ -1119,35 +1119,35 @@ eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Layer already being pulled by another client. Waiting.
 47fb1b41ad2f: Verifying Checksum
 47fb1b41ad2f: Download complete
-08f25e6d880b: Verifying Checksum
-08f25e6d880b: Download complete
-dd2b2e9acaae: Verifying Checksum
-dd2b2e9acaae: Download complete
-6db61134ec96: Verifying Checksum
-6db61134ec96: Download complete
 b9c57fb0a9b3: Verifying Checksum
 b9c57fb0a9b3: Download complete
-0169c9130d45: Verifying Checksum
-0169c9130d45: Download complete
+08f25e6d880b: Verifying Checksum
+08f25e6d880b: Download complete
+39150769ad52: Verifying Checksum
+39150769ad52: Download complete
 af1b08109992: Verifying Checksum
 af1b08109992: Download complete
-03f374be6b99: Verifying Checksum
-03f374be6b99: Download complete
+0169c9130d45: Verifying Checksum
+0169c9130d45: Download complete
 eaa9926e8e86: Verifying Checksum
 eaa9926e8e86: Download complete
 eaa9926e8e86: Download complete
-39150769ad52: Verifying Checksum
-39150769ad52: Download complete
-b1e58a832efd: Verifying Checksum
-b1e58a832efd: Download complete
+6db61134ec96: Verifying Checksum
+6db61134ec96: Download complete
+03f374be6b99: Verifying Checksum
+03f374be6b99: Download complete
+dd2b2e9acaae: Verifying Checksum
+dd2b2e9acaae: Download complete
 5bc3a847e4e4: Verifying Checksum
 5bc3a847e4e4: Download complete
+b1e58a832efd: Verifying Checksum
+b1e58a832efd: Download complete
 9df0a016daf1: Verifying Checksum
 9df0a016daf1: Download complete
-189cb885ba89: Verifying Checksum
-189cb885ba89: Download complete
 b7c2fd737a85: Verifying Checksum
 b7c2fd737a85: Download complete
+189cb885ba89: Verifying Checksum
+189cb885ba89: Download complete
 89b52f216c6c: Verifying Checksum
 89b52f216c6c: Download complete
 5032be9f808a: Verifying Checksum
@@ -1173,10 +1173,10 @@ af1b08109992: Pull complete
 03f374be6b99: Pull complete
 eaa9926e8e86: Pull complete
 eaa9926e8e86: Already exists
-Digest: sha256:9e66deaad19cbfb75d06fa49d500853c0db046c6b8b82b9f11d11508ac04116b
+Digest: sha256:03e616817afbd198d77a23b7e9245b7b7415a0b64c87919a63e955fd766a92fb
 Status: Downloaded newer image for 136.187.101.80:5000/serf:latest
 
-real  31.09
+real  30.12
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 136.187.101.80:5000/serf   latest              eaa9926e8e86        5 months ago        951.6 MB
@@ -1195,11 +1195,11 @@ kiwenlau/serf                   latest              eaa9926e8e86        5 months
 docker tag kiwenlau/serf:latest 136.187.101.80:5000/serf:latest
 
 docker images
-kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
 136.187.101.80:5000/serf        latest              eaa9926e8e86        5 months ago        951.6 MB
+kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-d766450c634a        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+f19125601dff        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/serf:latest
 The push refers to a repository [136.187.101.80:5000/serf] (len: 1)
@@ -1236,9 +1236,9 @@ b7822357f520: Image successfully pushed
 47fb1b41ad2f: Image already exists
 89b52f216c6c: Buffering to Disk
 89b52f216c6c: Image successfully pushed
-Digest: sha256:43b97fbfa96abbfb083712a90ef4bda820da4f2673b150cb443a9f275195a6e7
+Digest: sha256:40870b9a9561ca9572abee3e04203a2f60813cb0357cb25bf20884bc883142d8
 
-real  144.39
+real  126.79
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 
@@ -1264,20 +1264,20 @@ af1b08109992: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Layer already being pulled by another client. Waiting.
-47fb1b41ad2f: Verifying Checksum
-47fb1b41ad2f: Download complete
 08f25e6d880b: Verifying Checksum
 08f25e6d880b: Download complete
+47fb1b41ad2f: Verifying Checksum
+47fb1b41ad2f: Download complete
+39150769ad52: Verifying Checksum
+39150769ad52: Download complete
 6db61134ec96: Verifying Checksum
 6db61134ec96: Download complete
 dd2b2e9acaae: Verifying Checksum
 dd2b2e9acaae: Download complete
-39150769ad52: Verifying Checksum
-39150769ad52: Download complete
-0169c9130d45: Verifying Checksum
-0169c9130d45: Download complete
 b9c57fb0a9b3: Verifying Checksum
 b9c57fb0a9b3: Download complete
+0169c9130d45: Verifying Checksum
+0169c9130d45: Download complete
 af1b08109992: Verifying Checksum
 af1b08109992: Download complete
 03f374be6b99: Verifying Checksum
@@ -1320,10 +1320,10 @@ af1b08109992: Pull complete
 03f374be6b99: Pull complete
 eaa9926e8e86: Pull complete
 eaa9926e8e86: Already exists
-Digest: sha256:43b97fbfa96abbfb083712a90ef4bda820da4f2673b150cb443a9f275195a6e7
+Digest: sha256:40870b9a9561ca9572abee3e04203a2f60813cb0357cb25bf20884bc883142d8
 Status: Downloaded newer image for 136.187.101.80:5000/serf:latest
 
-real  31.57
+real  30.21
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 136.187.101.80:5000/serf   latest              eaa9926e8e86        5 months ago        951.6 MB
@@ -1346,7 +1346,7 @@ docker images
 kiwenlau/serf                   latest              eaa9926e8e86        5 months ago        951.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-99f831b6d496        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+c71a2079de8e        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/serf:latest
 The push refers to a repository [136.187.101.80:5000/serf] (len: 1)
@@ -1383,9 +1383,9 @@ b7822357f520: Image successfully pushed
 47fb1b41ad2f: Image already exists
 89b52f216c6c: Buffering to Disk
 89b52f216c6c: Image successfully pushed
-Digest: sha256:8e697a704003c38d5c3a1db90ab55b19b4f7722b2da3e739a79afaffdc9b2c46
+Digest: sha256:644045f4da498b37fd0201f9011faf4c223908cd78adb3c5db3435d80c8cd073
 
-real  144.11
+real  129.92
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 
@@ -1411,27 +1411,27 @@ af1b08109992: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Pulling fs layer
 eaa9926e8e86: Layer already being pulled by another client. Waiting.
-47fb1b41ad2f: Verifying Checksum
-47fb1b41ad2f: Download complete
 08f25e6d880b: Verifying Checksum
 08f25e6d880b: Download complete
-dd2b2e9acaae: Verifying Checksum
-dd2b2e9acaae: Download complete
-03f374be6b99: Verifying Checksum
-03f374be6b99: Download complete
+47fb1b41ad2f: Verifying Checksum
+47fb1b41ad2f: Download complete
+6db61134ec96: Verifying Checksum
+6db61134ec96: Download complete
 eaa9926e8e86: Verifying Checksum
 eaa9926e8e86: Download complete
 eaa9926e8e86: Download complete
-af1b08109992: Verifying Checksum
-af1b08109992: Download complete
-6db61134ec96: Verifying Checksum
-6db61134ec96: Download complete
-39150769ad52: Verifying Checksum
-39150769ad52: Download complete
-b9c57fb0a9b3: Verifying Checksum
-b9c57fb0a9b3: Download complete
 0169c9130d45: Verifying Checksum
 0169c9130d45: Download complete
+b9c57fb0a9b3: Verifying Checksum
+b9c57fb0a9b3: Download complete
+03f374be6b99: Verifying Checksum
+03f374be6b99: Download complete
+af1b08109992: Verifying Checksum
+af1b08109992: Download complete
+39150769ad52: Verifying Checksum
+39150769ad52: Download complete
+dd2b2e9acaae: Verifying Checksum
+dd2b2e9acaae: Download complete
 b1e58a832efd: Verifying Checksum
 b1e58a832efd: Download complete
 5bc3a847e4e4: Verifying Checksum
@@ -1442,10 +1442,10 @@ b7c2fd737a85: Verifying Checksum
 b7c2fd737a85: Download complete
 189cb885ba89: Verifying Checksum
 189cb885ba89: Download complete
-89b52f216c6c: Verifying Checksum
-89b52f216c6c: Download complete
 5032be9f808a: Verifying Checksum
 5032be9f808a: Download complete
+89b52f216c6c: Verifying Checksum
+89b52f216c6c: Download complete
 b7822357f520: Verifying Checksum
 b7822357f520: Download complete
 89b52f216c6c: Pull complete
@@ -1467,10 +1467,10 @@ af1b08109992: Pull complete
 03f374be6b99: Pull complete
 eaa9926e8e86: Pull complete
 eaa9926e8e86: Already exists
-Digest: sha256:8e697a704003c38d5c3a1db90ab55b19b4f7722b2da3e739a79afaffdc9b2c46
+Digest: sha256:644045f4da498b37fd0201f9011faf4c223908cd78adb3c5db3435d80c8cd073
 Status: Downloaded newer image for 136.187.101.80:5000/serf:latest
 
-real  30.42
+real  31.72
 
 ssh kai@52.68.197.112 "docker images | grep serf"
 136.187.101.80:5000/serf   latest              eaa9926e8e86        5 months ago        951.6 MB
@@ -1480,6 +1480,6 @@ ssh kai@52.68.197.112 "docker images | grep serf"
 
 docker rm -f docker_registry
 
-end date: Sun Jul 26 05:41:58 JST 2015
+end date: Mon Jul 27 05:42:50 JST 2015
 
 

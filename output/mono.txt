@@ -2,7 +2,7 @@
 pullpush benchmark: transfer mono image to 52.68.197.112 host
  
 hostname: kuruwa-gw
-begin date: Sun Jul 26 02:30:12 JST 2015
+begin date: Mon Jul 27 02:30:21 JST 2015
 
 sudo docker images
 kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
@@ -23,7 +23,7 @@ docker images
 kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-85bec7a51553        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+bd7dc42e39d2        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/mono:latest
 The push refers to a repository [136.187.101.80:5000/mono] (len: 1)
@@ -41,7 +41,7 @@ b3d362b23ec1: Image already exists
 21e4345e9035: Image successfully pushed
 Digest: sha256:0b947574ef8c24ac12e09af7fee5476f3a0d47f813753d6ded3806a24347aedb
 
-real  92.77
+real  101.89
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 
@@ -55,10 +55,10 @@ b3d362b23ec1: Pulling fs layer
 a04c64dc2bd9: Pulling fs layer
 a04c64dc2bd9: Pulling fs layer
 a04c64dc2bd9: Layer already being pulled by another client. Waiting.
-b3d362b23ec1: Verifying Checksum
-b3d362b23ec1: Download complete
 414e39f12386: Verifying Checksum
 414e39f12386: Download complete
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
 0beb24926495: Verifying Checksum
 0beb24926495: Download complete
 1984117500e8: Verifying Checksum
@@ -78,7 +78,7 @@ a04c64dc2bd9: Already exists
 Digest: sha256:0b947574ef8c24ac12e09af7fee5476f3a0d47f813753d6ded3806a24347aedb
 Status: Downloaded newer image for 136.187.101.80:5000/mono:latest
 
-real  18.68
+real  18.51
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 136.187.101.80:5000/mono   latest              a04c64dc2bd9        12 weeks ago        616.8 MB
@@ -97,11 +97,11 @@ kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks
 docker tag kiwenlau/mono:latest 136.187.101.80:5000/mono:latest
 
 docker images
-136.187.101.80:5000/mono        latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
+136.187.101.80:5000/mono        latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-7b8a409fb6b6        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+60fb2a6dc23a        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/mono:latest
 The push refers to a repository [136.187.101.80:5000/mono] (len: 1)
@@ -119,7 +119,7 @@ b3d362b23ec1: Image already exists
 21e4345e9035: Image successfully pushed
 Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 
-real  92.44
+real  102.24
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 
@@ -135,10 +135,10 @@ a04c64dc2bd9: Pulling fs layer
 a04c64dc2bd9: Layer already being pulled by another client. Waiting.
 414e39f12386: Verifying Checksum
 414e39f12386: Download complete
-b3d362b23ec1: Verifying Checksum
-b3d362b23ec1: Download complete
 0beb24926495: Verifying Checksum
 0beb24926495: Download complete
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
 1984117500e8: Verifying Checksum
 1984117500e8: Download complete
 21e4345e9035: Verifying Checksum
@@ -156,7 +156,7 @@ a04c64dc2bd9: Already exists
 Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 Status: Downloaded newer image for 136.187.101.80:5000/mono:latest
 
-real  18.98
+real  17.81
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 136.187.101.80:5000/mono   latest              a04c64dc2bd9        12 weeks ago        616.8 MB
@@ -179,7 +179,7 @@ docker images
 kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-6106d4af48ce        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+cddc1362a909        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/mono:latest
 The push refers to a repository [136.187.101.80:5000/mono] (len: 1)
@@ -197,7 +197,7 @@ b3d362b23ec1: Image already exists
 21e4345e9035: Image successfully pushed
 Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 
-real  92.67
+real  101.54
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 
@@ -234,7 +234,7 @@ a04c64dc2bd9: Already exists
 Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 Status: Downloaded newer image for 136.187.101.80:5000/mono:latest
 
-real  18.94
+real  18.12
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 136.187.101.80:5000/mono   latest              a04c64dc2bd9        12 weeks ago        616.8 MB
@@ -253,11 +253,11 @@ kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks
 docker tag kiwenlau/mono:latest 136.187.101.80:5000/mono:latest
 
 docker images
-136.187.101.80:5000/mono        latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
+136.187.101.80:5000/mono        latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-b36705e45306        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+633b787159da        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/mono:latest
 The push refers to a repository [136.187.101.80:5000/mono] (len: 1)
@@ -275,7 +275,7 @@ b3d362b23ec1: Image already exists
 21e4345e9035: Image successfully pushed
 Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 
-real  90.40
+real  103.07
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 
@@ -312,7 +312,7 @@ a04c64dc2bd9: Already exists
 Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 Status: Downloaded newer image for 136.187.101.80:5000/mono:latest
 
-real  18.72
+real  18.59
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 136.187.101.80:5000/mono   latest              a04c64dc2bd9        12 weeks ago        616.8 MB
@@ -335,7 +335,7 @@ docker images
 kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-110d0d3a26fb        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+962ead1564ee        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/mono:latest
 The push refers to a repository [136.187.101.80:5000/mono] (len: 1)
@@ -351,9 +351,9 @@ a04c64dc2bd9: Image already exists
 b3d362b23ec1: Image already exists
 21e4345e9035: Buffering to Disk
 21e4345e9035: Image successfully pushed
-Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
+Digest: sha256:5521967aa8ec438268f52da7cf8fb9a25ed6a20a8ace0e52403d8a234c709327
 
-real  85.92
+real  105.45
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 
@@ -369,10 +369,10 @@ a04c64dc2bd9: Pulling fs layer
 a04c64dc2bd9: Layer already being pulled by another client. Waiting.
 414e39f12386: Verifying Checksum
 414e39f12386: Download complete
-b3d362b23ec1: Verifying Checksum
-b3d362b23ec1: Download complete
 0beb24926495: Verifying Checksum
 0beb24926495: Download complete
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
 1984117500e8: Verifying Checksum
 1984117500e8: Download complete
 21e4345e9035: Verifying Checksum
@@ -387,10 +387,10 @@ b3d362b23ec1: Pull complete
 0beb24926495: Pull complete
 a04c64dc2bd9: Pull complete
 a04c64dc2bd9: Already exists
-Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
+Digest: sha256:5521967aa8ec438268f52da7cf8fb9a25ed6a20a8ace0e52403d8a234c709327
 Status: Downloaded newer image for 136.187.101.80:5000/mono:latest
 
-real  18.71
+real  17.89
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 136.187.101.80:5000/mono   latest              a04c64dc2bd9        12 weeks ago        616.8 MB
@@ -409,11 +409,11 @@ kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks
 docker tag kiwenlau/mono:latest 136.187.101.80:5000/mono:latest
 
 docker images
-136.187.101.80:5000/mono        latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
+136.187.101.80:5000/mono        latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-8d1906bfbfd7        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+3fa97f95a074        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/mono:latest
 The push refers to a repository [136.187.101.80:5000/mono] (len: 1)
@@ -431,7 +431,7 @@ b3d362b23ec1: Image already exists
 21e4345e9035: Image successfully pushed
 Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 
-real  90.62
+real  99.84
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 
@@ -445,12 +445,12 @@ b3d362b23ec1: Pulling fs layer
 a04c64dc2bd9: Pulling fs layer
 a04c64dc2bd9: Pulling fs layer
 a04c64dc2bd9: Layer already being pulled by another client. Waiting.
-0beb24926495: Verifying Checksum
-0beb24926495: Download complete
-414e39f12386: Verifying Checksum
-414e39f12386: Download complete
 b3d362b23ec1: Verifying Checksum
 b3d362b23ec1: Download complete
+414e39f12386: Verifying Checksum
+414e39f12386: Download complete
+0beb24926495: Verifying Checksum
+0beb24926495: Download complete
 1984117500e8: Verifying Checksum
 1984117500e8: Download complete
 21e4345e9035: Verifying Checksum
@@ -468,7 +468,7 @@ a04c64dc2bd9: Already exists
 Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 Status: Downloaded newer image for 136.187.101.80:5000/mono:latest
 
-real  18.09
+real  19.01
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 136.187.101.80:5000/mono   latest              a04c64dc2bd9        12 weeks ago        616.8 MB
@@ -487,11 +487,11 @@ kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks
 docker tag kiwenlau/mono:latest 136.187.101.80:5000/mono:latest
 
 docker images
-kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 136.187.101.80:5000/mono        latest              a04c64dc2bd9        12 weeks ago        616.9 MB
+kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-e6c3b849dcf4        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+a48be27e5ad4        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/mono:latest
 The push refers to a repository [136.187.101.80:5000/mono] (len: 1)
@@ -507,9 +507,9 @@ a04c64dc2bd9: Image already exists
 b3d362b23ec1: Image already exists
 21e4345e9035: Buffering to Disk
 21e4345e9035: Image successfully pushed
-Digest: sha256:0b947574ef8c24ac12e09af7fee5476f3a0d47f813753d6ded3806a24347aedb
+Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 
-real  88.60
+real  101.43
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 
@@ -543,10 +543,10 @@ b3d362b23ec1: Pull complete
 0beb24926495: Pull complete
 a04c64dc2bd9: Pull complete
 a04c64dc2bd9: Already exists
-Digest: sha256:0b947574ef8c24ac12e09af7fee5476f3a0d47f813753d6ded3806a24347aedb
+Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 Status: Downloaded newer image for 136.187.101.80:5000/mono:latest
 
-real  18.63
+real  18.34
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 136.187.101.80:5000/mono   latest              a04c64dc2bd9        12 weeks ago        616.8 MB
@@ -569,7 +569,7 @@ docker images
 kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-eb961f8a3550        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+39ede2659684        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/mono:latest
 The push refers to a repository [136.187.101.80:5000/mono] (len: 1)
@@ -587,7 +587,7 @@ b3d362b23ec1: Image already exists
 21e4345e9035: Image successfully pushed
 Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 
-real  87.38
+real  100.30
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 
@@ -603,10 +603,10 @@ a04c64dc2bd9: Pulling fs layer
 a04c64dc2bd9: Layer already being pulled by another client. Waiting.
 b3d362b23ec1: Verifying Checksum
 b3d362b23ec1: Download complete
-0beb24926495: Verifying Checksum
-0beb24926495: Download complete
 414e39f12386: Verifying Checksum
 414e39f12386: Download complete
+0beb24926495: Verifying Checksum
+0beb24926495: Download complete
 1984117500e8: Verifying Checksum
 1984117500e8: Download complete
 21e4345e9035: Verifying Checksum
@@ -624,7 +624,7 @@ a04c64dc2bd9: Already exists
 Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
 Status: Downloaded newer image for 136.187.101.80:5000/mono:latest
 
-real  18.09
+real  19.02
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 136.187.101.80:5000/mono   latest              a04c64dc2bd9        12 weeks ago        616.8 MB
@@ -643,11 +643,11 @@ kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks
 docker tag kiwenlau/mono:latest 136.187.101.80:5000/mono:latest
 
 docker images
-kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 136.187.101.80:5000/mono        latest              a04c64dc2bd9        12 weeks ago        616.9 MB
+kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-0e3c81c75135        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+f3f24a62705f        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/mono:latest
 The push refers to a repository [136.187.101.80:5000/mono] (len: 1)
@@ -663,9 +663,9 @@ a04c64dc2bd9: Image already exists
 b3d362b23ec1: Image already exists
 21e4345e9035: Buffering to Disk
 21e4345e9035: Image successfully pushed
-Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
+Digest: sha256:8d7702a400b8ccd915b0e73d38703c4c2ac2dafcc6e8d62908394d9202d60cbd
 
-real  89.91
+real  98.63
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 
@@ -679,12 +679,12 @@ b3d362b23ec1: Pulling fs layer
 a04c64dc2bd9: Pulling fs layer
 a04c64dc2bd9: Pulling fs layer
 a04c64dc2bd9: Layer already being pulled by another client. Waiting.
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
 414e39f12386: Verifying Checksum
 414e39f12386: Download complete
 0beb24926495: Verifying Checksum
 0beb24926495: Download complete
-b3d362b23ec1: Verifying Checksum
-b3d362b23ec1: Download complete
 1984117500e8: Verifying Checksum
 1984117500e8: Download complete
 21e4345e9035: Verifying Checksum
@@ -699,10 +699,10 @@ b3d362b23ec1: Pull complete
 0beb24926495: Pull complete
 a04c64dc2bd9: Pull complete
 a04c64dc2bd9: Already exists
-Digest: sha256:6d98110bb80c60ca221e2930bad66db7b06ec4eea1e8088ea303494b7793bf1b
+Digest: sha256:8d7702a400b8ccd915b0e73d38703c4c2ac2dafcc6e8d62908394d9202d60cbd
 Status: Downloaded newer image for 136.187.101.80:5000/mono:latest
 
-real  19.11
+real  18.16
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 136.187.101.80:5000/mono   latest              a04c64dc2bd9        12 weeks ago        616.8 MB
@@ -725,7 +725,7 @@ docker images
 kiwenlau/mono                   latest              a04c64dc2bd9        12 weeks ago        616.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-0e8ea9ad6ccf        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+dd47badd62dc        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/mono:latest
 The push refers to a repository [136.187.101.80:5000/mono] (len: 1)
@@ -741,9 +741,9 @@ a04c64dc2bd9: Image already exists
 b3d362b23ec1: Image already exists
 21e4345e9035: Buffering to Disk
 21e4345e9035: Image successfully pushed
-Digest: sha256:f29b67e8ec4e5a9aa730e065f61a0398ae29e1be06b52e5491e206d91106caaf
+Digest: sha256:eb0e5089af465d39e9473671d7fe7355240dcb2fdef6714a746ba99a45b4ac8e
 
-real  90.44
+real  100.48
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 
@@ -757,12 +757,12 @@ b3d362b23ec1: Pulling fs layer
 a04c64dc2bd9: Pulling fs layer
 a04c64dc2bd9: Pulling fs layer
 a04c64dc2bd9: Layer already being pulled by another client. Waiting.
-b3d362b23ec1: Verifying Checksum
-b3d362b23ec1: Download complete
 414e39f12386: Verifying Checksum
 414e39f12386: Download complete
 0beb24926495: Verifying Checksum
 0beb24926495: Download complete
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
 1984117500e8: Verifying Checksum
 1984117500e8: Download complete
 21e4345e9035: Verifying Checksum
@@ -777,10 +777,10 @@ b3d362b23ec1: Pull complete
 0beb24926495: Pull complete
 a04c64dc2bd9: Pull complete
 a04c64dc2bd9: Already exists
-Digest: sha256:f29b67e8ec4e5a9aa730e065f61a0398ae29e1be06b52e5491e206d91106caaf
+Digest: sha256:eb0e5089af465d39e9473671d7fe7355240dcb2fdef6714a746ba99a45b4ac8e
 Status: Downloaded newer image for 136.187.101.80:5000/mono:latest
 
-real  18.98
+real  17.58
 
 ssh kai@52.68.197.112 "docker images | grep mono"
 136.187.101.80:5000/mono   latest              a04c64dc2bd9        12 weeks ago        616.8 MB
@@ -790,6 +790,6 @@ ssh kai@52.68.197.112 "docker images | grep mono"
 
 docker rm -f docker_registry
 
-end date: Sun Jul 26 02:49:39 JST 2015
+end date: Mon Jul 27 02:51:37 JST 2015
 
 

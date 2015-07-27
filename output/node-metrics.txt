@@ -2,7 +2,7 @@
 pullpush benchmark: transfer node-metrics image to 52.68.197.112 host
  
 hostname: kuruwa-gw
-begin date: Sun Jul 26 00:25:46 JST 2015
+begin date: Mon Jul 27 00:24:23 JST 2015
 
 sudo docker images
 kiwenlau/node-metrics           latest              54995768f022        4 months ago        249.8 MB
@@ -23,7 +23,7 @@ kiwenlau/node-metrics              latest              54995768f022        4 mon
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-005fdfca9837        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+d38cb3719b8a        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/node-metrics:latest
 The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
@@ -67,7 +67,7 @@ d92c3c92fa73: Image successfully pushed
 511136ea3c5a: Image already exists
 Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
 
-real  39.66
+real  38.39
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 
@@ -100,50 +100,50 @@ fbea10a205ee: Pulling fs layer
 54995768f022: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-511136ea3c5a: Pull complete
 d92c3c92fa73: Verifying Checksum
 d92c3c92fa73: Download complete
-0ea0d582fd90: Verifying Checksum
-0ea0d582fd90: Download complete
-cbde4a8607af: Verifying Checksum
-cbde4a8607af: Download complete
 c4ff7513909d: Verifying Checksum
 c4ff7513909d: Download complete
-39b5dfd5ab2c: Verifying Checksum
-39b5dfd5ab2c: Download complete
-c55100fa2500: Verifying Checksum
-c55100fa2500: Download complete
+511136ea3c5a: Pull complete
 9942dd43ff21: Verifying Checksum
 9942dd43ff21: Download complete
-2359073bd686: Verifying Checksum
-2359073bd686: Download complete
-eb6f69d21a16: Verifying Checksum
-eb6f69d21a16: Download complete
-b1e034123947: Verifying Checksum
-b1e034123947: Download complete
-99ad7e013c7b: Verifying Checksum
-99ad7e013c7b: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
 b47bc23be934: Verifying Checksum
 b47bc23be934: Download complete
-748f9c1f90d4: Verifying Checksum
-748f9c1f90d4: Download complete
-7fe552c5ef2d: Verifying Checksum
-7fe552c5ef2d: Download complete
+eb6f69d21a16: Verifying Checksum
+eb6f69d21a16: Download complete
+cbde4a8607af: Verifying Checksum
+cbde4a8607af: Download complete
+39b5dfd5ab2c: Verifying Checksum
+39b5dfd5ab2c: Download complete
+99ad7e013c7b: Verifying Checksum
+99ad7e013c7b: Download complete
+2359073bd686: Verifying Checksum
+2359073bd686: Download complete
+b1e034123947: Verifying Checksum
+b1e034123947: Download complete
 679d506110e5: Verifying Checksum
 679d506110e5: Download complete
+748f9c1f90d4: Verifying Checksum
+748f9c1f90d4: Download complete
 1ede65333e1a: Verifying Checksum
 1ede65333e1a: Download complete
+7fe552c5ef2d: Verifying Checksum
+7fe552c5ef2d: Download complete
+fbea10a205ee: Verifying Checksum
+fbea10a205ee: Download complete
 54995768f022: Verifying Checksum
 54995768f022: Download complete
 54995768f022: Download complete
-fbea10a205ee: Verifying Checksum
-fbea10a205ee: Download complete
+c55100fa2500: Verifying Checksum
+c55100fa2500: Download complete
 2131eb65d199: Verifying Checksum
 2131eb65d199: Download complete
-cc58e55aa5a5: Verifying Checksum
-cc58e55aa5a5: Download complete
 ba933affd0ef: Verifying Checksum
 ba933affd0ef: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
 1c9383292a8f: Verifying Checksum
 1c9383292a8f: Download complete
 1c9383292a8f: Pull complete
@@ -172,7 +172,7 @@ fbea10a205ee: Pull complete
 Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
 Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
 
-real  10.13
+real  10.19
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
@@ -191,11 +191,11 @@ kiwenlau/node-metrics           latest              54995768f022        4 months
 docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
 
 docker images
-kiwenlau/node-metrics              latest              54995768f022        4 months ago        249.8 MB
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        4 months ago        249.8 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-3ca37174d9c8        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+69568bc1be4c        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/node-metrics:latest
 The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
@@ -237,9 +237,9 @@ d92c3c92fa73: Image successfully pushed
 1c9383292a8f: Buffering to Disk
 1c9383292a8f: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:38337acf773ae8e9d024d0f001229665de1fa7d2a91127148ffdd4015a4bd97e
+Digest: sha256:df267737fa5c7a11439c95620b5f084e2907f65bacbb130eba7d0e3c16af8576
 
-real  41.02
+real  37.60
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 
@@ -272,48 +272,48 @@ fbea10a205ee: Pulling fs layer
 54995768f022: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-c4ff7513909d: Verifying Checksum
-c4ff7513909d: Download complete
 511136ea3c5a: Pull complete
-9942dd43ff21: Verifying Checksum
-9942dd43ff21: Download complete
 0ea0d582fd90: Verifying Checksum
 0ea0d582fd90: Download complete
 d92c3c92fa73: Verifying Checksum
 d92c3c92fa73: Download complete
-eb6f69d21a16: Verifying Checksum
-eb6f69d21a16: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
 39b5dfd5ab2c: Verifying Checksum
 39b5dfd5ab2c: Download complete
-679d506110e5: Verifying Checksum
-679d506110e5: Download complete
-99ad7e013c7b: Verifying Checksum
-99ad7e013c7b: Download complete
-fbea10a205ee: Verifying Checksum
-fbea10a205ee: Download complete
-54995768f022: Verifying Checksum
-54995768f022: Download complete
-54995768f022: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
 2359073bd686: Verifying Checksum
 2359073bd686: Download complete
-cbde4a8607af: Verifying Checksum
-cbde4a8607af: Download complete
-c55100fa2500: Verifying Checksum
-c55100fa2500: Download complete
-b47bc23be934: Verifying Checksum
-b47bc23be934: Download complete
-b1e034123947: Verifying Checksum
-b1e034123947: Download complete
 7fe552c5ef2d: Verifying Checksum
 7fe552c5ef2d: Download complete
 748f9c1f90d4: Verifying Checksum
 748f9c1f90d4: Download complete
+679d506110e5: Verifying Checksum
+679d506110e5: Download complete
+fbea10a205ee: Verifying Checksum
+fbea10a205ee: Download complete
 1ede65333e1a: Verifying Checksum
 1ede65333e1a: Download complete
-cc58e55aa5a5: Verifying Checksum
-cc58e55aa5a5: Download complete
+cbde4a8607af: Verifying Checksum
+cbde4a8607af: Download complete
+c55100fa2500: Verifying Checksum
+c55100fa2500: Download complete
+99ad7e013c7b: Verifying Checksum
+99ad7e013c7b: Download complete
+b47bc23be934: Verifying Checksum
+b47bc23be934: Download complete
+eb6f69d21a16: Verifying Checksum
+eb6f69d21a16: Download complete
+b1e034123947: Verifying Checksum
+b1e034123947: Download complete
+54995768f022: Verifying Checksum
+54995768f022: Download complete
+54995768f022: Download complete
 2131eb65d199: Verifying Checksum
 2131eb65d199: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
 ba933affd0ef: Verifying Checksum
 ba933affd0ef: Download complete
 1c9383292a8f: Verifying Checksum
@@ -341,7 +341,7 @@ eb6f69d21a16: Pull complete
 fbea10a205ee: Pull complete
 54995768f022: Pull complete
 54995768f022: Already exists
-Digest: sha256:38337acf773ae8e9d024d0f001229665de1fa7d2a91127148ffdd4015a4bd97e
+Digest: sha256:df267737fa5c7a11439c95620b5f084e2907f65bacbb130eba7d0e3c16af8576
 Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
 
 real  10.04
@@ -367,7 +367,7 @@ docker images
 kiwenlau/node-metrics              latest              54995768f022        4 months ago        249.8 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-63e125d5a395        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+457ce8b75f32        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/node-metrics:latest
 The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
@@ -409,9 +409,9 @@ d92c3c92fa73: Image successfully pushed
 1c9383292a8f: Buffering to Disk
 1c9383292a8f: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:5fae001cfac35b4c13bdacc656caa6a39004f608ee27ceecd8990a38c678ab41
+Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
 
-real  38.94
+real  35.98
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 
@@ -447,41 +447,41 @@ fbea10a205ee: Pulling fs layer
 511136ea3c5a: Pull complete
 0ea0d582fd90: Verifying Checksum
 0ea0d582fd90: Download complete
-d92c3c92fa73: Verifying Checksum
-d92c3c92fa73: Download complete
 c4ff7513909d: Verifying Checksum
 c4ff7513909d: Download complete
-cbde4a8607af: Verifying Checksum
-cbde4a8607af: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
 9942dd43ff21: Verifying Checksum
 9942dd43ff21: Download complete
-7fe552c5ef2d: Verifying Checksum
-7fe552c5ef2d: Download complete
-748f9c1f90d4: Verifying Checksum
-748f9c1f90d4: Download complete
-eb6f69d21a16: Verifying Checksum
-eb6f69d21a16: Download complete
-679d506110e5: Verifying Checksum
-679d506110e5: Download complete
-1ede65333e1a: Verifying Checksum
-1ede65333e1a: Download complete
-2359073bd686: Verifying Checksum
-2359073bd686: Download complete
-fbea10a205ee: Verifying Checksum
-fbea10a205ee: Download complete
-99ad7e013c7b: Verifying Checksum
-99ad7e013c7b: Download complete
-b1e034123947: Verifying Checksum
-b1e034123947: Download complete
-54995768f022: Verifying Checksum
-54995768f022: Download complete
-54995768f022: Download complete
-39b5dfd5ab2c: Verifying Checksum
-39b5dfd5ab2c: Download complete
 c55100fa2500: Verifying Checksum
 c55100fa2500: Download complete
 b47bc23be934: Verifying Checksum
 b47bc23be934: Download complete
+2359073bd686: Verifying Checksum
+2359073bd686: Download complete
+7fe552c5ef2d: Verifying Checksum
+7fe552c5ef2d: Download complete
+b1e034123947: Verifying Checksum
+b1e034123947: Download complete
+eb6f69d21a16: Verifying Checksum
+eb6f69d21a16: Download complete
+748f9c1f90d4: Verifying Checksum
+748f9c1f90d4: Download complete
+679d506110e5: Verifying Checksum
+679d506110e5: Download complete
+cbde4a8607af: Verifying Checksum
+cbde4a8607af: Download complete
+39b5dfd5ab2c: Verifying Checksum
+39b5dfd5ab2c: Download complete
+1ede65333e1a: Verifying Checksum
+1ede65333e1a: Download complete
+54995768f022: Verifying Checksum
+54995768f022: Download complete
+54995768f022: Download complete
+99ad7e013c7b: Verifying Checksum
+99ad7e013c7b: Download complete
+fbea10a205ee: Verifying Checksum
+fbea10a205ee: Download complete
 2131eb65d199: Verifying Checksum
 2131eb65d199: Download complete
 cc58e55aa5a5: Verifying Checksum
@@ -513,10 +513,10 @@ eb6f69d21a16: Pull complete
 fbea10a205ee: Pull complete
 54995768f022: Pull complete
 54995768f022: Already exists
-Digest: sha256:5fae001cfac35b4c13bdacc656caa6a39004f608ee27ceecd8990a38c678ab41
+Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
 Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
 
-real  10.05
+real  10.72
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
@@ -539,7 +539,7 @@ docker images
 kiwenlau/node-metrics              latest              54995768f022        4 months ago        249.8 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-e5a964097c2f        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+156bceda54a2        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/node-metrics:latest
 The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
@@ -581,9 +581,9 @@ d92c3c92fa73: Image successfully pushed
 1c9383292a8f: Buffering to Disk
 1c9383292a8f: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
+Digest: sha256:6cdb5c99e19735ad178c7ce7df051d92b0949d5ab16d73cc7fa5a3d105805aae
 
-real  40.02
+real  37.53
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 
@@ -616,52 +616,52 @@ fbea10a205ee: Pulling fs layer
 54995768f022: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-511136ea3c5a: Pull complete
-d92c3c92fa73: Verifying Checksum
-d92c3c92fa73: Download complete
-c4ff7513909d: Verifying Checksum
-c4ff7513909d: Download complete
 0ea0d582fd90: Verifying Checksum
 0ea0d582fd90: Download complete
-cbde4a8607af: Verifying Checksum
-cbde4a8607af: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
 39b5dfd5ab2c: Verifying Checksum
 39b5dfd5ab2c: Download complete
+511136ea3c5a: Pull complete
 9942dd43ff21: Verifying Checksum
 9942dd43ff21: Download complete
-99ad7e013c7b: Verifying Checksum
-99ad7e013c7b: Download complete
-c55100fa2500: Verifying Checksum
-c55100fa2500: Download complete
-2359073bd686: Verifying Checksum
-2359073bd686: Download complete
-b47bc23be934: Verifying Checksum
-b47bc23be934: Download complete
-b1e034123947: Verifying Checksum
-b1e034123947: Download complete
-eb6f69d21a16: Verifying Checksum
-eb6f69d21a16: Download complete
-748f9c1f90d4: Verifying Checksum
-748f9c1f90d4: Download complete
 1ede65333e1a: Verifying Checksum
 1ede65333e1a: Download complete
+fbea10a205ee: Verifying Checksum
+fbea10a205ee: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+b47bc23be934: Verifying Checksum
+b47bc23be934: Download complete
+cbde4a8607af: Verifying Checksum
+cbde4a8607af: Download complete
+2359073bd686: Verifying Checksum
+2359073bd686: Download complete
+748f9c1f90d4: Verifying Checksum
+748f9c1f90d4: Download complete
+eb6f69d21a16: Verifying Checksum
+eb6f69d21a16: Download complete
 7fe552c5ef2d: Verifying Checksum
 7fe552c5ef2d: Download complete
+c55100fa2500: Verifying Checksum
+c55100fa2500: Download complete
 54995768f022: Verifying Checksum
 54995768f022: Download complete
 54995768f022: Download complete
 679d506110e5: Verifying Checksum
 679d506110e5: Download complete
-fbea10a205ee: Verifying Checksum
-fbea10a205ee: Download complete
+b1e034123947: Verifying Checksum
+b1e034123947: Download complete
+99ad7e013c7b: Verifying Checksum
+99ad7e013c7b: Download complete
 2131eb65d199: Verifying Checksum
 2131eb65d199: Download complete
 cc58e55aa5a5: Verifying Checksum
 cc58e55aa5a5: Download complete
-1c9383292a8f: Verifying Checksum
-1c9383292a8f: Download complete
 ba933affd0ef: Verifying Checksum
 ba933affd0ef: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
 1c9383292a8f: Pull complete
 9942dd43ff21: Pull complete
 d92c3c92fa73: Pull complete
@@ -685,10 +685,10 @@ eb6f69d21a16: Pull complete
 fbea10a205ee: Pull complete
 54995768f022: Pull complete
 54995768f022: Already exists
-Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
+Digest: sha256:6cdb5c99e19735ad178c7ce7df051d92b0949d5ab16d73cc7fa5a3d105805aae
 Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
 
-real  10.05
+real  9.93
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
@@ -707,11 +707,11 @@ kiwenlau/node-metrics           latest              54995768f022        4 months
 docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
 
 docker images
-136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
 kiwenlau/node-metrics              latest              54995768f022        4 months ago        249.8 MB
+136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-6937980390de        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+72db80dd8a63        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/node-metrics:latest
 The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
@@ -755,7 +755,7 @@ d92c3c92fa73: Image successfully pushed
 511136ea3c5a: Image already exists
 Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
 
-real  41.32
+real  37.95
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 
@@ -786,45 +786,45 @@ fbea10a205ee: Pulling fs layer
 54995768f022: Pulling fs layer
 54995768f022: Pulling fs layer
 54995768f022: Layer already being pulled by another client. Waiting.
-d92c3c92fa73: Verifying Checksum
-d92c3c92fa73: Download complete
-9942dd43ff21: Verifying Checksum
-9942dd43ff21: Download complete
-0ea0d582fd90: Verifying Checksum
-0ea0d582fd90: Download complete
-c4ff7513909d: Verifying Checksum
-c4ff7513909d: Download complete
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+cbde4a8607af: Verifying Checksum
+cbde4a8607af: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
 c55100fa2500: Verifying Checksum
 c55100fa2500: Download complete
-39b5dfd5ab2c: Verifying Checksum
-39b5dfd5ab2c: Download complete
 99ad7e013c7b: Verifying Checksum
 99ad7e013c7b: Download complete
+39b5dfd5ab2c: Verifying Checksum
+39b5dfd5ab2c: Download complete
 2359073bd686: Verifying Checksum
 2359073bd686: Download complete
 b47bc23be934: Verifying Checksum
 b47bc23be934: Download complete
-7fe552c5ef2d: Verifying Checksum
-7fe552c5ef2d: Download complete
-b1e034123947: Verifying Checksum
-b1e034123947: Download complete
-748f9c1f90d4: Verifying Checksum
-748f9c1f90d4: Download complete
 eb6f69d21a16: Verifying Checksum
 eb6f69d21a16: Download complete
+b1e034123947: Verifying Checksum
+b1e034123947: Download complete
+7fe552c5ef2d: Verifying Checksum
+7fe552c5ef2d: Download complete
 679d506110e5: Verifying Checksum
 679d506110e5: Download complete
+748f9c1f90d4: Verifying Checksum
+748f9c1f90d4: Download complete
 1ede65333e1a: Verifying Checksum
 1ede65333e1a: Download complete
+fbea10a205ee: Verifying Checksum
+fbea10a205ee: Download complete
 54995768f022: Verifying Checksum
 54995768f022: Download complete
 54995768f022: Download complete
-fbea10a205ee: Verifying Checksum
-fbea10a205ee: Download complete
-cbde4a8607af: Verifying Checksum
-cbde4a8607af: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
 511136ea3c5a: Pull complete
 2131eb65d199: Verifying Checksum
 2131eb65d199: Download complete
@@ -860,7 +860,7 @@ fbea10a205ee: Pull complete
 Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
 Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
 
-real  10.06
+real  10.20
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
@@ -879,11 +879,11 @@ kiwenlau/node-metrics           latest              54995768f022        4 months
 docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
 
 docker images
-136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
 kiwenlau/node-metrics              latest              54995768f022        4 months ago        249.8 MB
+136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-6b02c1b0c463        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+b25876032507        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/node-metrics:latest
 The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
@@ -925,9 +925,9 @@ d92c3c92fa73: Image successfully pushed
 1c9383292a8f: Buffering to Disk
 1c9383292a8f: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
+Digest: sha256:e95008a7c859750bbec2e7f9947612731df9fbb21699a9197e18b44094c21782
 
-real  39.49
+real  37.39
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 
@@ -960,52 +960,52 @@ fbea10a205ee: Pulling fs layer
 54995768f022: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-511136ea3c5a: Pull complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
 0ea0d582fd90: Verifying Checksum
 0ea0d582fd90: Download complete
-c55100fa2500: Verifying Checksum
-c55100fa2500: Download complete
-cbde4a8607af: Verifying Checksum
-cbde4a8607af: Download complete
-9942dd43ff21: Verifying Checksum
-9942dd43ff21: Download complete
-39b5dfd5ab2c: Verifying Checksum
-39b5dfd5ab2c: Download complete
-b47bc23be934: Verifying Checksum
-b47bc23be934: Download complete
-2359073bd686: Verifying Checksum
-2359073bd686: Download complete
 c4ff7513909d: Verifying Checksum
 c4ff7513909d: Download complete
-7fe552c5ef2d: Verifying Checksum
-7fe552c5ef2d: Download complete
-fbea10a205ee: Verifying Checksum
-fbea10a205ee: Download complete
+cbde4a8607af: Verifying Checksum
+cbde4a8607af: Download complete
+39b5dfd5ab2c: Verifying Checksum
+39b5dfd5ab2c: Download complete
+511136ea3c5a: Pull complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+2359073bd686: Verifying Checksum
+2359073bd686: Download complete
 99ad7e013c7b: Verifying Checksum
 99ad7e013c7b: Download complete
-b1e034123947: Verifying Checksum
-b1e034123947: Download complete
-748f9c1f90d4: Verifying Checksum
-748f9c1f90d4: Download complete
-679d506110e5: Verifying Checksum
-679d506110e5: Download complete
+c55100fa2500: Verifying Checksum
+c55100fa2500: Download complete
+b47bc23be934: Verifying Checksum
+b47bc23be934: Download complete
 eb6f69d21a16: Verifying Checksum
 eb6f69d21a16: Download complete
+7fe552c5ef2d: Verifying Checksum
+7fe552c5ef2d: Download complete
+b1e034123947: Verifying Checksum
+b1e034123947: Download complete
+679d506110e5: Verifying Checksum
+679d506110e5: Download complete
+748f9c1f90d4: Verifying Checksum
+748f9c1f90d4: Download complete
+1ede65333e1a: Verifying Checksum
+1ede65333e1a: Download complete
 54995768f022: Verifying Checksum
 54995768f022: Download complete
 54995768f022: Download complete
-1ede65333e1a: Verifying Checksum
-1ede65333e1a: Download complete
-d92c3c92fa73: Verifying Checksum
-d92c3c92fa73: Download complete
+fbea10a205ee: Verifying Checksum
+fbea10a205ee: Download complete
 2131eb65d199: Verifying Checksum
 2131eb65d199: Download complete
 cc58e55aa5a5: Verifying Checksum
 cc58e55aa5a5: Download complete
-1c9383292a8f: Verifying Checksum
-1c9383292a8f: Download complete
 ba933affd0ef: Verifying Checksum
 ba933affd0ef: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
 1c9383292a8f: Pull complete
 9942dd43ff21: Pull complete
 d92c3c92fa73: Pull complete
@@ -1029,10 +1029,10 @@ eb6f69d21a16: Pull complete
 fbea10a205ee: Pull complete
 54995768f022: Pull complete
 54995768f022: Already exists
-Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
+Digest: sha256:e95008a7c859750bbec2e7f9947612731df9fbb21699a9197e18b44094c21782
 Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
 
-real  10.64
+real  10.26
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
@@ -1055,7 +1055,7 @@ kiwenlau/node-metrics              latest              54995768f022        4 mon
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-adc06e8c49e8        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+94a52c5dd0bb        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/node-metrics:latest
 The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
@@ -1097,9 +1097,9 @@ d92c3c92fa73: Image successfully pushed
 1c9383292a8f: Buffering to Disk
 1c9383292a8f: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
+Digest: sha256:5956531406bb7ab3e3c9cf6942cd1dd44bc898d460c0789d0129bb2d47d2813d
 
-real  41.06
+real  38.16
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 
@@ -1130,54 +1130,54 @@ fbea10a205ee: Pulling fs layer
 54995768f022: Pulling fs layer
 54995768f022: Pulling fs layer
 54995768f022: Layer already being pulled by another client. Waiting.
-511136ea3c5a: Verifying Checksum
-511136ea3c5a: Download complete
-d92c3c92fa73: Verifying Checksum
-d92c3c92fa73: Download complete
-0ea0d582fd90: Verifying Checksum
-0ea0d582fd90: Download complete
-c4ff7513909d: Verifying Checksum
-c4ff7513909d: Download complete
-511136ea3c5a: Pull complete
-39b5dfd5ab2c: Verifying Checksum
-39b5dfd5ab2c: Download complete
-cbde4a8607af: Verifying Checksum
-cbde4a8607af: Download complete
-c55100fa2500: Verifying Checksum
-c55100fa2500: Download complete
-9942dd43ff21: Verifying Checksum
-9942dd43ff21: Download complete
-99ad7e013c7b: Verifying Checksum
-99ad7e013c7b: Download complete
-2359073bd686: Verifying Checksum
-2359073bd686: Download complete
-b47bc23be934: Verifying Checksum
-b47bc23be934: Download complete
-b1e034123947: Verifying Checksum
-b1e034123947: Download complete
-7fe552c5ef2d: Verifying Checksum
-7fe552c5ef2d: Download complete
-eb6f69d21a16: Verifying Checksum
-eb6f69d21a16: Download complete
 748f9c1f90d4: Verifying Checksum
 748f9c1f90d4: Download complete
-679d506110e5: Verifying Checksum
-679d506110e5: Download complete
-fbea10a205ee: Verifying Checksum
-fbea10a205ee: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+511136ea3c5a: Pull complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+cbde4a8607af: Verifying Checksum
+cbde4a8607af: Download complete
+99ad7e013c7b: Verifying Checksum
+99ad7e013c7b: Download complete
+b47bc23be934: Verifying Checksum
+b47bc23be934: Download complete
+c55100fa2500: Verifying Checksum
+c55100fa2500: Download complete
+2359073bd686: Verifying Checksum
+2359073bd686: Download complete
+7fe552c5ef2d: Verifying Checksum
+7fe552c5ef2d: Download complete
+b1e034123947: Verifying Checksum
+b1e034123947: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+eb6f69d21a16: Verifying Checksum
+eb6f69d21a16: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
 1ede65333e1a: Verifying Checksum
 1ede65333e1a: Download complete
+fbea10a205ee: Verifying Checksum
+fbea10a205ee: Download complete
 54995768f022: Verifying Checksum
 54995768f022: Download complete
 54995768f022: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+39b5dfd5ab2c: Verifying Checksum
+39b5dfd5ab2c: Download complete
+679d506110e5: Verifying Checksum
+679d506110e5: Download complete
 2131eb65d199: Verifying Checksum
 2131eb65d199: Download complete
 cc58e55aa5a5: Verifying Checksum
 cc58e55aa5a5: Download complete
-1c9383292a8f: Verifying Checksum
-1c9383292a8f: Download complete
 ba933affd0ef: Verifying Checksum
 ba933affd0ef: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
 1c9383292a8f: Pull complete
 9942dd43ff21: Pull complete
 d92c3c92fa73: Pull complete
@@ -1201,10 +1201,10 @@ eb6f69d21a16: Pull complete
 fbea10a205ee: Pull complete
 54995768f022: Pull complete
 54995768f022: Already exists
-Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
+Digest: sha256:5956531406bb7ab3e3c9cf6942cd1dd44bc898d460c0789d0129bb2d47d2813d
 Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
 
-real  10.12
+real  10.62
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
@@ -1223,11 +1223,11 @@ kiwenlau/node-metrics           latest              54995768f022        4 months
 docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
 
 docker images
-kiwenlau/node-metrics              latest              54995768f022        4 months ago        249.8 MB
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        4 months ago        249.8 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-005f035c7edb        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+060d5fe859b8        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/node-metrics:latest
 The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
@@ -1269,9 +1269,9 @@ d92c3c92fa73: Image successfully pushed
 1c9383292a8f: Buffering to Disk
 1c9383292a8f: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
+Digest: sha256:66fe011b2b1f41721f41e72b826dab597a0d8596b9c06edbf5b9053da32326ed
 
-real  42.84
+real  36.90
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 
@@ -1302,52 +1302,52 @@ fbea10a205ee: Pulling fs layer
 54995768f022: Pulling fs layer
 54995768f022: Pulling fs layer
 54995768f022: Layer already being pulled by another client. Waiting.
-c55100fa2500: Verifying Checksum
-c55100fa2500: Download complete
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-2359073bd686: Verifying Checksum
-2359073bd686: Download complete
-7fe552c5ef2d: Verifying Checksum
-7fe552c5ef2d: Download complete
-b47bc23be934: Verifying Checksum
-b47bc23be934: Download complete
-b1e034123947: Verifying Checksum
-b1e034123947: Download complete
-511136ea3c5a: Pull complete
-748f9c1f90d4: Verifying Checksum
-748f9c1f90d4: Download complete
-eb6f69d21a16: Verifying Checksum
-eb6f69d21a16: Download complete
-1ede65333e1a: Verifying Checksum
-1ede65333e1a: Download complete
-54995768f022: Verifying Checksum
-54995768f022: Download complete
-54995768f022: Download complete
-679d506110e5: Verifying Checksum
-679d506110e5: Download complete
-fbea10a205ee: Verifying Checksum
-fbea10a205ee: Download complete
 d92c3c92fa73: Verifying Checksum
 d92c3c92fa73: Download complete
 0ea0d582fd90: Verifying Checksum
 0ea0d582fd90: Download complete
-c4ff7513909d: Verifying Checksum
-c4ff7513909d: Download complete
 cbde4a8607af: Verifying Checksum
 cbde4a8607af: Download complete
+39b5dfd5ab2c: Verifying Checksum
+39b5dfd5ab2c: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
 9942dd43ff21: Verifying Checksum
 9942dd43ff21: Download complete
 99ad7e013c7b: Verifying Checksum
 99ad7e013c7b: Download complete
-39b5dfd5ab2c: Verifying Checksum
-39b5dfd5ab2c: Download complete
+2359073bd686: Verifying Checksum
+2359073bd686: Download complete
+c55100fa2500: Verifying Checksum
+c55100fa2500: Download complete
+b47bc23be934: Verifying Checksum
+b47bc23be934: Download complete
+7fe552c5ef2d: Verifying Checksum
+7fe552c5ef2d: Download complete
+eb6f69d21a16: Verifying Checksum
+eb6f69d21a16: Download complete
+b1e034123947: Verifying Checksum
+b1e034123947: Download complete
+511136ea3c5a: Pull complete
+679d506110e5: Verifying Checksum
+679d506110e5: Download complete
+1ede65333e1a: Verifying Checksum
+1ede65333e1a: Download complete
+748f9c1f90d4: Verifying Checksum
+748f9c1f90d4: Download complete
+54995768f022: Verifying Checksum
+54995768f022: Download complete
+54995768f022: Download complete
+fbea10a205ee: Verifying Checksum
+fbea10a205ee: Download complete
 2131eb65d199: Verifying Checksum
 2131eb65d199: Download complete
-cc58e55aa5a5: Verifying Checksum
-cc58e55aa5a5: Download complete
 ba933affd0ef: Verifying Checksum
 ba933affd0ef: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
 1c9383292a8f: Verifying Checksum
 1c9383292a8f: Download complete
 1c9383292a8f: Pull complete
@@ -1373,10 +1373,10 @@ eb6f69d21a16: Pull complete
 fbea10a205ee: Pull complete
 54995768f022: Pull complete
 54995768f022: Already exists
-Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
+Digest: sha256:66fe011b2b1f41721f41e72b826dab597a0d8596b9c06edbf5b9053da32326ed
 Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
 
-real  10.60
+real  9.99
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
@@ -1395,11 +1395,11 @@ kiwenlau/node-metrics           latest              54995768f022        4 months
 docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
 
 docker images
-136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
 kiwenlau/node-metrics              latest              54995768f022        4 months ago        249.8 MB
+136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-e4a1491946ba        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+a95c7c5c7c7c        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/node-metrics:latest
 The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
@@ -1441,9 +1441,9 @@ d92c3c92fa73: Image successfully pushed
 1c9383292a8f: Buffering to Disk
 1c9383292a8f: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:66fe011b2b1f41721f41e72b826dab597a0d8596b9c06edbf5b9053da32326ed
+Digest: sha256:e95008a7c859750bbec2e7f9947612731df9fbb21699a9197e18b44094c21782
 
-real  41.06
+real  38.31
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 
@@ -1481,43 +1481,43 @@ fbea10a205ee: Pulling fs layer
 0ea0d582fd90: Download complete
 d92c3c92fa73: Verifying Checksum
 d92c3c92fa73: Download complete
-c4ff7513909d: Verifying Checksum
-c4ff7513909d: Download complete
 cbde4a8607af: Verifying Checksum
 cbde4a8607af: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+99ad7e013c7b: Verifying Checksum
+99ad7e013c7b: Download complete
 9942dd43ff21: Verifying Checksum
 9942dd43ff21: Download complete
-b47bc23be934: Verifying Checksum
-b47bc23be934: Download complete
-7fe552c5ef2d: Verifying Checksum
-7fe552c5ef2d: Download complete
-eb6f69d21a16: Verifying Checksum
-eb6f69d21a16: Download complete
-c55100fa2500: Verifying Checksum
-c55100fa2500: Download complete
+2359073bd686: Verifying Checksum
+2359073bd686: Download complete
 679d506110e5: Verifying Checksum
 679d506110e5: Download complete
-b1e034123947: Verifying Checksum
-b1e034123947: Download complete
-1ede65333e1a: Verifying Checksum
-1ede65333e1a: Download complete
 54995768f022: Verifying Checksum
 54995768f022: Download complete
 54995768f022: Download complete
+eb6f69d21a16: Verifying Checksum
+eb6f69d21a16: Download complete
+b1e034123947: Verifying Checksum
+b1e034123947: Download complete
 fbea10a205ee: Verifying Checksum
 fbea10a205ee: Download complete
 39b5dfd5ab2c: Verifying Checksum
 39b5dfd5ab2c: Download complete
-99ad7e013c7b: Verifying Checksum
-99ad7e013c7b: Download complete
-2359073bd686: Verifying Checksum
-2359073bd686: Download complete
+1ede65333e1a: Verifying Checksum
+1ede65333e1a: Download complete
+7fe552c5ef2d: Verifying Checksum
+7fe552c5ef2d: Download complete
 748f9c1f90d4: Verifying Checksum
 748f9c1f90d4: Download complete
-2131eb65d199: Verifying Checksum
-2131eb65d199: Download complete
+c55100fa2500: Verifying Checksum
+c55100fa2500: Download complete
+b47bc23be934: Verifying Checksum
+b47bc23be934: Download complete
 cc58e55aa5a5: Verifying Checksum
 cc58e55aa5a5: Download complete
+2131eb65d199: Verifying Checksum
+2131eb65d199: Download complete
 ba933affd0ef: Verifying Checksum
 ba933affd0ef: Download complete
 1c9383292a8f: Verifying Checksum
@@ -1545,10 +1545,10 @@ eb6f69d21a16: Pull complete
 fbea10a205ee: Pull complete
 54995768f022: Pull complete
 54995768f022: Already exists
-Digest: sha256:66fe011b2b1f41721f41e72b826dab597a0d8596b9c06edbf5b9053da32326ed
+Digest: sha256:e95008a7c859750bbec2e7f9947612731df9fbb21699a9197e18b44094c21782
 Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
 
-real  10.36
+real  10.61
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
@@ -1567,11 +1567,11 @@ kiwenlau/node-metrics           latest              54995768f022        4 months
 docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
 
 docker images
-kiwenlau/node-metrics              latest              54995768f022        4 months ago        249.8 MB
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        4 months ago        249.8 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-c87887275d58        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+df84037d1c70        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/node-metrics:latest
 The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
@@ -1613,9 +1613,9 @@ d92c3c92fa73: Image successfully pushed
 1c9383292a8f: Buffering to Disk
 1c9383292a8f: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:df267737fa5c7a11439c95620b5f084e2907f65bacbb130eba7d0e3c16af8576
+Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
 
-real  43.40
+real  39.87
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 
@@ -1648,52 +1648,52 @@ fbea10a205ee: Pulling fs layer
 54995768f022: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-0ea0d582fd90: Verifying Checksum
-0ea0d582fd90: Download complete
 d92c3c92fa73: Verifying Checksum
 d92c3c92fa73: Download complete
-c4ff7513909d: Verifying Checksum
-c4ff7513909d: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
 cbde4a8607af: Verifying Checksum
 cbde4a8607af: Download complete
-99ad7e013c7b: Verifying Checksum
-99ad7e013c7b: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+b47bc23be934: Verifying Checksum
+b47bc23be934: Download complete
 511136ea3c5a: Pull complete
 9942dd43ff21: Verifying Checksum
 9942dd43ff21: Download complete
-39b5dfd5ab2c: Verifying Checksum
-39b5dfd5ab2c: Download complete
+99ad7e013c7b: Verifying Checksum
+99ad7e013c7b: Download complete
+748f9c1f90d4: Verifying Checksum
+748f9c1f90d4: Download complete
+7fe552c5ef2d: Verifying Checksum
+7fe552c5ef2d: Download complete
 2359073bd686: Verifying Checksum
 2359073bd686: Download complete
 c55100fa2500: Verifying Checksum
 c55100fa2500: Download complete
-b47bc23be934: Verifying Checksum
-b47bc23be934: Download complete
-7fe552c5ef2d: Verifying Checksum
-7fe552c5ef2d: Download complete
-b1e034123947: Verifying Checksum
-b1e034123947: Download complete
-eb6f69d21a16: Verifying Checksum
-eb6f69d21a16: Download complete
-748f9c1f90d4: Verifying Checksum
-748f9c1f90d4: Download complete
 679d506110e5: Verifying Checksum
 679d506110e5: Download complete
-1ede65333e1a: Verifying Checksum
-1ede65333e1a: Download complete
+b1e034123947: Verifying Checksum
+b1e034123947: Download complete
 fbea10a205ee: Verifying Checksum
 fbea10a205ee: Download complete
+1ede65333e1a: Verifying Checksum
+1ede65333e1a: Download complete
+eb6f69d21a16: Verifying Checksum
+eb6f69d21a16: Download complete
 54995768f022: Verifying Checksum
 54995768f022: Download complete
 54995768f022: Download complete
+39b5dfd5ab2c: Verifying Checksum
+39b5dfd5ab2c: Download complete
 2131eb65d199: Verifying Checksum
 2131eb65d199: Download complete
 cc58e55aa5a5: Verifying Checksum
 cc58e55aa5a5: Download complete
-ba933affd0ef: Verifying Checksum
-ba933affd0ef: Download complete
 1c9383292a8f: Verifying Checksum
 1c9383292a8f: Download complete
+ba933affd0ef: Verifying Checksum
+ba933affd0ef: Download complete
 1c9383292a8f: Pull complete
 9942dd43ff21: Pull complete
 d92c3c92fa73: Pull complete
@@ -1717,10 +1717,10 @@ eb6f69d21a16: Pull complete
 fbea10a205ee: Pull complete
 54995768f022: Pull complete
 54995768f022: Already exists
-Digest: sha256:df267737fa5c7a11439c95620b5f084e2907f65bacbb130eba7d0e3c16af8576
+Digest: sha256:fdcd07596da5be475d6d8015fda2c3f82b0cecf84f352ea3d99220342a2fdcad
 Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
 
-real  9.95
+real  9.98
 
 ssh kai@52.68.197.112 "docker images | grep node-metrics"
 136.187.101.80:5000/node-metrics   latest              54995768f022        4 months ago        249.8 MB
@@ -1730,6 +1730,6 @@ ssh kai@52.68.197.112 "docker images | grep node-metrics"
 
 docker rm -f docker_registry
 
-end date: Sun Jul 26 00:36:32 JST 2015
+end date: Mon Jul 27 00:34:40 JST 2015
 
 

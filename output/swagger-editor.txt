@@ -2,7 +2,7 @@
 pullpush benchmark: transfer swagger-editor image to 52.68.197.112 host
  
 hostname: kuruwa-gw
-begin date: Sun Jul 26 04:44:38 JST 2015
+begin date: Mon Jul 27 04:49:32 JST 2015
 
 sudo docker images
 kiwenlau/swagger-editor         flat                82c4e72da24c        4 weeks ago         875.7 MB
@@ -25,7 +25,7 @@ docker images
 kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-b6b0ba32262f        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+3256efaf8302        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/swagger-editor:latest
 The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
@@ -62,9 +62,9 @@ ca7a0d5de2eb: Image already exists
 27d47432a69b: Buffering to Disk
 27d47432a69b: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:1abe96baf9796622543b4a8cedabbfe381a6f727dba921de316f0dfb4f835baa
+Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
 
-real  111.12
+real  103.12
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 
@@ -95,30 +95,30 @@ ff61d7bfda17: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Download complete
 5ba9dab47459: Verifying Checksum
 5ba9dab47459: Download complete
-b4bf25e902be: Verifying Checksum
-b4bf25e902be: Download complete
 51a9c7c1f8bb: Verifying Checksum
 51a9c7c1f8bb: Download complete
 ca7a0d5de2eb: Verifying Checksum
 ca7a0d5de2eb: Download complete
+6dad509e6e13: Verifying Checksum
+6dad509e6e13: Download complete
+b4bf25e902be: Verifying Checksum
+b4bf25e902be: Download complete
 b20022aa994c: Verifying Checksum
 b20022aa994c: Download complete
 8bfb10533ec2: Verifying Checksum
 8bfb10533ec2: Download complete
-5f92234dcf1e: Verifying Checksum
-5f92234dcf1e: Download complete
-6dad509e6e13: Verifying Checksum
-6dad509e6e13: Download complete
-289eb2919b18: Verifying Checksum
-289eb2919b18: Download complete
 744a2173b7e7: Verifying Checksum
 744a2173b7e7: Download complete
+289eb2919b18: Verifying Checksum
+289eb2919b18: Download complete
+5f92234dcf1e: Verifying Checksum
+5f92234dcf1e: Download complete
 3c5158733227: Verifying Checksum
 3c5158733227: Download complete
-511136ea3c5a: Pull complete
 ff61d7bfda17: Verifying Checksum
 ff61d7bfda17: Download complete
 ff61d7bfda17: Download complete
+511136ea3c5a: Pull complete
 8215a030e8ab: Verifying Checksum
 8215a030e8ab: Download complete
 a2bebd23e970: Verifying Checksum
@@ -127,10 +127,10 @@ a2bebd23e970: Download complete
 5aa3d2f00fa8: Download complete
 27d47432a69b: Verifying Checksum
 27d47432a69b: Download complete
-f7d1a0c65297: Verifying Checksum
-f7d1a0c65297: Download complete
 12589745597b: Verifying Checksum
 12589745597b: Download complete
+f7d1a0c65297: Verifying Checksum
+f7d1a0c65297: Download complete
 27d47432a69b: Pull complete
 5f92234dcf1e: Pull complete
 51a9c7c1f8bb: Pull complete
@@ -150,10 +150,10 @@ a2bebd23e970: Pull complete
 3c5158733227: Pull complete
 ff61d7bfda17: Pull complete
 ff61d7bfda17: Already exists
-Digest: sha256:1abe96baf9796622543b4a8cedabbfe381a6f727dba921de316f0dfb4f835baa
+Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
 Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
 
-real  31.00
+real  31.12
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
@@ -176,7 +176,7 @@ docker images
 kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-3fec685ffc9d        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+4d2322650abc        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/swagger-editor:latest
 The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
@@ -213,9 +213,9 @@ ca7a0d5de2eb: Image already exists
 27d47432a69b: Buffering to Disk
 27d47432a69b: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:3a4c93c0c7b65726a33ac16f5771dbc9dab817ad1f942c19bdaa235014383520
+Digest: sha256:4e75c8e89e1c41fe5f9061b0c12830204beb3fb0f86e04fe71ae9cf74417325d
 
-real  111.66
+real  104.02
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 
@@ -242,12 +242,6 @@ a2bebd23e970: Pulling fs layer
 ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Layer already being pulled by another client. Waiting.
-b20022aa994c: Verifying Checksum
-b20022aa994c: Download complete
-8bfb10533ec2: Verifying Checksum
-8bfb10533ec2: Download complete
-6dad509e6e13: Verifying Checksum
-6dad509e6e13: Download complete
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
 51a9c7c1f8bb: Verifying Checksum
@@ -256,19 +250,25 @@ ca7a0d5de2eb: Verifying Checksum
 ca7a0d5de2eb: Download complete
 5ba9dab47459: Verifying Checksum
 5ba9dab47459: Download complete
-3c5158733227: Verifying Checksum
-3c5158733227: Download complete
-b4bf25e902be: Verifying Checksum
-b4bf25e902be: Download complete
-289eb2919b18: Verifying Checksum
-289eb2919b18: Download complete
+b20022aa994c: Verifying Checksum
+b20022aa994c: Download complete
 5f92234dcf1e: Verifying Checksum
 5f92234dcf1e: Download complete
+3c5158733227: Verifying Checksum
+3c5158733227: Download complete
 744a2173b7e7: Verifying Checksum
 744a2173b7e7: Download complete
+8bfb10533ec2: Verifying Checksum
+8bfb10533ec2: Download complete
 ff61d7bfda17: Verifying Checksum
 ff61d7bfda17: Download complete
 ff61d7bfda17: Download complete
+b4bf25e902be: Verifying Checksum
+b4bf25e902be: Download complete
+6dad509e6e13: Verifying Checksum
+6dad509e6e13: Download complete
+289eb2919b18: Verifying Checksum
+289eb2919b18: Download complete
 8215a030e8ab: Verifying Checksum
 8215a030e8ab: Download complete
 511136ea3c5a: Pull complete
@@ -301,10 +301,10 @@ a2bebd23e970: Pull complete
 3c5158733227: Pull complete
 ff61d7bfda17: Pull complete
 ff61d7bfda17: Already exists
-Digest: sha256:3a4c93c0c7b65726a33ac16f5771dbc9dab817ad1f942c19bdaa235014383520
+Digest: sha256:4e75c8e89e1c41fe5f9061b0c12830204beb3fb0f86e04fe71ae9cf74417325d
 Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
 
-real  31.38
+real  30.80
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
@@ -323,11 +323,11 @@ kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months
 docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
 
 docker images
-kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-8cd74a71799f        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+ec8b5a11dbf3        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/swagger-editor:latest
 The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
@@ -364,9 +364,9 @@ ca7a0d5de2eb: Image already exists
 27d47432a69b: Buffering to Disk
 27d47432a69b: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:39fe93f850aeb55d8712c4bfed688fd2c00dfe2acea588b18034a53be0edd9a7
+Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
 
-real  111.31
+real  103.99
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 
@@ -395,34 +395,34 @@ ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
+5f92234dcf1e: Verifying Checksum
+5f92234dcf1e: Download complete
+511136ea3c5a: Pull complete
 5ba9dab47459: Verifying Checksum
 5ba9dab47459: Download complete
 51a9c7c1f8bb: Verifying Checksum
 51a9c7c1f8bb: Download complete
 b4bf25e902be: Verifying Checksum
 b4bf25e902be: Download complete
+ca7a0d5de2eb: Verifying Checksum
+ca7a0d5de2eb: Download complete
 6dad509e6e13: Verifying Checksum
 6dad509e6e13: Download complete
-b20022aa994c: Verifying Checksum
-b20022aa994c: Download complete
-5f92234dcf1e: Verifying Checksum
-5f92234dcf1e: Download complete
-3c5158733227: Verifying Checksum
-3c5158733227: Download complete
-289eb2919b18: Verifying Checksum
-289eb2919b18: Download complete
+8bfb10533ec2: Verifying Checksum
+8bfb10533ec2: Download complete
 744a2173b7e7: Verifying Checksum
 744a2173b7e7: Download complete
+289eb2919b18: Verifying Checksum
+289eb2919b18: Download complete
+3c5158733227: Verifying Checksum
+3c5158733227: Download complete
 ff61d7bfda17: Verifying Checksum
 ff61d7bfda17: Download complete
 ff61d7bfda17: Download complete
-8bfb10533ec2: Verifying Checksum
-8bfb10533ec2: Download complete
-ca7a0d5de2eb: Verifying Checksum
-ca7a0d5de2eb: Download complete
+b20022aa994c: Verifying Checksum
+b20022aa994c: Download complete
 8215a030e8ab: Verifying Checksum
 8215a030e8ab: Download complete
-511136ea3c5a: Pull complete
 a2bebd23e970: Verifying Checksum
 a2bebd23e970: Download complete
 5aa3d2f00fa8: Verifying Checksum
@@ -452,10 +452,10 @@ a2bebd23e970: Pull complete
 3c5158733227: Pull complete
 ff61d7bfda17: Pull complete
 ff61d7bfda17: Already exists
-Digest: sha256:39fe93f850aeb55d8712c4bfed688fd2c00dfe2acea588b18034a53be0edd9a7
+Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
 Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
 
-real  31.18
+real  30.68
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
@@ -478,7 +478,7 @@ docker images
 kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-fe119821e64a        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+72912cbafae4        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/swagger-editor:latest
 The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
@@ -515,9 +515,9 @@ ca7a0d5de2eb: Image already exists
 27d47432a69b: Buffering to Disk
 27d47432a69b: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
+Digest: sha256:d90b9b318103328566908c48b35376173df95eebe3c126b008c5ba5b8c9f7150
 
-real  114.82
+real  103.88
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 
@@ -546,31 +546,31 @@ ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Layer already being pulled by another client. Waiting.
 51a9c7c1f8bb: Verifying Checksum
 51a9c7c1f8bb: Download complete
+ca7a0d5de2eb: Verifying Checksum
+ca7a0d5de2eb: Download complete
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
 5ba9dab47459: Verifying Checksum
 5ba9dab47459: Download complete
-b20022aa994c: Verifying Checksum
-b20022aa994c: Download complete
-ca7a0d5de2eb: Verifying Checksum
-ca7a0d5de2eb: Download complete
-6dad509e6e13: Verifying Checksum
-6dad509e6e13: Download complete
 b4bf25e902be: Verifying Checksum
 b4bf25e902be: Download complete
+6dad509e6e13: Verifying Checksum
+6dad509e6e13: Download complete
+b20022aa994c: Verifying Checksum
+b20022aa994c: Download complete
+8bfb10533ec2: Verifying Checksum
+8bfb10533ec2: Download complete
 289eb2919b18: Verifying Checksum
 289eb2919b18: Download complete
 744a2173b7e7: Verifying Checksum
 744a2173b7e7: Download complete
-5f92234dcf1e: Verifying Checksum
-5f92234dcf1e: Download complete
-8bfb10533ec2: Verifying Checksum
-8bfb10533ec2: Download complete
+3c5158733227: Verifying Checksum
+3c5158733227: Download complete
 ff61d7bfda17: Verifying Checksum
 ff61d7bfda17: Download complete
 ff61d7bfda17: Download complete
-3c5158733227: Verifying Checksum
-3c5158733227: Download complete
+5f92234dcf1e: Verifying Checksum
+5f92234dcf1e: Download complete
 8215a030e8ab: Verifying Checksum
 8215a030e8ab: Download complete
 511136ea3c5a: Pull complete
@@ -603,10 +603,10 @@ a2bebd23e970: Pull complete
 3c5158733227: Pull complete
 ff61d7bfda17: Pull complete
 ff61d7bfda17: Already exists
-Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
+Digest: sha256:d90b9b318103328566908c48b35376173df95eebe3c126b008c5ba5b8c9f7150
 Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
 
-real  31.61
+real  31.12
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
@@ -625,11 +625,11 @@ kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months
 docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
 
 docker images
-kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-4179eff2c973        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+0551c141b975        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/swagger-editor:latest
 The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
@@ -666,9 +666,9 @@ ca7a0d5de2eb: Image already exists
 27d47432a69b: Buffering to Disk
 27d47432a69b: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:74762e2fbe955a3c46af1191039091afaf30f96a2140c6de7894f0bd43f3a31e
+Digest: sha256:31cabf932de0df2eb73dff7c8f487c8d2f7f260ac7b8bede8f0829424952dab2
 
-real  113.02
+real  102.91
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 
@@ -695,33 +695,33 @@ a2bebd23e970: Pulling fs layer
 ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Layer already being pulled by another client. Waiting.
-51a9c7c1f8bb: Verifying Checksum
-51a9c7c1f8bb: Download complete
-8bfb10533ec2: Verifying Checksum
-8bfb10533ec2: Download complete
-511136ea3c5a: Verifying Checksum
-511136ea3c5a: Download complete
-b4bf25e902be: Verifying Checksum
-b4bf25e902be: Download complete
 ca7a0d5de2eb: Verifying Checksum
 ca7a0d5de2eb: Download complete
 5ba9dab47459: Verifying Checksum
 5ba9dab47459: Download complete
+b4bf25e902be: Verifying Checksum
+b4bf25e902be: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+51a9c7c1f8bb: Verifying Checksum
+51a9c7c1f8bb: Download complete
+5f92234dcf1e: Verifying Checksum
+5f92234dcf1e: Download complete
 b20022aa994c: Verifying Checksum
 b20022aa994c: Download complete
-3c5158733227: Verifying Checksum
-3c5158733227: Download complete
 6dad509e6e13: Verifying Checksum
 6dad509e6e13: Download complete
+8bfb10533ec2: Verifying Checksum
+8bfb10533ec2: Download complete
 289eb2919b18: Verifying Checksum
 289eb2919b18: Download complete
+3c5158733227: Verifying Checksum
+3c5158733227: Download complete
 744a2173b7e7: Verifying Checksum
 744a2173b7e7: Download complete
 ff61d7bfda17: Verifying Checksum
 ff61d7bfda17: Download complete
 ff61d7bfda17: Download complete
-5f92234dcf1e: Verifying Checksum
-5f92234dcf1e: Download complete
 8215a030e8ab: Verifying Checksum
 8215a030e8ab: Download complete
 511136ea3c5a: Pull complete
@@ -731,10 +731,10 @@ a2bebd23e970: Download complete
 5aa3d2f00fa8: Download complete
 27d47432a69b: Verifying Checksum
 27d47432a69b: Download complete
-12589745597b: Verifying Checksum
-12589745597b: Download complete
 f7d1a0c65297: Verifying Checksum
 f7d1a0c65297: Download complete
+12589745597b: Verifying Checksum
+12589745597b: Download complete
 27d47432a69b: Pull complete
 5f92234dcf1e: Pull complete
 51a9c7c1f8bb: Pull complete
@@ -754,10 +754,10 @@ a2bebd23e970: Pull complete
 3c5158733227: Pull complete
 ff61d7bfda17: Pull complete
 ff61d7bfda17: Already exists
-Digest: sha256:74762e2fbe955a3c46af1191039091afaf30f96a2140c6de7894f0bd43f3a31e
+Digest: sha256:31cabf932de0df2eb73dff7c8f487c8d2f7f260ac7b8bede8f0829424952dab2
 Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
 
-real  30.97
+real  31.81
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
@@ -780,7 +780,7 @@ docker images
 kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-fbd867eb6a3c        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+16b718438449        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/swagger-editor:latest
 The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
@@ -817,9 +817,9 @@ ca7a0d5de2eb: Image already exists
 27d47432a69b: Buffering to Disk
 27d47432a69b: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:3edf13c1403d7e6981626a903bd54c0f9b01ad9c337683dbf1f937215002e030
+Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
 
-real  115.85
+real  103.95
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 
@@ -850,42 +850,42 @@ ff61d7bfda17: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Download complete
 51a9c7c1f8bb: Verifying Checksum
 51a9c7c1f8bb: Download complete
-5ba9dab47459: Verifying Checksum
-5ba9dab47459: Download complete
 ca7a0d5de2eb: Verifying Checksum
 ca7a0d5de2eb: Download complete
+5ba9dab47459: Verifying Checksum
+5ba9dab47459: Download complete
+6dad509e6e13: Verifying Checksum
+6dad509e6e13: Download complete
 b4bf25e902be: Verifying Checksum
 b4bf25e902be: Download complete
 b20022aa994c: Verifying Checksum
 b20022aa994c: Download complete
-6dad509e6e13: Verifying Checksum
-6dad509e6e13: Download complete
 8bfb10533ec2: Verifying Checksum
 8bfb10533ec2: Download complete
-744a2173b7e7: Verifying Checksum
-744a2173b7e7: Download complete
 289eb2919b18: Verifying Checksum
 289eb2919b18: Download complete
-3c5158733227: Verifying Checksum
-3c5158733227: Download complete
+744a2173b7e7: Verifying Checksum
+744a2173b7e7: Download complete
 ff61d7bfda17: Verifying Checksum
 ff61d7bfda17: Download complete
 ff61d7bfda17: Download complete
+3c5158733227: Verifying Checksum
+3c5158733227: Download complete
 5f92234dcf1e: Verifying Checksum
 5f92234dcf1e: Download complete
+511136ea3c5a: Pull complete
 8215a030e8ab: Verifying Checksum
 8215a030e8ab: Download complete
-511136ea3c5a: Pull complete
 a2bebd23e970: Verifying Checksum
 a2bebd23e970: Download complete
 5aa3d2f00fa8: Verifying Checksum
 5aa3d2f00fa8: Download complete
+27d47432a69b: Verifying Checksum
+27d47432a69b: Download complete
 f7d1a0c65297: Verifying Checksum
 f7d1a0c65297: Download complete
 12589745597b: Verifying Checksum
 12589745597b: Download complete
-27d47432a69b: Verifying Checksum
-27d47432a69b: Download complete
 27d47432a69b: Pull complete
 5f92234dcf1e: Pull complete
 51a9c7c1f8bb: Pull complete
@@ -905,10 +905,10 @@ a2bebd23e970: Pull complete
 3c5158733227: Pull complete
 ff61d7bfda17: Pull complete
 ff61d7bfda17: Already exists
-Digest: sha256:3edf13c1403d7e6981626a903bd54c0f9b01ad9c337683dbf1f937215002e030
+Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
 Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
 
-real  32.06
+real  32.08
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
@@ -927,11 +927,11 @@ kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months
 docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
 
 docker images
-136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
 kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-ed12951d3833        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+91417bb27a9b        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/swagger-editor:latest
 The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
@@ -968,9 +968,9 @@ ca7a0d5de2eb: Image already exists
 27d47432a69b: Buffering to Disk
 27d47432a69b: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
+Digest: sha256:4e75c8e89e1c41fe5f9061b0c12830204beb3fb0f86e04fe71ae9cf74417325d
 
-real  116.63
+real  104.08
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 
@@ -999,34 +999,34 @@ ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-5ba9dab47459: Verifying Checksum
-5ba9dab47459: Download complete
 51a9c7c1f8bb: Verifying Checksum
 51a9c7c1f8bb: Download complete
 ca7a0d5de2eb: Verifying Checksum
 ca7a0d5de2eb: Download complete
-5f92234dcf1e: Verifying Checksum
-5f92234dcf1e: Download complete
+5ba9dab47459: Verifying Checksum
+5ba9dab47459: Download complete
+b4bf25e902be: Verifying Checksum
+b4bf25e902be: Download complete
 b20022aa994c: Verifying Checksum
 b20022aa994c: Download complete
 6dad509e6e13: Verifying Checksum
 6dad509e6e13: Download complete
 8bfb10533ec2: Verifying Checksum
 8bfb10533ec2: Download complete
-744a2173b7e7: Verifying Checksum
-744a2173b7e7: Download complete
+5f92234dcf1e: Verifying Checksum
+5f92234dcf1e: Download complete
 289eb2919b18: Verifying Checksum
 289eb2919b18: Download complete
-b4bf25e902be: Verifying Checksum
-b4bf25e902be: Download complete
+744a2173b7e7: Verifying Checksum
+744a2173b7e7: Download complete
 ff61d7bfda17: Verifying Checksum
 ff61d7bfda17: Download complete
 ff61d7bfda17: Download complete
 3c5158733227: Verifying Checksum
 3c5158733227: Download complete
+511136ea3c5a: Pull complete
 8215a030e8ab: Verifying Checksum
 8215a030e8ab: Download complete
-511136ea3c5a: Pull complete
 a2bebd23e970: Verifying Checksum
 a2bebd23e970: Download complete
 5aa3d2f00fa8: Verifying Checksum
@@ -1056,10 +1056,10 @@ a2bebd23e970: Pull complete
 3c5158733227: Pull complete
 ff61d7bfda17: Pull complete
 ff61d7bfda17: Already exists
-Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
+Digest: sha256:4e75c8e89e1c41fe5f9061b0c12830204beb3fb0f86e04fe71ae9cf74417325d
 Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
 
-real  30.94
+real  31.39
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
@@ -1078,11 +1078,11 @@ kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months
 docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
 
 docker images
-kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-cf848bed3b1f        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+f9899bb92f0e        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/swagger-editor:latest
 The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
@@ -1119,9 +1119,9 @@ ca7a0d5de2eb: Image already exists
 27d47432a69b: Buffering to Disk
 27d47432a69b: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:6515da07f8f048f908b740ba350811b23da25b4c9f6986d9f25e4c95b419cb6a
+Digest: sha256:aba6dd4e42851d2c400f5060e5e29fa053538fc0ea1141de0e06d3d1fb2fe394
 
-real  117.38
+real  104.04
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 
@@ -1148,44 +1148,44 @@ a2bebd23e970: Pulling fs layer
 ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Layer already being pulled by another client. Waiting.
-5f92234dcf1e: Verifying Checksum
-5f92234dcf1e: Download complete
-511136ea3c5a: Verifying Checksum
-511136ea3c5a: Download complete
 51a9c7c1f8bb: Verifying Checksum
 51a9c7c1f8bb: Download complete
-5ba9dab47459: Verifying Checksum
-5ba9dab47459: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
 ca7a0d5de2eb: Verifying Checksum
 ca7a0d5de2eb: Download complete
+5ba9dab47459: Verifying Checksum
+5ba9dab47459: Download complete
 b4bf25e902be: Verifying Checksum
 b4bf25e902be: Download complete
-6dad509e6e13: Verifying Checksum
-6dad509e6e13: Download complete
+b20022aa994c: Verifying Checksum
+b20022aa994c: Download complete
 8bfb10533ec2: Verifying Checksum
 8bfb10533ec2: Download complete
+6dad509e6e13: Verifying Checksum
+6dad509e6e13: Download complete
+289eb2919b18: Verifying Checksum
+289eb2919b18: Download complete
 744a2173b7e7: Verifying Checksum
 744a2173b7e7: Download complete
 ff61d7bfda17: Verifying Checksum
 ff61d7bfda17: Download complete
 ff61d7bfda17: Download complete
-289eb2919b18: Verifying Checksum
-289eb2919b18: Download complete
 3c5158733227: Verifying Checksum
 3c5158733227: Download complete
-b20022aa994c: Verifying Checksum
-b20022aa994c: Download complete
+5f92234dcf1e: Verifying Checksum
+5f92234dcf1e: Download complete
+511136ea3c5a: Pull complete
 8215a030e8ab: Verifying Checksum
 8215a030e8ab: Download complete
-511136ea3c5a: Pull complete
 a2bebd23e970: Verifying Checksum
 a2bebd23e970: Download complete
 5aa3d2f00fa8: Verifying Checksum
 5aa3d2f00fa8: Download complete
-f7d1a0c65297: Verifying Checksum
-f7d1a0c65297: Download complete
 27d47432a69b: Verifying Checksum
 27d47432a69b: Download complete
+f7d1a0c65297: Verifying Checksum
+f7d1a0c65297: Download complete
 12589745597b: Verifying Checksum
 12589745597b: Download complete
 27d47432a69b: Pull complete
@@ -1207,10 +1207,10 @@ a2bebd23e970: Pull complete
 3c5158733227: Pull complete
 ff61d7bfda17: Pull complete
 ff61d7bfda17: Already exists
-Digest: sha256:6515da07f8f048f908b740ba350811b23da25b4c9f6986d9f25e4c95b419cb6a
+Digest: sha256:aba6dd4e42851d2c400f5060e5e29fa053538fc0ea1141de0e06d3d1fb2fe394
 Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
 
-real  31.50
+real  30.86
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
@@ -1229,11 +1229,11 @@ kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months
 docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
 
 docker images
-kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-a02a325d7ad1        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+77582116b2d4        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/swagger-editor:latest
 The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
@@ -1270,9 +1270,9 @@ ca7a0d5de2eb: Image already exists
 27d47432a69b: Buffering to Disk
 27d47432a69b: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:a402da71392a1aff315726ec56ec096e9cd72c60e0c51bee0fddf2e2459e0b14
+Digest: sha256:3d759252cf56e9b574c6fdfe8bc8a7a0440a6b31f72e612d9c89100210cb1fdb
 
-real  115.36
+real  104.31
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 
@@ -1301,32 +1301,32 @@ ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-51a9c7c1f8bb: Verifying Checksum
-51a9c7c1f8bb: Download complete
 5ba9dab47459: Verifying Checksum
 5ba9dab47459: Download complete
+511136ea3c5a: Pull complete
+51a9c7c1f8bb: Verifying Checksum
+51a9c7c1f8bb: Download complete
+5f92234dcf1e: Verifying Checksum
+5f92234dcf1e: Download complete
 b4bf25e902be: Verifying Checksum
 b4bf25e902be: Download complete
 ca7a0d5de2eb: Verifying Checksum
 ca7a0d5de2eb: Download complete
 b20022aa994c: Verifying Checksum
 b20022aa994c: Download complete
-6dad509e6e13: Verifying Checksum
-6dad509e6e13: Download complete
 8bfb10533ec2: Verifying Checksum
 8bfb10533ec2: Download complete
-289eb2919b18: Verifying Checksum
-289eb2919b18: Download complete
+6dad509e6e13: Verifying Checksum
+6dad509e6e13: Download complete
 744a2173b7e7: Verifying Checksum
 744a2173b7e7: Download complete
-3c5158733227: Verifying Checksum
-3c5158733227: Download complete
+289eb2919b18: Verifying Checksum
+289eb2919b18: Download complete
 ff61d7bfda17: Verifying Checksum
 ff61d7bfda17: Download complete
 ff61d7bfda17: Download complete
-5f92234dcf1e: Verifying Checksum
-5f92234dcf1e: Download complete
-511136ea3c5a: Pull complete
+3c5158733227: Verifying Checksum
+3c5158733227: Download complete
 8215a030e8ab: Verifying Checksum
 8215a030e8ab: Download complete
 a2bebd23e970: Verifying Checksum
@@ -1335,10 +1335,10 @@ a2bebd23e970: Download complete
 5aa3d2f00fa8: Download complete
 27d47432a69b: Verifying Checksum
 27d47432a69b: Download complete
-12589745597b: Verifying Checksum
-12589745597b: Download complete
 f7d1a0c65297: Verifying Checksum
 f7d1a0c65297: Download complete
+12589745597b: Verifying Checksum
+12589745597b: Download complete
 27d47432a69b: Pull complete
 5f92234dcf1e: Pull complete
 51a9c7c1f8bb: Pull complete
@@ -1358,10 +1358,10 @@ a2bebd23e970: Pull complete
 3c5158733227: Pull complete
 ff61d7bfda17: Pull complete
 ff61d7bfda17: Already exists
-Digest: sha256:a402da71392a1aff315726ec56ec096e9cd72c60e0c51bee0fddf2e2459e0b14
+Digest: sha256:3d759252cf56e9b574c6fdfe8bc8a7a0440a6b31f72e612d9c89100210cb1fdb
 Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
 
-real  31.21
+real  31.13
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
@@ -1384,7 +1384,7 @@ docker images
 kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-639bd44cb0ad        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+c3e10fc14fb0        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/swagger-editor:latest
 The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
@@ -1421,9 +1421,9 @@ ca7a0d5de2eb: Image already exists
 27d47432a69b: Buffering to Disk
 27d47432a69b: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:a402da71392a1aff315726ec56ec096e9cd72c60e0c51bee0fddf2e2459e0b14
+Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
 
-real  119.61
+real  104.17
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 
@@ -1450,42 +1450,42 @@ a2bebd23e970: Pulling fs layer
 ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Pulling fs layer
 ff61d7bfda17: Layer already being pulled by another client. Waiting.
-51a9c7c1f8bb: Verifying Checksum
-51a9c7c1f8bb: Download complete
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
 5ba9dab47459: Verifying Checksum
 5ba9dab47459: Download complete
-ca7a0d5de2eb: Verifying Checksum
-ca7a0d5de2eb: Download complete
+51a9c7c1f8bb: Verifying Checksum
+51a9c7c1f8bb: Download complete
 b4bf25e902be: Verifying Checksum
 b4bf25e902be: Download complete
+ca7a0d5de2eb: Verifying Checksum
+ca7a0d5de2eb: Download complete
+5f92234dcf1e: Verifying Checksum
+5f92234dcf1e: Download complete
+6dad509e6e13: Verifying Checksum
+6dad509e6e13: Download complete
 b20022aa994c: Verifying Checksum
 b20022aa994c: Download complete
 8bfb10533ec2: Verifying Checksum
 8bfb10533ec2: Download complete
-6dad509e6e13: Verifying Checksum
-6dad509e6e13: Download complete
-744a2173b7e7: Verifying Checksum
-744a2173b7e7: Download complete
-5f92234dcf1e: Verifying Checksum
-5f92234dcf1e: Download complete
 289eb2919b18: Verifying Checksum
 289eb2919b18: Download complete
+744a2173b7e7: Verifying Checksum
+744a2173b7e7: Download complete
 ff61d7bfda17: Verifying Checksum
 ff61d7bfda17: Download complete
 ff61d7bfda17: Download complete
 3c5158733227: Verifying Checksum
 3c5158733227: Download complete
+511136ea3c5a: Pull complete
 8215a030e8ab: Verifying Checksum
 8215a030e8ab: Download complete
-511136ea3c5a: Pull complete
 a2bebd23e970: Verifying Checksum
 a2bebd23e970: Download complete
-5aa3d2f00fa8: Verifying Checksum
-5aa3d2f00fa8: Download complete
 27d47432a69b: Verifying Checksum
 27d47432a69b: Download complete
+5aa3d2f00fa8: Verifying Checksum
+5aa3d2f00fa8: Download complete
 f7d1a0c65297: Verifying Checksum
 f7d1a0c65297: Download complete
 12589745597b: Verifying Checksum
@@ -1509,10 +1509,10 @@ a2bebd23e970: Pull complete
 3c5158733227: Pull complete
 ff61d7bfda17: Pull complete
 ff61d7bfda17: Already exists
-Digest: sha256:a402da71392a1aff315726ec56ec096e9cd72c60e0c51bee0fddf2e2459e0b14
+Digest: sha256:0636150787629f613e93d39dee3d630dc51c1f8f7de1c68331d2ae8bcc7bd347
 Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
 
-real  30.58
+real  31.33
 
 ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
@@ -1522,6 +1522,6 @@ ssh kai@52.68.197.112 "docker images | grep swagger-editor"
 
 docker rm -f docker_registry
 
-end date: Sun Jul 26 05:11:20 JST 2015
+end date: Mon Jul 27 05:14:27 JST 2015
 
 

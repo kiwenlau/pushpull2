@@ -2,7 +2,7 @@
 pullpush benchmark: transfer gocd-server image to 52.68.197.112 host
  
 hostname: kuruwa-gw
-begin date: Sun Jul 26 10:42:35 JST 2015
+begin date: Mon Jul 27 10:47:44 JST 2015
 
 sudo docker images
 kiwenlau/gocd-server            flat                3b8d66bda039        4 weeks ago         949 MB
@@ -25,7 +25,7 @@ kiwenlau/gocd-server              latest              bbb2caf459e2        12 mon
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-2380d72bd7c3        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+29faaa672e3e        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/gocd-server:latest
 The push refers to a repository [136.187.101.80:5000/gocd-server] (len: 1)
@@ -74,7 +74,7 @@ d7ac5e4f1812: Image successfully pushed
 511136ea3c5a: Image already exists
 Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
 
-real  163.81
+real  142.12
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 
@@ -110,50 +110,50 @@ ca6142750e8c: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Layer already being pulled by another client. Waiting.
-83ff768040a0: Verifying Checksum
-83ff768040a0: Download complete
+97faf481e0ef: Verifying Checksum
+97faf481e0ef: Download complete
+721f5f8458da: Verifying Checksum
+721f5f8458da: Download complete
+215d8e5c3afa: Verifying Checksum
+215d8e5c3afa: Download complete
+52dec7e34889: Verifying Checksum
+52dec7e34889: Download complete
+1818020d87ab: Verifying Checksum
+1818020d87ab: Download complete
+521771a1e749: Verifying Checksum
+521771a1e749: Download complete
+0578bdce3c24: Verifying Checksum
+0578bdce3c24: Download complete
+2028e8a2970a: Verifying Checksum
+2028e8a2970a: Download complete
+a3f251b4f0e1: Verifying Checksum
+a3f251b4f0e1: Download complete
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
+83ff768040a0: Verifying Checksum
+83ff768040a0: Download complete
+a9551577baf8: Verifying Checksum
+a9551577baf8: Download complete
 e54ca5efa2e9: Verifying Checksum
 e54ca5efa2e9: Download complete
+55116292b253: Verifying Checksum
+55116292b253: Download complete
+dcd01c67be9d: Verifying Checksum
+dcd01c67be9d: Download complete
 8d8858d9ae05: Verifying Checksum
 8d8858d9ae05: Download complete
 66a08ad2904f: Verifying Checksum
 66a08ad2904f: Download complete
-dcd01c67be9d: Verifying Checksum
-dcd01c67be9d: Download complete
-55116292b253: Verifying Checksum
-55116292b253: Download complete
-97faf481e0ef: Verifying Checksum
-97faf481e0ef: Download complete
-215d8e5c3afa: Verifying Checksum
-215d8e5c3afa: Download complete
-1818020d87ab: Verifying Checksum
-1818020d87ab: Download complete
-721f5f8458da: Verifying Checksum
-721f5f8458da: Download complete
-52dec7e34889: Verifying Checksum
-52dec7e34889: Download complete
-a9551577baf8: Verifying Checksum
-a9551577baf8: Download complete
-521771a1e749: Verifying Checksum
-521771a1e749: Download complete
-a3f251b4f0e1: Verifying Checksum
-a3f251b4f0e1: Download complete
-2028e8a2970a: Verifying Checksum
-2028e8a2970a: Download complete
-0578bdce3c24: Verifying Checksum
-0578bdce3c24: Download complete
-511136ea3c5a: Pull complete
-44698ccac05c: Verifying Checksum
-44698ccac05c: Download complete
+2f4b4d6a4a06: Verifying Checksum
+2f4b4d6a4a06: Download complete
 ca6142750e8c: Verifying Checksum
 ca6142750e8c: Download complete
+44698ccac05c: Verifying Checksum
+44698ccac05c: Download complete
 bbb2caf459e2: Verifying Checksum
 bbb2caf459e2: Download complete
 bbb2caf459e2: Download complete
-2f4b4d6a4a06: Verifying Checksum
-2f4b4d6a4a06: Download complete
+511136ea3c5a: Pull complete
 850b5e6cfe58: Verifying Checksum
 850b5e6cfe58: Download complete
 6c37f792ddac: Verifying Checksum
@@ -162,10 +162,10 @@ d7ac5e4f1812: Verifying Checksum
 d7ac5e4f1812: Download complete
 021395a2fed6: Verifying Checksum
 021395a2fed6: Download complete
-d22e7594881b: Verifying Checksum
-d22e7594881b: Download complete
 059954cb3f81: Verifying Checksum
 059954cb3f81: Download complete
+d22e7594881b: Verifying Checksum
+d22e7594881b: Download complete
 767cb0646bac: Verifying Checksum
 767cb0646bac: Download complete
 d7ac5e4f1812: Pull complete
@@ -199,7 +199,7 @@ bbb2caf459e2: Already exists
 Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
 Status: Downloaded newer image for 136.187.101.80:5000/gocd-server:latest
 
-real  41.60
+real  42.76
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
@@ -222,7 +222,7 @@ kiwenlau/gocd-server              latest              bbb2caf459e2        12 mon
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-004129ae6dc3        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+086ed66ecdd3        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/gocd-server:latest
 The push refers to a repository [136.187.101.80:5000/gocd-server] (len: 1)
@@ -269,9 +269,9 @@ e54ca5efa2e9: Image successfully pushed
 d7ac5e4f1812: Buffering to Disk
 d7ac5e4f1812: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
+Digest: sha256:831e5d83d401ce64b772d07f513a9edf4c23cf148146a7f808e8ad95d5208286
 
-real  164.01
+real  142.02
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 
@@ -309,58 +309,58 @@ bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
+511136ea3c5a: Pull complete
 83ff768040a0: Verifying Checksum
 83ff768040a0: Download complete
 e54ca5efa2e9: Verifying Checksum
 e54ca5efa2e9: Download complete
-55116292b253: Verifying Checksum
-55116292b253: Download complete
 8d8858d9ae05: Verifying Checksum
 8d8858d9ae05: Download complete
+2f4b4d6a4a06: Verifying Checksum
+2f4b4d6a4a06: Download complete
+55116292b253: Verifying Checksum
+55116292b253: Download complete
 66a08ad2904f: Verifying Checksum
 66a08ad2904f: Download complete
-dcd01c67be9d: Verifying Checksum
-dcd01c67be9d: Download complete
 215d8e5c3afa: Verifying Checksum
 215d8e5c3afa: Download complete
-1818020d87ab: Verifying Checksum
-1818020d87ab: Download complete
-511136ea3c5a: Pull complete
+dcd01c67be9d: Verifying Checksum
+dcd01c67be9d: Download complete
 97faf481e0ef: Verifying Checksum
 97faf481e0ef: Download complete
+1818020d87ab: Verifying Checksum
+1818020d87ab: Download complete
 52dec7e34889: Verifying Checksum
 52dec7e34889: Download complete
-721f5f8458da: Verifying Checksum
-721f5f8458da: Download complete
-a3f251b4f0e1: Verifying Checksum
-a3f251b4f0e1: Download complete
-2028e8a2970a: Verifying Checksum
-2028e8a2970a: Download complete
 521771a1e749: Verifying Checksum
 521771a1e749: Download complete
+721f5f8458da: Verifying Checksum
+721f5f8458da: Download complete
+2028e8a2970a: Verifying Checksum
+2028e8a2970a: Download complete
 a9551577baf8: Verifying Checksum
 a9551577baf8: Download complete
 0578bdce3c24: Verifying Checksum
 0578bdce3c24: Download complete
-2f4b4d6a4a06: Verifying Checksum
-2f4b4d6a4a06: Download complete
+a3f251b4f0e1: Verifying Checksum
+a3f251b4f0e1: Download complete
+bbb2caf459e2: Verifying Checksum
+bbb2caf459e2: Download complete
+bbb2caf459e2: Download complete
 ca6142750e8c: Verifying Checksum
 ca6142750e8c: Download complete
 44698ccac05c: Verifying Checksum
 44698ccac05c: Download complete
-bbb2caf459e2: Verifying Checksum
-bbb2caf459e2: Download complete
-bbb2caf459e2: Download complete
-6c37f792ddac: Verifying Checksum
-6c37f792ddac: Download complete
 850b5e6cfe58: Verifying Checksum
 850b5e6cfe58: Download complete
+6c37f792ddac: Verifying Checksum
+6c37f792ddac: Download complete
+d7ac5e4f1812: Verifying Checksum
+d7ac5e4f1812: Download complete
 021395a2fed6: Verifying Checksum
 021395a2fed6: Download complete
 d22e7594881b: Verifying Checksum
 d22e7594881b: Download complete
-d7ac5e4f1812: Verifying Checksum
-d7ac5e4f1812: Download complete
 059954cb3f81: Verifying Checksum
 059954cb3f81: Download complete
 767cb0646bac: Verifying Checksum
@@ -393,10 +393,10 @@ ca6142750e8c: Pull complete
 44698ccac05c: Pull complete
 bbb2caf459e2: Pull complete
 bbb2caf459e2: Already exists
-Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
+Digest: sha256:831e5d83d401ce64b772d07f513a9edf4c23cf148146a7f808e8ad95d5208286
 Status: Downloaded newer image for 136.187.101.80:5000/gocd-server:latest
 
-real  43.07
+real  41.40
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
@@ -419,7 +419,7 @@ kiwenlau/gocd-server              latest              bbb2caf459e2        12 mon
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-31ab504a7be9        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+6e0e0333b7a9        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/gocd-server:latest
 The push refers to a repository [136.187.101.80:5000/gocd-server] (len: 1)
@@ -466,9 +466,9 @@ e54ca5efa2e9: Image successfully pushed
 d7ac5e4f1812: Buffering to Disk
 d7ac5e4f1812: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:3bcb3ea3847b2a0ea8c5ba5d7f486716da6096b323a6706d4b610169363a387f
+Digest: sha256:ed357ba2514fa0451c90ae7cd2db8f9917e052bf3c6d445ee326a11c3647e789
 
-real  162.25
+real  142.88
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 
@@ -506,58 +506,58 @@ bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-a3f251b4f0e1: Verifying Checksum
-a3f251b4f0e1: Download complete
 511136ea3c5a: Pull complete
 83ff768040a0: Verifying Checksum
 83ff768040a0: Download complete
-2f4b4d6a4a06: Verifying Checksum
-2f4b4d6a4a06: Download complete
 e54ca5efa2e9: Verifying Checksum
 e54ca5efa2e9: Download complete
-721f5f8458da: Verifying Checksum
-721f5f8458da: Download complete
-97faf481e0ef: Verifying Checksum
-97faf481e0ef: Download complete
-dcd01c67be9d: Verifying Checksum
-dcd01c67be9d: Download complete
+8d8858d9ae05: Verifying Checksum
+8d8858d9ae05: Download complete
 55116292b253: Verifying Checksum
 55116292b253: Download complete
 66a08ad2904f: Verifying Checksum
 66a08ad2904f: Download complete
-2028e8a2970a: Verifying Checksum
-2028e8a2970a: Download complete
-0578bdce3c24: Verifying Checksum
-0578bdce3c24: Download complete
-52dec7e34889: Verifying Checksum
-52dec7e34889: Download complete
+dcd01c67be9d: Verifying Checksum
+dcd01c67be9d: Download complete
+97faf481e0ef: Verifying Checksum
+97faf481e0ef: Download complete
 215d8e5c3afa: Verifying Checksum
 215d8e5c3afa: Download complete
+1818020d87ab: Verifying Checksum
+1818020d87ab: Download complete
+52dec7e34889: Verifying Checksum
+52dec7e34889: Download complete
+2f4b4d6a4a06: Verifying Checksum
+2f4b4d6a4a06: Download complete
+2028e8a2970a: Verifying Checksum
+2028e8a2970a: Download complete
+721f5f8458da: Verifying Checksum
+721f5f8458da: Download complete
 521771a1e749: Verifying Checksum
 521771a1e749: Download complete
 a9551577baf8: Verifying Checksum
 a9551577baf8: Download complete
-1818020d87ab: Verifying Checksum
-1818020d87ab: Download complete
+a3f251b4f0e1: Verifying Checksum
+a3f251b4f0e1: Download complete
+0578bdce3c24: Verifying Checksum
+0578bdce3c24: Download complete
+ca6142750e8c: Verifying Checksum
+ca6142750e8c: Download complete
+44698ccac05c: Verifying Checksum
+44698ccac05c: Download complete
 bbb2caf459e2: Verifying Checksum
 bbb2caf459e2: Download complete
 bbb2caf459e2: Download complete
-44698ccac05c: Verifying Checksum
-44698ccac05c: Download complete
-8d8858d9ae05: Verifying Checksum
-8d8858d9ae05: Download complete
-ca6142750e8c: Verifying Checksum
-ca6142750e8c: Download complete
-6c37f792ddac: Verifying Checksum
-6c37f792ddac: Download complete
 850b5e6cfe58: Verifying Checksum
 850b5e6cfe58: Download complete
+6c37f792ddac: Verifying Checksum
+6c37f792ddac: Download complete
+d7ac5e4f1812: Verifying Checksum
+d7ac5e4f1812: Download complete
 021395a2fed6: Verifying Checksum
 021395a2fed6: Download complete
 d22e7594881b: Verifying Checksum
 d22e7594881b: Download complete
-d7ac5e4f1812: Verifying Checksum
-d7ac5e4f1812: Download complete
 059954cb3f81: Verifying Checksum
 059954cb3f81: Download complete
 767cb0646bac: Verifying Checksum
@@ -590,10 +590,10 @@ ca6142750e8c: Pull complete
 44698ccac05c: Pull complete
 bbb2caf459e2: Pull complete
 bbb2caf459e2: Already exists
-Digest: sha256:3bcb3ea3847b2a0ea8c5ba5d7f486716da6096b323a6706d4b610169363a387f
+Digest: sha256:ed357ba2514fa0451c90ae7cd2db8f9917e052bf3c6d445ee326a11c3647e789
 Status: Downloaded newer image for 136.187.101.80:5000/gocd-server:latest
 
-real  41.39
+real  42.77
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
@@ -616,7 +616,7 @@ kiwenlau/gocd-server              latest              bbb2caf459e2        12 mon
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-dcc9e9529d6c        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+8c6a650e2f79        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/gocd-server:latest
 The push refers to a repository [136.187.101.80:5000/gocd-server] (len: 1)
@@ -663,9 +663,9 @@ e54ca5efa2e9: Image successfully pushed
 d7ac5e4f1812: Buffering to Disk
 d7ac5e4f1812: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:748871d0c704e6a90ca5201e7277941d2474501de3202d9d61661fa14fff29a7
+Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
 
-real  168.94
+real  145.66
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 
@@ -701,50 +701,50 @@ ca6142750e8c: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Layer already being pulled by another client. Waiting.
-a9551577baf8: Verifying Checksum
-a9551577baf8: Download complete
-a3f251b4f0e1: Verifying Checksum
-a3f251b4f0e1: Download complete
-521771a1e749: Verifying Checksum
-521771a1e749: Download complete
-2028e8a2970a: Verifying Checksum
-2028e8a2970a: Download complete
-721f5f8458da: Verifying Checksum
-721f5f8458da: Download complete
-52dec7e34889: Verifying Checksum
-52dec7e34889: Download complete
-1818020d87ab: Verifying Checksum
-1818020d87ab: Download complete
-97faf481e0ef: Verifying Checksum
-97faf481e0ef: Download complete
-dcd01c67be9d: Verifying Checksum
-dcd01c67be9d: Download complete
-215d8e5c3afa: Verifying Checksum
-215d8e5c3afa: Download complete
-66a08ad2904f: Verifying Checksum
-66a08ad2904f: Download complete
-55116292b253: Verifying Checksum
-55116292b253: Download complete
-8d8858d9ae05: Verifying Checksum
-8d8858d9ae05: Download complete
-e54ca5efa2e9: Verifying Checksum
-e54ca5efa2e9: Download complete
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
 83ff768040a0: Verifying Checksum
 83ff768040a0: Download complete
-ca6142750e8c: Verifying Checksum
-ca6142750e8c: Download complete
+511136ea3c5a: Pull complete
+8d8858d9ae05: Verifying Checksum
+8d8858d9ae05: Download complete
+97faf481e0ef: Verifying Checksum
+97faf481e0ef: Download complete
+1818020d87ab: Verifying Checksum
+1818020d87ab: Download complete
+721f5f8458da: Verifying Checksum
+721f5f8458da: Download complete
+521771a1e749: Verifying Checksum
+521771a1e749: Download complete
+a9551577baf8: Verifying Checksum
+a9551577baf8: Download complete
+a3f251b4f0e1: Verifying Checksum
+a3f251b4f0e1: Download complete
+2028e8a2970a: Verifying Checksum
+2028e8a2970a: Download complete
 44698ccac05c: Verifying Checksum
 44698ccac05c: Download complete
-2f4b4d6a4a06: Verifying Checksum
-2f4b4d6a4a06: Download complete
+ca6142750e8c: Verifying Checksum
+ca6142750e8c: Download complete
 0578bdce3c24: Verifying Checksum
 0578bdce3c24: Download complete
+2f4b4d6a4a06: Verifying Checksum
+2f4b4d6a4a06: Download complete
+66a08ad2904f: Verifying Checksum
+66a08ad2904f: Download complete
+e54ca5efa2e9: Verifying Checksum
+e54ca5efa2e9: Download complete
 bbb2caf459e2: Verifying Checksum
 bbb2caf459e2: Download complete
 bbb2caf459e2: Download complete
-511136ea3c5a: Pull complete
+55116292b253: Verifying Checksum
+55116292b253: Download complete
+dcd01c67be9d: Verifying Checksum
+dcd01c67be9d: Download complete
+215d8e5c3afa: Verifying Checksum
+215d8e5c3afa: Download complete
+52dec7e34889: Verifying Checksum
+52dec7e34889: Download complete
 850b5e6cfe58: Verifying Checksum
 850b5e6cfe58: Download complete
 6c37f792ddac: Verifying Checksum
@@ -753,12 +753,12 @@ d7ac5e4f1812: Verifying Checksum
 d7ac5e4f1812: Download complete
 021395a2fed6: Verifying Checksum
 021395a2fed6: Download complete
-d22e7594881b: Verifying Checksum
-d22e7594881b: Download complete
 059954cb3f81: Verifying Checksum
 059954cb3f81: Download complete
 767cb0646bac: Verifying Checksum
 767cb0646bac: Download complete
+d22e7594881b: Verifying Checksum
+d22e7594881b: Download complete
 d7ac5e4f1812: Pull complete
 2f4b4d6a4a06: Pull complete
 83ff768040a0: Pull complete
@@ -787,10 +787,10 @@ ca6142750e8c: Pull complete
 44698ccac05c: Pull complete
 bbb2caf459e2: Pull complete
 bbb2caf459e2: Already exists
-Digest: sha256:748871d0c704e6a90ca5201e7277941d2474501de3202d9d61661fa14fff29a7
+Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
 Status: Downloaded newer image for 136.187.101.80:5000/gocd-server:latest
 
-real  42.92
+real  42.71
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
@@ -809,11 +809,11 @@ kiwenlau/gocd-server            latest              bbb2caf459e2        12 month
 docker tag kiwenlau/gocd-server:latest 136.187.101.80:5000/gocd-server:latest
 
 docker images
-136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
 kiwenlau/gocd-server              latest              bbb2caf459e2        12 months ago       1.282 GB
+136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-cca309241049        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+3196a99195bc        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/gocd-server:latest
 The push refers to a repository [136.187.101.80:5000/gocd-server] (len: 1)
@@ -860,9 +860,9 @@ e54ca5efa2e9: Image successfully pushed
 d7ac5e4f1812: Buffering to Disk
 d7ac5e4f1812: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
+Digest: sha256:167b1f954e7a10565b55e81adf64776109bd630d482f3a04627ec8ac305f9100
 
-real  166.21
+real  143.87
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 
@@ -898,64 +898,64 @@ ca6142750e8c: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Layer already being pulled by another client. Waiting.
-511136ea3c5a: Verifying Checksum
-511136ea3c5a: Download complete
-511136ea3c5a: Pull complete
-83ff768040a0: Verifying Checksum
-83ff768040a0: Download complete
-e54ca5efa2e9: Verifying Checksum
-e54ca5efa2e9: Download complete
-55116292b253: Verifying Checksum
-55116292b253: Download complete
 8d8858d9ae05: Verifying Checksum
 8d8858d9ae05: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+83ff768040a0: Verifying Checksum
+83ff768040a0: Download complete
 66a08ad2904f: Verifying Checksum
 66a08ad2904f: Download complete
-dcd01c67be9d: Verifying Checksum
-dcd01c67be9d: Download complete
-1818020d87ab: Verifying Checksum
-1818020d87ab: Download complete
-52dec7e34889: Verifying Checksum
-52dec7e34889: Download complete
+e54ca5efa2e9: Verifying Checksum
+e54ca5efa2e9: Download complete
 215d8e5c3afa: Verifying Checksum
 215d8e5c3afa: Download complete
-97faf481e0ef: Verifying Checksum
-97faf481e0ef: Download complete
-721f5f8458da: Verifying Checksum
-721f5f8458da: Download complete
-521771a1e749: Verifying Checksum
-521771a1e749: Download complete
-a9551577baf8: Verifying Checksum
-a9551577baf8: Download complete
-0578bdce3c24: Verifying Checksum
-0578bdce3c24: Download complete
-a3f251b4f0e1: Verifying Checksum
-a3f251b4f0e1: Download complete
-2028e8a2970a: Verifying Checksum
-2028e8a2970a: Download complete
 2f4b4d6a4a06: Verifying Checksum
 2f4b4d6a4a06: Download complete
-ca6142750e8c: Verifying Checksum
-ca6142750e8c: Download complete
+55116292b253: Verifying Checksum
+55116292b253: Download complete
+dcd01c67be9d: Verifying Checksum
+dcd01c67be9d: Download complete
+97faf481e0ef: Verifying Checksum
+97faf481e0ef: Download complete
+1818020d87ab: Verifying Checksum
+1818020d87ab: Download complete
+2028e8a2970a: Verifying Checksum
+2028e8a2970a: Download complete
+a9551577baf8: Verifying Checksum
+a9551577baf8: Download complete
+721f5f8458da: Verifying Checksum
+721f5f8458da: Download complete
+52dec7e34889: Verifying Checksum
+52dec7e34889: Download complete
+521771a1e749: Verifying Checksum
+521771a1e749: Download complete
+0578bdce3c24: Verifying Checksum
+0578bdce3c24: Download complete
 44698ccac05c: Verifying Checksum
 44698ccac05c: Download complete
+511136ea3c5a: Pull complete
+ca6142750e8c: Verifying Checksum
+ca6142750e8c: Download complete
 bbb2caf459e2: Verifying Checksum
 bbb2caf459e2: Download complete
 bbb2caf459e2: Download complete
-850b5e6cfe58: Verifying Checksum
-850b5e6cfe58: Download complete
+a3f251b4f0e1: Verifying Checksum
+a3f251b4f0e1: Download complete
 6c37f792ddac: Verifying Checksum
 6c37f792ddac: Download complete
-021395a2fed6: Verifying Checksum
-021395a2fed6: Download complete
+850b5e6cfe58: Verifying Checksum
+850b5e6cfe58: Download complete
 d7ac5e4f1812: Verifying Checksum
 d7ac5e4f1812: Download complete
+021395a2fed6: Verifying Checksum
+021395a2fed6: Download complete
 059954cb3f81: Verifying Checksum
 059954cb3f81: Download complete
-767cb0646bac: Verifying Checksum
-767cb0646bac: Download complete
 d22e7594881b: Verifying Checksum
 d22e7594881b: Download complete
+767cb0646bac: Verifying Checksum
+767cb0646bac: Download complete
 d7ac5e4f1812: Pull complete
 2f4b4d6a4a06: Pull complete
 83ff768040a0: Pull complete
@@ -984,10 +984,10 @@ ca6142750e8c: Pull complete
 44698ccac05c: Pull complete
 bbb2caf459e2: Pull complete
 bbb2caf459e2: Already exists
-Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
+Digest: sha256:167b1f954e7a10565b55e81adf64776109bd630d482f3a04627ec8ac305f9100
 Status: Downloaded newer image for 136.187.101.80:5000/gocd-server:latest
 
-real  42.25
+real  42.06
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
@@ -1010,7 +1010,7 @@ kiwenlau/gocd-server              latest              bbb2caf459e2        12 mon
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-2aacc0dd5c0f        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+47e6c2c618f8        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/gocd-server:latest
 The push refers to a repository [136.187.101.80:5000/gocd-server] (len: 1)
@@ -1057,9 +1057,9 @@ e54ca5efa2e9: Image successfully pushed
 d7ac5e4f1812: Buffering to Disk
 d7ac5e4f1812: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
+Digest: sha256:167b1f954e7a10565b55e81adf64776109bd630d482f3a04627ec8ac305f9100
 
-real  163.91
+real  144.50
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 
@@ -1095,62 +1095,62 @@ ca6142750e8c: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Layer already being pulled by another client. Waiting.
-1818020d87ab: Verifying Checksum
-1818020d87ab: Download complete
-511136ea3c5a: Verifying Checksum
-511136ea3c5a: Download complete
-e54ca5efa2e9: Verifying Checksum
-e54ca5efa2e9: Download complete
-83ff768040a0: Verifying Checksum
-83ff768040a0: Download complete
-8d8858d9ae05: Verifying Checksum
-8d8858d9ae05: Download complete
-66a08ad2904f: Verifying Checksum
-66a08ad2904f: Download complete
 55116292b253: Verifying Checksum
 55116292b253: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+ca6142750e8c: Verifying Checksum
+ca6142750e8c: Download complete
+83ff768040a0: Verifying Checksum
+83ff768040a0: Download complete
+66a08ad2904f: Verifying Checksum
+66a08ad2904f: Download complete
+e54ca5efa2e9: Verifying Checksum
+e54ca5efa2e9: Download complete
+52dec7e34889: Verifying Checksum
+52dec7e34889: Download complete
+721f5f8458da: Verifying Checksum
+721f5f8458da: Download complete
+2f4b4d6a4a06: Verifying Checksum
+2f4b4d6a4a06: Download complete
+8d8858d9ae05: Verifying Checksum
+8d8858d9ae05: Download complete
+1818020d87ab: Verifying Checksum
+1818020d87ab: Download complete
+97faf481e0ef: Verifying Checksum
+97faf481e0ef: Download complete
 dcd01c67be9d: Verifying Checksum
 dcd01c67be9d: Download complete
 215d8e5c3afa: Verifying Checksum
 215d8e5c3afa: Download complete
-2f4b4d6a4a06: Verifying Checksum
-2f4b4d6a4a06: Download complete
-52dec7e34889: Verifying Checksum
-52dec7e34889: Download complete
-97faf481e0ef: Verifying Checksum
-97faf481e0ef: Download complete
-721f5f8458da: Verifying Checksum
-721f5f8458da: Download complete
-2028e8a2970a: Verifying Checksum
-2028e8a2970a: Download complete
-a3f251b4f0e1: Verifying Checksum
-a3f251b4f0e1: Download complete
 521771a1e749: Verifying Checksum
 521771a1e749: Download complete
-0578bdce3c24: Verifying Checksum
-0578bdce3c24: Download complete
+a3f251b4f0e1: Verifying Checksum
+a3f251b4f0e1: Download complete
 a9551577baf8: Verifying Checksum
 a9551577baf8: Download complete
-ca6142750e8c: Verifying Checksum
-ca6142750e8c: Download complete
+2028e8a2970a: Verifying Checksum
+2028e8a2970a: Download complete
+0578bdce3c24: Verifying Checksum
+0578bdce3c24: Download complete
+511136ea3c5a: Pull complete
 44698ccac05c: Verifying Checksum
 44698ccac05c: Download complete
 bbb2caf459e2: Verifying Checksum
 bbb2caf459e2: Download complete
 bbb2caf459e2: Download complete
-511136ea3c5a: Pull complete
-850b5e6cfe58: Verifying Checksum
-850b5e6cfe58: Download complete
 6c37f792ddac: Verifying Checksum
 6c37f792ddac: Download complete
+850b5e6cfe58: Verifying Checksum
+850b5e6cfe58: Download complete
 d7ac5e4f1812: Verifying Checksum
 d7ac5e4f1812: Download complete
 021395a2fed6: Verifying Checksum
 021395a2fed6: Download complete
-d22e7594881b: Verifying Checksum
-d22e7594881b: Download complete
 059954cb3f81: Verifying Checksum
 059954cb3f81: Download complete
+d22e7594881b: Verifying Checksum
+d22e7594881b: Download complete
 767cb0646bac: Verifying Checksum
 767cb0646bac: Download complete
 d7ac5e4f1812: Pull complete
@@ -1181,10 +1181,10 @@ ca6142750e8c: Pull complete
 44698ccac05c: Pull complete
 bbb2caf459e2: Pull complete
 bbb2caf459e2: Already exists
-Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
+Digest: sha256:167b1f954e7a10565b55e81adf64776109bd630d482f3a04627ec8ac305f9100
 Status: Downloaded newer image for 136.187.101.80:5000/gocd-server:latest
 
-real  42.01
+real  42.43
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
@@ -1207,7 +1207,7 @@ kiwenlau/gocd-server              latest              bbb2caf459e2        12 mon
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-35bda37324a2        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+a9ee5707eebd        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/gocd-server:latest
 The push refers to a repository [136.187.101.80:5000/gocd-server] (len: 1)
@@ -1256,7 +1256,7 @@ d7ac5e4f1812: Image successfully pushed
 511136ea3c5a: Image already exists
 Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
 
-real  165.86
+real  147.06
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 
@@ -1292,50 +1292,50 @@ ca6142750e8c: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Layer already being pulled by another client. Waiting.
-511136ea3c5a: Verifying Checksum
-511136ea3c5a: Download complete
-83ff768040a0: Verifying Checksum
-83ff768040a0: Download complete
-e54ca5efa2e9: Verifying Checksum
-e54ca5efa2e9: Download complete
-8d8858d9ae05: Verifying Checksum
-8d8858d9ae05: Download complete
-66a08ad2904f: Verifying Checksum
-66a08ad2904f: Download complete
 55116292b253: Verifying Checksum
 55116292b253: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
 2f4b4d6a4a06: Verifying Checksum
 2f4b4d6a4a06: Download complete
-dcd01c67be9d: Verifying Checksum
-dcd01c67be9d: Download complete
+e54ca5efa2e9: Verifying Checksum
+e54ca5efa2e9: Download complete
 215d8e5c3afa: Verifying Checksum
 215d8e5c3afa: Download complete
-1818020d87ab: Verifying Checksum
-1818020d87ab: Download complete
-97faf481e0ef: Verifying Checksum
-97faf481e0ef: Download complete
-521771a1e749: Verifying Checksum
-521771a1e749: Download complete
-52dec7e34889: Verifying Checksum
-52dec7e34889: Download complete
-2028e8a2970a: Verifying Checksum
-2028e8a2970a: Download complete
-721f5f8458da: Verifying Checksum
-721f5f8458da: Download complete
-a9551577baf8: Verifying Checksum
-a9551577baf8: Download complete
-a3f251b4f0e1: Verifying Checksum
-a3f251b4f0e1: Download complete
+dcd01c67be9d: Verifying Checksum
+dcd01c67be9d: Download complete
+66a08ad2904f: Verifying Checksum
+66a08ad2904f: Download complete
+8d8858d9ae05: Verifying Checksum
+8d8858d9ae05: Download complete
 0578bdce3c24: Verifying Checksum
 0578bdce3c24: Download complete
+2028e8a2970a: Verifying Checksum
+2028e8a2970a: Download complete
+a3f251b4f0e1: Verifying Checksum
+a3f251b4f0e1: Download complete
 ca6142750e8c: Verifying Checksum
 ca6142750e8c: Download complete
-511136ea3c5a: Pull complete
+521771a1e749: Verifying Checksum
+521771a1e749: Download complete
+83ff768040a0: Verifying Checksum
+83ff768040a0: Download complete
 44698ccac05c: Verifying Checksum
 44698ccac05c: Download complete
 bbb2caf459e2: Verifying Checksum
 bbb2caf459e2: Download complete
 bbb2caf459e2: Download complete
+1818020d87ab: Verifying Checksum
+1818020d87ab: Download complete
+97faf481e0ef: Verifying Checksum
+97faf481e0ef: Download complete
+a9551577baf8: Verifying Checksum
+a9551577baf8: Download complete
+52dec7e34889: Verifying Checksum
+52dec7e34889: Download complete
+721f5f8458da: Verifying Checksum
+721f5f8458da: Download complete
+511136ea3c5a: Pull complete
 850b5e6cfe58: Verifying Checksum
 850b5e6cfe58: Download complete
 6c37f792ddac: Verifying Checksum
@@ -1381,7 +1381,7 @@ bbb2caf459e2: Already exists
 Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
 Status: Downloaded newer image for 136.187.101.80:5000/gocd-server:latest
 
-real  41.55
+real  41.32
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
@@ -1404,7 +1404,7 @@ docker images
 kiwenlau/gocd-server              latest              bbb2caf459e2        12 months ago       1.282 GB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-6ea0eb4fa63e        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+b8f4ced17850        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/gocd-server:latest
 The push refers to a repository [136.187.101.80:5000/gocd-server] (len: 1)
@@ -1451,9 +1451,9 @@ e54ca5efa2e9: Image successfully pushed
 d7ac5e4f1812: Buffering to Disk
 d7ac5e4f1812: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:a48c429e021adfac7d133042a18d4bffb4205cb52ccc663304b1c8b4f9596478
+Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
 
-real  164.91
+real  145.34
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 
@@ -1489,32 +1489,31 @@ ca6142750e8c: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Layer already being pulled by another client. Waiting.
-1818020d87ab: Verifying Checksum
-1818020d87ab: Download complete
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-83ff768040a0: Verifying Checksum
-83ff768040a0: Download complete
-e54ca5efa2e9: Verifying Checksum
-e54ca5efa2e9: Download complete
+dcd01c67be9d: Verifying Checksum
+dcd01c67be9d: Download complete
+511136ea3c5a: Pull complete
+2f4b4d6a4a06: Verifying Checksum
+2f4b4d6a4a06: Download complete
 8d8858d9ae05: Verifying Checksum
 8d8858d9ae05: Download complete
 66a08ad2904f: Verifying Checksum
 66a08ad2904f: Download complete
+e54ca5efa2e9: Verifying Checksum
+e54ca5efa2e9: Download complete
 55116292b253: Verifying Checksum
 55116292b253: Download complete
 215d8e5c3afa: Verifying Checksum
 215d8e5c3afa: Download complete
-dcd01c67be9d: Verifying Checksum
-dcd01c67be9d: Download complete
-97faf481e0ef: Verifying Checksum
-97faf481e0ef: Download complete
-2f4b4d6a4a06: Verifying Checksum
-2f4b4d6a4a06: Download complete
-721f5f8458da: Verifying Checksum
-721f5f8458da: Download complete
+1818020d87ab: Verifying Checksum
+1818020d87ab: Download complete
 52dec7e34889: Verifying Checksum
 52dec7e34889: Download complete
+97faf481e0ef: Verifying Checksum
+97faf481e0ef: Download complete
+721f5f8458da: Verifying Checksum
+721f5f8458da: Download complete
 521771a1e749: Verifying Checksum
 521771a1e749: Download complete
 a9551577baf8: Verifying Checksum
@@ -1523,16 +1522,17 @@ a9551577baf8: Download complete
 2028e8a2970a: Download complete
 a3f251b4f0e1: Verifying Checksum
 a3f251b4f0e1: Download complete
-0578bdce3c24: Verifying Checksum
-0578bdce3c24: Download complete
 44698ccac05c: Verifying Checksum
 44698ccac05c: Download complete
+0578bdce3c24: Verifying Checksum
+0578bdce3c24: Download complete
+ca6142750e8c: Verifying Checksum
+ca6142750e8c: Download complete
 bbb2caf459e2: Verifying Checksum
 bbb2caf459e2: Download complete
 bbb2caf459e2: Download complete
-ca6142750e8c: Verifying Checksum
-ca6142750e8c: Download complete
-511136ea3c5a: Pull complete
+83ff768040a0: Verifying Checksum
+83ff768040a0: Download complete
 850b5e6cfe58: Verifying Checksum
 850b5e6cfe58: Download complete
 6c37f792ddac: Verifying Checksum
@@ -1575,10 +1575,10 @@ ca6142750e8c: Pull complete
 44698ccac05c: Pull complete
 bbb2caf459e2: Pull complete
 bbb2caf459e2: Already exists
-Digest: sha256:a48c429e021adfac7d133042a18d4bffb4205cb52ccc663304b1c8b4f9596478
+Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
 Status: Downloaded newer image for 136.187.101.80:5000/gocd-server:latest
 
-real  42.95
+real  41.14
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
@@ -1601,7 +1601,7 @@ kiwenlau/gocd-server              latest              bbb2caf459e2        12 mon
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-8e8bfa622e9a        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+a2b074a08189        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/gocd-server:latest
 The push refers to a repository [136.187.101.80:5000/gocd-server] (len: 1)
@@ -1648,9 +1648,9 @@ e54ca5efa2e9: Image successfully pushed
 d7ac5e4f1812: Buffering to Disk
 d7ac5e4f1812: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
+Digest: sha256:d0cd6890ca8df8fb3ab4a7de226053a2f25ea640b3e8e77f41e5665bde42b376
 
-real  170.47
+real  145.77
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 
@@ -1686,50 +1686,52 @@ ca6142750e8c: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Layer already being pulled by another client. Waiting.
+66a08ad2904f: Verifying Checksum
+66a08ad2904f: Download complete
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-511136ea3c5a: Pull complete
 83ff768040a0: Verifying Checksum
 83ff768040a0: Download complete
 e54ca5efa2e9: Verifying Checksum
 e54ca5efa2e9: Download complete
-215d8e5c3afa: Verifying Checksum
-215d8e5c3afa: Download complete
-55116292b253: Verifying Checksum
-55116292b253: Download complete
+8d8858d9ae05: Verifying Checksum
+8d8858d9ae05: Download complete
 2f4b4d6a4a06: Verifying Checksum
 2f4b4d6a4a06: Download complete
+55116292b253: Verifying Checksum
+55116292b253: Download complete
+215d8e5c3afa: Verifying Checksum
+215d8e5c3afa: Download complete
+97faf481e0ef: Verifying Checksum
+97faf481e0ef: Download complete
+dcd01c67be9d: Verifying Checksum
+dcd01c67be9d: Download complete
+1818020d87ab: Verifying Checksum
+1818020d87ab: Download complete
 52dec7e34889: Verifying Checksum
 52dec7e34889: Download complete
+521771a1e749: Verifying Checksum
+521771a1e749: Download complete
 2028e8a2970a: Verifying Checksum
 2028e8a2970a: Download complete
 721f5f8458da: Verifying Checksum
 721f5f8458da: Download complete
-8d8858d9ae05: Verifying Checksum
-8d8858d9ae05: Download complete
-66a08ad2904f: Verifying Checksum
-66a08ad2904f: Download complete
 a3f251b4f0e1: Verifying Checksum
 a3f251b4f0e1: Download complete
-0578bdce3c24: Verifying Checksum
-0578bdce3c24: Download complete
-a9551577baf8: Verifying Checksum
-a9551577baf8: Download complete
 ca6142750e8c: Verifying Checksum
 ca6142750e8c: Download complete
+a9551577baf8: Verifying Checksum
+a9551577baf8: Download complete
+0578bdce3c24: Verifying Checksum
+0578bdce3c24: Download complete
+511136ea3c5a: Pull complete
+44698ccac05c: Verifying Checksum
+44698ccac05c: Download complete
 bbb2caf459e2: Verifying Checksum
 bbb2caf459e2: Download complete
 bbb2caf459e2: Download complete
-44698ccac05c: Verifying Checksum
-44698ccac05c: Download complete
-dcd01c67be9d: Verifying Checksum
-dcd01c67be9d: Download complete
-97faf481e0ef: Verifying Checksum
-97faf481e0ef: Download complete
-1818020d87ab: Verifying Checksum
-1818020d87ab: Download complete
-521771a1e749: Verifying Checksum
-521771a1e749: Download complete
+6c37f792ddac: Verifying Checksum
+6c37f792ddac: Download complete
 850b5e6cfe58: Verifying Checksum
 850b5e6cfe58: Download complete
 d7ac5e4f1812: Verifying Checksum
@@ -1740,8 +1742,6 @@ d7ac5e4f1812: Download complete
 059954cb3f81: Download complete
 d22e7594881b: Verifying Checksum
 d22e7594881b: Download complete
-6c37f792ddac: Verifying Checksum
-6c37f792ddac: Download complete
 767cb0646bac: Verifying Checksum
 767cb0646bac: Download complete
 d7ac5e4f1812: Pull complete
@@ -1772,10 +1772,10 @@ ca6142750e8c: Pull complete
 44698ccac05c: Pull complete
 bbb2caf459e2: Pull complete
 bbb2caf459e2: Already exists
-Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
+Digest: sha256:d0cd6890ca8df8fb3ab4a7de226053a2f25ea640b3e8e77f41e5665bde42b376
 Status: Downloaded newer image for 136.187.101.80:5000/gocd-server:latest
 
-real  42.77
+real  42.33
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
@@ -1798,7 +1798,7 @@ kiwenlau/gocd-server              latest              bbb2caf459e2        12 mon
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-c930ddf84b70        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+548a15ec7723        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/gocd-server:latest
 The push refers to a repository [136.187.101.80:5000/gocd-server] (len: 1)
@@ -1845,9 +1845,9 @@ e54ca5efa2e9: Image successfully pushed
 d7ac5e4f1812: Buffering to Disk
 d7ac5e4f1812: Image successfully pushed
 511136ea3c5a: Image already exists
-Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
+Digest: sha256:6e9d3fbd037464205d4f3be470abb2fe054fce9f212823f3b3dbd0ebc4efad3f
 
-real  170.69
+real  150.55
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 
@@ -1883,36 +1883,41 @@ ca6142750e8c: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Pulling fs layer
 bbb2caf459e2: Layer already being pulled by another client. Waiting.
+97faf481e0ef: Verifying Checksum
+97faf481e0ef: Download complete
+bbb2caf459e2: Verifying Checksum
+bbb2caf459e2: Download complete
+bbb2caf459e2: Download complete
 83ff768040a0: Verifying Checksum
 83ff768040a0: Download complete
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-e54ca5efa2e9: Verifying Checksum
-e54ca5efa2e9: Download complete
-8d8858d9ae05: Verifying Checksum
-8d8858d9ae05: Download complete
-dcd01c67be9d: Verifying Checksum
-dcd01c67be9d: Download complete
-66a08ad2904f: Verifying Checksum
-66a08ad2904f: Download complete
-55116292b253: Verifying Checksum
-55116292b253: Download complete
 2f4b4d6a4a06: Verifying Checksum
 2f4b4d6a4a06: Download complete
+8d8858d9ae05: Verifying Checksum
+8d8858d9ae05: Download complete
+e54ca5efa2e9: Verifying Checksum
+e54ca5efa2e9: Download complete
+55116292b253: Verifying Checksum
+55116292b253: Download complete
+66a08ad2904f: Verifying Checksum
+66a08ad2904f: Download complete
+dcd01c67be9d: Verifying Checksum
+dcd01c67be9d: Download complete
 215d8e5c3afa: Verifying Checksum
 215d8e5c3afa: Download complete
 1818020d87ab: Verifying Checksum
 1818020d87ab: Download complete
 52dec7e34889: Verifying Checksum
 52dec7e34889: Download complete
+a9551577baf8: Verifying Checksum
+a9551577baf8: Download complete
 521771a1e749: Verifying Checksum
 521771a1e749: Download complete
 721f5f8458da: Verifying Checksum
 721f5f8458da: Download complete
 2028e8a2970a: Verifying Checksum
 2028e8a2970a: Download complete
-a9551577baf8: Verifying Checksum
-a9551577baf8: Download complete
 a3f251b4f0e1: Verifying Checksum
 a3f251b4f0e1: Download complete
 0578bdce3c24: Verifying Checksum
@@ -1921,11 +1926,6 @@ ca6142750e8c: Verifying Checksum
 ca6142750e8c: Download complete
 44698ccac05c: Verifying Checksum
 44698ccac05c: Download complete
-bbb2caf459e2: Verifying Checksum
-bbb2caf459e2: Download complete
-bbb2caf459e2: Download complete
-97faf481e0ef: Verifying Checksum
-97faf481e0ef: Download complete
 511136ea3c5a: Pull complete
 850b5e6cfe58: Verifying Checksum
 850b5e6cfe58: Download complete
@@ -1933,12 +1933,12 @@ bbb2caf459e2: Download complete
 6c37f792ddac: Download complete
 d7ac5e4f1812: Verifying Checksum
 d7ac5e4f1812: Download complete
-021395a2fed6: Verifying Checksum
-021395a2fed6: Download complete
-059954cb3f81: Verifying Checksum
-059954cb3f81: Download complete
 d22e7594881b: Verifying Checksum
 d22e7594881b: Download complete
+059954cb3f81: Verifying Checksum
+059954cb3f81: Download complete
+021395a2fed6: Verifying Checksum
+021395a2fed6: Download complete
 767cb0646bac: Verifying Checksum
 767cb0646bac: Download complete
 d7ac5e4f1812: Pull complete
@@ -1969,10 +1969,10 @@ ca6142750e8c: Pull complete
 44698ccac05c: Pull complete
 bbb2caf459e2: Pull complete
 bbb2caf459e2: Already exists
-Digest: sha256:3b5b6aa3d69f412f2b1e153bc53914d7f6cb7a30cda09717c0e94f73061519af
+Digest: sha256:6e9d3fbd037464205d4f3be470abb2fe054fce9f212823f3b3dbd0ebc4efad3f
 Status: Downloaded newer image for 136.187.101.80:5000/gocd-server:latest
 
-real  42.37
+real  42.93
 
 ssh kai@52.68.197.112 "docker images | grep gocd-server"
 136.187.101.80:5000/gocd-server   latest              bbb2caf459e2        12 months ago       1.282 GB
@@ -1982,6 +1982,6 @@ ssh kai@52.68.197.112 "docker images | grep gocd-server"
 
 docker rm -f docker_registry
 
-end date: Sun Jul 26 11:20:14 JST 2015
+end date: Mon Jul 27 11:21:52 JST 2015
 
 

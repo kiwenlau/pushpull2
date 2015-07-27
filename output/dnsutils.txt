@@ -2,7 +2,7 @@
 pullpush benchmark: transfer dnsutils image to 52.68.197.112 host
  
 hostname: kuruwa-gw
-begin date: Sun Jul 26 00:17:49 JST 2015
+begin date: Mon Jul 27 00:16:52 JST 2015
 
 sudo docker images
 kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
@@ -23,7 +23,7 @@ kiwenlau/dnsutils               latest              b2e8b927eefe        4 months
 136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-c0dca0392f8e        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+f9b81556b3b8        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/dnsutils:latest
 The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
@@ -41,7 +41,7 @@ f0dde87450ec: Image successfully pushed
 511136ea3c5a: Image already exists
 Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
 
-real  33.51
+real  30.14
 
 ssh kai@52.68.197.112 "docker images | grep dnsutils"
 
@@ -57,10 +57,10 @@ b2e8b927eefe: Pulling fs layer
 b2e8b927eefe: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-4faa69f72743: Verifying Checksum
-4faa69f72743: Download complete
 2103b00b3fdf: Verifying Checksum
 2103b00b3fdf: Download complete
+4faa69f72743: Verifying Checksum
+4faa69f72743: Download complete
 76b658ecb564: Verifying Checksum
 76b658ecb564: Download complete
 511136ea3c5a: Pull complete
@@ -78,7 +78,7 @@ b2e8b927eefe: Already exists
 Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
 Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
 
-real  7.04
+real  7.11
 
 ssh kai@52.68.197.112 "docker images | grep dnsutils"
 136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
@@ -101,7 +101,7 @@ docker images
 kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-18422ae0440b        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+2ae27ad25777        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/dnsutils:latest
 The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
@@ -119,7 +119,7 @@ f0dde87450ec: Image successfully pushed
 511136ea3c5a: Image already exists
 Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
 
-real  33.50
+real  29.61
 
 ssh kai@52.68.197.112 "docker images | grep dnsutils"
 
@@ -135,10 +135,10 @@ b2e8b927eefe: Pulling fs layer
 b2e8b927eefe: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
-4faa69f72743: Verifying Checksum
-4faa69f72743: Download complete
 2103b00b3fdf: Verifying Checksum
 2103b00b3fdf: Download complete
+4faa69f72743: Verifying Checksum
+4faa69f72743: Download complete
 76b658ecb564: Verifying Checksum
 76b658ecb564: Download complete
 511136ea3c5a: Pull complete
@@ -179,7 +179,7 @@ docker images
 kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-86a7e80d108a        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+c7eed0a0b969        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/dnsutils:latest
 The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
@@ -197,7 +197,7 @@ f0dde87450ec: Image successfully pushed
 511136ea3c5a: Image already exists
 Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
 
-real  33.04
+real  30.68
 
 ssh kai@52.68.197.112 "docker images | grep dnsutils"
 
@@ -213,12 +213,12 @@ b2e8b927eefe: Pulling fs layer
 b2e8b927eefe: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Verifying Checksum
 511136ea3c5a: Download complete
+2103b00b3fdf: Verifying Checksum
+2103b00b3fdf: Download complete
 4faa69f72743: Verifying Checksum
 4faa69f72743: Download complete
 76b658ecb564: Verifying Checksum
 76b658ecb564: Download complete
-2103b00b3fdf: Verifying Checksum
-2103b00b3fdf: Download complete
 511136ea3c5a: Pull complete
 b2e8b927eefe: Verifying Checksum
 b2e8b927eefe: Download complete
@@ -234,7 +234,7 @@ b2e8b927eefe: Already exists
 Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
 Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
 
-real  7.05
+real  7.00
 
 ssh kai@52.68.197.112 "docker images | grep dnsutils"
 136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
@@ -257,7 +257,7 @@ docker images
 kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-27e9f882f0d0        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+bf3054f281d5        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/dnsutils:latest
 The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
@@ -275,7 +275,7 @@ f0dde87450ec: Image successfully pushed
 511136ea3c5a: Image already exists
 Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
 
-real  31.85
+real  29.43
 
 ssh kai@52.68.197.112 "docker images | grep dnsutils"
 
@@ -293,10 +293,10 @@ b2e8b927eefe: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Download complete
 2103b00b3fdf: Verifying Checksum
 2103b00b3fdf: Download complete
-4faa69f72743: Verifying Checksum
-4faa69f72743: Download complete
 76b658ecb564: Verifying Checksum
 76b658ecb564: Download complete
+4faa69f72743: Verifying Checksum
+4faa69f72743: Download complete
 511136ea3c5a: Pull complete
 b2e8b927eefe: Verifying Checksum
 b2e8b927eefe: Download complete
@@ -312,7 +312,7 @@ b2e8b927eefe: Already exists
 Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
 Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
 
-real  7.21
+real  6.92
 
 ssh kai@52.68.197.112 "docker images | grep dnsutils"
 136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
@@ -335,7 +335,7 @@ kiwenlau/dnsutils               latest              b2e8b927eefe        4 months
 136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-518b5102366b        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+f8d64a2fdd03        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/dnsutils:latest
 The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
@@ -353,7 +353,7 @@ f0dde87450ec: Image successfully pushed
 511136ea3c5a: Image already exists
 Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
 
-real  33.81
+real  30.89
 
 ssh kai@52.68.197.112 "docker images | grep dnsutils"
 
@@ -371,318 +371,6 @@ b2e8b927eefe: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Download complete
 4faa69f72743: Verifying Checksum
 4faa69f72743: Download complete
-2103b00b3fdf: Verifying Checksum
-2103b00b3fdf: Download complete
-76b658ecb564: Verifying Checksum
-76b658ecb564: Download complete
-511136ea3c5a: Pull complete
-b2e8b927eefe: Verifying Checksum
-b2e8b927eefe: Download complete
-b2e8b927eefe: Download complete
-f0dde87450ec: Verifying Checksum
-f0dde87450ec: Download complete
-f0dde87450ec: Pull complete
-76b658ecb564: Pull complete
-4faa69f72743: Pull complete
-2103b00b3fdf: Pull complete
-b2e8b927eefe: Pull complete
-b2e8b927eefe: Already exists
-Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
-Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
-
-real  6.96
-
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
-
-ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-
-docker rm -f docker_registry
-
-
-Test 6: ./pushpull.sh kai 52.68.197.112 dnsutils
-
-docker images
-kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
-
-docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
-
-docker images
-kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
-136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
-
-docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-1885527fc9c5        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
-
-docker push 136.187.101.80:5000/dnsutils:latest
-The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
-b2e8b927eefe: Buffering to Disk
-b2e8b927eefe: Image successfully pushed
-b2e8b927eefe: Image already exists
-2103b00b3fdf: Buffering to Disk
-2103b00b3fdf: Image successfully pushed
-4faa69f72743: Buffering to Disk
-4faa69f72743: Image successfully pushed
-76b658ecb564: Buffering to Disk
-76b658ecb564: Image successfully pushed
-f0dde87450ec: Buffering to Disk
-f0dde87450ec: Image successfully pushed
-511136ea3c5a: Image already exists
-Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
-
-real  33.01
-
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-
-docker pull 136.187.101.80:5000/dnsutils:latest
-latest: Pulling from 136.187.101.80:5000/dnsutils
-511136ea3c5a: Pulling fs layer
-f0dde87450ec: Pulling fs layer
-76b658ecb564: Pulling fs layer
-4faa69f72743: Pulling fs layer
-2103b00b3fdf: Pulling fs layer
-b2e8b927eefe: Pulling fs layer
-b2e8b927eefe: Pulling fs layer
-b2e8b927eefe: Layer already being pulled by another client. Waiting.
-511136ea3c5a: Verifying Checksum
-511136ea3c5a: Download complete
-2103b00b3fdf: Verifying Checksum
-2103b00b3fdf: Download complete
-4faa69f72743: Verifying Checksum
-4faa69f72743: Download complete
-76b658ecb564: Verifying Checksum
-76b658ecb564: Download complete
-511136ea3c5a: Pull complete
-b2e8b927eefe: Verifying Checksum
-b2e8b927eefe: Download complete
-b2e8b927eefe: Download complete
-f0dde87450ec: Verifying Checksum
-f0dde87450ec: Download complete
-f0dde87450ec: Pull complete
-76b658ecb564: Pull complete
-4faa69f72743: Pull complete
-2103b00b3fdf: Pull complete
-b2e8b927eefe: Pull complete
-b2e8b927eefe: Already exists
-Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
-Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
-
-real  7.04
-
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
-
-ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-
-docker rm -f docker_registry
-
-
-Test 7: ./pushpull.sh kai 52.68.197.112 dnsutils
-
-docker images
-kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
-
-docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
-
-docker images
-kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
-136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
-
-docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-2826dca3d201        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
-
-docker push 136.187.101.80:5000/dnsutils:latest
-The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
-b2e8b927eefe: Buffering to Disk
-b2e8b927eefe: Image successfully pushed
-b2e8b927eefe: Image already exists
-2103b00b3fdf: Buffering to Disk
-2103b00b3fdf: Image successfully pushed
-4faa69f72743: Buffering to Disk
-4faa69f72743: Image successfully pushed
-76b658ecb564: Buffering to Disk
-76b658ecb564: Image successfully pushed
-f0dde87450ec: Buffering to Disk
-f0dde87450ec: Image successfully pushed
-511136ea3c5a: Image already exists
-Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
-
-real  33.90
-
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-
-docker pull 136.187.101.80:5000/dnsutils:latest
-latest: Pulling from 136.187.101.80:5000/dnsutils
-511136ea3c5a: Pulling fs layer
-f0dde87450ec: Pulling fs layer
-76b658ecb564: Pulling fs layer
-4faa69f72743: Pulling fs layer
-2103b00b3fdf: Pulling fs layer
-b2e8b927eefe: Pulling fs layer
-b2e8b927eefe: Pulling fs layer
-b2e8b927eefe: Layer already being pulled by another client. Waiting.
-511136ea3c5a: Verifying Checksum
-511136ea3c5a: Download complete
-4faa69f72743: Verifying Checksum
-4faa69f72743: Download complete
-2103b00b3fdf: Verifying Checksum
-2103b00b3fdf: Download complete
-76b658ecb564: Verifying Checksum
-76b658ecb564: Download complete
-511136ea3c5a: Pull complete
-b2e8b927eefe: Verifying Checksum
-b2e8b927eefe: Download complete
-b2e8b927eefe: Download complete
-f0dde87450ec: Verifying Checksum
-f0dde87450ec: Download complete
-f0dde87450ec: Pull complete
-76b658ecb564: Pull complete
-4faa69f72743: Pull complete
-2103b00b3fdf: Pull complete
-b2e8b927eefe: Pull complete
-b2e8b927eefe: Already exists
-Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
-Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
-
-real  7.21
-
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
-
-ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-
-docker rm -f docker_registry
-
-
-Test 8: ./pushpull.sh kai 52.68.197.112 dnsutils
-
-docker images
-kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
-
-docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
-
-docker images
-kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
-136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
-
-docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-aee423267bee        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
-
-docker push 136.187.101.80:5000/dnsutils:latest
-The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
-b2e8b927eefe: Buffering to Disk
-b2e8b927eefe: Image successfully pushed
-b2e8b927eefe: Image already exists
-2103b00b3fdf: Buffering to Disk
-2103b00b3fdf: Image successfully pushed
-4faa69f72743: Buffering to Disk
-4faa69f72743: Image successfully pushed
-76b658ecb564: Buffering to Disk
-76b658ecb564: Image successfully pushed
-f0dde87450ec: Buffering to Disk
-f0dde87450ec: Image successfully pushed
-511136ea3c5a: Image already exists
-Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
-
-real  32.02
-
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-
-docker pull 136.187.101.80:5000/dnsutils:latest
-latest: Pulling from 136.187.101.80:5000/dnsutils
-511136ea3c5a: Pulling fs layer
-f0dde87450ec: Pulling fs layer
-76b658ecb564: Pulling fs layer
-4faa69f72743: Pulling fs layer
-2103b00b3fdf: Pulling fs layer
-b2e8b927eefe: Pulling fs layer
-b2e8b927eefe: Pulling fs layer
-b2e8b927eefe: Layer already being pulled by another client. Waiting.
-511136ea3c5a: Verifying Checksum
-511136ea3c5a: Download complete
-2103b00b3fdf: Verifying Checksum
-2103b00b3fdf: Download complete
-76b658ecb564: Verifying Checksum
-76b658ecb564: Download complete
-4faa69f72743: Verifying Checksum
-4faa69f72743: Download complete
-511136ea3c5a: Pull complete
-b2e8b927eefe: Verifying Checksum
-b2e8b927eefe: Download complete
-b2e8b927eefe: Download complete
-f0dde87450ec: Verifying Checksum
-f0dde87450ec: Download complete
-f0dde87450ec: Pull complete
-76b658ecb564: Pull complete
-4faa69f72743: Pull complete
-2103b00b3fdf: Pull complete
-b2e8b927eefe: Pull complete
-b2e8b927eefe: Already exists
-Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
-Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
-
-real  7.02
-
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
-
-ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-
-docker rm -f docker_registry
-
-
-Test 9: ./pushpull.sh kai 52.68.197.112 dnsutils
-
-docker images
-kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
-
-docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
-
-docker images
-kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
-136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
-
-docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-fee191a2d52f        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
-
-docker push 136.187.101.80:5000/dnsutils:latest
-The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
-b2e8b927eefe: Buffering to Disk
-b2e8b927eefe: Image successfully pushed
-b2e8b927eefe: Image already exists
-2103b00b3fdf: Buffering to Disk
-2103b00b3fdf: Image successfully pushed
-4faa69f72743: Buffering to Disk
-4faa69f72743: Image successfully pushed
-76b658ecb564: Buffering to Disk
-76b658ecb564: Image successfully pushed
-f0dde87450ec: Buffering to Disk
-f0dde87450ec: Image successfully pushed
-511136ea3c5a: Image already exists
-Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
-
-real  30.55
-
-ssh kai@52.68.197.112 "docker images | grep dnsutils"
-
-docker pull 136.187.101.80:5000/dnsutils:latest
-latest: Pulling from 136.187.101.80:5000/dnsutils
-511136ea3c5a: Pulling fs layer
-f0dde87450ec: Pulling fs layer
-76b658ecb564: Pulling fs layer
-4faa69f72743: Pulling fs layer
-2103b00b3fdf: Pulling fs layer
-b2e8b927eefe: Pulling fs layer
-b2e8b927eefe: Pulling fs layer
-b2e8b927eefe: Layer already being pulled by another client. Waiting.
-4faa69f72743: Verifying Checksum
-4faa69f72743: Download complete
-511136ea3c5a: Verifying Checksum
-511136ea3c5a: Download complete
 2103b00b3fdf: Verifying Checksum
 2103b00b3fdf: Download complete
 76b658ecb564: Verifying Checksum
@@ -713,7 +401,7 @@ ssh kai@52.68.197.112 "docker images | grep dnsutils"
 docker rm -f docker_registry
 
 
-Test 10: ./pushpull.sh kai 52.68.197.112 dnsutils
+Test 6: ./pushpull.sh kai 52.68.197.112 dnsutils
 
 docker images
 kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
@@ -725,7 +413,7 @@ docker images
 kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
 
 docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
-176b0e07771b        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+6e51ca5972ed        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
 
 docker push 136.187.101.80:5000/dnsutils:latest
 The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
@@ -743,7 +431,7 @@ f0dde87450ec: Image successfully pushed
 511136ea3c5a: Image already exists
 Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
 
-real  32.88
+real  30.21
 
 ssh kai@52.68.197.112 "docker images | grep dnsutils"
 
@@ -761,10 +449,322 @@ b2e8b927eefe: Layer already being pulled by another client. Waiting.
 511136ea3c5a: Download complete
 2103b00b3fdf: Verifying Checksum
 2103b00b3fdf: Download complete
-76b658ecb564: Verifying Checksum
-76b658ecb564: Download complete
 4faa69f72743: Verifying Checksum
 4faa69f72743: Download complete
+76b658ecb564: Verifying Checksum
+76b658ecb564: Download complete
+511136ea3c5a: Pull complete
+b2e8b927eefe: Verifying Checksum
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+f0dde87450ec: Verifying Checksum
+f0dde87450ec: Download complete
+f0dde87450ec: Pull complete
+76b658ecb564: Pull complete
+4faa69f72743: Pull complete
+2103b00b3fdf: Pull complete
+b2e8b927eefe: Pull complete
+b2e8b927eefe: Already exists
+Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  7.21
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+c7691dfee488        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+b2e8b927eefe: Buffering to Disk
+b2e8b927eefe: Image successfully pushed
+b2e8b927eefe: Image already exists
+2103b00b3fdf: Buffering to Disk
+2103b00b3fdf: Image successfully pushed
+4faa69f72743: Buffering to Disk
+4faa69f72743: Image successfully pushed
+76b658ecb564: Buffering to Disk
+76b658ecb564: Image successfully pushed
+f0dde87450ec: Buffering to Disk
+f0dde87450ec: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
+
+real  30.73
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+latest: Pulling from 136.187.101.80:5000/dnsutils
+511136ea3c5a: Pulling fs layer
+f0dde87450ec: Pulling fs layer
+76b658ecb564: Pulling fs layer
+4faa69f72743: Pulling fs layer
+2103b00b3fdf: Pulling fs layer
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Layer already being pulled by another client. Waiting.
+4faa69f72743: Verifying Checksum
+4faa69f72743: Download complete
+2103b00b3fdf: Verifying Checksum
+2103b00b3fdf: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+76b658ecb564: Verifying Checksum
+76b658ecb564: Download complete
+511136ea3c5a: Pull complete
+b2e8b927eefe: Verifying Checksum
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+f0dde87450ec: Verifying Checksum
+f0dde87450ec: Download complete
+f0dde87450ec: Pull complete
+76b658ecb564: Pull complete
+4faa69f72743: Pull complete
+2103b00b3fdf: Pull complete
+b2e8b927eefe: Pull complete
+b2e8b927eefe: Already exists
+Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  6.96
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+b295df151754        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+b2e8b927eefe: Buffering to Disk
+b2e8b927eefe: Image successfully pushed
+b2e8b927eefe: Image already exists
+2103b00b3fdf: Buffering to Disk
+2103b00b3fdf: Image successfully pushed
+4faa69f72743: Buffering to Disk
+4faa69f72743: Image successfully pushed
+76b658ecb564: Buffering to Disk
+76b658ecb564: Image successfully pushed
+f0dde87450ec: Buffering to Disk
+f0dde87450ec: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
+
+real  29.97
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+latest: Pulling from 136.187.101.80:5000/dnsutils
+511136ea3c5a: Pulling fs layer
+f0dde87450ec: Pulling fs layer
+76b658ecb564: Pulling fs layer
+4faa69f72743: Pulling fs layer
+2103b00b3fdf: Pulling fs layer
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+4faa69f72743: Verifying Checksum
+4faa69f72743: Download complete
+2103b00b3fdf: Verifying Checksum
+2103b00b3fdf: Download complete
+76b658ecb564: Verifying Checksum
+76b658ecb564: Download complete
+511136ea3c5a: Pull complete
+b2e8b927eefe: Verifying Checksum
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+f0dde87450ec: Verifying Checksum
+f0dde87450ec: Download complete
+f0dde87450ec: Pull complete
+76b658ecb564: Pull complete
+4faa69f72743: Pull complete
+2103b00b3fdf: Pull complete
+b2e8b927eefe: Pull complete
+b2e8b927eefe: Already exists
+Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  7.00
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+f24e8e4b2a7c        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+b2e8b927eefe: Buffering to Disk
+b2e8b927eefe: Image successfully pushed
+b2e8b927eefe: Image already exists
+2103b00b3fdf: Buffering to Disk
+2103b00b3fdf: Image successfully pushed
+4faa69f72743: Buffering to Disk
+4faa69f72743: Image successfully pushed
+76b658ecb564: Buffering to Disk
+76b658ecb564: Image successfully pushed
+f0dde87450ec: Buffering to Disk
+f0dde87450ec: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
+
+real  30.79
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+latest: Pulling from 136.187.101.80:5000/dnsutils
+511136ea3c5a: Pulling fs layer
+f0dde87450ec: Pulling fs layer
+76b658ecb564: Pulling fs layer
+4faa69f72743: Pulling fs layer
+2103b00b3fdf: Pulling fs layer
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Layer already being pulled by another client. Waiting.
+2103b00b3fdf: Verifying Checksum
+2103b00b3fdf: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+4faa69f72743: Verifying Checksum
+4faa69f72743: Download complete
+76b658ecb564: Verifying Checksum
+76b658ecb564: Download complete
+511136ea3c5a: Pull complete
+b2e8b927eefe: Verifying Checksum
+b2e8b927eefe: Download complete
+b2e8b927eefe: Download complete
+f0dde87450ec: Verifying Checksum
+f0dde87450ec: Download complete
+f0dde87450ec: Pull complete
+76b658ecb564: Pull complete
+4faa69f72743: Pull complete
+2103b00b3fdf: Pull complete
+b2e8b927eefe: Pull complete
+b2e8b927eefe: Already exists
+Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
+Status: Downloaded newer image for 136.187.101.80:5000/dnsutils:latest
+
+real  6.98
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+136.187.101.80:5000/dnsutils   latest              b2e8b927eefe        4 months ago        199.9 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/dnsutils:latest"
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 dnsutils
+
+docker images
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker tag kiwenlau/dnsutils:latest 136.187.101.80:5000/dnsutils:latest
+
+docker images
+136.187.101.80:5000/dnsutils    latest              b2e8b927eefe        4 months ago        199.9 MB
+kiwenlau/dnsutils               latest              b2e8b927eefe        4 months ago        199.9 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+72888db0e908        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/dnsutils:latest
+The push refers to a repository [136.187.101.80:5000/dnsutils] (len: 1)
+b2e8b927eefe: Buffering to Disk
+b2e8b927eefe: Image successfully pushed
+b2e8b927eefe: Image already exists
+2103b00b3fdf: Buffering to Disk
+2103b00b3fdf: Image successfully pushed
+4faa69f72743: Buffering to Disk
+4faa69f72743: Image successfully pushed
+76b658ecb564: Buffering to Disk
+76b658ecb564: Image successfully pushed
+f0dde87450ec: Buffering to Disk
+f0dde87450ec: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:aae54e3a7b94071013b64f189e433c8e4b7ac8ad766c347ed14f4c821a267c89
+
+real  30.43
+
+ssh kai@52.68.197.112 "docker images | grep dnsutils"
+
+docker pull 136.187.101.80:5000/dnsutils:latest
+latest: Pulling from 136.187.101.80:5000/dnsutils
+511136ea3c5a: Pulling fs layer
+f0dde87450ec: Pulling fs layer
+76b658ecb564: Pulling fs layer
+4faa69f72743: Pulling fs layer
+2103b00b3fdf: Pulling fs layer
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Pulling fs layer
+b2e8b927eefe: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+4faa69f72743: Verifying Checksum
+4faa69f72743: Download complete
+2103b00b3fdf: Verifying Checksum
+2103b00b3fdf: Download complete
+76b658ecb564: Verifying Checksum
+76b658ecb564: Download complete
 511136ea3c5a: Pull complete
 b2e8b927eefe: Verifying Checksum
 b2e8b927eefe: Download complete
@@ -790,6 +790,6 @@ ssh kai@52.68.197.112 "docker images | grep dnsutils"
 
 docker rm -f docker_registry
 
-end date: Sun Jul 26 00:25:46 JST 2015
+end date: Mon Jul 27 00:24:23 JST 2015
 
 
