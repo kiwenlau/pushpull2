@@ -1,0 +1,2997 @@
+
+pullpush benchmark: transfer ubuntu-perl-dev image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Tue Jul 28 07:44:06 JST 2015
+
+sudo docker images
+kiwenlau/ubuntu-perl-dev        flat                1c910dd78a83        5 weeks ago         1.047 GB
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+sudo docker images
+kiwenlau/ubuntu-perl-dev        flat                1c910dd78a83        5 weeks ago         1.047 GB
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+c14c8f0b32b6        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+09c7f76ab8b1: Buffering to Disk
+09c7f76ab8b1: Image successfully pushed
+09c7f76ab8b1: Image already exists
+0ab72e971305: Buffering to Disk
+0ab72e971305: Image successfully pushed
+9d5ee6459475: Buffering to Disk
+9d5ee6459475: Image successfully pushed
+d74baa5a3cc0: Buffering to Disk
+d74baa5a3cc0: Image successfully pushed
+64c62a52738d: Image already exists
+a67ce2609044: Image already exists
+5ce2fc837420: Image already exists
+81b86f949b5a: Image already exists
+3fd48ade5603: Image already exists
+5d75d48919ca: Image already exists
+db2f471f0af9: Image already exists
+8a73df34a186: Buffering to Disk
+8a73df34a186: Image successfully pushed
+7c9cd553cd00: Image already exists
+d2c813410b38: Buffering to Disk
+d2c813410b38: Image successfully pushed
+bf389e928900: Buffering to Disk
+bf389e928900: Image successfully pushed
+5984516c3790: Buffering to Disk
+5984516c3790: Image successfully pushed
+e23575e6f54b: Buffering to Disk
+e23575e6f54b: Image successfully pushed
+35fd912c557f: Image already exists
+3d91544a0e71: Buffering to Disk
+3d91544a0e71: Image successfully pushed
+45e7757388f7: Image already exists
+dc50dda9bdeb: Buffering to Disk
+dc50dda9bdeb: Image successfully pushed
+252daab403f6: Image already exists
+274c2f00d964: Image already exists
+1770ae9a09fc: Image already exists
+272c5a057149: Image already exists
+2839d3c70c8f: Image already exists
+d69a08bd3863: Image already exists
+0508e1f50e5a: Image already exists
+f0d6f7824e21: Image already exists
+88ec71c5ff9b: Image already exists
+c431cb0d6045: Buffering to Disk
+c431cb0d6045: Image successfully pushed
+9136c4220ca2: Buffering to Disk
+9136c4220ca2: Image successfully pushed
+5edee12e7542: Buffering to Disk
+5edee12e7542: Image successfully pushed
+d48b1fa1dce0: Buffering to Disk
+d48b1fa1dce0: Image successfully pushed
+7970a8f05bea: Image already exists
+b5f46057eb39: Image already exists
+809e81d6eb5d: Image already exists
+ba653eb93d0d: Image already exists
+5eaba44ae0f7: Image already exists
+224cff62f074: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:ca6cceec4b8535c3d6493e489cbf8453d0fb8820d7c20eaa722fd11d2d24464c
+
+real  170.53
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+latest: Pulling from 136.187.101.80:5000/ubuntu-perl-dev
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+224cff62f074: Pulling fs layer
+5eaba44ae0f7: Pulling fs layer
+ba653eb93d0d: Pulling fs layer
+809e81d6eb5d: Pulling fs layer
+b5f46057eb39: Pulling fs layer
+7970a8f05bea: Pulling fs layer
+d48b1fa1dce0: Pulling fs layer
+5edee12e7542: Pulling fs layer
+9136c4220ca2: Pulling fs layer
+c431cb0d6045: Pulling fs layer
+88ec71c5ff9b: Pulling fs layer
+f0d6f7824e21: Pulling fs layer
+0508e1f50e5a: Pulling fs layer
+d69a08bd3863: Pulling fs layer
+2839d3c70c8f: Pulling fs layer
+272c5a057149: Pulling fs layer
+1770ae9a09fc: Pulling fs layer
+274c2f00d964: Pulling fs layer
+252daab403f6: Pulling fs layer
+dc50dda9bdeb: Pulling fs layer
+45e7757388f7: Pulling fs layer
+3d91544a0e71: Pulling fs layer
+35fd912c557f: Pulling fs layer
+e23575e6f54b: Pulling fs layer
+5984516c3790: Pulling fs layer
+bf389e928900: Pulling fs layer
+d2c813410b38: Pulling fs layer
+7c9cd553cd00: Pulling fs layer
+8a73df34a186: Pulling fs layer
+db2f471f0af9: Pulling fs layer
+5d75d48919ca: Pulling fs layer
+3fd48ade5603: Pulling fs layer
+81b86f949b5a: Pulling fs layer
+5ce2fc837420: Pulling fs layer
+a67ce2609044: Pulling fs layer
+64c62a52738d: Pulling fs layer
+d74baa5a3cc0: Pulling fs layer
+9d5ee6459475: Pulling fs layer
+0ab72e971305: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+224cff62f074: Verifying Checksum
+224cff62f074: Download complete
+ba653eb93d0d: Verifying Checksum
+ba653eb93d0d: Download complete
+b5f46057eb39: Verifying Checksum
+b5f46057eb39: Download complete
+809e81d6eb5d: Verifying Checksum
+809e81d6eb5d: Download complete
+5eaba44ae0f7: Verifying Checksum
+5eaba44ae0f7: Download complete
+7970a8f05bea: Verifying Checksum
+7970a8f05bea: Download complete
+88ec71c5ff9b: Verifying Checksum
+88ec71c5ff9b: Download complete
+0508e1f50e5a: Verifying Checksum
+0508e1f50e5a: Download complete
+d69a08bd3863: Verifying Checksum
+d69a08bd3863: Download complete
+f0d6f7824e21: Verifying Checksum
+f0d6f7824e21: Download complete
+2839d3c70c8f: Verifying Checksum
+2839d3c70c8f: Download complete
+272c5a057149: Verifying Checksum
+272c5a057149: Download complete
+511136ea3c5a: Pull complete
+45e7757388f7: Verifying Checksum
+45e7757388f7: Download complete
+5edee12e7542: Verifying Checksum
+5edee12e7542: Download complete
+35fd912c557f: Verifying Checksum
+35fd912c557f: Download complete
+252daab403f6: Verifying Checksum
+252daab403f6: Download complete
+dc50dda9bdeb: Verifying Checksum
+dc50dda9bdeb: Download complete
+274c2f00d964: Verifying Checksum
+274c2f00d964: Download complete
+1770ae9a09fc: Verifying Checksum
+1770ae9a09fc: Download complete
+5d75d48919ca: Verifying Checksum
+5d75d48919ca: Download complete
+7c9cd553cd00: Verifying Checksum
+7c9cd553cd00: Download complete
+db2f471f0af9: Verifying Checksum
+db2f471f0af9: Download complete
+5ce2fc837420: Verifying Checksum
+5ce2fc837420: Download complete
+3fd48ade5603: Verifying Checksum
+3fd48ade5603: Download complete
+81b86f949b5a: Verifying Checksum
+81b86f949b5a: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+64c62a52738d: Verifying Checksum
+64c62a52738d: Download complete
+e23575e6f54b: Verifying Checksum
+e23575e6f54b: Download complete
+a67ce2609044: Verifying Checksum
+a67ce2609044: Download complete
+09c7f76ab8b1: Verifying Checksum
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+bf389e928900: Verifying Checksum
+bf389e928900: Download complete
+c431cb0d6045: Verifying Checksum
+c431cb0d6045: Download complete
+9136c4220ca2: Verifying Checksum
+9136c4220ca2: Download complete
+9d5ee6459475: Verifying Checksum
+9d5ee6459475: Download complete
+d74baa5a3cc0: Verifying Checksum
+d74baa5a3cc0: Download complete
+8a73df34a186: Verifying Checksum
+8a73df34a186: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+d2c813410b38: Verifying Checksum
+d2c813410b38: Download complete
+3d91544a0e71: Verifying Checksum
+3d91544a0e71: Download complete
+5984516c3790: Verifying Checksum
+5984516c3790: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+0ab72e971305: Verifying Checksum
+0ab72e971305: Download complete
+d48b1fa1dce0: Verifying Checksum
+d48b1fa1dce0: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+224cff62f074: Pull complete
+5eaba44ae0f7: Pull complete
+ba653eb93d0d: Pull complete
+809e81d6eb5d: Pull complete
+b5f46057eb39: Pull complete
+7970a8f05bea: Pull complete
+d48b1fa1dce0: Pull complete
+5edee12e7542: Pull complete
+9136c4220ca2: Pull complete
+c431cb0d6045: Pull complete
+88ec71c5ff9b: Pull complete
+f0d6f7824e21: Pull complete
+0508e1f50e5a: Pull complete
+d69a08bd3863: Pull complete
+2839d3c70c8f: Pull complete
+272c5a057149: Pull complete
+1770ae9a09fc: Pull complete
+274c2f00d964: Pull complete
+252daab403f6: Pull complete
+dc50dda9bdeb: Pull complete
+45e7757388f7: Pull complete
+3d91544a0e71: Pull complete
+35fd912c557f: Pull complete
+e23575e6f54b: Pull complete
+5984516c3790: Pull complete
+bf389e928900: Pull complete
+d2c813410b38: Pull complete
+7c9cd553cd00: Pull complete
+8a73df34a186: Pull complete
+db2f471f0af9: Pull complete
+5d75d48919ca: Pull complete
+3fd48ade5603: Pull complete
+81b86f949b5a: Pull complete
+5ce2fc837420: Pull complete
+a67ce2609044: Pull complete
+64c62a52738d: Pull complete
+d74baa5a3cc0: Pull complete
+9d5ee6459475: Pull complete
+0ab72e971305: Pull complete
+09c7f76ab8b1: Pull complete
+09c7f76ab8b1: Already exists
+Digest: sha256:ca6cceec4b8535c3d6493e489cbf8453d0fb8820d7c20eaa722fd11d2d24464c
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  39.72
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+1e95e9875a0f        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+09c7f76ab8b1: Buffering to Disk
+09c7f76ab8b1: Image successfully pushed
+09c7f76ab8b1: Image already exists
+0ab72e971305: Buffering to Disk
+0ab72e971305: Image successfully pushed
+9d5ee6459475: Buffering to Disk
+9d5ee6459475: Image successfully pushed
+d74baa5a3cc0: Buffering to Disk
+d74baa5a3cc0: Image successfully pushed
+64c62a52738d: Image already exists
+a67ce2609044: Image already exists
+5ce2fc837420: Image already exists
+81b86f949b5a: Image already exists
+3fd48ade5603: Image already exists
+5d75d48919ca: Image already exists
+db2f471f0af9: Image already exists
+8a73df34a186: Buffering to Disk
+8a73df34a186: Image successfully pushed
+7c9cd553cd00: Image already exists
+d2c813410b38: Buffering to Disk
+d2c813410b38: Image successfully pushed
+bf389e928900: Buffering to Disk
+bf389e928900: Image successfully pushed
+5984516c3790: Buffering to Disk
+5984516c3790: Image successfully pushed
+e23575e6f54b: Buffering to Disk
+e23575e6f54b: Image successfully pushed
+35fd912c557f: Image already exists
+3d91544a0e71: Buffering to Disk
+3d91544a0e71: Image successfully pushed
+45e7757388f7: Image already exists
+dc50dda9bdeb: Buffering to Disk
+dc50dda9bdeb: Image successfully pushed
+252daab403f6: Image already exists
+274c2f00d964: Image already exists
+1770ae9a09fc: Image already exists
+272c5a057149: Image already exists
+2839d3c70c8f: Image already exists
+d69a08bd3863: Image already exists
+0508e1f50e5a: Image already exists
+f0d6f7824e21: Image already exists
+88ec71c5ff9b: Image already exists
+c431cb0d6045: Buffering to Disk
+c431cb0d6045: Image successfully pushed
+9136c4220ca2: Buffering to Disk
+9136c4220ca2: Image successfully pushed
+5edee12e7542: Buffering to Disk
+5edee12e7542: Image successfully pushed
+d48b1fa1dce0: Buffering to Disk
+d48b1fa1dce0: Image successfully pushed
+7970a8f05bea: Image already exists
+b5f46057eb39: Image already exists
+809e81d6eb5d: Image already exists
+ba653eb93d0d: Image already exists
+5eaba44ae0f7: Image already exists
+224cff62f074: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:b27d108fba8546e7114109515a470df71fe78e3e772e7f00ef16f050b4886a5c
+
+real  165.20
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+latest: Pulling from 136.187.101.80:5000/ubuntu-perl-dev
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+224cff62f074: Pulling fs layer
+5eaba44ae0f7: Pulling fs layer
+ba653eb93d0d: Pulling fs layer
+809e81d6eb5d: Pulling fs layer
+b5f46057eb39: Pulling fs layer
+7970a8f05bea: Pulling fs layer
+d48b1fa1dce0: Pulling fs layer
+5edee12e7542: Pulling fs layer
+9136c4220ca2: Pulling fs layer
+c431cb0d6045: Pulling fs layer
+88ec71c5ff9b: Pulling fs layer
+f0d6f7824e21: Pulling fs layer
+0508e1f50e5a: Pulling fs layer
+d69a08bd3863: Pulling fs layer
+2839d3c70c8f: Pulling fs layer
+272c5a057149: Pulling fs layer
+1770ae9a09fc: Pulling fs layer
+274c2f00d964: Pulling fs layer
+252daab403f6: Pulling fs layer
+dc50dda9bdeb: Pulling fs layer
+45e7757388f7: Pulling fs layer
+3d91544a0e71: Pulling fs layer
+35fd912c557f: Pulling fs layer
+e23575e6f54b: Pulling fs layer
+5984516c3790: Pulling fs layer
+bf389e928900: Pulling fs layer
+d2c813410b38: Pulling fs layer
+7c9cd553cd00: Pulling fs layer
+8a73df34a186: Pulling fs layer
+db2f471f0af9: Pulling fs layer
+5d75d48919ca: Pulling fs layer
+3fd48ade5603: Pulling fs layer
+81b86f949b5a: Pulling fs layer
+5ce2fc837420: Pulling fs layer
+a67ce2609044: Pulling fs layer
+64c62a52738d: Pulling fs layer
+d74baa5a3cc0: Pulling fs layer
+9d5ee6459475: Pulling fs layer
+0ab72e971305: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Layer already being pulled by another client. Waiting.
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+809e81d6eb5d: Verifying Checksum
+809e81d6eb5d: Download complete
+ba653eb93d0d: Verifying Checksum
+ba653eb93d0d: Download complete
+5edee12e7542: Verifying Checksum
+5edee12e7542: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+7970a8f05bea: Verifying Checksum
+7970a8f05bea: Download complete
+224cff62f074: Verifying Checksum
+224cff62f074: Download complete
+b5f46057eb39: Verifying Checksum
+b5f46057eb39: Download complete
+5eaba44ae0f7: Verifying Checksum
+5eaba44ae0f7: Download complete
+f0d6f7824e21: Verifying Checksum
+f0d6f7824e21: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+2839d3c70c8f: Verifying Checksum
+2839d3c70c8f: Download complete
+d69a08bd3863: Verifying Checksum
+d69a08bd3863: Download complete
+511136ea3c5a: Pull complete
+272c5a057149: Verifying Checksum
+272c5a057149: Download complete
+88ec71c5ff9b: Verifying Checksum
+88ec71c5ff9b: Download complete
+35fd912c557f: Verifying Checksum
+35fd912c557f: Download complete
+0508e1f50e5a: Verifying Checksum
+0508e1f50e5a: Download complete
+274c2f00d964: Verifying Checksum
+274c2f00d964: Download complete
+1770ae9a09fc: Verifying Checksum
+1770ae9a09fc: Download complete
+dc50dda9bdeb: Verifying Checksum
+dc50dda9bdeb: Download complete
+252daab403f6: Verifying Checksum
+252daab403f6: Download complete
+7c9cd553cd00: Verifying Checksum
+7c9cd553cd00: Download complete
+45e7757388f7: Verifying Checksum
+45e7757388f7: Download complete
+db2f471f0af9: Verifying Checksum
+db2f471f0af9: Download complete
+5d75d48919ca: Verifying Checksum
+5d75d48919ca: Download complete
+3fd48ade5603: Verifying Checksum
+3fd48ade5603: Download complete
+a67ce2609044: Verifying Checksum
+a67ce2609044: Download complete
+5ce2fc837420: Verifying Checksum
+5ce2fc837420: Download complete
+e23575e6f54b: Verifying Checksum
+e23575e6f54b: Download complete
+64c62a52738d: Verifying Checksum
+64c62a52738d: Download complete
+81b86f949b5a: Verifying Checksum
+81b86f949b5a: Download complete
+09c7f76ab8b1: Verifying Checksum
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+c431cb0d6045: Verifying Checksum
+c431cb0d6045: Download complete
+bf389e928900: Verifying Checksum
+bf389e928900: Download complete
+9136c4220ca2: Verifying Checksum
+9136c4220ca2: Download complete
+9d5ee6459475: Verifying Checksum
+9d5ee6459475: Download complete
+8a73df34a186: Verifying Checksum
+8a73df34a186: Download complete
+d74baa5a3cc0: Verifying Checksum
+d74baa5a3cc0: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+d2c813410b38: Verifying Checksum
+d2c813410b38: Download complete
+5984516c3790: Verifying Checksum
+5984516c3790: Download complete
+3d91544a0e71: Verifying Checksum
+3d91544a0e71: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+0ab72e971305: Verifying Checksum
+0ab72e971305: Download complete
+d48b1fa1dce0: Verifying Checksum
+d48b1fa1dce0: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+224cff62f074: Pull complete
+5eaba44ae0f7: Pull complete
+ba653eb93d0d: Pull complete
+809e81d6eb5d: Pull complete
+b5f46057eb39: Pull complete
+7970a8f05bea: Pull complete
+d48b1fa1dce0: Pull complete
+5edee12e7542: Pull complete
+9136c4220ca2: Pull complete
+c431cb0d6045: Pull complete
+88ec71c5ff9b: Pull complete
+f0d6f7824e21: Pull complete
+0508e1f50e5a: Pull complete
+d69a08bd3863: Pull complete
+2839d3c70c8f: Pull complete
+272c5a057149: Pull complete
+1770ae9a09fc: Pull complete
+274c2f00d964: Pull complete
+252daab403f6: Pull complete
+dc50dda9bdeb: Pull complete
+45e7757388f7: Pull complete
+3d91544a0e71: Pull complete
+35fd912c557f: Pull complete
+e23575e6f54b: Pull complete
+5984516c3790: Pull complete
+bf389e928900: Pull complete
+d2c813410b38: Pull complete
+7c9cd553cd00: Pull complete
+8a73df34a186: Pull complete
+db2f471f0af9: Pull complete
+5d75d48919ca: Pull complete
+3fd48ade5603: Pull complete
+81b86f949b5a: Pull complete
+5ce2fc837420: Pull complete
+a67ce2609044: Pull complete
+64c62a52738d: Pull complete
+d74baa5a3cc0: Pull complete
+9d5ee6459475: Pull complete
+0ab72e971305: Pull complete
+09c7f76ab8b1: Pull complete
+09c7f76ab8b1: Already exists
+Digest: sha256:b27d108fba8546e7114109515a470df71fe78e3e772e7f00ef16f050b4886a5c
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  40.22
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+a19a1c499779        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+09c7f76ab8b1: Buffering to Disk
+09c7f76ab8b1: Image successfully pushed
+09c7f76ab8b1: Image already exists
+0ab72e971305: Buffering to Disk
+0ab72e971305: Image successfully pushed
+9d5ee6459475: Buffering to Disk
+9d5ee6459475: Image successfully pushed
+d74baa5a3cc0: Buffering to Disk
+d74baa5a3cc0: Image successfully pushed
+64c62a52738d: Image already exists
+a67ce2609044: Image already exists
+5ce2fc837420: Image already exists
+81b86f949b5a: Image already exists
+3fd48ade5603: Image already exists
+5d75d48919ca: Image already exists
+db2f471f0af9: Image already exists
+8a73df34a186: Buffering to Disk
+8a73df34a186: Image successfully pushed
+7c9cd553cd00: Image already exists
+d2c813410b38: Buffering to Disk
+d2c813410b38: Image successfully pushed
+bf389e928900: Buffering to Disk
+bf389e928900: Image successfully pushed
+5984516c3790: Buffering to Disk
+5984516c3790: Image successfully pushed
+e23575e6f54b: Buffering to Disk
+e23575e6f54b: Image successfully pushed
+35fd912c557f: Image already exists
+3d91544a0e71: Buffering to Disk
+3d91544a0e71: Image successfully pushed
+45e7757388f7: Image already exists
+dc50dda9bdeb: Buffering to Disk
+dc50dda9bdeb: Image successfully pushed
+252daab403f6: Image already exists
+274c2f00d964: Image already exists
+1770ae9a09fc: Image already exists
+272c5a057149: Image already exists
+2839d3c70c8f: Image already exists
+d69a08bd3863: Image already exists
+0508e1f50e5a: Image already exists
+f0d6f7824e21: Image already exists
+88ec71c5ff9b: Image already exists
+c431cb0d6045: Buffering to Disk
+c431cb0d6045: Image successfully pushed
+9136c4220ca2: Buffering to Disk
+9136c4220ca2: Image successfully pushed
+5edee12e7542: Buffering to Disk
+5edee12e7542: Image successfully pushed
+d48b1fa1dce0: Buffering to Disk
+d48b1fa1dce0: Image successfully pushed
+7970a8f05bea: Image already exists
+b5f46057eb39: Image already exists
+809e81d6eb5d: Image already exists
+ba653eb93d0d: Image already exists
+5eaba44ae0f7: Image already exists
+224cff62f074: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:d33ce04a9b6e189ae3e4a84533d636b577bc83ab9bf998357a02d92441836457
+
+real  169.85
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+latest: Pulling from 136.187.101.80:5000/ubuntu-perl-dev
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+224cff62f074: Pulling fs layer
+5eaba44ae0f7: Pulling fs layer
+ba653eb93d0d: Pulling fs layer
+809e81d6eb5d: Pulling fs layer
+b5f46057eb39: Pulling fs layer
+7970a8f05bea: Pulling fs layer
+d48b1fa1dce0: Pulling fs layer
+5edee12e7542: Pulling fs layer
+9136c4220ca2: Pulling fs layer
+c431cb0d6045: Pulling fs layer
+88ec71c5ff9b: Pulling fs layer
+f0d6f7824e21: Pulling fs layer
+0508e1f50e5a: Pulling fs layer
+d69a08bd3863: Pulling fs layer
+2839d3c70c8f: Pulling fs layer
+272c5a057149: Pulling fs layer
+1770ae9a09fc: Pulling fs layer
+274c2f00d964: Pulling fs layer
+252daab403f6: Pulling fs layer
+dc50dda9bdeb: Pulling fs layer
+45e7757388f7: Pulling fs layer
+3d91544a0e71: Pulling fs layer
+35fd912c557f: Pulling fs layer
+e23575e6f54b: Pulling fs layer
+5984516c3790: Pulling fs layer
+bf389e928900: Pulling fs layer
+d2c813410b38: Pulling fs layer
+7c9cd553cd00: Pulling fs layer
+8a73df34a186: Pulling fs layer
+db2f471f0af9: Pulling fs layer
+5d75d48919ca: Pulling fs layer
+3fd48ade5603: Pulling fs layer
+81b86f949b5a: Pulling fs layer
+5ce2fc837420: Pulling fs layer
+a67ce2609044: Pulling fs layer
+64c62a52738d: Pulling fs layer
+d74baa5a3cc0: Pulling fs layer
+9d5ee6459475: Pulling fs layer
+0ab72e971305: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+511136ea3c5a: Pull complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+5eaba44ae0f7: Verifying Checksum
+5eaba44ae0f7: Download complete
+224cff62f074: Verifying Checksum
+224cff62f074: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+809e81d6eb5d: Verifying Checksum
+809e81d6eb5d: Download complete
+b5f46057eb39: Verifying Checksum
+b5f46057eb39: Download complete
+ba653eb93d0d: Verifying Checksum
+ba653eb93d0d: Download complete
+64c62a52738d: Verifying Checksum
+64c62a52738d: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+7970a8f05bea: Verifying Checksum
+7970a8f05bea: Download complete
+88ec71c5ff9b: Verifying Checksum
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Verifying Checksum
+f0d6f7824e21: Download complete
+0508e1f50e5a: Verifying Checksum
+0508e1f50e5a: Download complete
+d69a08bd3863: Verifying Checksum
+d69a08bd3863: Download complete
+1770ae9a09fc: Verifying Checksum
+1770ae9a09fc: Download complete
+5edee12e7542: Verifying Checksum
+5edee12e7542: Download complete
+2839d3c70c8f: Verifying Checksum
+2839d3c70c8f: Download complete
+272c5a057149: Verifying Checksum
+272c5a057149: Download complete
+274c2f00d964: Verifying Checksum
+274c2f00d964: Download complete
+252daab403f6: Verifying Checksum
+252daab403f6: Download complete
+dc50dda9bdeb: Verifying Checksum
+dc50dda9bdeb: Download complete
+35fd912c557f: Verifying Checksum
+35fd912c557f: Download complete
+db2f471f0af9: Verifying Checksum
+db2f471f0af9: Download complete
+7c9cd553cd00: Verifying Checksum
+7c9cd553cd00: Download complete
+e23575e6f54b: Verifying Checksum
+e23575e6f54b: Download complete
+3fd48ade5603: Verifying Checksum
+3fd48ade5603: Download complete
+45e7757388f7: Verifying Checksum
+45e7757388f7: Download complete
+5ce2fc837420: Verifying Checksum
+5ce2fc837420: Download complete
+5d75d48919ca: Verifying Checksum
+5d75d48919ca: Download complete
+81b86f949b5a: Verifying Checksum
+81b86f949b5a: Download complete
+a67ce2609044: Verifying Checksum
+a67ce2609044: Download complete
+09c7f76ab8b1: Verifying Checksum
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+9136c4220ca2: Verifying Checksum
+9136c4220ca2: Download complete
+c431cb0d6045: Verifying Checksum
+c431cb0d6045: Download complete
+bf389e928900: Verifying Checksum
+bf389e928900: Download complete
+9d5ee6459475: Verifying Checksum
+9d5ee6459475: Download complete
+d74baa5a3cc0: Verifying Checksum
+d74baa5a3cc0: Download complete
+8a73df34a186: Verifying Checksum
+8a73df34a186: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+d2c813410b38: Verifying Checksum
+d2c813410b38: Download complete
+5984516c3790: Verifying Checksum
+5984516c3790: Download complete
+3d91544a0e71: Verifying Checksum
+3d91544a0e71: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+0ab72e971305: Verifying Checksum
+0ab72e971305: Download complete
+d48b1fa1dce0: Verifying Checksum
+d48b1fa1dce0: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+224cff62f074: Pull complete
+5eaba44ae0f7: Pull complete
+ba653eb93d0d: Pull complete
+809e81d6eb5d: Pull complete
+b5f46057eb39: Pull complete
+7970a8f05bea: Pull complete
+d48b1fa1dce0: Pull complete
+5edee12e7542: Pull complete
+9136c4220ca2: Pull complete
+c431cb0d6045: Pull complete
+88ec71c5ff9b: Pull complete
+f0d6f7824e21: Pull complete
+0508e1f50e5a: Pull complete
+d69a08bd3863: Pull complete
+2839d3c70c8f: Pull complete
+272c5a057149: Pull complete
+1770ae9a09fc: Pull complete
+274c2f00d964: Pull complete
+252daab403f6: Pull complete
+dc50dda9bdeb: Pull complete
+45e7757388f7: Pull complete
+3d91544a0e71: Pull complete
+35fd912c557f: Pull complete
+e23575e6f54b: Pull complete
+5984516c3790: Pull complete
+bf389e928900: Pull complete
+d2c813410b38: Pull complete
+7c9cd553cd00: Pull complete
+8a73df34a186: Pull complete
+db2f471f0af9: Pull complete
+5d75d48919ca: Pull complete
+3fd48ade5603: Pull complete
+81b86f949b5a: Pull complete
+5ce2fc837420: Pull complete
+a67ce2609044: Pull complete
+64c62a52738d: Pull complete
+d74baa5a3cc0: Pull complete
+9d5ee6459475: Pull complete
+0ab72e971305: Pull complete
+09c7f76ab8b1: Pull complete
+09c7f76ab8b1: Already exists
+Digest: sha256:d33ce04a9b6e189ae3e4a84533d636b577bc83ab9bf998357a02d92441836457
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  39.76
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+ffba0c6d2bf3        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+09c7f76ab8b1: Buffering to Disk
+09c7f76ab8b1: Image successfully pushed
+09c7f76ab8b1: Image already exists
+0ab72e971305: Buffering to Disk
+0ab72e971305: Image successfully pushed
+9d5ee6459475: Buffering to Disk
+9d5ee6459475: Image successfully pushed
+d74baa5a3cc0: Buffering to Disk
+d74baa5a3cc0: Image successfully pushed
+64c62a52738d: Image already exists
+a67ce2609044: Image already exists
+5ce2fc837420: Image already exists
+81b86f949b5a: Image already exists
+3fd48ade5603: Image already exists
+5d75d48919ca: Image already exists
+db2f471f0af9: Image already exists
+8a73df34a186: Buffering to Disk
+8a73df34a186: Image successfully pushed
+7c9cd553cd00: Image already exists
+d2c813410b38: Buffering to Disk
+d2c813410b38: Image successfully pushed
+bf389e928900: Buffering to Disk
+bf389e928900: Image successfully pushed
+5984516c3790: Buffering to Disk
+5984516c3790: Image successfully pushed
+e23575e6f54b: Buffering to Disk
+e23575e6f54b: Image successfully pushed
+35fd912c557f: Image already exists
+3d91544a0e71: Buffering to Disk
+3d91544a0e71: Image successfully pushed
+45e7757388f7: Image already exists
+dc50dda9bdeb: Buffering to Disk
+dc50dda9bdeb: Image successfully pushed
+252daab403f6: Image already exists
+274c2f00d964: Image already exists
+1770ae9a09fc: Image already exists
+272c5a057149: Image already exists
+2839d3c70c8f: Image already exists
+d69a08bd3863: Image already exists
+0508e1f50e5a: Image already exists
+f0d6f7824e21: Image already exists
+88ec71c5ff9b: Image already exists
+c431cb0d6045: Buffering to Disk
+c431cb0d6045: Image successfully pushed
+9136c4220ca2: Buffering to Disk
+9136c4220ca2: Image successfully pushed
+5edee12e7542: Buffering to Disk
+5edee12e7542: Image successfully pushed
+d48b1fa1dce0: Buffering to Disk
+d48b1fa1dce0: Image successfully pushed
+7970a8f05bea: Image already exists
+b5f46057eb39: Image already exists
+809e81d6eb5d: Image already exists
+ba653eb93d0d: Image already exists
+5eaba44ae0f7: Image already exists
+224cff62f074: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:ca6cceec4b8535c3d6493e489cbf8453d0fb8820d7c20eaa722fd11d2d24464c
+
+real  171.10
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+latest: Pulling from 136.187.101.80:5000/ubuntu-perl-dev
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+224cff62f074: Pulling fs layer
+5eaba44ae0f7: Pulling fs layer
+ba653eb93d0d: Pulling fs layer
+809e81d6eb5d: Pulling fs layer
+b5f46057eb39: Pulling fs layer
+7970a8f05bea: Pulling fs layer
+d48b1fa1dce0: Pulling fs layer
+5edee12e7542: Pulling fs layer
+9136c4220ca2: Pulling fs layer
+c431cb0d6045: Pulling fs layer
+88ec71c5ff9b: Pulling fs layer
+f0d6f7824e21: Pulling fs layer
+0508e1f50e5a: Pulling fs layer
+d69a08bd3863: Pulling fs layer
+2839d3c70c8f: Pulling fs layer
+272c5a057149: Pulling fs layer
+1770ae9a09fc: Pulling fs layer
+274c2f00d964: Pulling fs layer
+252daab403f6: Pulling fs layer
+dc50dda9bdeb: Pulling fs layer
+45e7757388f7: Pulling fs layer
+3d91544a0e71: Pulling fs layer
+35fd912c557f: Pulling fs layer
+e23575e6f54b: Pulling fs layer
+5984516c3790: Pulling fs layer
+bf389e928900: Pulling fs layer
+d2c813410b38: Pulling fs layer
+7c9cd553cd00: Pulling fs layer
+8a73df34a186: Pulling fs layer
+db2f471f0af9: Pulling fs layer
+5d75d48919ca: Pulling fs layer
+3fd48ade5603: Pulling fs layer
+81b86f949b5a: Pulling fs layer
+5ce2fc837420: Pulling fs layer
+a67ce2609044: Pulling fs layer
+64c62a52738d: Pulling fs layer
+d74baa5a3cc0: Pulling fs layer
+9d5ee6459475: Pulling fs layer
+0ab72e971305: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+5eaba44ae0f7: Verifying Checksum
+5eaba44ae0f7: Download complete
+809e81d6eb5d: Verifying Checksum
+809e81d6eb5d: Download complete
+224cff62f074: Verifying Checksum
+224cff62f074: Download complete
+b5f46057eb39: Verifying Checksum
+b5f46057eb39: Download complete
+7970a8f05bea: Verifying Checksum
+7970a8f05bea: Download complete
+f0d6f7824e21: Verifying Checksum
+f0d6f7824e21: Download complete
+88ec71c5ff9b: Verifying Checksum
+88ec71c5ff9b: Download complete
+0508e1f50e5a: Verifying Checksum
+0508e1f50e5a: Download complete
+d69a08bd3863: Verifying Checksum
+d69a08bd3863: Download complete
+2839d3c70c8f: Verifying Checksum
+2839d3c70c8f: Download complete
+511136ea3c5a: Pull complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+252daab403f6: Verifying Checksum
+252daab403f6: Download complete
+272c5a057149: Verifying Checksum
+272c5a057149: Download complete
+45e7757388f7: Verifying Checksum
+45e7757388f7: Download complete
+35fd912c557f: Verifying Checksum
+35fd912c557f: Download complete
+dc50dda9bdeb: Verifying Checksum
+dc50dda9bdeb: Download complete
+274c2f00d964: Verifying Checksum
+274c2f00d964: Download complete
+7c9cd553cd00: Verifying Checksum
+7c9cd553cd00: Download complete
+5d75d48919ca: Verifying Checksum
+5d75d48919ca: Download complete
+81b86f949b5a: Verifying Checksum
+81b86f949b5a: Download complete
+db2f471f0af9: Verifying Checksum
+db2f471f0af9: Download complete
+3fd48ade5603: Verifying Checksum
+3fd48ade5603: Download complete
+5ce2fc837420: Verifying Checksum
+5ce2fc837420: Download complete
+64c62a52738d: Verifying Checksum
+64c62a52738d: Download complete
+a67ce2609044: Verifying Checksum
+a67ce2609044: Download complete
+09c7f76ab8b1: Verifying Checksum
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+1770ae9a09fc: Verifying Checksum
+1770ae9a09fc: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+ba653eb93d0d: Verifying Checksum
+ba653eb93d0d: Download complete
+5edee12e7542: Verifying Checksum
+5edee12e7542: Download complete
+e23575e6f54b: Verifying Checksum
+e23575e6f54b: Download complete
+9136c4220ca2: Verifying Checksum
+9136c4220ca2: Download complete
+bf389e928900: Verifying Checksum
+bf389e928900: Download complete
+c431cb0d6045: Verifying Checksum
+c431cb0d6045: Download complete
+9d5ee6459475: Verifying Checksum
+9d5ee6459475: Download complete
+d74baa5a3cc0: Verifying Checksum
+d74baa5a3cc0: Download complete
+8a73df34a186: Verifying Checksum
+8a73df34a186: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+d2c813410b38: Verifying Checksum
+d2c813410b38: Download complete
+3d91544a0e71: Verifying Checksum
+3d91544a0e71: Download complete
+5984516c3790: Verifying Checksum
+5984516c3790: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+0ab72e971305: Verifying Checksum
+0ab72e971305: Download complete
+d48b1fa1dce0: Verifying Checksum
+d48b1fa1dce0: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+224cff62f074: Pull complete
+5eaba44ae0f7: Pull complete
+ba653eb93d0d: Pull complete
+809e81d6eb5d: Pull complete
+b5f46057eb39: Pull complete
+7970a8f05bea: Pull complete
+d48b1fa1dce0: Pull complete
+5edee12e7542: Pull complete
+9136c4220ca2: Pull complete
+c431cb0d6045: Pull complete
+88ec71c5ff9b: Pull complete
+f0d6f7824e21: Pull complete
+0508e1f50e5a: Pull complete
+d69a08bd3863: Pull complete
+2839d3c70c8f: Pull complete
+272c5a057149: Pull complete
+1770ae9a09fc: Pull complete
+274c2f00d964: Pull complete
+252daab403f6: Pull complete
+dc50dda9bdeb: Pull complete
+45e7757388f7: Pull complete
+3d91544a0e71: Pull complete
+35fd912c557f: Pull complete
+e23575e6f54b: Pull complete
+5984516c3790: Pull complete
+bf389e928900: Pull complete
+d2c813410b38: Pull complete
+7c9cd553cd00: Pull complete
+8a73df34a186: Pull complete
+db2f471f0af9: Pull complete
+5d75d48919ca: Pull complete
+3fd48ade5603: Pull complete
+81b86f949b5a: Pull complete
+5ce2fc837420: Pull complete
+a67ce2609044: Pull complete
+64c62a52738d: Pull complete
+d74baa5a3cc0: Pull complete
+9d5ee6459475: Pull complete
+0ab72e971305: Pull complete
+09c7f76ab8b1: Pull complete
+09c7f76ab8b1: Already exists
+Digest: sha256:ca6cceec4b8535c3d6493e489cbf8453d0fb8820d7c20eaa722fd11d2d24464c
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  39.39
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+b15478addb25        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+09c7f76ab8b1: Buffering to Disk
+09c7f76ab8b1: Image successfully pushed
+09c7f76ab8b1: Image already exists
+0ab72e971305: Buffering to Disk
+0ab72e971305: Image successfully pushed
+9d5ee6459475: Buffering to Disk
+9d5ee6459475: Image successfully pushed
+d74baa5a3cc0: Buffering to Disk
+d74baa5a3cc0: Image successfully pushed
+64c62a52738d: Image already exists
+a67ce2609044: Image already exists
+5ce2fc837420: Image already exists
+81b86f949b5a: Image already exists
+3fd48ade5603: Image already exists
+5d75d48919ca: Image already exists
+db2f471f0af9: Image already exists
+8a73df34a186: Buffering to Disk
+8a73df34a186: Image successfully pushed
+7c9cd553cd00: Image already exists
+d2c813410b38: Buffering to Disk
+d2c813410b38: Image successfully pushed
+bf389e928900: Buffering to Disk
+bf389e928900: Image successfully pushed
+5984516c3790: Buffering to Disk
+5984516c3790: Image successfully pushed
+e23575e6f54b: Buffering to Disk
+e23575e6f54b: Image successfully pushed
+35fd912c557f: Image already exists
+3d91544a0e71: Buffering to Disk
+3d91544a0e71: Image successfully pushed
+45e7757388f7: Image already exists
+dc50dda9bdeb: Buffering to Disk
+dc50dda9bdeb: Image successfully pushed
+252daab403f6: Image already exists
+274c2f00d964: Image already exists
+1770ae9a09fc: Image already exists
+272c5a057149: Image already exists
+2839d3c70c8f: Image already exists
+d69a08bd3863: Image already exists
+0508e1f50e5a: Image already exists
+f0d6f7824e21: Image already exists
+88ec71c5ff9b: Image already exists
+c431cb0d6045: Buffering to Disk
+c431cb0d6045: Image successfully pushed
+9136c4220ca2: Buffering to Disk
+9136c4220ca2: Image successfully pushed
+5edee12e7542: Buffering to Disk
+5edee12e7542: Image successfully pushed
+d48b1fa1dce0: Buffering to Disk
+d48b1fa1dce0: Image successfully pushed
+7970a8f05bea: Image already exists
+b5f46057eb39: Image already exists
+809e81d6eb5d: Image already exists
+ba653eb93d0d: Image already exists
+5eaba44ae0f7: Image already exists
+224cff62f074: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:ca6cceec4b8535c3d6493e489cbf8453d0fb8820d7c20eaa722fd11d2d24464c
+
+real  165.41
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+latest: Pulling from 136.187.101.80:5000/ubuntu-perl-dev
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+224cff62f074: Pulling fs layer
+5eaba44ae0f7: Pulling fs layer
+ba653eb93d0d: Pulling fs layer
+809e81d6eb5d: Pulling fs layer
+b5f46057eb39: Pulling fs layer
+7970a8f05bea: Pulling fs layer
+d48b1fa1dce0: Pulling fs layer
+5edee12e7542: Pulling fs layer
+9136c4220ca2: Pulling fs layer
+c431cb0d6045: Pulling fs layer
+88ec71c5ff9b: Pulling fs layer
+f0d6f7824e21: Pulling fs layer
+0508e1f50e5a: Pulling fs layer
+d69a08bd3863: Pulling fs layer
+2839d3c70c8f: Pulling fs layer
+272c5a057149: Pulling fs layer
+1770ae9a09fc: Pulling fs layer
+274c2f00d964: Pulling fs layer
+252daab403f6: Pulling fs layer
+dc50dda9bdeb: Pulling fs layer
+45e7757388f7: Pulling fs layer
+3d91544a0e71: Pulling fs layer
+35fd912c557f: Pulling fs layer
+e23575e6f54b: Pulling fs layer
+5984516c3790: Pulling fs layer
+bf389e928900: Pulling fs layer
+d2c813410b38: Pulling fs layer
+7c9cd553cd00: Pulling fs layer
+8a73df34a186: Pulling fs layer
+db2f471f0af9: Pulling fs layer
+5d75d48919ca: Pulling fs layer
+3fd48ade5603: Pulling fs layer
+81b86f949b5a: Pulling fs layer
+5ce2fc837420: Pulling fs layer
+a67ce2609044: Pulling fs layer
+64c62a52738d: Pulling fs layer
+d74baa5a3cc0: Pulling fs layer
+9d5ee6459475: Pulling fs layer
+0ab72e971305: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Layer already being pulled by another client. Waiting.
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+224cff62f074: Verifying Checksum
+224cff62f074: Download complete
+5eaba44ae0f7: Verifying Checksum
+5eaba44ae0f7: Download complete
+b5f46057eb39: Verifying Checksum
+b5f46057eb39: Download complete
+809e81d6eb5d: Verifying Checksum
+809e81d6eb5d: Download complete
+ba653eb93d0d: Verifying Checksum
+ba653eb93d0d: Download complete
+7970a8f05bea: Verifying Checksum
+7970a8f05bea: Download complete
+5edee12e7542: Verifying Checksum
+5edee12e7542: Download complete
+88ec71c5ff9b: Verifying Checksum
+88ec71c5ff9b: Download complete
+d69a08bd3863: Verifying Checksum
+d69a08bd3863: Download complete
+272c5a057149: Verifying Checksum
+272c5a057149: Download complete
+0508e1f50e5a: Verifying Checksum
+0508e1f50e5a: Download complete
+2839d3c70c8f: Verifying Checksum
+2839d3c70c8f: Download complete
+274c2f00d964: Verifying Checksum
+274c2f00d964: Download complete
+f0d6f7824e21: Verifying Checksum
+f0d6f7824e21: Download complete
+511136ea3c5a: Pull complete
+1770ae9a09fc: Verifying Checksum
+1770ae9a09fc: Download complete
+dc50dda9bdeb: Verifying Checksum
+dc50dda9bdeb: Download complete
+252daab403f6: Verifying Checksum
+252daab403f6: Download complete
+45e7757388f7: Verifying Checksum
+45e7757388f7: Download complete
+35fd912c557f: Verifying Checksum
+35fd912c557f: Download complete
+7c9cd553cd00: Verifying Checksum
+7c9cd553cd00: Download complete
+e23575e6f54b: Verifying Checksum
+e23575e6f54b: Download complete
+db2f471f0af9: Verifying Checksum
+db2f471f0af9: Download complete
+5ce2fc837420: Verifying Checksum
+5ce2fc837420: Download complete
+3fd48ade5603: Verifying Checksum
+3fd48ade5603: Download complete
+5d75d48919ca: Verifying Checksum
+5d75d48919ca: Download complete
+64c62a52738d: Verifying Checksum
+64c62a52738d: Download complete
+a67ce2609044: Verifying Checksum
+a67ce2609044: Download complete
+09c7f76ab8b1: Verifying Checksum
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+81b86f949b5a: Verifying Checksum
+81b86f949b5a: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+c431cb0d6045: Verifying Checksum
+c431cb0d6045: Download complete
+9136c4220ca2: Verifying Checksum
+9136c4220ca2: Download complete
+bf389e928900: Verifying Checksum
+bf389e928900: Download complete
+8a73df34a186: Verifying Checksum
+8a73df34a186: Download complete
+9d5ee6459475: Verifying Checksum
+9d5ee6459475: Download complete
+d74baa5a3cc0: Verifying Checksum
+d74baa5a3cc0: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+d2c813410b38: Verifying Checksum
+d2c813410b38: Download complete
+3d91544a0e71: Verifying Checksum
+3d91544a0e71: Download complete
+5984516c3790: Verifying Checksum
+5984516c3790: Download complete
+0ab72e971305: Verifying Checksum
+0ab72e971305: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+d48b1fa1dce0: Verifying Checksum
+d48b1fa1dce0: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+224cff62f074: Pull complete
+5eaba44ae0f7: Pull complete
+ba653eb93d0d: Pull complete
+809e81d6eb5d: Pull complete
+b5f46057eb39: Pull complete
+7970a8f05bea: Pull complete
+d48b1fa1dce0: Pull complete
+5edee12e7542: Pull complete
+9136c4220ca2: Pull complete
+c431cb0d6045: Pull complete
+88ec71c5ff9b: Pull complete
+f0d6f7824e21: Pull complete
+0508e1f50e5a: Pull complete
+d69a08bd3863: Pull complete
+2839d3c70c8f: Pull complete
+272c5a057149: Pull complete
+1770ae9a09fc: Pull complete
+274c2f00d964: Pull complete
+252daab403f6: Pull complete
+dc50dda9bdeb: Pull complete
+45e7757388f7: Pull complete
+3d91544a0e71: Pull complete
+35fd912c557f: Pull complete
+e23575e6f54b: Pull complete
+5984516c3790: Pull complete
+bf389e928900: Pull complete
+d2c813410b38: Pull complete
+7c9cd553cd00: Pull complete
+8a73df34a186: Pull complete
+db2f471f0af9: Pull complete
+5d75d48919ca: Pull complete
+3fd48ade5603: Pull complete
+81b86f949b5a: Pull complete
+5ce2fc837420: Pull complete
+a67ce2609044: Pull complete
+64c62a52738d: Pull complete
+d74baa5a3cc0: Pull complete
+9d5ee6459475: Pull complete
+0ab72e971305: Pull complete
+09c7f76ab8b1: Pull complete
+09c7f76ab8b1: Already exists
+Digest: sha256:ca6cceec4b8535c3d6493e489cbf8453d0fb8820d7c20eaa722fd11d2d24464c
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  39.54
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+a5070f5d0b91        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+09c7f76ab8b1: Buffering to Disk
+09c7f76ab8b1: Image successfully pushed
+09c7f76ab8b1: Image already exists
+0ab72e971305: Buffering to Disk
+0ab72e971305: Image successfully pushed
+9d5ee6459475: Buffering to Disk
+9d5ee6459475: Image successfully pushed
+d74baa5a3cc0: Buffering to Disk
+d74baa5a3cc0: Image successfully pushed
+64c62a52738d: Image already exists
+a67ce2609044: Image already exists
+5ce2fc837420: Image already exists
+81b86f949b5a: Image already exists
+3fd48ade5603: Image already exists
+5d75d48919ca: Image already exists
+db2f471f0af9: Image already exists
+8a73df34a186: Buffering to Disk
+8a73df34a186: Image successfully pushed
+7c9cd553cd00: Image already exists
+d2c813410b38: Buffering to Disk
+d2c813410b38: Image successfully pushed
+bf389e928900: Buffering to Disk
+bf389e928900: Image successfully pushed
+5984516c3790: Buffering to Disk
+5984516c3790: Image successfully pushed
+e23575e6f54b: Buffering to Disk
+e23575e6f54b: Image successfully pushed
+35fd912c557f: Image already exists
+3d91544a0e71: Buffering to Disk
+3d91544a0e71: Image successfully pushed
+45e7757388f7: Image already exists
+dc50dda9bdeb: Buffering to Disk
+dc50dda9bdeb: Image successfully pushed
+252daab403f6: Image already exists
+274c2f00d964: Image already exists
+1770ae9a09fc: Image already exists
+272c5a057149: Image already exists
+2839d3c70c8f: Image already exists
+d69a08bd3863: Image already exists
+0508e1f50e5a: Image already exists
+f0d6f7824e21: Image already exists
+88ec71c5ff9b: Image already exists
+c431cb0d6045: Buffering to Disk
+c431cb0d6045: Image successfully pushed
+9136c4220ca2: Buffering to Disk
+9136c4220ca2: Image successfully pushed
+5edee12e7542: Buffering to Disk
+5edee12e7542: Image successfully pushed
+d48b1fa1dce0: Buffering to Disk
+d48b1fa1dce0: Image successfully pushed
+7970a8f05bea: Image already exists
+b5f46057eb39: Image already exists
+809e81d6eb5d: Image already exists
+ba653eb93d0d: Image already exists
+5eaba44ae0f7: Image already exists
+224cff62f074: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:7c7cc0bab0fdc2505e94fdbde9324743e67086050aa10c54d3e47c9ff8c28610
+
+real  173.55
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+latest: Pulling from 136.187.101.80:5000/ubuntu-perl-dev
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+224cff62f074: Pulling fs layer
+5eaba44ae0f7: Pulling fs layer
+ba653eb93d0d: Pulling fs layer
+809e81d6eb5d: Pulling fs layer
+b5f46057eb39: Pulling fs layer
+7970a8f05bea: Pulling fs layer
+d48b1fa1dce0: Pulling fs layer
+5edee12e7542: Pulling fs layer
+9136c4220ca2: Pulling fs layer
+c431cb0d6045: Pulling fs layer
+88ec71c5ff9b: Pulling fs layer
+f0d6f7824e21: Pulling fs layer
+0508e1f50e5a: Pulling fs layer
+d69a08bd3863: Pulling fs layer
+2839d3c70c8f: Pulling fs layer
+272c5a057149: Pulling fs layer
+1770ae9a09fc: Pulling fs layer
+274c2f00d964: Pulling fs layer
+252daab403f6: Pulling fs layer
+dc50dda9bdeb: Pulling fs layer
+45e7757388f7: Pulling fs layer
+3d91544a0e71: Pulling fs layer
+35fd912c557f: Pulling fs layer
+e23575e6f54b: Pulling fs layer
+5984516c3790: Pulling fs layer
+bf389e928900: Pulling fs layer
+d2c813410b38: Pulling fs layer
+7c9cd553cd00: Pulling fs layer
+8a73df34a186: Pulling fs layer
+db2f471f0af9: Pulling fs layer
+5d75d48919ca: Pulling fs layer
+3fd48ade5603: Pulling fs layer
+81b86f949b5a: Pulling fs layer
+5ce2fc837420: Pulling fs layer
+a67ce2609044: Pulling fs layer
+64c62a52738d: Pulling fs layer
+d74baa5a3cc0: Pulling fs layer
+9d5ee6459475: Pulling fs layer
+0ab72e971305: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Layer already being pulled by another client. Waiting.
+252daab403f6: Verifying Checksum
+252daab403f6: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+224cff62f074: Verifying Checksum
+224cff62f074: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+ba653eb93d0d: Verifying Checksum
+ba653eb93d0d: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+809e81d6eb5d: Verifying Checksum
+809e81d6eb5d: Download complete
+5eaba44ae0f7: Verifying Checksum
+5eaba44ae0f7: Download complete
+7970a8f05bea: Verifying Checksum
+7970a8f05bea: Download complete
+88ec71c5ff9b: Verifying Checksum
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Verifying Checksum
+f0d6f7824e21: Download complete
+0508e1f50e5a: Verifying Checksum
+0508e1f50e5a: Download complete
+2839d3c70c8f: Verifying Checksum
+2839d3c70c8f: Download complete
+d69a08bd3863: Verifying Checksum
+d69a08bd3863: Download complete
+272c5a057149: Verifying Checksum
+272c5a057149: Download complete
+b5f46057eb39: Verifying Checksum
+b5f46057eb39: Download complete
+1770ae9a09fc: Verifying Checksum
+1770ae9a09fc: Download complete
+5edee12e7542: Verifying Checksum
+5edee12e7542: Download complete
+45e7757388f7: Verifying Checksum
+45e7757388f7: Download complete
+dc50dda9bdeb: Verifying Checksum
+dc50dda9bdeb: Download complete
+35fd912c557f: Verifying Checksum
+35fd912c557f: Download complete
+7c9cd553cd00: Verifying Checksum
+7c9cd553cd00: Download complete
+274c2f00d964: Verifying Checksum
+274c2f00d964: Download complete
+3fd48ade5603: Verifying Checksum
+3fd48ade5603: Download complete
+5d75d48919ca: Verifying Checksum
+5d75d48919ca: Download complete
+e23575e6f54b: Verifying Checksum
+e23575e6f54b: Download complete
+81b86f949b5a: Verifying Checksum
+81b86f949b5a: Download complete
+5ce2fc837420: Verifying Checksum
+5ce2fc837420: Download complete
+a67ce2609044: Verifying Checksum
+a67ce2609044: Download complete
+64c62a52738d: Verifying Checksum
+64c62a52738d: Download complete
+db2f471f0af9: Verifying Checksum
+db2f471f0af9: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+09c7f76ab8b1: Verifying Checksum
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+511136ea3c5a: Pull complete
+c431cb0d6045: Verifying Checksum
+c431cb0d6045: Download complete
+9136c4220ca2: Verifying Checksum
+9136c4220ca2: Download complete
+bf389e928900: Verifying Checksum
+bf389e928900: Download complete
+d74baa5a3cc0: Verifying Checksum
+d74baa5a3cc0: Download complete
+8a73df34a186: Verifying Checksum
+8a73df34a186: Download complete
+9d5ee6459475: Verifying Checksum
+9d5ee6459475: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+d2c813410b38: Verifying Checksum
+d2c813410b38: Download complete
+5984516c3790: Verifying Checksum
+5984516c3790: Download complete
+3d91544a0e71: Verifying Checksum
+3d91544a0e71: Download complete
+0ab72e971305: Verifying Checksum
+0ab72e971305: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+d48b1fa1dce0: Verifying Checksum
+d48b1fa1dce0: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+224cff62f074: Pull complete
+5eaba44ae0f7: Pull complete
+ba653eb93d0d: Pull complete
+809e81d6eb5d: Pull complete
+b5f46057eb39: Pull complete
+7970a8f05bea: Pull complete
+d48b1fa1dce0: Pull complete
+5edee12e7542: Pull complete
+9136c4220ca2: Pull complete
+c431cb0d6045: Pull complete
+88ec71c5ff9b: Pull complete
+f0d6f7824e21: Pull complete
+0508e1f50e5a: Pull complete
+d69a08bd3863: Pull complete
+2839d3c70c8f: Pull complete
+272c5a057149: Pull complete
+1770ae9a09fc: Pull complete
+274c2f00d964: Pull complete
+252daab403f6: Pull complete
+dc50dda9bdeb: Pull complete
+45e7757388f7: Pull complete
+3d91544a0e71: Pull complete
+35fd912c557f: Pull complete
+e23575e6f54b: Pull complete
+5984516c3790: Pull complete
+bf389e928900: Pull complete
+d2c813410b38: Pull complete
+7c9cd553cd00: Pull complete
+8a73df34a186: Pull complete
+db2f471f0af9: Pull complete
+5d75d48919ca: Pull complete
+3fd48ade5603: Pull complete
+81b86f949b5a: Pull complete
+5ce2fc837420: Pull complete
+a67ce2609044: Pull complete
+64c62a52738d: Pull complete
+d74baa5a3cc0: Pull complete
+9d5ee6459475: Pull complete
+0ab72e971305: Pull complete
+09c7f76ab8b1: Pull complete
+09c7f76ab8b1: Already exists
+Digest: sha256:7c7cc0bab0fdc2505e94fdbde9324743e67086050aa10c54d3e47c9ff8c28610
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  39.79
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+df02ca7e5393        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+09c7f76ab8b1: Buffering to Disk
+09c7f76ab8b1: Image successfully pushed
+09c7f76ab8b1: Image already exists
+0ab72e971305: Buffering to Disk
+0ab72e971305: Image successfully pushed
+9d5ee6459475: Buffering to Disk
+9d5ee6459475: Image successfully pushed
+d74baa5a3cc0: Buffering to Disk
+d74baa5a3cc0: Image successfully pushed
+64c62a52738d: Image already exists
+a67ce2609044: Image already exists
+5ce2fc837420: Image already exists
+81b86f949b5a: Image already exists
+3fd48ade5603: Image already exists
+5d75d48919ca: Image already exists
+db2f471f0af9: Image already exists
+8a73df34a186: Buffering to Disk
+8a73df34a186: Image successfully pushed
+7c9cd553cd00: Image already exists
+d2c813410b38: Buffering to Disk
+d2c813410b38: Image successfully pushed
+bf389e928900: Buffering to Disk
+bf389e928900: Image successfully pushed
+5984516c3790: Buffering to Disk
+5984516c3790: Image successfully pushed
+e23575e6f54b: Buffering to Disk
+e23575e6f54b: Image successfully pushed
+35fd912c557f: Image already exists
+3d91544a0e71: Buffering to Disk
+3d91544a0e71: Image successfully pushed
+45e7757388f7: Image already exists
+dc50dda9bdeb: Buffering to Disk
+dc50dda9bdeb: Image successfully pushed
+252daab403f6: Image already exists
+274c2f00d964: Image already exists
+1770ae9a09fc: Image already exists
+272c5a057149: Image already exists
+2839d3c70c8f: Image already exists
+d69a08bd3863: Image already exists
+0508e1f50e5a: Image already exists
+f0d6f7824e21: Image already exists
+88ec71c5ff9b: Image already exists
+c431cb0d6045: Buffering to Disk
+c431cb0d6045: Image successfully pushed
+9136c4220ca2: Buffering to Disk
+9136c4220ca2: Image successfully pushed
+5edee12e7542: Buffering to Disk
+5edee12e7542: Image successfully pushed
+d48b1fa1dce0: Buffering to Disk
+d48b1fa1dce0: Image successfully pushed
+7970a8f05bea: Image already exists
+b5f46057eb39: Image already exists
+809e81d6eb5d: Image already exists
+ba653eb93d0d: Image already exists
+5eaba44ae0f7: Image already exists
+224cff62f074: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:ca6cceec4b8535c3d6493e489cbf8453d0fb8820d7c20eaa722fd11d2d24464c
+
+real  161.74
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+latest: Pulling from 136.187.101.80:5000/ubuntu-perl-dev
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+224cff62f074: Pulling fs layer
+5eaba44ae0f7: Pulling fs layer
+ba653eb93d0d: Pulling fs layer
+809e81d6eb5d: Pulling fs layer
+b5f46057eb39: Pulling fs layer
+7970a8f05bea: Pulling fs layer
+d48b1fa1dce0: Pulling fs layer
+5edee12e7542: Pulling fs layer
+9136c4220ca2: Pulling fs layer
+c431cb0d6045: Pulling fs layer
+88ec71c5ff9b: Pulling fs layer
+f0d6f7824e21: Pulling fs layer
+0508e1f50e5a: Pulling fs layer
+d69a08bd3863: Pulling fs layer
+2839d3c70c8f: Pulling fs layer
+272c5a057149: Pulling fs layer
+1770ae9a09fc: Pulling fs layer
+274c2f00d964: Pulling fs layer
+252daab403f6: Pulling fs layer
+dc50dda9bdeb: Pulling fs layer
+45e7757388f7: Pulling fs layer
+3d91544a0e71: Pulling fs layer
+35fd912c557f: Pulling fs layer
+e23575e6f54b: Pulling fs layer
+5984516c3790: Pulling fs layer
+bf389e928900: Pulling fs layer
+d2c813410b38: Pulling fs layer
+7c9cd553cd00: Pulling fs layer
+8a73df34a186: Pulling fs layer
+db2f471f0af9: Pulling fs layer
+5d75d48919ca: Pulling fs layer
+3fd48ade5603: Pulling fs layer
+81b86f949b5a: Pulling fs layer
+5ce2fc837420: Pulling fs layer
+a67ce2609044: Pulling fs layer
+64c62a52738d: Pulling fs layer
+d74baa5a3cc0: Pulling fs layer
+9d5ee6459475: Pulling fs layer
+0ab72e971305: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+ba653eb93d0d: Verifying Checksum
+ba653eb93d0d: Download complete
+5eaba44ae0f7: Verifying Checksum
+5eaba44ae0f7: Download complete
+b5f46057eb39: Verifying Checksum
+b5f46057eb39: Download complete
+809e81d6eb5d: Verifying Checksum
+809e81d6eb5d: Download complete
+272c5a057149: Verifying Checksum
+272c5a057149: Download complete
+7970a8f05bea: Verifying Checksum
+7970a8f05bea: Download complete
+88ec71c5ff9b: Verifying Checksum
+88ec71c5ff9b: Download complete
+f0d6f7824e21: Verifying Checksum
+f0d6f7824e21: Download complete
+5edee12e7542: Verifying Checksum
+5edee12e7542: Download complete
+0508e1f50e5a: Verifying Checksum
+0508e1f50e5a: Download complete
+2839d3c70c8f: Verifying Checksum
+2839d3c70c8f: Download complete
+1770ae9a09fc: Verifying Checksum
+1770ae9a09fc: Download complete
+252daab403f6: Verifying Checksum
+252daab403f6: Download complete
+274c2f00d964: Verifying Checksum
+274c2f00d964: Download complete
+45e7757388f7: Verifying Checksum
+45e7757388f7: Download complete
+dc50dda9bdeb: Verifying Checksum
+dc50dda9bdeb: Download complete
+511136ea3c5a: Pull complete
+35fd912c557f: Verifying Checksum
+35fd912c557f: Download complete
+d69a08bd3863: Verifying Checksum
+d69a08bd3863: Download complete
+7c9cd553cd00: Verifying Checksum
+7c9cd553cd00: Download complete
+5d75d48919ca: Verifying Checksum
+5d75d48919ca: Download complete
+db2f471f0af9: Verifying Checksum
+db2f471f0af9: Download complete
+3fd48ade5603: Verifying Checksum
+3fd48ade5603: Download complete
+81b86f949b5a: Verifying Checksum
+81b86f949b5a: Download complete
+e23575e6f54b: Verifying Checksum
+e23575e6f54b: Download complete
+5ce2fc837420: Verifying Checksum
+5ce2fc837420: Download complete
+64c62a52738d: Verifying Checksum
+64c62a52738d: Download complete
+a67ce2609044: Verifying Checksum
+a67ce2609044: Download complete
+09c7f76ab8b1: Verifying Checksum
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+224cff62f074: Verifying Checksum
+224cff62f074: Download complete
+c431cb0d6045: Verifying Checksum
+c431cb0d6045: Download complete
+bf389e928900: Verifying Checksum
+bf389e928900: Download complete
+9136c4220ca2: Verifying Checksum
+9136c4220ca2: Download complete
+9d5ee6459475: Verifying Checksum
+9d5ee6459475: Download complete
+8a73df34a186: Verifying Checksum
+8a73df34a186: Download complete
+d74baa5a3cc0: Verifying Checksum
+d74baa5a3cc0: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+3d91544a0e71: Verifying Checksum
+3d91544a0e71: Download complete
+d2c813410b38: Verifying Checksum
+d2c813410b38: Download complete
+5984516c3790: Verifying Checksum
+5984516c3790: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+0ab72e971305: Verifying Checksum
+0ab72e971305: Download complete
+d48b1fa1dce0: Verifying Checksum
+d48b1fa1dce0: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+224cff62f074: Pull complete
+5eaba44ae0f7: Pull complete
+ba653eb93d0d: Pull complete
+809e81d6eb5d: Pull complete
+b5f46057eb39: Pull complete
+7970a8f05bea: Pull complete
+d48b1fa1dce0: Pull complete
+5edee12e7542: Pull complete
+9136c4220ca2: Pull complete
+c431cb0d6045: Pull complete
+88ec71c5ff9b: Pull complete
+f0d6f7824e21: Pull complete
+0508e1f50e5a: Pull complete
+d69a08bd3863: Pull complete
+2839d3c70c8f: Pull complete
+272c5a057149: Pull complete
+1770ae9a09fc: Pull complete
+274c2f00d964: Pull complete
+252daab403f6: Pull complete
+dc50dda9bdeb: Pull complete
+45e7757388f7: Pull complete
+3d91544a0e71: Pull complete
+35fd912c557f: Pull complete
+e23575e6f54b: Pull complete
+5984516c3790: Pull complete
+bf389e928900: Pull complete
+d2c813410b38: Pull complete
+7c9cd553cd00: Pull complete
+8a73df34a186: Pull complete
+db2f471f0af9: Pull complete
+5d75d48919ca: Pull complete
+3fd48ade5603: Pull complete
+81b86f949b5a: Pull complete
+5ce2fc837420: Pull complete
+a67ce2609044: Pull complete
+64c62a52738d: Pull complete
+d74baa5a3cc0: Pull complete
+9d5ee6459475: Pull complete
+0ab72e971305: Pull complete
+09c7f76ab8b1: Pull complete
+09c7f76ab8b1: Already exists
+Digest: sha256:ca6cceec4b8535c3d6493e489cbf8453d0fb8820d7c20eaa722fd11d2d24464c
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  39.56
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+5303496ec549        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+09c7f76ab8b1: Buffering to Disk
+09c7f76ab8b1: Image successfully pushed
+09c7f76ab8b1: Image already exists
+0ab72e971305: Buffering to Disk
+0ab72e971305: Image successfully pushed
+9d5ee6459475: Buffering to Disk
+9d5ee6459475: Image successfully pushed
+d74baa5a3cc0: Buffering to Disk
+d74baa5a3cc0: Image successfully pushed
+64c62a52738d: Image already exists
+a67ce2609044: Image already exists
+5ce2fc837420: Image already exists
+81b86f949b5a: Image already exists
+3fd48ade5603: Image already exists
+5d75d48919ca: Image already exists
+db2f471f0af9: Image already exists
+8a73df34a186: Buffering to Disk
+8a73df34a186: Image successfully pushed
+7c9cd553cd00: Image already exists
+d2c813410b38: Buffering to Disk
+d2c813410b38: Image successfully pushed
+bf389e928900: Buffering to Disk
+bf389e928900: Image successfully pushed
+5984516c3790: Buffering to Disk
+5984516c3790: Image successfully pushed
+e23575e6f54b: Buffering to Disk
+e23575e6f54b: Image successfully pushed
+35fd912c557f: Image already exists
+3d91544a0e71: Buffering to Disk
+3d91544a0e71: Image successfully pushed
+45e7757388f7: Image already exists
+dc50dda9bdeb: Buffering to Disk
+dc50dda9bdeb: Image successfully pushed
+252daab403f6: Image already exists
+274c2f00d964: Image already exists
+1770ae9a09fc: Image already exists
+272c5a057149: Image already exists
+2839d3c70c8f: Image already exists
+d69a08bd3863: Image already exists
+0508e1f50e5a: Image already exists
+f0d6f7824e21: Image already exists
+88ec71c5ff9b: Image already exists
+c431cb0d6045: Buffering to Disk
+c431cb0d6045: Image successfully pushed
+9136c4220ca2: Buffering to Disk
+9136c4220ca2: Image successfully pushed
+5edee12e7542: Buffering to Disk
+5edee12e7542: Image successfully pushed
+d48b1fa1dce0: Buffering to Disk
+d48b1fa1dce0: Image successfully pushed
+7970a8f05bea: Image already exists
+b5f46057eb39: Image already exists
+809e81d6eb5d: Image already exists
+ba653eb93d0d: Image already exists
+5eaba44ae0f7: Image already exists
+224cff62f074: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:b27d108fba8546e7114109515a470df71fe78e3e772e7f00ef16f050b4886a5c
+
+real  168.31
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+latest: Pulling from 136.187.101.80:5000/ubuntu-perl-dev
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+224cff62f074: Pulling fs layer
+5eaba44ae0f7: Pulling fs layer
+ba653eb93d0d: Pulling fs layer
+809e81d6eb5d: Pulling fs layer
+b5f46057eb39: Pulling fs layer
+7970a8f05bea: Pulling fs layer
+d48b1fa1dce0: Pulling fs layer
+5edee12e7542: Pulling fs layer
+9136c4220ca2: Pulling fs layer
+c431cb0d6045: Pulling fs layer
+88ec71c5ff9b: Pulling fs layer
+f0d6f7824e21: Pulling fs layer
+0508e1f50e5a: Pulling fs layer
+d69a08bd3863: Pulling fs layer
+2839d3c70c8f: Pulling fs layer
+272c5a057149: Pulling fs layer
+1770ae9a09fc: Pulling fs layer
+274c2f00d964: Pulling fs layer
+252daab403f6: Pulling fs layer
+dc50dda9bdeb: Pulling fs layer
+45e7757388f7: Pulling fs layer
+3d91544a0e71: Pulling fs layer
+35fd912c557f: Pulling fs layer
+e23575e6f54b: Pulling fs layer
+5984516c3790: Pulling fs layer
+bf389e928900: Pulling fs layer
+d2c813410b38: Pulling fs layer
+7c9cd553cd00: Pulling fs layer
+8a73df34a186: Pulling fs layer
+db2f471f0af9: Pulling fs layer
+5d75d48919ca: Pulling fs layer
+3fd48ade5603: Pulling fs layer
+81b86f949b5a: Pulling fs layer
+5ce2fc837420: Pulling fs layer
+a67ce2609044: Pulling fs layer
+64c62a52738d: Pulling fs layer
+d74baa5a3cc0: Pulling fs layer
+9d5ee6459475: Pulling fs layer
+0ab72e971305: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Layer already being pulled by another client. Waiting.
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+7970a8f05bea: Verifying Checksum
+7970a8f05bea: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+224cff62f074: Verifying Checksum
+224cff62f074: Download complete
+5eaba44ae0f7: Verifying Checksum
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Verifying Checksum
+ba653eb93d0d: Download complete
+809e81d6eb5d: Verifying Checksum
+809e81d6eb5d: Download complete
+5edee12e7542: Verifying Checksum
+5edee12e7542: Download complete
+f0d6f7824e21: Verifying Checksum
+f0d6f7824e21: Download complete
+d69a08bd3863: Verifying Checksum
+d69a08bd3863: Download complete
+b5f46057eb39: Verifying Checksum
+b5f46057eb39: Download complete
+0508e1f50e5a: Verifying Checksum
+0508e1f50e5a: Download complete
+272c5a057149: Verifying Checksum
+272c5a057149: Download complete
+88ec71c5ff9b: Verifying Checksum
+88ec71c5ff9b: Download complete
+274c2f00d964: Verifying Checksum
+274c2f00d964: Download complete
+2839d3c70c8f: Verifying Checksum
+2839d3c70c8f: Download complete
+1770ae9a09fc: Verifying Checksum
+1770ae9a09fc: Download complete
+45e7757388f7: Verifying Checksum
+45e7757388f7: Download complete
+252daab403f6: Verifying Checksum
+252daab403f6: Download complete
+511136ea3c5a: Pull complete
+dc50dda9bdeb: Verifying Checksum
+dc50dda9bdeb: Download complete
+35fd912c557f: Verifying Checksum
+35fd912c557f: Download complete
+7c9cd553cd00: Verifying Checksum
+7c9cd553cd00: Download complete
+e23575e6f54b: Verifying Checksum
+e23575e6f54b: Download complete
+db2f471f0af9: Verifying Checksum
+db2f471f0af9: Download complete
+3fd48ade5603: Verifying Checksum
+3fd48ade5603: Download complete
+5d75d48919ca: Verifying Checksum
+5d75d48919ca: Download complete
+5ce2fc837420: Verifying Checksum
+5ce2fc837420: Download complete
+81b86f949b5a: Verifying Checksum
+81b86f949b5a: Download complete
+a67ce2609044: Verifying Checksum
+a67ce2609044: Download complete
+64c62a52738d: Verifying Checksum
+64c62a52738d: Download complete
+09c7f76ab8b1: Verifying Checksum
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+c431cb0d6045: Verifying Checksum
+c431cb0d6045: Download complete
+bf389e928900: Verifying Checksum
+bf389e928900: Download complete
+d74baa5a3cc0: Verifying Checksum
+d74baa5a3cc0: Download complete
+9136c4220ca2: Verifying Checksum
+9136c4220ca2: Download complete
+8a73df34a186: Verifying Checksum
+8a73df34a186: Download complete
+9d5ee6459475: Verifying Checksum
+9d5ee6459475: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+d2c813410b38: Verifying Checksum
+d2c813410b38: Download complete
+3d91544a0e71: Verifying Checksum
+3d91544a0e71: Download complete
+5984516c3790: Verifying Checksum
+5984516c3790: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+0ab72e971305: Verifying Checksum
+0ab72e971305: Download complete
+d48b1fa1dce0: Verifying Checksum
+d48b1fa1dce0: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+224cff62f074: Pull complete
+5eaba44ae0f7: Pull complete
+ba653eb93d0d: Pull complete
+809e81d6eb5d: Pull complete
+b5f46057eb39: Pull complete
+7970a8f05bea: Pull complete
+d48b1fa1dce0: Pull complete
+5edee12e7542: Pull complete
+9136c4220ca2: Pull complete
+c431cb0d6045: Pull complete
+88ec71c5ff9b: Pull complete
+f0d6f7824e21: Pull complete
+0508e1f50e5a: Pull complete
+d69a08bd3863: Pull complete
+2839d3c70c8f: Pull complete
+272c5a057149: Pull complete
+1770ae9a09fc: Pull complete
+274c2f00d964: Pull complete
+252daab403f6: Pull complete
+dc50dda9bdeb: Pull complete
+45e7757388f7: Pull complete
+3d91544a0e71: Pull complete
+35fd912c557f: Pull complete
+e23575e6f54b: Pull complete
+5984516c3790: Pull complete
+bf389e928900: Pull complete
+d2c813410b38: Pull complete
+7c9cd553cd00: Pull complete
+8a73df34a186: Pull complete
+db2f471f0af9: Pull complete
+5d75d48919ca: Pull complete
+3fd48ade5603: Pull complete
+81b86f949b5a: Pull complete
+5ce2fc837420: Pull complete
+a67ce2609044: Pull complete
+64c62a52738d: Pull complete
+d74baa5a3cc0: Pull complete
+9d5ee6459475: Pull complete
+0ab72e971305: Pull complete
+09c7f76ab8b1: Pull complete
+09c7f76ab8b1: Already exists
+Digest: sha256:b27d108fba8546e7114109515a470df71fe78e3e772e7f00ef16f050b4886a5c
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  39.49
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+1a0147cb2317        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+09c7f76ab8b1: Buffering to Disk
+09c7f76ab8b1: Image successfully pushed
+09c7f76ab8b1: Image already exists
+0ab72e971305: Buffering to Disk
+0ab72e971305: Image successfully pushed
+9d5ee6459475: Buffering to Disk
+9d5ee6459475: Image successfully pushed
+d74baa5a3cc0: Buffering to Disk
+d74baa5a3cc0: Image successfully pushed
+64c62a52738d: Image already exists
+a67ce2609044: Image already exists
+5ce2fc837420: Image already exists
+81b86f949b5a: Image already exists
+3fd48ade5603: Image already exists
+5d75d48919ca: Image already exists
+db2f471f0af9: Image already exists
+8a73df34a186: Buffering to Disk
+8a73df34a186: Image successfully pushed
+7c9cd553cd00: Image already exists
+d2c813410b38: Buffering to Disk
+d2c813410b38: Image successfully pushed
+bf389e928900: Buffering to Disk
+bf389e928900: Image successfully pushed
+5984516c3790: Buffering to Disk
+5984516c3790: Image successfully pushed
+e23575e6f54b: Buffering to Disk
+e23575e6f54b: Image successfully pushed
+35fd912c557f: Image already exists
+3d91544a0e71: Buffering to Disk
+3d91544a0e71: Image successfully pushed
+45e7757388f7: Image already exists
+dc50dda9bdeb: Buffering to Disk
+dc50dda9bdeb: Image successfully pushed
+252daab403f6: Image already exists
+274c2f00d964: Image already exists
+1770ae9a09fc: Image already exists
+272c5a057149: Image already exists
+2839d3c70c8f: Image already exists
+d69a08bd3863: Image already exists
+0508e1f50e5a: Image already exists
+f0d6f7824e21: Image already exists
+88ec71c5ff9b: Image already exists
+c431cb0d6045: Buffering to Disk
+c431cb0d6045: Image successfully pushed
+9136c4220ca2: Buffering to Disk
+9136c4220ca2: Image successfully pushed
+5edee12e7542: Buffering to Disk
+5edee12e7542: Image successfully pushed
+d48b1fa1dce0: Buffering to Disk
+d48b1fa1dce0: Image successfully pushed
+7970a8f05bea: Image already exists
+b5f46057eb39: Image already exists
+809e81d6eb5d: Image already exists
+ba653eb93d0d: Image already exists
+5eaba44ae0f7: Image already exists
+224cff62f074: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:d33ce04a9b6e189ae3e4a84533d636b577bc83ab9bf998357a02d92441836457
+
+real  168.96
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+latest: Pulling from 136.187.101.80:5000/ubuntu-perl-dev
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+224cff62f074: Pulling fs layer
+5eaba44ae0f7: Pulling fs layer
+ba653eb93d0d: Pulling fs layer
+809e81d6eb5d: Pulling fs layer
+b5f46057eb39: Pulling fs layer
+7970a8f05bea: Pulling fs layer
+d48b1fa1dce0: Pulling fs layer
+5edee12e7542: Pulling fs layer
+9136c4220ca2: Pulling fs layer
+c431cb0d6045: Pulling fs layer
+88ec71c5ff9b: Pulling fs layer
+f0d6f7824e21: Pulling fs layer
+0508e1f50e5a: Pulling fs layer
+d69a08bd3863: Pulling fs layer
+2839d3c70c8f: Pulling fs layer
+272c5a057149: Pulling fs layer
+1770ae9a09fc: Pulling fs layer
+274c2f00d964: Pulling fs layer
+252daab403f6: Pulling fs layer
+dc50dda9bdeb: Pulling fs layer
+45e7757388f7: Pulling fs layer
+3d91544a0e71: Pulling fs layer
+35fd912c557f: Pulling fs layer
+e23575e6f54b: Pulling fs layer
+5984516c3790: Pulling fs layer
+bf389e928900: Pulling fs layer
+d2c813410b38: Pulling fs layer
+7c9cd553cd00: Pulling fs layer
+8a73df34a186: Pulling fs layer
+db2f471f0af9: Pulling fs layer
+5d75d48919ca: Pulling fs layer
+3fd48ade5603: Pulling fs layer
+81b86f949b5a: Pulling fs layer
+5ce2fc837420: Pulling fs layer
+a67ce2609044: Pulling fs layer
+64c62a52738d: Pulling fs layer
+d74baa5a3cc0: Pulling fs layer
+9d5ee6459475: Pulling fs layer
+0ab72e971305: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+224cff62f074: Verifying Checksum
+224cff62f074: Download complete
+ba653eb93d0d: Verifying Checksum
+ba653eb93d0d: Download complete
+b5f46057eb39: Verifying Checksum
+b5f46057eb39: Download complete
+5eaba44ae0f7: Verifying Checksum
+5eaba44ae0f7: Download complete
+7970a8f05bea: Verifying Checksum
+7970a8f05bea: Download complete
+5edee12e7542: Verifying Checksum
+5edee12e7542: Download complete
+0508e1f50e5a: Verifying Checksum
+0508e1f50e5a: Download complete
+f0d6f7824e21: Verifying Checksum
+f0d6f7824e21: Download complete
+88ec71c5ff9b: Verifying Checksum
+88ec71c5ff9b: Download complete
+d69a08bd3863: Verifying Checksum
+d69a08bd3863: Download complete
+2839d3c70c8f: Verifying Checksum
+2839d3c70c8f: Download complete
+809e81d6eb5d: Verifying Checksum
+809e81d6eb5d: Download complete
+511136ea3c5a: Pull complete
+1770ae9a09fc: Verifying Checksum
+1770ae9a09fc: Download complete
+272c5a057149: Verifying Checksum
+272c5a057149: Download complete
+252daab403f6: Verifying Checksum
+252daab403f6: Download complete
+274c2f00d964: Verifying Checksum
+274c2f00d964: Download complete
+dc50dda9bdeb: Verifying Checksum
+dc50dda9bdeb: Download complete
+45e7757388f7: Verifying Checksum
+45e7757388f7: Download complete
+35fd912c557f: Verifying Checksum
+35fd912c557f: Download complete
+7c9cd553cd00: Verifying Checksum
+7c9cd553cd00: Download complete
+db2f471f0af9: Verifying Checksum
+db2f471f0af9: Download complete
+5d75d48919ca: Verifying Checksum
+5d75d48919ca: Download complete
+3fd48ade5603: Verifying Checksum
+3fd48ade5603: Download complete
+5ce2fc837420: Verifying Checksum
+5ce2fc837420: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+e23575e6f54b: Verifying Checksum
+e23575e6f54b: Download complete
+64c62a52738d: Verifying Checksum
+64c62a52738d: Download complete
+81b86f949b5a: Verifying Checksum
+81b86f949b5a: Download complete
+a67ce2609044: Verifying Checksum
+a67ce2609044: Download complete
+09c7f76ab8b1: Verifying Checksum
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+9136c4220ca2: Verifying Checksum
+9136c4220ca2: Download complete
+bf389e928900: Verifying Checksum
+bf389e928900: Download complete
+c431cb0d6045: Verifying Checksum
+c431cb0d6045: Download complete
+9d5ee6459475: Verifying Checksum
+9d5ee6459475: Download complete
+d74baa5a3cc0: Verifying Checksum
+d74baa5a3cc0: Download complete
+8a73df34a186: Verifying Checksum
+8a73df34a186: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+d2c813410b38: Verifying Checksum
+d2c813410b38: Download complete
+5984516c3790: Verifying Checksum
+5984516c3790: Download complete
+3d91544a0e71: Verifying Checksum
+3d91544a0e71: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+0ab72e971305: Verifying Checksum
+0ab72e971305: Download complete
+d48b1fa1dce0: Verifying Checksum
+d48b1fa1dce0: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+224cff62f074: Pull complete
+5eaba44ae0f7: Pull complete
+ba653eb93d0d: Pull complete
+809e81d6eb5d: Pull complete
+b5f46057eb39: Pull complete
+7970a8f05bea: Pull complete
+d48b1fa1dce0: Pull complete
+5edee12e7542: Pull complete
+9136c4220ca2: Pull complete
+c431cb0d6045: Pull complete
+88ec71c5ff9b: Pull complete
+f0d6f7824e21: Pull complete
+0508e1f50e5a: Pull complete
+d69a08bd3863: Pull complete
+2839d3c70c8f: Pull complete
+272c5a057149: Pull complete
+1770ae9a09fc: Pull complete
+274c2f00d964: Pull complete
+252daab403f6: Pull complete
+dc50dda9bdeb: Pull complete
+45e7757388f7: Pull complete
+3d91544a0e71: Pull complete
+35fd912c557f: Pull complete
+e23575e6f54b: Pull complete
+5984516c3790: Pull complete
+bf389e928900: Pull complete
+d2c813410b38: Pull complete
+7c9cd553cd00: Pull complete
+8a73df34a186: Pull complete
+db2f471f0af9: Pull complete
+5d75d48919ca: Pull complete
+3fd48ade5603: Pull complete
+81b86f949b5a: Pull complete
+5ce2fc837420: Pull complete
+a67ce2609044: Pull complete
+64c62a52738d: Pull complete
+d74baa5a3cc0: Pull complete
+9d5ee6459475: Pull complete
+0ab72e971305: Pull complete
+09c7f76ab8b1: Pull complete
+09c7f76ab8b1: Already exists
+Digest: sha256:d33ce04a9b6e189ae3e4a84533d636b577bc83ab9bf998357a02d92441836457
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  39.48
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 ubuntu-perl-dev
+
+docker images
+kiwenlau/ubuntu-perl-dev        latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker tag kiwenlau/ubuntu-perl-dev:latest 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+docker images
+kiwenlau/ubuntu-perl-dev              latest              09c7f76ab8b1        11 months ago       1.109 GB
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+71585971f68d        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ubuntu-perl-dev:latest
+The push refers to a repository [136.187.101.80:5000/ubuntu-perl-dev] (len: 1)
+09c7f76ab8b1: Buffering to Disk
+09c7f76ab8b1: Image successfully pushed
+09c7f76ab8b1: Image already exists
+0ab72e971305: Buffering to Disk
+0ab72e971305: Image successfully pushed
+9d5ee6459475: Buffering to Disk
+9d5ee6459475: Image successfully pushed
+d74baa5a3cc0: Buffering to Disk
+d74baa5a3cc0: Image successfully pushed
+64c62a52738d: Image already exists
+a67ce2609044: Image already exists
+5ce2fc837420: Image already exists
+81b86f949b5a: Image already exists
+3fd48ade5603: Image already exists
+5d75d48919ca: Image already exists
+db2f471f0af9: Image already exists
+8a73df34a186: Buffering to Disk
+8a73df34a186: Image successfully pushed
+7c9cd553cd00: Image already exists
+d2c813410b38: Buffering to Disk
+d2c813410b38: Image successfully pushed
+bf389e928900: Buffering to Disk
+bf389e928900: Image successfully pushed
+5984516c3790: Buffering to Disk
+5984516c3790: Image successfully pushed
+e23575e6f54b: Buffering to Disk
+e23575e6f54b: Image successfully pushed
+35fd912c557f: Image already exists
+3d91544a0e71: Buffering to Disk
+3d91544a0e71: Image successfully pushed
+45e7757388f7: Image already exists
+dc50dda9bdeb: Buffering to Disk
+dc50dda9bdeb: Image successfully pushed
+252daab403f6: Image already exists
+274c2f00d964: Image already exists
+1770ae9a09fc: Image already exists
+272c5a057149: Image already exists
+2839d3c70c8f: Image already exists
+d69a08bd3863: Image already exists
+0508e1f50e5a: Image already exists
+f0d6f7824e21: Image already exists
+88ec71c5ff9b: Image already exists
+c431cb0d6045: Buffering to Disk
+c431cb0d6045: Image successfully pushed
+9136c4220ca2: Buffering to Disk
+9136c4220ca2: Image successfully pushed
+5edee12e7542: Buffering to Disk
+5edee12e7542: Image successfully pushed
+d48b1fa1dce0: Buffering to Disk
+d48b1fa1dce0: Image successfully pushed
+7970a8f05bea: Image already exists
+b5f46057eb39: Image already exists
+809e81d6eb5d: Image already exists
+ba653eb93d0d: Image already exists
+5eaba44ae0f7: Image already exists
+224cff62f074: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:ca6cceec4b8535c3d6493e489cbf8453d0fb8820d7c20eaa722fd11d2d24464c
+
+real  169.09
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker pull 136.187.101.80:5000/ubuntu-perl-dev:latest
+latest: Pulling from 136.187.101.80:5000/ubuntu-perl-dev
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+224cff62f074: Pulling fs layer
+5eaba44ae0f7: Pulling fs layer
+ba653eb93d0d: Pulling fs layer
+809e81d6eb5d: Pulling fs layer
+b5f46057eb39: Pulling fs layer
+7970a8f05bea: Pulling fs layer
+d48b1fa1dce0: Pulling fs layer
+5edee12e7542: Pulling fs layer
+9136c4220ca2: Pulling fs layer
+c431cb0d6045: Pulling fs layer
+88ec71c5ff9b: Pulling fs layer
+f0d6f7824e21: Pulling fs layer
+0508e1f50e5a: Pulling fs layer
+d69a08bd3863: Pulling fs layer
+2839d3c70c8f: Pulling fs layer
+272c5a057149: Pulling fs layer
+1770ae9a09fc: Pulling fs layer
+274c2f00d964: Pulling fs layer
+252daab403f6: Pulling fs layer
+dc50dda9bdeb: Pulling fs layer
+45e7757388f7: Pulling fs layer
+3d91544a0e71: Pulling fs layer
+35fd912c557f: Pulling fs layer
+e23575e6f54b: Pulling fs layer
+5984516c3790: Pulling fs layer
+bf389e928900: Pulling fs layer
+d2c813410b38: Pulling fs layer
+7c9cd553cd00: Pulling fs layer
+8a73df34a186: Pulling fs layer
+db2f471f0af9: Pulling fs layer
+5d75d48919ca: Pulling fs layer
+3fd48ade5603: Pulling fs layer
+81b86f949b5a: Pulling fs layer
+5ce2fc837420: Pulling fs layer
+a67ce2609044: Pulling fs layer
+64c62a52738d: Pulling fs layer
+d74baa5a3cc0: Pulling fs layer
+9d5ee6459475: Pulling fs layer
+0ab72e971305: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Pulling fs layer
+09c7f76ab8b1: Layer already being pulled by another client. Waiting.
+252daab403f6: Verifying Checksum
+252daab403f6: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+224cff62f074: Verifying Checksum
+224cff62f074: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+5eaba44ae0f7: Verifying Checksum
+5eaba44ae0f7: Download complete
+ba653eb93d0d: Verifying Checksum
+ba653eb93d0d: Download complete
+81b86f949b5a: Verifying Checksum
+81b86f949b5a: Download complete
+b5f46057eb39: Verifying Checksum
+b5f46057eb39: Download complete
+809e81d6eb5d: Verifying Checksum
+809e81d6eb5d: Download complete
+5edee12e7542: Verifying Checksum
+5edee12e7542: Download complete
+88ec71c5ff9b: Verifying Checksum
+88ec71c5ff9b: Download complete
+7970a8f05bea: Verifying Checksum
+7970a8f05bea: Download complete
+2839d3c70c8f: Verifying Checksum
+2839d3c70c8f: Download complete
+0508e1f50e5a: Verifying Checksum
+0508e1f50e5a: Download complete
+1770ae9a09fc: Verifying Checksum
+1770ae9a09fc: Download complete
+dc50dda9bdeb: Verifying Checksum
+dc50dda9bdeb: Download complete
+45e7757388f7: Verifying Checksum
+45e7757388f7: Download complete
+f0d6f7824e21: Verifying Checksum
+f0d6f7824e21: Download complete
+272c5a057149: Verifying Checksum
+272c5a057149: Download complete
+35fd912c557f: Verifying Checksum
+35fd912c557f: Download complete
+d69a08bd3863: Verifying Checksum
+d69a08bd3863: Download complete
+7c9cd553cd00: Verifying Checksum
+7c9cd553cd00: Download complete
+5d75d48919ca: Verifying Checksum
+5d75d48919ca: Download complete
+274c2f00d964: Verifying Checksum
+274c2f00d964: Download complete
+3fd48ade5603: Verifying Checksum
+3fd48ade5603: Download complete
+db2f471f0af9: Verifying Checksum
+db2f471f0af9: Download complete
+64c62a52738d: Verifying Checksum
+64c62a52738d: Download complete
+09c7f76ab8b1: Verifying Checksum
+09c7f76ab8b1: Download complete
+09c7f76ab8b1: Download complete
+5ce2fc837420: Verifying Checksum
+5ce2fc837420: Download complete
+a67ce2609044: Verifying Checksum
+a67ce2609044: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+e23575e6f54b: Verifying Checksum
+e23575e6f54b: Download complete
+c431cb0d6045: Verifying Checksum
+c431cb0d6045: Download complete
+511136ea3c5a: Pull complete
+9136c4220ca2: Verifying Checksum
+9136c4220ca2: Download complete
+bf389e928900: Verifying Checksum
+bf389e928900: Download complete
+d74baa5a3cc0: Verifying Checksum
+d74baa5a3cc0: Download complete
+9d5ee6459475: Verifying Checksum
+9d5ee6459475: Download complete
+8a73df34a186: Verifying Checksum
+8a73df34a186: Download complete
+3d91544a0e71: Verifying Checksum
+3d91544a0e71: Download complete
+d2c813410b38: Verifying Checksum
+d2c813410b38: Download complete
+5984516c3790: Verifying Checksum
+5984516c3790: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+0ab72e971305: Verifying Checksum
+0ab72e971305: Download complete
+d48b1fa1dce0: Verifying Checksum
+d48b1fa1dce0: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+224cff62f074: Pull complete
+5eaba44ae0f7: Pull complete
+ba653eb93d0d: Pull complete
+809e81d6eb5d: Pull complete
+b5f46057eb39: Pull complete
+7970a8f05bea: Pull complete
+d48b1fa1dce0: Pull complete
+5edee12e7542: Pull complete
+9136c4220ca2: Pull complete
+c431cb0d6045: Pull complete
+88ec71c5ff9b: Pull complete
+f0d6f7824e21: Pull complete
+0508e1f50e5a: Pull complete
+d69a08bd3863: Pull complete
+2839d3c70c8f: Pull complete
+272c5a057149: Pull complete
+1770ae9a09fc: Pull complete
+274c2f00d964: Pull complete
+252daab403f6: Pull complete
+dc50dda9bdeb: Pull complete
+45e7757388f7: Pull complete
+3d91544a0e71: Pull complete
+35fd912c557f: Pull complete
+e23575e6f54b: Pull complete
+5984516c3790: Pull complete
+bf389e928900: Pull complete
+d2c813410b38: Pull complete
+7c9cd553cd00: Pull complete
+8a73df34a186: Pull complete
+db2f471f0af9: Pull complete
+5d75d48919ca: Pull complete
+3fd48ade5603: Pull complete
+81b86f949b5a: Pull complete
+5ce2fc837420: Pull complete
+a67ce2609044: Pull complete
+64c62a52738d: Pull complete
+d74baa5a3cc0: Pull complete
+9d5ee6459475: Pull complete
+0ab72e971305: Pull complete
+09c7f76ab8b1: Pull complete
+09c7f76ab8b1: Already exists
+Digest: sha256:ca6cceec4b8535c3d6493e489cbf8453d0fb8820d7c20eaa722fd11d2d24464c
+Status: Downloaded newer image for 136.187.101.80:5000/ubuntu-perl-dev:latest
+
+real  40.91
+
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+136.187.101.80:5000/ubuntu-perl-dev   latest              09c7f76ab8b1        11 months ago       1.109 GB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/ubuntu-perl-dev:latest"
+ssh kai@52.68.197.112 "docker images | grep ubuntu-perl-dev"
+
+docker rm -f docker_registry
+
+end date: Tue Jul 28 08:23:12 JST 2015
+
+

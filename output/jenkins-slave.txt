@@ -1,0 +1,1835 @@
+
+pullpush benchmark: transfer jenkins-slave image to 52.68.197.112 host
+ 
+hostname: kuruwa-gw
+begin date: Tue Jul 28 03:08:50 JST 2015
+
+sudo docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+sudo docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+
+Test 1: ./pushpull.sh kai 52.68.197.112 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.2 MB
+kiwenlau/jenkins-slave              latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+15355320ee36        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+34e0323ef111: Buffering to Disk
+34e0323ef111: Image successfully pushed
+34e0323ef111: Image already exists
+e992aa39d970: Buffering to Disk
+e992aa39d970: Image successfully pushed
+cac286e587e7: Buffering to Disk
+cac286e587e7: Image successfully pushed
+91a70abafae7: Buffering to Disk
+91a70abafae7: Image successfully pushed
+0e35932b1202: Image already exists
+c6a2963de830: Image already exists
+822890bbd1e3: Buffering to Disk
+822890bbd1e3: Image successfully pushed
+2e6452deaf7d: Buffering to Disk
+2e6452deaf7d: Image successfully pushed
+d7c8ae849249: Buffering to Disk
+d7c8ae849249: Image successfully pushed
+44b6e14e8001: Buffering to Disk
+44b6e14e8001: Image successfully pushed
+8213fdc36f44: Buffering to Disk
+8213fdc36f44: Image successfully pushed
+5d1fd5ac1357: Buffering to Disk
+5d1fd5ac1357: Image successfully pushed
+ae6453008610: Buffering to Disk
+ae6453008610: Image successfully pushed
+035fd5d4db8b: Buffering to Disk
+035fd5d4db8b: Image successfully pushed
+54ad585afa4c: Buffering to Disk
+54ad585afa4c: Image successfully pushed
+6031827f51a8: Buffering to Disk
+6031827f51a8: Image successfully pushed
+65f0e408185e: Buffering to Disk
+65f0e408185e: Image successfully pushed
+a7658dd62ea5: Buffering to Disk
+a7658dd62ea5: Image successfully pushed
+281e9b8e128d: Image already exists
+f28bd98a35cb: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+
+real  116.75
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+latest: Pulling from 136.187.101.80:5000/jenkins-slave
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+f28bd98a35cb: Pulling fs layer
+281e9b8e128d: Pulling fs layer
+a7658dd62ea5: Pulling fs layer
+65f0e408185e: Pulling fs layer
+6031827f51a8: Pulling fs layer
+54ad585afa4c: Pulling fs layer
+035fd5d4db8b: Pulling fs layer
+ae6453008610: Pulling fs layer
+5d1fd5ac1357: Pulling fs layer
+8213fdc36f44: Pulling fs layer
+44b6e14e8001: Pulling fs layer
+d7c8ae849249: Pulling fs layer
+2e6452deaf7d: Pulling fs layer
+822890bbd1e3: Pulling fs layer
+c6a2963de830: Pulling fs layer
+0e35932b1202: Pulling fs layer
+91a70abafae7: Pulling fs layer
+cac286e587e7: Pulling fs layer
+e992aa39d970: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Layer already being pulled by another client. Waiting.
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+f28bd98a35cb: Verifying Checksum
+f28bd98a35cb: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+281e9b8e128d: Verifying Checksum
+281e9b8e128d: Download complete
+65f0e408185e: Verifying Checksum
+65f0e408185e: Download complete
+54ad585afa4c: Verifying Checksum
+54ad585afa4c: Download complete
+6031827f51a8: Verifying Checksum
+6031827f51a8: Download complete
+035fd5d4db8b: Verifying Checksum
+035fd5d4db8b: Download complete
+ae6453008610: Verifying Checksum
+ae6453008610: Download complete
+5d1fd5ac1357: Verifying Checksum
+5d1fd5ac1357: Download complete
+8213fdc36f44: Verifying Checksum
+8213fdc36f44: Download complete
+d7c8ae849249: Verifying Checksum
+d7c8ae849249: Download complete
+822890bbd1e3: Verifying Checksum
+822890bbd1e3: Download complete
+44b6e14e8001: Verifying Checksum
+44b6e14e8001: Download complete
+c6a2963de830: Verifying Checksum
+c6a2963de830: Download complete
+0e35932b1202: Verifying Checksum
+0e35932b1202: Download complete
+91a70abafae7: Verifying Checksum
+91a70abafae7: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+2e6452deaf7d: Verifying Checksum
+2e6452deaf7d: Download complete
+34e0323ef111: Verifying Checksum
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+e992aa39d970: Verifying Checksum
+e992aa39d970: Download complete
+a7658dd62ea5: Verifying Checksum
+a7658dd62ea5: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+cac286e587e7: Verifying Checksum
+cac286e587e7: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+f28bd98a35cb: Pull complete
+281e9b8e128d: Pull complete
+a7658dd62ea5: Pull complete
+65f0e408185e: Pull complete
+6031827f51a8: Pull complete
+54ad585afa4c: Pull complete
+035fd5d4db8b: Pull complete
+ae6453008610: Pull complete
+5d1fd5ac1357: Pull complete
+8213fdc36f44: Pull complete
+44b6e14e8001: Pull complete
+d7c8ae849249: Pull complete
+2e6452deaf7d: Pull complete
+822890bbd1e3: Pull complete
+c6a2963de830: Pull complete
+0e35932b1202: Pull complete
+91a70abafae7: Pull complete
+cac286e587e7: Pull complete
+e992aa39d970: Pull complete
+34e0323ef111: Pull complete
+34e0323ef111: Already exists
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  25.84
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 52.68.197.112 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        8 weeks ago         698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+a0c90ffff594        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+34e0323ef111: Buffering to Disk
+34e0323ef111: Image successfully pushed
+34e0323ef111: Image already exists
+e992aa39d970: Buffering to Disk
+e992aa39d970: Image successfully pushed
+cac286e587e7: Buffering to Disk
+cac286e587e7: Image successfully pushed
+91a70abafae7: Buffering to Disk
+91a70abafae7: Image successfully pushed
+0e35932b1202: Image already exists
+c6a2963de830: Image already exists
+822890bbd1e3: Buffering to Disk
+822890bbd1e3: Image successfully pushed
+2e6452deaf7d: Buffering to Disk
+2e6452deaf7d: Image successfully pushed
+d7c8ae849249: Buffering to Disk
+d7c8ae849249: Image successfully pushed
+44b6e14e8001: Buffering to Disk
+44b6e14e8001: Image successfully pushed
+8213fdc36f44: Buffering to Disk
+8213fdc36f44: Image successfully pushed
+5d1fd5ac1357: Buffering to Disk
+5d1fd5ac1357: Image successfully pushed
+ae6453008610: Buffering to Disk
+ae6453008610: Image successfully pushed
+035fd5d4db8b: Buffering to Disk
+035fd5d4db8b: Image successfully pushed
+54ad585afa4c: Buffering to Disk
+54ad585afa4c: Image successfully pushed
+6031827f51a8: Buffering to Disk
+6031827f51a8: Image successfully pushed
+65f0e408185e: Buffering to Disk
+65f0e408185e: Image successfully pushed
+a7658dd62ea5: Buffering to Disk
+a7658dd62ea5: Image successfully pushed
+281e9b8e128d: Image already exists
+f28bd98a35cb: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+
+real  112.70
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+latest: Pulling from 136.187.101.80:5000/jenkins-slave
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+f28bd98a35cb: Pulling fs layer
+281e9b8e128d: Pulling fs layer
+a7658dd62ea5: Pulling fs layer
+65f0e408185e: Pulling fs layer
+6031827f51a8: Pulling fs layer
+54ad585afa4c: Pulling fs layer
+035fd5d4db8b: Pulling fs layer
+ae6453008610: Pulling fs layer
+5d1fd5ac1357: Pulling fs layer
+8213fdc36f44: Pulling fs layer
+44b6e14e8001: Pulling fs layer
+d7c8ae849249: Pulling fs layer
+2e6452deaf7d: Pulling fs layer
+822890bbd1e3: Pulling fs layer
+c6a2963de830: Pulling fs layer
+0e35932b1202: Pulling fs layer
+91a70abafae7: Pulling fs layer
+cac286e587e7: Pulling fs layer
+e992aa39d970: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Layer already being pulled by another client. Waiting.
+0e35932b1202: Verifying Checksum
+0e35932b1202: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+f28bd98a35cb: Verifying Checksum
+f28bd98a35cb: Download complete
+281e9b8e128d: Verifying Checksum
+281e9b8e128d: Download complete
+65f0e408185e: Verifying Checksum
+65f0e408185e: Download complete
+035fd5d4db8b: Verifying Checksum
+035fd5d4db8b: Download complete
+ae6453008610: Verifying Checksum
+ae6453008610: Download complete
+5d1fd5ac1357: Verifying Checksum
+5d1fd5ac1357: Download complete
+44b6e14e8001: Verifying Checksum
+44b6e14e8001: Download complete
+822890bbd1e3: Verifying Checksum
+822890bbd1e3: Download complete
+d7c8ae849249: Verifying Checksum
+d7c8ae849249: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+54ad585afa4c: Verifying Checksum
+54ad585afa4c: Download complete
+8213fdc36f44: Verifying Checksum
+8213fdc36f44: Download complete
+6031827f51a8: Verifying Checksum
+6031827f51a8: Download complete
+c6a2963de830: Verifying Checksum
+c6a2963de830: Download complete
+91a70abafae7: Verifying Checksum
+91a70abafae7: Download complete
+2e6452deaf7d: Verifying Checksum
+2e6452deaf7d: Download complete
+34e0323ef111: Verifying Checksum
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+a7658dd62ea5: Verifying Checksum
+a7658dd62ea5: Download complete
+e992aa39d970: Verifying Checksum
+e992aa39d970: Download complete
+cac286e587e7: Verifying Checksum
+cac286e587e7: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+f28bd98a35cb: Pull complete
+281e9b8e128d: Pull complete
+a7658dd62ea5: Pull complete
+65f0e408185e: Pull complete
+6031827f51a8: Pull complete
+54ad585afa4c: Pull complete
+035fd5d4db8b: Pull complete
+ae6453008610: Pull complete
+5d1fd5ac1357: Pull complete
+8213fdc36f44: Pull complete
+44b6e14e8001: Pull complete
+d7c8ae849249: Pull complete
+2e6452deaf7d: Pull complete
+822890bbd1e3: Pull complete
+c6a2963de830: Pull complete
+0e35932b1202: Pull complete
+91a70abafae7: Pull complete
+cac286e587e7: Pull complete
+e992aa39d970: Pull complete
+34e0323ef111: Pull complete
+34e0323ef111: Already exists
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  25.70
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 52.68.197.112 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.2 MB
+kiwenlau/jenkins-slave              latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+d7c012a8bfd3        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+34e0323ef111: Buffering to Disk
+34e0323ef111: Image successfully pushed
+34e0323ef111: Image already exists
+e992aa39d970: Buffering to Disk
+e992aa39d970: Image successfully pushed
+cac286e587e7: Buffering to Disk
+cac286e587e7: Image successfully pushed
+91a70abafae7: Buffering to Disk
+91a70abafae7: Image successfully pushed
+0e35932b1202: Image already exists
+c6a2963de830: Image already exists
+822890bbd1e3: Buffering to Disk
+822890bbd1e3: Image successfully pushed
+2e6452deaf7d: Buffering to Disk
+2e6452deaf7d: Image successfully pushed
+d7c8ae849249: Buffering to Disk
+d7c8ae849249: Image successfully pushed
+44b6e14e8001: Buffering to Disk
+44b6e14e8001: Image successfully pushed
+8213fdc36f44: Buffering to Disk
+8213fdc36f44: Image successfully pushed
+5d1fd5ac1357: Buffering to Disk
+5d1fd5ac1357: Image successfully pushed
+ae6453008610: Buffering to Disk
+ae6453008610: Image successfully pushed
+035fd5d4db8b: Buffering to Disk
+035fd5d4db8b: Image successfully pushed
+54ad585afa4c: Buffering to Disk
+54ad585afa4c: Image successfully pushed
+6031827f51a8: Buffering to Disk
+6031827f51a8: Image successfully pushed
+65f0e408185e: Buffering to Disk
+65f0e408185e: Image successfully pushed
+a7658dd62ea5: Buffering to Disk
+a7658dd62ea5: Image successfully pushed
+281e9b8e128d: Image already exists
+f28bd98a35cb: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:7fd1f2604f1706448b166a6c293a013ed1c13a6e162b40cf861e8128b98d3c49
+
+real  113.32
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+latest: Pulling from 136.187.101.80:5000/jenkins-slave
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+f28bd98a35cb: Pulling fs layer
+281e9b8e128d: Pulling fs layer
+a7658dd62ea5: Pulling fs layer
+65f0e408185e: Pulling fs layer
+6031827f51a8: Pulling fs layer
+54ad585afa4c: Pulling fs layer
+035fd5d4db8b: Pulling fs layer
+ae6453008610: Pulling fs layer
+5d1fd5ac1357: Pulling fs layer
+8213fdc36f44: Pulling fs layer
+44b6e14e8001: Pulling fs layer
+d7c8ae849249: Pulling fs layer
+2e6452deaf7d: Pulling fs layer
+822890bbd1e3: Pulling fs layer
+c6a2963de830: Pulling fs layer
+0e35932b1202: Pulling fs layer
+91a70abafae7: Pulling fs layer
+cac286e587e7: Pulling fs layer
+e992aa39d970: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Layer already being pulled by another client. Waiting.
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+f28bd98a35cb: Verifying Checksum
+f28bd98a35cb: Download complete
+65f0e408185e: Verifying Checksum
+65f0e408185e: Download complete
+6031827f51a8: Verifying Checksum
+6031827f51a8: Download complete
+035fd5d4db8b: Verifying Checksum
+035fd5d4db8b: Download complete
+54ad585afa4c: Verifying Checksum
+54ad585afa4c: Download complete
+5d1fd5ac1357: Verifying Checksum
+5d1fd5ac1357: Download complete
+ae6453008610: Verifying Checksum
+ae6453008610: Download complete
+8213fdc36f44: Verifying Checksum
+8213fdc36f44: Download complete
+44b6e14e8001: Verifying Checksum
+44b6e14e8001: Download complete
+d7c8ae849249: Verifying Checksum
+d7c8ae849249: Download complete
+822890bbd1e3: Verifying Checksum
+822890bbd1e3: Download complete
+0e35932b1202: Verifying Checksum
+0e35932b1202: Download complete
+c6a2963de830: Verifying Checksum
+c6a2963de830: Download complete
+91a70abafae7: Verifying Checksum
+91a70abafae7: Download complete
+281e9b8e128d: Verifying Checksum
+281e9b8e128d: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+2e6452deaf7d: Verifying Checksum
+2e6452deaf7d: Download complete
+34e0323ef111: Verifying Checksum
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+a7658dd62ea5: Verifying Checksum
+a7658dd62ea5: Download complete
+e992aa39d970: Verifying Checksum
+e992aa39d970: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+cac286e587e7: Verifying Checksum
+cac286e587e7: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+f28bd98a35cb: Pull complete
+281e9b8e128d: Pull complete
+a7658dd62ea5: Pull complete
+65f0e408185e: Pull complete
+6031827f51a8: Pull complete
+54ad585afa4c: Pull complete
+035fd5d4db8b: Pull complete
+ae6453008610: Pull complete
+5d1fd5ac1357: Pull complete
+8213fdc36f44: Pull complete
+44b6e14e8001: Pull complete
+d7c8ae849249: Pull complete
+2e6452deaf7d: Pull complete
+822890bbd1e3: Pull complete
+c6a2963de830: Pull complete
+0e35932b1202: Pull complete
+91a70abafae7: Pull complete
+cac286e587e7: Pull complete
+e992aa39d970: Pull complete
+34e0323ef111: Pull complete
+34e0323ef111: Already exists
+Digest: sha256:7fd1f2604f1706448b166a6c293a013ed1c13a6e162b40cf861e8128b98d3c49
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  26.11
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 52.68.197.112 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        8 weeks ago         698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+de9bd2d88530        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+34e0323ef111: Buffering to Disk
+34e0323ef111: Image successfully pushed
+34e0323ef111: Image already exists
+e992aa39d970: Buffering to Disk
+e992aa39d970: Image successfully pushed
+cac286e587e7: Buffering to Disk
+cac286e587e7: Image successfully pushed
+91a70abafae7: Buffering to Disk
+91a70abafae7: Image successfully pushed
+0e35932b1202: Image already exists
+c6a2963de830: Image already exists
+822890bbd1e3: Buffering to Disk
+822890bbd1e3: Image successfully pushed
+2e6452deaf7d: Buffering to Disk
+2e6452deaf7d: Image successfully pushed
+d7c8ae849249: Buffering to Disk
+d7c8ae849249: Image successfully pushed
+44b6e14e8001: Buffering to Disk
+44b6e14e8001: Image successfully pushed
+8213fdc36f44: Buffering to Disk
+8213fdc36f44: Image successfully pushed
+5d1fd5ac1357: Buffering to Disk
+5d1fd5ac1357: Image successfully pushed
+ae6453008610: Buffering to Disk
+ae6453008610: Image successfully pushed
+035fd5d4db8b: Buffering to Disk
+035fd5d4db8b: Image successfully pushed
+54ad585afa4c: Buffering to Disk
+54ad585afa4c: Image successfully pushed
+6031827f51a8: Buffering to Disk
+6031827f51a8: Image successfully pushed
+65f0e408185e: Buffering to Disk
+65f0e408185e: Image successfully pushed
+a7658dd62ea5: Buffering to Disk
+a7658dd62ea5: Image successfully pushed
+281e9b8e128d: Image already exists
+f28bd98a35cb: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+
+real  112.11
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+latest: Pulling from 136.187.101.80:5000/jenkins-slave
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+f28bd98a35cb: Pulling fs layer
+281e9b8e128d: Pulling fs layer
+a7658dd62ea5: Pulling fs layer
+65f0e408185e: Pulling fs layer
+6031827f51a8: Pulling fs layer
+54ad585afa4c: Pulling fs layer
+035fd5d4db8b: Pulling fs layer
+ae6453008610: Pulling fs layer
+5d1fd5ac1357: Pulling fs layer
+8213fdc36f44: Pulling fs layer
+44b6e14e8001: Pulling fs layer
+d7c8ae849249: Pulling fs layer
+2e6452deaf7d: Pulling fs layer
+822890bbd1e3: Pulling fs layer
+c6a2963de830: Pulling fs layer
+0e35932b1202: Pulling fs layer
+91a70abafae7: Pulling fs layer
+cac286e587e7: Pulling fs layer
+e992aa39d970: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Layer already being pulled by another client. Waiting.
+65f0e408185e: Verifying Checksum
+65f0e408185e: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+f28bd98a35cb: Verifying Checksum
+f28bd98a35cb: Download complete
+281e9b8e128d: Verifying Checksum
+281e9b8e128d: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+ae6453008610: Verifying Checksum
+ae6453008610: Download complete
+54ad585afa4c: Verifying Checksum
+54ad585afa4c: Download complete
+6031827f51a8: Verifying Checksum
+6031827f51a8: Download complete
+5d1fd5ac1357: Verifying Checksum
+5d1fd5ac1357: Download complete
+8213fdc36f44: Verifying Checksum
+8213fdc36f44: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+822890bbd1e3: Verifying Checksum
+822890bbd1e3: Download complete
+44b6e14e8001: Verifying Checksum
+44b6e14e8001: Download complete
+c6a2963de830: Verifying Checksum
+c6a2963de830: Download complete
+0e35932b1202: Verifying Checksum
+0e35932b1202: Download complete
+91a70abafae7: Verifying Checksum
+91a70abafae7: Download complete
+035fd5d4db8b: Verifying Checksum
+035fd5d4db8b: Download complete
+d7c8ae849249: Verifying Checksum
+d7c8ae849249: Download complete
+2e6452deaf7d: Verifying Checksum
+2e6452deaf7d: Download complete
+34e0323ef111: Verifying Checksum
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+a7658dd62ea5: Verifying Checksum
+a7658dd62ea5: Download complete
+e992aa39d970: Verifying Checksum
+e992aa39d970: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+cac286e587e7: Verifying Checksum
+cac286e587e7: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+f28bd98a35cb: Pull complete
+281e9b8e128d: Pull complete
+a7658dd62ea5: Pull complete
+65f0e408185e: Pull complete
+6031827f51a8: Pull complete
+54ad585afa4c: Pull complete
+035fd5d4db8b: Pull complete
+ae6453008610: Pull complete
+5d1fd5ac1357: Pull complete
+8213fdc36f44: Pull complete
+44b6e14e8001: Pull complete
+d7c8ae849249: Pull complete
+2e6452deaf7d: Pull complete
+822890bbd1e3: Pull complete
+c6a2963de830: Pull complete
+0e35932b1202: Pull complete
+91a70abafae7: Pull complete
+cac286e587e7: Pull complete
+e992aa39d970: Pull complete
+34e0323ef111: Pull complete
+34e0323ef111: Already exists
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  25.47
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 52.68.197.112 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        8 weeks ago         698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+52c50f794cad        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+34e0323ef111: Buffering to Disk
+34e0323ef111: Image successfully pushed
+34e0323ef111: Image already exists
+e992aa39d970: Buffering to Disk
+e992aa39d970: Image successfully pushed
+cac286e587e7: Buffering to Disk
+cac286e587e7: Image successfully pushed
+91a70abafae7: Buffering to Disk
+91a70abafae7: Image successfully pushed
+0e35932b1202: Image already exists
+c6a2963de830: Image already exists
+822890bbd1e3: Buffering to Disk
+822890bbd1e3: Image successfully pushed
+2e6452deaf7d: Buffering to Disk
+2e6452deaf7d: Image successfully pushed
+d7c8ae849249: Buffering to Disk
+d7c8ae849249: Image successfully pushed
+44b6e14e8001: Buffering to Disk
+44b6e14e8001: Image successfully pushed
+8213fdc36f44: Buffering to Disk
+8213fdc36f44: Image successfully pushed
+5d1fd5ac1357: Buffering to Disk
+5d1fd5ac1357: Image successfully pushed
+ae6453008610: Buffering to Disk
+ae6453008610: Image successfully pushed
+035fd5d4db8b: Buffering to Disk
+035fd5d4db8b: Image successfully pushed
+54ad585afa4c: Buffering to Disk
+54ad585afa4c: Image successfully pushed
+6031827f51a8: Buffering to Disk
+6031827f51a8: Image successfully pushed
+65f0e408185e: Buffering to Disk
+65f0e408185e: Image successfully pushed
+a7658dd62ea5: Buffering to Disk
+a7658dd62ea5: Image successfully pushed
+281e9b8e128d: Image already exists
+f28bd98a35cb: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+
+real  114.17
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+latest: Pulling from 136.187.101.80:5000/jenkins-slave
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+f28bd98a35cb: Pulling fs layer
+281e9b8e128d: Pulling fs layer
+a7658dd62ea5: Pulling fs layer
+65f0e408185e: Pulling fs layer
+6031827f51a8: Pulling fs layer
+54ad585afa4c: Pulling fs layer
+035fd5d4db8b: Pulling fs layer
+ae6453008610: Pulling fs layer
+5d1fd5ac1357: Pulling fs layer
+8213fdc36f44: Pulling fs layer
+44b6e14e8001: Pulling fs layer
+d7c8ae849249: Pulling fs layer
+2e6452deaf7d: Pulling fs layer
+822890bbd1e3: Pulling fs layer
+c6a2963de830: Pulling fs layer
+0e35932b1202: Pulling fs layer
+91a70abafae7: Pulling fs layer
+cac286e587e7: Pulling fs layer
+e992aa39d970: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Layer already being pulled by another client. Waiting.
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+281e9b8e128d: Verifying Checksum
+281e9b8e128d: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+65f0e408185e: Verifying Checksum
+65f0e408185e: Download complete
+54ad585afa4c: Verifying Checksum
+54ad585afa4c: Download complete
+ae6453008610: Verifying Checksum
+ae6453008610: Download complete
+035fd5d4db8b: Verifying Checksum
+035fd5d4db8b: Download complete
+8213fdc36f44: Verifying Checksum
+8213fdc36f44: Download complete
+5d1fd5ac1357: Verifying Checksum
+5d1fd5ac1357: Download complete
+44b6e14e8001: Verifying Checksum
+44b6e14e8001: Download complete
+0e35932b1202: Verifying Checksum
+0e35932b1202: Download complete
+822890bbd1e3: Verifying Checksum
+822890bbd1e3: Download complete
+c6a2963de830: Verifying Checksum
+c6a2963de830: Download complete
+91a70abafae7: Verifying Checksum
+91a70abafae7: Download complete
+f28bd98a35cb: Verifying Checksum
+f28bd98a35cb: Download complete
+6031827f51a8: Verifying Checksum
+6031827f51a8: Download complete
+d7c8ae849249: Verifying Checksum
+d7c8ae849249: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+2e6452deaf7d: Verifying Checksum
+2e6452deaf7d: Download complete
+34e0323ef111: Verifying Checksum
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+e992aa39d970: Verifying Checksum
+e992aa39d970: Download complete
+a7658dd62ea5: Verifying Checksum
+a7658dd62ea5: Download complete
+cac286e587e7: Verifying Checksum
+cac286e587e7: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+f28bd98a35cb: Pull complete
+281e9b8e128d: Pull complete
+a7658dd62ea5: Pull complete
+65f0e408185e: Pull complete
+6031827f51a8: Pull complete
+54ad585afa4c: Pull complete
+035fd5d4db8b: Pull complete
+ae6453008610: Pull complete
+5d1fd5ac1357: Pull complete
+8213fdc36f44: Pull complete
+44b6e14e8001: Pull complete
+d7c8ae849249: Pull complete
+2e6452deaf7d: Pull complete
+822890bbd1e3: Pull complete
+c6a2963de830: Pull complete
+0e35932b1202: Pull complete
+91a70abafae7: Pull complete
+cac286e587e7: Pull complete
+e992aa39d970: Pull complete
+34e0323ef111: Pull complete
+34e0323ef111: Already exists
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  27.47
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 52.68.197.112 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        8 weeks ago         698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+ee1678d2f23a        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+34e0323ef111: Buffering to Disk
+34e0323ef111: Image successfully pushed
+34e0323ef111: Image already exists
+e992aa39d970: Buffering to Disk
+e992aa39d970: Image successfully pushed
+cac286e587e7: Buffering to Disk
+cac286e587e7: Image successfully pushed
+91a70abafae7: Buffering to Disk
+91a70abafae7: Image successfully pushed
+0e35932b1202: Image already exists
+c6a2963de830: Image already exists
+822890bbd1e3: Buffering to Disk
+822890bbd1e3: Image successfully pushed
+2e6452deaf7d: Buffering to Disk
+2e6452deaf7d: Image successfully pushed
+d7c8ae849249: Buffering to Disk
+d7c8ae849249: Image successfully pushed
+44b6e14e8001: Buffering to Disk
+44b6e14e8001: Image successfully pushed
+8213fdc36f44: Buffering to Disk
+8213fdc36f44: Image successfully pushed
+5d1fd5ac1357: Buffering to Disk
+5d1fd5ac1357: Image successfully pushed
+ae6453008610: Buffering to Disk
+ae6453008610: Image successfully pushed
+035fd5d4db8b: Buffering to Disk
+035fd5d4db8b: Image successfully pushed
+54ad585afa4c: Buffering to Disk
+54ad585afa4c: Image successfully pushed
+6031827f51a8: Buffering to Disk
+6031827f51a8: Image successfully pushed
+65f0e408185e: Buffering to Disk
+65f0e408185e: Image successfully pushed
+a7658dd62ea5: Buffering to Disk
+a7658dd62ea5: Image successfully pushed
+281e9b8e128d: Image already exists
+f28bd98a35cb: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+
+real  113.95
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+latest: Pulling from 136.187.101.80:5000/jenkins-slave
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+f28bd98a35cb: Pulling fs layer
+281e9b8e128d: Pulling fs layer
+a7658dd62ea5: Pulling fs layer
+65f0e408185e: Pulling fs layer
+6031827f51a8: Pulling fs layer
+54ad585afa4c: Pulling fs layer
+035fd5d4db8b: Pulling fs layer
+ae6453008610: Pulling fs layer
+5d1fd5ac1357: Pulling fs layer
+8213fdc36f44: Pulling fs layer
+44b6e14e8001: Pulling fs layer
+d7c8ae849249: Pulling fs layer
+2e6452deaf7d: Pulling fs layer
+822890bbd1e3: Pulling fs layer
+c6a2963de830: Pulling fs layer
+0e35932b1202: Pulling fs layer
+91a70abafae7: Pulling fs layer
+cac286e587e7: Pulling fs layer
+e992aa39d970: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Layer already being pulled by another client. Waiting.
+8213fdc36f44: Verifying Checksum
+8213fdc36f44: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+281e9b8e128d: Verifying Checksum
+281e9b8e128d: Download complete
+f28bd98a35cb: Verifying Checksum
+f28bd98a35cb: Download complete
+65f0e408185e: Verifying Checksum
+65f0e408185e: Download complete
+6031827f51a8: Verifying Checksum
+6031827f51a8: Download complete
+54ad585afa4c: Verifying Checksum
+54ad585afa4c: Download complete
+ae6453008610: Verifying Checksum
+ae6453008610: Download complete
+035fd5d4db8b: Verifying Checksum
+035fd5d4db8b: Download complete
+5d1fd5ac1357: Verifying Checksum
+5d1fd5ac1357: Download complete
+44b6e14e8001: Verifying Checksum
+44b6e14e8001: Download complete
+c6a2963de830: Verifying Checksum
+c6a2963de830: Download complete
+d7c8ae849249: Verifying Checksum
+d7c8ae849249: Download complete
+822890bbd1e3: Verifying Checksum
+822890bbd1e3: Download complete
+0e35932b1202: Verifying Checksum
+0e35932b1202: Download complete
+91a70abafae7: Verifying Checksum
+91a70abafae7: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+2e6452deaf7d: Verifying Checksum
+2e6452deaf7d: Download complete
+34e0323ef111: Verifying Checksum
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+e992aa39d970: Verifying Checksum
+e992aa39d970: Download complete
+a7658dd62ea5: Verifying Checksum
+a7658dd62ea5: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+cac286e587e7: Verifying Checksum
+cac286e587e7: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+f28bd98a35cb: Pull complete
+281e9b8e128d: Pull complete
+a7658dd62ea5: Pull complete
+65f0e408185e: Pull complete
+6031827f51a8: Pull complete
+54ad585afa4c: Pull complete
+035fd5d4db8b: Pull complete
+ae6453008610: Pull complete
+5d1fd5ac1357: Pull complete
+8213fdc36f44: Pull complete
+44b6e14e8001: Pull complete
+d7c8ae849249: Pull complete
+2e6452deaf7d: Pull complete
+822890bbd1e3: Pull complete
+c6a2963de830: Pull complete
+0e35932b1202: Pull complete
+91a70abafae7: Pull complete
+cac286e587e7: Pull complete
+e992aa39d970: Pull complete
+34e0323ef111: Pull complete
+34e0323ef111: Already exists
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  25.74
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 52.68.197.112 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        8 weeks ago         698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+a313221b6b88        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+34e0323ef111: Buffering to Disk
+34e0323ef111: Image successfully pushed
+34e0323ef111: Image already exists
+e992aa39d970: Buffering to Disk
+e992aa39d970: Image successfully pushed
+cac286e587e7: Buffering to Disk
+cac286e587e7: Image successfully pushed
+91a70abafae7: Buffering to Disk
+91a70abafae7: Image successfully pushed
+0e35932b1202: Image already exists
+c6a2963de830: Image already exists
+822890bbd1e3: Buffering to Disk
+822890bbd1e3: Image successfully pushed
+2e6452deaf7d: Buffering to Disk
+2e6452deaf7d: Image successfully pushed
+d7c8ae849249: Buffering to Disk
+d7c8ae849249: Image successfully pushed
+44b6e14e8001: Buffering to Disk
+44b6e14e8001: Image successfully pushed
+8213fdc36f44: Buffering to Disk
+8213fdc36f44: Image successfully pushed
+5d1fd5ac1357: Buffering to Disk
+5d1fd5ac1357: Image successfully pushed
+ae6453008610: Buffering to Disk
+ae6453008610: Image successfully pushed
+035fd5d4db8b: Buffering to Disk
+035fd5d4db8b: Image successfully pushed
+54ad585afa4c: Buffering to Disk
+54ad585afa4c: Image successfully pushed
+6031827f51a8: Buffering to Disk
+6031827f51a8: Image successfully pushed
+65f0e408185e: Buffering to Disk
+65f0e408185e: Image successfully pushed
+a7658dd62ea5: Buffering to Disk
+a7658dd62ea5: Image successfully pushed
+281e9b8e128d: Image already exists
+f28bd98a35cb: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:8daaf9b2cb5bebcc422061e0a1545eb6633cd61a33ca37842e12014b0800ef83
+
+real  111.87
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+latest: Pulling from 136.187.101.80:5000/jenkins-slave
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+f28bd98a35cb: Pulling fs layer
+281e9b8e128d: Pulling fs layer
+a7658dd62ea5: Pulling fs layer
+65f0e408185e: Pulling fs layer
+6031827f51a8: Pulling fs layer
+54ad585afa4c: Pulling fs layer
+035fd5d4db8b: Pulling fs layer
+ae6453008610: Pulling fs layer
+5d1fd5ac1357: Pulling fs layer
+8213fdc36f44: Pulling fs layer
+44b6e14e8001: Pulling fs layer
+d7c8ae849249: Pulling fs layer
+2e6452deaf7d: Pulling fs layer
+822890bbd1e3: Pulling fs layer
+c6a2963de830: Pulling fs layer
+0e35932b1202: Pulling fs layer
+91a70abafae7: Pulling fs layer
+cac286e587e7: Pulling fs layer
+e992aa39d970: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Layer already being pulled by another client. Waiting.
+822890bbd1e3: Verifying Checksum
+822890bbd1e3: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+281e9b8e128d: Verifying Checksum
+281e9b8e128d: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+f28bd98a35cb: Verifying Checksum
+f28bd98a35cb: Download complete
+65f0e408185e: Verifying Checksum
+65f0e408185e: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+c6a2963de830: Verifying Checksum
+c6a2963de830: Download complete
+91a70abafae7: Verifying Checksum
+91a70abafae7: Download complete
+0e35932b1202: Verifying Checksum
+0e35932b1202: Download complete
+54ad585afa4c: Verifying Checksum
+54ad585afa4c: Download complete
+6031827f51a8: Verifying Checksum
+6031827f51a8: Download complete
+035fd5d4db8b: Verifying Checksum
+035fd5d4db8b: Download complete
+5d1fd5ac1357: Verifying Checksum
+5d1fd5ac1357: Download complete
+44b6e14e8001: Verifying Checksum
+44b6e14e8001: Download complete
+ae6453008610: Verifying Checksum
+ae6453008610: Download complete
+8213fdc36f44: Verifying Checksum
+8213fdc36f44: Download complete
+d7c8ae849249: Verifying Checksum
+d7c8ae849249: Download complete
+2e6452deaf7d: Verifying Checksum
+2e6452deaf7d: Download complete
+34e0323ef111: Verifying Checksum
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+e992aa39d970: Verifying Checksum
+e992aa39d970: Download complete
+a7658dd62ea5: Verifying Checksum
+a7658dd62ea5: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+cac286e587e7: Verifying Checksum
+cac286e587e7: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+f28bd98a35cb: Pull complete
+281e9b8e128d: Pull complete
+a7658dd62ea5: Pull complete
+65f0e408185e: Pull complete
+6031827f51a8: Pull complete
+54ad585afa4c: Pull complete
+035fd5d4db8b: Pull complete
+ae6453008610: Pull complete
+5d1fd5ac1357: Pull complete
+8213fdc36f44: Pull complete
+44b6e14e8001: Pull complete
+d7c8ae849249: Pull complete
+2e6452deaf7d: Pull complete
+822890bbd1e3: Pull complete
+c6a2963de830: Pull complete
+0e35932b1202: Pull complete
+91a70abafae7: Pull complete
+cac286e587e7: Pull complete
+e992aa39d970: Pull complete
+34e0323ef111: Pull complete
+34e0323ef111: Already exists
+Digest: sha256:8daaf9b2cb5bebcc422061e0a1545eb6633cd61a33ca37842e12014b0800ef83
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  26.13
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 52.68.197.112 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        8 weeks ago         698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+f1045c94b7ce        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+34e0323ef111: Buffering to Disk
+34e0323ef111: Image successfully pushed
+34e0323ef111: Image already exists
+e992aa39d970: Buffering to Disk
+e992aa39d970: Image successfully pushed
+cac286e587e7: Buffering to Disk
+cac286e587e7: Image successfully pushed
+91a70abafae7: Buffering to Disk
+91a70abafae7: Image successfully pushed
+0e35932b1202: Image already exists
+c6a2963de830: Image already exists
+822890bbd1e3: Buffering to Disk
+822890bbd1e3: Image successfully pushed
+2e6452deaf7d: Buffering to Disk
+2e6452deaf7d: Image successfully pushed
+d7c8ae849249: Buffering to Disk
+d7c8ae849249: Image successfully pushed
+44b6e14e8001: Buffering to Disk
+44b6e14e8001: Image successfully pushed
+8213fdc36f44: Buffering to Disk
+8213fdc36f44: Image successfully pushed
+5d1fd5ac1357: Buffering to Disk
+5d1fd5ac1357: Image successfully pushed
+ae6453008610: Buffering to Disk
+ae6453008610: Image successfully pushed
+035fd5d4db8b: Buffering to Disk
+035fd5d4db8b: Image successfully pushed
+54ad585afa4c: Buffering to Disk
+54ad585afa4c: Image successfully pushed
+6031827f51a8: Buffering to Disk
+6031827f51a8: Image successfully pushed
+65f0e408185e: Buffering to Disk
+65f0e408185e: Image successfully pushed
+a7658dd62ea5: Buffering to Disk
+a7658dd62ea5: Image successfully pushed
+281e9b8e128d: Image already exists
+f28bd98a35cb: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+
+real  112.73
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+latest: Pulling from 136.187.101.80:5000/jenkins-slave
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+f28bd98a35cb: Pulling fs layer
+281e9b8e128d: Pulling fs layer
+a7658dd62ea5: Pulling fs layer
+65f0e408185e: Pulling fs layer
+6031827f51a8: Pulling fs layer
+54ad585afa4c: Pulling fs layer
+035fd5d4db8b: Pulling fs layer
+ae6453008610: Pulling fs layer
+5d1fd5ac1357: Pulling fs layer
+8213fdc36f44: Pulling fs layer
+44b6e14e8001: Pulling fs layer
+d7c8ae849249: Pulling fs layer
+2e6452deaf7d: Pulling fs layer
+822890bbd1e3: Pulling fs layer
+c6a2963de830: Pulling fs layer
+0e35932b1202: Pulling fs layer
+91a70abafae7: Pulling fs layer
+cac286e587e7: Pulling fs layer
+e992aa39d970: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Layer already being pulled by another client. Waiting.
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+281e9b8e128d: Verifying Checksum
+281e9b8e128d: Download complete
+65f0e408185e: Verifying Checksum
+65f0e408185e: Download complete
+54ad585afa4c: Verifying Checksum
+54ad585afa4c: Download complete
+ae6453008610: Verifying Checksum
+ae6453008610: Download complete
+5d1fd5ac1357: Verifying Checksum
+5d1fd5ac1357: Download complete
+44b6e14e8001: Verifying Checksum
+44b6e14e8001: Download complete
+f28bd98a35cb: Verifying Checksum
+f28bd98a35cb: Download complete
+6031827f51a8: Verifying Checksum
+6031827f51a8: Download complete
+d7c8ae849249: Verifying Checksum
+d7c8ae849249: Download complete
+822890bbd1e3: Verifying Checksum
+822890bbd1e3: Download complete
+c6a2963de830: Verifying Checksum
+c6a2963de830: Download complete
+0e35932b1202: Verifying Checksum
+0e35932b1202: Download complete
+91a70abafae7: Verifying Checksum
+91a70abafae7: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+035fd5d4db8b: Verifying Checksum
+035fd5d4db8b: Download complete
+8213fdc36f44: Verifying Checksum
+8213fdc36f44: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+2e6452deaf7d: Verifying Checksum
+2e6452deaf7d: Download complete
+34e0323ef111: Verifying Checksum
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+e992aa39d970: Verifying Checksum
+e992aa39d970: Download complete
+a7658dd62ea5: Verifying Checksum
+a7658dd62ea5: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+cac286e587e7: Verifying Checksum
+cac286e587e7: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+f28bd98a35cb: Pull complete
+281e9b8e128d: Pull complete
+a7658dd62ea5: Pull complete
+65f0e408185e: Pull complete
+6031827f51a8: Pull complete
+54ad585afa4c: Pull complete
+035fd5d4db8b: Pull complete
+ae6453008610: Pull complete
+5d1fd5ac1357: Pull complete
+8213fdc36f44: Pull complete
+44b6e14e8001: Pull complete
+d7c8ae849249: Pull complete
+2e6452deaf7d: Pull complete
+822890bbd1e3: Pull complete
+c6a2963de830: Pull complete
+0e35932b1202: Pull complete
+91a70abafae7: Pull complete
+cac286e587e7: Pull complete
+e992aa39d970: Pull complete
+34e0323ef111: Pull complete
+34e0323ef111: Already exists
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  25.92
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 52.68.197.112 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        8 weeks ago         698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+c0ec300554b3        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+34e0323ef111: Buffering to Disk
+34e0323ef111: Image successfully pushed
+34e0323ef111: Image already exists
+e992aa39d970: Buffering to Disk
+e992aa39d970: Image successfully pushed
+cac286e587e7: Buffering to Disk
+cac286e587e7: Image successfully pushed
+91a70abafae7: Buffering to Disk
+91a70abafae7: Image successfully pushed
+0e35932b1202: Image already exists
+c6a2963de830: Image already exists
+822890bbd1e3: Buffering to Disk
+822890bbd1e3: Image successfully pushed
+2e6452deaf7d: Buffering to Disk
+2e6452deaf7d: Image successfully pushed
+d7c8ae849249: Buffering to Disk
+d7c8ae849249: Image successfully pushed
+44b6e14e8001: Buffering to Disk
+44b6e14e8001: Image successfully pushed
+8213fdc36f44: Buffering to Disk
+8213fdc36f44: Image successfully pushed
+5d1fd5ac1357: Buffering to Disk
+5d1fd5ac1357: Image successfully pushed
+ae6453008610: Buffering to Disk
+ae6453008610: Image successfully pushed
+035fd5d4db8b: Buffering to Disk
+035fd5d4db8b: Image successfully pushed
+54ad585afa4c: Buffering to Disk
+54ad585afa4c: Image successfully pushed
+6031827f51a8: Buffering to Disk
+6031827f51a8: Image successfully pushed
+65f0e408185e: Buffering to Disk
+65f0e408185e: Image successfully pushed
+a7658dd62ea5: Buffering to Disk
+a7658dd62ea5: Image successfully pushed
+281e9b8e128d: Image already exists
+f28bd98a35cb: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+
+real  110.51
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+latest: Pulling from 136.187.101.80:5000/jenkins-slave
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+f28bd98a35cb: Pulling fs layer
+281e9b8e128d: Pulling fs layer
+a7658dd62ea5: Pulling fs layer
+65f0e408185e: Pulling fs layer
+6031827f51a8: Pulling fs layer
+54ad585afa4c: Pulling fs layer
+035fd5d4db8b: Pulling fs layer
+ae6453008610: Pulling fs layer
+5d1fd5ac1357: Pulling fs layer
+8213fdc36f44: Pulling fs layer
+44b6e14e8001: Pulling fs layer
+d7c8ae849249: Pulling fs layer
+2e6452deaf7d: Pulling fs layer
+822890bbd1e3: Pulling fs layer
+c6a2963de830: Pulling fs layer
+0e35932b1202: Pulling fs layer
+91a70abafae7: Pulling fs layer
+cac286e587e7: Pulling fs layer
+e992aa39d970: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Layer already being pulled by another client. Waiting.
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+f28bd98a35cb: Verifying Checksum
+f28bd98a35cb: Download complete
+65f0e408185e: Verifying Checksum
+65f0e408185e: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+54ad585afa4c: Verifying Checksum
+54ad585afa4c: Download complete
+6031827f51a8: Verifying Checksum
+6031827f51a8: Download complete
+035fd5d4db8b: Verifying Checksum
+035fd5d4db8b: Download complete
+281e9b8e128d: Verifying Checksum
+281e9b8e128d: Download complete
+ae6453008610: Verifying Checksum
+ae6453008610: Download complete
+8213fdc36f44: Verifying Checksum
+8213fdc36f44: Download complete
+5d1fd5ac1357: Verifying Checksum
+5d1fd5ac1357: Download complete
+44b6e14e8001: Verifying Checksum
+44b6e14e8001: Download complete
+d7c8ae849249: Verifying Checksum
+d7c8ae849249: Download complete
+822890bbd1e3: Verifying Checksum
+822890bbd1e3: Download complete
+0e35932b1202: Verifying Checksum
+0e35932b1202: Download complete
+91a70abafae7: Verifying Checksum
+91a70abafae7: Download complete
+c6a2963de830: Verifying Checksum
+c6a2963de830: Download complete
+2e6452deaf7d: Verifying Checksum
+2e6452deaf7d: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+34e0323ef111: Verifying Checksum
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+a7658dd62ea5: Verifying Checksum
+a7658dd62ea5: Download complete
+e992aa39d970: Verifying Checksum
+e992aa39d970: Download complete
+cac286e587e7: Verifying Checksum
+cac286e587e7: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+f28bd98a35cb: Pull complete
+281e9b8e128d: Pull complete
+a7658dd62ea5: Pull complete
+65f0e408185e: Pull complete
+6031827f51a8: Pull complete
+54ad585afa4c: Pull complete
+035fd5d4db8b: Pull complete
+ae6453008610: Pull complete
+5d1fd5ac1357: Pull complete
+8213fdc36f44: Pull complete
+44b6e14e8001: Pull complete
+d7c8ae849249: Pull complete
+2e6452deaf7d: Pull complete
+822890bbd1e3: Pull complete
+c6a2963de830: Pull complete
+0e35932b1202: Pull complete
+91a70abafae7: Pull complete
+cac286e587e7: Pull complete
+e992aa39d970: Pull complete
+34e0323ef111: Pull complete
+34e0323ef111: Already exists
+Digest: sha256:6f99fbd1c998e72ecee9e20cec2da3558deb734326b59a6decefc3cb1ee9351a
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  25.48
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 52.68.197.112 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        8 weeks ago         698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+b055bb498e65        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+34e0323ef111: Buffering to Disk
+34e0323ef111: Image successfully pushed
+34e0323ef111: Image already exists
+e992aa39d970: Buffering to Disk
+e992aa39d970: Image successfully pushed
+cac286e587e7: Buffering to Disk
+cac286e587e7: Image successfully pushed
+91a70abafae7: Buffering to Disk
+91a70abafae7: Image successfully pushed
+0e35932b1202: Image already exists
+c6a2963de830: Image already exists
+822890bbd1e3: Buffering to Disk
+822890bbd1e3: Image successfully pushed
+2e6452deaf7d: Buffering to Disk
+2e6452deaf7d: Image successfully pushed
+d7c8ae849249: Buffering to Disk
+d7c8ae849249: Image successfully pushed
+44b6e14e8001: Buffering to Disk
+44b6e14e8001: Image successfully pushed
+8213fdc36f44: Buffering to Disk
+8213fdc36f44: Image successfully pushed
+5d1fd5ac1357: Buffering to Disk
+5d1fd5ac1357: Image successfully pushed
+ae6453008610: Buffering to Disk
+ae6453008610: Image successfully pushed
+035fd5d4db8b: Buffering to Disk
+035fd5d4db8b: Image successfully pushed
+54ad585afa4c: Buffering to Disk
+54ad585afa4c: Image successfully pushed
+6031827f51a8: Buffering to Disk
+6031827f51a8: Image successfully pushed
+65f0e408185e: Buffering to Disk
+65f0e408185e: Image successfully pushed
+a7658dd62ea5: Buffering to Disk
+a7658dd62ea5: Image successfully pushed
+281e9b8e128d: Image already exists
+f28bd98a35cb: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:0c74bda82b56d3dbaf1145b1c674160bf7404953670403addff79027ab55dc3d
+
+real  113.62
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+latest: Pulling from 136.187.101.80:5000/jenkins-slave
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+f28bd98a35cb: Pulling fs layer
+281e9b8e128d: Pulling fs layer
+a7658dd62ea5: Pulling fs layer
+65f0e408185e: Pulling fs layer
+6031827f51a8: Pulling fs layer
+54ad585afa4c: Pulling fs layer
+035fd5d4db8b: Pulling fs layer
+ae6453008610: Pulling fs layer
+5d1fd5ac1357: Pulling fs layer
+8213fdc36f44: Pulling fs layer
+44b6e14e8001: Pulling fs layer
+d7c8ae849249: Pulling fs layer
+2e6452deaf7d: Pulling fs layer
+822890bbd1e3: Pulling fs layer
+c6a2963de830: Pulling fs layer
+0e35932b1202: Pulling fs layer
+91a70abafae7: Pulling fs layer
+cac286e587e7: Pulling fs layer
+e992aa39d970: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Pulling fs layer
+34e0323ef111: Layer already being pulled by another client. Waiting.
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+281e9b8e128d: Verifying Checksum
+281e9b8e128d: Download complete
+f28bd98a35cb: Verifying Checksum
+f28bd98a35cb: Download complete
+65f0e408185e: Verifying Checksum
+65f0e408185e: Download complete
+6031827f51a8: Verifying Checksum
+6031827f51a8: Download complete
+54ad585afa4c: Verifying Checksum
+54ad585afa4c: Download complete
+035fd5d4db8b: Verifying Checksum
+035fd5d4db8b: Download complete
+ae6453008610: Verifying Checksum
+ae6453008610: Download complete
+5d1fd5ac1357: Verifying Checksum
+5d1fd5ac1357: Download complete
+8213fdc36f44: Verifying Checksum
+8213fdc36f44: Download complete
+d7c8ae849249: Verifying Checksum
+d7c8ae849249: Download complete
+44b6e14e8001: Verifying Checksum
+44b6e14e8001: Download complete
+822890bbd1e3: Verifying Checksum
+822890bbd1e3: Download complete
+c6a2963de830: Verifying Checksum
+c6a2963de830: Download complete
+0e35932b1202: Verifying Checksum
+0e35932b1202: Download complete
+91a70abafae7: Verifying Checksum
+91a70abafae7: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+2e6452deaf7d: Verifying Checksum
+2e6452deaf7d: Download complete
+34e0323ef111: Verifying Checksum
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+a7658dd62ea5: Verifying Checksum
+a7658dd62ea5: Download complete
+e992aa39d970: Verifying Checksum
+e992aa39d970: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+cac286e587e7: Verifying Checksum
+cac286e587e7: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+f28bd98a35cb: Pull complete
+281e9b8e128d: Pull complete
+a7658dd62ea5: Pull complete
+65f0e408185e: Pull complete
+6031827f51a8: Pull complete
+54ad585afa4c: Pull complete
+035fd5d4db8b: Pull complete
+ae6453008610: Pull complete
+5d1fd5ac1357: Pull complete
+8213fdc36f44: Pull complete
+44b6e14e8001: Pull complete
+d7c8ae849249: Pull complete
+2e6452deaf7d: Pull complete
+822890bbd1e3: Pull complete
+c6a2963de830: Pull complete
+0e35932b1202: Pull complete
+91a70abafae7: Pull complete
+cac286e587e7: Pull complete
+e992aa39d970: Pull complete
+34e0323ef111: Pull complete
+34e0323ef111: Already exists
+Digest: sha256:0c74bda82b56d3dbaf1145b1c674160bf7404953670403addff79027ab55dc3d
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  25.40
+
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        8 weeks ago         698.1 MB
+
+ssh kai@52.68.197.112 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@52.68.197.112 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+end date: Tue Jul 28 03:34:23 JST 2015
+
+
