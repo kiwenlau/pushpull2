@@ -9,14 +9,14 @@ imagelist=(axle-base sultans-bin haproxy cb-shell dnsutils node-metrics containe
 # 29 flat images
 #imagelist=(axle-base sultans-bin haproxy cb-shell http-tap etcd shell drupal textract aws-cli-wetty python-venv jruby glassfish jenkins ubuntu-python-falcon baywatch-client exhibitor ruby-mri ubuntu-perl-mojo swagger-editor baywatch gocd-server drill buildpack-runner ubuntu-perl-dev devmachine boatyard gcc hadoop-docker)
 
-#imagelist=(axle-base gocd-server)
+#imagelist=(axle-base sultans-bin)
 
 rm -rf output logs > /dev/null
 mkdir output
 
 for imagename in ${imagelist[*]};
 do
-	echo -e "\n./run.sh kai 136.187.101.71 $imagename"
+	echo -e "\n./run.sh kai 54.225.249.141 $imagename"
 		file="output/$imagename.txt"
-	./run.sh kai 52.68.197.112 $imagename 2>&1 | tee $file
+	./run.sh kai 54.225.249.141 $imagename 2>&1 | tee $file
 done
