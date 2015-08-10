@@ -1,0 +1,1087 @@
+
+pullpush benchmark: transfer gcc image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Mon Aug 10 11:22:46 JST 2015
+
+sudo docker images
+kiwenlau/gcc                    flat                4b87fb3b763a        6 weeks ago         1.22 GB
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+sudo docker images
+kiwenlau/gcc                    flat                4b87fb3b763a        6 weeks ago         1.22 GB
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+70a66cba4e64        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+b063030b23b8: Buffering to Disk
+b063030b23b8: Image successfully pushed
+b063030b23b8: Image already exists
+f3c63362be4d: Buffering to Disk
+f3c63362be4d: Image successfully pushed
+0b193172e277: Buffering to Disk
+0b193172e277: Image successfully pushed
+0f76e21b13f4: Buffering to Disk
+0f76e21b13f4: Image successfully pushed
+64dcaa4f1350: Buffering to Disk
+64dcaa4f1350: Image successfully pushed
+5f3d03981149: Image already exists
+d6f4448a9e30: Buffering to Disk
+d6f4448a9e30: Image successfully pushed
+c1df00e49ae2: Buffering to Disk
+c1df00e49ae2: Image successfully pushed
+e643220f0daf: Buffering to Disk
+e643220f0daf: Image successfully pushed
+b3d362b23ec1: Image already exists
+21e4345e9035: Buffering to Disk
+21e4345e9035: Image successfully pushed
+Digest: sha256:e9cded102e55b6b53349c1db2f266db133274585fcf2378cb9392e2df278c1ff
+
+real  152.14
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+latest: Pulling from 136.187.101.80:5000/gcc
+21e4345e9035: Pulling fs layer
+b3d362b23ec1: Pulling fs layer
+e643220f0daf: Pulling fs layer
+c1df00e49ae2: Pulling fs layer
+d6f4448a9e30: Pulling fs layer
+5f3d03981149: Pulling fs layer
+64dcaa4f1350: Pulling fs layer
+0f76e21b13f4: Pulling fs layer
+0b193172e277: Pulling fs layer
+f3c63362be4d: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Layer already being pulled by another client. Waiting.
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
+5f3d03981149: Verifying Checksum
+5f3d03981149: Download complete
+b063030b23b8: Verifying Checksum
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+f3c63362be4d: Verifying Checksum
+f3c63362be4d: Download complete
+0f76e21b13f4: Verifying Checksum
+0f76e21b13f4: Download complete
+64dcaa4f1350: Verifying Checksum
+64dcaa4f1350: Download complete
+e643220f0daf: Verifying Checksum
+e643220f0daf: Download complete
+c1df00e49ae2: Verifying Checksum
+c1df00e49ae2: Download complete
+21e4345e9035: Verifying Checksum
+21e4345e9035: Download complete
+21e4345e9035: Pull complete
+b3d362b23ec1: Pull complete
+e643220f0daf: Pull complete
+c1df00e49ae2: Pull complete
+d6f4448a9e30: Verifying Checksum
+d6f4448a9e30: Download complete
+0b193172e277: Verifying Checksum
+0b193172e277: Download complete
+d6f4448a9e30: Pull complete
+5f3d03981149: Pull complete
+64dcaa4f1350: Pull complete
+0f76e21b13f4: Pull complete
+0b193172e277: Pull complete
+f3c63362be4d: Pull complete
+b063030b23b8: Pull complete
+b063030b23b8: Already exists
+Digest: sha256:e9cded102e55b6b53349c1db2f266db133274585fcf2378cb9392e2df278c1ff
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  50.55
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+d32dee2480bb        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+b063030b23b8: Buffering to Disk
+b063030b23b8: Image successfully pushed
+b063030b23b8: Image already exists
+f3c63362be4d: Buffering to Disk
+f3c63362be4d: Image successfully pushed
+0b193172e277: Buffering to Disk
+0b193172e277: Image successfully pushed
+0f76e21b13f4: Buffering to Disk
+0f76e21b13f4: Image successfully pushed
+64dcaa4f1350: Buffering to Disk
+64dcaa4f1350: Image successfully pushed
+5f3d03981149: Image already exists
+d6f4448a9e30: Buffering to Disk
+d6f4448a9e30: Image successfully pushed
+c1df00e49ae2: Buffering to Disk
+c1df00e49ae2: Image successfully pushed
+e643220f0daf: Buffering to Disk
+e643220f0daf: Image successfully pushed
+b3d362b23ec1: Image already exists
+21e4345e9035: Buffering to Disk
+21e4345e9035: Image successfully pushed
+Digest: sha256:e9cded102e55b6b53349c1db2f266db133274585fcf2378cb9392e2df278c1ff
+
+real  146.19
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+latest: Pulling from 136.187.101.80:5000/gcc
+21e4345e9035: Pulling fs layer
+b3d362b23ec1: Pulling fs layer
+e643220f0daf: Pulling fs layer
+c1df00e49ae2: Pulling fs layer
+d6f4448a9e30: Pulling fs layer
+5f3d03981149: Pulling fs layer
+64dcaa4f1350: Pulling fs layer
+0f76e21b13f4: Pulling fs layer
+0b193172e277: Pulling fs layer
+f3c63362be4d: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Layer already being pulled by another client. Waiting.
+b063030b23b8: Verifying Checksum
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+0f76e21b13f4: Verifying Checksum
+0f76e21b13f4: Download complete
+5f3d03981149: Verifying Checksum
+5f3d03981149: Download complete
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
+f3c63362be4d: Verifying Checksum
+f3c63362be4d: Download complete
+64dcaa4f1350: Verifying Checksum
+64dcaa4f1350: Download complete
+e643220f0daf: Verifying Checksum
+e643220f0daf: Download complete
+21e4345e9035: Verifying Checksum
+21e4345e9035: Download complete
+c1df00e49ae2: Verifying Checksum
+c1df00e49ae2: Download complete
+21e4345e9035: Pull complete
+b3d362b23ec1: Pull complete
+e643220f0daf: Pull complete
+c1df00e49ae2: Pull complete
+d6f4448a9e30: Verifying Checksum
+d6f4448a9e30: Download complete
+0b193172e277: Verifying Checksum
+0b193172e277: Download complete
+d6f4448a9e30: Pull complete
+5f3d03981149: Pull complete
+64dcaa4f1350: Pull complete
+0f76e21b13f4: Pull complete
+0b193172e277: Pull complete
+f3c63362be4d: Pull complete
+b063030b23b8: Pull complete
+b063030b23b8: Already exists
+Digest: sha256:e9cded102e55b6b53349c1db2f266db133274585fcf2378cb9392e2df278c1ff
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  49.52
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+930b181aef7c        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+b063030b23b8: Buffering to Disk
+b063030b23b8: Image successfully pushed
+b063030b23b8: Image already exists
+f3c63362be4d: Buffering to Disk
+f3c63362be4d: Image successfully pushed
+0b193172e277: Buffering to Disk
+0b193172e277: Image successfully pushed
+0f76e21b13f4: Buffering to Disk
+0f76e21b13f4: Image successfully pushed
+64dcaa4f1350: Buffering to Disk
+64dcaa4f1350: Image successfully pushed
+5f3d03981149: Image already exists
+d6f4448a9e30: Buffering to Disk
+d6f4448a9e30: Image successfully pushed
+c1df00e49ae2: Buffering to Disk
+c1df00e49ae2: Image successfully pushed
+e643220f0daf: Buffering to Disk
+e643220f0daf: Image successfully pushed
+b3d362b23ec1: Image already exists
+21e4345e9035: Buffering to Disk
+21e4345e9035: Image successfully pushed
+Digest: sha256:94539a17928bb623a52fab9d4898f2f43d0effa995cf1cc5b9e9d58f4db0dd20
+
+real  151.70
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+latest: Pulling from 136.187.101.80:5000/gcc
+21e4345e9035: Pulling fs layer
+b3d362b23ec1: Pulling fs layer
+e643220f0daf: Pulling fs layer
+c1df00e49ae2: Pulling fs layer
+d6f4448a9e30: Pulling fs layer
+5f3d03981149: Pulling fs layer
+64dcaa4f1350: Pulling fs layer
+0f76e21b13f4: Pulling fs layer
+0b193172e277: Pulling fs layer
+f3c63362be4d: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Layer already being pulled by another client. Waiting.
+0f76e21b13f4: Verifying Checksum
+0f76e21b13f4: Download complete
+f3c63362be4d: Verifying Checksum
+f3c63362be4d: Download complete
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
+b063030b23b8: Verifying Checksum
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+5f3d03981149: Verifying Checksum
+5f3d03981149: Download complete
+64dcaa4f1350: Verifying Checksum
+64dcaa4f1350: Download complete
+e643220f0daf: Verifying Checksum
+e643220f0daf: Download complete
+c1df00e49ae2: Verifying Checksum
+c1df00e49ae2: Download complete
+21e4345e9035: Verifying Checksum
+21e4345e9035: Download complete
+21e4345e9035: Pull complete
+b3d362b23ec1: Pull complete
+e643220f0daf: Pull complete
+c1df00e49ae2: Pull complete
+d6f4448a9e30: Verifying Checksum
+d6f4448a9e30: Download complete
+0b193172e277: Verifying Checksum
+0b193172e277: Download complete
+d6f4448a9e30: Pull complete
+5f3d03981149: Pull complete
+64dcaa4f1350: Pull complete
+0f76e21b13f4: Pull complete
+0b193172e277: Pull complete
+f3c63362be4d: Pull complete
+b063030b23b8: Pull complete
+b063030b23b8: Already exists
+Digest: sha256:94539a17928bb623a52fab9d4898f2f43d0effa995cf1cc5b9e9d58f4db0dd20
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  49.58
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+8f2cc9e50a5c        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+b063030b23b8: Buffering to Disk
+b063030b23b8: Image successfully pushed
+b063030b23b8: Image already exists
+f3c63362be4d: Buffering to Disk
+f3c63362be4d: Image successfully pushed
+0b193172e277: Buffering to Disk
+0b193172e277: Image successfully pushed
+0f76e21b13f4: Buffering to Disk
+0f76e21b13f4: Image successfully pushed
+64dcaa4f1350: Buffering to Disk
+64dcaa4f1350: Image successfully pushed
+5f3d03981149: Image already exists
+d6f4448a9e30: Buffering to Disk
+d6f4448a9e30: Image successfully pushed
+c1df00e49ae2: Buffering to Disk
+c1df00e49ae2: Image successfully pushed
+e643220f0daf: Buffering to Disk
+e643220f0daf: Image successfully pushed
+b3d362b23ec1: Image already exists
+21e4345e9035: Buffering to Disk
+21e4345e9035: Image successfully pushed
+Digest: sha256:2d394729f761781506926c950384ee967df915690a4ae327872f6dc4a22f3fb3
+
+real  149.68
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+latest: Pulling from 136.187.101.80:5000/gcc
+21e4345e9035: Pulling fs layer
+b3d362b23ec1: Pulling fs layer
+e643220f0daf: Pulling fs layer
+c1df00e49ae2: Pulling fs layer
+d6f4448a9e30: Pulling fs layer
+5f3d03981149: Pulling fs layer
+64dcaa4f1350: Pulling fs layer
+0f76e21b13f4: Pulling fs layer
+0b193172e277: Pulling fs layer
+f3c63362be4d: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Layer already being pulled by another client. Waiting.
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
+f3c63362be4d: Verifying Checksum
+f3c63362be4d: Download complete
+0f76e21b13f4: Verifying Checksum
+0f76e21b13f4: Download complete
+b063030b23b8: Verifying Checksum
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+5f3d03981149: Verifying Checksum
+5f3d03981149: Download complete
+64dcaa4f1350: Verifying Checksum
+64dcaa4f1350: Download complete
+e643220f0daf: Verifying Checksum
+e643220f0daf: Download complete
+c1df00e49ae2: Verifying Checksum
+c1df00e49ae2: Download complete
+21e4345e9035: Verifying Checksum
+21e4345e9035: Download complete
+21e4345e9035: Pull complete
+b3d362b23ec1: Pull complete
+e643220f0daf: Pull complete
+c1df00e49ae2: Pull complete
+d6f4448a9e30: Verifying Checksum
+d6f4448a9e30: Download complete
+0b193172e277: Verifying Checksum
+0b193172e277: Download complete
+d6f4448a9e30: Pull complete
+5f3d03981149: Pull complete
+64dcaa4f1350: Pull complete
+0f76e21b13f4: Pull complete
+0b193172e277: Pull complete
+f3c63362be4d: Pull complete
+b063030b23b8: Pull complete
+b063030b23b8: Already exists
+Digest: sha256:2d394729f761781506926c950384ee967df915690a4ae327872f6dc4a22f3fb3
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  50.87
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+e3bdab4dac7f        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+b063030b23b8: Buffering to Disk
+b063030b23b8: Image successfully pushed
+b063030b23b8: Image already exists
+f3c63362be4d: Buffering to Disk
+f3c63362be4d: Image successfully pushed
+0b193172e277: Buffering to Disk
+0b193172e277: Image successfully pushed
+0f76e21b13f4: Buffering to Disk
+0f76e21b13f4: Image successfully pushed
+64dcaa4f1350: Buffering to Disk
+64dcaa4f1350: Image successfully pushed
+5f3d03981149: Image already exists
+d6f4448a9e30: Buffering to Disk
+d6f4448a9e30: Image successfully pushed
+c1df00e49ae2: Buffering to Disk
+c1df00e49ae2: Image successfully pushed
+e643220f0daf: Buffering to Disk
+e643220f0daf: Image successfully pushed
+b3d362b23ec1: Image already exists
+21e4345e9035: Buffering to Disk
+21e4345e9035: Image successfully pushed
+Digest: sha256:640d9f63d6b1320bb663ef16f9c5a1341789c691bcc83e6ff64381379f546dad
+
+real  148.36
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+latest: Pulling from 136.187.101.80:5000/gcc
+21e4345e9035: Pulling fs layer
+b3d362b23ec1: Pulling fs layer
+e643220f0daf: Pulling fs layer
+c1df00e49ae2: Pulling fs layer
+d6f4448a9e30: Pulling fs layer
+5f3d03981149: Pulling fs layer
+64dcaa4f1350: Pulling fs layer
+0f76e21b13f4: Pulling fs layer
+0b193172e277: Pulling fs layer
+f3c63362be4d: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Layer already being pulled by another client. Waiting.
+0f76e21b13f4: Verifying Checksum
+0f76e21b13f4: Download complete
+5f3d03981149: Verifying Checksum
+5f3d03981149: Download complete
+b063030b23b8: Verifying Checksum
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
+f3c63362be4d: Verifying Checksum
+f3c63362be4d: Download complete
+64dcaa4f1350: Verifying Checksum
+64dcaa4f1350: Download complete
+e643220f0daf: Verifying Checksum
+e643220f0daf: Download complete
+c1df00e49ae2: Verifying Checksum
+c1df00e49ae2: Download complete
+21e4345e9035: Verifying Checksum
+21e4345e9035: Download complete
+21e4345e9035: Pull complete
+b3d362b23ec1: Pull complete
+e643220f0daf: Pull complete
+c1df00e49ae2: Pull complete
+d6f4448a9e30: Verifying Checksum
+d6f4448a9e30: Download complete
+0b193172e277: Verifying Checksum
+0b193172e277: Download complete
+d6f4448a9e30: Pull complete
+5f3d03981149: Pull complete
+64dcaa4f1350: Pull complete
+0f76e21b13f4: Pull complete
+0b193172e277: Pull complete
+f3c63362be4d: Pull complete
+b063030b23b8: Pull complete
+b063030b23b8: Already exists
+Digest: sha256:640d9f63d6b1320bb663ef16f9c5a1341789c691bcc83e6ff64381379f546dad
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  49.36
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+cc1f7268aab8        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+b063030b23b8: Buffering to Disk
+b063030b23b8: Image successfully pushed
+b063030b23b8: Image already exists
+f3c63362be4d: Buffering to Disk
+f3c63362be4d: Image successfully pushed
+0b193172e277: Buffering to Disk
+0b193172e277: Image successfully pushed
+0f76e21b13f4: Buffering to Disk
+0f76e21b13f4: Image successfully pushed
+64dcaa4f1350: Buffering to Disk
+64dcaa4f1350: Image successfully pushed
+5f3d03981149: Image already exists
+d6f4448a9e30: Buffering to Disk
+d6f4448a9e30: Image successfully pushed
+c1df00e49ae2: Buffering to Disk
+c1df00e49ae2: Image successfully pushed
+e643220f0daf: Buffering to Disk
+e643220f0daf: Image successfully pushed
+b3d362b23ec1: Image already exists
+21e4345e9035: Buffering to Disk
+21e4345e9035: Image successfully pushed
+Digest: sha256:e9cded102e55b6b53349c1db2f266db133274585fcf2378cb9392e2df278c1ff
+
+real  152.43
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+latest: Pulling from 136.187.101.80:5000/gcc
+21e4345e9035: Pulling fs layer
+b3d362b23ec1: Pulling fs layer
+e643220f0daf: Pulling fs layer
+c1df00e49ae2: Pulling fs layer
+d6f4448a9e30: Pulling fs layer
+5f3d03981149: Pulling fs layer
+64dcaa4f1350: Pulling fs layer
+0f76e21b13f4: Pulling fs layer
+0b193172e277: Pulling fs layer
+f3c63362be4d: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Layer already being pulled by another client. Waiting.
+f3c63362be4d: Verifying Checksum
+f3c63362be4d: Download complete
+5f3d03981149: Verifying Checksum
+5f3d03981149: Download complete
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
+0f76e21b13f4: Verifying Checksum
+0f76e21b13f4: Download complete
+b063030b23b8: Verifying Checksum
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+64dcaa4f1350: Verifying Checksum
+64dcaa4f1350: Download complete
+e643220f0daf: Verifying Checksum
+e643220f0daf: Download complete
+21e4345e9035: Verifying Checksum
+21e4345e9035: Download complete
+c1df00e49ae2: Verifying Checksum
+c1df00e49ae2: Download complete
+21e4345e9035: Pull complete
+b3d362b23ec1: Pull complete
+e643220f0daf: Pull complete
+c1df00e49ae2: Pull complete
+d6f4448a9e30: Verifying Checksum
+d6f4448a9e30: Download complete
+0b193172e277: Verifying Checksum
+0b193172e277: Download complete
+d6f4448a9e30: Pull complete
+5f3d03981149: Pull complete
+64dcaa4f1350: Pull complete
+0f76e21b13f4: Pull complete
+0b193172e277: Pull complete
+f3c63362be4d: Pull complete
+b063030b23b8: Pull complete
+b063030b23b8: Already exists
+Digest: sha256:e9cded102e55b6b53349c1db2f266db133274585fcf2378cb9392e2df278c1ff
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  50.73
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+2602b43d8969        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+b063030b23b8: Buffering to Disk
+b063030b23b8: Image successfully pushed
+b063030b23b8: Image already exists
+f3c63362be4d: Buffering to Disk
+f3c63362be4d: Image successfully pushed
+0b193172e277: Buffering to Disk
+0b193172e277: Image successfully pushed
+0f76e21b13f4: Buffering to Disk
+0f76e21b13f4: Image successfully pushed
+64dcaa4f1350: Buffering to Disk
+64dcaa4f1350: Image successfully pushed
+5f3d03981149: Image already exists
+d6f4448a9e30: Buffering to Disk
+d6f4448a9e30: Image successfully pushed
+c1df00e49ae2: Buffering to Disk
+c1df00e49ae2: Image successfully pushed
+e643220f0daf: Buffering to Disk
+e643220f0daf: Image successfully pushed
+b3d362b23ec1: Image already exists
+21e4345e9035: Buffering to Disk
+21e4345e9035: Image successfully pushed
+Digest: sha256:e9cded102e55b6b53349c1db2f266db133274585fcf2378cb9392e2df278c1ff
+
+real  156.43
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+latest: Pulling from 136.187.101.80:5000/gcc
+21e4345e9035: Pulling fs layer
+b3d362b23ec1: Pulling fs layer
+e643220f0daf: Pulling fs layer
+c1df00e49ae2: Pulling fs layer
+d6f4448a9e30: Pulling fs layer
+5f3d03981149: Pulling fs layer
+64dcaa4f1350: Pulling fs layer
+0f76e21b13f4: Pulling fs layer
+0b193172e277: Pulling fs layer
+f3c63362be4d: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Layer already being pulled by another client. Waiting.
+5f3d03981149: Verifying Checksum
+5f3d03981149: Download complete
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
+f3c63362be4d: Verifying Checksum
+f3c63362be4d: Download complete
+b063030b23b8: Verifying Checksum
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+0f76e21b13f4: Verifying Checksum
+0f76e21b13f4: Download complete
+64dcaa4f1350: Verifying Checksum
+64dcaa4f1350: Download complete
+e643220f0daf: Verifying Checksum
+e643220f0daf: Download complete
+21e4345e9035: Verifying Checksum
+21e4345e9035: Download complete
+c1df00e49ae2: Verifying Checksum
+c1df00e49ae2: Download complete
+21e4345e9035: Pull complete
+b3d362b23ec1: Pull complete
+e643220f0daf: Pull complete
+c1df00e49ae2: Pull complete
+d6f4448a9e30: Verifying Checksum
+d6f4448a9e30: Download complete
+0b193172e277: Verifying Checksum
+0b193172e277: Download complete
+d6f4448a9e30: Pull complete
+5f3d03981149: Pull complete
+64dcaa4f1350: Pull complete
+0f76e21b13f4: Pull complete
+0b193172e277: Pull complete
+f3c63362be4d: Pull complete
+b063030b23b8: Pull complete
+b063030b23b8: Already exists
+Digest: sha256:e9cded102e55b6b53349c1db2f266db133274585fcf2378cb9392e2df278c1ff
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  50.14
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+720515a5a942        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+b063030b23b8: Buffering to Disk
+b063030b23b8: Image successfully pushed
+b063030b23b8: Image already exists
+f3c63362be4d: Buffering to Disk
+f3c63362be4d: Image successfully pushed
+0b193172e277: Buffering to Disk
+0b193172e277: Image successfully pushed
+0f76e21b13f4: Buffering to Disk
+0f76e21b13f4: Image successfully pushed
+64dcaa4f1350: Buffering to Disk
+64dcaa4f1350: Image successfully pushed
+5f3d03981149: Image already exists
+d6f4448a9e30: Buffering to Disk
+d6f4448a9e30: Image successfully pushed
+c1df00e49ae2: Buffering to Disk
+c1df00e49ae2: Image successfully pushed
+e643220f0daf: Buffering to Disk
+e643220f0daf: Image successfully pushed
+b3d362b23ec1: Image already exists
+21e4345e9035: Buffering to Disk
+21e4345e9035: Image successfully pushed
+Digest: sha256:e9cded102e55b6b53349c1db2f266db133274585fcf2378cb9392e2df278c1ff
+
+real  157.09
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+latest: Pulling from 136.187.101.80:5000/gcc
+21e4345e9035: Pulling fs layer
+b3d362b23ec1: Pulling fs layer
+e643220f0daf: Pulling fs layer
+c1df00e49ae2: Pulling fs layer
+d6f4448a9e30: Pulling fs layer
+5f3d03981149: Pulling fs layer
+64dcaa4f1350: Pulling fs layer
+0f76e21b13f4: Pulling fs layer
+0b193172e277: Pulling fs layer
+f3c63362be4d: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Layer already being pulled by another client. Waiting.
+f3c63362be4d: Verifying Checksum
+f3c63362be4d: Download complete
+5f3d03981149: Verifying Checksum
+5f3d03981149: Download complete
+b063030b23b8: Verifying Checksum
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+0f76e21b13f4: Verifying Checksum
+0f76e21b13f4: Download complete
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
+64dcaa4f1350: Verifying Checksum
+64dcaa4f1350: Download complete
+e643220f0daf: Verifying Checksum
+e643220f0daf: Download complete
+c1df00e49ae2: Verifying Checksum
+c1df00e49ae2: Download complete
+21e4345e9035: Verifying Checksum
+21e4345e9035: Download complete
+21e4345e9035: Pull complete
+b3d362b23ec1: Pull complete
+e643220f0daf: Pull complete
+c1df00e49ae2: Pull complete
+d6f4448a9e30: Verifying Checksum
+d6f4448a9e30: Download complete
+0b193172e277: Verifying Checksum
+0b193172e277: Download complete
+d6f4448a9e30: Pull complete
+5f3d03981149: Pull complete
+64dcaa4f1350: Pull complete
+0f76e21b13f4: Pull complete
+0b193172e277: Pull complete
+f3c63362be4d: Pull complete
+b063030b23b8: Pull complete
+b063030b23b8: Already exists
+Digest: sha256:e9cded102e55b6b53349c1db2f266db133274585fcf2378cb9392e2df278c1ff
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  51.63
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+16473de48594        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+b063030b23b8: Buffering to Disk
+b063030b23b8: Image successfully pushed
+b063030b23b8: Image already exists
+f3c63362be4d: Buffering to Disk
+f3c63362be4d: Image successfully pushed
+0b193172e277: Buffering to Disk
+0b193172e277: Image successfully pushed
+0f76e21b13f4: Buffering to Disk
+0f76e21b13f4: Image successfully pushed
+64dcaa4f1350: Buffering to Disk
+64dcaa4f1350: Image successfully pushed
+5f3d03981149: Image already exists
+d6f4448a9e30: Buffering to Disk
+d6f4448a9e30: Image successfully pushed
+c1df00e49ae2: Buffering to Disk
+c1df00e49ae2: Image successfully pushed
+e643220f0daf: Buffering to Disk
+e643220f0daf: Image successfully pushed
+b3d362b23ec1: Image already exists
+21e4345e9035: Buffering to Disk
+21e4345e9035: Image successfully pushed
+Digest: sha256:7743c50d549e8da91cdc121003f33a3bc6bb8ce9637d3bfb9cde68b9d8968439
+
+real  160.21
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+latest: Pulling from 136.187.101.80:5000/gcc
+21e4345e9035: Pulling fs layer
+b3d362b23ec1: Pulling fs layer
+e643220f0daf: Pulling fs layer
+c1df00e49ae2: Pulling fs layer
+d6f4448a9e30: Pulling fs layer
+5f3d03981149: Pulling fs layer
+64dcaa4f1350: Pulling fs layer
+0f76e21b13f4: Pulling fs layer
+0b193172e277: Pulling fs layer
+f3c63362be4d: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Layer already being pulled by another client. Waiting.
+f3c63362be4d: Verifying Checksum
+f3c63362be4d: Download complete
+0f76e21b13f4: Verifying Checksum
+0f76e21b13f4: Download complete
+5f3d03981149: Verifying Checksum
+5f3d03981149: Download complete
+b063030b23b8: Verifying Checksum
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
+64dcaa4f1350: Verifying Checksum
+64dcaa4f1350: Download complete
+e643220f0daf: Verifying Checksum
+e643220f0daf: Download complete
+c1df00e49ae2: Verifying Checksum
+c1df00e49ae2: Download complete
+21e4345e9035: Verifying Checksum
+21e4345e9035: Download complete
+21e4345e9035: Pull complete
+b3d362b23ec1: Pull complete
+e643220f0daf: Pull complete
+c1df00e49ae2: Pull complete
+d6f4448a9e30: Verifying Checksum
+d6f4448a9e30: Download complete
+0b193172e277: Verifying Checksum
+0b193172e277: Download complete
+d6f4448a9e30: Pull complete
+5f3d03981149: Pull complete
+64dcaa4f1350: Pull complete
+0f76e21b13f4: Pull complete
+0b193172e277: Pull complete
+f3c63362be4d: Pull complete
+b063030b23b8: Pull complete
+b063030b23b8: Already exists
+Digest: sha256:7743c50d549e8da91cdc121003f33a3bc6bb8ce9637d3bfb9cde68b9d8968439
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  49.74
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+3d41bb8836b6        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+b063030b23b8: Buffering to Disk
+b063030b23b8: Image successfully pushed
+b063030b23b8: Image already exists
+f3c63362be4d: Buffering to Disk
+f3c63362be4d: Image successfully pushed
+0b193172e277: Buffering to Disk
+0b193172e277: Image successfully pushed
+0f76e21b13f4: Buffering to Disk
+0f76e21b13f4: Image successfully pushed
+64dcaa4f1350: Buffering to Disk
+64dcaa4f1350: Image successfully pushed
+5f3d03981149: Image already exists
+d6f4448a9e30: Buffering to Disk
+d6f4448a9e30: Image successfully pushed
+c1df00e49ae2: Buffering to Disk
+c1df00e49ae2: Image successfully pushed
+e643220f0daf: Buffering to Disk
+e643220f0daf: Image successfully pushed
+b3d362b23ec1: Image already exists
+21e4345e9035: Buffering to Disk
+21e4345e9035: Image successfully pushed
+Digest: sha256:16de7268bc4fb9e108b4ae82e09664ae557aaa8f0eb7321f816862342088a6d1
+
+real  157.41
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+latest: Pulling from 136.187.101.80:5000/gcc
+21e4345e9035: Pulling fs layer
+b3d362b23ec1: Pulling fs layer
+e643220f0daf: Pulling fs layer
+c1df00e49ae2: Pulling fs layer
+d6f4448a9e30: Pulling fs layer
+5f3d03981149: Pulling fs layer
+64dcaa4f1350: Pulling fs layer
+0f76e21b13f4: Pulling fs layer
+0b193172e277: Pulling fs layer
+f3c63362be4d: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Pulling fs layer
+b063030b23b8: Layer already being pulled by another client. Waiting.
+b3d362b23ec1: Verifying Checksum
+b3d362b23ec1: Download complete
+f3c63362be4d: Verifying Checksum
+f3c63362be4d: Download complete
+5f3d03981149: Verifying Checksum
+5f3d03981149: Download complete
+0f76e21b13f4: Verifying Checksum
+0f76e21b13f4: Download complete
+b063030b23b8: Verifying Checksum
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+64dcaa4f1350: Verifying Checksum
+64dcaa4f1350: Download complete
+e643220f0daf: Verifying Checksum
+e643220f0daf: Download complete
+c1df00e49ae2: Verifying Checksum
+c1df00e49ae2: Download complete
+21e4345e9035: Verifying Checksum
+21e4345e9035: Download complete
+21e4345e9035: Pull complete
+b3d362b23ec1: Pull complete
+e643220f0daf: Pull complete
+c1df00e49ae2: Pull complete
+d6f4448a9e30: Verifying Checksum
+d6f4448a9e30: Download complete
+0b193172e277: Verifying Checksum
+0b193172e277: Download complete
+d6f4448a9e30: Pull complete
+5f3d03981149: Pull complete
+64dcaa4f1350: Pull complete
+0f76e21b13f4: Pull complete
+0b193172e277: Pull complete
+f3c63362be4d: Pull complete
+b063030b23b8: Pull complete
+b063030b23b8: Already exists
+Digest: sha256:16de7268bc4fb9e108b4ae82e09664ae557aaa8f0eb7321f816862342088a6d1
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  48.73
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+end date: Mon Aug 10 12:00:05 JST 2015
+
+

@@ -1,0 +1,1275 @@
+
+pullpush benchmark: transfer buildstep image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Mon Aug 10 12:00:05 JST 2015
+
+sudo docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+sudo docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+48aaf0c329e0        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+e20705b4ea1b: Buffering to Disk
+e20705b4ea1b: Image successfully pushed
+e20705b4ea1b: Image already exists
+a483b7fbba73: Image already exists
+395647a621ca: Image already exists
+9fe50df1107a: Image already exists
+903feea8cd22: Image already exists
+e956f022f6a0: Buffering to Disk
+e956f022f6a0: Image successfully pushed
+6de8149b4972: Image already exists
+326119951bea: Buffering to Disk
+326119951bea: Image successfully pushed
+8ebdd2ed84cb: Buffering to Disk
+8ebdd2ed84cb: Image successfully pushed
+9367176b2225: Buffering to Disk
+9367176b2225: Image successfully pushed
+bbe66ecb4d53: Buffering to Disk
+bbe66ecb4d53: Image successfully pushed
+d51ac450e2e2: Buffering to Disk
+d51ac450e2e2: Image successfully pushed
+d7334489ac75: Image already exists
+5ca11046a9c8: Buffering to Disk
+5ca11046a9c8: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:4379306e220738972fc3ee092aea6e60bd4e5a2e6b06b8f97d96aee953c5307d
+
+real  177.91
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+latest: Pulling from 136.187.101.80:5000/buildstep
+511136ea3c5a: Pulling fs layer
+5ca11046a9c8: Pulling fs layer
+d7334489ac75: Pulling fs layer
+d51ac450e2e2: Pulling fs layer
+bbe66ecb4d53: Pulling fs layer
+9367176b2225: Pulling fs layer
+8ebdd2ed84cb: Pulling fs layer
+326119951bea: Pulling fs layer
+6de8149b4972: Pulling fs layer
+e956f022f6a0: Pulling fs layer
+903feea8cd22: Pulling fs layer
+9fe50df1107a: Pulling fs layer
+395647a621ca: Pulling fs layer
+a483b7fbba73: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Layer already being pulled by another client. Waiting.
+e20705b4ea1b: Verifying Checksum
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+a483b7fbba73: Verifying Checksum
+a483b7fbba73: Download complete
+395647a621ca: Verifying Checksum
+395647a621ca: Download complete
+d7334489ac75: Verifying Checksum
+d7334489ac75: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+e956f022f6a0: Verifying Checksum
+e956f022f6a0: Download complete
+d51ac450e2e2: Verifying Checksum
+d51ac450e2e2: Download complete
+9fe50df1107a: Verifying Checksum
+9fe50df1107a: Download complete
+511136ea3c5a: Pull complete
+326119951bea: Verifying Checksum
+326119951bea: Download complete
+6de8149b4972: Verifying Checksum
+6de8149b4972: Download complete
+903feea8cd22: Verifying Checksum
+903feea8cd22: Download complete
+9367176b2225: Verifying Checksum
+9367176b2225: Download complete
+8ebdd2ed84cb: Verifying Checksum
+8ebdd2ed84cb: Download complete
+5ca11046a9c8: Verifying Checksum
+5ca11046a9c8: Download complete
+5ca11046a9c8: Pull complete
+d7334489ac75: Pull complete
+d51ac450e2e2: Pull complete
+bbe66ecb4d53: Verifying Checksum
+bbe66ecb4d53: Download complete
+bbe66ecb4d53: Pull complete
+9367176b2225: Pull complete
+8ebdd2ed84cb: Pull complete
+326119951bea: Pull complete
+6de8149b4972: Pull complete
+e956f022f6a0: Pull complete
+903feea8cd22: Pull complete
+9fe50df1107a: Pull complete
+395647a621ca: Pull complete
+a483b7fbba73: Pull complete
+e20705b4ea1b: Pull complete
+e20705b4ea1b: Already exists
+Digest: sha256:4379306e220738972fc3ee092aea6e60bd4e5a2e6b06b8f97d96aee953c5307d
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  92.79
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+7b550b194f6b        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+e20705b4ea1b: Buffering to Disk
+e20705b4ea1b: Image successfully pushed
+e20705b4ea1b: Image already exists
+a483b7fbba73: Image already exists
+395647a621ca: Image already exists
+9fe50df1107a: Image already exists
+903feea8cd22: Image already exists
+e956f022f6a0: Buffering to Disk
+e956f022f6a0: Image successfully pushed
+6de8149b4972: Image already exists
+326119951bea: Buffering to Disk
+326119951bea: Image successfully pushed
+8ebdd2ed84cb: Buffering to Disk
+8ebdd2ed84cb: Image successfully pushed
+9367176b2225: Buffering to Disk
+9367176b2225: Image successfully pushed
+bbe66ecb4d53: Buffering to Disk
+bbe66ecb4d53: Image successfully pushed
+d51ac450e2e2: Buffering to Disk
+d51ac450e2e2: Image successfully pushed
+d7334489ac75: Image already exists
+5ca11046a9c8: Buffering to Disk
+5ca11046a9c8: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:dc10ebe2c2e71efe93b847d2037a12a6e3f121f0ed6a5b0657120824cd2cfd1a
+
+real  182.38
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+latest: Pulling from 136.187.101.80:5000/buildstep
+511136ea3c5a: Pulling fs layer
+5ca11046a9c8: Pulling fs layer
+d7334489ac75: Pulling fs layer
+d51ac450e2e2: Pulling fs layer
+bbe66ecb4d53: Pulling fs layer
+9367176b2225: Pulling fs layer
+8ebdd2ed84cb: Pulling fs layer
+326119951bea: Pulling fs layer
+6de8149b4972: Pulling fs layer
+e956f022f6a0: Pulling fs layer
+903feea8cd22: Pulling fs layer
+9fe50df1107a: Pulling fs layer
+395647a621ca: Pulling fs layer
+a483b7fbba73: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Layer already being pulled by another client. Waiting.
+a483b7fbba73: Verifying Checksum
+a483b7fbba73: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+e956f022f6a0: Verifying Checksum
+e956f022f6a0: Download complete
+d51ac450e2e2: Verifying Checksum
+d51ac450e2e2: Download complete
+903feea8cd22: Verifying Checksum
+903feea8cd22: Download complete
+326119951bea: Verifying Checksum
+326119951bea: Download complete
+d7334489ac75: Verifying Checksum
+d7334489ac75: Download complete
+511136ea3c5a: Pull complete
+9fe50df1107a: Verifying Checksum
+9fe50df1107a: Download complete
+6de8149b4972: Verifying Checksum
+6de8149b4972: Download complete
+e20705b4ea1b: Verifying Checksum
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+395647a621ca: Verifying Checksum
+395647a621ca: Download complete
+9367176b2225: Verifying Checksum
+9367176b2225: Download complete
+8ebdd2ed84cb: Verifying Checksum
+8ebdd2ed84cb: Download complete
+5ca11046a9c8: Verifying Checksum
+5ca11046a9c8: Download complete
+5ca11046a9c8: Pull complete
+d7334489ac75: Pull complete
+d51ac450e2e2: Pull complete
+bbe66ecb4d53: Verifying Checksum
+bbe66ecb4d53: Download complete
+bbe66ecb4d53: Pull complete
+9367176b2225: Pull complete
+8ebdd2ed84cb: Pull complete
+326119951bea: Pull complete
+6de8149b4972: Pull complete
+e956f022f6a0: Pull complete
+903feea8cd22: Pull complete
+9fe50df1107a: Pull complete
+395647a621ca: Pull complete
+a483b7fbba73: Pull complete
+e20705b4ea1b: Pull complete
+e20705b4ea1b: Already exists
+Digest: sha256:dc10ebe2c2e71efe93b847d2037a12a6e3f121f0ed6a5b0657120824cd2cfd1a
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  102.80
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+8bce483e9b5d        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+e20705b4ea1b: Buffering to Disk
+e20705b4ea1b: Image successfully pushed
+e20705b4ea1b: Image already exists
+a483b7fbba73: Image already exists
+395647a621ca: Image already exists
+9fe50df1107a: Image already exists
+903feea8cd22: Image already exists
+e956f022f6a0: Buffering to Disk
+e956f022f6a0: Image successfully pushed
+6de8149b4972: Image already exists
+326119951bea: Buffering to Disk
+326119951bea: Image successfully pushed
+8ebdd2ed84cb: Buffering to Disk
+8ebdd2ed84cb: Image successfully pushed
+9367176b2225: Buffering to Disk
+9367176b2225: Image successfully pushed
+bbe66ecb4d53: Buffering to Disk
+bbe66ecb4d53: Image successfully pushed
+d51ac450e2e2: Buffering to Disk
+d51ac450e2e2: Image successfully pushed
+d7334489ac75: Image already exists
+5ca11046a9c8: Buffering to Disk
+5ca11046a9c8: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:264ed19d4ff2366be151cf13991c145ede2ff4c772c81f66e6ac63cdb139039f
+
+real  186.72
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+latest: Pulling from 136.187.101.80:5000/buildstep
+511136ea3c5a: Pulling fs layer
+5ca11046a9c8: Pulling fs layer
+d7334489ac75: Pulling fs layer
+d51ac450e2e2: Pulling fs layer
+bbe66ecb4d53: Pulling fs layer
+9367176b2225: Pulling fs layer
+8ebdd2ed84cb: Pulling fs layer
+326119951bea: Pulling fs layer
+6de8149b4972: Pulling fs layer
+e956f022f6a0: Pulling fs layer
+903feea8cd22: Pulling fs layer
+9fe50df1107a: Pulling fs layer
+395647a621ca: Pulling fs layer
+a483b7fbba73: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d51ac450e2e2: Verifying Checksum
+d51ac450e2e2: Download complete
+326119951bea: Verifying Checksum
+326119951bea: Download complete
+511136ea3c5a: Pull complete
+903feea8cd22: Verifying Checksum
+903feea8cd22: Download complete
+6de8149b4972: Verifying Checksum
+6de8149b4972: Download complete
+a483b7fbba73: Verifying Checksum
+a483b7fbba73: Download complete
+e956f022f6a0: Verifying Checksum
+e956f022f6a0: Download complete
+d7334489ac75: Verifying Checksum
+d7334489ac75: Download complete
+e20705b4ea1b: Verifying Checksum
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+9fe50df1107a: Verifying Checksum
+9fe50df1107a: Download complete
+395647a621ca: Verifying Checksum
+395647a621ca: Download complete
+9367176b2225: Verifying Checksum
+9367176b2225: Download complete
+8ebdd2ed84cb: Verifying Checksum
+8ebdd2ed84cb: Download complete
+5ca11046a9c8: Verifying Checksum
+5ca11046a9c8: Download complete
+5ca11046a9c8: Pull complete
+d7334489ac75: Pull complete
+d51ac450e2e2: Pull complete
+bbe66ecb4d53: Verifying Checksum
+bbe66ecb4d53: Download complete
+bbe66ecb4d53: Pull complete
+9367176b2225: Pull complete
+8ebdd2ed84cb: Pull complete
+326119951bea: Pull complete
+6de8149b4972: Pull complete
+e956f022f6a0: Pull complete
+903feea8cd22: Pull complete
+9fe50df1107a: Pull complete
+395647a621ca: Pull complete
+a483b7fbba73: Pull complete
+e20705b4ea1b: Pull complete
+e20705b4ea1b: Already exists
+Digest: sha256:264ed19d4ff2366be151cf13991c145ede2ff4c772c81f66e6ac63cdb139039f
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  94.73
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+45bb7c10db61        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+e20705b4ea1b: Buffering to Disk
+e20705b4ea1b: Image successfully pushed
+e20705b4ea1b: Image already exists
+a483b7fbba73: Image already exists
+395647a621ca: Image already exists
+9fe50df1107a: Image already exists
+903feea8cd22: Image already exists
+e956f022f6a0: Buffering to Disk
+e956f022f6a0: Image successfully pushed
+6de8149b4972: Image already exists
+326119951bea: Buffering to Disk
+326119951bea: Image successfully pushed
+8ebdd2ed84cb: Buffering to Disk
+8ebdd2ed84cb: Image successfully pushed
+9367176b2225: Buffering to Disk
+9367176b2225: Image successfully pushed
+bbe66ecb4d53: Buffering to Disk
+bbe66ecb4d53: Image successfully pushed
+d51ac450e2e2: Buffering to Disk
+d51ac450e2e2: Image successfully pushed
+d7334489ac75: Image already exists
+5ca11046a9c8: Buffering to Disk
+5ca11046a9c8: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:4379306e220738972fc3ee092aea6e60bd4e5a2e6b06b8f97d96aee953c5307d
+
+real  186.75
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+latest: Pulling from 136.187.101.80:5000/buildstep
+511136ea3c5a: Pulling fs layer
+5ca11046a9c8: Pulling fs layer
+d7334489ac75: Pulling fs layer
+d51ac450e2e2: Pulling fs layer
+bbe66ecb4d53: Pulling fs layer
+9367176b2225: Pulling fs layer
+8ebdd2ed84cb: Pulling fs layer
+326119951bea: Pulling fs layer
+6de8149b4972: Pulling fs layer
+e956f022f6a0: Pulling fs layer
+903feea8cd22: Pulling fs layer
+9fe50df1107a: Pulling fs layer
+395647a621ca: Pulling fs layer
+a483b7fbba73: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Layer already being pulled by another client. Waiting.
+d51ac450e2e2: Verifying Checksum
+d51ac450e2e2: Download complete
+903feea8cd22: Verifying Checksum
+903feea8cd22: Download complete
+d7334489ac75: Verifying Checksum
+d7334489ac75: Download complete
+6de8149b4972: Verifying Checksum
+6de8149b4972: Download complete
+395647a621ca: Verifying Checksum
+395647a621ca: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+e20705b4ea1b: Verifying Checksum
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+9fe50df1107a: Verifying Checksum
+9fe50df1107a: Download complete
+a483b7fbba73: Verifying Checksum
+a483b7fbba73: Download complete
+e956f022f6a0: Verifying Checksum
+e956f022f6a0: Download complete
+326119951bea: Verifying Checksum
+326119951bea: Download complete
+511136ea3c5a: Pull complete
+9367176b2225: Verifying Checksum
+9367176b2225: Download complete
+8ebdd2ed84cb: Verifying Checksum
+8ebdd2ed84cb: Download complete
+5ca11046a9c8: Verifying Checksum
+5ca11046a9c8: Download complete
+5ca11046a9c8: Pull complete
+d7334489ac75: Pull complete
+d51ac450e2e2: Pull complete
+bbe66ecb4d53: Verifying Checksum
+bbe66ecb4d53: Download complete
+bbe66ecb4d53: Pull complete
+9367176b2225: Pull complete
+8ebdd2ed84cb: Pull complete
+326119951bea: Pull complete
+6de8149b4972: Pull complete
+e956f022f6a0: Pull complete
+903feea8cd22: Pull complete
+9fe50df1107a: Pull complete
+395647a621ca: Pull complete
+a483b7fbba73: Pull complete
+e20705b4ea1b: Pull complete
+e20705b4ea1b: Already exists
+Digest: sha256:4379306e220738972fc3ee092aea6e60bd4e5a2e6b06b8f97d96aee953c5307d
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  94.22
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+f748c84523e0        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+e20705b4ea1b: Buffering to Disk
+e20705b4ea1b: Image successfully pushed
+e20705b4ea1b: Image already exists
+a483b7fbba73: Image already exists
+395647a621ca: Image already exists
+9fe50df1107a: Image already exists
+903feea8cd22: Image already exists
+e956f022f6a0: Buffering to Disk
+e956f022f6a0: Image successfully pushed
+6de8149b4972: Image already exists
+326119951bea: Buffering to Disk
+326119951bea: Image successfully pushed
+8ebdd2ed84cb: Buffering to Disk
+8ebdd2ed84cb: Image successfully pushed
+9367176b2225: Buffering to Disk
+9367176b2225: Image successfully pushed
+bbe66ecb4d53: Buffering to Disk
+bbe66ecb4d53: Image successfully pushed
+d51ac450e2e2: Buffering to Disk
+d51ac450e2e2: Image successfully pushed
+d7334489ac75: Image already exists
+5ca11046a9c8: Buffering to Disk
+5ca11046a9c8: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:dc10ebe2c2e71efe93b847d2037a12a6e3f121f0ed6a5b0657120824cd2cfd1a
+
+real  190.57
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+latest: Pulling from 136.187.101.80:5000/buildstep
+511136ea3c5a: Pulling fs layer
+5ca11046a9c8: Pulling fs layer
+d7334489ac75: Pulling fs layer
+d51ac450e2e2: Pulling fs layer
+bbe66ecb4d53: Pulling fs layer
+9367176b2225: Pulling fs layer
+8ebdd2ed84cb: Pulling fs layer
+326119951bea: Pulling fs layer
+6de8149b4972: Pulling fs layer
+e956f022f6a0: Pulling fs layer
+903feea8cd22: Pulling fs layer
+9fe50df1107a: Pulling fs layer
+395647a621ca: Pulling fs layer
+a483b7fbba73: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Layer already being pulled by another client. Waiting.
+d51ac450e2e2: Verifying Checksum
+d51ac450e2e2: Download complete
+6de8149b4972: Verifying Checksum
+6de8149b4972: Download complete
+903feea8cd22: Verifying Checksum
+903feea8cd22: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+e956f022f6a0: Verifying Checksum
+e956f022f6a0: Download complete
+a483b7fbba73: Verifying Checksum
+a483b7fbba73: Download complete
+326119951bea: Verifying Checksum
+326119951bea: Download complete
+e20705b4ea1b: Verifying Checksum
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+d7334489ac75: Verifying Checksum
+d7334489ac75: Download complete
+395647a621ca: Verifying Checksum
+395647a621ca: Download complete
+9fe50df1107a: Verifying Checksum
+9fe50df1107a: Download complete
+511136ea3c5a: Pull complete
+9367176b2225: Verifying Checksum
+9367176b2225: Download complete
+8ebdd2ed84cb: Verifying Checksum
+8ebdd2ed84cb: Download complete
+5ca11046a9c8: Verifying Checksum
+5ca11046a9c8: Download complete
+5ca11046a9c8: Pull complete
+d7334489ac75: Pull complete
+d51ac450e2e2: Pull complete
+bbe66ecb4d53: Verifying Checksum
+bbe66ecb4d53: Download complete
+bbe66ecb4d53: Pull complete
+9367176b2225: Pull complete
+8ebdd2ed84cb: Pull complete
+326119951bea: Pull complete
+6de8149b4972: Pull complete
+e956f022f6a0: Pull complete
+903feea8cd22: Pull complete
+9fe50df1107a: Pull complete
+395647a621ca: Pull complete
+a483b7fbba73: Pull complete
+e20705b4ea1b: Pull complete
+e20705b4ea1b: Already exists
+Digest: sha256:dc10ebe2c2e71efe93b847d2037a12a6e3f121f0ed6a5b0657120824cd2cfd1a
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  92.75
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+b6998827867f        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+e20705b4ea1b: Buffering to Disk
+e20705b4ea1b: Image successfully pushed
+e20705b4ea1b: Image already exists
+a483b7fbba73: Image already exists
+395647a621ca: Image already exists
+9fe50df1107a: Image already exists
+903feea8cd22: Image already exists
+e956f022f6a0: Buffering to Disk
+e956f022f6a0: Image successfully pushed
+6de8149b4972: Image already exists
+326119951bea: Buffering to Disk
+326119951bea: Image successfully pushed
+8ebdd2ed84cb: Buffering to Disk
+8ebdd2ed84cb: Image successfully pushed
+9367176b2225: Buffering to Disk
+9367176b2225: Image successfully pushed
+bbe66ecb4d53: Buffering to Disk
+bbe66ecb4d53: Image successfully pushed
+d51ac450e2e2: Buffering to Disk
+d51ac450e2e2: Image successfully pushed
+d7334489ac75: Image already exists
+5ca11046a9c8: Buffering to Disk
+5ca11046a9c8: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:dc10ebe2c2e71efe93b847d2037a12a6e3f121f0ed6a5b0657120824cd2cfd1a
+
+real  193.80
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+latest: Pulling from 136.187.101.80:5000/buildstep
+511136ea3c5a: Pulling fs layer
+5ca11046a9c8: Pulling fs layer
+d7334489ac75: Pulling fs layer
+d51ac450e2e2: Pulling fs layer
+bbe66ecb4d53: Pulling fs layer
+9367176b2225: Pulling fs layer
+8ebdd2ed84cb: Pulling fs layer
+326119951bea: Pulling fs layer
+6de8149b4972: Pulling fs layer
+e956f022f6a0: Pulling fs layer
+903feea8cd22: Pulling fs layer
+9fe50df1107a: Pulling fs layer
+395647a621ca: Pulling fs layer
+a483b7fbba73: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+511136ea3c5a: Pull complete
+6de8149b4972: Verifying Checksum
+6de8149b4972: Download complete
+903feea8cd22: Verifying Checksum
+903feea8cd22: Download complete
+395647a621ca: Verifying Checksum
+395647a621ca: Download complete
+d51ac450e2e2: Verifying Checksum
+d51ac450e2e2: Download complete
+d7334489ac75: Verifying Checksum
+d7334489ac75: Download complete
+9fe50df1107a: Verifying Checksum
+9fe50df1107a: Download complete
+e956f022f6a0: Verifying Checksum
+e956f022f6a0: Download complete
+a483b7fbba73: Verifying Checksum
+a483b7fbba73: Download complete
+326119951bea: Verifying Checksum
+326119951bea: Download complete
+e20705b4ea1b: Verifying Checksum
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+9367176b2225: Verifying Checksum
+9367176b2225: Download complete
+8ebdd2ed84cb: Verifying Checksum
+8ebdd2ed84cb: Download complete
+5ca11046a9c8: Verifying Checksum
+5ca11046a9c8: Download complete
+5ca11046a9c8: Pull complete
+d7334489ac75: Pull complete
+d51ac450e2e2: Pull complete
+bbe66ecb4d53: Verifying Checksum
+bbe66ecb4d53: Download complete
+bbe66ecb4d53: Pull complete
+9367176b2225: Pull complete
+8ebdd2ed84cb: Pull complete
+326119951bea: Pull complete
+6de8149b4972: Pull complete
+e956f022f6a0: Pull complete
+903feea8cd22: Pull complete
+9fe50df1107a: Pull complete
+395647a621ca: Pull complete
+a483b7fbba73: Pull complete
+e20705b4ea1b: Pull complete
+e20705b4ea1b: Already exists
+Digest: sha256:dc10ebe2c2e71efe93b847d2037a12a6e3f121f0ed6a5b0657120824cd2cfd1a
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  95.62
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+9133a29e4952        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+e20705b4ea1b: Buffering to Disk
+e20705b4ea1b: Image successfully pushed
+e20705b4ea1b: Image already exists
+a483b7fbba73: Image already exists
+395647a621ca: Image already exists
+9fe50df1107a: Image already exists
+903feea8cd22: Image already exists
+e956f022f6a0: Buffering to Disk
+e956f022f6a0: Image successfully pushed
+6de8149b4972: Image already exists
+326119951bea: Buffering to Disk
+326119951bea: Image successfully pushed
+8ebdd2ed84cb: Buffering to Disk
+8ebdd2ed84cb: Image successfully pushed
+9367176b2225: Buffering to Disk
+9367176b2225: Image successfully pushed
+bbe66ecb4d53: Buffering to Disk
+bbe66ecb4d53: Image successfully pushed
+d51ac450e2e2: Buffering to Disk
+d51ac450e2e2: Image successfully pushed
+d7334489ac75: Image already exists
+5ca11046a9c8: Buffering to Disk
+5ca11046a9c8: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:260705287dd3fb80ed0d9b1f97cfb7d3d02f816202271b12283cba61dc3530f5
+
+real  201.61
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+latest: Pulling from 136.187.101.80:5000/buildstep
+511136ea3c5a: Pulling fs layer
+5ca11046a9c8: Pulling fs layer
+d7334489ac75: Pulling fs layer
+d51ac450e2e2: Pulling fs layer
+bbe66ecb4d53: Pulling fs layer
+9367176b2225: Pulling fs layer
+8ebdd2ed84cb: Pulling fs layer
+326119951bea: Pulling fs layer
+6de8149b4972: Pulling fs layer
+e956f022f6a0: Pulling fs layer
+903feea8cd22: Pulling fs layer
+9fe50df1107a: Pulling fs layer
+395647a621ca: Pulling fs layer
+a483b7fbba73: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d51ac450e2e2: Verifying Checksum
+d51ac450e2e2: Download complete
+d7334489ac75: Verifying Checksum
+d7334489ac75: Download complete
+9fe50df1107a: Verifying Checksum
+9fe50df1107a: Download complete
+e20705b4ea1b: Verifying Checksum
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+326119951bea: Verifying Checksum
+326119951bea: Download complete
+903feea8cd22: Verifying Checksum
+903feea8cd22: Download complete
+511136ea3c5a: Pull complete
+6de8149b4972: Verifying Checksum
+6de8149b4972: Download complete
+395647a621ca: Verifying Checksum
+395647a621ca: Download complete
+a483b7fbba73: Verifying Checksum
+a483b7fbba73: Download complete
+e956f022f6a0: Verifying Checksum
+e956f022f6a0: Download complete
+9367176b2225: Verifying Checksum
+9367176b2225: Download complete
+8ebdd2ed84cb: Verifying Checksum
+8ebdd2ed84cb: Download complete
+5ca11046a9c8: Verifying Checksum
+5ca11046a9c8: Download complete
+5ca11046a9c8: Pull complete
+d7334489ac75: Pull complete
+d51ac450e2e2: Pull complete
+bbe66ecb4d53: Verifying Checksum
+bbe66ecb4d53: Download complete
+bbe66ecb4d53: Pull complete
+9367176b2225: Pull complete
+8ebdd2ed84cb: Pull complete
+326119951bea: Pull complete
+6de8149b4972: Pull complete
+e956f022f6a0: Pull complete
+903feea8cd22: Pull complete
+9fe50df1107a: Pull complete
+395647a621ca: Pull complete
+a483b7fbba73: Pull complete
+e20705b4ea1b: Pull complete
+e20705b4ea1b: Already exists
+Digest: sha256:260705287dd3fb80ed0d9b1f97cfb7d3d02f816202271b12283cba61dc3530f5
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  92.04
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+96c88db77d88        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+e20705b4ea1b: Buffering to Disk
+e20705b4ea1b: Image successfully pushed
+e20705b4ea1b: Image already exists
+a483b7fbba73: Image already exists
+395647a621ca: Image already exists
+9fe50df1107a: Image already exists
+903feea8cd22: Image already exists
+e956f022f6a0: Buffering to Disk
+e956f022f6a0: Image successfully pushed
+6de8149b4972: Image already exists
+326119951bea: Buffering to Disk
+326119951bea: Image successfully pushed
+8ebdd2ed84cb: Buffering to Disk
+8ebdd2ed84cb: Image successfully pushed
+9367176b2225: Buffering to Disk
+9367176b2225: Image successfully pushed
+bbe66ecb4d53: Buffering to Disk
+bbe66ecb4d53: Image successfully pushed
+d51ac450e2e2: Buffering to Disk
+d51ac450e2e2: Image successfully pushed
+d7334489ac75: Image already exists
+5ca11046a9c8: Buffering to Disk
+5ca11046a9c8: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:4379306e220738972fc3ee092aea6e60bd4e5a2e6b06b8f97d96aee953c5307d
+
+real  204.47
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+latest: Pulling from 136.187.101.80:5000/buildstep
+511136ea3c5a: Pulling fs layer
+5ca11046a9c8: Pulling fs layer
+d7334489ac75: Pulling fs layer
+d51ac450e2e2: Pulling fs layer
+bbe66ecb4d53: Pulling fs layer
+9367176b2225: Pulling fs layer
+8ebdd2ed84cb: Pulling fs layer
+326119951bea: Pulling fs layer
+6de8149b4972: Pulling fs layer
+e956f022f6a0: Pulling fs layer
+903feea8cd22: Pulling fs layer
+9fe50df1107a: Pulling fs layer
+395647a621ca: Pulling fs layer
+a483b7fbba73: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Layer already being pulled by another client. Waiting.
+d7334489ac75: Verifying Checksum
+d7334489ac75: Download complete
+6de8149b4972: Verifying Checksum
+6de8149b4972: Download complete
+326119951bea: Verifying Checksum
+326119951bea: Download complete
+903feea8cd22: Verifying Checksum
+903feea8cd22: Download complete
+9fe50df1107a: Verifying Checksum
+9fe50df1107a: Download complete
+e20705b4ea1b: Verifying Checksum
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+d51ac450e2e2: Verifying Checksum
+d51ac450e2e2: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+395647a621ca: Verifying Checksum
+395647a621ca: Download complete
+a483b7fbba73: Verifying Checksum
+a483b7fbba73: Download complete
+e956f022f6a0: Verifying Checksum
+e956f022f6a0: Download complete
+511136ea3c5a: Pull complete
+9367176b2225: Verifying Checksum
+9367176b2225: Download complete
+8ebdd2ed84cb: Verifying Checksum
+8ebdd2ed84cb: Download complete
+5ca11046a9c8: Verifying Checksum
+5ca11046a9c8: Download complete
+5ca11046a9c8: Pull complete
+d7334489ac75: Pull complete
+d51ac450e2e2: Pull complete
+bbe66ecb4d53: Verifying Checksum
+bbe66ecb4d53: Download complete
+bbe66ecb4d53: Pull complete
+9367176b2225: Pull complete
+8ebdd2ed84cb: Pull complete
+326119951bea: Pull complete
+6de8149b4972: Pull complete
+e956f022f6a0: Pull complete
+903feea8cd22: Pull complete
+9fe50df1107a: Pull complete
+395647a621ca: Pull complete
+a483b7fbba73: Pull complete
+e20705b4ea1b: Pull complete
+e20705b4ea1b: Already exists
+Digest: sha256:4379306e220738972fc3ee092aea6e60bd4e5a2e6b06b8f97d96aee953c5307d
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  92.08
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+dd6c384c1861        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+e20705b4ea1b: Buffering to Disk
+e20705b4ea1b: Image successfully pushed
+e20705b4ea1b: Image already exists
+a483b7fbba73: Image already exists
+395647a621ca: Image already exists
+9fe50df1107a: Image already exists
+903feea8cd22: Image already exists
+e956f022f6a0: Buffering to Disk
+e956f022f6a0: Image successfully pushed
+6de8149b4972: Image already exists
+326119951bea: Buffering to Disk
+326119951bea: Image successfully pushed
+8ebdd2ed84cb: Buffering to Disk
+8ebdd2ed84cb: Image successfully pushed
+9367176b2225: Buffering to Disk
+9367176b2225: Image successfully pushed
+bbe66ecb4d53: Buffering to Disk
+bbe66ecb4d53: Image successfully pushed
+d51ac450e2e2: Buffering to Disk
+d51ac450e2e2: Image successfully pushed
+d7334489ac75: Image already exists
+5ca11046a9c8: Buffering to Disk
+5ca11046a9c8: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:dc10ebe2c2e71efe93b847d2037a12a6e3f121f0ed6a5b0657120824cd2cfd1a
+
+real  208.15
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+latest: Pulling from 136.187.101.80:5000/buildstep
+511136ea3c5a: Pulling fs layer
+5ca11046a9c8: Pulling fs layer
+d7334489ac75: Pulling fs layer
+d51ac450e2e2: Pulling fs layer
+bbe66ecb4d53: Pulling fs layer
+9367176b2225: Pulling fs layer
+8ebdd2ed84cb: Pulling fs layer
+326119951bea: Pulling fs layer
+6de8149b4972: Pulling fs layer
+e956f022f6a0: Pulling fs layer
+903feea8cd22: Pulling fs layer
+9fe50df1107a: Pulling fs layer
+395647a621ca: Pulling fs layer
+a483b7fbba73: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Layer already being pulled by another client. Waiting.
+a483b7fbba73: Verifying Checksum
+a483b7fbba73: Download complete
+326119951bea: Verifying Checksum
+326119951bea: Download complete
+395647a621ca: Verifying Checksum
+395647a621ca: Download complete
+d7334489ac75: Verifying Checksum
+d7334489ac75: Download complete
+6de8149b4972: Verifying Checksum
+6de8149b4972: Download complete
+e20705b4ea1b: Verifying Checksum
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+903feea8cd22: Verifying Checksum
+903feea8cd22: Download complete
+e956f022f6a0: Verifying Checksum
+e956f022f6a0: Download complete
+d51ac450e2e2: Verifying Checksum
+d51ac450e2e2: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+9fe50df1107a: Verifying Checksum
+9fe50df1107a: Download complete
+511136ea3c5a: Pull complete
+9367176b2225: Verifying Checksum
+9367176b2225: Download complete
+8ebdd2ed84cb: Verifying Checksum
+8ebdd2ed84cb: Download complete
+5ca11046a9c8: Verifying Checksum
+5ca11046a9c8: Download complete
+5ca11046a9c8: Pull complete
+d7334489ac75: Pull complete
+d51ac450e2e2: Pull complete
+bbe66ecb4d53: Verifying Checksum
+bbe66ecb4d53: Download complete
+bbe66ecb4d53: Pull complete
+9367176b2225: Pull complete
+8ebdd2ed84cb: Pull complete
+326119951bea: Pull complete
+6de8149b4972: Pull complete
+e956f022f6a0: Pull complete
+903feea8cd22: Pull complete
+9fe50df1107a: Pull complete
+395647a621ca: Pull complete
+a483b7fbba73: Pull complete
+e20705b4ea1b: Pull complete
+e20705b4ea1b: Already exists
+Digest: sha256:dc10ebe2c2e71efe93b847d2037a12a6e3f121f0ed6a5b0657120824cd2cfd1a
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  94.00
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+kiwenlau/buildstep              latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+bdaa0caac8dd        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+e20705b4ea1b: Buffering to Disk
+e20705b4ea1b: Image successfully pushed
+e20705b4ea1b: Image already exists
+a483b7fbba73: Image already exists
+395647a621ca: Image already exists
+9fe50df1107a: Image already exists
+903feea8cd22: Image already exists
+e956f022f6a0: Buffering to Disk
+e956f022f6a0: Image successfully pushed
+6de8149b4972: Image already exists
+326119951bea: Buffering to Disk
+326119951bea: Image successfully pushed
+8ebdd2ed84cb: Buffering to Disk
+8ebdd2ed84cb: Image successfully pushed
+9367176b2225: Buffering to Disk
+9367176b2225: Image successfully pushed
+bbe66ecb4d53: Buffering to Disk
+bbe66ecb4d53: Image successfully pushed
+d51ac450e2e2: Buffering to Disk
+d51ac450e2e2: Image successfully pushed
+d7334489ac75: Image already exists
+5ca11046a9c8: Buffering to Disk
+5ca11046a9c8: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:165f320e1bfad480a586a03d8c1ecc3606bdaeb0f501cbae330a6ad3ca1776f5
+
+real  205.27
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+latest: Pulling from 136.187.101.80:5000/buildstep
+511136ea3c5a: Pulling fs layer
+5ca11046a9c8: Pulling fs layer
+d7334489ac75: Pulling fs layer
+d51ac450e2e2: Pulling fs layer
+bbe66ecb4d53: Pulling fs layer
+9367176b2225: Pulling fs layer
+8ebdd2ed84cb: Pulling fs layer
+326119951bea: Pulling fs layer
+6de8149b4972: Pulling fs layer
+e956f022f6a0: Pulling fs layer
+903feea8cd22: Pulling fs layer
+9fe50df1107a: Pulling fs layer
+395647a621ca: Pulling fs layer
+a483b7fbba73: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Layer already being pulled by another client. Waiting.
+a483b7fbba73: Verifying Checksum
+a483b7fbba73: Download complete
+d51ac450e2e2: Verifying Checksum
+d51ac450e2e2: Download complete
+395647a621ca: Verifying Checksum
+395647a621ca: Download complete
+d7334489ac75: Verifying Checksum
+d7334489ac75: Download complete
+e956f022f6a0: Verifying Checksum
+e956f022f6a0: Download complete
+e20705b4ea1b: Verifying Checksum
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+6de8149b4972: Verifying Checksum
+6de8149b4972: Download complete
+9fe50df1107a: Verifying Checksum
+9fe50df1107a: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+326119951bea: Verifying Checksum
+326119951bea: Download complete
+903feea8cd22: Verifying Checksum
+903feea8cd22: Download complete
+511136ea3c5a: Pull complete
+9367176b2225: Verifying Checksum
+9367176b2225: Download complete
+8ebdd2ed84cb: Verifying Checksum
+8ebdd2ed84cb: Download complete
+5ca11046a9c8: Verifying Checksum
+5ca11046a9c8: Download complete
+5ca11046a9c8: Pull complete
+d7334489ac75: Pull complete
+d51ac450e2e2: Pull complete
+bbe66ecb4d53: Verifying Checksum
+bbe66ecb4d53: Download complete
+bbe66ecb4d53: Pull complete
+9367176b2225: Pull complete
+8ebdd2ed84cb: Pull complete
+326119951bea: Pull complete
+6de8149b4972: Pull complete
+e956f022f6a0: Pull complete
+903feea8cd22: Pull complete
+9fe50df1107a: Pull complete
+395647a621ca: Pull complete
+a483b7fbba73: Pull complete
+e20705b4ea1b: Pull complete
+e20705b4ea1b: Already exists
+Digest: sha256:165f320e1bfad480a586a03d8c1ecc3606bdaeb0f501cbae330a6ad3ca1776f5
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  92.40
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        9 weeks ago         1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+end date: Mon Aug 10 12:51:58 JST 2015
+
+
