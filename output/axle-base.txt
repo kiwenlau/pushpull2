@@ -1,0 +1,937 @@
+
+pullpush benchmark: transfer axle-base image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Tue Aug 11 00:00:16 JST 2015
+
+sudo docker images
+kiwenlau/axle-base              flat                9d9bb83d76c0        7 weeks ago         1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+sudo docker images
+kiwenlau/axle-base              flat                9d9bb83d76c0        7 weeks ago         1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+74c0220b69bd        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+f55c403b8bb9: Buffering to Disk
+f55c403b8bb9: Image successfully pushed
+f55c403b8bb9: Image already exists
+b74328811047: Buffering to Disk
+b74328811047: Image successfully pushed
+cfd8f94a1a66: Image already exists
+156b1db431fa: Image already exists
+566182799f15: Image already exists
+dbe5a83302f6: Buffering to Disk
+dbe5a83302f6: Image successfully pushed
+48b900fad9ea: Buffering to Disk
+48b900fad9ea: Image successfully pushed
+295b7d206de2: Image already exists
+511136ea3c5a: Image already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+
+real  0.83
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+latest: Pulling from 136.187.101.80:5000/axle-base
+511136ea3c5a: Pulling fs layer
+295b7d206de2: Pulling fs layer
+48b900fad9ea: Pulling fs layer
+dbe5a83302f6: Pulling fs layer
+566182799f15: Pulling fs layer
+156b1db431fa: Pulling fs layer
+cfd8f94a1a66: Pulling fs layer
+b74328811047: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Layer already being pulled by another client. Waiting.
+566182799f15: Verifying Checksum
+566182799f15: Download complete
+f55c403b8bb9: Verifying Checksum
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+b74328811047: Verifying Checksum
+b74328811047: Download complete
+295b7d206de2: Verifying Checksum
+295b7d206de2: Download complete
+156b1db431fa: Verifying Checksum
+156b1db431fa: Download complete
+dbe5a83302f6: Verifying Checksum
+dbe5a83302f6: Download complete
+cfd8f94a1a66: Verifying Checksum
+cfd8f94a1a66: Download complete
+511136ea3c5a: Pull complete
+295b7d206de2: Pull complete
+48b900fad9ea: Verifying Checksum
+48b900fad9ea: Download complete
+48b900fad9ea: Pull complete
+dbe5a83302f6: Pull complete
+566182799f15: Pull complete
+156b1db431fa: Pull complete
+cfd8f94a1a66: Pull complete
+b74328811047: Pull complete
+f55c403b8bb9: Pull complete
+f55c403b8bb9: Already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  4.96
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.27 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+e53dbc1f61fc        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+f55c403b8bb9: Buffering to Disk
+f55c403b8bb9: Image successfully pushed
+f55c403b8bb9: Image already exists
+b74328811047: Buffering to Disk
+b74328811047: Image successfully pushed
+cfd8f94a1a66: Image already exists
+156b1db431fa: Image already exists
+566182799f15: Image already exists
+dbe5a83302f6: Buffering to Disk
+dbe5a83302f6: Image successfully pushed
+48b900fad9ea: Buffering to Disk
+48b900fad9ea: Image successfully pushed
+295b7d206de2: Image already exists
+511136ea3c5a: Image already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+
+real  0.82
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+latest: Pulling from 136.187.101.80:5000/axle-base
+511136ea3c5a: Pulling fs layer
+295b7d206de2: Pulling fs layer
+48b900fad9ea: Pulling fs layer
+dbe5a83302f6: Pulling fs layer
+566182799f15: Pulling fs layer
+156b1db431fa: Pulling fs layer
+cfd8f94a1a66: Pulling fs layer
+b74328811047: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Layer already being pulled by another client. Waiting.
+dbe5a83302f6: Verifying Checksum
+dbe5a83302f6: Download complete
+b74328811047: Verifying Checksum
+b74328811047: Download complete
+f55c403b8bb9: Verifying Checksum
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+566182799f15: Verifying Checksum
+566182799f15: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+295b7d206de2: Verifying Checksum
+295b7d206de2: Download complete
+cfd8f94a1a66: Verifying Checksum
+cfd8f94a1a66: Download complete
+156b1db431fa: Verifying Checksum
+156b1db431fa: Download complete
+511136ea3c5a: Pull complete
+295b7d206de2: Pull complete
+48b900fad9ea: Verifying Checksum
+48b900fad9ea: Download complete
+48b900fad9ea: Pull complete
+dbe5a83302f6: Pull complete
+566182799f15: Pull complete
+156b1db431fa: Pull complete
+cfd8f94a1a66: Pull complete
+b74328811047: Pull complete
+f55c403b8bb9: Pull complete
+f55c403b8bb9: Already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  4.91
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.27 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+c68d1a7ae59f        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+f55c403b8bb9: Buffering to Disk
+f55c403b8bb9: Image successfully pushed
+f55c403b8bb9: Image already exists
+b74328811047: Buffering to Disk
+b74328811047: Image successfully pushed
+cfd8f94a1a66: Image already exists
+156b1db431fa: Image already exists
+566182799f15: Image already exists
+dbe5a83302f6: Buffering to Disk
+dbe5a83302f6: Image successfully pushed
+48b900fad9ea: Buffering to Disk
+48b900fad9ea: Image successfully pushed
+295b7d206de2: Image already exists
+511136ea3c5a: Image already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+
+real  0.80
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+latest: Pulling from 136.187.101.80:5000/axle-base
+511136ea3c5a: Pulling fs layer
+295b7d206de2: Pulling fs layer
+48b900fad9ea: Pulling fs layer
+dbe5a83302f6: Pulling fs layer
+566182799f15: Pulling fs layer
+156b1db431fa: Pulling fs layer
+cfd8f94a1a66: Pulling fs layer
+b74328811047: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Layer already being pulled by another client. Waiting.
+dbe5a83302f6: Verifying Checksum
+dbe5a83302f6: Download complete
+f55c403b8bb9: Verifying Checksum
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+b74328811047: Verifying Checksum
+b74328811047: Download complete
+156b1db431fa: Verifying Checksum
+156b1db431fa: Download complete
+295b7d206de2: Verifying Checksum
+295b7d206de2: Download complete
+566182799f15: Verifying Checksum
+566182799f15: Download complete
+cfd8f94a1a66: Verifying Checksum
+cfd8f94a1a66: Download complete
+511136ea3c5a: Pull complete
+295b7d206de2: Pull complete
+48b900fad9ea: Verifying Checksum
+48b900fad9ea: Download complete
+48b900fad9ea: Pull complete
+dbe5a83302f6: Pull complete
+566182799f15: Pull complete
+156b1db431fa: Pull complete
+cfd8f94a1a66: Pull complete
+b74328811047: Pull complete
+f55c403b8bb9: Pull complete
+f55c403b8bb9: Already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  4.91
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.27 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+64770fd45e21        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+f55c403b8bb9: Buffering to Disk
+f55c403b8bb9: Image successfully pushed
+f55c403b8bb9: Image already exists
+b74328811047: Buffering to Disk
+b74328811047: Image successfully pushed
+cfd8f94a1a66: Image already exists
+156b1db431fa: Image already exists
+566182799f15: Image already exists
+dbe5a83302f6: Buffering to Disk
+dbe5a83302f6: Image successfully pushed
+48b900fad9ea: Buffering to Disk
+48b900fad9ea: Image successfully pushed
+295b7d206de2: Image already exists
+511136ea3c5a: Image already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+
+real  0.82
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+latest: Pulling from 136.187.101.80:5000/axle-base
+511136ea3c5a: Pulling fs layer
+295b7d206de2: Pulling fs layer
+48b900fad9ea: Pulling fs layer
+dbe5a83302f6: Pulling fs layer
+566182799f15: Pulling fs layer
+156b1db431fa: Pulling fs layer
+cfd8f94a1a66: Pulling fs layer
+b74328811047: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+dbe5a83302f6: Verifying Checksum
+dbe5a83302f6: Download complete
+cfd8f94a1a66: Verifying Checksum
+cfd8f94a1a66: Download complete
+295b7d206de2: Verifying Checksum
+295b7d206de2: Download complete
+b74328811047: Verifying Checksum
+b74328811047: Download complete
+566182799f15: Verifying Checksum
+566182799f15: Download complete
+156b1db431fa: Verifying Checksum
+156b1db431fa: Download complete
+f55c403b8bb9: Verifying Checksum
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+511136ea3c5a: Pull complete
+295b7d206de2: Pull complete
+48b900fad9ea: Verifying Checksum
+48b900fad9ea: Download complete
+48b900fad9ea: Pull complete
+dbe5a83302f6: Pull complete
+566182799f15: Pull complete
+156b1db431fa: Pull complete
+cfd8f94a1a66: Pull complete
+b74328811047: Pull complete
+f55c403b8bb9: Pull complete
+f55c403b8bb9: Already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  4.99
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.27 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+a6a533a07fe9        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+f55c403b8bb9: Buffering to Disk
+f55c403b8bb9: Image successfully pushed
+f55c403b8bb9: Image already exists
+b74328811047: Buffering to Disk
+b74328811047: Image successfully pushed
+cfd8f94a1a66: Image already exists
+156b1db431fa: Image already exists
+566182799f15: Image already exists
+dbe5a83302f6: Buffering to Disk
+dbe5a83302f6: Image successfully pushed
+48b900fad9ea: Buffering to Disk
+48b900fad9ea: Image successfully pushed
+295b7d206de2: Image already exists
+511136ea3c5a: Image already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+
+real  0.81
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+latest: Pulling from 136.187.101.80:5000/axle-base
+511136ea3c5a: Pulling fs layer
+295b7d206de2: Pulling fs layer
+48b900fad9ea: Pulling fs layer
+dbe5a83302f6: Pulling fs layer
+566182799f15: Pulling fs layer
+156b1db431fa: Pulling fs layer
+cfd8f94a1a66: Pulling fs layer
+b74328811047: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Layer already being pulled by another client. Waiting.
+156b1db431fa: Verifying Checksum
+156b1db431fa: Download complete
+295b7d206de2: Verifying Checksum
+295b7d206de2: Download complete
+cfd8f94a1a66: Verifying Checksum
+cfd8f94a1a66: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+dbe5a83302f6: Verifying Checksum
+dbe5a83302f6: Download complete
+566182799f15: Verifying Checksum
+566182799f15: Download complete
+f55c403b8bb9: Verifying Checksum
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+b74328811047: Verifying Checksum
+b74328811047: Download complete
+511136ea3c5a: Pull complete
+295b7d206de2: Pull complete
+48b900fad9ea: Verifying Checksum
+48b900fad9ea: Download complete
+48b900fad9ea: Pull complete
+dbe5a83302f6: Pull complete
+566182799f15: Pull complete
+156b1db431fa: Pull complete
+cfd8f94a1a66: Pull complete
+b74328811047: Pull complete
+f55c403b8bb9: Pull complete
+f55c403b8bb9: Already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  4.94
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.27 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+316df31a9ea6        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+f55c403b8bb9: Buffering to Disk
+f55c403b8bb9: Image successfully pushed
+f55c403b8bb9: Image already exists
+b74328811047: Buffering to Disk
+b74328811047: Image successfully pushed
+cfd8f94a1a66: Image already exists
+156b1db431fa: Image already exists
+566182799f15: Image already exists
+dbe5a83302f6: Buffering to Disk
+dbe5a83302f6: Image successfully pushed
+48b900fad9ea: Buffering to Disk
+48b900fad9ea: Image successfully pushed
+295b7d206de2: Image already exists
+511136ea3c5a: Image already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+
+real  0.82
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+latest: Pulling from 136.187.101.80:5000/axle-base
+511136ea3c5a: Pulling fs layer
+295b7d206de2: Pulling fs layer
+48b900fad9ea: Pulling fs layer
+dbe5a83302f6: Pulling fs layer
+566182799f15: Pulling fs layer
+156b1db431fa: Pulling fs layer
+cfd8f94a1a66: Pulling fs layer
+b74328811047: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+566182799f15: Verifying Checksum
+566182799f15: Download complete
+dbe5a83302f6: Verifying Checksum
+dbe5a83302f6: Download complete
+f55c403b8bb9: Verifying Checksum
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+295b7d206de2: Verifying Checksum
+295b7d206de2: Download complete
+156b1db431fa: Verifying Checksum
+156b1db431fa: Download complete
+cfd8f94a1a66: Verifying Checksum
+cfd8f94a1a66: Download complete
+b74328811047: Verifying Checksum
+b74328811047: Download complete
+511136ea3c5a: Pull complete
+295b7d206de2: Pull complete
+48b900fad9ea: Verifying Checksum
+48b900fad9ea: Download complete
+48b900fad9ea: Pull complete
+dbe5a83302f6: Pull complete
+566182799f15: Pull complete
+156b1db431fa: Pull complete
+cfd8f94a1a66: Pull complete
+b74328811047: Pull complete
+f55c403b8bb9: Pull complete
+f55c403b8bb9: Already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  4.95
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.27 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+7cf43db04256        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+f55c403b8bb9: Buffering to Disk
+f55c403b8bb9: Image successfully pushed
+f55c403b8bb9: Image already exists
+b74328811047: Buffering to Disk
+b74328811047: Image successfully pushed
+cfd8f94a1a66: Image already exists
+156b1db431fa: Image already exists
+566182799f15: Image already exists
+dbe5a83302f6: Buffering to Disk
+dbe5a83302f6: Image successfully pushed
+48b900fad9ea: Buffering to Disk
+48b900fad9ea: Image successfully pushed
+295b7d206de2: Image already exists
+511136ea3c5a: Image already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+
+real  0.81
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+latest: Pulling from 136.187.101.80:5000/axle-base
+511136ea3c5a: Pulling fs layer
+295b7d206de2: Pulling fs layer
+48b900fad9ea: Pulling fs layer
+dbe5a83302f6: Pulling fs layer
+566182799f15: Pulling fs layer
+156b1db431fa: Pulling fs layer
+cfd8f94a1a66: Pulling fs layer
+b74328811047: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Layer already being pulled by another client. Waiting.
+b74328811047: Verifying Checksum
+b74328811047: Download complete
+295b7d206de2: Verifying Checksum
+295b7d206de2: Download complete
+566182799f15: Verifying Checksum
+566182799f15: Download complete
+dbe5a83302f6: Verifying Checksum
+dbe5a83302f6: Download complete
+cfd8f94a1a66: Verifying Checksum
+cfd8f94a1a66: Download complete
+156b1db431fa: Verifying Checksum
+156b1db431fa: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+f55c403b8bb9: Verifying Checksum
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+511136ea3c5a: Pull complete
+295b7d206de2: Pull complete
+48b900fad9ea: Verifying Checksum
+48b900fad9ea: Download complete
+48b900fad9ea: Pull complete
+dbe5a83302f6: Pull complete
+566182799f15: Pull complete
+156b1db431fa: Pull complete
+cfd8f94a1a66: Pull complete
+b74328811047: Pull complete
+f55c403b8bb9: Pull complete
+f55c403b8bb9: Already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  4.89
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.27 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+07b75edca54b        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+f55c403b8bb9: Buffering to Disk
+f55c403b8bb9: Image successfully pushed
+f55c403b8bb9: Image already exists
+b74328811047: Buffering to Disk
+b74328811047: Image successfully pushed
+cfd8f94a1a66: Image already exists
+156b1db431fa: Image already exists
+566182799f15: Image already exists
+dbe5a83302f6: Buffering to Disk
+dbe5a83302f6: Image successfully pushed
+48b900fad9ea: Buffering to Disk
+48b900fad9ea: Image successfully pushed
+295b7d206de2: Image already exists
+511136ea3c5a: Image already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+
+real  0.83
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+latest: Pulling from 136.187.101.80:5000/axle-base
+511136ea3c5a: Pulling fs layer
+295b7d206de2: Pulling fs layer
+48b900fad9ea: Pulling fs layer
+dbe5a83302f6: Pulling fs layer
+566182799f15: Pulling fs layer
+156b1db431fa: Pulling fs layer
+cfd8f94a1a66: Pulling fs layer
+b74328811047: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Layer already being pulled by another client. Waiting.
+f55c403b8bb9: Verifying Checksum
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+156b1db431fa: Verifying Checksum
+156b1db431fa: Download complete
+566182799f15: Verifying Checksum
+566182799f15: Download complete
+295b7d206de2: Verifying Checksum
+295b7d206de2: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+dbe5a83302f6: Verifying Checksum
+dbe5a83302f6: Download complete
+b74328811047: Verifying Checksum
+b74328811047: Download complete
+cfd8f94a1a66: Verifying Checksum
+cfd8f94a1a66: Download complete
+511136ea3c5a: Pull complete
+295b7d206de2: Pull complete
+48b900fad9ea: Verifying Checksum
+48b900fad9ea: Download complete
+48b900fad9ea: Pull complete
+dbe5a83302f6: Pull complete
+566182799f15: Pull complete
+156b1db431fa: Pull complete
+cfd8f94a1a66: Pull complete
+b74328811047: Pull complete
+f55c403b8bb9: Pull complete
+f55c403b8bb9: Already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  4.93
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.27 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+8a522a1d5b34        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+f55c403b8bb9: Buffering to Disk
+f55c403b8bb9: Image successfully pushed
+f55c403b8bb9: Image already exists
+b74328811047: Buffering to Disk
+b74328811047: Image successfully pushed
+cfd8f94a1a66: Image already exists
+156b1db431fa: Image already exists
+566182799f15: Image already exists
+dbe5a83302f6: Buffering to Disk
+dbe5a83302f6: Image successfully pushed
+48b900fad9ea: Buffering to Disk
+48b900fad9ea: Image successfully pushed
+295b7d206de2: Image already exists
+511136ea3c5a: Image already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+
+real  0.79
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+latest: Pulling from 136.187.101.80:5000/axle-base
+511136ea3c5a: Pulling fs layer
+295b7d206de2: Pulling fs layer
+48b900fad9ea: Pulling fs layer
+dbe5a83302f6: Pulling fs layer
+566182799f15: Pulling fs layer
+156b1db431fa: Pulling fs layer
+cfd8f94a1a66: Pulling fs layer
+b74328811047: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Layer already being pulled by another client. Waiting.
+cfd8f94a1a66: Verifying Checksum
+cfd8f94a1a66: Download complete
+b74328811047: Verifying Checksum
+b74328811047: Download complete
+dbe5a83302f6: Verifying Checksum
+dbe5a83302f6: Download complete
+156b1db431fa: Verifying Checksum
+156b1db431fa: Download complete
+295b7d206de2: Verifying Checksum
+295b7d206de2: Download complete
+f55c403b8bb9: Verifying Checksum
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+566182799f15: Verifying Checksum
+566182799f15: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+511136ea3c5a: Pull complete
+295b7d206de2: Pull complete
+48b900fad9ea: Verifying Checksum
+48b900fad9ea: Download complete
+48b900fad9ea: Pull complete
+dbe5a83302f6: Pull complete
+566182799f15: Pull complete
+156b1db431fa: Pull complete
+cfd8f94a1a66: Pull complete
+b74328811047: Pull complete
+f55c403b8bb9: Pull complete
+f55c403b8bb9: Already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  4.87
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.27 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 axle-base
+
+docker images
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker tag kiwenlau/axle-base:latest 136.187.101.80:5000/axle-base:latest
+
+docker images
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.273 MB
+kiwenlau/axle-base              latest              f55c403b8bb9        11 months ago       1.273 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+0c980064bda0        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/axle-base:latest
+The push refers to a repository [136.187.101.80:5000/axle-base] (len: 1)
+f55c403b8bb9: Buffering to Disk
+f55c403b8bb9: Image successfully pushed
+f55c403b8bb9: Image already exists
+b74328811047: Buffering to Disk
+b74328811047: Image successfully pushed
+cfd8f94a1a66: Image already exists
+156b1db431fa: Image already exists
+566182799f15: Image already exists
+dbe5a83302f6: Buffering to Disk
+dbe5a83302f6: Image successfully pushed
+48b900fad9ea: Buffering to Disk
+48b900fad9ea: Image successfully pushed
+295b7d206de2: Image already exists
+511136ea3c5a: Image already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+
+real  0.83
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker pull 136.187.101.80:5000/axle-base:latest
+latest: Pulling from 136.187.101.80:5000/axle-base
+511136ea3c5a: Pulling fs layer
+295b7d206de2: Pulling fs layer
+48b900fad9ea: Pulling fs layer
+dbe5a83302f6: Pulling fs layer
+566182799f15: Pulling fs layer
+156b1db431fa: Pulling fs layer
+cfd8f94a1a66: Pulling fs layer
+b74328811047: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Pulling fs layer
+f55c403b8bb9: Layer already being pulled by another client. Waiting.
+156b1db431fa: Verifying Checksum
+156b1db431fa: Download complete
+dbe5a83302f6: Verifying Checksum
+dbe5a83302f6: Download complete
+f55c403b8bb9: Verifying Checksum
+f55c403b8bb9: Download complete
+f55c403b8bb9: Download complete
+cfd8f94a1a66: Verifying Checksum
+cfd8f94a1a66: Download complete
+b74328811047: Verifying Checksum
+b74328811047: Download complete
+566182799f15: Verifying Checksum
+566182799f15: Download complete
+295b7d206de2: Verifying Checksum
+295b7d206de2: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+511136ea3c5a: Pull complete
+295b7d206de2: Pull complete
+48b900fad9ea: Verifying Checksum
+48b900fad9ea: Download complete
+48b900fad9ea: Pull complete
+dbe5a83302f6: Pull complete
+566182799f15: Pull complete
+156b1db431fa: Pull complete
+cfd8f94a1a66: Pull complete
+b74328811047: Pull complete
+f55c403b8bb9: Pull complete
+f55c403b8bb9: Already exists
+Digest: sha256:46442cf6a887781553630da439651dac297ca82638cdad0253d1a86022d3040d
+Status: Downloaded newer image for 136.187.101.80:5000/axle-base:latest
+
+real  4.96
+
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+136.187.101.80:5000/axle-base   latest              f55c403b8bb9        11 months ago       1.27 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/axle-base:latest"
+ssh kai@54.225.249.141 "docker images | grep axle-base"
+
+docker rm -f docker_registry
+
+end date: Tue Aug 11 00:04:16 JST 2015
+
+
