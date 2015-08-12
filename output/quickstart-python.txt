@@ -1,0 +1,1505 @@
+
+pullpush benchmark: transfer quickstart-python image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Wed Aug 12 04:25:22 JST 2015
+
+sudo docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+sudo docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+9a4877af5b59        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+d50f305a58b3: Buffering to Disk
+d50f305a58b3: Image successfully pushed
+d50f305a58b3: Image already exists
+72c0311f6ea0: Image already exists
+86e7a3e12a13: Image already exists
+59f1480dafb0: Buffering to Disk
+59f1480dafb0: Image successfully pushed
+e8bdef776ac9: Buffering to Disk
+e8bdef776ac9: Image successfully pushed
+3447f41b5989: Image already exists
+31ff30c97af1: Image already exists
+c3f654c083c1: Buffering to Disk
+c3f654c083c1: Image successfully pushed
+64b7a6332aa2: Buffering to Disk
+64b7a6332aa2: Image successfully pushed
+db22e489f994: Buffering to Disk
+db22e489f994: Image successfully pushed
+2ef4015863b9: Image already exists
+d71de2a8c19e: Image already exists
+5c8d97a24744: Buffering to Disk
+5c8d97a24744: Image successfully pushed
+787349ce806c: Buffering to Disk
+787349ce806c: Image successfully pushed
+6b030fdd4748: Buffering to Disk
+6b030fdd4748: Image successfully pushed
+c90a56bfe7dd: Buffering to Disk
+c90a56bfe7dd: Image successfully pushed
+0e30e84e9513: Image already exists
+8771fbfe935c: Buffering to Disk
+8771fbfe935c: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:fcf7b35d605e18c2c7da57c8a6b33f9d6b21e0c07768967875a736eb4502f037
+
+real  102.99
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+latest: Pulling from 136.187.101.80:5000/quickstart-python
+511136ea3c5a: Pulling fs layer
+8771fbfe935c: Pulling fs layer
+0e30e84e9513: Pulling fs layer
+c90a56bfe7dd: Pulling fs layer
+6b030fdd4748: Pulling fs layer
+787349ce806c: Pulling fs layer
+5c8d97a24744: Pulling fs layer
+d71de2a8c19e: Pulling fs layer
+2ef4015863b9: Pulling fs layer
+db22e489f994: Pulling fs layer
+64b7a6332aa2: Pulling fs layer
+c3f654c083c1: Pulling fs layer
+31ff30c97af1: Pulling fs layer
+3447f41b5989: Pulling fs layer
+e8bdef776ac9: Pulling fs layer
+59f1480dafb0: Pulling fs layer
+86e7a3e12a13: Pulling fs layer
+72c0311f6ea0: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Layer already being pulled by another client. Waiting.
+2ef4015863b9: Verifying Checksum
+2ef4015863b9: Download complete
+72c0311f6ea0: Verifying Checksum
+72c0311f6ea0: Download complete
+3447f41b5989: Verifying Checksum
+3447f41b5989: Download complete
+d71de2a8c19e: Verifying Checksum
+d71de2a8c19e: Download complete
+0e30e84e9513: Verifying Checksum
+0e30e84e9513: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d50f305a58b3: Verifying Checksum
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+86e7a3e12a13: Verifying Checksum
+86e7a3e12a13: Download complete
+31ff30c97af1: Verifying Checksum
+31ff30c97af1: Download complete
+511136ea3c5a: Pull complete
+db22e489f994: Verifying Checksum
+db22e489f994: Download complete
+e8bdef776ac9: Verifying Checksum
+e8bdef776ac9: Download complete
+5c8d97a24744: Verifying Checksum
+5c8d97a24744: Download complete
+c3f654c083c1: Verifying Checksum
+c3f654c083c1: Download complete
+59f1480dafb0: Verifying Checksum
+59f1480dafb0: Download complete
+64b7a6332aa2: Verifying Checksum
+64b7a6332aa2: Download complete
+c90a56bfe7dd: Verifying Checksum
+c90a56bfe7dd: Download complete
+6b030fdd4748: Verifying Checksum
+6b030fdd4748: Download complete
+8771fbfe935c: Verifying Checksum
+8771fbfe935c: Download complete
+8771fbfe935c: Pull complete
+0e30e84e9513: Pull complete
+c90a56bfe7dd: Pull complete
+6b030fdd4748: Pull complete
+787349ce806c: Verifying Checksum
+787349ce806c: Download complete
+787349ce806c: Pull complete
+5c8d97a24744: Pull complete
+d71de2a8c19e: Pull complete
+2ef4015863b9: Pull complete
+db22e489f994: Pull complete
+64b7a6332aa2: Pull complete
+c3f654c083c1: Pull complete
+31ff30c97af1: Pull complete
+3447f41b5989: Pull complete
+e8bdef776ac9: Pull complete
+59f1480dafb0: Pull complete
+86e7a3e12a13: Pull complete
+72c0311f6ea0: Pull complete
+d50f305a58b3: Pull complete
+d50f305a58b3: Already exists
+Digest: sha256:fcf7b35d605e18c2c7da57c8a6b33f9d6b21e0c07768967875a736eb4502f037
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  36.99
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+802d35e20699        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+d50f305a58b3: Buffering to Disk
+d50f305a58b3: Image successfully pushed
+d50f305a58b3: Image already exists
+72c0311f6ea0: Image already exists
+86e7a3e12a13: Image already exists
+59f1480dafb0: Buffering to Disk
+59f1480dafb0: Image successfully pushed
+e8bdef776ac9: Buffering to Disk
+e8bdef776ac9: Image successfully pushed
+3447f41b5989: Image already exists
+31ff30c97af1: Image already exists
+c3f654c083c1: Buffering to Disk
+c3f654c083c1: Image successfully pushed
+64b7a6332aa2: Buffering to Disk
+64b7a6332aa2: Image successfully pushed
+db22e489f994: Buffering to Disk
+db22e489f994: Image successfully pushed
+2ef4015863b9: Image already exists
+d71de2a8c19e: Image already exists
+5c8d97a24744: Buffering to Disk
+5c8d97a24744: Image successfully pushed
+787349ce806c: Buffering to Disk
+787349ce806c: Image successfully pushed
+6b030fdd4748: Buffering to Disk
+6b030fdd4748: Image successfully pushed
+c90a56bfe7dd: Buffering to Disk
+c90a56bfe7dd: Image successfully pushed
+0e30e84e9513: Image already exists
+8771fbfe935c: Buffering to Disk
+8771fbfe935c: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:fcf7b35d605e18c2c7da57c8a6b33f9d6b21e0c07768967875a736eb4502f037
+
+real  98.93
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+latest: Pulling from 136.187.101.80:5000/quickstart-python
+511136ea3c5a: Pulling fs layer
+8771fbfe935c: Pulling fs layer
+0e30e84e9513: Pulling fs layer
+c90a56bfe7dd: Pulling fs layer
+6b030fdd4748: Pulling fs layer
+787349ce806c: Pulling fs layer
+5c8d97a24744: Pulling fs layer
+d71de2a8c19e: Pulling fs layer
+2ef4015863b9: Pulling fs layer
+db22e489f994: Pulling fs layer
+64b7a6332aa2: Pulling fs layer
+c3f654c083c1: Pulling fs layer
+31ff30c97af1: Pulling fs layer
+3447f41b5989: Pulling fs layer
+e8bdef776ac9: Pulling fs layer
+59f1480dafb0: Pulling fs layer
+86e7a3e12a13: Pulling fs layer
+72c0311f6ea0: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+511136ea3c5a: Pull complete
+2ef4015863b9: Verifying Checksum
+2ef4015863b9: Download complete
+0e30e84e9513: Verifying Checksum
+0e30e84e9513: Download complete
+3447f41b5989: Verifying Checksum
+3447f41b5989: Download complete
+d50f305a58b3: Verifying Checksum
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+86e7a3e12a13: Verifying Checksum
+86e7a3e12a13: Download complete
+31ff30c97af1: Verifying Checksum
+31ff30c97af1: Download complete
+d71de2a8c19e: Verifying Checksum
+d71de2a8c19e: Download complete
+72c0311f6ea0: Verifying Checksum
+72c0311f6ea0: Download complete
+db22e489f994: Verifying Checksum
+db22e489f994: Download complete
+e8bdef776ac9: Verifying Checksum
+e8bdef776ac9: Download complete
+5c8d97a24744: Verifying Checksum
+5c8d97a24744: Download complete
+59f1480dafb0: Verifying Checksum
+59f1480dafb0: Download complete
+c3f654c083c1: Verifying Checksum
+c3f654c083c1: Download complete
+c90a56bfe7dd: Verifying Checksum
+c90a56bfe7dd: Download complete
+64b7a6332aa2: Verifying Checksum
+64b7a6332aa2: Download complete
+6b030fdd4748: Verifying Checksum
+6b030fdd4748: Download complete
+8771fbfe935c: Verifying Checksum
+8771fbfe935c: Download complete
+8771fbfe935c: Pull complete
+0e30e84e9513: Pull complete
+c90a56bfe7dd: Pull complete
+6b030fdd4748: Pull complete
+787349ce806c: Verifying Checksum
+787349ce806c: Download complete
+787349ce806c: Pull complete
+5c8d97a24744: Pull complete
+d71de2a8c19e: Pull complete
+2ef4015863b9: Pull complete
+db22e489f994: Pull complete
+64b7a6332aa2: Pull complete
+c3f654c083c1: Pull complete
+31ff30c97af1: Pull complete
+3447f41b5989: Pull complete
+e8bdef776ac9: Pull complete
+59f1480dafb0: Pull complete
+86e7a3e12a13: Pull complete
+72c0311f6ea0: Pull complete
+d50f305a58b3: Pull complete
+d50f305a58b3: Already exists
+Digest: sha256:fcf7b35d605e18c2c7da57c8a6b33f9d6b21e0c07768967875a736eb4502f037
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  39.25
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+50dd3ba69f53        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+d50f305a58b3: Buffering to Disk
+d50f305a58b3: Image successfully pushed
+d50f305a58b3: Image already exists
+72c0311f6ea0: Image already exists
+86e7a3e12a13: Image already exists
+59f1480dafb0: Buffering to Disk
+59f1480dafb0: Image successfully pushed
+e8bdef776ac9: Buffering to Disk
+e8bdef776ac9: Image successfully pushed
+3447f41b5989: Image already exists
+31ff30c97af1: Image already exists
+c3f654c083c1: Buffering to Disk
+c3f654c083c1: Image successfully pushed
+64b7a6332aa2: Buffering to Disk
+64b7a6332aa2: Image successfully pushed
+db22e489f994: Buffering to Disk
+db22e489f994: Image successfully pushed
+2ef4015863b9: Image already exists
+d71de2a8c19e: Image already exists
+5c8d97a24744: Buffering to Disk
+5c8d97a24744: Image successfully pushed
+787349ce806c: Buffering to Disk
+787349ce806c: Image successfully pushed
+6b030fdd4748: Buffering to Disk
+6b030fdd4748: Image successfully pushed
+c90a56bfe7dd: Buffering to Disk
+c90a56bfe7dd: Image successfully pushed
+0e30e84e9513: Image already exists
+8771fbfe935c: Buffering to Disk
+8771fbfe935c: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:89f3ca349144e4e54e1e27b0bde9d5a882d7b6a7cc74c12f5ef5f30779d2f710
+
+real  100.29
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+latest: Pulling from 136.187.101.80:5000/quickstart-python
+511136ea3c5a: Pulling fs layer
+8771fbfe935c: Pulling fs layer
+0e30e84e9513: Pulling fs layer
+c90a56bfe7dd: Pulling fs layer
+6b030fdd4748: Pulling fs layer
+787349ce806c: Pulling fs layer
+5c8d97a24744: Pulling fs layer
+d71de2a8c19e: Pulling fs layer
+2ef4015863b9: Pulling fs layer
+db22e489f994: Pulling fs layer
+64b7a6332aa2: Pulling fs layer
+c3f654c083c1: Pulling fs layer
+31ff30c97af1: Pulling fs layer
+3447f41b5989: Pulling fs layer
+e8bdef776ac9: Pulling fs layer
+59f1480dafb0: Pulling fs layer
+86e7a3e12a13: Pulling fs layer
+72c0311f6ea0: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Layer already being pulled by another client. Waiting.
+0e30e84e9513: Verifying Checksum
+0e30e84e9513: Download complete
+72c0311f6ea0: Verifying Checksum
+72c0311f6ea0: Download complete
+31ff30c97af1: Verifying Checksum
+31ff30c97af1: Download complete
+2ef4015863b9: Verifying Checksum
+2ef4015863b9: Download complete
+d71de2a8c19e: Verifying Checksum
+d71de2a8c19e: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+3447f41b5989: Verifying Checksum
+3447f41b5989: Download complete
+d50f305a58b3: Verifying Checksum
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+86e7a3e12a13: Verifying Checksum
+86e7a3e12a13: Download complete
+511136ea3c5a: Pull complete
+e8bdef776ac9: Verifying Checksum
+e8bdef776ac9: Download complete
+db22e489f994: Verifying Checksum
+db22e489f994: Download complete
+5c8d97a24744: Verifying Checksum
+5c8d97a24744: Download complete
+c3f654c083c1: Verifying Checksum
+c3f654c083c1: Download complete
+59f1480dafb0: Verifying Checksum
+59f1480dafb0: Download complete
+c90a56bfe7dd: Verifying Checksum
+c90a56bfe7dd: Download complete
+64b7a6332aa2: Verifying Checksum
+64b7a6332aa2: Download complete
+6b030fdd4748: Verifying Checksum
+6b030fdd4748: Download complete
+8771fbfe935c: Verifying Checksum
+8771fbfe935c: Download complete
+8771fbfe935c: Pull complete
+0e30e84e9513: Pull complete
+c90a56bfe7dd: Pull complete
+6b030fdd4748: Pull complete
+787349ce806c: Verifying Checksum
+787349ce806c: Download complete
+787349ce806c: Pull complete
+5c8d97a24744: Pull complete
+d71de2a8c19e: Pull complete
+2ef4015863b9: Pull complete
+db22e489f994: Pull complete
+64b7a6332aa2: Pull complete
+c3f654c083c1: Pull complete
+31ff30c97af1: Pull complete
+3447f41b5989: Pull complete
+e8bdef776ac9: Pull complete
+59f1480dafb0: Pull complete
+86e7a3e12a13: Pull complete
+72c0311f6ea0: Pull complete
+d50f305a58b3: Pull complete
+d50f305a58b3: Already exists
+Digest: sha256:89f3ca349144e4e54e1e27b0bde9d5a882d7b6a7cc74c12f5ef5f30779d2f710
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  36.56
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+55158ba1956e        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+d50f305a58b3: Buffering to Disk
+d50f305a58b3: Image successfully pushed
+d50f305a58b3: Image already exists
+72c0311f6ea0: Image already exists
+86e7a3e12a13: Image already exists
+59f1480dafb0: Buffering to Disk
+59f1480dafb0: Image successfully pushed
+e8bdef776ac9: Buffering to Disk
+e8bdef776ac9: Image successfully pushed
+3447f41b5989: Image already exists
+31ff30c97af1: Image already exists
+c3f654c083c1: Buffering to Disk
+c3f654c083c1: Image successfully pushed
+64b7a6332aa2: Buffering to Disk
+64b7a6332aa2: Image successfully pushed
+db22e489f994: Buffering to Disk
+db22e489f994: Image successfully pushed
+2ef4015863b9: Image already exists
+d71de2a8c19e: Image already exists
+5c8d97a24744: Buffering to Disk
+5c8d97a24744: Image successfully pushed
+787349ce806c: Buffering to Disk
+787349ce806c: Image successfully pushed
+6b030fdd4748: Buffering to Disk
+6b030fdd4748: Image successfully pushed
+c90a56bfe7dd: Buffering to Disk
+c90a56bfe7dd: Image successfully pushed
+0e30e84e9513: Image already exists
+8771fbfe935c: Buffering to Disk
+8771fbfe935c: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:3bd9552e5ba5cf40fb052f37726c3e06e05378d954397b9a8c9679eb2a1f7681
+
+real  102.19
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+latest: Pulling from 136.187.101.80:5000/quickstart-python
+511136ea3c5a: Pulling fs layer
+8771fbfe935c: Pulling fs layer
+0e30e84e9513: Pulling fs layer
+c90a56bfe7dd: Pulling fs layer
+6b030fdd4748: Pulling fs layer
+787349ce806c: Pulling fs layer
+5c8d97a24744: Pulling fs layer
+d71de2a8c19e: Pulling fs layer
+2ef4015863b9: Pulling fs layer
+db22e489f994: Pulling fs layer
+64b7a6332aa2: Pulling fs layer
+c3f654c083c1: Pulling fs layer
+31ff30c97af1: Pulling fs layer
+3447f41b5989: Pulling fs layer
+e8bdef776ac9: Pulling fs layer
+59f1480dafb0: Pulling fs layer
+86e7a3e12a13: Pulling fs layer
+72c0311f6ea0: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Layer already being pulled by another client. Waiting.
+31ff30c97af1: Verifying Checksum
+31ff30c97af1: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+511136ea3c5a: Pull complete
+0e30e84e9513: Verifying Checksum
+0e30e84e9513: Download complete
+3447f41b5989: Verifying Checksum
+3447f41b5989: Download complete
+2ef4015863b9: Verifying Checksum
+2ef4015863b9: Download complete
+72c0311f6ea0: Verifying Checksum
+72c0311f6ea0: Download complete
+d50f305a58b3: Verifying Checksum
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+d71de2a8c19e: Verifying Checksum
+d71de2a8c19e: Download complete
+86e7a3e12a13: Verifying Checksum
+86e7a3e12a13: Download complete
+db22e489f994: Verifying Checksum
+db22e489f994: Download complete
+e8bdef776ac9: Verifying Checksum
+e8bdef776ac9: Download complete
+5c8d97a24744: Verifying Checksum
+5c8d97a24744: Download complete
+59f1480dafb0: Verifying Checksum
+59f1480dafb0: Download complete
+c3f654c083c1: Verifying Checksum
+c3f654c083c1: Download complete
+c90a56bfe7dd: Verifying Checksum
+c90a56bfe7dd: Download complete
+64b7a6332aa2: Verifying Checksum
+64b7a6332aa2: Download complete
+6b030fdd4748: Verifying Checksum
+6b030fdd4748: Download complete
+8771fbfe935c: Verifying Checksum
+8771fbfe935c: Download complete
+8771fbfe935c: Pull complete
+0e30e84e9513: Pull complete
+c90a56bfe7dd: Pull complete
+6b030fdd4748: Pull complete
+787349ce806c: Verifying Checksum
+787349ce806c: Download complete
+787349ce806c: Pull complete
+5c8d97a24744: Pull complete
+d71de2a8c19e: Pull complete
+2ef4015863b9: Pull complete
+db22e489f994: Pull complete
+64b7a6332aa2: Pull complete
+c3f654c083c1: Pull complete
+31ff30c97af1: Pull complete
+3447f41b5989: Pull complete
+e8bdef776ac9: Pull complete
+59f1480dafb0: Pull complete
+86e7a3e12a13: Pull complete
+72c0311f6ea0: Pull complete
+d50f305a58b3: Pull complete
+d50f305a58b3: Already exists
+Digest: sha256:3bd9552e5ba5cf40fb052f37726c3e06e05378d954397b9a8c9679eb2a1f7681
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  39.86
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+f16074a0f801        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+d50f305a58b3: Buffering to Disk
+d50f305a58b3: Image successfully pushed
+d50f305a58b3: Image already exists
+72c0311f6ea0: Image already exists
+86e7a3e12a13: Image already exists
+59f1480dafb0: Buffering to Disk
+59f1480dafb0: Image successfully pushed
+e8bdef776ac9: Buffering to Disk
+e8bdef776ac9: Image successfully pushed
+3447f41b5989: Image already exists
+31ff30c97af1: Image already exists
+c3f654c083c1: Buffering to Disk
+c3f654c083c1: Image successfully pushed
+64b7a6332aa2: Buffering to Disk
+64b7a6332aa2: Image successfully pushed
+db22e489f994: Buffering to Disk
+db22e489f994: Image successfully pushed
+2ef4015863b9: Image already exists
+d71de2a8c19e: Image already exists
+5c8d97a24744: Buffering to Disk
+5c8d97a24744: Image successfully pushed
+787349ce806c: Buffering to Disk
+787349ce806c: Image successfully pushed
+6b030fdd4748: Buffering to Disk
+6b030fdd4748: Image successfully pushed
+c90a56bfe7dd: Buffering to Disk
+c90a56bfe7dd: Image successfully pushed
+0e30e84e9513: Image already exists
+8771fbfe935c: Buffering to Disk
+8771fbfe935c: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:fcf7b35d605e18c2c7da57c8a6b33f9d6b21e0c07768967875a736eb4502f037
+
+real  99.71
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+latest: Pulling from 136.187.101.80:5000/quickstart-python
+511136ea3c5a: Pulling fs layer
+8771fbfe935c: Pulling fs layer
+0e30e84e9513: Pulling fs layer
+c90a56bfe7dd: Pulling fs layer
+6b030fdd4748: Pulling fs layer
+787349ce806c: Pulling fs layer
+5c8d97a24744: Pulling fs layer
+d71de2a8c19e: Pulling fs layer
+2ef4015863b9: Pulling fs layer
+db22e489f994: Pulling fs layer
+64b7a6332aa2: Pulling fs layer
+c3f654c083c1: Pulling fs layer
+31ff30c97af1: Pulling fs layer
+3447f41b5989: Pulling fs layer
+e8bdef776ac9: Pulling fs layer
+59f1480dafb0: Pulling fs layer
+86e7a3e12a13: Pulling fs layer
+72c0311f6ea0: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Layer already being pulled by another client. Waiting.
+72c0311f6ea0: Verifying Checksum
+72c0311f6ea0: Download complete
+3447f41b5989: Verifying Checksum
+3447f41b5989: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+31ff30c97af1: Verifying Checksum
+31ff30c97af1: Download complete
+86e7a3e12a13: Verifying Checksum
+86e7a3e12a13: Download complete
+2ef4015863b9: Verifying Checksum
+2ef4015863b9: Download complete
+0e30e84e9513: Verifying Checksum
+0e30e84e9513: Download complete
+d71de2a8c19e: Verifying Checksum
+d71de2a8c19e: Download complete
+d50f305a58b3: Verifying Checksum
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+511136ea3c5a: Pull complete
+db22e489f994: Verifying Checksum
+db22e489f994: Download complete
+e8bdef776ac9: Verifying Checksum
+e8bdef776ac9: Download complete
+5c8d97a24744: Verifying Checksum
+5c8d97a24744: Download complete
+59f1480dafb0: Verifying Checksum
+59f1480dafb0: Download complete
+c3f654c083c1: Verifying Checksum
+c3f654c083c1: Download complete
+c90a56bfe7dd: Verifying Checksum
+c90a56bfe7dd: Download complete
+64b7a6332aa2: Verifying Checksum
+64b7a6332aa2: Download complete
+6b030fdd4748: Verifying Checksum
+6b030fdd4748: Download complete
+8771fbfe935c: Verifying Checksum
+8771fbfe935c: Download complete
+8771fbfe935c: Pull complete
+0e30e84e9513: Pull complete
+c90a56bfe7dd: Pull complete
+6b030fdd4748: Pull complete
+787349ce806c: Verifying Checksum
+787349ce806c: Download complete
+787349ce806c: Pull complete
+5c8d97a24744: Pull complete
+d71de2a8c19e: Pull complete
+2ef4015863b9: Pull complete
+db22e489f994: Pull complete
+64b7a6332aa2: Pull complete
+c3f654c083c1: Pull complete
+31ff30c97af1: Pull complete
+3447f41b5989: Pull complete
+e8bdef776ac9: Pull complete
+59f1480dafb0: Pull complete
+86e7a3e12a13: Pull complete
+72c0311f6ea0: Pull complete
+d50f305a58b3: Pull complete
+d50f305a58b3: Already exists
+Digest: sha256:fcf7b35d605e18c2c7da57c8a6b33f9d6b21e0c07768967875a736eb4502f037
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  43.52
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+a01bfdcf0e3a        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+d50f305a58b3: Buffering to Disk
+d50f305a58b3: Image successfully pushed
+d50f305a58b3: Image already exists
+72c0311f6ea0: Image already exists
+86e7a3e12a13: Image already exists
+59f1480dafb0: Buffering to Disk
+59f1480dafb0: Image successfully pushed
+e8bdef776ac9: Buffering to Disk
+e8bdef776ac9: Image successfully pushed
+3447f41b5989: Image already exists
+31ff30c97af1: Image already exists
+c3f654c083c1: Buffering to Disk
+c3f654c083c1: Image successfully pushed
+64b7a6332aa2: Buffering to Disk
+64b7a6332aa2: Image successfully pushed
+db22e489f994: Buffering to Disk
+db22e489f994: Image successfully pushed
+2ef4015863b9: Image already exists
+d71de2a8c19e: Image already exists
+5c8d97a24744: Buffering to Disk
+5c8d97a24744: Image successfully pushed
+787349ce806c: Buffering to Disk
+787349ce806c: Image successfully pushed
+6b030fdd4748: Buffering to Disk
+6b030fdd4748: Image successfully pushed
+c90a56bfe7dd: Buffering to Disk
+c90a56bfe7dd: Image successfully pushed
+0e30e84e9513: Image already exists
+8771fbfe935c: Buffering to Disk
+8771fbfe935c: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:b16ebbd30b1fa40b925ed7a60ba700bec25986684e09cf97f7512cf888c7d66f
+
+real  98.93
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+latest: Pulling from 136.187.101.80:5000/quickstart-python
+511136ea3c5a: Pulling fs layer
+8771fbfe935c: Pulling fs layer
+0e30e84e9513: Pulling fs layer
+c90a56bfe7dd: Pulling fs layer
+6b030fdd4748: Pulling fs layer
+787349ce806c: Pulling fs layer
+5c8d97a24744: Pulling fs layer
+d71de2a8c19e: Pulling fs layer
+2ef4015863b9: Pulling fs layer
+db22e489f994: Pulling fs layer
+64b7a6332aa2: Pulling fs layer
+c3f654c083c1: Pulling fs layer
+31ff30c97af1: Pulling fs layer
+3447f41b5989: Pulling fs layer
+e8bdef776ac9: Pulling fs layer
+59f1480dafb0: Pulling fs layer
+86e7a3e12a13: Pulling fs layer
+72c0311f6ea0: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Layer already being pulled by another client. Waiting.
+0e30e84e9513: Verifying Checksum
+0e30e84e9513: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+31ff30c97af1: Verifying Checksum
+31ff30c97af1: Download complete
+72c0311f6ea0: Verifying Checksum
+72c0311f6ea0: Download complete
+d71de2a8c19e: Verifying Checksum
+d71de2a8c19e: Download complete
+d50f305a58b3: Verifying Checksum
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+86e7a3e12a13: Verifying Checksum
+86e7a3e12a13: Download complete
+2ef4015863b9: Verifying Checksum
+2ef4015863b9: Download complete
+3447f41b5989: Verifying Checksum
+3447f41b5989: Download complete
+511136ea3c5a: Pull complete
+e8bdef776ac9: Verifying Checksum
+e8bdef776ac9: Download complete
+db22e489f994: Verifying Checksum
+db22e489f994: Download complete
+5c8d97a24744: Verifying Checksum
+5c8d97a24744: Download complete
+59f1480dafb0: Verifying Checksum
+59f1480dafb0: Download complete
+c3f654c083c1: Verifying Checksum
+c3f654c083c1: Download complete
+c90a56bfe7dd: Verifying Checksum
+c90a56bfe7dd: Download complete
+64b7a6332aa2: Verifying Checksum
+64b7a6332aa2: Download complete
+6b030fdd4748: Verifying Checksum
+6b030fdd4748: Download complete
+8771fbfe935c: Verifying Checksum
+8771fbfe935c: Download complete
+8771fbfe935c: Pull complete
+0e30e84e9513: Pull complete
+c90a56bfe7dd: Pull complete
+6b030fdd4748: Pull complete
+787349ce806c: Verifying Checksum
+787349ce806c: Download complete
+787349ce806c: Pull complete
+5c8d97a24744: Pull complete
+d71de2a8c19e: Pull complete
+2ef4015863b9: Pull complete
+db22e489f994: Pull complete
+64b7a6332aa2: Pull complete
+c3f654c083c1: Pull complete
+31ff30c97af1: Pull complete
+3447f41b5989: Pull complete
+e8bdef776ac9: Pull complete
+59f1480dafb0: Pull complete
+86e7a3e12a13: Pull complete
+72c0311f6ea0: Pull complete
+d50f305a58b3: Pull complete
+d50f305a58b3: Already exists
+Digest: sha256:b16ebbd30b1fa40b925ed7a60ba700bec25986684e09cf97f7512cf888c7d66f
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  37.24
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+43e663d475b6        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+d50f305a58b3: Buffering to Disk
+d50f305a58b3: Image successfully pushed
+d50f305a58b3: Image already exists
+72c0311f6ea0: Image already exists
+86e7a3e12a13: Image already exists
+59f1480dafb0: Buffering to Disk
+59f1480dafb0: Image successfully pushed
+e8bdef776ac9: Buffering to Disk
+e8bdef776ac9: Image successfully pushed
+3447f41b5989: Image already exists
+31ff30c97af1: Image already exists
+c3f654c083c1: Buffering to Disk
+c3f654c083c1: Image successfully pushed
+64b7a6332aa2: Buffering to Disk
+64b7a6332aa2: Image successfully pushed
+db22e489f994: Buffering to Disk
+db22e489f994: Image successfully pushed
+2ef4015863b9: Image already exists
+d71de2a8c19e: Image already exists
+5c8d97a24744: Buffering to Disk
+5c8d97a24744: Image successfully pushed
+787349ce806c: Buffering to Disk
+787349ce806c: Image successfully pushed
+6b030fdd4748: Buffering to Disk
+6b030fdd4748: Image successfully pushed
+c90a56bfe7dd: Buffering to Disk
+c90a56bfe7dd: Image successfully pushed
+0e30e84e9513: Image already exists
+8771fbfe935c: Buffering to Disk
+8771fbfe935c: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:3bd9552e5ba5cf40fb052f37726c3e06e05378d954397b9a8c9679eb2a1f7681
+
+real  100.50
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+latest: Pulling from 136.187.101.80:5000/quickstart-python
+511136ea3c5a: Pulling fs layer
+8771fbfe935c: Pulling fs layer
+0e30e84e9513: Pulling fs layer
+c90a56bfe7dd: Pulling fs layer
+6b030fdd4748: Pulling fs layer
+787349ce806c: Pulling fs layer
+5c8d97a24744: Pulling fs layer
+d71de2a8c19e: Pulling fs layer
+2ef4015863b9: Pulling fs layer
+db22e489f994: Pulling fs layer
+64b7a6332aa2: Pulling fs layer
+c3f654c083c1: Pulling fs layer
+31ff30c97af1: Pulling fs layer
+3447f41b5989: Pulling fs layer
+e8bdef776ac9: Pulling fs layer
+59f1480dafb0: Pulling fs layer
+86e7a3e12a13: Pulling fs layer
+72c0311f6ea0: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Layer already being pulled by another client. Waiting.
+31ff30c97af1: Verifying Checksum
+31ff30c97af1: Download complete
+3447f41b5989: Verifying Checksum
+3447f41b5989: Download complete
+d50f305a58b3: Verifying Checksum
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+d71de2a8c19e: Verifying Checksum
+d71de2a8c19e: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+2ef4015863b9: Verifying Checksum
+2ef4015863b9: Download complete
+72c0311f6ea0: Verifying Checksum
+72c0311f6ea0: Download complete
+86e7a3e12a13: Verifying Checksum
+86e7a3e12a13: Download complete
+0e30e84e9513: Verifying Checksum
+0e30e84e9513: Download complete
+511136ea3c5a: Pull complete
+e8bdef776ac9: Verifying Checksum
+e8bdef776ac9: Download complete
+db22e489f994: Verifying Checksum
+db22e489f994: Download complete
+5c8d97a24744: Verifying Checksum
+5c8d97a24744: Download complete
+59f1480dafb0: Verifying Checksum
+59f1480dafb0: Download complete
+c3f654c083c1: Verifying Checksum
+c3f654c083c1: Download complete
+c90a56bfe7dd: Verifying Checksum
+c90a56bfe7dd: Download complete
+64b7a6332aa2: Verifying Checksum
+64b7a6332aa2: Download complete
+6b030fdd4748: Verifying Checksum
+6b030fdd4748: Download complete
+8771fbfe935c: Verifying Checksum
+8771fbfe935c: Download complete
+8771fbfe935c: Pull complete
+0e30e84e9513: Pull complete
+c90a56bfe7dd: Pull complete
+6b030fdd4748: Pull complete
+787349ce806c: Verifying Checksum
+787349ce806c: Download complete
+787349ce806c: Pull complete
+5c8d97a24744: Pull complete
+d71de2a8c19e: Pull complete
+2ef4015863b9: Pull complete
+db22e489f994: Pull complete
+64b7a6332aa2: Pull complete
+c3f654c083c1: Pull complete
+31ff30c97af1: Pull complete
+3447f41b5989: Pull complete
+e8bdef776ac9: Pull complete
+59f1480dafb0: Pull complete
+86e7a3e12a13: Pull complete
+72c0311f6ea0: Pull complete
+d50f305a58b3: Pull complete
+d50f305a58b3: Already exists
+Digest: sha256:3bd9552e5ba5cf40fb052f37726c3e06e05378d954397b9a8c9679eb2a1f7681
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  36.64
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+466dab032bde        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+d50f305a58b3: Buffering to Disk
+d50f305a58b3: Image successfully pushed
+d50f305a58b3: Image already exists
+72c0311f6ea0: Image already exists
+86e7a3e12a13: Image already exists
+59f1480dafb0: Buffering to Disk
+59f1480dafb0: Image successfully pushed
+e8bdef776ac9: Buffering to Disk
+e8bdef776ac9: Image successfully pushed
+3447f41b5989: Image already exists
+31ff30c97af1: Image already exists
+c3f654c083c1: Buffering to Disk
+c3f654c083c1: Image successfully pushed
+64b7a6332aa2: Buffering to Disk
+64b7a6332aa2: Image successfully pushed
+db22e489f994: Buffering to Disk
+db22e489f994: Image successfully pushed
+2ef4015863b9: Image already exists
+d71de2a8c19e: Image already exists
+5c8d97a24744: Buffering to Disk
+5c8d97a24744: Image successfully pushed
+787349ce806c: Buffering to Disk
+787349ce806c: Image successfully pushed
+6b030fdd4748: Buffering to Disk
+6b030fdd4748: Image successfully pushed
+c90a56bfe7dd: Buffering to Disk
+c90a56bfe7dd: Image successfully pushed
+0e30e84e9513: Image already exists
+8771fbfe935c: Buffering to Disk
+8771fbfe935c: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:9c032c1385d46959a5b50a62c96bbb93e99ce302e961f482bc27552839001951
+
+real  99.79
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+latest: Pulling from 136.187.101.80:5000/quickstart-python
+511136ea3c5a: Pulling fs layer
+8771fbfe935c: Pulling fs layer
+0e30e84e9513: Pulling fs layer
+c90a56bfe7dd: Pulling fs layer
+6b030fdd4748: Pulling fs layer
+787349ce806c: Pulling fs layer
+5c8d97a24744: Pulling fs layer
+d71de2a8c19e: Pulling fs layer
+2ef4015863b9: Pulling fs layer
+db22e489f994: Pulling fs layer
+64b7a6332aa2: Pulling fs layer
+c3f654c083c1: Pulling fs layer
+31ff30c97af1: Pulling fs layer
+3447f41b5989: Pulling fs layer
+e8bdef776ac9: Pulling fs layer
+59f1480dafb0: Pulling fs layer
+86e7a3e12a13: Pulling fs layer
+72c0311f6ea0: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+511136ea3c5a: Pull complete
+d71de2a8c19e: Verifying Checksum
+d71de2a8c19e: Download complete
+3447f41b5989: Verifying Checksum
+3447f41b5989: Download complete
+86e7a3e12a13: Verifying Checksum
+86e7a3e12a13: Download complete
+0e30e84e9513: Verifying Checksum
+0e30e84e9513: Download complete
+31ff30c97af1: Verifying Checksum
+31ff30c97af1: Download complete
+2ef4015863b9: Verifying Checksum
+2ef4015863b9: Download complete
+72c0311f6ea0: Verifying Checksum
+72c0311f6ea0: Download complete
+d50f305a58b3: Verifying Checksum
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+db22e489f994: Verifying Checksum
+db22e489f994: Download complete
+e8bdef776ac9: Verifying Checksum
+e8bdef776ac9: Download complete
+5c8d97a24744: Verifying Checksum
+5c8d97a24744: Download complete
+59f1480dafb0: Verifying Checksum
+59f1480dafb0: Download complete
+c3f654c083c1: Verifying Checksum
+c3f654c083c1: Download complete
+c90a56bfe7dd: Verifying Checksum
+c90a56bfe7dd: Download complete
+64b7a6332aa2: Verifying Checksum
+64b7a6332aa2: Download complete
+6b030fdd4748: Verifying Checksum
+6b030fdd4748: Download complete
+8771fbfe935c: Verifying Checksum
+8771fbfe935c: Download complete
+8771fbfe935c: Pull complete
+0e30e84e9513: Pull complete
+c90a56bfe7dd: Pull complete
+6b030fdd4748: Pull complete
+787349ce806c: Verifying Checksum
+787349ce806c: Download complete
+787349ce806c: Pull complete
+5c8d97a24744: Pull complete
+d71de2a8c19e: Pull complete
+2ef4015863b9: Pull complete
+db22e489f994: Pull complete
+64b7a6332aa2: Pull complete
+c3f654c083c1: Pull complete
+31ff30c97af1: Pull complete
+3447f41b5989: Pull complete
+e8bdef776ac9: Pull complete
+59f1480dafb0: Pull complete
+86e7a3e12a13: Pull complete
+72c0311f6ea0: Pull complete
+d50f305a58b3: Pull complete
+d50f305a58b3: Already exists
+Digest: sha256:9c032c1385d46959a5b50a62c96bbb93e99ce302e961f482bc27552839001951
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  36.82
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+82927dba6eaf        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+d50f305a58b3: Buffering to Disk
+d50f305a58b3: Image successfully pushed
+d50f305a58b3: Image already exists
+72c0311f6ea0: Image already exists
+86e7a3e12a13: Image already exists
+59f1480dafb0: Buffering to Disk
+59f1480dafb0: Image successfully pushed
+e8bdef776ac9: Buffering to Disk
+e8bdef776ac9: Image successfully pushed
+3447f41b5989: Image already exists
+31ff30c97af1: Image already exists
+c3f654c083c1: Buffering to Disk
+c3f654c083c1: Image successfully pushed
+64b7a6332aa2: Buffering to Disk
+64b7a6332aa2: Image successfully pushed
+db22e489f994: Buffering to Disk
+db22e489f994: Image successfully pushed
+2ef4015863b9: Image already exists
+d71de2a8c19e: Image already exists
+5c8d97a24744: Buffering to Disk
+5c8d97a24744: Image successfully pushed
+787349ce806c: Buffering to Disk
+787349ce806c: Image successfully pushed
+6b030fdd4748: Buffering to Disk
+6b030fdd4748: Image successfully pushed
+c90a56bfe7dd: Buffering to Disk
+c90a56bfe7dd: Image successfully pushed
+0e30e84e9513: Image already exists
+8771fbfe935c: Buffering to Disk
+8771fbfe935c: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:e631844e7460a5726e1ba9a7197b6c026777a033f0c28b91f4bf939248d38eb8
+
+real  98.24
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+latest: Pulling from 136.187.101.80:5000/quickstart-python
+511136ea3c5a: Pulling fs layer
+8771fbfe935c: Pulling fs layer
+0e30e84e9513: Pulling fs layer
+c90a56bfe7dd: Pulling fs layer
+6b030fdd4748: Pulling fs layer
+787349ce806c: Pulling fs layer
+5c8d97a24744: Pulling fs layer
+d71de2a8c19e: Pulling fs layer
+2ef4015863b9: Pulling fs layer
+db22e489f994: Pulling fs layer
+64b7a6332aa2: Pulling fs layer
+c3f654c083c1: Pulling fs layer
+31ff30c97af1: Pulling fs layer
+3447f41b5989: Pulling fs layer
+e8bdef776ac9: Pulling fs layer
+59f1480dafb0: Pulling fs layer
+86e7a3e12a13: Pulling fs layer
+72c0311f6ea0: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+511136ea3c5a: Pull complete
+0e30e84e9513: Verifying Checksum
+0e30e84e9513: Download complete
+3447f41b5989: Verifying Checksum
+3447f41b5989: Download complete
+d71de2a8c19e: Verifying Checksum
+d71de2a8c19e: Download complete
+d50f305a58b3: Verifying Checksum
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+72c0311f6ea0: Verifying Checksum
+72c0311f6ea0: Download complete
+86e7a3e12a13: Verifying Checksum
+86e7a3e12a13: Download complete
+2ef4015863b9: Verifying Checksum
+2ef4015863b9: Download complete
+31ff30c97af1: Verifying Checksum
+31ff30c97af1: Download complete
+db22e489f994: Verifying Checksum
+db22e489f994: Download complete
+e8bdef776ac9: Verifying Checksum
+e8bdef776ac9: Download complete
+5c8d97a24744: Verifying Checksum
+5c8d97a24744: Download complete
+59f1480dafb0: Verifying Checksum
+59f1480dafb0: Download complete
+c3f654c083c1: Verifying Checksum
+c3f654c083c1: Download complete
+c90a56bfe7dd: Verifying Checksum
+c90a56bfe7dd: Download complete
+64b7a6332aa2: Verifying Checksum
+64b7a6332aa2: Download complete
+6b030fdd4748: Verifying Checksum
+6b030fdd4748: Download complete
+8771fbfe935c: Verifying Checksum
+8771fbfe935c: Download complete
+8771fbfe935c: Pull complete
+0e30e84e9513: Pull complete
+c90a56bfe7dd: Pull complete
+6b030fdd4748: Pull complete
+787349ce806c: Verifying Checksum
+787349ce806c: Download complete
+787349ce806c: Pull complete
+5c8d97a24744: Pull complete
+d71de2a8c19e: Pull complete
+2ef4015863b9: Pull complete
+db22e489f994: Pull complete
+64b7a6332aa2: Pull complete
+c3f654c083c1: Pull complete
+31ff30c97af1: Pull complete
+3447f41b5989: Pull complete
+e8bdef776ac9: Pull complete
+59f1480dafb0: Pull complete
+86e7a3e12a13: Pull complete
+72c0311f6ea0: Pull complete
+d50f305a58b3: Pull complete
+d50f305a58b3: Already exists
+Digest: sha256:e631844e7460a5726e1ba9a7197b6c026777a033f0c28b91f4bf939248d38eb8
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  37.35
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 quickstart-python
+
+docker images
+kiwenlau/quickstart-python      latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker tag kiwenlau/quickstart-python:latest 136.187.101.80:5000/quickstart-python:latest
+
+docker images
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.8 MB
+kiwenlau/quickstart-python              latest              d50f305a58b3        5 months ago        752.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+2577f4f6cf7e        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/quickstart-python:latest
+The push refers to a repository [136.187.101.80:5000/quickstart-python] (len: 1)
+d50f305a58b3: Buffering to Disk
+d50f305a58b3: Image successfully pushed
+d50f305a58b3: Image already exists
+72c0311f6ea0: Image already exists
+86e7a3e12a13: Image already exists
+59f1480dafb0: Buffering to Disk
+59f1480dafb0: Image successfully pushed
+e8bdef776ac9: Buffering to Disk
+e8bdef776ac9: Image successfully pushed
+3447f41b5989: Image already exists
+31ff30c97af1: Image already exists
+c3f654c083c1: Buffering to Disk
+c3f654c083c1: Image successfully pushed
+64b7a6332aa2: Buffering to Disk
+64b7a6332aa2: Image successfully pushed
+db22e489f994: Buffering to Disk
+db22e489f994: Image successfully pushed
+2ef4015863b9: Image already exists
+d71de2a8c19e: Image already exists
+5c8d97a24744: Buffering to Disk
+5c8d97a24744: Image successfully pushed
+787349ce806c: Buffering to Disk
+787349ce806c: Image successfully pushed
+6b030fdd4748: Buffering to Disk
+6b030fdd4748: Image successfully pushed
+c90a56bfe7dd: Buffering to Disk
+c90a56bfe7dd: Image successfully pushed
+0e30e84e9513: Image already exists
+8771fbfe935c: Buffering to Disk
+8771fbfe935c: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:e631844e7460a5726e1ba9a7197b6c026777a033f0c28b91f4bf939248d38eb8
+
+real  98.96
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker pull 136.187.101.80:5000/quickstart-python:latest
+latest: Pulling from 136.187.101.80:5000/quickstart-python
+511136ea3c5a: Pulling fs layer
+8771fbfe935c: Pulling fs layer
+0e30e84e9513: Pulling fs layer
+c90a56bfe7dd: Pulling fs layer
+6b030fdd4748: Pulling fs layer
+787349ce806c: Pulling fs layer
+5c8d97a24744: Pulling fs layer
+d71de2a8c19e: Pulling fs layer
+2ef4015863b9: Pulling fs layer
+db22e489f994: Pulling fs layer
+64b7a6332aa2: Pulling fs layer
+c3f654c083c1: Pulling fs layer
+31ff30c97af1: Pulling fs layer
+3447f41b5989: Pulling fs layer
+e8bdef776ac9: Pulling fs layer
+59f1480dafb0: Pulling fs layer
+86e7a3e12a13: Pulling fs layer
+72c0311f6ea0: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Pulling fs layer
+d50f305a58b3: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+0e30e84e9513: Verifying Checksum
+0e30e84e9513: Download complete
+d71de2a8c19e: Verifying Checksum
+d71de2a8c19e: Download complete
+511136ea3c5a: Pull complete
+31ff30c97af1: Verifying Checksum
+31ff30c97af1: Download complete
+72c0311f6ea0: Verifying Checksum
+72c0311f6ea0: Download complete
+3447f41b5989: Verifying Checksum
+3447f41b5989: Download complete
+d50f305a58b3: Verifying Checksum
+d50f305a58b3: Download complete
+d50f305a58b3: Download complete
+86e7a3e12a13: Verifying Checksum
+86e7a3e12a13: Download complete
+2ef4015863b9: Verifying Checksum
+2ef4015863b9: Download complete
+db22e489f994: Verifying Checksum
+db22e489f994: Download complete
+e8bdef776ac9: Verifying Checksum
+e8bdef776ac9: Download complete
+5c8d97a24744: Verifying Checksum
+5c8d97a24744: Download complete
+59f1480dafb0: Verifying Checksum
+59f1480dafb0: Download complete
+c3f654c083c1: Verifying Checksum
+c3f654c083c1: Download complete
+c90a56bfe7dd: Verifying Checksum
+c90a56bfe7dd: Download complete
+64b7a6332aa2: Verifying Checksum
+64b7a6332aa2: Download complete
+6b030fdd4748: Verifying Checksum
+6b030fdd4748: Download complete
+8771fbfe935c: Verifying Checksum
+8771fbfe935c: Download complete
+8771fbfe935c: Pull complete
+0e30e84e9513: Pull complete
+c90a56bfe7dd: Pull complete
+6b030fdd4748: Pull complete
+787349ce806c: Verifying Checksum
+787349ce806c: Download complete
+787349ce806c: Pull complete
+5c8d97a24744: Pull complete
+d71de2a8c19e: Pull complete
+2ef4015863b9: Pull complete
+db22e489f994: Pull complete
+64b7a6332aa2: Pull complete
+c3f654c083c1: Pull complete
+31ff30c97af1: Pull complete
+3447f41b5989: Pull complete
+e8bdef776ac9: Pull complete
+59f1480dafb0: Pull complete
+86e7a3e12a13: Pull complete
+72c0311f6ea0: Pull complete
+d50f305a58b3: Pull complete
+d50f305a58b3: Already exists
+Digest: sha256:e631844e7460a5726e1ba9a7197b6c026777a033f0c28b91f4bf939248d38eb8
+Status: Downloaded newer image for 136.187.101.80:5000/quickstart-python:latest
+
+real  37.14
+
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+136.187.101.80:5000/quickstart-python   latest              d50f305a58b3        5 months ago        752.7 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/quickstart-python:latest"
+ssh kai@54.225.249.141 "docker images | grep quickstart-python"
+
+docker rm -f docker_registry
+
+end date: Wed Aug 12 04:52:18 JST 2015
+
+

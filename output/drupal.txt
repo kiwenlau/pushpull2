@@ -1,0 +1,1697 @@
+
+pullpush benchmark: transfer drupal image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Wed Aug 12 02:03:34 JST 2015
+
+sudo docker images
+kiwenlau/drupal                 flat                888492e60ce1        7 weeks ago         349 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+sudo docker images
+kiwenlau/drupal                 flat                888492e60ce1        7 weeks ago         349 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+8d83c2fd5e2c        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+955326b5252b: Buffering to Disk
+955326b5252b: Image successfully pushed
+955326b5252b: Image already exists
+8547f05b9938: Image already exists
+028d92a286b7: Buffering to Disk
+028d92a286b7: Image successfully pushed
+3efecc4f87d8: Buffering to Disk
+3efecc4f87d8: Image successfully pushed
+7cb144efe3e5: Buffering to Disk
+7cb144efe3e5: Image successfully pushed
+80845206e6af: Image already exists
+0914a8ed3640: Image already exists
+d9e656a04de9: Image already exists
+9765133d2406: Buffering to Disk
+9765133d2406: Image successfully pushed
+88bee8cc4cf9: Buffering to Disk
+88bee8cc4cf9: Image successfully pushed
+9d5a770694fb: Buffering to Disk
+9d5a770694fb: Image successfully pushed
+318d14bcb5f0: Buffering to Disk
+318d14bcb5f0: Image successfully pushed
+a35c4329a0f1: Buffering to Disk
+a35c4329a0f1: Image successfully pushed
+208726508d11: Buffering to Disk
+208726508d11: Image successfully pushed
+a4adcf7d13f1: Buffering to Disk
+a4adcf7d13f1: Image successfully pushed
+0a591500d23b: Buffering to Disk
+0a591500d23b: Image successfully pushed
+499d12a586e3: Image already exists
+04c5d3b7b065: Image already exists
+d735006ad9c1: Buffering to Disk
+d735006ad9c1: Image successfully pushed
+70c8faa62a44: Buffering to Disk
+70c8faa62a44: Image successfully pushed
+c7b7c6419568: Buffering to Disk
+c7b7c6419568: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:22823f9723551c8eee4441b68c7d0d0b8d40994a9378e7a276ada64d19accd2f
+
+real  82.24
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+latest: Pulling from 136.187.101.80:5000/drupal
+511136ea3c5a: Pulling fs layer
+c7b7c6419568: Pulling fs layer
+70c8faa62a44: Pulling fs layer
+d735006ad9c1: Pulling fs layer
+04c5d3b7b065: Pulling fs layer
+499d12a586e3: Pulling fs layer
+0a591500d23b: Pulling fs layer
+a4adcf7d13f1: Pulling fs layer
+208726508d11: Pulling fs layer
+a35c4329a0f1: Pulling fs layer
+318d14bcb5f0: Pulling fs layer
+9d5a770694fb: Pulling fs layer
+88bee8cc4cf9: Pulling fs layer
+9765133d2406: Pulling fs layer
+d9e656a04de9: Pulling fs layer
+0914a8ed3640: Pulling fs layer
+80845206e6af: Pulling fs layer
+7cb144efe3e5: Pulling fs layer
+3efecc4f87d8: Pulling fs layer
+028d92a286b7: Pulling fs layer
+8547f05b9938: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Layer already being pulled by another client. Waiting.
+318d14bcb5f0: Verifying Checksum
+318d14bcb5f0: Download complete
+208726508d11: Verifying Checksum
+208726508d11: Download complete
+9765133d2406: Verifying Checksum
+9765133d2406: Download complete
+d9e656a04de9: Verifying Checksum
+d9e656a04de9: Download complete
+88bee8cc4cf9: Verifying Checksum
+88bee8cc4cf9: Download complete
+8547f05b9938: Verifying Checksum
+8547f05b9938: Download complete
+499d12a586e3: Verifying Checksum
+499d12a586e3: Download complete
+955326b5252b: Verifying Checksum
+955326b5252b: Download complete
+955326b5252b: Download complete
+0914a8ed3640: Verifying Checksum
+0914a8ed3640: Download complete
+80845206e6af: Verifying Checksum
+80845206e6af: Download complete
+04c5d3b7b065: Verifying Checksum
+04c5d3b7b065: Download complete
+a35c4329a0f1: Verifying Checksum
+a35c4329a0f1: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+a4adcf7d13f1: Verifying Checksum
+a4adcf7d13f1: Download complete
+9d5a770694fb: Verifying Checksum
+9d5a770694fb: Download complete
+d735006ad9c1: Verifying Checksum
+d735006ad9c1: Download complete
+028d92a286b7: Verifying Checksum
+028d92a286b7: Download complete
+511136ea3c5a: Pull complete
+70c8faa62a44: Verifying Checksum
+70c8faa62a44: Download complete
+3efecc4f87d8: Verifying Checksum
+3efecc4f87d8: Download complete
+0a591500d23b: Verifying Checksum
+0a591500d23b: Download complete
+7cb144efe3e5: Verifying Checksum
+7cb144efe3e5: Download complete
+c7b7c6419568: Verifying Checksum
+c7b7c6419568: Download complete
+c7b7c6419568: Pull complete
+70c8faa62a44: Pull complete
+d735006ad9c1: Pull complete
+04c5d3b7b065: Pull complete
+499d12a586e3: Pull complete
+0a591500d23b: Pull complete
+a4adcf7d13f1: Pull complete
+208726508d11: Pull complete
+a35c4329a0f1: Pull complete
+318d14bcb5f0: Pull complete
+9d5a770694fb: Pull complete
+88bee8cc4cf9: Pull complete
+9765133d2406: Pull complete
+d9e656a04de9: Pull complete
+0914a8ed3640: Pull complete
+80845206e6af: Pull complete
+7cb144efe3e5: Pull complete
+3efecc4f87d8: Pull complete
+028d92a286b7: Pull complete
+8547f05b9938: Pull complete
+955326b5252b: Pull complete
+955326b5252b: Already exists
+Digest: sha256:22823f9723551c8eee4441b68c7d0d0b8d40994a9378e7a276ada64d19accd2f
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  29.36
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+213ac2855d2b        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+955326b5252b: Buffering to Disk
+955326b5252b: Image successfully pushed
+955326b5252b: Image already exists
+8547f05b9938: Image already exists
+028d92a286b7: Buffering to Disk
+028d92a286b7: Image successfully pushed
+3efecc4f87d8: Buffering to Disk
+3efecc4f87d8: Image successfully pushed
+7cb144efe3e5: Buffering to Disk
+7cb144efe3e5: Image successfully pushed
+80845206e6af: Image already exists
+0914a8ed3640: Image already exists
+d9e656a04de9: Image already exists
+9765133d2406: Buffering to Disk
+9765133d2406: Image successfully pushed
+88bee8cc4cf9: Buffering to Disk
+88bee8cc4cf9: Image successfully pushed
+9d5a770694fb: Buffering to Disk
+9d5a770694fb: Image successfully pushed
+318d14bcb5f0: Buffering to Disk
+318d14bcb5f0: Image successfully pushed
+a35c4329a0f1: Buffering to Disk
+a35c4329a0f1: Image successfully pushed
+208726508d11: Buffering to Disk
+208726508d11: Image successfully pushed
+a4adcf7d13f1: Buffering to Disk
+a4adcf7d13f1: Image successfully pushed
+0a591500d23b: Buffering to Disk
+0a591500d23b: Image successfully pushed
+499d12a586e3: Image already exists
+04c5d3b7b065: Image already exists
+d735006ad9c1: Buffering to Disk
+d735006ad9c1: Image successfully pushed
+70c8faa62a44: Buffering to Disk
+70c8faa62a44: Image successfully pushed
+c7b7c6419568: Buffering to Disk
+c7b7c6419568: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:8a26f4b1eaa3463f2acfdc2bf1e13e83c5489a6120a273cd89cf6fbd31c804e0
+
+real  79.13
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+latest: Pulling from 136.187.101.80:5000/drupal
+511136ea3c5a: Pulling fs layer
+c7b7c6419568: Pulling fs layer
+70c8faa62a44: Pulling fs layer
+d735006ad9c1: Pulling fs layer
+04c5d3b7b065: Pulling fs layer
+499d12a586e3: Pulling fs layer
+0a591500d23b: Pulling fs layer
+a4adcf7d13f1: Pulling fs layer
+208726508d11: Pulling fs layer
+a35c4329a0f1: Pulling fs layer
+318d14bcb5f0: Pulling fs layer
+9d5a770694fb: Pulling fs layer
+88bee8cc4cf9: Pulling fs layer
+9765133d2406: Pulling fs layer
+d9e656a04de9: Pulling fs layer
+0914a8ed3640: Pulling fs layer
+80845206e6af: Pulling fs layer
+7cb144efe3e5: Pulling fs layer
+3efecc4f87d8: Pulling fs layer
+028d92a286b7: Pulling fs layer
+8547f05b9938: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Layer already being pulled by another client. Waiting.
+9d5a770694fb: Verifying Checksum
+9d5a770694fb: Download complete
+04c5d3b7b065: Verifying Checksum
+04c5d3b7b065: Download complete
+9765133d2406: Verifying Checksum
+9765133d2406: Download complete
+028d92a286b7: Verifying Checksum
+028d92a286b7: Download complete
+0914a8ed3640: Verifying Checksum
+0914a8ed3640: Download complete
+d735006ad9c1: Verifying Checksum
+d735006ad9c1: Download complete
+a35c4329a0f1: Verifying Checksum
+a35c4329a0f1: Download complete
+a4adcf7d13f1: Verifying Checksum
+a4adcf7d13f1: Download complete
+955326b5252b: Verifying Checksum
+955326b5252b: Download complete
+955326b5252b: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+8547f05b9938: Verifying Checksum
+8547f05b9938: Download complete
+499d12a586e3: Verifying Checksum
+499d12a586e3: Download complete
+318d14bcb5f0: Verifying Checksum
+318d14bcb5f0: Download complete
+88bee8cc4cf9: Verifying Checksum
+88bee8cc4cf9: Download complete
+208726508d11: Verifying Checksum
+208726508d11: Download complete
+80845206e6af: Verifying Checksum
+80845206e6af: Download complete
+d9e656a04de9: Verifying Checksum
+d9e656a04de9: Download complete
+511136ea3c5a: Pull complete
+70c8faa62a44: Verifying Checksum
+70c8faa62a44: Download complete
+3efecc4f87d8: Verifying Checksum
+3efecc4f87d8: Download complete
+0a591500d23b: Verifying Checksum
+0a591500d23b: Download complete
+c7b7c6419568: Verifying Checksum
+c7b7c6419568: Download complete
+7cb144efe3e5: Verifying Checksum
+7cb144efe3e5: Download complete
+c7b7c6419568: Pull complete
+70c8faa62a44: Pull complete
+d735006ad9c1: Pull complete
+04c5d3b7b065: Pull complete
+499d12a586e3: Pull complete
+0a591500d23b: Pull complete
+a4adcf7d13f1: Pull complete
+208726508d11: Pull complete
+a35c4329a0f1: Pull complete
+318d14bcb5f0: Pull complete
+9d5a770694fb: Pull complete
+88bee8cc4cf9: Pull complete
+9765133d2406: Pull complete
+d9e656a04de9: Pull complete
+0914a8ed3640: Pull complete
+80845206e6af: Pull complete
+7cb144efe3e5: Pull complete
+3efecc4f87d8: Pull complete
+028d92a286b7: Pull complete
+8547f05b9938: Pull complete
+955326b5252b: Pull complete
+955326b5252b: Already exists
+Digest: sha256:8a26f4b1eaa3463f2acfdc2bf1e13e83c5489a6120a273cd89cf6fbd31c804e0
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  28.57
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+0fdbe1f8b53e        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+955326b5252b: Buffering to Disk
+955326b5252b: Image successfully pushed
+955326b5252b: Image already exists
+8547f05b9938: Image already exists
+028d92a286b7: Buffering to Disk
+028d92a286b7: Image successfully pushed
+3efecc4f87d8: Buffering to Disk
+3efecc4f87d8: Image successfully pushed
+7cb144efe3e5: Buffering to Disk
+7cb144efe3e5: Image successfully pushed
+80845206e6af: Image already exists
+0914a8ed3640: Image already exists
+d9e656a04de9: Image already exists
+9765133d2406: Buffering to Disk
+9765133d2406: Image successfully pushed
+88bee8cc4cf9: Buffering to Disk
+88bee8cc4cf9: Image successfully pushed
+9d5a770694fb: Buffering to Disk
+9d5a770694fb: Image successfully pushed
+318d14bcb5f0: Buffering to Disk
+318d14bcb5f0: Image successfully pushed
+a35c4329a0f1: Buffering to Disk
+a35c4329a0f1: Image successfully pushed
+208726508d11: Buffering to Disk
+208726508d11: Image successfully pushed
+a4adcf7d13f1: Buffering to Disk
+a4adcf7d13f1: Image successfully pushed
+0a591500d23b: Buffering to Disk
+0a591500d23b: Image successfully pushed
+499d12a586e3: Image already exists
+04c5d3b7b065: Image already exists
+d735006ad9c1: Buffering to Disk
+d735006ad9c1: Image successfully pushed
+70c8faa62a44: Buffering to Disk
+70c8faa62a44: Image successfully pushed
+c7b7c6419568: Buffering to Disk
+c7b7c6419568: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:4e3329f614afccedf1e7a3ac58b2747490e820999b9c4bead0e3af72ae9e074d
+
+real  80.39
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+latest: Pulling from 136.187.101.80:5000/drupal
+511136ea3c5a: Pulling fs layer
+c7b7c6419568: Pulling fs layer
+70c8faa62a44: Pulling fs layer
+d735006ad9c1: Pulling fs layer
+04c5d3b7b065: Pulling fs layer
+499d12a586e3: Pulling fs layer
+0a591500d23b: Pulling fs layer
+a4adcf7d13f1: Pulling fs layer
+208726508d11: Pulling fs layer
+a35c4329a0f1: Pulling fs layer
+318d14bcb5f0: Pulling fs layer
+9d5a770694fb: Pulling fs layer
+88bee8cc4cf9: Pulling fs layer
+9765133d2406: Pulling fs layer
+d9e656a04de9: Pulling fs layer
+0914a8ed3640: Pulling fs layer
+80845206e6af: Pulling fs layer
+7cb144efe3e5: Pulling fs layer
+3efecc4f87d8: Pulling fs layer
+028d92a286b7: Pulling fs layer
+8547f05b9938: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Layer already being pulled by another client. Waiting.
+9d5a770694fb: Verifying Checksum
+9d5a770694fb: Download complete
+a4adcf7d13f1: Verifying Checksum
+a4adcf7d13f1: Download complete
+9765133d2406: Verifying Checksum
+9765133d2406: Download complete
+0914a8ed3640: Verifying Checksum
+0914a8ed3640: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+8547f05b9938: Verifying Checksum
+8547f05b9938: Download complete
+511136ea3c5a: Pull complete
+d735006ad9c1: Verifying Checksum
+d735006ad9c1: Download complete
+80845206e6af: Verifying Checksum
+80845206e6af: Download complete
+955326b5252b: Verifying Checksum
+955326b5252b: Download complete
+955326b5252b: Download complete
+499d12a586e3: Verifying Checksum
+499d12a586e3: Download complete
+a35c4329a0f1: Verifying Checksum
+a35c4329a0f1: Download complete
+318d14bcb5f0: Verifying Checksum
+318d14bcb5f0: Download complete
+028d92a286b7: Verifying Checksum
+028d92a286b7: Download complete
+88bee8cc4cf9: Verifying Checksum
+88bee8cc4cf9: Download complete
+d9e656a04de9: Verifying Checksum
+d9e656a04de9: Download complete
+208726508d11: Verifying Checksum
+208726508d11: Download complete
+04c5d3b7b065: Verifying Checksum
+04c5d3b7b065: Download complete
+70c8faa62a44: Verifying Checksum
+70c8faa62a44: Download complete
+3efecc4f87d8: Verifying Checksum
+3efecc4f87d8: Download complete
+7cb144efe3e5: Verifying Checksum
+7cb144efe3e5: Download complete
+0a591500d23b: Verifying Checksum
+0a591500d23b: Download complete
+c7b7c6419568: Verifying Checksum
+c7b7c6419568: Download complete
+c7b7c6419568: Pull complete
+70c8faa62a44: Pull complete
+d735006ad9c1: Pull complete
+04c5d3b7b065: Pull complete
+499d12a586e3: Pull complete
+0a591500d23b: Pull complete
+a4adcf7d13f1: Pull complete
+208726508d11: Pull complete
+a35c4329a0f1: Pull complete
+318d14bcb5f0: Pull complete
+9d5a770694fb: Pull complete
+88bee8cc4cf9: Pull complete
+9765133d2406: Pull complete
+d9e656a04de9: Pull complete
+0914a8ed3640: Pull complete
+80845206e6af: Pull complete
+7cb144efe3e5: Pull complete
+3efecc4f87d8: Pull complete
+028d92a286b7: Pull complete
+8547f05b9938: Pull complete
+955326b5252b: Pull complete
+955326b5252b: Already exists
+Digest: sha256:4e3329f614afccedf1e7a3ac58b2747490e820999b9c4bead0e3af72ae9e074d
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  28.74
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+d33d55ebbf55        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+955326b5252b: Buffering to Disk
+955326b5252b: Image successfully pushed
+955326b5252b: Image already exists
+8547f05b9938: Image already exists
+028d92a286b7: Buffering to Disk
+028d92a286b7: Image successfully pushed
+3efecc4f87d8: Buffering to Disk
+3efecc4f87d8: Image successfully pushed
+7cb144efe3e5: Buffering to Disk
+7cb144efe3e5: Image successfully pushed
+80845206e6af: Image already exists
+0914a8ed3640: Image already exists
+d9e656a04de9: Image already exists
+9765133d2406: Buffering to Disk
+9765133d2406: Image successfully pushed
+88bee8cc4cf9: Buffering to Disk
+88bee8cc4cf9: Image successfully pushed
+9d5a770694fb: Buffering to Disk
+9d5a770694fb: Image successfully pushed
+318d14bcb5f0: Buffering to Disk
+318d14bcb5f0: Image successfully pushed
+a35c4329a0f1: Buffering to Disk
+a35c4329a0f1: Image successfully pushed
+208726508d11: Buffering to Disk
+208726508d11: Image successfully pushed
+a4adcf7d13f1: Buffering to Disk
+a4adcf7d13f1: Image successfully pushed
+0a591500d23b: Buffering to Disk
+0a591500d23b: Image successfully pushed
+499d12a586e3: Image already exists
+04c5d3b7b065: Image already exists
+d735006ad9c1: Buffering to Disk
+d735006ad9c1: Image successfully pushed
+70c8faa62a44: Buffering to Disk
+70c8faa62a44: Image successfully pushed
+c7b7c6419568: Buffering to Disk
+c7b7c6419568: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:4e3329f614afccedf1e7a3ac58b2747490e820999b9c4bead0e3af72ae9e074d
+
+real  80.17
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+latest: Pulling from 136.187.101.80:5000/drupal
+511136ea3c5a: Pulling fs layer
+c7b7c6419568: Pulling fs layer
+70c8faa62a44: Pulling fs layer
+d735006ad9c1: Pulling fs layer
+04c5d3b7b065: Pulling fs layer
+499d12a586e3: Pulling fs layer
+0a591500d23b: Pulling fs layer
+a4adcf7d13f1: Pulling fs layer
+208726508d11: Pulling fs layer
+a35c4329a0f1: Pulling fs layer
+318d14bcb5f0: Pulling fs layer
+9d5a770694fb: Pulling fs layer
+88bee8cc4cf9: Pulling fs layer
+9765133d2406: Pulling fs layer
+d9e656a04de9: Pulling fs layer
+0914a8ed3640: Pulling fs layer
+80845206e6af: Pulling fs layer
+7cb144efe3e5: Pulling fs layer
+3efecc4f87d8: Pulling fs layer
+028d92a286b7: Pulling fs layer
+8547f05b9938: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Layer already being pulled by another client. Waiting.
+d735006ad9c1: Verifying Checksum
+d735006ad9c1: Download complete
+a4adcf7d13f1: Verifying Checksum
+a4adcf7d13f1: Download complete
+955326b5252b: Verifying Checksum
+955326b5252b: Download complete
+955326b5252b: Download complete
+318d14bcb5f0: Verifying Checksum
+318d14bcb5f0: Download complete
+88bee8cc4cf9: Verifying Checksum
+88bee8cc4cf9: Download complete
+d9e656a04de9: Verifying Checksum
+d9e656a04de9: Download complete
+208726508d11: Verifying Checksum
+208726508d11: Download complete
+a35c4329a0f1: Verifying Checksum
+a35c4329a0f1: Download complete
+9d5a770694fb: Verifying Checksum
+9d5a770694fb: Download complete
+04c5d3b7b065: Verifying Checksum
+04c5d3b7b065: Download complete
+80845206e6af: Verifying Checksum
+80845206e6af: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+9765133d2406: Verifying Checksum
+9765133d2406: Download complete
+499d12a586e3: Verifying Checksum
+499d12a586e3: Download complete
+0914a8ed3640: Verifying Checksum
+0914a8ed3640: Download complete
+8547f05b9938: Verifying Checksum
+8547f05b9938: Download complete
+028d92a286b7: Verifying Checksum
+028d92a286b7: Download complete
+511136ea3c5a: Pull complete
+70c8faa62a44: Verifying Checksum
+70c8faa62a44: Download complete
+3efecc4f87d8: Verifying Checksum
+3efecc4f87d8: Download complete
+7cb144efe3e5: Verifying Checksum
+7cb144efe3e5: Download complete
+0a591500d23b: Verifying Checksum
+0a591500d23b: Download complete
+c7b7c6419568: Verifying Checksum
+c7b7c6419568: Download complete
+c7b7c6419568: Pull complete
+70c8faa62a44: Pull complete
+d735006ad9c1: Pull complete
+04c5d3b7b065: Pull complete
+499d12a586e3: Pull complete
+0a591500d23b: Pull complete
+a4adcf7d13f1: Pull complete
+208726508d11: Pull complete
+a35c4329a0f1: Pull complete
+318d14bcb5f0: Pull complete
+9d5a770694fb: Pull complete
+88bee8cc4cf9: Pull complete
+9765133d2406: Pull complete
+d9e656a04de9: Pull complete
+0914a8ed3640: Pull complete
+80845206e6af: Pull complete
+7cb144efe3e5: Pull complete
+3efecc4f87d8: Pull complete
+028d92a286b7: Pull complete
+8547f05b9938: Pull complete
+955326b5252b: Pull complete
+955326b5252b: Already exists
+Digest: sha256:4e3329f614afccedf1e7a3ac58b2747490e820999b9c4bead0e3af72ae9e074d
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  28.46
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+1c0266d73ee9        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+955326b5252b: Buffering to Disk
+955326b5252b: Image successfully pushed
+955326b5252b: Image already exists
+8547f05b9938: Image already exists
+028d92a286b7: Buffering to Disk
+028d92a286b7: Image successfully pushed
+3efecc4f87d8: Buffering to Disk
+3efecc4f87d8: Image successfully pushed
+7cb144efe3e5: Buffering to Disk
+7cb144efe3e5: Image successfully pushed
+80845206e6af: Image already exists
+0914a8ed3640: Image already exists
+d9e656a04de9: Image already exists
+9765133d2406: Buffering to Disk
+9765133d2406: Image successfully pushed
+88bee8cc4cf9: Buffering to Disk
+88bee8cc4cf9: Image successfully pushed
+9d5a770694fb: Buffering to Disk
+9d5a770694fb: Image successfully pushed
+318d14bcb5f0: Buffering to Disk
+318d14bcb5f0: Image successfully pushed
+a35c4329a0f1: Buffering to Disk
+a35c4329a0f1: Image successfully pushed
+208726508d11: Buffering to Disk
+208726508d11: Image successfully pushed
+a4adcf7d13f1: Buffering to Disk
+a4adcf7d13f1: Image successfully pushed
+0a591500d23b: Buffering to Disk
+0a591500d23b: Image successfully pushed
+499d12a586e3: Image already exists
+04c5d3b7b065: Image already exists
+d735006ad9c1: Buffering to Disk
+d735006ad9c1: Image successfully pushed
+70c8faa62a44: Buffering to Disk
+70c8faa62a44: Image successfully pushed
+c7b7c6419568: Buffering to Disk
+c7b7c6419568: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:03eddaa71ddcdbdcd8b3bad3a2072c80cc44bdcabbe16b6c4c394c9f7fce47c9
+
+real  80.22
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+latest: Pulling from 136.187.101.80:5000/drupal
+511136ea3c5a: Pulling fs layer
+c7b7c6419568: Pulling fs layer
+70c8faa62a44: Pulling fs layer
+d735006ad9c1: Pulling fs layer
+04c5d3b7b065: Pulling fs layer
+499d12a586e3: Pulling fs layer
+0a591500d23b: Pulling fs layer
+a4adcf7d13f1: Pulling fs layer
+208726508d11: Pulling fs layer
+a35c4329a0f1: Pulling fs layer
+318d14bcb5f0: Pulling fs layer
+9d5a770694fb: Pulling fs layer
+88bee8cc4cf9: Pulling fs layer
+9765133d2406: Pulling fs layer
+d9e656a04de9: Pulling fs layer
+0914a8ed3640: Pulling fs layer
+80845206e6af: Pulling fs layer
+7cb144efe3e5: Pulling fs layer
+3efecc4f87d8: Pulling fs layer
+028d92a286b7: Pulling fs layer
+8547f05b9938: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Layer already being pulled by another client. Waiting.
+a4adcf7d13f1: Verifying Checksum
+a4adcf7d13f1: Download complete
+d9e656a04de9: Verifying Checksum
+d9e656a04de9: Download complete
+318d14bcb5f0: Verifying Checksum
+318d14bcb5f0: Download complete
+208726508d11: Verifying Checksum
+208726508d11: Download complete
+9d5a770694fb: Verifying Checksum
+9d5a770694fb: Download complete
+0914a8ed3640: Verifying Checksum
+0914a8ed3640: Download complete
+8547f05b9938: Verifying Checksum
+8547f05b9938: Download complete
+88bee8cc4cf9: Verifying Checksum
+88bee8cc4cf9: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+80845206e6af: Verifying Checksum
+80845206e6af: Download complete
+499d12a586e3: Verifying Checksum
+499d12a586e3: Download complete
+04c5d3b7b065: Verifying Checksum
+04c5d3b7b065: Download complete
+028d92a286b7: Verifying Checksum
+028d92a286b7: Download complete
+d735006ad9c1: Verifying Checksum
+d735006ad9c1: Download complete
+a35c4329a0f1: Verifying Checksum
+a35c4329a0f1: Download complete
+955326b5252b: Verifying Checksum
+955326b5252b: Download complete
+955326b5252b: Download complete
+9765133d2406: Verifying Checksum
+9765133d2406: Download complete
+511136ea3c5a: Pull complete
+70c8faa62a44: Verifying Checksum
+70c8faa62a44: Download complete
+3efecc4f87d8: Verifying Checksum
+3efecc4f87d8: Download complete
+7cb144efe3e5: Verifying Checksum
+7cb144efe3e5: Download complete
+0a591500d23b: Verifying Checksum
+0a591500d23b: Download complete
+c7b7c6419568: Verifying Checksum
+c7b7c6419568: Download complete
+c7b7c6419568: Pull complete
+70c8faa62a44: Pull complete
+d735006ad9c1: Pull complete
+04c5d3b7b065: Pull complete
+499d12a586e3: Pull complete
+0a591500d23b: Pull complete
+a4adcf7d13f1: Pull complete
+208726508d11: Pull complete
+a35c4329a0f1: Pull complete
+318d14bcb5f0: Pull complete
+9d5a770694fb: Pull complete
+88bee8cc4cf9: Pull complete
+9765133d2406: Pull complete
+d9e656a04de9: Pull complete
+0914a8ed3640: Pull complete
+80845206e6af: Pull complete
+7cb144efe3e5: Pull complete
+3efecc4f87d8: Pull complete
+028d92a286b7: Pull complete
+8547f05b9938: Pull complete
+955326b5252b: Pull complete
+955326b5252b: Already exists
+Digest: sha256:03eddaa71ddcdbdcd8b3bad3a2072c80cc44bdcabbe16b6c4c394c9f7fce47c9
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  28.96
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+5362680b3be6        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+955326b5252b: Buffering to Disk
+955326b5252b: Image successfully pushed
+955326b5252b: Image already exists
+8547f05b9938: Image already exists
+028d92a286b7: Buffering to Disk
+028d92a286b7: Image successfully pushed
+3efecc4f87d8: Buffering to Disk
+3efecc4f87d8: Image successfully pushed
+7cb144efe3e5: Buffering to Disk
+7cb144efe3e5: Image successfully pushed
+80845206e6af: Image already exists
+0914a8ed3640: Image already exists
+d9e656a04de9: Image already exists
+9765133d2406: Buffering to Disk
+9765133d2406: Image successfully pushed
+88bee8cc4cf9: Buffering to Disk
+88bee8cc4cf9: Image successfully pushed
+9d5a770694fb: Buffering to Disk
+9d5a770694fb: Image successfully pushed
+318d14bcb5f0: Buffering to Disk
+318d14bcb5f0: Image successfully pushed
+a35c4329a0f1: Buffering to Disk
+a35c4329a0f1: Image successfully pushed
+208726508d11: Buffering to Disk
+208726508d11: Image successfully pushed
+a4adcf7d13f1: Buffering to Disk
+a4adcf7d13f1: Image successfully pushed
+0a591500d23b: Buffering to Disk
+0a591500d23b: Image successfully pushed
+499d12a586e3: Image already exists
+04c5d3b7b065: Image already exists
+d735006ad9c1: Buffering to Disk
+d735006ad9c1: Image successfully pushed
+70c8faa62a44: Buffering to Disk
+70c8faa62a44: Image successfully pushed
+c7b7c6419568: Buffering to Disk
+c7b7c6419568: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:33ec87584eff5ef9dd4b805220e659a349d5acad5ca8e91837f24c1ac5bf5d67
+
+real  81.10
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+latest: Pulling from 136.187.101.80:5000/drupal
+511136ea3c5a: Pulling fs layer
+c7b7c6419568: Pulling fs layer
+70c8faa62a44: Pulling fs layer
+d735006ad9c1: Pulling fs layer
+04c5d3b7b065: Pulling fs layer
+499d12a586e3: Pulling fs layer
+0a591500d23b: Pulling fs layer
+a4adcf7d13f1: Pulling fs layer
+208726508d11: Pulling fs layer
+a35c4329a0f1: Pulling fs layer
+318d14bcb5f0: Pulling fs layer
+9d5a770694fb: Pulling fs layer
+88bee8cc4cf9: Pulling fs layer
+9765133d2406: Pulling fs layer
+d9e656a04de9: Pulling fs layer
+0914a8ed3640: Pulling fs layer
+80845206e6af: Pulling fs layer
+7cb144efe3e5: Pulling fs layer
+3efecc4f87d8: Pulling fs layer
+028d92a286b7: Pulling fs layer
+8547f05b9938: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Layer already being pulled by another client. Waiting.
+a35c4329a0f1: Verifying Checksum
+a35c4329a0f1: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+a4adcf7d13f1: Verifying Checksum
+a4adcf7d13f1: Download complete
+d9e656a04de9: Verifying Checksum
+d9e656a04de9: Download complete
+511136ea3c5a: Pull complete
+9d5a770694fb: Verifying Checksum
+9d5a770694fb: Download complete
+955326b5252b: Verifying Checksum
+955326b5252b: Download complete
+955326b5252b: Download complete
+208726508d11: Verifying Checksum
+208726508d11: Download complete
+d735006ad9c1: Verifying Checksum
+d735006ad9c1: Download complete
+80845206e6af: Verifying Checksum
+80845206e6af: Download complete
+499d12a586e3: Verifying Checksum
+499d12a586e3: Download complete
+318d14bcb5f0: Verifying Checksum
+318d14bcb5f0: Download complete
+8547f05b9938: Verifying Checksum
+8547f05b9938: Download complete
+0914a8ed3640: Verifying Checksum
+0914a8ed3640: Download complete
+9765133d2406: Verifying Checksum
+9765133d2406: Download complete
+88bee8cc4cf9: Verifying Checksum
+88bee8cc4cf9: Download complete
+028d92a286b7: Verifying Checksum
+028d92a286b7: Download complete
+04c5d3b7b065: Verifying Checksum
+04c5d3b7b065: Download complete
+70c8faa62a44: Verifying Checksum
+70c8faa62a44: Download complete
+3efecc4f87d8: Verifying Checksum
+3efecc4f87d8: Download complete
+7cb144efe3e5: Verifying Checksum
+7cb144efe3e5: Download complete
+0a591500d23b: Verifying Checksum
+0a591500d23b: Download complete
+c7b7c6419568: Verifying Checksum
+c7b7c6419568: Download complete
+c7b7c6419568: Pull complete
+70c8faa62a44: Pull complete
+d735006ad9c1: Pull complete
+04c5d3b7b065: Pull complete
+499d12a586e3: Pull complete
+0a591500d23b: Pull complete
+a4adcf7d13f1: Pull complete
+208726508d11: Pull complete
+a35c4329a0f1: Pull complete
+318d14bcb5f0: Pull complete
+9d5a770694fb: Pull complete
+88bee8cc4cf9: Pull complete
+9765133d2406: Pull complete
+d9e656a04de9: Pull complete
+0914a8ed3640: Pull complete
+80845206e6af: Pull complete
+7cb144efe3e5: Pull complete
+3efecc4f87d8: Pull complete
+028d92a286b7: Pull complete
+8547f05b9938: Pull complete
+955326b5252b: Pull complete
+955326b5252b: Already exists
+Digest: sha256:33ec87584eff5ef9dd4b805220e659a349d5acad5ca8e91837f24c1ac5bf5d67
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  28.63
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+5d3a6a196a57        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+955326b5252b: Buffering to Disk
+955326b5252b: Image successfully pushed
+955326b5252b: Image already exists
+8547f05b9938: Image already exists
+028d92a286b7: Buffering to Disk
+028d92a286b7: Image successfully pushed
+3efecc4f87d8: Buffering to Disk
+3efecc4f87d8: Image successfully pushed
+7cb144efe3e5: Buffering to Disk
+7cb144efe3e5: Image successfully pushed
+80845206e6af: Image already exists
+0914a8ed3640: Image already exists
+d9e656a04de9: Image already exists
+9765133d2406: Buffering to Disk
+9765133d2406: Image successfully pushed
+88bee8cc4cf9: Buffering to Disk
+88bee8cc4cf9: Image successfully pushed
+9d5a770694fb: Buffering to Disk
+9d5a770694fb: Image successfully pushed
+318d14bcb5f0: Buffering to Disk
+318d14bcb5f0: Image successfully pushed
+a35c4329a0f1: Buffering to Disk
+a35c4329a0f1: Image successfully pushed
+208726508d11: Buffering to Disk
+208726508d11: Image successfully pushed
+a4adcf7d13f1: Buffering to Disk
+a4adcf7d13f1: Image successfully pushed
+0a591500d23b: Buffering to Disk
+0a591500d23b: Image successfully pushed
+499d12a586e3: Image already exists
+04c5d3b7b065: Image already exists
+d735006ad9c1: Buffering to Disk
+d735006ad9c1: Image successfully pushed
+70c8faa62a44: Buffering to Disk
+70c8faa62a44: Image successfully pushed
+c7b7c6419568: Buffering to Disk
+c7b7c6419568: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:22823f9723551c8eee4441b68c7d0d0b8d40994a9378e7a276ada64d19accd2f
+
+real  79.25
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+latest: Pulling from 136.187.101.80:5000/drupal
+511136ea3c5a: Pulling fs layer
+c7b7c6419568: Pulling fs layer
+70c8faa62a44: Pulling fs layer
+d735006ad9c1: Pulling fs layer
+04c5d3b7b065: Pulling fs layer
+499d12a586e3: Pulling fs layer
+0a591500d23b: Pulling fs layer
+a4adcf7d13f1: Pulling fs layer
+208726508d11: Pulling fs layer
+a35c4329a0f1: Pulling fs layer
+318d14bcb5f0: Pulling fs layer
+9d5a770694fb: Pulling fs layer
+88bee8cc4cf9: Pulling fs layer
+9765133d2406: Pulling fs layer
+d9e656a04de9: Pulling fs layer
+0914a8ed3640: Pulling fs layer
+80845206e6af: Pulling fs layer
+7cb144efe3e5: Pulling fs layer
+3efecc4f87d8: Pulling fs layer
+028d92a286b7: Pulling fs layer
+8547f05b9938: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Layer already being pulled by another client. Waiting.
+499d12a586e3: Verifying Checksum
+499d12a586e3: Download complete
+318d14bcb5f0: Verifying Checksum
+318d14bcb5f0: Download complete
+9d5a770694fb: Verifying Checksum
+9d5a770694fb: Download complete
+d9e656a04de9: Verifying Checksum
+d9e656a04de9: Download complete
+88bee8cc4cf9: Verifying Checksum
+88bee8cc4cf9: Download complete
+80845206e6af: Verifying Checksum
+80845206e6af: Download complete
+d735006ad9c1: Verifying Checksum
+d735006ad9c1: Download complete
+a4adcf7d13f1: Verifying Checksum
+a4adcf7d13f1: Download complete
+208726508d11: Verifying Checksum
+208726508d11: Download complete
+a35c4329a0f1: Verifying Checksum
+a35c4329a0f1: Download complete
+0914a8ed3640: Verifying Checksum
+0914a8ed3640: Download complete
+9765133d2406: Verifying Checksum
+9765133d2406: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+04c5d3b7b065: Verifying Checksum
+04c5d3b7b065: Download complete
+955326b5252b: Verifying Checksum
+955326b5252b: Download complete
+955326b5252b: Download complete
+028d92a286b7: Verifying Checksum
+028d92a286b7: Download complete
+8547f05b9938: Verifying Checksum
+8547f05b9938: Download complete
+511136ea3c5a: Pull complete
+70c8faa62a44: Verifying Checksum
+70c8faa62a44: Download complete
+3efecc4f87d8: Verifying Checksum
+3efecc4f87d8: Download complete
+0a591500d23b: Verifying Checksum
+0a591500d23b: Download complete
+7cb144efe3e5: Verifying Checksum
+7cb144efe3e5: Download complete
+c7b7c6419568: Verifying Checksum
+c7b7c6419568: Download complete
+c7b7c6419568: Pull complete
+70c8faa62a44: Pull complete
+d735006ad9c1: Pull complete
+04c5d3b7b065: Pull complete
+499d12a586e3: Pull complete
+0a591500d23b: Pull complete
+a4adcf7d13f1: Pull complete
+208726508d11: Pull complete
+a35c4329a0f1: Pull complete
+318d14bcb5f0: Pull complete
+9d5a770694fb: Pull complete
+88bee8cc4cf9: Pull complete
+9765133d2406: Pull complete
+d9e656a04de9: Pull complete
+0914a8ed3640: Pull complete
+80845206e6af: Pull complete
+7cb144efe3e5: Pull complete
+3efecc4f87d8: Pull complete
+028d92a286b7: Pull complete
+8547f05b9938: Pull complete
+955326b5252b: Pull complete
+955326b5252b: Already exists
+Digest: sha256:22823f9723551c8eee4441b68c7d0d0b8d40994a9378e7a276ada64d19accd2f
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  27.99
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+167ad8a2015e        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+955326b5252b: Buffering to Disk
+955326b5252b: Image successfully pushed
+955326b5252b: Image already exists
+8547f05b9938: Image already exists
+028d92a286b7: Buffering to Disk
+028d92a286b7: Image successfully pushed
+3efecc4f87d8: Buffering to Disk
+3efecc4f87d8: Image successfully pushed
+7cb144efe3e5: Buffering to Disk
+7cb144efe3e5: Image successfully pushed
+80845206e6af: Image already exists
+0914a8ed3640: Image already exists
+d9e656a04de9: Image already exists
+9765133d2406: Buffering to Disk
+9765133d2406: Image successfully pushed
+88bee8cc4cf9: Buffering to Disk
+88bee8cc4cf9: Image successfully pushed
+9d5a770694fb: Buffering to Disk
+9d5a770694fb: Image successfully pushed
+318d14bcb5f0: Buffering to Disk
+318d14bcb5f0: Image successfully pushed
+a35c4329a0f1: Buffering to Disk
+a35c4329a0f1: Image successfully pushed
+208726508d11: Buffering to Disk
+208726508d11: Image successfully pushed
+a4adcf7d13f1: Buffering to Disk
+a4adcf7d13f1: Image successfully pushed
+0a591500d23b: Buffering to Disk
+0a591500d23b: Image successfully pushed
+499d12a586e3: Image already exists
+04c5d3b7b065: Image already exists
+d735006ad9c1: Buffering to Disk
+d735006ad9c1: Image successfully pushed
+70c8faa62a44: Buffering to Disk
+70c8faa62a44: Image successfully pushed
+c7b7c6419568: Buffering to Disk
+c7b7c6419568: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:4e3329f614afccedf1e7a3ac58b2747490e820999b9c4bead0e3af72ae9e074d
+
+real  78.34
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+latest: Pulling from 136.187.101.80:5000/drupal
+511136ea3c5a: Pulling fs layer
+c7b7c6419568: Pulling fs layer
+70c8faa62a44: Pulling fs layer
+d735006ad9c1: Pulling fs layer
+04c5d3b7b065: Pulling fs layer
+499d12a586e3: Pulling fs layer
+0a591500d23b: Pulling fs layer
+a4adcf7d13f1: Pulling fs layer
+208726508d11: Pulling fs layer
+a35c4329a0f1: Pulling fs layer
+318d14bcb5f0: Pulling fs layer
+9d5a770694fb: Pulling fs layer
+88bee8cc4cf9: Pulling fs layer
+9765133d2406: Pulling fs layer
+d9e656a04de9: Pulling fs layer
+0914a8ed3640: Pulling fs layer
+80845206e6af: Pulling fs layer
+7cb144efe3e5: Pulling fs layer
+3efecc4f87d8: Pulling fs layer
+028d92a286b7: Pulling fs layer
+8547f05b9938: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Layer already being pulled by another client. Waiting.
+499d12a586e3: Verifying Checksum
+499d12a586e3: Download complete
+208726508d11: Verifying Checksum
+208726508d11: Download complete
+8547f05b9938: Verifying Checksum
+8547f05b9938: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+a35c4329a0f1: Verifying Checksum
+a35c4329a0f1: Download complete
+0914a8ed3640: Verifying Checksum
+0914a8ed3640: Download complete
+88bee8cc4cf9: Verifying Checksum
+88bee8cc4cf9: Download complete
+80845206e6af: Verifying Checksum
+80845206e6af: Download complete
+d9e656a04de9: Verifying Checksum
+d9e656a04de9: Download complete
+028d92a286b7: Verifying Checksum
+028d92a286b7: Download complete
+d735006ad9c1: Verifying Checksum
+d735006ad9c1: Download complete
+a4adcf7d13f1: Verifying Checksum
+a4adcf7d13f1: Download complete
+9765133d2406: Verifying Checksum
+9765133d2406: Download complete
+04c5d3b7b065: Verifying Checksum
+04c5d3b7b065: Download complete
+318d14bcb5f0: Verifying Checksum
+318d14bcb5f0: Download complete
+9d5a770694fb: Verifying Checksum
+9d5a770694fb: Download complete
+955326b5252b: Verifying Checksum
+955326b5252b: Download complete
+955326b5252b: Download complete
+511136ea3c5a: Pull complete
+70c8faa62a44: Verifying Checksum
+70c8faa62a44: Download complete
+3efecc4f87d8: Verifying Checksum
+3efecc4f87d8: Download complete
+0a591500d23b: Verifying Checksum
+0a591500d23b: Download complete
+7cb144efe3e5: Verifying Checksum
+7cb144efe3e5: Download complete
+c7b7c6419568: Verifying Checksum
+c7b7c6419568: Download complete
+c7b7c6419568: Pull complete
+70c8faa62a44: Pull complete
+d735006ad9c1: Pull complete
+04c5d3b7b065: Pull complete
+499d12a586e3: Pull complete
+0a591500d23b: Pull complete
+a4adcf7d13f1: Pull complete
+208726508d11: Pull complete
+a35c4329a0f1: Pull complete
+318d14bcb5f0: Pull complete
+9d5a770694fb: Pull complete
+88bee8cc4cf9: Pull complete
+9765133d2406: Pull complete
+d9e656a04de9: Pull complete
+0914a8ed3640: Pull complete
+80845206e6af: Pull complete
+7cb144efe3e5: Pull complete
+3efecc4f87d8: Pull complete
+028d92a286b7: Pull complete
+8547f05b9938: Pull complete
+955326b5252b: Pull complete
+955326b5252b: Already exists
+Digest: sha256:4e3329f614afccedf1e7a3ac58b2747490e820999b9c4bead0e3af72ae9e074d
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  28.50
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+b33d7d18daf2        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+955326b5252b: Buffering to Disk
+955326b5252b: Image successfully pushed
+955326b5252b: Image already exists
+8547f05b9938: Image already exists
+028d92a286b7: Buffering to Disk
+028d92a286b7: Image successfully pushed
+3efecc4f87d8: Buffering to Disk
+3efecc4f87d8: Image successfully pushed
+7cb144efe3e5: Buffering to Disk
+7cb144efe3e5: Image successfully pushed
+80845206e6af: Image already exists
+0914a8ed3640: Image already exists
+d9e656a04de9: Image already exists
+9765133d2406: Buffering to Disk
+9765133d2406: Image successfully pushed
+88bee8cc4cf9: Buffering to Disk
+88bee8cc4cf9: Image successfully pushed
+9d5a770694fb: Buffering to Disk
+9d5a770694fb: Image successfully pushed
+318d14bcb5f0: Buffering to Disk
+318d14bcb5f0: Image successfully pushed
+a35c4329a0f1: Buffering to Disk
+a35c4329a0f1: Image successfully pushed
+208726508d11: Buffering to Disk
+208726508d11: Image successfully pushed
+a4adcf7d13f1: Buffering to Disk
+a4adcf7d13f1: Image successfully pushed
+0a591500d23b: Buffering to Disk
+0a591500d23b: Image successfully pushed
+499d12a586e3: Image already exists
+04c5d3b7b065: Image already exists
+d735006ad9c1: Buffering to Disk
+d735006ad9c1: Image successfully pushed
+70c8faa62a44: Buffering to Disk
+70c8faa62a44: Image successfully pushed
+c7b7c6419568: Buffering to Disk
+c7b7c6419568: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:22823f9723551c8eee4441b68c7d0d0b8d40994a9378e7a276ada64d19accd2f
+
+real  78.84
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+latest: Pulling from 136.187.101.80:5000/drupal
+511136ea3c5a: Pulling fs layer
+c7b7c6419568: Pulling fs layer
+70c8faa62a44: Pulling fs layer
+d735006ad9c1: Pulling fs layer
+04c5d3b7b065: Pulling fs layer
+499d12a586e3: Pulling fs layer
+0a591500d23b: Pulling fs layer
+a4adcf7d13f1: Pulling fs layer
+208726508d11: Pulling fs layer
+a35c4329a0f1: Pulling fs layer
+318d14bcb5f0: Pulling fs layer
+9d5a770694fb: Pulling fs layer
+88bee8cc4cf9: Pulling fs layer
+9765133d2406: Pulling fs layer
+d9e656a04de9: Pulling fs layer
+0914a8ed3640: Pulling fs layer
+80845206e6af: Pulling fs layer
+7cb144efe3e5: Pulling fs layer
+3efecc4f87d8: Pulling fs layer
+028d92a286b7: Pulling fs layer
+8547f05b9938: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+04c5d3b7b065: Verifying Checksum
+04c5d3b7b065: Download complete
+318d14bcb5f0: Verifying Checksum
+318d14bcb5f0: Download complete
+d9e656a04de9: Verifying Checksum
+d9e656a04de9: Download complete
+511136ea3c5a: Pull complete
+9d5a770694fb: Verifying Checksum
+9d5a770694fb: Download complete
+208726508d11: Verifying Checksum
+208726508d11: Download complete
+499d12a586e3: Verifying Checksum
+499d12a586e3: Download complete
+9765133d2406: Verifying Checksum
+9765133d2406: Download complete
+a4adcf7d13f1: Verifying Checksum
+a4adcf7d13f1: Download complete
+88bee8cc4cf9: Verifying Checksum
+88bee8cc4cf9: Download complete
+d735006ad9c1: Verifying Checksum
+d735006ad9c1: Download complete
+0914a8ed3640: Verifying Checksum
+0914a8ed3640: Download complete
+a35c4329a0f1: Verifying Checksum
+a35c4329a0f1: Download complete
+80845206e6af: Verifying Checksum
+80845206e6af: Download complete
+028d92a286b7: Verifying Checksum
+028d92a286b7: Download complete
+8547f05b9938: Verifying Checksum
+8547f05b9938: Download complete
+955326b5252b: Verifying Checksum
+955326b5252b: Download complete
+955326b5252b: Download complete
+70c8faa62a44: Verifying Checksum
+70c8faa62a44: Download complete
+3efecc4f87d8: Verifying Checksum
+3efecc4f87d8: Download complete
+0a591500d23b: Verifying Checksum
+0a591500d23b: Download complete
+7cb144efe3e5: Verifying Checksum
+7cb144efe3e5: Download complete
+c7b7c6419568: Verifying Checksum
+c7b7c6419568: Download complete
+c7b7c6419568: Pull complete
+70c8faa62a44: Pull complete
+d735006ad9c1: Pull complete
+04c5d3b7b065: Pull complete
+499d12a586e3: Pull complete
+0a591500d23b: Pull complete
+a4adcf7d13f1: Pull complete
+208726508d11: Pull complete
+a35c4329a0f1: Pull complete
+318d14bcb5f0: Pull complete
+9d5a770694fb: Pull complete
+88bee8cc4cf9: Pull complete
+9765133d2406: Pull complete
+d9e656a04de9: Pull complete
+0914a8ed3640: Pull complete
+80845206e6af: Pull complete
+7cb144efe3e5: Pull complete
+3efecc4f87d8: Pull complete
+028d92a286b7: Pull complete
+8547f05b9938: Pull complete
+955326b5252b: Pull complete
+955326b5252b: Already exists
+Digest: sha256:22823f9723551c8eee4441b68c7d0d0b8d40994a9378e7a276ada64d19accd2f
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  28.02
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+e75240c3ee5c        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+955326b5252b: Buffering to Disk
+955326b5252b: Image successfully pushed
+955326b5252b: Image already exists
+8547f05b9938: Image already exists
+028d92a286b7: Buffering to Disk
+028d92a286b7: Image successfully pushed
+3efecc4f87d8: Buffering to Disk
+3efecc4f87d8: Image successfully pushed
+7cb144efe3e5: Buffering to Disk
+7cb144efe3e5: Image successfully pushed
+80845206e6af: Image already exists
+0914a8ed3640: Image already exists
+d9e656a04de9: Image already exists
+9765133d2406: Buffering to Disk
+9765133d2406: Image successfully pushed
+88bee8cc4cf9: Buffering to Disk
+88bee8cc4cf9: Image successfully pushed
+9d5a770694fb: Buffering to Disk
+9d5a770694fb: Image successfully pushed
+318d14bcb5f0: Buffering to Disk
+318d14bcb5f0: Image successfully pushed
+a35c4329a0f1: Buffering to Disk
+a35c4329a0f1: Image successfully pushed
+208726508d11: Buffering to Disk
+208726508d11: Image successfully pushed
+a4adcf7d13f1: Buffering to Disk
+a4adcf7d13f1: Image successfully pushed
+0a591500d23b: Buffering to Disk
+0a591500d23b: Image successfully pushed
+499d12a586e3: Image already exists
+04c5d3b7b065: Image already exists
+d735006ad9c1: Buffering to Disk
+d735006ad9c1: Image successfully pushed
+70c8faa62a44: Buffering to Disk
+70c8faa62a44: Image successfully pushed
+c7b7c6419568: Buffering to Disk
+c7b7c6419568: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:55453e16c2f89064a3c49c0c9c258314bf0d18265bed166d44895dae8d88b953
+
+real  77.70
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+latest: Pulling from 136.187.101.80:5000/drupal
+511136ea3c5a: Pulling fs layer
+c7b7c6419568: Pulling fs layer
+70c8faa62a44: Pulling fs layer
+d735006ad9c1: Pulling fs layer
+04c5d3b7b065: Pulling fs layer
+499d12a586e3: Pulling fs layer
+0a591500d23b: Pulling fs layer
+a4adcf7d13f1: Pulling fs layer
+208726508d11: Pulling fs layer
+a35c4329a0f1: Pulling fs layer
+318d14bcb5f0: Pulling fs layer
+9d5a770694fb: Pulling fs layer
+88bee8cc4cf9: Pulling fs layer
+9765133d2406: Pulling fs layer
+d9e656a04de9: Pulling fs layer
+0914a8ed3640: Pulling fs layer
+80845206e6af: Pulling fs layer
+7cb144efe3e5: Pulling fs layer
+3efecc4f87d8: Pulling fs layer
+028d92a286b7: Pulling fs layer
+8547f05b9938: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Pulling fs layer
+955326b5252b: Layer already being pulled by another client. Waiting.
+318d14bcb5f0: Verifying Checksum
+318d14bcb5f0: Download complete
+04c5d3b7b065: Verifying Checksum
+04c5d3b7b065: Download complete
+a4adcf7d13f1: Verifying Checksum
+a4adcf7d13f1: Download complete
+a35c4329a0f1: Verifying Checksum
+a35c4329a0f1: Download complete
+208726508d11: Verifying Checksum
+208726508d11: Download complete
+028d92a286b7: Verifying Checksum
+028d92a286b7: Download complete
+499d12a586e3: Verifying Checksum
+499d12a586e3: Download complete
+9d5a770694fb: Verifying Checksum
+9d5a770694fb: Download complete
+88bee8cc4cf9: Verifying Checksum
+88bee8cc4cf9: Download complete
+955326b5252b: Verifying Checksum
+955326b5252b: Download complete
+955326b5252b: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+d735006ad9c1: Verifying Checksum
+d735006ad9c1: Download complete
+0914a8ed3640: Verifying Checksum
+0914a8ed3640: Download complete
+80845206e6af: Verifying Checksum
+80845206e6af: Download complete
+d9e656a04de9: Verifying Checksum
+d9e656a04de9: Download complete
+9765133d2406: Verifying Checksum
+9765133d2406: Download complete
+8547f05b9938: Verifying Checksum
+8547f05b9938: Download complete
+511136ea3c5a: Pull complete
+70c8faa62a44: Verifying Checksum
+70c8faa62a44: Download complete
+3efecc4f87d8: Verifying Checksum
+3efecc4f87d8: Download complete
+7cb144efe3e5: Verifying Checksum
+7cb144efe3e5: Download complete
+0a591500d23b: Verifying Checksum
+0a591500d23b: Download complete
+c7b7c6419568: Verifying Checksum
+c7b7c6419568: Download complete
+c7b7c6419568: Pull complete
+70c8faa62a44: Pull complete
+d735006ad9c1: Pull complete
+04c5d3b7b065: Pull complete
+499d12a586e3: Pull complete
+0a591500d23b: Pull complete
+a4adcf7d13f1: Pull complete
+208726508d11: Pull complete
+a35c4329a0f1: Pull complete
+318d14bcb5f0: Pull complete
+9d5a770694fb: Pull complete
+88bee8cc4cf9: Pull complete
+9765133d2406: Pull complete
+d9e656a04de9: Pull complete
+0914a8ed3640: Pull complete
+80845206e6af: Pull complete
+7cb144efe3e5: Pull complete
+3efecc4f87d8: Pull complete
+028d92a286b7: Pull complete
+8547f05b9938: Pull complete
+955326b5252b: Pull complete
+955326b5252b: Already exists
+Digest: sha256:55453e16c2f89064a3c49c0c9c258314bf0d18265bed166d44895dae8d88b953
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  28.69
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+end date: Wed Aug 12 02:25:29 JST 2015
+
+

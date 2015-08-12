@@ -1,0 +1,1627 @@
+
+pullpush benchmark: transfer glassfish image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Wed Aug 12 03:36:42 JST 2015
+
+sudo docker images
+kiwenlau/glassfish              flat                1b5e41e2fa5c        7 weeks ago         604.9 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+sudo docker images
+kiwenlau/glassfish              flat                1b5e41e2fa5c        7 weeks ago         604.9 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+dd6e758a0509        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+3b7fbc5c9b4b: Buffering to Disk
+3b7fbc5c9b4b: Image successfully pushed
+3b7fbc5c9b4b: Image already exists
+5587574e22e4: Image already exists
+a6bd7bd28c24: Buffering to Disk
+a6bd7bd28c24: Image successfully pushed
+f2ec86814c07: Buffering to Disk
+f2ec86814c07: Image successfully pushed
+d0d174e641a6: Buffering to Disk
+d0d174e641a6: Image successfully pushed
+339951c44fef: Buffering to Disk
+339951c44fef: Image successfully pushed
+0894ebc19e86: Buffering to Disk
+0894ebc19e86: Image successfully pushed
+5f52a2b74e30: Image already exists
+2b3ef6d2a341: Buffering to Disk
+2b3ef6d2a341: Image successfully pushed
+976f7cce7de0: Image already exists
+2128079f9b8f: Buffering to Disk
+2128079f9b8f: Image successfully pushed
+28e5e6a80860: Image already exists
+b9192a10c580: Image already exists
+3e9890d3403b: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+
+real  83.20
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+latest: Pulling from 136.187.101.80:5000/glassfish
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+3e9890d3403b: Pulling fs layer
+b9192a10c580: Pulling fs layer
+28e5e6a80860: Pulling fs layer
+2128079f9b8f: Pulling fs layer
+976f7cce7de0: Pulling fs layer
+2b3ef6d2a341: Pulling fs layer
+5f52a2b74e30: Pulling fs layer
+0894ebc19e86: Pulling fs layer
+339951c44fef: Pulling fs layer
+d0d174e641a6: Pulling fs layer
+f2ec86814c07: Pulling fs layer
+a6bd7bd28c24: Pulling fs layer
+5587574e22e4: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Layer already being pulled by another client. Waiting.
+b9192a10c580: Verifying Checksum
+b9192a10c580: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+0894ebc19e86: Verifying Checksum
+0894ebc19e86: Download complete
+5f52a2b74e30: Verifying Checksum
+5f52a2b74e30: Download complete
+28e5e6a80860: Verifying Checksum
+28e5e6a80860: Download complete
+339951c44fef: Verifying Checksum
+339951c44fef: Download complete
+511136ea3c5a: Pull complete
+f2ec86814c07: Verifying Checksum
+f2ec86814c07: Download complete
+3b7fbc5c9b4b: Verifying Checksum
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+976f7cce7de0: Verifying Checksum
+976f7cce7de0: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+d0d174e641a6: Verifying Checksum
+d0d174e641a6: Download complete
+5587574e22e4: Verifying Checksum
+5587574e22e4: Download complete
+a6bd7bd28c24: Verifying Checksum
+a6bd7bd28c24: Download complete
+3e9890d3403b: Verifying Checksum
+3e9890d3403b: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+2b3ef6d2a341: Verifying Checksum
+2b3ef6d2a341: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+3e9890d3403b: Pull complete
+b9192a10c580: Pull complete
+28e5e6a80860: Pull complete
+2128079f9b8f: Verifying Checksum
+2128079f9b8f: Download complete
+2128079f9b8f: Pull complete
+976f7cce7de0: Pull complete
+2b3ef6d2a341: Pull complete
+5f52a2b74e30: Pull complete
+0894ebc19e86: Pull complete
+339951c44fef: Pull complete
+d0d174e641a6: Pull complete
+f2ec86814c07: Pull complete
+a6bd7bd28c24: Pull complete
+5587574e22e4: Pull complete
+3b7fbc5c9b4b: Pull complete
+3b7fbc5c9b4b: Already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  36.20
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+7603210ac4de        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+3b7fbc5c9b4b: Buffering to Disk
+3b7fbc5c9b4b: Image successfully pushed
+3b7fbc5c9b4b: Image already exists
+5587574e22e4: Image already exists
+a6bd7bd28c24: Buffering to Disk
+a6bd7bd28c24: Image successfully pushed
+f2ec86814c07: Buffering to Disk
+f2ec86814c07: Image successfully pushed
+d0d174e641a6: Buffering to Disk
+d0d174e641a6: Image successfully pushed
+339951c44fef: Buffering to Disk
+339951c44fef: Image successfully pushed
+0894ebc19e86: Buffering to Disk
+0894ebc19e86: Image successfully pushed
+5f52a2b74e30: Image already exists
+2b3ef6d2a341: Buffering to Disk
+2b3ef6d2a341: Image successfully pushed
+976f7cce7de0: Image already exists
+2128079f9b8f: Buffering to Disk
+2128079f9b8f: Image successfully pushed
+28e5e6a80860: Image already exists
+b9192a10c580: Image already exists
+3e9890d3403b: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+
+real  79.62
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+latest: Pulling from 136.187.101.80:5000/glassfish
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+3e9890d3403b: Pulling fs layer
+b9192a10c580: Pulling fs layer
+28e5e6a80860: Pulling fs layer
+2128079f9b8f: Pulling fs layer
+976f7cce7de0: Pulling fs layer
+2b3ef6d2a341: Pulling fs layer
+5f52a2b74e30: Pulling fs layer
+0894ebc19e86: Pulling fs layer
+339951c44fef: Pulling fs layer
+d0d174e641a6: Pulling fs layer
+f2ec86814c07: Pulling fs layer
+a6bd7bd28c24: Pulling fs layer
+5587574e22e4: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Layer already being pulled by another client. Waiting.
+28e5e6a80860: Verifying Checksum
+28e5e6a80860: Download complete
+d0d174e641a6: Verifying Checksum
+d0d174e641a6: Download complete
+3b7fbc5c9b4b: Verifying Checksum
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+a6bd7bd28c24: Verifying Checksum
+a6bd7bd28c24: Download complete
+976f7cce7de0: Verifying Checksum
+976f7cce7de0: Download complete
+3e9890d3403b: Verifying Checksum
+3e9890d3403b: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+b9192a10c580: Verifying Checksum
+b9192a10c580: Download complete
+5f52a2b74e30: Verifying Checksum
+5f52a2b74e30: Download complete
+339951c44fef: Verifying Checksum
+339951c44fef: Download complete
+f2ec86814c07: Verifying Checksum
+f2ec86814c07: Download complete
+0894ebc19e86: Verifying Checksum
+0894ebc19e86: Download complete
+5587574e22e4: Verifying Checksum
+5587574e22e4: Download complete
+511136ea3c5a: Pull complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+2b3ef6d2a341: Verifying Checksum
+2b3ef6d2a341: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+3e9890d3403b: Pull complete
+b9192a10c580: Pull complete
+28e5e6a80860: Pull complete
+2128079f9b8f: Verifying Checksum
+2128079f9b8f: Download complete
+2128079f9b8f: Pull complete
+976f7cce7de0: Pull complete
+2b3ef6d2a341: Pull complete
+5f52a2b74e30: Pull complete
+0894ebc19e86: Pull complete
+339951c44fef: Pull complete
+d0d174e641a6: Pull complete
+f2ec86814c07: Pull complete
+a6bd7bd28c24: Pull complete
+5587574e22e4: Pull complete
+3b7fbc5c9b4b: Pull complete
+3b7fbc5c9b4b: Already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  35.54
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+375cf6dc15b1        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+3b7fbc5c9b4b: Buffering to Disk
+3b7fbc5c9b4b: Image successfully pushed
+3b7fbc5c9b4b: Image already exists
+5587574e22e4: Image already exists
+a6bd7bd28c24: Buffering to Disk
+a6bd7bd28c24: Image successfully pushed
+f2ec86814c07: Buffering to Disk
+f2ec86814c07: Image successfully pushed
+d0d174e641a6: Buffering to Disk
+d0d174e641a6: Image successfully pushed
+339951c44fef: Buffering to Disk
+339951c44fef: Image successfully pushed
+0894ebc19e86: Buffering to Disk
+0894ebc19e86: Image successfully pushed
+5f52a2b74e30: Image already exists
+2b3ef6d2a341: Buffering to Disk
+2b3ef6d2a341: Image successfully pushed
+976f7cce7de0: Image already exists
+2128079f9b8f: Buffering to Disk
+2128079f9b8f: Image successfully pushed
+28e5e6a80860: Image already exists
+b9192a10c580: Image already exists
+3e9890d3403b: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+
+real  83.12
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+latest: Pulling from 136.187.101.80:5000/glassfish
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+3e9890d3403b: Pulling fs layer
+b9192a10c580: Pulling fs layer
+28e5e6a80860: Pulling fs layer
+2128079f9b8f: Pulling fs layer
+976f7cce7de0: Pulling fs layer
+2b3ef6d2a341: Pulling fs layer
+5f52a2b74e30: Pulling fs layer
+0894ebc19e86: Pulling fs layer
+339951c44fef: Pulling fs layer
+d0d174e641a6: Pulling fs layer
+f2ec86814c07: Pulling fs layer
+a6bd7bd28c24: Pulling fs layer
+5587574e22e4: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+b9192a10c580: Verifying Checksum
+b9192a10c580: Download complete
+511136ea3c5a: Pull complete
+d0d174e641a6: Verifying Checksum
+d0d174e641a6: Download complete
+339951c44fef: Verifying Checksum
+339951c44fef: Download complete
+976f7cce7de0: Verifying Checksum
+976f7cce7de0: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+f2ec86814c07: Verifying Checksum
+f2ec86814c07: Download complete
+28e5e6a80860: Verifying Checksum
+28e5e6a80860: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+0894ebc19e86: Verifying Checksum
+0894ebc19e86: Download complete
+5f52a2b74e30: Verifying Checksum
+5f52a2b74e30: Download complete
+a6bd7bd28c24: Verifying Checksum
+a6bd7bd28c24: Download complete
+3b7fbc5c9b4b: Verifying Checksum
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+5587574e22e4: Verifying Checksum
+5587574e22e4: Download complete
+3e9890d3403b: Verifying Checksum
+3e9890d3403b: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+2b3ef6d2a341: Verifying Checksum
+2b3ef6d2a341: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+3e9890d3403b: Pull complete
+b9192a10c580: Pull complete
+28e5e6a80860: Pull complete
+2128079f9b8f: Verifying Checksum
+2128079f9b8f: Download complete
+2128079f9b8f: Pull complete
+976f7cce7de0: Pull complete
+2b3ef6d2a341: Pull complete
+5f52a2b74e30: Pull complete
+0894ebc19e86: Pull complete
+339951c44fef: Pull complete
+d0d174e641a6: Pull complete
+f2ec86814c07: Pull complete
+a6bd7bd28c24: Pull complete
+5587574e22e4: Pull complete
+3b7fbc5c9b4b: Pull complete
+3b7fbc5c9b4b: Already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  35.54
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+b8de008de769        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+3b7fbc5c9b4b: Buffering to Disk
+3b7fbc5c9b4b: Image successfully pushed
+3b7fbc5c9b4b: Image already exists
+5587574e22e4: Image already exists
+a6bd7bd28c24: Buffering to Disk
+a6bd7bd28c24: Image successfully pushed
+f2ec86814c07: Buffering to Disk
+f2ec86814c07: Image successfully pushed
+d0d174e641a6: Buffering to Disk
+d0d174e641a6: Image successfully pushed
+339951c44fef: Buffering to Disk
+339951c44fef: Image successfully pushed
+0894ebc19e86: Buffering to Disk
+0894ebc19e86: Image successfully pushed
+5f52a2b74e30: Image already exists
+2b3ef6d2a341: Buffering to Disk
+2b3ef6d2a341: Image successfully pushed
+976f7cce7de0: Image already exists
+2128079f9b8f: Buffering to Disk
+2128079f9b8f: Image successfully pushed
+28e5e6a80860: Image already exists
+b9192a10c580: Image already exists
+3e9890d3403b: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+
+real  78.94
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+latest: Pulling from 136.187.101.80:5000/glassfish
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+3e9890d3403b: Pulling fs layer
+b9192a10c580: Pulling fs layer
+28e5e6a80860: Pulling fs layer
+2128079f9b8f: Pulling fs layer
+976f7cce7de0: Pulling fs layer
+2b3ef6d2a341: Pulling fs layer
+5f52a2b74e30: Pulling fs layer
+0894ebc19e86: Pulling fs layer
+339951c44fef: Pulling fs layer
+d0d174e641a6: Pulling fs layer
+f2ec86814c07: Pulling fs layer
+a6bd7bd28c24: Pulling fs layer
+5587574e22e4: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Layer already being pulled by another client. Waiting.
+339951c44fef: Verifying Checksum
+339951c44fef: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+976f7cce7de0: Verifying Checksum
+976f7cce7de0: Download complete
+28e5e6a80860: Verifying Checksum
+28e5e6a80860: Download complete
+3b7fbc5c9b4b: Verifying Checksum
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+d0d174e641a6: Verifying Checksum
+d0d174e641a6: Download complete
+3e9890d3403b: Verifying Checksum
+3e9890d3403b: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+0894ebc19e86: Verifying Checksum
+0894ebc19e86: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+b9192a10c580: Verifying Checksum
+b9192a10c580: Download complete
+5f52a2b74e30: Verifying Checksum
+5f52a2b74e30: Download complete
+a6bd7bd28c24: Verifying Checksum
+a6bd7bd28c24: Download complete
+5587574e22e4: Verifying Checksum
+5587574e22e4: Download complete
+f2ec86814c07: Verifying Checksum
+f2ec86814c07: Download complete
+511136ea3c5a: Pull complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+2b3ef6d2a341: Verifying Checksum
+2b3ef6d2a341: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+3e9890d3403b: Pull complete
+b9192a10c580: Pull complete
+28e5e6a80860: Pull complete
+2128079f9b8f: Verifying Checksum
+2128079f9b8f: Download complete
+2128079f9b8f: Pull complete
+976f7cce7de0: Pull complete
+2b3ef6d2a341: Pull complete
+5f52a2b74e30: Pull complete
+0894ebc19e86: Pull complete
+339951c44fef: Pull complete
+d0d174e641a6: Pull complete
+f2ec86814c07: Pull complete
+a6bd7bd28c24: Pull complete
+5587574e22e4: Pull complete
+3b7fbc5c9b4b: Pull complete
+3b7fbc5c9b4b: Already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  35.53
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+74007fd68b78        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+3b7fbc5c9b4b: Buffering to Disk
+3b7fbc5c9b4b: Image successfully pushed
+3b7fbc5c9b4b: Image already exists
+5587574e22e4: Image already exists
+a6bd7bd28c24: Buffering to Disk
+a6bd7bd28c24: Image successfully pushed
+f2ec86814c07: Buffering to Disk
+f2ec86814c07: Image successfully pushed
+d0d174e641a6: Buffering to Disk
+d0d174e641a6: Image successfully pushed
+339951c44fef: Buffering to Disk
+339951c44fef: Image successfully pushed
+0894ebc19e86: Buffering to Disk
+0894ebc19e86: Image successfully pushed
+5f52a2b74e30: Image already exists
+2b3ef6d2a341: Buffering to Disk
+2b3ef6d2a341: Image successfully pushed
+976f7cce7de0: Image already exists
+2128079f9b8f: Buffering to Disk
+2128079f9b8f: Image successfully pushed
+28e5e6a80860: Image already exists
+b9192a10c580: Image already exists
+3e9890d3403b: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+
+real  78.65
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+latest: Pulling from 136.187.101.80:5000/glassfish
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+3e9890d3403b: Pulling fs layer
+b9192a10c580: Pulling fs layer
+28e5e6a80860: Pulling fs layer
+2128079f9b8f: Pulling fs layer
+976f7cce7de0: Pulling fs layer
+2b3ef6d2a341: Pulling fs layer
+5f52a2b74e30: Pulling fs layer
+0894ebc19e86: Pulling fs layer
+339951c44fef: Pulling fs layer
+d0d174e641a6: Pulling fs layer
+f2ec86814c07: Pulling fs layer
+a6bd7bd28c24: Pulling fs layer
+5587574e22e4: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Layer already being pulled by another client. Waiting.
+3e9890d3403b: Verifying Checksum
+3e9890d3403b: Download complete
+b9192a10c580: Verifying Checksum
+b9192a10c580: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+5f52a2b74e30: Verifying Checksum
+5f52a2b74e30: Download complete
+3b7fbc5c9b4b: Verifying Checksum
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+976f7cce7de0: Verifying Checksum
+976f7cce7de0: Download complete
+28e5e6a80860: Verifying Checksum
+28e5e6a80860: Download complete
+339951c44fef: Verifying Checksum
+339951c44fef: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+5587574e22e4: Verifying Checksum
+5587574e22e4: Download complete
+0894ebc19e86: Verifying Checksum
+0894ebc19e86: Download complete
+f2ec86814c07: Verifying Checksum
+f2ec86814c07: Download complete
+d0d174e641a6: Verifying Checksum
+d0d174e641a6: Download complete
+a6bd7bd28c24: Verifying Checksum
+a6bd7bd28c24: Download complete
+511136ea3c5a: Pull complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+2b3ef6d2a341: Verifying Checksum
+2b3ef6d2a341: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+3e9890d3403b: Pull complete
+b9192a10c580: Pull complete
+28e5e6a80860: Pull complete
+2128079f9b8f: Verifying Checksum
+2128079f9b8f: Download complete
+2128079f9b8f: Pull complete
+976f7cce7de0: Pull complete
+2b3ef6d2a341: Pull complete
+5f52a2b74e30: Pull complete
+0894ebc19e86: Pull complete
+339951c44fef: Pull complete
+d0d174e641a6: Pull complete
+f2ec86814c07: Pull complete
+a6bd7bd28c24: Pull complete
+5587574e22e4: Pull complete
+3b7fbc5c9b4b: Pull complete
+3b7fbc5c9b4b: Already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  36.58
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+bd162986a9b4        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+3b7fbc5c9b4b: Buffering to Disk
+3b7fbc5c9b4b: Image successfully pushed
+3b7fbc5c9b4b: Image already exists
+5587574e22e4: Image already exists
+a6bd7bd28c24: Buffering to Disk
+a6bd7bd28c24: Image successfully pushed
+f2ec86814c07: Buffering to Disk
+f2ec86814c07: Image successfully pushed
+d0d174e641a6: Buffering to Disk
+d0d174e641a6: Image successfully pushed
+339951c44fef: Buffering to Disk
+339951c44fef: Image successfully pushed
+0894ebc19e86: Buffering to Disk
+0894ebc19e86: Image successfully pushed
+5f52a2b74e30: Image already exists
+2b3ef6d2a341: Buffering to Disk
+2b3ef6d2a341: Image successfully pushed
+976f7cce7de0: Image already exists
+2128079f9b8f: Buffering to Disk
+2128079f9b8f: Image successfully pushed
+28e5e6a80860: Image already exists
+b9192a10c580: Image already exists
+3e9890d3403b: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+
+real  78.39
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+latest: Pulling from 136.187.101.80:5000/glassfish
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+3e9890d3403b: Pulling fs layer
+b9192a10c580: Pulling fs layer
+28e5e6a80860: Pulling fs layer
+2128079f9b8f: Pulling fs layer
+976f7cce7de0: Pulling fs layer
+2b3ef6d2a341: Pulling fs layer
+5f52a2b74e30: Pulling fs layer
+0894ebc19e86: Pulling fs layer
+339951c44fef: Pulling fs layer
+d0d174e641a6: Pulling fs layer
+f2ec86814c07: Pulling fs layer
+a6bd7bd28c24: Pulling fs layer
+5587574e22e4: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Layer already being pulled by another client. Waiting.
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+a6bd7bd28c24: Verifying Checksum
+a6bd7bd28c24: Download complete
+976f7cce7de0: Verifying Checksum
+976f7cce7de0: Download complete
+5f52a2b74e30: Verifying Checksum
+5f52a2b74e30: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+b9192a10c580: Verifying Checksum
+b9192a10c580: Download complete
+28e5e6a80860: Verifying Checksum
+28e5e6a80860: Download complete
+3b7fbc5c9b4b: Verifying Checksum
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+d0d174e641a6: Verifying Checksum
+d0d174e641a6: Download complete
+3e9890d3403b: Verifying Checksum
+3e9890d3403b: Download complete
+f2ec86814c07: Verifying Checksum
+f2ec86814c07: Download complete
+339951c44fef: Verifying Checksum
+339951c44fef: Download complete
+5587574e22e4: Verifying Checksum
+5587574e22e4: Download complete
+0894ebc19e86: Verifying Checksum
+0894ebc19e86: Download complete
+511136ea3c5a: Pull complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+2b3ef6d2a341: Verifying Checksum
+2b3ef6d2a341: Download complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+3e9890d3403b: Pull complete
+b9192a10c580: Pull complete
+28e5e6a80860: Pull complete
+2128079f9b8f: Verifying Checksum
+2128079f9b8f: Download complete
+2128079f9b8f: Pull complete
+976f7cce7de0: Pull complete
+2b3ef6d2a341: Pull complete
+5f52a2b74e30: Pull complete
+0894ebc19e86: Pull complete
+339951c44fef: Pull complete
+d0d174e641a6: Pull complete
+f2ec86814c07: Pull complete
+a6bd7bd28c24: Pull complete
+5587574e22e4: Pull complete
+3b7fbc5c9b4b: Pull complete
+3b7fbc5c9b4b: Already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  34.64
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+8b4231037e13        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+3b7fbc5c9b4b: Buffering to Disk
+3b7fbc5c9b4b: Image successfully pushed
+3b7fbc5c9b4b: Image already exists
+5587574e22e4: Image already exists
+a6bd7bd28c24: Buffering to Disk
+a6bd7bd28c24: Image successfully pushed
+f2ec86814c07: Buffering to Disk
+f2ec86814c07: Image successfully pushed
+d0d174e641a6: Buffering to Disk
+d0d174e641a6: Image successfully pushed
+339951c44fef: Buffering to Disk
+339951c44fef: Image successfully pushed
+0894ebc19e86: Buffering to Disk
+0894ebc19e86: Image successfully pushed
+5f52a2b74e30: Image already exists
+2b3ef6d2a341: Buffering to Disk
+2b3ef6d2a341: Image successfully pushed
+976f7cce7de0: Image already exists
+2128079f9b8f: Buffering to Disk
+2128079f9b8f: Image successfully pushed
+28e5e6a80860: Image already exists
+b9192a10c580: Image already exists
+3e9890d3403b: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+
+real  79.55
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+latest: Pulling from 136.187.101.80:5000/glassfish
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+3e9890d3403b: Pulling fs layer
+b9192a10c580: Pulling fs layer
+28e5e6a80860: Pulling fs layer
+2128079f9b8f: Pulling fs layer
+976f7cce7de0: Pulling fs layer
+2b3ef6d2a341: Pulling fs layer
+5f52a2b74e30: Pulling fs layer
+0894ebc19e86: Pulling fs layer
+339951c44fef: Pulling fs layer
+d0d174e641a6: Pulling fs layer
+f2ec86814c07: Pulling fs layer
+a6bd7bd28c24: Pulling fs layer
+5587574e22e4: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Layer already being pulled by another client. Waiting.
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+5587574e22e4: Verifying Checksum
+5587574e22e4: Download complete
+339951c44fef: Verifying Checksum
+339951c44fef: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+b9192a10c580: Verifying Checksum
+b9192a10c580: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+0894ebc19e86: Verifying Checksum
+0894ebc19e86: Download complete
+5f52a2b74e30: Verifying Checksum
+5f52a2b74e30: Download complete
+3e9890d3403b: Verifying Checksum
+3e9890d3403b: Download complete
+a6bd7bd28c24: Verifying Checksum
+a6bd7bd28c24: Download complete
+976f7cce7de0: Verifying Checksum
+976f7cce7de0: Download complete
+3b7fbc5c9b4b: Verifying Checksum
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+28e5e6a80860: Verifying Checksum
+28e5e6a80860: Download complete
+f2ec86814c07: Verifying Checksum
+f2ec86814c07: Download complete
+d0d174e641a6: Verifying Checksum
+d0d174e641a6: Download complete
+511136ea3c5a: Pull complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+2b3ef6d2a341: Verifying Checksum
+2b3ef6d2a341: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+3e9890d3403b: Pull complete
+b9192a10c580: Pull complete
+28e5e6a80860: Pull complete
+2128079f9b8f: Verifying Checksum
+2128079f9b8f: Download complete
+2128079f9b8f: Pull complete
+976f7cce7de0: Pull complete
+2b3ef6d2a341: Pull complete
+5f52a2b74e30: Pull complete
+0894ebc19e86: Pull complete
+339951c44fef: Pull complete
+d0d174e641a6: Pull complete
+f2ec86814c07: Pull complete
+a6bd7bd28c24: Pull complete
+5587574e22e4: Pull complete
+3b7fbc5c9b4b: Pull complete
+3b7fbc5c9b4b: Already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  35.82
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+a0548d22ba9c        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+3b7fbc5c9b4b: Buffering to Disk
+3b7fbc5c9b4b: Image successfully pushed
+3b7fbc5c9b4b: Image already exists
+5587574e22e4: Image already exists
+a6bd7bd28c24: Buffering to Disk
+a6bd7bd28c24: Image successfully pushed
+f2ec86814c07: Buffering to Disk
+f2ec86814c07: Image successfully pushed
+d0d174e641a6: Buffering to Disk
+d0d174e641a6: Image successfully pushed
+339951c44fef: Buffering to Disk
+339951c44fef: Image successfully pushed
+0894ebc19e86: Buffering to Disk
+0894ebc19e86: Image successfully pushed
+5f52a2b74e30: Image already exists
+2b3ef6d2a341: Buffering to Disk
+2b3ef6d2a341: Image successfully pushed
+976f7cce7de0: Image already exists
+2128079f9b8f: Buffering to Disk
+2128079f9b8f: Image successfully pushed
+28e5e6a80860: Image already exists
+b9192a10c580: Image already exists
+3e9890d3403b: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+
+real  77.17
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+latest: Pulling from 136.187.101.80:5000/glassfish
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+3e9890d3403b: Pulling fs layer
+b9192a10c580: Pulling fs layer
+28e5e6a80860: Pulling fs layer
+2128079f9b8f: Pulling fs layer
+976f7cce7de0: Pulling fs layer
+2b3ef6d2a341: Pulling fs layer
+5f52a2b74e30: Pulling fs layer
+0894ebc19e86: Pulling fs layer
+339951c44fef: Pulling fs layer
+d0d174e641a6: Pulling fs layer
+f2ec86814c07: Pulling fs layer
+a6bd7bd28c24: Pulling fs layer
+5587574e22e4: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Layer already being pulled by another client. Waiting.
+339951c44fef: Verifying Checksum
+339951c44fef: Download complete
+976f7cce7de0: Verifying Checksum
+976f7cce7de0: Download complete
+b9192a10c580: Verifying Checksum
+b9192a10c580: Download complete
+d0d174e641a6: Verifying Checksum
+d0d174e641a6: Download complete
+5f52a2b74e30: Verifying Checksum
+5f52a2b74e30: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+28e5e6a80860: Verifying Checksum
+28e5e6a80860: Download complete
+f2ec86814c07: Verifying Checksum
+f2ec86814c07: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+3e9890d3403b: Verifying Checksum
+3e9890d3403b: Download complete
+a6bd7bd28c24: Verifying Checksum
+a6bd7bd28c24: Download complete
+0894ebc19e86: Verifying Checksum
+0894ebc19e86: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+5587574e22e4: Verifying Checksum
+5587574e22e4: Download complete
+511136ea3c5a: Pull complete
+3b7fbc5c9b4b: Verifying Checksum
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+2b3ef6d2a341: Verifying Checksum
+2b3ef6d2a341: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+3e9890d3403b: Pull complete
+b9192a10c580: Pull complete
+28e5e6a80860: Pull complete
+2128079f9b8f: Verifying Checksum
+2128079f9b8f: Download complete
+2128079f9b8f: Pull complete
+976f7cce7de0: Pull complete
+2b3ef6d2a341: Pull complete
+5f52a2b74e30: Pull complete
+0894ebc19e86: Pull complete
+339951c44fef: Pull complete
+d0d174e641a6: Pull complete
+f2ec86814c07: Pull complete
+a6bd7bd28c24: Pull complete
+5587574e22e4: Pull complete
+3b7fbc5c9b4b: Pull complete
+3b7fbc5c9b4b: Already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  36.22
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+70b951cab790        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+3b7fbc5c9b4b: Buffering to Disk
+3b7fbc5c9b4b: Image successfully pushed
+3b7fbc5c9b4b: Image already exists
+5587574e22e4: Image already exists
+a6bd7bd28c24: Buffering to Disk
+a6bd7bd28c24: Image successfully pushed
+f2ec86814c07: Buffering to Disk
+f2ec86814c07: Image successfully pushed
+d0d174e641a6: Buffering to Disk
+d0d174e641a6: Image successfully pushed
+339951c44fef: Buffering to Disk
+339951c44fef: Image successfully pushed
+0894ebc19e86: Buffering to Disk
+0894ebc19e86: Image successfully pushed
+5f52a2b74e30: Image already exists
+2b3ef6d2a341: Buffering to Disk
+2b3ef6d2a341: Image successfully pushed
+976f7cce7de0: Image already exists
+2128079f9b8f: Buffering to Disk
+2128079f9b8f: Image successfully pushed
+28e5e6a80860: Image already exists
+b9192a10c580: Image already exists
+3e9890d3403b: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+
+real  76.55
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+latest: Pulling from 136.187.101.80:5000/glassfish
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+3e9890d3403b: Pulling fs layer
+b9192a10c580: Pulling fs layer
+28e5e6a80860: Pulling fs layer
+2128079f9b8f: Pulling fs layer
+976f7cce7de0: Pulling fs layer
+2b3ef6d2a341: Pulling fs layer
+5f52a2b74e30: Pulling fs layer
+0894ebc19e86: Pulling fs layer
+339951c44fef: Pulling fs layer
+d0d174e641a6: Pulling fs layer
+f2ec86814c07: Pulling fs layer
+a6bd7bd28c24: Pulling fs layer
+5587574e22e4: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Layer already being pulled by another client. Waiting.
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+511136ea3c5a: Pull complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+3e9890d3403b: Verifying Checksum
+3e9890d3403b: Download complete
+3b7fbc5c9b4b: Verifying Checksum
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+5f52a2b74e30: Verifying Checksum
+5f52a2b74e30: Download complete
+f2ec86814c07: Verifying Checksum
+f2ec86814c07: Download complete
+a6bd7bd28c24: Verifying Checksum
+a6bd7bd28c24: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+b9192a10c580: Verifying Checksum
+b9192a10c580: Download complete
+976f7cce7de0: Verifying Checksum
+976f7cce7de0: Download complete
+d0d174e641a6: Verifying Checksum
+d0d174e641a6: Download complete
+28e5e6a80860: Verifying Checksum
+28e5e6a80860: Download complete
+339951c44fef: Verifying Checksum
+339951c44fef: Download complete
+5587574e22e4: Verifying Checksum
+5587574e22e4: Download complete
+0894ebc19e86: Verifying Checksum
+0894ebc19e86: Download complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+2b3ef6d2a341: Verifying Checksum
+2b3ef6d2a341: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+3e9890d3403b: Pull complete
+b9192a10c580: Pull complete
+28e5e6a80860: Pull complete
+2128079f9b8f: Verifying Checksum
+2128079f9b8f: Download complete
+2128079f9b8f: Pull complete
+976f7cce7de0: Pull complete
+2b3ef6d2a341: Pull complete
+5f52a2b74e30: Pull complete
+0894ebc19e86: Pull complete
+339951c44fef: Pull complete
+d0d174e641a6: Pull complete
+f2ec86814c07: Pull complete
+a6bd7bd28c24: Pull complete
+5587574e22e4: Pull complete
+3b7fbc5c9b4b: Pull complete
+3b7fbc5c9b4b: Already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  35.82
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 glassfish
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker tag kiwenlau/glassfish:latest 136.187.101.80:5000/glassfish:latest
+
+docker images
+kiwenlau/glassfish              latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+d4422108f379        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/glassfish:latest
+The push refers to a repository [136.187.101.80:5000/glassfish] (len: 1)
+3b7fbc5c9b4b: Buffering to Disk
+3b7fbc5c9b4b: Image successfully pushed
+3b7fbc5c9b4b: Image already exists
+5587574e22e4: Image already exists
+a6bd7bd28c24: Buffering to Disk
+a6bd7bd28c24: Image successfully pushed
+f2ec86814c07: Buffering to Disk
+f2ec86814c07: Image successfully pushed
+d0d174e641a6: Buffering to Disk
+d0d174e641a6: Image successfully pushed
+339951c44fef: Buffering to Disk
+339951c44fef: Image successfully pushed
+0894ebc19e86: Buffering to Disk
+0894ebc19e86: Image successfully pushed
+5f52a2b74e30: Image already exists
+2b3ef6d2a341: Buffering to Disk
+2b3ef6d2a341: Image successfully pushed
+976f7cce7de0: Image already exists
+2128079f9b8f: Buffering to Disk
+2128079f9b8f: Image successfully pushed
+28e5e6a80860: Image already exists
+b9192a10c580: Image already exists
+3e9890d3403b: Image already exists
+c4ff7513909d: Image already exists
+cc58e55aa5a5: Buffering to Disk
+cc58e55aa5a5: Image successfully pushed
+0ea0d582fd90: Buffering to Disk
+0ea0d582fd90: Image successfully pushed
+d92c3c92fa73: Buffering to Disk
+d92c3c92fa73: Image successfully pushed
+9942dd43ff21: Buffering to Disk
+9942dd43ff21: Image successfully pushed
+1c9383292a8f: Buffering to Disk
+1c9383292a8f: Image successfully pushed
+511136ea3c5a: Image already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+
+real  78.14
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker pull 136.187.101.80:5000/glassfish:latest
+latest: Pulling from 136.187.101.80:5000/glassfish
+511136ea3c5a: Pulling fs layer
+1c9383292a8f: Pulling fs layer
+9942dd43ff21: Pulling fs layer
+d92c3c92fa73: Pulling fs layer
+0ea0d582fd90: Pulling fs layer
+cc58e55aa5a5: Pulling fs layer
+c4ff7513909d: Pulling fs layer
+3e9890d3403b: Pulling fs layer
+b9192a10c580: Pulling fs layer
+28e5e6a80860: Pulling fs layer
+2128079f9b8f: Pulling fs layer
+976f7cce7de0: Pulling fs layer
+2b3ef6d2a341: Pulling fs layer
+5f52a2b74e30: Pulling fs layer
+0894ebc19e86: Pulling fs layer
+339951c44fef: Pulling fs layer
+d0d174e641a6: Pulling fs layer
+f2ec86814c07: Pulling fs layer
+a6bd7bd28c24: Pulling fs layer
+5587574e22e4: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Pulling fs layer
+3b7fbc5c9b4b: Layer already being pulled by another client. Waiting.
+28e5e6a80860: Verifying Checksum
+28e5e6a80860: Download complete
+3b7fbc5c9b4b: Verifying Checksum
+3b7fbc5c9b4b: Download complete
+3b7fbc5c9b4b: Download complete
+d92c3c92fa73: Verifying Checksum
+d92c3c92fa73: Download complete
+0ea0d582fd90: Verifying Checksum
+0ea0d582fd90: Download complete
+b9192a10c580: Verifying Checksum
+b9192a10c580: Download complete
+3e9890d3403b: Verifying Checksum
+3e9890d3403b: Download complete
+d0d174e641a6: Verifying Checksum
+d0d174e641a6: Download complete
+f2ec86814c07: Verifying Checksum
+f2ec86814c07: Download complete
+511136ea3c5a: Verifying Checksum
+511136ea3c5a: Download complete
+0894ebc19e86: Verifying Checksum
+0894ebc19e86: Download complete
+5f52a2b74e30: Verifying Checksum
+5f52a2b74e30: Download complete
+c4ff7513909d: Verifying Checksum
+c4ff7513909d: Download complete
+339951c44fef: Verifying Checksum
+339951c44fef: Download complete
+976f7cce7de0: Verifying Checksum
+976f7cce7de0: Download complete
+a6bd7bd28c24: Verifying Checksum
+a6bd7bd28c24: Download complete
+5587574e22e4: Verifying Checksum
+5587574e22e4: Download complete
+511136ea3c5a: Pull complete
+9942dd43ff21: Verifying Checksum
+9942dd43ff21: Download complete
+cc58e55aa5a5: Verifying Checksum
+cc58e55aa5a5: Download complete
+1c9383292a8f: Verifying Checksum
+1c9383292a8f: Download complete
+2b3ef6d2a341: Verifying Checksum
+2b3ef6d2a341: Download complete
+1c9383292a8f: Pull complete
+9942dd43ff21: Pull complete
+d92c3c92fa73: Pull complete
+0ea0d582fd90: Pull complete
+cc58e55aa5a5: Pull complete
+c4ff7513909d: Pull complete
+3e9890d3403b: Pull complete
+b9192a10c580: Pull complete
+28e5e6a80860: Pull complete
+2128079f9b8f: Verifying Checksum
+2128079f9b8f: Download complete
+2128079f9b8f: Pull complete
+976f7cce7de0: Pull complete
+2b3ef6d2a341: Pull complete
+5f52a2b74e30: Pull complete
+0894ebc19e86: Pull complete
+339951c44fef: Pull complete
+d0d174e641a6: Pull complete
+f2ec86814c07: Pull complete
+a6bd7bd28c24: Pull complete
+5587574e22e4: Pull complete
+3b7fbc5c9b4b: Pull complete
+3b7fbc5c9b4b: Already exists
+Digest: sha256:a67b5c285db43b37784a6633ed1f93034d975a5bdd7f115aaba3dce7f59c10b0
+Status: Downloaded newer image for 136.187.101.80:5000/glassfish:latest
+
+real  35.08
+
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+136.187.101.80:5000/glassfish   latest              3b7fbc5c9b4b        11 months ago       651.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/glassfish:latest"
+ssh kai@54.225.249.141 "docker images | grep glassfish"
+
+docker rm -f docker_registry
+
+end date: Wed Aug 12 03:59:45 JST 2015
+
+

@@ -1,0 +1,965 @@
+
+pullpush benchmark: transfer openjdk image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Wed Aug 12 02:49:14 JST 2015
+
+sudo docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+sudo docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+2e16d01a57e5        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+8e309f1f5b82: Buffering to Disk
+8e309f1f5b82: Image successfully pushed
+8e309f1f5b82: Image already exists
+a1932e8f0b0a: Buffering to Disk
+a1932e8f0b0a: Image successfully pushed
+40eb9ff9ac4f: Buffering to Disk
+40eb9ff9ac4f: Image successfully pushed
+ab412e1b2d66: Buffering to Disk
+ab412e1b2d66: Image successfully pushed
+76cbde46c442: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:51c48cb9a7451bb863ca50dadef2a5b3e6e5013f67b6856cbb19be84847f3309
+
+real  82.78
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+latest: Pulling from 136.187.101.80:5000/openjdk
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+76cbde46c442: Pulling fs layer
+ab412e1b2d66: Pulling fs layer
+40eb9ff9ac4f: Pulling fs layer
+a1932e8f0b0a: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Layer already being pulled by another client. Waiting.
+8e309f1f5b82: Verifying Checksum
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+a1932e8f0b0a: Verifying Checksum
+a1932e8f0b0a: Download complete
+76cbde46c442: Verifying Checksum
+76cbde46c442: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+ab412e1b2d66: Verifying Checksum
+ab412e1b2d66: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+76cbde46c442: Pull complete
+ab412e1b2d66: Pull complete
+40eb9ff9ac4f: Verifying Checksum
+40eb9ff9ac4f: Download complete
+40eb9ff9ac4f: Pull complete
+a1932e8f0b0a: Pull complete
+8e309f1f5b82: Pull complete
+8e309f1f5b82: Already exists
+Digest: sha256:51c48cb9a7451bb863ca50dadef2a5b3e6e5013f67b6856cbb19be84847f3309
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  34.73
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+5521cbb340f3        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+8e309f1f5b82: Buffering to Disk
+8e309f1f5b82: Image successfully pushed
+8e309f1f5b82: Image already exists
+a1932e8f0b0a: Buffering to Disk
+a1932e8f0b0a: Image successfully pushed
+40eb9ff9ac4f: Buffering to Disk
+40eb9ff9ac4f: Image successfully pushed
+ab412e1b2d66: Buffering to Disk
+ab412e1b2d66: Image successfully pushed
+76cbde46c442: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+
+real  83.95
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+latest: Pulling from 136.187.101.80:5000/openjdk
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+76cbde46c442: Pulling fs layer
+ab412e1b2d66: Pulling fs layer
+40eb9ff9ac4f: Pulling fs layer
+a1932e8f0b0a: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Layer already being pulled by another client. Waiting.
+a1932e8f0b0a: Verifying Checksum
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Verifying Checksum
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+76cbde46c442: Verifying Checksum
+76cbde46c442: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+ab412e1b2d66: Verifying Checksum
+ab412e1b2d66: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+76cbde46c442: Pull complete
+ab412e1b2d66: Pull complete
+40eb9ff9ac4f: Verifying Checksum
+40eb9ff9ac4f: Download complete
+40eb9ff9ac4f: Pull complete
+a1932e8f0b0a: Pull complete
+8e309f1f5b82: Pull complete
+8e309f1f5b82: Already exists
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  33.58
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+b3edc6aea01e        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+8e309f1f5b82: Buffering to Disk
+8e309f1f5b82: Image successfully pushed
+8e309f1f5b82: Image already exists
+a1932e8f0b0a: Buffering to Disk
+a1932e8f0b0a: Image successfully pushed
+40eb9ff9ac4f: Buffering to Disk
+40eb9ff9ac4f: Image successfully pushed
+ab412e1b2d66: Buffering to Disk
+ab412e1b2d66: Image successfully pushed
+76cbde46c442: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+
+real  84.02
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+latest: Pulling from 136.187.101.80:5000/openjdk
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+76cbde46c442: Pulling fs layer
+ab412e1b2d66: Pulling fs layer
+40eb9ff9ac4f: Pulling fs layer
+a1932e8f0b0a: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Layer already being pulled by another client. Waiting.
+8e309f1f5b82: Verifying Checksum
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+a1932e8f0b0a: Verifying Checksum
+a1932e8f0b0a: Download complete
+76cbde46c442: Verifying Checksum
+76cbde46c442: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+ab412e1b2d66: Verifying Checksum
+ab412e1b2d66: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+76cbde46c442: Pull complete
+ab412e1b2d66: Pull complete
+40eb9ff9ac4f: Verifying Checksum
+40eb9ff9ac4f: Download complete
+40eb9ff9ac4f: Pull complete
+a1932e8f0b0a: Pull complete
+8e309f1f5b82: Pull complete
+8e309f1f5b82: Already exists
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  33.42
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+df804f588f73        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+8e309f1f5b82: Buffering to Disk
+8e309f1f5b82: Image successfully pushed
+8e309f1f5b82: Image already exists
+a1932e8f0b0a: Buffering to Disk
+a1932e8f0b0a: Image successfully pushed
+40eb9ff9ac4f: Buffering to Disk
+40eb9ff9ac4f: Image successfully pushed
+ab412e1b2d66: Buffering to Disk
+ab412e1b2d66: Image successfully pushed
+76cbde46c442: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+
+real  80.48
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+latest: Pulling from 136.187.101.80:5000/openjdk
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+76cbde46c442: Pulling fs layer
+ab412e1b2d66: Pulling fs layer
+40eb9ff9ac4f: Pulling fs layer
+a1932e8f0b0a: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Layer already being pulled by another client. Waiting.
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+76cbde46c442: Verifying Checksum
+76cbde46c442: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+8e309f1f5b82: Verifying Checksum
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+a1932e8f0b0a: Verifying Checksum
+a1932e8f0b0a: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+ab412e1b2d66: Verifying Checksum
+ab412e1b2d66: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+76cbde46c442: Pull complete
+ab412e1b2d66: Pull complete
+40eb9ff9ac4f: Verifying Checksum
+40eb9ff9ac4f: Download complete
+40eb9ff9ac4f: Pull complete
+a1932e8f0b0a: Pull complete
+8e309f1f5b82: Pull complete
+8e309f1f5b82: Already exists
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  33.57
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+49c2dce5758b        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+8e309f1f5b82: Buffering to Disk
+8e309f1f5b82: Image successfully pushed
+8e309f1f5b82: Image already exists
+a1932e8f0b0a: Buffering to Disk
+a1932e8f0b0a: Image successfully pushed
+40eb9ff9ac4f: Buffering to Disk
+40eb9ff9ac4f: Image successfully pushed
+ab412e1b2d66: Buffering to Disk
+ab412e1b2d66: Image successfully pushed
+76cbde46c442: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+
+real  83.05
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+latest: Pulling from 136.187.101.80:5000/openjdk
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+76cbde46c442: Pulling fs layer
+ab412e1b2d66: Pulling fs layer
+40eb9ff9ac4f: Pulling fs layer
+a1932e8f0b0a: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Layer already being pulled by another client. Waiting.
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+76cbde46c442: Verifying Checksum
+76cbde46c442: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+a1932e8f0b0a: Verifying Checksum
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Verifying Checksum
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+ab412e1b2d66: Verifying Checksum
+ab412e1b2d66: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+76cbde46c442: Pull complete
+ab412e1b2d66: Pull complete
+40eb9ff9ac4f: Verifying Checksum
+40eb9ff9ac4f: Download complete
+40eb9ff9ac4f: Pull complete
+a1932e8f0b0a: Pull complete
+8e309f1f5b82: Pull complete
+8e309f1f5b82: Already exists
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  33.26
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+afadd9cc22f0        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+8e309f1f5b82: Buffering to Disk
+8e309f1f5b82: Image successfully pushed
+8e309f1f5b82: Image already exists
+a1932e8f0b0a: Buffering to Disk
+a1932e8f0b0a: Image successfully pushed
+40eb9ff9ac4f: Buffering to Disk
+40eb9ff9ac4f: Image successfully pushed
+ab412e1b2d66: Buffering to Disk
+ab412e1b2d66: Image successfully pushed
+76cbde46c442: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:51c48cb9a7451bb863ca50dadef2a5b3e6e5013f67b6856cbb19be84847f3309
+
+real  80.11
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+latest: Pulling from 136.187.101.80:5000/openjdk
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+76cbde46c442: Pulling fs layer
+ab412e1b2d66: Pulling fs layer
+40eb9ff9ac4f: Pulling fs layer
+a1932e8f0b0a: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Layer already being pulled by another client. Waiting.
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+a1932e8f0b0a: Verifying Checksum
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Verifying Checksum
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+76cbde46c442: Verifying Checksum
+76cbde46c442: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+ab412e1b2d66: Verifying Checksum
+ab412e1b2d66: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+76cbde46c442: Pull complete
+ab412e1b2d66: Pull complete
+40eb9ff9ac4f: Verifying Checksum
+40eb9ff9ac4f: Download complete
+40eb9ff9ac4f: Pull complete
+a1932e8f0b0a: Pull complete
+8e309f1f5b82: Pull complete
+8e309f1f5b82: Already exists
+Digest: sha256:51c48cb9a7451bb863ca50dadef2a5b3e6e5013f67b6856cbb19be84847f3309
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  34.26
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+4dda5ff007b0        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+8e309f1f5b82: Buffering to Disk
+8e309f1f5b82: Image successfully pushed
+8e309f1f5b82: Image already exists
+a1932e8f0b0a: Buffering to Disk
+a1932e8f0b0a: Image successfully pushed
+40eb9ff9ac4f: Buffering to Disk
+40eb9ff9ac4f: Image successfully pushed
+ab412e1b2d66: Buffering to Disk
+ab412e1b2d66: Image successfully pushed
+76cbde46c442: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+
+real  85.20
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+latest: Pulling from 136.187.101.80:5000/openjdk
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+76cbde46c442: Pulling fs layer
+ab412e1b2d66: Pulling fs layer
+40eb9ff9ac4f: Pulling fs layer
+a1932e8f0b0a: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Layer already being pulled by another client. Waiting.
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+8e309f1f5b82: Verifying Checksum
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+76cbde46c442: Verifying Checksum
+76cbde46c442: Download complete
+a1932e8f0b0a: Verifying Checksum
+a1932e8f0b0a: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+ab412e1b2d66: Verifying Checksum
+ab412e1b2d66: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+76cbde46c442: Pull complete
+ab412e1b2d66: Pull complete
+40eb9ff9ac4f: Verifying Checksum
+40eb9ff9ac4f: Download complete
+40eb9ff9ac4f: Pull complete
+a1932e8f0b0a: Pull complete
+8e309f1f5b82: Pull complete
+8e309f1f5b82: Already exists
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  33.43
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+8d0f40309a51        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+8e309f1f5b82: Buffering to Disk
+8e309f1f5b82: Image successfully pushed
+8e309f1f5b82: Image already exists
+a1932e8f0b0a: Buffering to Disk
+a1932e8f0b0a: Image successfully pushed
+40eb9ff9ac4f: Buffering to Disk
+40eb9ff9ac4f: Image successfully pushed
+ab412e1b2d66: Buffering to Disk
+ab412e1b2d66: Image successfully pushed
+76cbde46c442: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:182c75b55c488cdedaa2f2cea87435b38ecf1182786537941767a9646f647ab3
+
+real  84.40
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+latest: Pulling from 136.187.101.80:5000/openjdk
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+76cbde46c442: Pulling fs layer
+ab412e1b2d66: Pulling fs layer
+40eb9ff9ac4f: Pulling fs layer
+a1932e8f0b0a: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Layer already being pulled by another client. Waiting.
+76cbde46c442: Verifying Checksum
+76cbde46c442: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+a1932e8f0b0a: Verifying Checksum
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Verifying Checksum
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+ab412e1b2d66: Verifying Checksum
+ab412e1b2d66: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+76cbde46c442: Pull complete
+ab412e1b2d66: Pull complete
+40eb9ff9ac4f: Verifying Checksum
+40eb9ff9ac4f: Download complete
+40eb9ff9ac4f: Pull complete
+a1932e8f0b0a: Pull complete
+8e309f1f5b82: Pull complete
+8e309f1f5b82: Already exists
+Digest: sha256:182c75b55c488cdedaa2f2cea87435b38ecf1182786537941767a9646f647ab3
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  34.63
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+749defcf57e9        kiwenlau/registry:2.0.1   "registry cmd/regist   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+8e309f1f5b82: Buffering to Disk
+8e309f1f5b82: Image successfully pushed
+8e309f1f5b82: Image already exists
+a1932e8f0b0a: Buffering to Disk
+a1932e8f0b0a: Image successfully pushed
+40eb9ff9ac4f: Buffering to Disk
+40eb9ff9ac4f: Image successfully pushed
+ab412e1b2d66: Buffering to Disk
+ab412e1b2d66: Image successfully pushed
+76cbde46c442: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+
+real  79.87
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+latest: Pulling from 136.187.101.80:5000/openjdk
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+76cbde46c442: Pulling fs layer
+ab412e1b2d66: Pulling fs layer
+40eb9ff9ac4f: Pulling fs layer
+a1932e8f0b0a: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Layer already being pulled by another client. Waiting.
+76cbde46c442: Verifying Checksum
+76cbde46c442: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+a1932e8f0b0a: Verifying Checksum
+a1932e8f0b0a: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+8e309f1f5b82: Verifying Checksum
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+ab412e1b2d66: Verifying Checksum
+ab412e1b2d66: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+76cbde46c442: Pull complete
+ab412e1b2d66: Pull complete
+40eb9ff9ac4f: Verifying Checksum
+40eb9ff9ac4f: Download complete
+40eb9ff9ac4f: Pull complete
+a1932e8f0b0a: Pull complete
+8e309f1f5b82: Pull complete
+8e309f1f5b82: Already exists
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  35.63
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:2.0.1
+0f69ae8d5bd3        kiwenlau/registry:2.0.1   "registry cmd/regist   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+8e309f1f5b82: Buffering to Disk
+8e309f1f5b82: Image successfully pushed
+8e309f1f5b82: Image already exists
+a1932e8f0b0a: Buffering to Disk
+a1932e8f0b0a: Image successfully pushed
+40eb9ff9ac4f: Buffering to Disk
+40eb9ff9ac4f: Image successfully pushed
+ab412e1b2d66: Buffering to Disk
+ab412e1b2d66: Image successfully pushed
+76cbde46c442: Image already exists
+fa81ed084842: Image already exists
+e04c66a223c4: Buffering to Disk
+e04c66a223c4: Image successfully pushed
+7e2c5c55ef2c: Buffering to Disk
+7e2c5c55ef2c: Image successfully pushed
+e118faab2e16: Buffering to Disk
+e118faab2e16: Image successfully pushed
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+
+real  82.04
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+latest: Pulling from 136.187.101.80:5000/openjdk
+e118faab2e16: Pulling fs layer
+7e2c5c55ef2c: Pulling fs layer
+e04c66a223c4: Pulling fs layer
+fa81ed084842: Pulling fs layer
+76cbde46c442: Pulling fs layer
+ab412e1b2d66: Pulling fs layer
+40eb9ff9ac4f: Pulling fs layer
+a1932e8f0b0a: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Layer already being pulled by another client. Waiting.
+76cbde46c442: Verifying Checksum
+76cbde46c442: Download complete
+8e309f1f5b82: Verifying Checksum
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+a1932e8f0b0a: Verifying Checksum
+a1932e8f0b0a: Download complete
+fa81ed084842: Verifying Checksum
+fa81ed084842: Download complete
+e04c66a223c4: Verifying Checksum
+e04c66a223c4: Download complete
+7e2c5c55ef2c: Verifying Checksum
+7e2c5c55ef2c: Download complete
+ab412e1b2d66: Verifying Checksum
+ab412e1b2d66: Download complete
+e118faab2e16: Verifying Checksum
+e118faab2e16: Download complete
+e118faab2e16: Pull complete
+7e2c5c55ef2c: Pull complete
+e04c66a223c4: Pull complete
+fa81ed084842: Pull complete
+76cbde46c442: Pull complete
+ab412e1b2d66: Pull complete
+40eb9ff9ac4f: Verifying Checksum
+40eb9ff9ac4f: Download complete
+40eb9ff9ac4f: Pull complete
+a1932e8f0b0a: Pull complete
+8e309f1f5b82: Pull complete
+8e309f1f5b82: Already exists
+Digest: sha256:7798b4f4946bab823763a129bdccb5dd967a6b6759e1fd99e465a0abe414daae
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  33.82
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+end date: Wed Aug 12 03:11:46 JST 2015
+
+
