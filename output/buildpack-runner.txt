@@ -1,0 +1,1667 @@
+
+pullpush benchmark: transfer buildpack-runner image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Thu Aug 13 13:53:48 JST 2015
+
+sudo docker images
+kiwenlau/buildpack-runner       flat                82d112a76801        7 weeks ago         1.023 GB
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+sudo docker images
+kiwenlau/buildpack-runner       flat                82d112a76801        7 weeks ago         1.023 GB
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+75d0fe047807        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+The push refers to a repository [136.187.101.80:5000/buildpack-runner] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildpack-runner (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+694fee0bf001: Pushing
+694fee0bf001: Buffering to disk
+694fee0bf001: Image successfully pushed
+63c1e62090d2: Pushing
+63c1e62090d2: Buffering to disk
+63c1e62090d2: Image successfully pushed
+3c9aff01533e: Pushing
+3c9aff01533e: Buffering to disk
+3c9aff01533e: Image successfully pushed
+e522a447d81c: Pushing
+e522a447d81c: Buffering to disk
+e522a447d81c: Image successfully pushed
+30d87febe0c4: Pushing
+30d87febe0c4: Buffering to disk
+30d87febe0c4: Image successfully pushed
+a758444b3733: Pushing
+a758444b3733: Buffering to disk
+a758444b3733: Image successfully pushed
+f1615c92dbca: Pushing
+f1615c92dbca: Buffering to disk
+f1615c92dbca: Image successfully pushed
+4d1d5edb3242: Pushing
+4d1d5edb3242: Buffering to disk
+4d1d5edb3242: Image successfully pushed
+b3fe452b81c5: Pushing
+b3fe452b81c5: Buffering to disk
+b3fe452b81c5: Image successfully pushed
+92bfd75c5789: Pushing
+92bfd75c5789: Buffering to disk
+92bfd75c5789: Image successfully pushed
+00de2aab4a88: Pushing
+00de2aab4a88: Buffering to disk
+00de2aab4a88: Image successfully pushed
+f7d2249f2e30: Pushing
+f7d2249f2e30: Buffering to disk
+f7d2249f2e30: Image successfully pushed
+e3740e3094dc: Pushing
+e3740e3094dc: Buffering to disk
+e3740e3094dc: Image successfully pushed
+Pushing tag for rev [e3740e3094dc] on {http://136.187.101.80:5000/v1/repositories/buildpack-runner/tags/latest}
+
+real  150.50
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker pull 136.187.101.80:5000/buildpack-runner:latest
+Pulling repository 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner, endpoint: http://136.187.101.80:5000/v1/
+e3740e3094dc: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+694fee0bf001: Pulling metadata
+694fee0bf001: Pulling fs layer
+694fee0bf001: Download complete
+63c1e62090d2: Pulling metadata
+63c1e62090d2: Pulling fs layer
+63c1e62090d2: Download complete
+3c9aff01533e: Pulling metadata
+3c9aff01533e: Pulling fs layer
+3c9aff01533e: Download complete
+e522a447d81c: Pulling metadata
+e522a447d81c: Pulling fs layer
+e522a447d81c: Download complete
+30d87febe0c4: Pulling metadata
+30d87febe0c4: Pulling fs layer
+30d87febe0c4: Download complete
+a758444b3733: Pulling metadata
+a758444b3733: Pulling fs layer
+a758444b3733: Download complete
+f1615c92dbca: Pulling metadata
+f1615c92dbca: Pulling fs layer
+f1615c92dbca: Download complete
+4d1d5edb3242: Pulling metadata
+4d1d5edb3242: Pulling fs layer
+4d1d5edb3242: Download complete
+b3fe452b81c5: Pulling metadata
+b3fe452b81c5: Pulling fs layer
+b3fe452b81c5: Download complete
+92bfd75c5789: Pulling metadata
+92bfd75c5789: Pulling fs layer
+92bfd75c5789: Download complete
+00de2aab4a88: Pulling metadata
+00de2aab4a88: Pulling fs layer
+00de2aab4a88: Download complete
+f7d2249f2e30: Pulling metadata
+f7d2249f2e30: Pulling fs layer
+f7d2249f2e30: Download complete
+e3740e3094dc: Pulling metadata
+e3740e3094dc: Pulling fs layer
+e3740e3094dc: Download complete
+e3740e3094dc: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildpack-runner:latest
+
+real  92.48
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildpack-runner:latest"
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+8b1c2d695e24        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+
+docker rm -f docker_registry
+
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+4c24c84a6ef1        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+
+docker rm -f docker_registry
+
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+7a09979ad8cb        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+The push refers to a repository [136.187.101.80:5000/buildpack-runner] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildpack-runner (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+694fee0bf001: Pushing
+694fee0bf001: Buffering to disk
+694fee0bf001: Image successfully pushed
+63c1e62090d2: Pushing
+63c1e62090d2: Buffering to disk
+63c1e62090d2: Image successfully pushed
+3c9aff01533e: Pushing
+3c9aff01533e: Buffering to disk
+3c9aff01533e: Image successfully pushed
+e522a447d81c: Pushing
+e522a447d81c: Buffering to disk
+e522a447d81c: Image successfully pushed
+30d87febe0c4: Pushing
+30d87febe0c4: Buffering to disk
+30d87febe0c4: Image successfully pushed
+a758444b3733: Pushing
+a758444b3733: Buffering to disk
+a758444b3733: Image successfully pushed
+f1615c92dbca: Pushing
+f1615c92dbca: Buffering to disk
+f1615c92dbca: Image successfully pushed
+4d1d5edb3242: Pushing
+4d1d5edb3242: Buffering to disk
+4d1d5edb3242: Image successfully pushed
+b3fe452b81c5: Pushing
+b3fe452b81c5: Buffering to disk
+b3fe452b81c5: Image successfully pushed
+92bfd75c5789: Pushing
+92bfd75c5789: Buffering to disk
+92bfd75c5789: Image successfully pushed
+00de2aab4a88: Pushing
+00de2aab4a88: Buffering to disk
+00de2aab4a88: Image successfully pushed
+f7d2249f2e30: Pushing
+f7d2249f2e30: Buffering to disk
+f7d2249f2e30: Image successfully pushed
+e3740e3094dc: Pushing
+e3740e3094dc: Buffering to disk
+e3740e3094dc: Image successfully pushed
+Pushing tag for rev [e3740e3094dc] on {http://136.187.101.80:5000/v1/repositories/buildpack-runner/tags/latest}
+
+real  147.84
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker pull 136.187.101.80:5000/buildpack-runner:latest
+Pulling repository 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner, endpoint: http://136.187.101.80:5000/v1/
+e3740e3094dc: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+694fee0bf001: Pulling metadata
+694fee0bf001: Pulling fs layer
+694fee0bf001: Download complete
+63c1e62090d2: Pulling metadata
+63c1e62090d2: Pulling fs layer
+63c1e62090d2: Download complete
+3c9aff01533e: Pulling metadata
+3c9aff01533e: Pulling fs layer
+3c9aff01533e: Download complete
+e522a447d81c: Pulling metadata
+e522a447d81c: Pulling fs layer
+e522a447d81c: Download complete
+30d87febe0c4: Pulling metadata
+30d87febe0c4: Pulling fs layer
+30d87febe0c4: Download complete
+a758444b3733: Pulling metadata
+a758444b3733: Pulling fs layer
+a758444b3733: Download complete
+f1615c92dbca: Pulling metadata
+f1615c92dbca: Pulling fs layer
+f1615c92dbca: Download complete
+4d1d5edb3242: Pulling metadata
+4d1d5edb3242: Pulling fs layer
+4d1d5edb3242: Download complete
+b3fe452b81c5: Pulling metadata
+b3fe452b81c5: Pulling fs layer
+b3fe452b81c5: Download complete
+92bfd75c5789: Pulling metadata
+92bfd75c5789: Pulling fs layer
+92bfd75c5789: Download complete
+00de2aab4a88: Pulling metadata
+00de2aab4a88: Pulling fs layer
+00de2aab4a88: Download complete
+f7d2249f2e30: Pulling metadata
+f7d2249f2e30: Pulling fs layer
+f7d2249f2e30: Download complete
+e3740e3094dc: Pulling metadata
+e3740e3094dc: Pulling fs layer
+e3740e3094dc: Download complete
+e3740e3094dc: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildpack-runner:latest
+
+real  88.01
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildpack-runner:latest"
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1ccbab24a8f1        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+The push refers to a repository [136.187.101.80:5000/buildpack-runner] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildpack-runner (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+694fee0bf001: Pushing
+694fee0bf001: Buffering to disk
+694fee0bf001: Image successfully pushed
+63c1e62090d2: Pushing
+63c1e62090d2: Buffering to disk
+63c1e62090d2: Image successfully pushed
+3c9aff01533e: Pushing
+3c9aff01533e: Buffering to disk
+3c9aff01533e: Image successfully pushed
+e522a447d81c: Pushing
+e522a447d81c: Buffering to disk
+e522a447d81c: Image successfully pushed
+30d87febe0c4: Pushing
+30d87febe0c4: Buffering to disk
+30d87febe0c4: Image successfully pushed
+a758444b3733: Pushing
+a758444b3733: Buffering to disk
+a758444b3733: Image successfully pushed
+f1615c92dbca: Pushing
+f1615c92dbca: Buffering to disk
+f1615c92dbca: Image successfully pushed
+4d1d5edb3242: Pushing
+4d1d5edb3242: Buffering to disk
+4d1d5edb3242: Image successfully pushed
+b3fe452b81c5: Pushing
+b3fe452b81c5: Buffering to disk
+b3fe452b81c5: Image successfully pushed
+92bfd75c5789: Pushing
+92bfd75c5789: Buffering to disk
+92bfd75c5789: Image successfully pushed
+00de2aab4a88: Pushing
+00de2aab4a88: Buffering to disk
+00de2aab4a88: Image successfully pushed
+f7d2249f2e30: Pushing
+f7d2249f2e30: Buffering to disk
+f7d2249f2e30: Image successfully pushed
+e3740e3094dc: Pushing
+e3740e3094dc: Buffering to disk
+e3740e3094dc: Image successfully pushed
+Pushing tag for rev [e3740e3094dc] on {http://136.187.101.80:5000/v1/repositories/buildpack-runner/tags/latest}
+
+real  147.38
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker pull 136.187.101.80:5000/buildpack-runner:latest
+Pulling repository 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner, endpoint: http://136.187.101.80:5000/v1/
+e3740e3094dc: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+694fee0bf001: Pulling metadata
+694fee0bf001: Pulling fs layer
+694fee0bf001: Download complete
+63c1e62090d2: Pulling metadata
+63c1e62090d2: Pulling fs layer
+63c1e62090d2: Download complete
+3c9aff01533e: Pulling metadata
+3c9aff01533e: Pulling fs layer
+3c9aff01533e: Download complete
+e522a447d81c: Pulling metadata
+e522a447d81c: Pulling fs layer
+e522a447d81c: Download complete
+30d87febe0c4: Pulling metadata
+30d87febe0c4: Pulling fs layer
+30d87febe0c4: Download complete
+a758444b3733: Pulling metadata
+a758444b3733: Pulling fs layer
+a758444b3733: Download complete
+f1615c92dbca: Pulling metadata
+f1615c92dbca: Pulling fs layer
+f1615c92dbca: Download complete
+4d1d5edb3242: Pulling metadata
+4d1d5edb3242: Pulling fs layer
+4d1d5edb3242: Download complete
+b3fe452b81c5: Pulling metadata
+b3fe452b81c5: Pulling fs layer
+b3fe452b81c5: Download complete
+92bfd75c5789: Pulling metadata
+92bfd75c5789: Pulling fs layer
+92bfd75c5789: Download complete
+00de2aab4a88: Pulling metadata
+00de2aab4a88: Pulling fs layer
+00de2aab4a88: Download complete
+f7d2249f2e30: Pulling metadata
+f7d2249f2e30: Pulling fs layer
+f7d2249f2e30: Download complete
+e3740e3094dc: Pulling metadata
+e3740e3094dc: Pulling fs layer
+e3740e3094dc: Download complete
+e3740e3094dc: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildpack-runner:latest
+
+real  91.11
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildpack-runner:latest"
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+5995766f003f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+The push refers to a repository [136.187.101.80:5000/buildpack-runner] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildpack-runner (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+694fee0bf001: Pushing
+694fee0bf001: Buffering to disk
+694fee0bf001: Image successfully pushed
+63c1e62090d2: Pushing
+63c1e62090d2: Buffering to disk
+63c1e62090d2: Image successfully pushed
+3c9aff01533e: Pushing
+3c9aff01533e: Buffering to disk
+3c9aff01533e: Image successfully pushed
+e522a447d81c: Pushing
+e522a447d81c: Buffering to disk
+e522a447d81c: Image successfully pushed
+30d87febe0c4: Pushing
+30d87febe0c4: Buffering to disk
+30d87febe0c4: Image successfully pushed
+a758444b3733: Pushing
+a758444b3733: Buffering to disk
+a758444b3733: Image successfully pushed
+f1615c92dbca: Pushing
+f1615c92dbca: Buffering to disk
+f1615c92dbca: Image successfully pushed
+4d1d5edb3242: Pushing
+4d1d5edb3242: Buffering to disk
+4d1d5edb3242: Image successfully pushed
+b3fe452b81c5: Pushing
+b3fe452b81c5: Buffering to disk
+b3fe452b81c5: Image successfully pushed
+92bfd75c5789: Pushing
+92bfd75c5789: Buffering to disk
+92bfd75c5789: Image successfully pushed
+00de2aab4a88: Pushing
+00de2aab4a88: Buffering to disk
+00de2aab4a88: Image successfully pushed
+f7d2249f2e30: Pushing
+f7d2249f2e30: Buffering to disk
+f7d2249f2e30: Image successfully pushed
+e3740e3094dc: Pushing
+e3740e3094dc: Buffering to disk
+e3740e3094dc: Image successfully pushed
+Pushing tag for rev [e3740e3094dc] on {http://136.187.101.80:5000/v1/repositories/buildpack-runner/tags/latest}
+
+real  147.73
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker pull 136.187.101.80:5000/buildpack-runner:latest
+Pulling repository 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner, endpoint: http://136.187.101.80:5000/v1/
+e3740e3094dc: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+694fee0bf001: Pulling metadata
+694fee0bf001: Pulling fs layer
+694fee0bf001: Download complete
+63c1e62090d2: Pulling metadata
+63c1e62090d2: Pulling fs layer
+63c1e62090d2: Download complete
+3c9aff01533e: Pulling metadata
+3c9aff01533e: Pulling fs layer
+3c9aff01533e: Download complete
+e522a447d81c: Pulling metadata
+e522a447d81c: Pulling fs layer
+e522a447d81c: Download complete
+30d87febe0c4: Pulling metadata
+30d87febe0c4: Pulling fs layer
+30d87febe0c4: Download complete
+a758444b3733: Pulling metadata
+a758444b3733: Pulling fs layer
+a758444b3733: Download complete
+f1615c92dbca: Pulling metadata
+f1615c92dbca: Pulling fs layer
+f1615c92dbca: Download complete
+4d1d5edb3242: Pulling metadata
+4d1d5edb3242: Pulling fs layer
+4d1d5edb3242: Download complete
+b3fe452b81c5: Pulling metadata
+b3fe452b81c5: Pulling fs layer
+b3fe452b81c5: Download complete
+92bfd75c5789: Pulling metadata
+92bfd75c5789: Pulling fs layer
+92bfd75c5789: Download complete
+00de2aab4a88: Pulling metadata
+00de2aab4a88: Pulling fs layer
+00de2aab4a88: Download complete
+f7d2249f2e30: Pulling metadata
+f7d2249f2e30: Pulling fs layer
+f7d2249f2e30: Download complete
+e3740e3094dc: Pulling metadata
+e3740e3094dc: Pulling fs layer
+e3740e3094dc: Download complete
+e3740e3094dc: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildpack-runner:latest
+
+real  90.90
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildpack-runner:latest"
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+42c272167606        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+The push refers to a repository [136.187.101.80:5000/buildpack-runner] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildpack-runner (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+694fee0bf001: Pushing
+694fee0bf001: Buffering to disk
+694fee0bf001: Image successfully pushed
+63c1e62090d2: Pushing
+63c1e62090d2: Buffering to disk
+63c1e62090d2: Image successfully pushed
+3c9aff01533e: Pushing
+3c9aff01533e: Buffering to disk
+3c9aff01533e: Image successfully pushed
+e522a447d81c: Pushing
+e522a447d81c: Buffering to disk
+e522a447d81c: Image successfully pushed
+30d87febe0c4: Pushing
+30d87febe0c4: Buffering to disk
+30d87febe0c4: Image successfully pushed
+a758444b3733: Pushing
+a758444b3733: Buffering to disk
+a758444b3733: Image successfully pushed
+f1615c92dbca: Pushing
+f1615c92dbca: Buffering to disk
+f1615c92dbca: Image successfully pushed
+4d1d5edb3242: Pushing
+4d1d5edb3242: Buffering to disk
+4d1d5edb3242: Image successfully pushed
+b3fe452b81c5: Pushing
+b3fe452b81c5: Buffering to disk
+b3fe452b81c5: Image successfully pushed
+92bfd75c5789: Pushing
+92bfd75c5789: Buffering to disk
+92bfd75c5789: Image successfully pushed
+00de2aab4a88: Pushing
+00de2aab4a88: Buffering to disk
+00de2aab4a88: Image successfully pushed
+f7d2249f2e30: Pushing
+f7d2249f2e30: Buffering to disk
+f7d2249f2e30: Image successfully pushed
+e3740e3094dc: Pushing
+e3740e3094dc: Buffering to disk
+e3740e3094dc: Image successfully pushed
+Pushing tag for rev [e3740e3094dc] on {http://136.187.101.80:5000/v1/repositories/buildpack-runner/tags/latest}
+
+real  151.20
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker pull 136.187.101.80:5000/buildpack-runner:latest
+Pulling repository 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner, endpoint: http://136.187.101.80:5000/v1/
+e3740e3094dc: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+694fee0bf001: Pulling metadata
+694fee0bf001: Pulling fs layer
+694fee0bf001: Download complete
+63c1e62090d2: Pulling metadata
+63c1e62090d2: Pulling fs layer
+63c1e62090d2: Download complete
+3c9aff01533e: Pulling metadata
+3c9aff01533e: Pulling fs layer
+3c9aff01533e: Download complete
+e522a447d81c: Pulling metadata
+e522a447d81c: Pulling fs layer
+e522a447d81c: Download complete
+30d87febe0c4: Pulling metadata
+30d87febe0c4: Pulling fs layer
+30d87febe0c4: Download complete
+a758444b3733: Pulling metadata
+a758444b3733: Pulling fs layer
+a758444b3733: Download complete
+f1615c92dbca: Pulling metadata
+f1615c92dbca: Pulling fs layer
+f1615c92dbca: Download complete
+4d1d5edb3242: Pulling metadata
+4d1d5edb3242: Pulling fs layer
+4d1d5edb3242: Download complete
+b3fe452b81c5: Pulling metadata
+b3fe452b81c5: Pulling fs layer
+b3fe452b81c5: Download complete
+92bfd75c5789: Pulling metadata
+92bfd75c5789: Pulling fs layer
+92bfd75c5789: Download complete
+00de2aab4a88: Pulling metadata
+00de2aab4a88: Pulling fs layer
+00de2aab4a88: Download complete
+f7d2249f2e30: Pulling metadata
+f7d2249f2e30: Pulling fs layer
+f7d2249f2e30: Download complete
+e3740e3094dc: Pulling metadata
+e3740e3094dc: Pulling fs layer
+e3740e3094dc: Download complete
+e3740e3094dc: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildpack-runner:latest
+
+real  89.50
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildpack-runner:latest"
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+21d3f8f5200a        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+The push refers to a repository [136.187.101.80:5000/buildpack-runner] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildpack-runner (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+694fee0bf001: Pushing
+694fee0bf001: Buffering to disk
+694fee0bf001: Image successfully pushed
+63c1e62090d2: Pushing
+63c1e62090d2: Buffering to disk
+63c1e62090d2: Image successfully pushed
+3c9aff01533e: Pushing
+3c9aff01533e: Buffering to disk
+3c9aff01533e: Image successfully pushed
+e522a447d81c: Pushing
+e522a447d81c: Buffering to disk
+e522a447d81c: Image successfully pushed
+30d87febe0c4: Pushing
+30d87febe0c4: Buffering to disk
+30d87febe0c4: Image successfully pushed
+a758444b3733: Pushing
+a758444b3733: Buffering to disk
+a758444b3733: Image successfully pushed
+f1615c92dbca: Pushing
+f1615c92dbca: Buffering to disk
+f1615c92dbca: Image successfully pushed
+4d1d5edb3242: Pushing
+4d1d5edb3242: Buffering to disk
+4d1d5edb3242: Image successfully pushed
+b3fe452b81c5: Pushing
+b3fe452b81c5: Buffering to disk
+b3fe452b81c5: Image successfully pushed
+92bfd75c5789: Pushing
+92bfd75c5789: Buffering to disk
+92bfd75c5789: Image successfully pushed
+00de2aab4a88: Pushing
+00de2aab4a88: Buffering to disk
+00de2aab4a88: Image successfully pushed
+f7d2249f2e30: Pushing
+f7d2249f2e30: Buffering to disk
+f7d2249f2e30: Image successfully pushed
+e3740e3094dc: Pushing
+e3740e3094dc: Buffering to disk
+e3740e3094dc: Image successfully pushed
+Pushing tag for rev [e3740e3094dc] on {http://136.187.101.80:5000/v1/repositories/buildpack-runner/tags/latest}
+
+real  154.97
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker pull 136.187.101.80:5000/buildpack-runner:latest
+Pulling repository 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner, endpoint: http://136.187.101.80:5000/v1/
+e3740e3094dc: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+694fee0bf001: Pulling metadata
+694fee0bf001: Pulling fs layer
+694fee0bf001: Download complete
+63c1e62090d2: Pulling metadata
+63c1e62090d2: Pulling fs layer
+63c1e62090d2: Download complete
+3c9aff01533e: Pulling metadata
+3c9aff01533e: Pulling fs layer
+3c9aff01533e: Download complete
+e522a447d81c: Pulling metadata
+e522a447d81c: Pulling fs layer
+e522a447d81c: Download complete
+30d87febe0c4: Pulling metadata
+30d87febe0c4: Pulling fs layer
+30d87febe0c4: Download complete
+a758444b3733: Pulling metadata
+a758444b3733: Pulling fs layer
+a758444b3733: Download complete
+f1615c92dbca: Pulling metadata
+f1615c92dbca: Pulling fs layer
+f1615c92dbca: Download complete
+4d1d5edb3242: Pulling metadata
+4d1d5edb3242: Pulling fs layer
+4d1d5edb3242: Download complete
+b3fe452b81c5: Pulling metadata
+b3fe452b81c5: Pulling fs layer
+b3fe452b81c5: Download complete
+92bfd75c5789: Pulling metadata
+92bfd75c5789: Pulling fs layer
+92bfd75c5789: Download complete
+00de2aab4a88: Pulling metadata
+00de2aab4a88: Pulling fs layer
+00de2aab4a88: Download complete
+f7d2249f2e30: Pulling metadata
+f7d2249f2e30: Pulling fs layer
+f7d2249f2e30: Download complete
+e3740e3094dc: Pulling metadata
+e3740e3094dc: Pulling fs layer
+e3740e3094dc: Download complete
+e3740e3094dc: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildpack-runner:latest
+
+real  88.60
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildpack-runner:latest"
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+f4aa56b24e14        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+The push refers to a repository [136.187.101.80:5000/buildpack-runner] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildpack-runner (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+694fee0bf001: Pushing
+694fee0bf001: Buffering to disk
+694fee0bf001: Image successfully pushed
+63c1e62090d2: Pushing
+63c1e62090d2: Buffering to disk
+63c1e62090d2: Image successfully pushed
+3c9aff01533e: Pushing
+3c9aff01533e: Buffering to disk
+3c9aff01533e: Image successfully pushed
+e522a447d81c: Pushing
+e522a447d81c: Buffering to disk
+e522a447d81c: Image successfully pushed
+30d87febe0c4: Pushing
+30d87febe0c4: Buffering to disk
+30d87febe0c4: Image successfully pushed
+a758444b3733: Pushing
+a758444b3733: Buffering to disk
+a758444b3733: Image successfully pushed
+f1615c92dbca: Pushing
+f1615c92dbca: Buffering to disk
+f1615c92dbca: Image successfully pushed
+4d1d5edb3242: Pushing
+4d1d5edb3242: Buffering to disk
+4d1d5edb3242: Image successfully pushed
+b3fe452b81c5: Pushing
+b3fe452b81c5: Buffering to disk
+b3fe452b81c5: Image successfully pushed
+92bfd75c5789: Pushing
+92bfd75c5789: Buffering to disk
+92bfd75c5789: Image successfully pushed
+00de2aab4a88: Pushing
+00de2aab4a88: Buffering to disk
+00de2aab4a88: Image successfully pushed
+f7d2249f2e30: Pushing
+f7d2249f2e30: Buffering to disk
+f7d2249f2e30: Image successfully pushed
+e3740e3094dc: Pushing
+e3740e3094dc: Buffering to disk
+e3740e3094dc: Image successfully pushed
+Pushing tag for rev [e3740e3094dc] on {http://136.187.101.80:5000/v1/repositories/buildpack-runner/tags/latest}
+
+real  152.31
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker pull 136.187.101.80:5000/buildpack-runner:latest
+Pulling repository 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner, endpoint: http://136.187.101.80:5000/v1/
+e3740e3094dc: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+694fee0bf001: Pulling metadata
+694fee0bf001: Pulling fs layer
+694fee0bf001: Download complete
+63c1e62090d2: Pulling metadata
+63c1e62090d2: Pulling fs layer
+63c1e62090d2: Download complete
+3c9aff01533e: Pulling metadata
+3c9aff01533e: Pulling fs layer
+3c9aff01533e: Download complete
+e522a447d81c: Pulling metadata
+e522a447d81c: Pulling fs layer
+e522a447d81c: Download complete
+30d87febe0c4: Pulling metadata
+30d87febe0c4: Pulling fs layer
+30d87febe0c4: Download complete
+a758444b3733: Pulling metadata
+a758444b3733: Pulling fs layer
+a758444b3733: Download complete
+f1615c92dbca: Pulling metadata
+f1615c92dbca: Pulling fs layer
+f1615c92dbca: Download complete
+4d1d5edb3242: Pulling metadata
+4d1d5edb3242: Pulling fs layer
+4d1d5edb3242: Download complete
+b3fe452b81c5: Pulling metadata
+b3fe452b81c5: Pulling fs layer
+b3fe452b81c5: Download complete
+92bfd75c5789: Pulling metadata
+92bfd75c5789: Pulling fs layer
+92bfd75c5789: Download complete
+00de2aab4a88: Pulling metadata
+00de2aab4a88: Pulling fs layer
+00de2aab4a88: Download complete
+f7d2249f2e30: Pulling metadata
+f7d2249f2e30: Pulling fs layer
+f7d2249f2e30: Download complete
+e3740e3094dc: Pulling metadata
+e3740e3094dc: Pulling fs layer
+e3740e3094dc: Download complete
+e3740e3094dc: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildpack-runner:latest
+
+real  89.19
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildpack-runner:latest"
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+576ce7e4daf6        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+The push refers to a repository [136.187.101.80:5000/buildpack-runner] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildpack-runner (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+694fee0bf001: Pushing
+694fee0bf001: Buffering to disk
+694fee0bf001: Image successfully pushed
+63c1e62090d2: Pushing
+63c1e62090d2: Buffering to disk
+63c1e62090d2: Image successfully pushed
+3c9aff01533e: Pushing
+3c9aff01533e: Buffering to disk
+3c9aff01533e: Image successfully pushed
+e522a447d81c: Pushing
+e522a447d81c: Buffering to disk
+e522a447d81c: Image successfully pushed
+30d87febe0c4: Pushing
+30d87febe0c4: Buffering to disk
+30d87febe0c4: Image successfully pushed
+a758444b3733: Pushing
+a758444b3733: Buffering to disk
+a758444b3733: Image successfully pushed
+f1615c92dbca: Pushing
+f1615c92dbca: Buffering to disk
+f1615c92dbca: Image successfully pushed
+4d1d5edb3242: Pushing
+4d1d5edb3242: Buffering to disk
+4d1d5edb3242: Image successfully pushed
+b3fe452b81c5: Pushing
+b3fe452b81c5: Buffering to disk
+b3fe452b81c5: Image successfully pushed
+92bfd75c5789: Pushing
+92bfd75c5789: Buffering to disk
+92bfd75c5789: Image successfully pushed
+00de2aab4a88: Pushing
+00de2aab4a88: Buffering to disk
+00de2aab4a88: Image successfully pushed
+f7d2249f2e30: Pushing
+f7d2249f2e30: Buffering to disk
+f7d2249f2e30: Image successfully pushed
+e3740e3094dc: Pushing
+e3740e3094dc: Buffering to disk
+e3740e3094dc: Image successfully pushed
+Pushing tag for rev [e3740e3094dc] on {http://136.187.101.80:5000/v1/repositories/buildpack-runner/tags/latest}
+
+real  152.76
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker pull 136.187.101.80:5000/buildpack-runner:latest
+Pulling repository 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner, endpoint: http://136.187.101.80:5000/v1/
+e3740e3094dc: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+694fee0bf001: Pulling metadata
+694fee0bf001: Pulling fs layer
+694fee0bf001: Download complete
+63c1e62090d2: Pulling metadata
+63c1e62090d2: Pulling fs layer
+63c1e62090d2: Download complete
+3c9aff01533e: Pulling metadata
+3c9aff01533e: Pulling fs layer
+3c9aff01533e: Download complete
+e522a447d81c: Pulling metadata
+e522a447d81c: Pulling fs layer
+e522a447d81c: Download complete
+30d87febe0c4: Pulling metadata
+30d87febe0c4: Pulling fs layer
+30d87febe0c4: Download complete
+a758444b3733: Pulling metadata
+a758444b3733: Pulling fs layer
+a758444b3733: Download complete
+f1615c92dbca: Pulling metadata
+f1615c92dbca: Pulling fs layer
+f1615c92dbca: Download complete
+4d1d5edb3242: Pulling metadata
+4d1d5edb3242: Pulling fs layer
+4d1d5edb3242: Download complete
+b3fe452b81c5: Pulling metadata
+b3fe452b81c5: Pulling fs layer
+b3fe452b81c5: Download complete
+92bfd75c5789: Pulling metadata
+92bfd75c5789: Pulling fs layer
+92bfd75c5789: Download complete
+00de2aab4a88: Pulling metadata
+00de2aab4a88: Pulling fs layer
+00de2aab4a88: Download complete
+f7d2249f2e30: Pulling metadata
+f7d2249f2e30: Pulling fs layer
+f7d2249f2e30: Download complete
+e3740e3094dc: Pulling metadata
+e3740e3094dc: Pulling fs layer
+e3740e3094dc: Download complete
+e3740e3094dc: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildpack-runner:latest
+
+real  90.53
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildpack-runner:latest"
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+646b0ce157b3        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+
+docker rm -f docker_registry
+
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+7b510b65f2ff        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+The push refers to a repository [136.187.101.80:5000/buildpack-runner] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildpack-runner (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+694fee0bf001: Pushing
+694fee0bf001: Buffering to disk
+694fee0bf001: Image successfully pushed
+63c1e62090d2: Pushing
+63c1e62090d2: Buffering to disk
+63c1e62090d2: Image successfully pushed
+3c9aff01533e: Pushing
+3c9aff01533e: Buffering to disk
+3c9aff01533e: Image successfully pushed
+e522a447d81c: Pushing
+e522a447d81c: Buffering to disk
+e522a447d81c: Image successfully pushed
+30d87febe0c4: Pushing
+30d87febe0c4: Buffering to disk
+30d87febe0c4: Image successfully pushed
+a758444b3733: Pushing
+a758444b3733: Buffering to disk
+a758444b3733: Image successfully pushed
+f1615c92dbca: Pushing
+f1615c92dbca: Buffering to disk
+f1615c92dbca: Image successfully pushed
+4d1d5edb3242: Pushing
+4d1d5edb3242: Buffering to disk
+4d1d5edb3242: Image successfully pushed
+b3fe452b81c5: Pushing
+b3fe452b81c5: Buffering to disk
+b3fe452b81c5: Image successfully pushed
+92bfd75c5789: Pushing
+92bfd75c5789: Buffering to disk
+92bfd75c5789: Image successfully pushed
+00de2aab4a88: Pushing
+00de2aab4a88: Buffering to disk
+00de2aab4a88: Image successfully pushed
+f7d2249f2e30: Pushing
+f7d2249f2e30: Buffering to disk
+f7d2249f2e30: Image successfully pushed
+e3740e3094dc: Pushing
+e3740e3094dc: Buffering to disk
+e3740e3094dc: Image successfully pushed
+Pushing tag for rev [e3740e3094dc] on {http://136.187.101.80:5000/v1/repositories/buildpack-runner/tags/latest}
+
+real  155.68
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker pull 136.187.101.80:5000/buildpack-runner:latest
+Pulling repository 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner, endpoint: http://136.187.101.80:5000/v1/
+e3740e3094dc: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+694fee0bf001: Pulling metadata
+694fee0bf001: Pulling fs layer
+694fee0bf001: Download complete
+63c1e62090d2: Pulling metadata
+63c1e62090d2: Pulling fs layer
+63c1e62090d2: Download complete
+3c9aff01533e: Pulling metadata
+3c9aff01533e: Pulling fs layer
+3c9aff01533e: Download complete
+e522a447d81c: Pulling metadata
+e522a447d81c: Pulling fs layer
+e522a447d81c: Download complete
+30d87febe0c4: Pulling metadata
+30d87febe0c4: Pulling fs layer
+30d87febe0c4: Download complete
+a758444b3733: Pulling metadata
+a758444b3733: Pulling fs layer
+a758444b3733: Download complete
+f1615c92dbca: Pulling metadata
+f1615c92dbca: Pulling fs layer
+f1615c92dbca: Download complete
+4d1d5edb3242: Pulling metadata
+4d1d5edb3242: Pulling fs layer
+4d1d5edb3242: Download complete
+b3fe452b81c5: Pulling metadata
+b3fe452b81c5: Pulling fs layer
+b3fe452b81c5: Download complete
+92bfd75c5789: Pulling metadata
+92bfd75c5789: Pulling fs layer
+92bfd75c5789: Download complete
+00de2aab4a88: Pulling metadata
+00de2aab4a88: Pulling fs layer
+00de2aab4a88: Download complete
+f7d2249f2e30: Pulling metadata
+f7d2249f2e30: Pulling fs layer
+f7d2249f2e30: Download complete
+e3740e3094dc: Pulling metadata
+e3740e3094dc: Pulling fs layer
+e3740e3094dc: Download complete
+e3740e3094dc: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildpack-runner:latest
+
+real  89.60
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildpack-runner:latest"
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+79da8c266a10        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+
+docker rm -f docker_registry
+
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 buildpack-runner
+
+docker images
+kiwenlau/buildpack-runner       latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker tag kiwenlau/buildpack-runner:latest 136.187.101.80:5000/buildpack-runner:latest
+
+docker images
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+kiwenlau/buildpack-runner              latest              e3740e3094dc        12 months ago       1.146 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+6319fcd8870f        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildpack-runner:latest
+The push refers to a repository [136.187.101.80:5000/buildpack-runner] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildpack-runner (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+694fee0bf001: Pushing
+694fee0bf001: Buffering to disk
+694fee0bf001: Image successfully pushed
+63c1e62090d2: Pushing
+63c1e62090d2: Buffering to disk
+63c1e62090d2: Image successfully pushed
+3c9aff01533e: Pushing
+3c9aff01533e: Buffering to disk
+3c9aff01533e: Image successfully pushed
+e522a447d81c: Pushing
+e522a447d81c: Buffering to disk
+e522a447d81c: Image successfully pushed
+30d87febe0c4: Pushing
+30d87febe0c4: Buffering to disk
+30d87febe0c4: Image successfully pushed
+a758444b3733: Pushing
+a758444b3733: Buffering to disk
+a758444b3733: Image successfully pushed
+f1615c92dbca: Pushing
+f1615c92dbca: Buffering to disk
+f1615c92dbca: Image successfully pushed
+4d1d5edb3242: Pushing
+4d1d5edb3242: Buffering to disk
+4d1d5edb3242: Image successfully pushed
+b3fe452b81c5: Pushing
+b3fe452b81c5: Buffering to disk
+b3fe452b81c5: Image successfully pushed
+92bfd75c5789: Pushing
+92bfd75c5789: Buffering to disk
+92bfd75c5789: Image successfully pushed
+00de2aab4a88: Pushing
+00de2aab4a88: Buffering to disk
+00de2aab4a88: Image successfully pushed
+f7d2249f2e30: Pushing
+f7d2249f2e30: Buffering to disk
+f7d2249f2e30: Image successfully pushed
+e3740e3094dc: Pushing
+e3740e3094dc: Buffering to disk
+e3740e3094dc: Image successfully pushed
+Pushing tag for rev [e3740e3094dc] on {http://136.187.101.80:5000/v1/repositories/buildpack-runner/tags/latest}
+
+real  155.86
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker pull 136.187.101.80:5000/buildpack-runner:latest
+Pulling repository 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner
+e3740e3094dc: Pulling image (latest) from 136.187.101.80:5000/buildpack-runner, endpoint: http://136.187.101.80:5000/v1/
+e3740e3094dc: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+694fee0bf001: Pulling metadata
+694fee0bf001: Pulling fs layer
+694fee0bf001: Download complete
+63c1e62090d2: Pulling metadata
+63c1e62090d2: Pulling fs layer
+63c1e62090d2: Download complete
+3c9aff01533e: Pulling metadata
+3c9aff01533e: Pulling fs layer
+3c9aff01533e: Download complete
+e522a447d81c: Pulling metadata
+e522a447d81c: Pulling fs layer
+e522a447d81c: Download complete
+30d87febe0c4: Pulling metadata
+30d87febe0c4: Pulling fs layer
+30d87febe0c4: Download complete
+a758444b3733: Pulling metadata
+a758444b3733: Pulling fs layer
+a758444b3733: Download complete
+f1615c92dbca: Pulling metadata
+f1615c92dbca: Pulling fs layer
+f1615c92dbca: Download complete
+4d1d5edb3242: Pulling metadata
+4d1d5edb3242: Pulling fs layer
+4d1d5edb3242: Download complete
+b3fe452b81c5: Pulling metadata
+b3fe452b81c5: Pulling fs layer
+b3fe452b81c5: Download complete
+92bfd75c5789: Pulling metadata
+92bfd75c5789: Pulling fs layer
+92bfd75c5789: Download complete
+00de2aab4a88: Pulling metadata
+00de2aab4a88: Pulling fs layer
+00de2aab4a88: Download complete
+f7d2249f2e30: Pulling metadata
+f7d2249f2e30: Pulling fs layer
+f7d2249f2e30: Download complete
+e3740e3094dc: Pulling metadata
+e3740e3094dc: Pulling fs layer
+e3740e3094dc: Download complete
+e3740e3094dc: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildpack-runner:latest
+
+real  90.38
+
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+136.187.101.80:5000/buildpack-runner   latest              e3740e3094dc        12 months ago       1.146 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildpack-runner:latest"
+ssh kai@54.225.249.141 "docker images | grep buildpack-runner"
+
+docker rm -f docker_registry
+
+end date: Thu Aug 13 14:38:25 JST 2015
+
+

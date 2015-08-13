@@ -1,0 +1,2145 @@
+
+pullpush benchmark: transfer gocd-agent image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Thu Aug 13 10:32:56 JST 2015
+
+sudo docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+sudo docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+7c38956c575f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+The push refers to a repository [136.187.101.80:5000/gocd-agent] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-agent (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+1818020d87ab: Pushing
+1818020d87ab: Buffering to disk
+1818020d87ab: Image successfully pushed
+021395a2fed6: Pushing
+021395a2fed6: Buffering to disk
+021395a2fed6: Image successfully pushed
+52dec7e34889: Pushing
+52dec7e34889: Buffering to disk
+52dec7e34889: Image successfully pushed
+721f5f8458da: Pushing
+721f5f8458da: Buffering to disk
+721f5f8458da: Image successfully pushed
+618f4239ab13: Pushing
+618f4239ab13: Buffering to disk
+618f4239ab13: Image successfully pushed
+b81cb5ef6315: Pushing
+b81cb5ef6315: Buffering to disk
+b81cb5ef6315: Image successfully pushed
+5eb2dfa369a0: Pushing
+5eb2dfa369a0: Buffering to disk
+5eb2dfa369a0: Image successfully pushed
+3689d1e654e1: Pushing
+3689d1e654e1: Buffering to disk
+3689d1e654e1: Image successfully pushed
+4dbf8dbe5fa2: Pushing
+4dbf8dbe5fa2: Buffering to disk
+4dbf8dbe5fa2: Image successfully pushed
+a4306b267151: Pushing
+a4306b267151: Buffering to disk
+a4306b267151: Image successfully pushed
+847c97f7d9a7: Pushing
+847c97f7d9a7: Buffering to disk
+847c97f7d9a7: Image successfully pushed
+ae42ce7ce664: Pushing
+ae42ce7ce664: Buffering to disk
+ae42ce7ce664: Image successfully pushed
+9cfd6e95be52: Pushing
+9cfd6e95be52: Buffering to disk
+9cfd6e95be52: Image successfully pushed
+Pushing tag for rev [9cfd6e95be52] on {http://136.187.101.80:5000/v1/repositories/gocd-agent/tags/latest}
+
+real  160.71
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker pull 136.187.101.80:5000/gocd-agent:latest
+Pulling repository 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent, endpoint: http://136.187.101.80:5000/v1/
+9cfd6e95be52: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+1818020d87ab: Pulling metadata
+1818020d87ab: Pulling fs layer
+1818020d87ab: Download complete
+021395a2fed6: Pulling metadata
+021395a2fed6: Pulling fs layer
+021395a2fed6: Download complete
+52dec7e34889: Pulling metadata
+52dec7e34889: Pulling fs layer
+52dec7e34889: Download complete
+721f5f8458da: Pulling metadata
+721f5f8458da: Pulling fs layer
+721f5f8458da: Download complete
+618f4239ab13: Pulling metadata
+618f4239ab13: Pulling fs layer
+618f4239ab13: Download complete
+b81cb5ef6315: Pulling metadata
+b81cb5ef6315: Pulling fs layer
+b81cb5ef6315: Download complete
+5eb2dfa369a0: Pulling metadata
+5eb2dfa369a0: Pulling fs layer
+5eb2dfa369a0: Download complete
+3689d1e654e1: Pulling metadata
+3689d1e654e1: Pulling fs layer
+3689d1e654e1: Download complete
+4dbf8dbe5fa2: Pulling metadata
+4dbf8dbe5fa2: Pulling fs layer
+4dbf8dbe5fa2: Download complete
+a4306b267151: Pulling metadata
+a4306b267151: Pulling fs layer
+a4306b267151: Download complete
+847c97f7d9a7: Pulling metadata
+847c97f7d9a7: Pulling fs layer
+847c97f7d9a7: Download complete
+ae42ce7ce664: Pulling metadata
+ae42ce7ce664: Pulling fs layer
+ae42ce7ce664: Download complete
+9cfd6e95be52: Pulling metadata
+9cfd6e95be52: Pulling fs layer
+9cfd6e95be52: Download complete
+9cfd6e95be52: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-agent:latest
+
+real  104.58
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-agent:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+d63b0db66086        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+The push refers to a repository [136.187.101.80:5000/gocd-agent] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-agent (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+1818020d87ab: Pushing
+1818020d87ab: Buffering to disk
+1818020d87ab: Image successfully pushed
+021395a2fed6: Pushing
+021395a2fed6: Buffering to disk
+021395a2fed6: Image successfully pushed
+52dec7e34889: Pushing
+52dec7e34889: Buffering to disk
+52dec7e34889: Image successfully pushed
+721f5f8458da: Pushing
+721f5f8458da: Buffering to disk
+721f5f8458da: Image successfully pushed
+618f4239ab13: Pushing
+618f4239ab13: Buffering to disk
+618f4239ab13: Image successfully pushed
+b81cb5ef6315: Pushing
+b81cb5ef6315: Buffering to disk
+b81cb5ef6315: Image successfully pushed
+5eb2dfa369a0: Pushing
+5eb2dfa369a0: Buffering to disk
+5eb2dfa369a0: Image successfully pushed
+3689d1e654e1: Pushing
+3689d1e654e1: Buffering to disk
+3689d1e654e1: Image successfully pushed
+4dbf8dbe5fa2: Pushing
+4dbf8dbe5fa2: Buffering to disk
+4dbf8dbe5fa2: Image successfully pushed
+a4306b267151: Pushing
+a4306b267151: Buffering to disk
+a4306b267151: Image successfully pushed
+847c97f7d9a7: Pushing
+847c97f7d9a7: Buffering to disk
+847c97f7d9a7: Image successfully pushed
+ae42ce7ce664: Pushing
+ae42ce7ce664: Buffering to disk
+ae42ce7ce664: Image successfully pushed
+9cfd6e95be52: Pushing
+9cfd6e95be52: Buffering to disk
+9cfd6e95be52: Image successfully pushed
+Pushing tag for rev [9cfd6e95be52] on {http://136.187.101.80:5000/v1/repositories/gocd-agent/tags/latest}
+
+real  161.81
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker pull 136.187.101.80:5000/gocd-agent:latest
+Pulling repository 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent, endpoint: http://136.187.101.80:5000/v1/
+9cfd6e95be52: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+1818020d87ab: Pulling metadata
+1818020d87ab: Pulling fs layer
+1818020d87ab: Download complete
+021395a2fed6: Pulling metadata
+021395a2fed6: Pulling fs layer
+021395a2fed6: Download complete
+52dec7e34889: Pulling metadata
+52dec7e34889: Pulling fs layer
+52dec7e34889: Download complete
+721f5f8458da: Pulling metadata
+721f5f8458da: Pulling fs layer
+721f5f8458da: Download complete
+618f4239ab13: Pulling metadata
+618f4239ab13: Pulling fs layer
+618f4239ab13: Download complete
+b81cb5ef6315: Pulling metadata
+b81cb5ef6315: Pulling fs layer
+b81cb5ef6315: Download complete
+5eb2dfa369a0: Pulling metadata
+5eb2dfa369a0: Pulling fs layer
+5eb2dfa369a0: Download complete
+3689d1e654e1: Pulling metadata
+3689d1e654e1: Pulling fs layer
+3689d1e654e1: Download complete
+4dbf8dbe5fa2: Pulling metadata
+4dbf8dbe5fa2: Pulling fs layer
+4dbf8dbe5fa2: Download complete
+a4306b267151: Pulling metadata
+a4306b267151: Pulling fs layer
+a4306b267151: Download complete
+847c97f7d9a7: Pulling metadata
+847c97f7d9a7: Pulling fs layer
+847c97f7d9a7: Download complete
+ae42ce7ce664: Pulling metadata
+ae42ce7ce664: Pulling fs layer
+ae42ce7ce664: Download complete
+9cfd6e95be52: Pulling metadata
+9cfd6e95be52: Pulling fs layer
+9cfd6e95be52: Download complete
+9cfd6e95be52: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-agent:latest
+
+real  105.89
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-agent:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+71c3ccbd0374        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+The push refers to a repository [136.187.101.80:5000/gocd-agent] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-agent (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+1818020d87ab: Pushing
+1818020d87ab: Buffering to disk
+1818020d87ab: Image successfully pushed
+021395a2fed6: Pushing
+021395a2fed6: Buffering to disk
+021395a2fed6: Image successfully pushed
+52dec7e34889: Pushing
+52dec7e34889: Buffering to disk
+52dec7e34889: Image successfully pushed
+721f5f8458da: Pushing
+721f5f8458da: Buffering to disk
+721f5f8458da: Image successfully pushed
+618f4239ab13: Pushing
+618f4239ab13: Buffering to disk
+618f4239ab13: Image successfully pushed
+b81cb5ef6315: Pushing
+b81cb5ef6315: Buffering to disk
+b81cb5ef6315: Image successfully pushed
+5eb2dfa369a0: Pushing
+5eb2dfa369a0: Buffering to disk
+5eb2dfa369a0: Image successfully pushed
+3689d1e654e1: Pushing
+3689d1e654e1: Buffering to disk
+3689d1e654e1: Image successfully pushed
+4dbf8dbe5fa2: Pushing
+4dbf8dbe5fa2: Buffering to disk
+4dbf8dbe5fa2: Image successfully pushed
+a4306b267151: Pushing
+a4306b267151: Buffering to disk
+a4306b267151: Image successfully pushed
+847c97f7d9a7: Pushing
+847c97f7d9a7: Buffering to disk
+847c97f7d9a7: Image successfully pushed
+ae42ce7ce664: Pushing
+ae42ce7ce664: Buffering to disk
+ae42ce7ce664: Image successfully pushed
+9cfd6e95be52: Pushing
+9cfd6e95be52: Buffering to disk
+9cfd6e95be52: Image successfully pushed
+Pushing tag for rev [9cfd6e95be52] on {http://136.187.101.80:5000/v1/repositories/gocd-agent/tags/latest}
+
+real  161.18
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker pull 136.187.101.80:5000/gocd-agent:latest
+Pulling repository 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent, endpoint: http://136.187.101.80:5000/v1/
+9cfd6e95be52: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+1818020d87ab: Pulling metadata
+1818020d87ab: Pulling fs layer
+1818020d87ab: Download complete
+021395a2fed6: Pulling metadata
+021395a2fed6: Pulling fs layer
+021395a2fed6: Download complete
+52dec7e34889: Pulling metadata
+52dec7e34889: Pulling fs layer
+52dec7e34889: Download complete
+721f5f8458da: Pulling metadata
+721f5f8458da: Pulling fs layer
+721f5f8458da: Download complete
+618f4239ab13: Pulling metadata
+618f4239ab13: Pulling fs layer
+618f4239ab13: Download complete
+b81cb5ef6315: Pulling metadata
+b81cb5ef6315: Pulling fs layer
+b81cb5ef6315: Download complete
+5eb2dfa369a0: Pulling metadata
+5eb2dfa369a0: Pulling fs layer
+5eb2dfa369a0: Download complete
+3689d1e654e1: Pulling metadata
+3689d1e654e1: Pulling fs layer
+3689d1e654e1: Download complete
+4dbf8dbe5fa2: Pulling metadata
+4dbf8dbe5fa2: Pulling fs layer
+4dbf8dbe5fa2: Download complete
+a4306b267151: Pulling metadata
+a4306b267151: Pulling fs layer
+a4306b267151: Download complete
+847c97f7d9a7: Pulling metadata
+847c97f7d9a7: Pulling fs layer
+847c97f7d9a7: Download complete
+ae42ce7ce664: Pulling metadata
+ae42ce7ce664: Pulling fs layer
+ae42ce7ce664: Download complete
+9cfd6e95be52: Pulling metadata
+9cfd6e95be52: Pulling fs layer
+9cfd6e95be52: Download complete
+9cfd6e95be52: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-agent:latest
+
+real  105.32
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-agent:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+09bcfdc6befa        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a5104bfd7d52        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+efdf45cb62f6        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+2d110d25267f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+9f454b6fbaac        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+The push refers to a repository [136.187.101.80:5000/gocd-agent] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-agent (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+1818020d87ab: Pushing
+1818020d87ab: Buffering to disk
+1818020d87ab: Image successfully pushed
+021395a2fed6: Pushing
+021395a2fed6: Buffering to disk
+021395a2fed6: Image successfully pushed
+52dec7e34889: Pushing
+52dec7e34889: Buffering to disk
+52dec7e34889: Image successfully pushed
+721f5f8458da: Pushing
+721f5f8458da: Buffering to disk
+721f5f8458da: Image successfully pushed
+618f4239ab13: Pushing
+618f4239ab13: Buffering to disk
+618f4239ab13: Image successfully pushed
+b81cb5ef6315: Pushing
+b81cb5ef6315: Buffering to disk
+b81cb5ef6315: Image successfully pushed
+5eb2dfa369a0: Pushing
+5eb2dfa369a0: Buffering to disk
+5eb2dfa369a0: Image successfully pushed
+3689d1e654e1: Pushing
+3689d1e654e1: Buffering to disk
+3689d1e654e1: Image successfully pushed
+4dbf8dbe5fa2: Pushing
+4dbf8dbe5fa2: Buffering to disk
+4dbf8dbe5fa2: Image successfully pushed
+a4306b267151: Pushing
+a4306b267151: Buffering to disk
+a4306b267151: Image successfully pushed
+847c97f7d9a7: Pushing
+847c97f7d9a7: Buffering to disk
+847c97f7d9a7: Image successfully pushed
+ae42ce7ce664: Pushing
+ae42ce7ce664: Buffering to disk
+ae42ce7ce664: Image successfully pushed
+9cfd6e95be52: Pushing
+9cfd6e95be52: Buffering to disk
+9cfd6e95be52: Image successfully pushed
+Pushing tag for rev [9cfd6e95be52] on {http://136.187.101.80:5000/v1/repositories/gocd-agent/tags/latest}
+
+real  159.99
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker pull 136.187.101.80:5000/gocd-agent:latest
+Pulling repository 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent, endpoint: http://136.187.101.80:5000/v1/
+9cfd6e95be52: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+1818020d87ab: Pulling metadata
+1818020d87ab: Pulling fs layer
+1818020d87ab: Download complete
+021395a2fed6: Pulling metadata
+021395a2fed6: Pulling fs layer
+021395a2fed6: Download complete
+52dec7e34889: Pulling metadata
+52dec7e34889: Pulling fs layer
+52dec7e34889: Download complete
+721f5f8458da: Pulling metadata
+721f5f8458da: Pulling fs layer
+721f5f8458da: Download complete
+618f4239ab13: Pulling metadata
+618f4239ab13: Pulling fs layer
+618f4239ab13: Download complete
+b81cb5ef6315: Pulling metadata
+b81cb5ef6315: Pulling fs layer
+b81cb5ef6315: Download complete
+5eb2dfa369a0: Pulling metadata
+5eb2dfa369a0: Pulling fs layer
+5eb2dfa369a0: Download complete
+3689d1e654e1: Pulling metadata
+3689d1e654e1: Pulling fs layer
+3689d1e654e1: Download complete
+4dbf8dbe5fa2: Pulling metadata
+4dbf8dbe5fa2: Pulling fs layer
+4dbf8dbe5fa2: Download complete
+a4306b267151: Pulling metadata
+a4306b267151: Pulling fs layer
+a4306b267151: Download complete
+847c97f7d9a7: Pulling metadata
+847c97f7d9a7: Pulling fs layer
+847c97f7d9a7: Download complete
+ae42ce7ce664: Pulling metadata
+ae42ce7ce664: Pulling fs layer
+ae42ce7ce664: Download complete
+9cfd6e95be52: Pulling metadata
+9cfd6e95be52: Pulling fs layer
+9cfd6e95be52: Download complete
+9cfd6e95be52: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-agent:latest
+
+real  111.80
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-agent:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+9016dcfbd922        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+The push refers to a repository [136.187.101.80:5000/gocd-agent] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-agent (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+1818020d87ab: Pushing
+1818020d87ab: Buffering to disk
+1818020d87ab: Image successfully pushed
+021395a2fed6: Pushing
+021395a2fed6: Buffering to disk
+021395a2fed6: Image successfully pushed
+52dec7e34889: Pushing
+52dec7e34889: Buffering to disk
+52dec7e34889: Image successfully pushed
+721f5f8458da: Pushing
+721f5f8458da: Buffering to disk
+721f5f8458da: Image successfully pushed
+618f4239ab13: Pushing
+618f4239ab13: Buffering to disk
+618f4239ab13: Image successfully pushed
+b81cb5ef6315: Pushing
+b81cb5ef6315: Buffering to disk
+b81cb5ef6315: Image successfully pushed
+5eb2dfa369a0: Pushing
+5eb2dfa369a0: Buffering to disk
+5eb2dfa369a0: Image successfully pushed
+3689d1e654e1: Pushing
+3689d1e654e1: Buffering to disk
+3689d1e654e1: Image successfully pushed
+4dbf8dbe5fa2: Pushing
+4dbf8dbe5fa2: Buffering to disk
+4dbf8dbe5fa2: Image successfully pushed
+a4306b267151: Pushing
+a4306b267151: Buffering to disk
+a4306b267151: Image successfully pushed
+847c97f7d9a7: Pushing
+847c97f7d9a7: Buffering to disk
+847c97f7d9a7: Image successfully pushed
+ae42ce7ce664: Pushing
+ae42ce7ce664: Buffering to disk
+ae42ce7ce664: Image successfully pushed
+9cfd6e95be52: Pushing
+9cfd6e95be52: Buffering to disk
+9cfd6e95be52: Image successfully pushed
+Pushing tag for rev [9cfd6e95be52] on {http://136.187.101.80:5000/v1/repositories/gocd-agent/tags/latest}
+
+real  163.42
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker pull 136.187.101.80:5000/gocd-agent:latest
+Pulling repository 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent, endpoint: http://136.187.101.80:5000/v1/
+9cfd6e95be52: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+1818020d87ab: Pulling metadata
+1818020d87ab: Pulling fs layer
+1818020d87ab: Download complete
+021395a2fed6: Pulling metadata
+021395a2fed6: Pulling fs layer
+021395a2fed6: Download complete
+52dec7e34889: Pulling metadata
+52dec7e34889: Pulling fs layer
+52dec7e34889: Download complete
+721f5f8458da: Pulling metadata
+721f5f8458da: Pulling fs layer
+721f5f8458da: Download complete
+618f4239ab13: Pulling metadata
+618f4239ab13: Pulling fs layer
+618f4239ab13: Download complete
+b81cb5ef6315: Pulling metadata
+b81cb5ef6315: Pulling fs layer
+b81cb5ef6315: Download complete
+5eb2dfa369a0: Pulling metadata
+5eb2dfa369a0: Pulling fs layer
+5eb2dfa369a0: Download complete
+3689d1e654e1: Pulling metadata
+3689d1e654e1: Pulling fs layer
+3689d1e654e1: Download complete
+4dbf8dbe5fa2: Pulling metadata
+4dbf8dbe5fa2: Pulling fs layer
+4dbf8dbe5fa2: Download complete
+a4306b267151: Pulling metadata
+a4306b267151: Pulling fs layer
+a4306b267151: Download complete
+847c97f7d9a7: Pulling metadata
+847c97f7d9a7: Pulling fs layer
+847c97f7d9a7: Download complete
+ae42ce7ce664: Pulling metadata
+ae42ce7ce664: Pulling fs layer
+ae42ce7ce664: Download complete
+9cfd6e95be52: Pulling metadata
+9cfd6e95be52: Pulling fs layer
+9cfd6e95be52: Download complete
+9cfd6e95be52: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-agent:latest
+
+real  112.40
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-agent:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+43c84a7d7c21        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+The push refers to a repository [136.187.101.80:5000/gocd-agent] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-agent (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+1818020d87ab: Pushing
+1818020d87ab: Buffering to disk
+1818020d87ab: Image successfully pushed
+021395a2fed6: Pushing
+021395a2fed6: Buffering to disk
+021395a2fed6: Image successfully pushed
+52dec7e34889: Pushing
+52dec7e34889: Buffering to disk
+52dec7e34889: Image successfully pushed
+721f5f8458da: Pushing
+721f5f8458da: Buffering to disk
+721f5f8458da: Image successfully pushed
+618f4239ab13: Pushing
+618f4239ab13: Buffering to disk
+618f4239ab13: Image successfully pushed
+b81cb5ef6315: Pushing
+b81cb5ef6315: Buffering to disk
+b81cb5ef6315: Image successfully pushed
+5eb2dfa369a0: Pushing
+5eb2dfa369a0: Buffering to disk
+5eb2dfa369a0: Image successfully pushed
+3689d1e654e1: Pushing
+3689d1e654e1: Buffering to disk
+3689d1e654e1: Image successfully pushed
+4dbf8dbe5fa2: Pushing
+4dbf8dbe5fa2: Buffering to disk
+4dbf8dbe5fa2: Image successfully pushed
+a4306b267151: Pushing
+a4306b267151: Buffering to disk
+a4306b267151: Image successfully pushed
+847c97f7d9a7: Pushing
+847c97f7d9a7: Buffering to disk
+847c97f7d9a7: Image successfully pushed
+ae42ce7ce664: Pushing
+ae42ce7ce664: Buffering to disk
+ae42ce7ce664: Image successfully pushed
+9cfd6e95be52: Pushing
+9cfd6e95be52: Buffering to disk
+9cfd6e95be52: Image successfully pushed
+Pushing tag for rev [9cfd6e95be52] on {http://136.187.101.80:5000/v1/repositories/gocd-agent/tags/latest}
+
+real  159.54
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker pull 136.187.101.80:5000/gocd-agent:latest
+Pulling repository 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent, endpoint: http://136.187.101.80:5000/v1/
+9cfd6e95be52: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+1818020d87ab: Pulling metadata
+1818020d87ab: Pulling fs layer
+1818020d87ab: Download complete
+021395a2fed6: Pulling metadata
+021395a2fed6: Pulling fs layer
+021395a2fed6: Download complete
+52dec7e34889: Pulling metadata
+52dec7e34889: Pulling fs layer
+52dec7e34889: Download complete
+721f5f8458da: Pulling metadata
+721f5f8458da: Pulling fs layer
+721f5f8458da: Download complete
+618f4239ab13: Pulling metadata
+618f4239ab13: Pulling fs layer
+618f4239ab13: Download complete
+b81cb5ef6315: Pulling metadata
+b81cb5ef6315: Pulling fs layer
+b81cb5ef6315: Download complete
+5eb2dfa369a0: Pulling metadata
+5eb2dfa369a0: Pulling fs layer
+5eb2dfa369a0: Download complete
+3689d1e654e1: Pulling metadata
+3689d1e654e1: Pulling fs layer
+3689d1e654e1: Download complete
+4dbf8dbe5fa2: Pulling metadata
+4dbf8dbe5fa2: Pulling fs layer
+4dbf8dbe5fa2: Download complete
+a4306b267151: Pulling metadata
+a4306b267151: Pulling fs layer
+a4306b267151: Download complete
+847c97f7d9a7: Pulling metadata
+847c97f7d9a7: Pulling fs layer
+847c97f7d9a7: Download complete
+ae42ce7ce664: Pulling metadata
+ae42ce7ce664: Pulling fs layer
+ae42ce7ce664: Download complete
+9cfd6e95be52: Pulling metadata
+9cfd6e95be52: Pulling fs layer
+9cfd6e95be52: Download complete
+9cfd6e95be52: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-agent:latest
+
+real  104.55
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-agent:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+4f8c011c8f20        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+The push refers to a repository [136.187.101.80:5000/gocd-agent] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-agent (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+1818020d87ab: Pushing
+1818020d87ab: Buffering to disk
+1818020d87ab: Image successfully pushed
+021395a2fed6: Pushing
+021395a2fed6: Buffering to disk
+021395a2fed6: Image successfully pushed
+52dec7e34889: Pushing
+52dec7e34889: Buffering to disk
+52dec7e34889: Image successfully pushed
+721f5f8458da: Pushing
+721f5f8458da: Buffering to disk
+721f5f8458da: Image successfully pushed
+618f4239ab13: Pushing
+618f4239ab13: Buffering to disk
+618f4239ab13: Image successfully pushed
+b81cb5ef6315: Pushing
+b81cb5ef6315: Buffering to disk
+b81cb5ef6315: Image successfully pushed
+5eb2dfa369a0: Pushing
+5eb2dfa369a0: Buffering to disk
+5eb2dfa369a0: Image successfully pushed
+3689d1e654e1: Pushing
+3689d1e654e1: Buffering to disk
+3689d1e654e1: Image successfully pushed
+4dbf8dbe5fa2: Pushing
+4dbf8dbe5fa2: Buffering to disk
+4dbf8dbe5fa2: Image successfully pushed
+a4306b267151: Pushing
+a4306b267151: Buffering to disk
+a4306b267151: Image successfully pushed
+847c97f7d9a7: Pushing
+847c97f7d9a7: Buffering to disk
+847c97f7d9a7: Image successfully pushed
+ae42ce7ce664: Pushing
+ae42ce7ce664: Buffering to disk
+ae42ce7ce664: Image successfully pushed
+9cfd6e95be52: Pushing
+9cfd6e95be52: Buffering to disk
+9cfd6e95be52: Image successfully pushed
+Pushing tag for rev [9cfd6e95be52] on {http://136.187.101.80:5000/v1/repositories/gocd-agent/tags/latest}
+
+real  160.78
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker pull 136.187.101.80:5000/gocd-agent:latest
+Pulling repository 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent, endpoint: http://136.187.101.80:5000/v1/
+9cfd6e95be52: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+1818020d87ab: Pulling metadata
+1818020d87ab: Pulling fs layer
+1818020d87ab: Download complete
+021395a2fed6: Pulling metadata
+021395a2fed6: Pulling fs layer
+021395a2fed6: Download complete
+52dec7e34889: Pulling metadata
+52dec7e34889: Pulling fs layer
+52dec7e34889: Download complete
+721f5f8458da: Pulling metadata
+721f5f8458da: Pulling fs layer
+721f5f8458da: Download complete
+618f4239ab13: Pulling metadata
+618f4239ab13: Pulling fs layer
+618f4239ab13: Download complete
+b81cb5ef6315: Pulling metadata
+b81cb5ef6315: Pulling fs layer
+b81cb5ef6315: Download complete
+5eb2dfa369a0: Pulling metadata
+5eb2dfa369a0: Pulling fs layer
+5eb2dfa369a0: Download complete
+3689d1e654e1: Pulling metadata
+3689d1e654e1: Pulling fs layer
+3689d1e654e1: Download complete
+4dbf8dbe5fa2: Pulling metadata
+4dbf8dbe5fa2: Pulling fs layer
+4dbf8dbe5fa2: Download complete
+a4306b267151: Pulling metadata
+a4306b267151: Pulling fs layer
+a4306b267151: Download complete
+847c97f7d9a7: Pulling metadata
+847c97f7d9a7: Pulling fs layer
+847c97f7d9a7: Download complete
+ae42ce7ce664: Pulling metadata
+ae42ce7ce664: Pulling fs layer
+ae42ce7ce664: Download complete
+9cfd6e95be52: Pulling metadata
+9cfd6e95be52: Pulling fs layer
+9cfd6e95be52: Download complete
+9cfd6e95be52: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-agent:latest
+
+real  115.93
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-agent:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c496f114386c        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+The push refers to a repository [136.187.101.80:5000/gocd-agent] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-agent (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+1818020d87ab: Pushing
+1818020d87ab: Buffering to disk
+1818020d87ab: Image successfully pushed
+021395a2fed6: Pushing
+021395a2fed6: Buffering to disk
+021395a2fed6: Image successfully pushed
+52dec7e34889: Pushing
+52dec7e34889: Buffering to disk
+52dec7e34889: Image successfully pushed
+721f5f8458da: Pushing
+721f5f8458da: Buffering to disk
+721f5f8458da: Image successfully pushed
+618f4239ab13: Pushing
+618f4239ab13: Buffering to disk
+618f4239ab13: Image successfully pushed
+b81cb5ef6315: Pushing
+b81cb5ef6315: Buffering to disk
+b81cb5ef6315: Image successfully pushed
+5eb2dfa369a0: Pushing
+5eb2dfa369a0: Buffering to disk
+5eb2dfa369a0: Image successfully pushed
+3689d1e654e1: Pushing
+3689d1e654e1: Buffering to disk
+3689d1e654e1: Image successfully pushed
+4dbf8dbe5fa2: Pushing
+4dbf8dbe5fa2: Buffering to disk
+4dbf8dbe5fa2: Image successfully pushed
+a4306b267151: Pushing
+a4306b267151: Buffering to disk
+a4306b267151: Image successfully pushed
+847c97f7d9a7: Pushing
+847c97f7d9a7: Buffering to disk
+847c97f7d9a7: Image successfully pushed
+ae42ce7ce664: Pushing
+ae42ce7ce664: Buffering to disk
+ae42ce7ce664: Image successfully pushed
+9cfd6e95be52: Pushing
+9cfd6e95be52: Buffering to disk
+9cfd6e95be52: Image successfully pushed
+Pushing tag for rev [9cfd6e95be52] on {http://136.187.101.80:5000/v1/repositories/gocd-agent/tags/latest}
+
+real  160.99
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker pull 136.187.101.80:5000/gocd-agent:latest
+Pulling repository 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent, endpoint: http://136.187.101.80:5000/v1/
+9cfd6e95be52: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+1818020d87ab: Pulling metadata
+1818020d87ab: Pulling fs layer
+1818020d87ab: Download complete
+021395a2fed6: Pulling metadata
+021395a2fed6: Pulling fs layer
+021395a2fed6: Download complete
+52dec7e34889: Pulling metadata
+52dec7e34889: Pulling fs layer
+52dec7e34889: Download complete
+721f5f8458da: Pulling metadata
+721f5f8458da: Pulling fs layer
+721f5f8458da: Download complete
+618f4239ab13: Pulling metadata
+618f4239ab13: Pulling fs layer
+618f4239ab13: Download complete
+b81cb5ef6315: Pulling metadata
+b81cb5ef6315: Pulling fs layer
+b81cb5ef6315: Download complete
+5eb2dfa369a0: Pulling metadata
+5eb2dfa369a0: Pulling fs layer
+5eb2dfa369a0: Download complete
+3689d1e654e1: Pulling metadata
+3689d1e654e1: Pulling fs layer
+3689d1e654e1: Download complete
+4dbf8dbe5fa2: Pulling metadata
+4dbf8dbe5fa2: Pulling fs layer
+4dbf8dbe5fa2: Download complete
+a4306b267151: Pulling metadata
+a4306b267151: Pulling fs layer
+a4306b267151: Download complete
+847c97f7d9a7: Pulling metadata
+847c97f7d9a7: Pulling fs layer
+847c97f7d9a7: Download complete
+ae42ce7ce664: Pulling metadata
+ae42ce7ce664: Pulling fs layer
+ae42ce7ce664: Download complete
+9cfd6e95be52: Pulling metadata
+9cfd6e95be52: Pulling fs layer
+9cfd6e95be52: Download complete
+9cfd6e95be52: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-agent:latest
+
+real  108.11
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-agent:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a8a41c8dfc8d        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+The push refers to a repository [136.187.101.80:5000/gocd-agent] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-agent (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+1818020d87ab: Pushing
+1818020d87ab: Buffering to disk
+1818020d87ab: Image successfully pushed
+021395a2fed6: Pushing
+021395a2fed6: Buffering to disk
+021395a2fed6: Image successfully pushed
+52dec7e34889: Pushing
+52dec7e34889: Buffering to disk
+52dec7e34889: Image successfully pushed
+721f5f8458da: Pushing
+721f5f8458da: Buffering to disk
+721f5f8458da: Image successfully pushed
+618f4239ab13: Pushing
+618f4239ab13: Buffering to disk
+618f4239ab13: Image successfully pushed
+b81cb5ef6315: Pushing
+b81cb5ef6315: Buffering to disk
+b81cb5ef6315: Image successfully pushed
+5eb2dfa369a0: Pushing
+5eb2dfa369a0: Buffering to disk
+5eb2dfa369a0: Image successfully pushed
+3689d1e654e1: Pushing
+3689d1e654e1: Buffering to disk
+3689d1e654e1: Image successfully pushed
+4dbf8dbe5fa2: Pushing
+4dbf8dbe5fa2: Buffering to disk
+4dbf8dbe5fa2: Image successfully pushed
+a4306b267151: Pushing
+a4306b267151: Buffering to disk
+a4306b267151: Image successfully pushed
+847c97f7d9a7: Pushing
+847c97f7d9a7: Buffering to disk
+847c97f7d9a7: Image successfully pushed
+ae42ce7ce664: Pushing
+ae42ce7ce664: Buffering to disk
+ae42ce7ce664: Image successfully pushed
+9cfd6e95be52: Pushing
+9cfd6e95be52: Buffering to disk
+9cfd6e95be52: Image successfully pushed
+Pushing tag for rev [9cfd6e95be52] on {http://136.187.101.80:5000/v1/repositories/gocd-agent/tags/latest}
+
+real  160.39
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker pull 136.187.101.80:5000/gocd-agent:latest
+Pulling repository 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent, endpoint: http://136.187.101.80:5000/v1/
+9cfd6e95be52: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+1818020d87ab: Pulling metadata
+1818020d87ab: Pulling fs layer
+1818020d87ab: Download complete
+021395a2fed6: Pulling metadata
+021395a2fed6: Pulling fs layer
+021395a2fed6: Download complete
+52dec7e34889: Pulling metadata
+52dec7e34889: Pulling fs layer
+52dec7e34889: Download complete
+721f5f8458da: Pulling metadata
+721f5f8458da: Pulling fs layer
+721f5f8458da: Download complete
+618f4239ab13: Pulling metadata
+618f4239ab13: Pulling fs layer
+618f4239ab13: Download complete
+b81cb5ef6315: Pulling metadata
+b81cb5ef6315: Pulling fs layer
+b81cb5ef6315: Download complete
+5eb2dfa369a0: Pulling metadata
+5eb2dfa369a0: Pulling fs layer
+5eb2dfa369a0: Download complete
+3689d1e654e1: Pulling metadata
+3689d1e654e1: Pulling fs layer
+3689d1e654e1: Download complete
+4dbf8dbe5fa2: Pulling metadata
+4dbf8dbe5fa2: Pulling fs layer
+4dbf8dbe5fa2: Download complete
+a4306b267151: Pulling metadata
+a4306b267151: Pulling fs layer
+a4306b267151: Download complete
+847c97f7d9a7: Pulling metadata
+847c97f7d9a7: Pulling fs layer
+847c97f7d9a7: Download complete
+ae42ce7ce664: Pulling metadata
+ae42ce7ce664: Pulling fs layer
+ae42ce7ce664: Download complete
+9cfd6e95be52: Pulling metadata
+9cfd6e95be52: Pulling fs layer
+9cfd6e95be52: Download complete
+9cfd6e95be52: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-agent:latest
+
+real  102.76
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-agent:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 gocd-agent
+
+docker images
+kiwenlau/gocd-agent             latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker tag kiwenlau/gocd-agent:latest 136.187.101.80:5000/gocd-agent:latest
+
+docker images
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+kiwenlau/gocd-agent              latest              9cfd6e95be52        12 months ago       1.023 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+4cb5ad2feff1        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-agent:latest
+The push refers to a repository [136.187.101.80:5000/gocd-agent] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-agent (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+1818020d87ab: Pushing
+1818020d87ab: Buffering to disk
+1818020d87ab: Image successfully pushed
+021395a2fed6: Pushing
+021395a2fed6: Buffering to disk
+021395a2fed6: Image successfully pushed
+52dec7e34889: Pushing
+52dec7e34889: Buffering to disk
+52dec7e34889: Image successfully pushed
+721f5f8458da: Pushing
+721f5f8458da: Buffering to disk
+721f5f8458da: Image successfully pushed
+618f4239ab13: Pushing
+618f4239ab13: Buffering to disk
+618f4239ab13: Image successfully pushed
+b81cb5ef6315: Pushing
+b81cb5ef6315: Buffering to disk
+b81cb5ef6315: Image successfully pushed
+5eb2dfa369a0: Pushing
+5eb2dfa369a0: Buffering to disk
+5eb2dfa369a0: Image successfully pushed
+3689d1e654e1: Pushing
+3689d1e654e1: Buffering to disk
+3689d1e654e1: Image successfully pushed
+4dbf8dbe5fa2: Pushing
+4dbf8dbe5fa2: Buffering to disk
+4dbf8dbe5fa2: Image successfully pushed
+a4306b267151: Pushing
+a4306b267151: Buffering to disk
+a4306b267151: Image successfully pushed
+847c97f7d9a7: Pushing
+847c97f7d9a7: Buffering to disk
+847c97f7d9a7: Image successfully pushed
+ae42ce7ce664: Pushing
+ae42ce7ce664: Buffering to disk
+ae42ce7ce664: Image successfully pushed
+9cfd6e95be52: Pushing
+9cfd6e95be52: Buffering to disk
+9cfd6e95be52: Image successfully pushed
+Pushing tag for rev [9cfd6e95be52] on {http://136.187.101.80:5000/v1/repositories/gocd-agent/tags/latest}
+
+real  160.21
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker pull 136.187.101.80:5000/gocd-agent:latest
+Pulling repository 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent
+9cfd6e95be52: Pulling image (latest) from 136.187.101.80:5000/gocd-agent, endpoint: http://136.187.101.80:5000/v1/
+9cfd6e95be52: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+1818020d87ab: Pulling metadata
+1818020d87ab: Pulling fs layer
+1818020d87ab: Download complete
+021395a2fed6: Pulling metadata
+021395a2fed6: Pulling fs layer
+021395a2fed6: Download complete
+52dec7e34889: Pulling metadata
+52dec7e34889: Pulling fs layer
+52dec7e34889: Download complete
+721f5f8458da: Pulling metadata
+721f5f8458da: Pulling fs layer
+721f5f8458da: Download complete
+618f4239ab13: Pulling metadata
+618f4239ab13: Pulling fs layer
+618f4239ab13: Download complete
+b81cb5ef6315: Pulling metadata
+b81cb5ef6315: Pulling fs layer
+b81cb5ef6315: Download complete
+5eb2dfa369a0: Pulling metadata
+5eb2dfa369a0: Pulling fs layer
+5eb2dfa369a0: Download complete
+3689d1e654e1: Pulling metadata
+3689d1e654e1: Pulling fs layer
+3689d1e654e1: Download complete
+4dbf8dbe5fa2: Pulling metadata
+4dbf8dbe5fa2: Pulling fs layer
+4dbf8dbe5fa2: Download complete
+a4306b267151: Pulling metadata
+a4306b267151: Pulling fs layer
+a4306b267151: Download complete
+847c97f7d9a7: Pulling metadata
+847c97f7d9a7: Pulling fs layer
+847c97f7d9a7: Download complete
+ae42ce7ce664: Pulling metadata
+ae42ce7ce664: Pulling fs layer
+ae42ce7ce664: Download complete
+9cfd6e95be52: Pulling metadata
+9cfd6e95be52: Pulling fs layer
+9cfd6e95be52: Download complete
+9cfd6e95be52: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-agent:latest
+
+real  104.37
+
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+136.187.101.80:5000/gocd-agent   latest              9cfd6e95be52        12 months ago       1.023 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-agent:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-agent"
+
+docker rm -f docker_registry
+
+end date: Thu Aug 13 11:22:30 JST 2015
+
+

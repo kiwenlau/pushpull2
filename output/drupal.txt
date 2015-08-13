@@ -1,0 +1,1867 @@
+
+pullpush benchmark: transfer drupal image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Thu Aug 13 02:41:27 JST 2015
+
+sudo docker images
+kiwenlau/drupal                 flat                888492e60ce1        7 weeks ago         349 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+sudo docker images
+kiwenlau/drupal                 flat                888492e60ce1        7 weeks ago         349 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+13fbc506b4e9        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drupal (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+c7b7c6419568: Pushing
+c7b7c6419568: Buffering to disk
+c7b7c6419568: Image successfully pushed
+70c8faa62a44: Pushing
+70c8faa62a44: Buffering to disk
+70c8faa62a44: Image successfully pushed
+d735006ad9c1: Pushing
+d735006ad9c1: Buffering to disk
+d735006ad9c1: Image successfully pushed
+04c5d3b7b065: Pushing
+04c5d3b7b065: Buffering to disk
+04c5d3b7b065: Image successfully pushed
+499d12a586e3: Pushing
+499d12a586e3: Buffering to disk
+499d12a586e3: Image successfully pushed
+0a591500d23b: Pushing
+0a591500d23b: Buffering to disk
+0a591500d23b: Image successfully pushed
+a4adcf7d13f1: Pushing
+a4adcf7d13f1: Buffering to disk
+a4adcf7d13f1: Image successfully pushed
+208726508d11: Pushing
+208726508d11: Buffering to disk
+208726508d11: Image successfully pushed
+a35c4329a0f1: Pushing
+a35c4329a0f1: Buffering to disk
+a35c4329a0f1: Image successfully pushed
+318d14bcb5f0: Pushing
+318d14bcb5f0: Buffering to disk
+318d14bcb5f0: Image successfully pushed
+9d5a770694fb: Pushing
+9d5a770694fb: Buffering to disk
+9d5a770694fb: Image successfully pushed
+88bee8cc4cf9: Pushing
+88bee8cc4cf9: Buffering to disk
+88bee8cc4cf9: Image successfully pushed
+9765133d2406: Pushing
+9765133d2406: Buffering to disk
+9765133d2406: Image successfully pushed
+d9e656a04de9: Pushing
+d9e656a04de9: Buffering to disk
+d9e656a04de9: Image successfully pushed
+0914a8ed3640: Pushing
+0914a8ed3640: Buffering to disk
+0914a8ed3640: Image successfully pushed
+80845206e6af: Pushing
+80845206e6af: Buffering to disk
+80845206e6af: Image successfully pushed
+7cb144efe3e5: Pushing
+7cb144efe3e5: Buffering to disk
+7cb144efe3e5: Image successfully pushed
+3efecc4f87d8: Pushing
+3efecc4f87d8: Buffering to disk
+3efecc4f87d8: Image successfully pushed
+028d92a286b7: Pushing
+028d92a286b7: Buffering to disk
+028d92a286b7: Image successfully pushed
+8547f05b9938: Pushing
+8547f05b9938: Buffering to disk
+8547f05b9938: Image successfully pushed
+955326b5252b: Pushing
+955326b5252b: Buffering to disk
+955326b5252b: Image successfully pushed
+Pushing tag for rev [955326b5252b] on {http://136.187.101.80:5000/v1/repositories/drupal/tags/latest}
+
+real  72.46
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+Pulling repository 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal, endpoint: http://136.187.101.80:5000/v1/
+955326b5252b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+c7b7c6419568: Pulling metadata
+c7b7c6419568: Pulling fs layer
+c7b7c6419568: Download complete
+70c8faa62a44: Pulling metadata
+70c8faa62a44: Pulling fs layer
+70c8faa62a44: Download complete
+d735006ad9c1: Pulling metadata
+d735006ad9c1: Pulling fs layer
+d735006ad9c1: Download complete
+04c5d3b7b065: Pulling metadata
+04c5d3b7b065: Pulling fs layer
+04c5d3b7b065: Download complete
+499d12a586e3: Pulling metadata
+499d12a586e3: Pulling fs layer
+499d12a586e3: Download complete
+0a591500d23b: Pulling metadata
+0a591500d23b: Pulling fs layer
+0a591500d23b: Download complete
+a4adcf7d13f1: Pulling metadata
+a4adcf7d13f1: Pulling fs layer
+a4adcf7d13f1: Download complete
+208726508d11: Pulling metadata
+208726508d11: Pulling fs layer
+208726508d11: Download complete
+a35c4329a0f1: Pulling metadata
+a35c4329a0f1: Pulling fs layer
+a35c4329a0f1: Download complete
+318d14bcb5f0: Pulling metadata
+318d14bcb5f0: Pulling fs layer
+318d14bcb5f0: Download complete
+9d5a770694fb: Pulling metadata
+9d5a770694fb: Pulling fs layer
+9d5a770694fb: Download complete
+88bee8cc4cf9: Pulling metadata
+88bee8cc4cf9: Pulling fs layer
+88bee8cc4cf9: Download complete
+9765133d2406: Pulling metadata
+9765133d2406: Pulling fs layer
+9765133d2406: Download complete
+d9e656a04de9: Pulling metadata
+d9e656a04de9: Pulling fs layer
+d9e656a04de9: Download complete
+0914a8ed3640: Pulling metadata
+0914a8ed3640: Pulling fs layer
+0914a8ed3640: Download complete
+80845206e6af: Pulling metadata
+80845206e6af: Pulling fs layer
+80845206e6af: Download complete
+7cb144efe3e5: Pulling metadata
+7cb144efe3e5: Pulling fs layer
+7cb144efe3e5: Download complete
+3efecc4f87d8: Pulling metadata
+3efecc4f87d8: Pulling fs layer
+3efecc4f87d8: Download complete
+028d92a286b7: Pulling metadata
+028d92a286b7: Pulling fs layer
+028d92a286b7: Download complete
+8547f05b9938: Pulling metadata
+8547f05b9938: Pulling fs layer
+8547f05b9938: Download complete
+955326b5252b: Pulling metadata
+955326b5252b: Pulling fs layer
+955326b5252b: Download complete
+955326b5252b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  60.31
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+536d136b883e        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+
+docker rm -f docker_registry
+
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+cef0d7cb66ee        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drupal (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+c7b7c6419568: Pushing
+c7b7c6419568: Buffering to disk
+c7b7c6419568: Image successfully pushed
+70c8faa62a44: Pushing
+70c8faa62a44: Buffering to disk
+70c8faa62a44: Image successfully pushed
+d735006ad9c1: Pushing
+d735006ad9c1: Buffering to disk
+d735006ad9c1: Image successfully pushed
+04c5d3b7b065: Pushing
+04c5d3b7b065: Buffering to disk
+04c5d3b7b065: Image successfully pushed
+499d12a586e3: Pushing
+499d12a586e3: Buffering to disk
+499d12a586e3: Image successfully pushed
+0a591500d23b: Pushing
+0a591500d23b: Buffering to disk
+0a591500d23b: Image successfully pushed
+a4adcf7d13f1: Pushing
+a4adcf7d13f1: Buffering to disk
+a4adcf7d13f1: Image successfully pushed
+208726508d11: Pushing
+208726508d11: Buffering to disk
+208726508d11: Image successfully pushed
+a35c4329a0f1: Pushing
+a35c4329a0f1: Buffering to disk
+a35c4329a0f1: Image successfully pushed
+318d14bcb5f0: Pushing
+318d14bcb5f0: Buffering to disk
+318d14bcb5f0: Image successfully pushed
+9d5a770694fb: Pushing
+9d5a770694fb: Buffering to disk
+9d5a770694fb: Image successfully pushed
+88bee8cc4cf9: Pushing
+88bee8cc4cf9: Buffering to disk
+88bee8cc4cf9: Image successfully pushed
+9765133d2406: Pushing
+9765133d2406: Buffering to disk
+9765133d2406: Image successfully pushed
+d9e656a04de9: Pushing
+d9e656a04de9: Buffering to disk
+d9e656a04de9: Image successfully pushed
+0914a8ed3640: Pushing
+0914a8ed3640: Buffering to disk
+0914a8ed3640: Image successfully pushed
+80845206e6af: Pushing
+80845206e6af: Buffering to disk
+80845206e6af: Image successfully pushed
+7cb144efe3e5: Pushing
+7cb144efe3e5: Buffering to disk
+7cb144efe3e5: Image successfully pushed
+3efecc4f87d8: Pushing
+3efecc4f87d8: Buffering to disk
+3efecc4f87d8: Image successfully pushed
+028d92a286b7: Pushing
+028d92a286b7: Buffering to disk
+028d92a286b7: Image successfully pushed
+8547f05b9938: Pushing
+8547f05b9938: Buffering to disk
+8547f05b9938: Image successfully pushed
+955326b5252b: Pushing
+955326b5252b: Buffering to disk
+955326b5252b: Image successfully pushed
+Pushing tag for rev [955326b5252b] on {http://136.187.101.80:5000/v1/repositories/drupal/tags/latest}
+
+real  71.68
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+Pulling repository 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal, endpoint: http://136.187.101.80:5000/v1/
+955326b5252b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+c7b7c6419568: Pulling metadata
+c7b7c6419568: Pulling fs layer
+c7b7c6419568: Download complete
+70c8faa62a44: Pulling metadata
+70c8faa62a44: Pulling fs layer
+70c8faa62a44: Download complete
+d735006ad9c1: Pulling metadata
+d735006ad9c1: Pulling fs layer
+d735006ad9c1: Download complete
+04c5d3b7b065: Pulling metadata
+04c5d3b7b065: Pulling fs layer
+04c5d3b7b065: Download complete
+499d12a586e3: Pulling metadata
+499d12a586e3: Pulling fs layer
+499d12a586e3: Download complete
+0a591500d23b: Pulling metadata
+0a591500d23b: Pulling fs layer
+0a591500d23b: Download complete
+a4adcf7d13f1: Pulling metadata
+a4adcf7d13f1: Pulling fs layer
+a4adcf7d13f1: Download complete
+208726508d11: Pulling metadata
+208726508d11: Pulling fs layer
+208726508d11: Download complete
+a35c4329a0f1: Pulling metadata
+a35c4329a0f1: Pulling fs layer
+a35c4329a0f1: Download complete
+318d14bcb5f0: Pulling metadata
+318d14bcb5f0: Pulling fs layer
+318d14bcb5f0: Download complete
+9d5a770694fb: Pulling metadata
+9d5a770694fb: Pulling fs layer
+9d5a770694fb: Download complete
+88bee8cc4cf9: Pulling metadata
+88bee8cc4cf9: Pulling fs layer
+88bee8cc4cf9: Download complete
+9765133d2406: Pulling metadata
+9765133d2406: Pulling fs layer
+9765133d2406: Download complete
+d9e656a04de9: Pulling metadata
+d9e656a04de9: Pulling fs layer
+d9e656a04de9: Download complete
+0914a8ed3640: Pulling metadata
+0914a8ed3640: Pulling fs layer
+0914a8ed3640: Download complete
+80845206e6af: Pulling metadata
+80845206e6af: Pulling fs layer
+80845206e6af: Download complete
+7cb144efe3e5: Pulling metadata
+7cb144efe3e5: Pulling fs layer
+7cb144efe3e5: Download complete
+3efecc4f87d8: Pulling metadata
+3efecc4f87d8: Pulling fs layer
+3efecc4f87d8: Download complete
+028d92a286b7: Pulling metadata
+028d92a286b7: Pulling fs layer
+028d92a286b7: Download complete
+8547f05b9938: Pulling metadata
+8547f05b9938: Pulling fs layer
+8547f05b9938: Download complete
+955326b5252b: Pulling metadata
+955326b5252b: Pulling fs layer
+955326b5252b: Download complete
+955326b5252b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  58.35
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a851a6555043        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drupal (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+c7b7c6419568: Pushing
+c7b7c6419568: Buffering to disk
+c7b7c6419568: Image successfully pushed
+70c8faa62a44: Pushing
+70c8faa62a44: Buffering to disk
+70c8faa62a44: Image successfully pushed
+d735006ad9c1: Pushing
+d735006ad9c1: Buffering to disk
+d735006ad9c1: Image successfully pushed
+04c5d3b7b065: Pushing
+04c5d3b7b065: Buffering to disk
+04c5d3b7b065: Image successfully pushed
+499d12a586e3: Pushing
+499d12a586e3: Buffering to disk
+499d12a586e3: Image successfully pushed
+0a591500d23b: Pushing
+0a591500d23b: Buffering to disk
+0a591500d23b: Image successfully pushed
+a4adcf7d13f1: Pushing
+a4adcf7d13f1: Buffering to disk
+a4adcf7d13f1: Image successfully pushed
+208726508d11: Pushing
+208726508d11: Buffering to disk
+208726508d11: Image successfully pushed
+a35c4329a0f1: Pushing
+a35c4329a0f1: Buffering to disk
+a35c4329a0f1: Image successfully pushed
+318d14bcb5f0: Pushing
+318d14bcb5f0: Buffering to disk
+318d14bcb5f0: Image successfully pushed
+9d5a770694fb: Pushing
+9d5a770694fb: Buffering to disk
+9d5a770694fb: Image successfully pushed
+88bee8cc4cf9: Pushing
+88bee8cc4cf9: Buffering to disk
+88bee8cc4cf9: Image successfully pushed
+9765133d2406: Pushing
+9765133d2406: Buffering to disk
+9765133d2406: Image successfully pushed
+d9e656a04de9: Pushing
+d9e656a04de9: Buffering to disk
+d9e656a04de9: Image successfully pushed
+0914a8ed3640: Pushing
+0914a8ed3640: Buffering to disk
+0914a8ed3640: Image successfully pushed
+80845206e6af: Pushing
+80845206e6af: Buffering to disk
+80845206e6af: Image successfully pushed
+7cb144efe3e5: Pushing
+7cb144efe3e5: Buffering to disk
+7cb144efe3e5: Image successfully pushed
+3efecc4f87d8: Pushing
+3efecc4f87d8: Buffering to disk
+3efecc4f87d8: Image successfully pushed
+028d92a286b7: Pushing
+028d92a286b7: Buffering to disk
+028d92a286b7: Image successfully pushed
+8547f05b9938: Pushing
+8547f05b9938: Buffering to disk
+8547f05b9938: Image successfully pushed
+955326b5252b: Pushing
+955326b5252b: Buffering to disk
+955326b5252b: Image successfully pushed
+Pushing tag for rev [955326b5252b] on {http://136.187.101.80:5000/v1/repositories/drupal/tags/latest}
+
+real  71.32
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+Pulling repository 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal, endpoint: http://136.187.101.80:5000/v1/
+955326b5252b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+c7b7c6419568: Pulling metadata
+c7b7c6419568: Pulling fs layer
+c7b7c6419568: Download complete
+70c8faa62a44: Pulling metadata
+70c8faa62a44: Pulling fs layer
+70c8faa62a44: Download complete
+d735006ad9c1: Pulling metadata
+d735006ad9c1: Pulling fs layer
+d735006ad9c1: Download complete
+04c5d3b7b065: Pulling metadata
+04c5d3b7b065: Pulling fs layer
+04c5d3b7b065: Download complete
+499d12a586e3: Pulling metadata
+499d12a586e3: Pulling fs layer
+499d12a586e3: Download complete
+0a591500d23b: Pulling metadata
+0a591500d23b: Pulling fs layer
+0a591500d23b: Download complete
+a4adcf7d13f1: Pulling metadata
+a4adcf7d13f1: Pulling fs layer
+a4adcf7d13f1: Download complete
+208726508d11: Pulling metadata
+208726508d11: Pulling fs layer
+208726508d11: Download complete
+a35c4329a0f1: Pulling metadata
+a35c4329a0f1: Pulling fs layer
+a35c4329a0f1: Download complete
+318d14bcb5f0: Pulling metadata
+318d14bcb5f0: Pulling fs layer
+318d14bcb5f0: Download complete
+9d5a770694fb: Pulling metadata
+9d5a770694fb: Pulling fs layer
+9d5a770694fb: Download complete
+88bee8cc4cf9: Pulling metadata
+88bee8cc4cf9: Pulling fs layer
+88bee8cc4cf9: Download complete
+9765133d2406: Pulling metadata
+9765133d2406: Pulling fs layer
+9765133d2406: Download complete
+d9e656a04de9: Pulling metadata
+d9e656a04de9: Pulling fs layer
+d9e656a04de9: Download complete
+0914a8ed3640: Pulling metadata
+0914a8ed3640: Pulling fs layer
+0914a8ed3640: Download complete
+80845206e6af: Pulling metadata
+80845206e6af: Pulling fs layer
+80845206e6af: Download complete
+7cb144efe3e5: Pulling metadata
+7cb144efe3e5: Pulling fs layer
+7cb144efe3e5: Download complete
+3efecc4f87d8: Pulling metadata
+3efecc4f87d8: Pulling fs layer
+3efecc4f87d8: Download complete
+028d92a286b7: Pulling metadata
+028d92a286b7: Pulling fs layer
+028d92a286b7: Download complete
+8547f05b9938: Pulling metadata
+8547f05b9938: Pulling fs layer
+8547f05b9938: Download complete
+955326b5252b: Pulling metadata
+955326b5252b: Pulling fs layer
+955326b5252b: Download complete
+955326b5252b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  58.43
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+41aa3b98fbce        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+44c3e48da891        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drupal (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+c7b7c6419568: Pushing
+c7b7c6419568: Buffering to disk
+c7b7c6419568: Image successfully pushed
+70c8faa62a44: Pushing
+70c8faa62a44: Buffering to disk
+70c8faa62a44: Image successfully pushed
+d735006ad9c1: Pushing
+d735006ad9c1: Buffering to disk
+d735006ad9c1: Image successfully pushed
+04c5d3b7b065: Pushing
+04c5d3b7b065: Buffering to disk
+04c5d3b7b065: Image successfully pushed
+499d12a586e3: Pushing
+499d12a586e3: Buffering to disk
+499d12a586e3: Image successfully pushed
+0a591500d23b: Pushing
+0a591500d23b: Buffering to disk
+0a591500d23b: Image successfully pushed
+a4adcf7d13f1: Pushing
+a4adcf7d13f1: Buffering to disk
+a4adcf7d13f1: Image successfully pushed
+208726508d11: Pushing
+208726508d11: Buffering to disk
+208726508d11: Image successfully pushed
+a35c4329a0f1: Pushing
+a35c4329a0f1: Buffering to disk
+a35c4329a0f1: Image successfully pushed
+318d14bcb5f0: Pushing
+318d14bcb5f0: Buffering to disk
+318d14bcb5f0: Image successfully pushed
+9d5a770694fb: Pushing
+9d5a770694fb: Buffering to disk
+9d5a770694fb: Image successfully pushed
+88bee8cc4cf9: Pushing
+88bee8cc4cf9: Buffering to disk
+88bee8cc4cf9: Image successfully pushed
+9765133d2406: Pushing
+9765133d2406: Buffering to disk
+9765133d2406: Image successfully pushed
+d9e656a04de9: Pushing
+d9e656a04de9: Buffering to disk
+d9e656a04de9: Image successfully pushed
+0914a8ed3640: Pushing
+0914a8ed3640: Buffering to disk
+0914a8ed3640: Image successfully pushed
+80845206e6af: Pushing
+80845206e6af: Buffering to disk
+80845206e6af: Image successfully pushed
+7cb144efe3e5: Pushing
+7cb144efe3e5: Buffering to disk
+7cb144efe3e5: Image successfully pushed
+3efecc4f87d8: Pushing
+3efecc4f87d8: Buffering to disk
+3efecc4f87d8: Image successfully pushed
+028d92a286b7: Pushing
+028d92a286b7: Buffering to disk
+028d92a286b7: Image successfully pushed
+8547f05b9938: Pushing
+8547f05b9938: Buffering to disk
+8547f05b9938: Image successfully pushed
+955326b5252b: Pushing
+955326b5252b: Buffering to disk
+955326b5252b: Image successfully pushed
+Pushing tag for rev [955326b5252b] on {http://136.187.101.80:5000/v1/repositories/drupal/tags/latest}
+
+real  72.13
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+Pulling repository 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal, endpoint: http://136.187.101.80:5000/v1/
+955326b5252b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+c7b7c6419568: Pulling metadata
+c7b7c6419568: Pulling fs layer
+c7b7c6419568: Download complete
+70c8faa62a44: Pulling metadata
+70c8faa62a44: Pulling fs layer
+70c8faa62a44: Download complete
+d735006ad9c1: Pulling metadata
+d735006ad9c1: Pulling fs layer
+d735006ad9c1: Download complete
+04c5d3b7b065: Pulling metadata
+04c5d3b7b065: Pulling fs layer
+04c5d3b7b065: Download complete
+499d12a586e3: Pulling metadata
+499d12a586e3: Pulling fs layer
+499d12a586e3: Download complete
+0a591500d23b: Pulling metadata
+0a591500d23b: Pulling fs layer
+0a591500d23b: Download complete
+a4adcf7d13f1: Pulling metadata
+a4adcf7d13f1: Pulling fs layer
+a4adcf7d13f1: Download complete
+208726508d11: Pulling metadata
+208726508d11: Pulling fs layer
+208726508d11: Download complete
+a35c4329a0f1: Pulling metadata
+a35c4329a0f1: Pulling fs layer
+a35c4329a0f1: Download complete
+318d14bcb5f0: Pulling metadata
+318d14bcb5f0: Pulling fs layer
+318d14bcb5f0: Download complete
+9d5a770694fb: Pulling metadata
+9d5a770694fb: Pulling fs layer
+9d5a770694fb: Download complete
+88bee8cc4cf9: Pulling metadata
+88bee8cc4cf9: Pulling fs layer
+88bee8cc4cf9: Download complete
+9765133d2406: Pulling metadata
+9765133d2406: Pulling fs layer
+9765133d2406: Download complete
+d9e656a04de9: Pulling metadata
+d9e656a04de9: Pulling fs layer
+d9e656a04de9: Download complete
+0914a8ed3640: Pulling metadata
+0914a8ed3640: Pulling fs layer
+0914a8ed3640: Download complete
+80845206e6af: Pulling metadata
+80845206e6af: Pulling fs layer
+80845206e6af: Download complete
+7cb144efe3e5: Pulling metadata
+7cb144efe3e5: Pulling fs layer
+7cb144efe3e5: Download complete
+3efecc4f87d8: Pulling metadata
+3efecc4f87d8: Pulling fs layer
+3efecc4f87d8: Download complete
+028d92a286b7: Pulling metadata
+028d92a286b7: Pulling fs layer
+028d92a286b7: Download complete
+8547f05b9938: Pulling metadata
+8547f05b9938: Pulling fs layer
+8547f05b9938: Download complete
+955326b5252b: Pulling metadata
+955326b5252b: Pulling fs layer
+955326b5252b: Download complete
+955326b5252b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  58.10
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+8f18ee19f9e7        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drupal (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+c7b7c6419568: Pushing
+c7b7c6419568: Buffering to disk
+c7b7c6419568: Image successfully pushed
+70c8faa62a44: Pushing
+70c8faa62a44: Buffering to disk
+70c8faa62a44: Image successfully pushed
+d735006ad9c1: Pushing
+d735006ad9c1: Buffering to disk
+d735006ad9c1: Image successfully pushed
+04c5d3b7b065: Pushing
+04c5d3b7b065: Buffering to disk
+04c5d3b7b065: Image successfully pushed
+499d12a586e3: Pushing
+499d12a586e3: Buffering to disk
+499d12a586e3: Image successfully pushed
+0a591500d23b: Pushing
+0a591500d23b: Buffering to disk
+0a591500d23b: Image successfully pushed
+a4adcf7d13f1: Pushing
+a4adcf7d13f1: Buffering to disk
+a4adcf7d13f1: Image successfully pushed
+208726508d11: Pushing
+208726508d11: Buffering to disk
+208726508d11: Image successfully pushed
+a35c4329a0f1: Pushing
+a35c4329a0f1: Buffering to disk
+a35c4329a0f1: Image successfully pushed
+318d14bcb5f0: Pushing
+318d14bcb5f0: Buffering to disk
+318d14bcb5f0: Image successfully pushed
+9d5a770694fb: Pushing
+9d5a770694fb: Buffering to disk
+9d5a770694fb: Image successfully pushed
+88bee8cc4cf9: Pushing
+88bee8cc4cf9: Buffering to disk
+88bee8cc4cf9: Image successfully pushed
+9765133d2406: Pushing
+9765133d2406: Buffering to disk
+9765133d2406: Image successfully pushed
+d9e656a04de9: Pushing
+d9e656a04de9: Buffering to disk
+d9e656a04de9: Image successfully pushed
+0914a8ed3640: Pushing
+0914a8ed3640: Buffering to disk
+0914a8ed3640: Image successfully pushed
+80845206e6af: Pushing
+80845206e6af: Buffering to disk
+80845206e6af: Image successfully pushed
+7cb144efe3e5: Pushing
+7cb144efe3e5: Buffering to disk
+7cb144efe3e5: Image successfully pushed
+3efecc4f87d8: Pushing
+3efecc4f87d8: Buffering to disk
+3efecc4f87d8: Image successfully pushed
+028d92a286b7: Pushing
+028d92a286b7: Buffering to disk
+028d92a286b7: Image successfully pushed
+8547f05b9938: Pushing
+8547f05b9938: Buffering to disk
+8547f05b9938: Image successfully pushed
+955326b5252b: Pushing
+955326b5252b: Buffering to disk
+955326b5252b: Image successfully pushed
+Pushing tag for rev [955326b5252b] on {http://136.187.101.80:5000/v1/repositories/drupal/tags/latest}
+
+real  72.48
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+Pulling repository 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal, endpoint: http://136.187.101.80:5000/v1/
+955326b5252b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+c7b7c6419568: Pulling metadata
+c7b7c6419568: Pulling fs layer
+c7b7c6419568: Download complete
+70c8faa62a44: Pulling metadata
+70c8faa62a44: Pulling fs layer
+70c8faa62a44: Download complete
+d735006ad9c1: Pulling metadata
+d735006ad9c1: Pulling fs layer
+d735006ad9c1: Download complete
+04c5d3b7b065: Pulling metadata
+04c5d3b7b065: Pulling fs layer
+04c5d3b7b065: Download complete
+499d12a586e3: Pulling metadata
+499d12a586e3: Pulling fs layer
+499d12a586e3: Download complete
+0a591500d23b: Pulling metadata
+0a591500d23b: Pulling fs layer
+0a591500d23b: Download complete
+a4adcf7d13f1: Pulling metadata
+a4adcf7d13f1: Pulling fs layer
+a4adcf7d13f1: Download complete
+208726508d11: Pulling metadata
+208726508d11: Pulling fs layer
+208726508d11: Download complete
+a35c4329a0f1: Pulling metadata
+a35c4329a0f1: Pulling fs layer
+a35c4329a0f1: Download complete
+318d14bcb5f0: Pulling metadata
+318d14bcb5f0: Pulling fs layer
+318d14bcb5f0: Download complete
+9d5a770694fb: Pulling metadata
+9d5a770694fb: Pulling fs layer
+9d5a770694fb: Download complete
+88bee8cc4cf9: Pulling metadata
+88bee8cc4cf9: Pulling fs layer
+88bee8cc4cf9: Download complete
+9765133d2406: Pulling metadata
+9765133d2406: Pulling fs layer
+9765133d2406: Download complete
+d9e656a04de9: Pulling metadata
+d9e656a04de9: Pulling fs layer
+d9e656a04de9: Download complete
+0914a8ed3640: Pulling metadata
+0914a8ed3640: Pulling fs layer
+0914a8ed3640: Download complete
+80845206e6af: Pulling metadata
+80845206e6af: Pulling fs layer
+80845206e6af: Download complete
+7cb144efe3e5: Pulling metadata
+7cb144efe3e5: Pulling fs layer
+7cb144efe3e5: Download complete
+3efecc4f87d8: Pulling metadata
+3efecc4f87d8: Pulling fs layer
+3efecc4f87d8: Download complete
+028d92a286b7: Pulling metadata
+028d92a286b7: Pulling fs layer
+028d92a286b7: Download complete
+8547f05b9938: Pulling metadata
+8547f05b9938: Pulling fs layer
+8547f05b9938: Download complete
+955326b5252b: Pulling metadata
+955326b5252b: Pulling fs layer
+955326b5252b: Download complete
+955326b5252b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  58.25
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+cfc7a921a9da        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drupal (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+c7b7c6419568: Pushing
+c7b7c6419568: Buffering to disk
+c7b7c6419568: Image successfully pushed
+70c8faa62a44: Pushing
+70c8faa62a44: Buffering to disk
+70c8faa62a44: Image successfully pushed
+d735006ad9c1: Pushing
+d735006ad9c1: Buffering to disk
+d735006ad9c1: Image successfully pushed
+04c5d3b7b065: Pushing
+04c5d3b7b065: Buffering to disk
+04c5d3b7b065: Image successfully pushed
+499d12a586e3: Pushing
+499d12a586e3: Buffering to disk
+499d12a586e3: Image successfully pushed
+0a591500d23b: Pushing
+0a591500d23b: Buffering to disk
+0a591500d23b: Image successfully pushed
+a4adcf7d13f1: Pushing
+a4adcf7d13f1: Buffering to disk
+a4adcf7d13f1: Image successfully pushed
+208726508d11: Pushing
+208726508d11: Buffering to disk
+208726508d11: Image successfully pushed
+a35c4329a0f1: Pushing
+a35c4329a0f1: Buffering to disk
+a35c4329a0f1: Image successfully pushed
+318d14bcb5f0: Pushing
+318d14bcb5f0: Buffering to disk
+318d14bcb5f0: Image successfully pushed
+9d5a770694fb: Pushing
+9d5a770694fb: Buffering to disk
+9d5a770694fb: Image successfully pushed
+88bee8cc4cf9: Pushing
+88bee8cc4cf9: Buffering to disk
+88bee8cc4cf9: Image successfully pushed
+9765133d2406: Pushing
+9765133d2406: Buffering to disk
+9765133d2406: Image successfully pushed
+d9e656a04de9: Pushing
+d9e656a04de9: Buffering to disk
+d9e656a04de9: Image successfully pushed
+0914a8ed3640: Pushing
+0914a8ed3640: Buffering to disk
+0914a8ed3640: Image successfully pushed
+80845206e6af: Pushing
+80845206e6af: Buffering to disk
+80845206e6af: Image successfully pushed
+7cb144efe3e5: Pushing
+7cb144efe3e5: Buffering to disk
+7cb144efe3e5: Image successfully pushed
+3efecc4f87d8: Pushing
+3efecc4f87d8: Buffering to disk
+3efecc4f87d8: Image successfully pushed
+028d92a286b7: Pushing
+028d92a286b7: Buffering to disk
+028d92a286b7: Image successfully pushed
+8547f05b9938: Pushing
+8547f05b9938: Buffering to disk
+8547f05b9938: Image successfully pushed
+955326b5252b: Pushing
+955326b5252b: Buffering to disk
+955326b5252b: Image successfully pushed
+Pushing tag for rev [955326b5252b] on {http://136.187.101.80:5000/v1/repositories/drupal/tags/latest}
+
+real  70.48
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+Pulling repository 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal, endpoint: http://136.187.101.80:5000/v1/
+955326b5252b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+c7b7c6419568: Pulling metadata
+c7b7c6419568: Pulling fs layer
+c7b7c6419568: Download complete
+70c8faa62a44: Pulling metadata
+70c8faa62a44: Pulling fs layer
+70c8faa62a44: Download complete
+d735006ad9c1: Pulling metadata
+d735006ad9c1: Pulling fs layer
+d735006ad9c1: Download complete
+04c5d3b7b065: Pulling metadata
+04c5d3b7b065: Pulling fs layer
+04c5d3b7b065: Download complete
+499d12a586e3: Pulling metadata
+499d12a586e3: Pulling fs layer
+499d12a586e3: Download complete
+0a591500d23b: Pulling metadata
+0a591500d23b: Pulling fs layer
+0a591500d23b: Download complete
+a4adcf7d13f1: Pulling metadata
+a4adcf7d13f1: Pulling fs layer
+a4adcf7d13f1: Download complete
+208726508d11: Pulling metadata
+208726508d11: Pulling fs layer
+208726508d11: Download complete
+a35c4329a0f1: Pulling metadata
+a35c4329a0f1: Pulling fs layer
+a35c4329a0f1: Download complete
+318d14bcb5f0: Pulling metadata
+318d14bcb5f0: Pulling fs layer
+318d14bcb5f0: Download complete
+9d5a770694fb: Pulling metadata
+9d5a770694fb: Pulling fs layer
+9d5a770694fb: Download complete
+88bee8cc4cf9: Pulling metadata
+88bee8cc4cf9: Pulling fs layer
+88bee8cc4cf9: Download complete
+9765133d2406: Pulling metadata
+9765133d2406: Pulling fs layer
+9765133d2406: Download complete
+d9e656a04de9: Pulling metadata
+d9e656a04de9: Pulling fs layer
+d9e656a04de9: Download complete
+0914a8ed3640: Pulling metadata
+0914a8ed3640: Pulling fs layer
+0914a8ed3640: Download complete
+80845206e6af: Pulling metadata
+80845206e6af: Pulling fs layer
+80845206e6af: Download complete
+7cb144efe3e5: Pulling metadata
+7cb144efe3e5: Pulling fs layer
+7cb144efe3e5: Download complete
+3efecc4f87d8: Pulling metadata
+3efecc4f87d8: Pulling fs layer
+3efecc4f87d8: Download complete
+028d92a286b7: Pulling metadata
+028d92a286b7: Pulling fs layer
+028d92a286b7: Download complete
+8547f05b9938: Pulling metadata
+8547f05b9938: Pulling fs layer
+8547f05b9938: Download complete
+955326b5252b: Pulling metadata
+955326b5252b: Pulling fs layer
+955326b5252b: Download complete
+955326b5252b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  58.29
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+7e029c8dcd48        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drupal (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+c7b7c6419568: Pushing
+c7b7c6419568: Buffering to disk
+c7b7c6419568: Image successfully pushed
+70c8faa62a44: Pushing
+70c8faa62a44: Buffering to disk
+70c8faa62a44: Image successfully pushed
+d735006ad9c1: Pushing
+d735006ad9c1: Buffering to disk
+d735006ad9c1: Image successfully pushed
+04c5d3b7b065: Pushing
+04c5d3b7b065: Buffering to disk
+04c5d3b7b065: Image successfully pushed
+499d12a586e3: Pushing
+499d12a586e3: Buffering to disk
+499d12a586e3: Image successfully pushed
+0a591500d23b: Pushing
+0a591500d23b: Buffering to disk
+0a591500d23b: Image successfully pushed
+a4adcf7d13f1: Pushing
+a4adcf7d13f1: Buffering to disk
+a4adcf7d13f1: Image successfully pushed
+208726508d11: Pushing
+208726508d11: Buffering to disk
+208726508d11: Image successfully pushed
+a35c4329a0f1: Pushing
+a35c4329a0f1: Buffering to disk
+a35c4329a0f1: Image successfully pushed
+318d14bcb5f0: Pushing
+318d14bcb5f0: Buffering to disk
+318d14bcb5f0: Image successfully pushed
+9d5a770694fb: Pushing
+9d5a770694fb: Buffering to disk
+9d5a770694fb: Image successfully pushed
+88bee8cc4cf9: Pushing
+88bee8cc4cf9: Buffering to disk
+88bee8cc4cf9: Image successfully pushed
+9765133d2406: Pushing
+9765133d2406: Buffering to disk
+9765133d2406: Image successfully pushed
+d9e656a04de9: Pushing
+d9e656a04de9: Buffering to disk
+d9e656a04de9: Image successfully pushed
+0914a8ed3640: Pushing
+0914a8ed3640: Buffering to disk
+0914a8ed3640: Image successfully pushed
+80845206e6af: Pushing
+80845206e6af: Buffering to disk
+80845206e6af: Image successfully pushed
+7cb144efe3e5: Pushing
+7cb144efe3e5: Buffering to disk
+7cb144efe3e5: Image successfully pushed
+3efecc4f87d8: Pushing
+3efecc4f87d8: Buffering to disk
+3efecc4f87d8: Image successfully pushed
+028d92a286b7: Pushing
+028d92a286b7: Buffering to disk
+028d92a286b7: Image successfully pushed
+8547f05b9938: Pushing
+8547f05b9938: Buffering to disk
+8547f05b9938: Image successfully pushed
+955326b5252b: Pushing
+955326b5252b: Buffering to disk
+955326b5252b: Image successfully pushed
+Pushing tag for rev [955326b5252b] on {http://136.187.101.80:5000/v1/repositories/drupal/tags/latest}
+
+real  72.42
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+Pulling repository 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal, endpoint: http://136.187.101.80:5000/v1/
+955326b5252b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+c7b7c6419568: Pulling metadata
+c7b7c6419568: Pulling fs layer
+c7b7c6419568: Download complete
+70c8faa62a44: Pulling metadata
+70c8faa62a44: Pulling fs layer
+70c8faa62a44: Download complete
+d735006ad9c1: Pulling metadata
+d735006ad9c1: Pulling fs layer
+d735006ad9c1: Download complete
+04c5d3b7b065: Pulling metadata
+04c5d3b7b065: Pulling fs layer
+04c5d3b7b065: Download complete
+499d12a586e3: Pulling metadata
+499d12a586e3: Pulling fs layer
+499d12a586e3: Download complete
+0a591500d23b: Pulling metadata
+0a591500d23b: Pulling fs layer
+0a591500d23b: Download complete
+a4adcf7d13f1: Pulling metadata
+a4adcf7d13f1: Pulling fs layer
+a4adcf7d13f1: Download complete
+208726508d11: Pulling metadata
+208726508d11: Pulling fs layer
+208726508d11: Download complete
+a35c4329a0f1: Pulling metadata
+a35c4329a0f1: Pulling fs layer
+a35c4329a0f1: Download complete
+318d14bcb5f0: Pulling metadata
+318d14bcb5f0: Pulling fs layer
+318d14bcb5f0: Download complete
+9d5a770694fb: Pulling metadata
+9d5a770694fb: Pulling fs layer
+9d5a770694fb: Download complete
+88bee8cc4cf9: Pulling metadata
+88bee8cc4cf9: Pulling fs layer
+88bee8cc4cf9: Download complete
+9765133d2406: Pulling metadata
+9765133d2406: Pulling fs layer
+9765133d2406: Download complete
+d9e656a04de9: Pulling metadata
+d9e656a04de9: Pulling fs layer
+d9e656a04de9: Download complete
+0914a8ed3640: Pulling metadata
+0914a8ed3640: Pulling fs layer
+0914a8ed3640: Download complete
+80845206e6af: Pulling metadata
+80845206e6af: Pulling fs layer
+80845206e6af: Download complete
+7cb144efe3e5: Pulling metadata
+7cb144efe3e5: Pulling fs layer
+7cb144efe3e5: Download complete
+3efecc4f87d8: Pulling metadata
+3efecc4f87d8: Pulling fs layer
+3efecc4f87d8: Download complete
+028d92a286b7: Pulling metadata
+028d92a286b7: Pulling fs layer
+028d92a286b7: Download complete
+8547f05b9938: Pulling metadata
+8547f05b9938: Pulling fs layer
+8547f05b9938: Download complete
+955326b5252b: Pulling metadata
+955326b5252b: Pulling fs layer
+955326b5252b: Download complete
+955326b5252b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  59.01
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+956f0905e75d        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drupal (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+c7b7c6419568: Pushing
+c7b7c6419568: Buffering to disk
+c7b7c6419568: Image successfully pushed
+70c8faa62a44: Pushing
+70c8faa62a44: Buffering to disk
+70c8faa62a44: Image successfully pushed
+d735006ad9c1: Pushing
+d735006ad9c1: Buffering to disk
+d735006ad9c1: Image successfully pushed
+04c5d3b7b065: Pushing
+04c5d3b7b065: Buffering to disk
+04c5d3b7b065: Image successfully pushed
+499d12a586e3: Pushing
+499d12a586e3: Buffering to disk
+499d12a586e3: Image successfully pushed
+0a591500d23b: Pushing
+0a591500d23b: Buffering to disk
+0a591500d23b: Image successfully pushed
+a4adcf7d13f1: Pushing
+a4adcf7d13f1: Buffering to disk
+a4adcf7d13f1: Image successfully pushed
+208726508d11: Pushing
+208726508d11: Buffering to disk
+208726508d11: Image successfully pushed
+a35c4329a0f1: Pushing
+a35c4329a0f1: Buffering to disk
+a35c4329a0f1: Image successfully pushed
+318d14bcb5f0: Pushing
+318d14bcb5f0: Buffering to disk
+318d14bcb5f0: Image successfully pushed
+9d5a770694fb: Pushing
+9d5a770694fb: Buffering to disk
+9d5a770694fb: Image successfully pushed
+88bee8cc4cf9: Pushing
+88bee8cc4cf9: Buffering to disk
+88bee8cc4cf9: Image successfully pushed
+9765133d2406: Pushing
+9765133d2406: Buffering to disk
+9765133d2406: Image successfully pushed
+d9e656a04de9: Pushing
+d9e656a04de9: Buffering to disk
+d9e656a04de9: Image successfully pushed
+0914a8ed3640: Pushing
+0914a8ed3640: Buffering to disk
+0914a8ed3640: Image successfully pushed
+80845206e6af: Pushing
+80845206e6af: Buffering to disk
+80845206e6af: Image successfully pushed
+7cb144efe3e5: Pushing
+7cb144efe3e5: Buffering to disk
+7cb144efe3e5: Image successfully pushed
+3efecc4f87d8: Pushing
+3efecc4f87d8: Buffering to disk
+3efecc4f87d8: Image successfully pushed
+028d92a286b7: Pushing
+028d92a286b7: Buffering to disk
+028d92a286b7: Image successfully pushed
+8547f05b9938: Pushing
+8547f05b9938: Buffering to disk
+8547f05b9938: Image successfully pushed
+955326b5252b: Pushing
+955326b5252b: Buffering to disk
+955326b5252b: Image successfully pushed
+Pushing tag for rev [955326b5252b] on {http://136.187.101.80:5000/v1/repositories/drupal/tags/latest}
+
+real  74.07
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+Pulling repository 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal, endpoint: http://136.187.101.80:5000/v1/
+955326b5252b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+c7b7c6419568: Pulling metadata
+c7b7c6419568: Pulling fs layer
+c7b7c6419568: Download complete
+70c8faa62a44: Pulling metadata
+70c8faa62a44: Pulling fs layer
+70c8faa62a44: Download complete
+d735006ad9c1: Pulling metadata
+d735006ad9c1: Pulling fs layer
+d735006ad9c1: Download complete
+04c5d3b7b065: Pulling metadata
+04c5d3b7b065: Pulling fs layer
+04c5d3b7b065: Download complete
+499d12a586e3: Pulling metadata
+499d12a586e3: Pulling fs layer
+499d12a586e3: Download complete
+0a591500d23b: Pulling metadata
+0a591500d23b: Pulling fs layer
+0a591500d23b: Download complete
+a4adcf7d13f1: Pulling metadata
+a4adcf7d13f1: Pulling fs layer
+a4adcf7d13f1: Download complete
+208726508d11: Pulling metadata
+208726508d11: Pulling fs layer
+208726508d11: Download complete
+a35c4329a0f1: Pulling metadata
+a35c4329a0f1: Pulling fs layer
+a35c4329a0f1: Download complete
+318d14bcb5f0: Pulling metadata
+318d14bcb5f0: Pulling fs layer
+318d14bcb5f0: Download complete
+9d5a770694fb: Pulling metadata
+9d5a770694fb: Pulling fs layer
+9d5a770694fb: Download complete
+88bee8cc4cf9: Pulling metadata
+88bee8cc4cf9: Pulling fs layer
+88bee8cc4cf9: Download complete
+9765133d2406: Pulling metadata
+9765133d2406: Pulling fs layer
+9765133d2406: Download complete
+d9e656a04de9: Pulling metadata
+d9e656a04de9: Pulling fs layer
+d9e656a04de9: Download complete
+0914a8ed3640: Pulling metadata
+0914a8ed3640: Pulling fs layer
+0914a8ed3640: Download complete
+80845206e6af: Pulling metadata
+80845206e6af: Pulling fs layer
+80845206e6af: Download complete
+7cb144efe3e5: Pulling metadata
+7cb144efe3e5: Pulling fs layer
+7cb144efe3e5: Download complete
+3efecc4f87d8: Pulling metadata
+3efecc4f87d8: Pulling fs layer
+3efecc4f87d8: Download complete
+028d92a286b7: Pulling metadata
+028d92a286b7: Pulling fs layer
+028d92a286b7: Download complete
+8547f05b9938: Pulling metadata
+8547f05b9938: Pulling fs layer
+8547f05b9938: Download complete
+955326b5252b: Pulling metadata
+955326b5252b: Pulling fs layer
+955326b5252b: Download complete
+955326b5252b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  60.08
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+316a4f54b403        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+
+docker rm -f docker_registry
+
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1f55167a44e9        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+
+docker rm -f docker_registry
+
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+333422f95a0f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drupal (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+c7b7c6419568: Pushing
+c7b7c6419568: Buffering to disk
+c7b7c6419568: Image successfully pushed
+70c8faa62a44: Pushing
+70c8faa62a44: Buffering to disk
+70c8faa62a44: Image successfully pushed
+d735006ad9c1: Pushing
+d735006ad9c1: Buffering to disk
+d735006ad9c1: Image successfully pushed
+04c5d3b7b065: Pushing
+04c5d3b7b065: Buffering to disk
+04c5d3b7b065: Image successfully pushed
+499d12a586e3: Pushing
+499d12a586e3: Buffering to disk
+499d12a586e3: Image successfully pushed
+0a591500d23b: Pushing
+0a591500d23b: Buffering to disk
+0a591500d23b: Image successfully pushed
+a4adcf7d13f1: Pushing
+a4adcf7d13f1: Buffering to disk
+a4adcf7d13f1: Image successfully pushed
+208726508d11: Pushing
+208726508d11: Buffering to disk
+208726508d11: Image successfully pushed
+a35c4329a0f1: Pushing
+a35c4329a0f1: Buffering to disk
+a35c4329a0f1: Image successfully pushed
+318d14bcb5f0: Pushing
+318d14bcb5f0: Buffering to disk
+318d14bcb5f0: Image successfully pushed
+9d5a770694fb: Pushing
+9d5a770694fb: Buffering to disk
+9d5a770694fb: Image successfully pushed
+88bee8cc4cf9: Pushing
+88bee8cc4cf9: Buffering to disk
+88bee8cc4cf9: Image successfully pushed
+9765133d2406: Pushing
+9765133d2406: Buffering to disk
+9765133d2406: Image successfully pushed
+d9e656a04de9: Pushing
+d9e656a04de9: Buffering to disk
+d9e656a04de9: Image successfully pushed
+0914a8ed3640: Pushing
+0914a8ed3640: Buffering to disk
+0914a8ed3640: Image successfully pushed
+80845206e6af: Pushing
+80845206e6af: Buffering to disk
+80845206e6af: Image successfully pushed
+7cb144efe3e5: Pushing
+7cb144efe3e5: Buffering to disk
+7cb144efe3e5: Image successfully pushed
+3efecc4f87d8: Pushing
+3efecc4f87d8: Buffering to disk
+3efecc4f87d8: Image successfully pushed
+028d92a286b7: Pushing
+028d92a286b7: Buffering to disk
+028d92a286b7: Image successfully pushed
+8547f05b9938: Pushing
+8547f05b9938: Buffering to disk
+8547f05b9938: Image successfully pushed
+955326b5252b: Pushing
+955326b5252b: Buffering to disk
+955326b5252b: Image successfully pushed
+Pushing tag for rev [955326b5252b] on {http://136.187.101.80:5000/v1/repositories/drupal/tags/latest}
+
+real  76.32
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+Pulling repository 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal, endpoint: http://136.187.101.80:5000/v1/
+955326b5252b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+c7b7c6419568: Pulling metadata
+c7b7c6419568: Pulling fs layer
+c7b7c6419568: Download complete
+70c8faa62a44: Pulling metadata
+70c8faa62a44: Pulling fs layer
+70c8faa62a44: Download complete
+d735006ad9c1: Pulling metadata
+d735006ad9c1: Pulling fs layer
+d735006ad9c1: Download complete
+04c5d3b7b065: Pulling metadata
+04c5d3b7b065: Pulling fs layer
+04c5d3b7b065: Download complete
+499d12a586e3: Pulling metadata
+499d12a586e3: Pulling fs layer
+499d12a586e3: Download complete
+0a591500d23b: Pulling metadata
+0a591500d23b: Pulling fs layer
+0a591500d23b: Download complete
+a4adcf7d13f1: Pulling metadata
+a4adcf7d13f1: Pulling fs layer
+a4adcf7d13f1: Download complete
+208726508d11: Pulling metadata
+208726508d11: Pulling fs layer
+208726508d11: Download complete
+a35c4329a0f1: Pulling metadata
+a35c4329a0f1: Pulling fs layer
+a35c4329a0f1: Download complete
+318d14bcb5f0: Pulling metadata
+318d14bcb5f0: Pulling fs layer
+318d14bcb5f0: Download complete
+9d5a770694fb: Pulling metadata
+9d5a770694fb: Pulling fs layer
+9d5a770694fb: Download complete
+88bee8cc4cf9: Pulling metadata
+88bee8cc4cf9: Pulling fs layer
+88bee8cc4cf9: Download complete
+9765133d2406: Pulling metadata
+9765133d2406: Pulling fs layer
+9765133d2406: Download complete
+d9e656a04de9: Pulling metadata
+d9e656a04de9: Pulling fs layer
+d9e656a04de9: Download complete
+0914a8ed3640: Pulling metadata
+0914a8ed3640: Pulling fs layer
+0914a8ed3640: Download complete
+80845206e6af: Pulling metadata
+80845206e6af: Pulling fs layer
+80845206e6af: Download complete
+7cb144efe3e5: Pulling metadata
+7cb144efe3e5: Pulling fs layer
+7cb144efe3e5: Download complete
+3efecc4f87d8: Pulling metadata
+3efecc4f87d8: Pulling fs layer
+3efecc4f87d8: Download complete
+028d92a286b7: Pulling metadata
+028d92a286b7: Pulling fs layer
+028d92a286b7: Download complete
+8547f05b9938: Pulling metadata
+8547f05b9938: Pulling fs layer
+8547f05b9938: Download complete
+955326b5252b: Pulling metadata
+955326b5252b: Pulling fs layer
+955326b5252b: Download complete
+955326b5252b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  59.20
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+ce3d247bb6e4        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+
+docker rm -f docker_registry
+
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 drupal
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+
+docker tag kiwenlau/drupal:latest 136.187.101.80:5000/drupal:latest
+
+docker images
+kiwenlau/drupal                 latest              955326b5252b        3 months ago        499.6 MB
+136.187.101.80:5000/drupal      latest              955326b5252b        3 months ago        499.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+e9b93fa97213        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drupal:latest
+The push refers to a repository [136.187.101.80:5000/drupal] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drupal (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+c7b7c6419568: Pushing
+c7b7c6419568: Buffering to disk
+c7b7c6419568: Image successfully pushed
+70c8faa62a44: Pushing
+70c8faa62a44: Buffering to disk
+70c8faa62a44: Image successfully pushed
+d735006ad9c1: Pushing
+d735006ad9c1: Buffering to disk
+d735006ad9c1: Image successfully pushed
+04c5d3b7b065: Pushing
+04c5d3b7b065: Buffering to disk
+04c5d3b7b065: Image successfully pushed
+499d12a586e3: Pushing
+499d12a586e3: Buffering to disk
+499d12a586e3: Image successfully pushed
+0a591500d23b: Pushing
+0a591500d23b: Buffering to disk
+0a591500d23b: Image successfully pushed
+a4adcf7d13f1: Pushing
+a4adcf7d13f1: Buffering to disk
+a4adcf7d13f1: Image successfully pushed
+208726508d11: Pushing
+208726508d11: Buffering to disk
+208726508d11: Image successfully pushed
+a35c4329a0f1: Pushing
+a35c4329a0f1: Buffering to disk
+a35c4329a0f1: Image successfully pushed
+318d14bcb5f0: Pushing
+318d14bcb5f0: Buffering to disk
+318d14bcb5f0: Image successfully pushed
+9d5a770694fb: Pushing
+9d5a770694fb: Buffering to disk
+9d5a770694fb: Image successfully pushed
+88bee8cc4cf9: Pushing
+88bee8cc4cf9: Buffering to disk
+88bee8cc4cf9: Image successfully pushed
+9765133d2406: Pushing
+9765133d2406: Buffering to disk
+9765133d2406: Image successfully pushed
+d9e656a04de9: Pushing
+d9e656a04de9: Buffering to disk
+d9e656a04de9: Image successfully pushed
+0914a8ed3640: Pushing
+0914a8ed3640: Buffering to disk
+0914a8ed3640: Image successfully pushed
+80845206e6af: Pushing
+80845206e6af: Buffering to disk
+80845206e6af: Image successfully pushed
+7cb144efe3e5: Pushing
+7cb144efe3e5: Buffering to disk
+7cb144efe3e5: Image successfully pushed
+3efecc4f87d8: Pushing
+3efecc4f87d8: Buffering to disk
+3efecc4f87d8: Image successfully pushed
+028d92a286b7: Pushing
+028d92a286b7: Buffering to disk
+028d92a286b7: Image successfully pushed
+8547f05b9938: Pushing
+8547f05b9938: Buffering to disk
+8547f05b9938: Image successfully pushed
+955326b5252b: Pushing
+955326b5252b: Buffering to disk
+955326b5252b: Image successfully pushed
+Pushing tag for rev [955326b5252b] on {http://136.187.101.80:5000/v1/repositories/drupal/tags/latest}
+
+real  73.73
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker pull 136.187.101.80:5000/drupal:latest
+Pulling repository 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal
+955326b5252b: Pulling image (latest) from 136.187.101.80:5000/drupal, endpoint: http://136.187.101.80:5000/v1/
+955326b5252b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+c7b7c6419568: Pulling metadata
+c7b7c6419568: Pulling fs layer
+c7b7c6419568: Download complete
+70c8faa62a44: Pulling metadata
+70c8faa62a44: Pulling fs layer
+70c8faa62a44: Download complete
+d735006ad9c1: Pulling metadata
+d735006ad9c1: Pulling fs layer
+d735006ad9c1: Download complete
+04c5d3b7b065: Pulling metadata
+04c5d3b7b065: Pulling fs layer
+04c5d3b7b065: Download complete
+499d12a586e3: Pulling metadata
+499d12a586e3: Pulling fs layer
+499d12a586e3: Download complete
+0a591500d23b: Pulling metadata
+0a591500d23b: Pulling fs layer
+0a591500d23b: Download complete
+a4adcf7d13f1: Pulling metadata
+a4adcf7d13f1: Pulling fs layer
+a4adcf7d13f1: Download complete
+208726508d11: Pulling metadata
+208726508d11: Pulling fs layer
+208726508d11: Download complete
+a35c4329a0f1: Pulling metadata
+a35c4329a0f1: Pulling fs layer
+a35c4329a0f1: Download complete
+318d14bcb5f0: Pulling metadata
+318d14bcb5f0: Pulling fs layer
+318d14bcb5f0: Download complete
+9d5a770694fb: Pulling metadata
+9d5a770694fb: Pulling fs layer
+9d5a770694fb: Download complete
+88bee8cc4cf9: Pulling metadata
+88bee8cc4cf9: Pulling fs layer
+88bee8cc4cf9: Download complete
+9765133d2406: Pulling metadata
+9765133d2406: Pulling fs layer
+9765133d2406: Download complete
+d9e656a04de9: Pulling metadata
+d9e656a04de9: Pulling fs layer
+d9e656a04de9: Download complete
+0914a8ed3640: Pulling metadata
+0914a8ed3640: Pulling fs layer
+0914a8ed3640: Download complete
+80845206e6af: Pulling metadata
+80845206e6af: Pulling fs layer
+80845206e6af: Download complete
+7cb144efe3e5: Pulling metadata
+7cb144efe3e5: Pulling fs layer
+7cb144efe3e5: Download complete
+3efecc4f87d8: Pulling metadata
+3efecc4f87d8: Pulling fs layer
+3efecc4f87d8: Download complete
+028d92a286b7: Pulling metadata
+028d92a286b7: Pulling fs layer
+028d92a286b7: Download complete
+8547f05b9938: Pulling metadata
+8547f05b9938: Pulling fs layer
+8547f05b9938: Download complete
+955326b5252b: Pulling metadata
+955326b5252b: Pulling fs layer
+955326b5252b: Download complete
+955326b5252b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drupal:latest
+
+real  58.03
+
+ssh kai@54.225.249.141 "docker images | grep drupal"
+136.187.101.80:5000/drupal   latest              955326b5252b        3 months ago        499.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drupal:latest"
+ssh kai@54.225.249.141 "docker images | grep drupal"
+
+docker rm -f docker_registry
+
+end date: Thu Aug 13 03:07:40 JST 2015
+
+

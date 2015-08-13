@@ -1,0 +1,1805 @@
+
+pullpush benchmark: transfer gocd-base image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Thu Aug 13 09:46:02 JST 2015
+
+sudo docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+sudo docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+e556b93be72d        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c5c470dafed8        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+5ebb3753df40        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+f27be3881cac        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+63175b6a5ed7        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+fdc8435b63c1        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+cb28058ff4e1        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+The push refers to a repository [136.187.101.80:5000/gocd-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+e06fc63b2fb2: Pushing
+e06fc63b2fb2: Buffering to disk
+e06fc63b2fb2: Image successfully pushed
+5a514e44e3a8: Pushing
+5a514e44e3a8: Buffering to disk
+5a514e44e3a8: Image successfully pushed
+24e607a9fc7d: Pushing
+24e607a9fc7d: Buffering to disk
+24e607a9fc7d: Image successfully pushed
+d309ca835650: Pushing
+d309ca835650: Buffering to disk
+d309ca835650: Image successfully pushed
+Pushing tag for rev [d309ca835650] on {http://136.187.101.80:5000/v1/repositories/gocd-base/tags/latest}
+
+real  135.71
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker pull 136.187.101.80:5000/gocd-base:latest
+Pulling repository 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base, endpoint: http://136.187.101.80:5000/v1/
+d309ca835650: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+e06fc63b2fb2: Pulling metadata
+e06fc63b2fb2: Pulling fs layer
+e06fc63b2fb2: Download complete
+5a514e44e3a8: Pulling metadata
+5a514e44e3a8: Pulling fs layer
+5a514e44e3a8: Download complete
+24e607a9fc7d: Pulling metadata
+24e607a9fc7d: Pulling fs layer
+24e607a9fc7d: Download complete
+d309ca835650: Pulling metadata
+d309ca835650: Pulling fs layer
+d309ca835650: Download complete
+d309ca835650: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-base:latest
+
+real  99.23
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-base:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+7bdb801f39cd        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+The push refers to a repository [136.187.101.80:5000/gocd-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+e06fc63b2fb2: Pushing
+e06fc63b2fb2: Buffering to disk
+e06fc63b2fb2: Image successfully pushed
+5a514e44e3a8: Pushing
+5a514e44e3a8: Buffering to disk
+5a514e44e3a8: Image successfully pushed
+24e607a9fc7d: Pushing
+24e607a9fc7d: Buffering to disk
+24e607a9fc7d: Image successfully pushed
+d309ca835650: Pushing
+d309ca835650: Buffering to disk
+d309ca835650: Image successfully pushed
+Pushing tag for rev [d309ca835650] on {http://136.187.101.80:5000/v1/repositories/gocd-base/tags/latest}
+
+real  133.16
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker pull 136.187.101.80:5000/gocd-base:latest
+Pulling repository 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base, endpoint: http://136.187.101.80:5000/v1/
+d309ca835650: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+e06fc63b2fb2: Pulling metadata
+e06fc63b2fb2: Pulling fs layer
+e06fc63b2fb2: Download complete
+5a514e44e3a8: Pulling metadata
+5a514e44e3a8: Pulling fs layer
+5a514e44e3a8: Download complete
+24e607a9fc7d: Pulling metadata
+24e607a9fc7d: Pulling fs layer
+24e607a9fc7d: Download complete
+d309ca835650: Pulling metadata
+d309ca835650: Pulling fs layer
+d309ca835650: Download complete
+d309ca835650: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-base:latest
+
+real  95.78
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-base:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+cca684e8d69f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+The push refers to a repository [136.187.101.80:5000/gocd-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+e06fc63b2fb2: Pushing
+e06fc63b2fb2: Buffering to disk
+e06fc63b2fb2: Image successfully pushed
+5a514e44e3a8: Pushing
+5a514e44e3a8: Buffering to disk
+5a514e44e3a8: Image successfully pushed
+24e607a9fc7d: Pushing
+24e607a9fc7d: Buffering to disk
+24e607a9fc7d: Image successfully pushed
+d309ca835650: Pushing
+d309ca835650: Buffering to disk
+d309ca835650: Image successfully pushed
+Pushing tag for rev [d309ca835650] on {http://136.187.101.80:5000/v1/repositories/gocd-base/tags/latest}
+
+real  153.23
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker pull 136.187.101.80:5000/gocd-base:latest
+Pulling repository 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base, endpoint: http://136.187.101.80:5000/v1/
+d309ca835650: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+e06fc63b2fb2: Pulling metadata
+e06fc63b2fb2: Pulling fs layer
+e06fc63b2fb2: Download complete
+5a514e44e3a8: Pulling metadata
+5a514e44e3a8: Pulling fs layer
+5a514e44e3a8: Download complete
+24e607a9fc7d: Pulling metadata
+24e607a9fc7d: Pulling fs layer
+24e607a9fc7d: Download complete
+d309ca835650: Pulling metadata
+d309ca835650: Pulling fs layer
+d309ca835650: Download complete
+d309ca835650: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-base:latest
+
+real  96.82
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-base:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+2a61f21b49aa        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+dafa4f2958fa        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+71a1a39facd3        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+ca4bf4bd4598        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+The push refers to a repository [136.187.101.80:5000/gocd-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+e06fc63b2fb2: Pushing
+e06fc63b2fb2: Buffering to disk
+e06fc63b2fb2: Image successfully pushed
+5a514e44e3a8: Pushing
+5a514e44e3a8: Buffering to disk
+5a514e44e3a8: Image successfully pushed
+24e607a9fc7d: Pushing
+24e607a9fc7d: Buffering to disk
+24e607a9fc7d: Image successfully pushed
+d309ca835650: Pushing
+d309ca835650: Buffering to disk
+d309ca835650: Image successfully pushed
+Pushing tag for rev [d309ca835650] on {http://136.187.101.80:5000/v1/repositories/gocd-base/tags/latest}
+
+real  161.66
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker pull 136.187.101.80:5000/gocd-base:latest
+Pulling repository 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base, endpoint: http://136.187.101.80:5000/v1/
+d309ca835650: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+e06fc63b2fb2: Pulling metadata
+e06fc63b2fb2: Pulling fs layer
+e06fc63b2fb2: Download complete
+5a514e44e3a8: Pulling metadata
+5a514e44e3a8: Pulling fs layer
+5a514e44e3a8: Download complete
+24e607a9fc7d: Pulling metadata
+24e607a9fc7d: Pulling fs layer
+24e607a9fc7d: Download complete
+d309ca835650: Pulling metadata
+d309ca835650: Pulling fs layer
+d309ca835650: Download complete
+d309ca835650: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-base:latest
+
+real  95.38
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-base:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c73fd861461f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3889373b1fb1        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+daa40483bab3        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+The push refers to a repository [136.187.101.80:5000/gocd-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+e06fc63b2fb2: Pushing
+e06fc63b2fb2: Buffering to disk
+e06fc63b2fb2: Image successfully pushed
+5a514e44e3a8: Pushing
+5a514e44e3a8: Buffering to disk
+5a514e44e3a8: Image successfully pushed
+24e607a9fc7d: Pushing
+24e607a9fc7d: Buffering to disk
+24e607a9fc7d: Image successfully pushed
+d309ca835650: Pushing
+d309ca835650: Buffering to disk
+d309ca835650: Image successfully pushed
+Pushing tag for rev [d309ca835650] on {http://136.187.101.80:5000/v1/repositories/gocd-base/tags/latest}
+
+real  156.91
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker pull 136.187.101.80:5000/gocd-base:latest
+Pulling repository 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base, endpoint: http://136.187.101.80:5000/v1/
+d309ca835650: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+e06fc63b2fb2: Pulling metadata
+e06fc63b2fb2: Pulling fs layer
+e06fc63b2fb2: Download complete
+5a514e44e3a8: Pulling metadata
+5a514e44e3a8: Pulling fs layer
+5a514e44e3a8: Download complete
+24e607a9fc7d: Pulling metadata
+24e607a9fc7d: Pulling fs layer
+24e607a9fc7d: Download complete
+d309ca835650: Pulling metadata
+d309ca835650: Pulling fs layer
+d309ca835650: Download complete
+d309ca835650: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-base:latest
+
+real  95.93
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-base:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+37bca56c0ede        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+The push refers to a repository [136.187.101.80:5000/gocd-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+e06fc63b2fb2: Pushing
+e06fc63b2fb2: Buffering to disk
+e06fc63b2fb2: Image successfully pushed
+5a514e44e3a8: Pushing
+5a514e44e3a8: Buffering to disk
+5a514e44e3a8: Image successfully pushed
+24e607a9fc7d: Pushing
+24e607a9fc7d: Buffering to disk
+24e607a9fc7d: Image successfully pushed
+d309ca835650: Pushing
+d309ca835650: Buffering to disk
+d309ca835650: Image successfully pushed
+Pushing tag for rev [d309ca835650] on {http://136.187.101.80:5000/v1/repositories/gocd-base/tags/latest}
+
+real  159.38
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker pull 136.187.101.80:5000/gocd-base:latest
+Pulling repository 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base, endpoint: http://136.187.101.80:5000/v1/
+d309ca835650: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+e06fc63b2fb2: Pulling metadata
+e06fc63b2fb2: Pulling fs layer
+e06fc63b2fb2: Download complete
+5a514e44e3a8: Pulling metadata
+5a514e44e3a8: Pulling fs layer
+5a514e44e3a8: Download complete
+24e607a9fc7d: Pulling metadata
+24e607a9fc7d: Pulling fs layer
+24e607a9fc7d: Download complete
+d309ca835650: Pulling metadata
+d309ca835650: Pulling fs layer
+d309ca835650: Download complete
+d309ca835650: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-base:latest
+
+real  99.03
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-base:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+879f3c5a4b55        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3106be569f50        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+The push refers to a repository [136.187.101.80:5000/gocd-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+e06fc63b2fb2: Pushing
+e06fc63b2fb2: Buffering to disk
+e06fc63b2fb2: Image successfully pushed
+5a514e44e3a8: Pushing
+5a514e44e3a8: Buffering to disk
+5a514e44e3a8: Image successfully pushed
+24e607a9fc7d: Pushing
+24e607a9fc7d: Buffering to disk
+24e607a9fc7d: Image successfully pushed
+d309ca835650: Pushing
+d309ca835650: Buffering to disk
+d309ca835650: Image successfully pushed
+Pushing tag for rev [d309ca835650] on {http://136.187.101.80:5000/v1/repositories/gocd-base/tags/latest}
+
+real  162.98
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker pull 136.187.101.80:5000/gocd-base:latest
+Pulling repository 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base, endpoint: http://136.187.101.80:5000/v1/
+d309ca835650: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+e06fc63b2fb2: Pulling metadata
+e06fc63b2fb2: Pulling fs layer
+e06fc63b2fb2: Download complete
+5a514e44e3a8: Pulling metadata
+5a514e44e3a8: Pulling fs layer
+5a514e44e3a8: Download complete
+24e607a9fc7d: Pulling metadata
+24e607a9fc7d: Pulling fs layer
+24e607a9fc7d: Download complete
+d309ca835650: Pulling metadata
+d309ca835650: Pulling fs layer
+d309ca835650: Download complete
+d309ca835650: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-base:latest
+
+real  96.60
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-base:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3778216a3a4d        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+The push refers to a repository [136.187.101.80:5000/gocd-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+e06fc63b2fb2: Pushing
+e06fc63b2fb2: Buffering to disk
+e06fc63b2fb2: Image successfully pushed
+5a514e44e3a8: Pushing
+5a514e44e3a8: Buffering to disk
+5a514e44e3a8: Image successfully pushed
+24e607a9fc7d: Pushing
+24e607a9fc7d: Buffering to disk
+24e607a9fc7d: Image successfully pushed
+d309ca835650: Pushing
+d309ca835650: Buffering to disk
+d309ca835650: Image successfully pushed
+Pushing tag for rev [d309ca835650] on {http://136.187.101.80:5000/v1/repositories/gocd-base/tags/latest}
+
+real  156.24
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker pull 136.187.101.80:5000/gocd-base:latest
+Pulling repository 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base, endpoint: http://136.187.101.80:5000/v1/
+d309ca835650: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+e06fc63b2fb2: Pulling metadata
+e06fc63b2fb2: Pulling fs layer
+e06fc63b2fb2: Download complete
+5a514e44e3a8: Pulling metadata
+5a514e44e3a8: Pulling fs layer
+5a514e44e3a8: Download complete
+24e607a9fc7d: Pulling metadata
+24e607a9fc7d: Pulling fs layer
+24e607a9fc7d: Download complete
+d309ca835650: Pulling metadata
+d309ca835650: Pulling fs layer
+d309ca835650: Download complete
+d309ca835650: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-base:latest
+
+real  100.22
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-base:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+0bfcc1155003        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b8963ae2816d        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+The push refers to a repository [136.187.101.80:5000/gocd-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+e06fc63b2fb2: Pushing
+e06fc63b2fb2: Buffering to disk
+e06fc63b2fb2: Image successfully pushed
+5a514e44e3a8: Pushing
+5a514e44e3a8: Buffering to disk
+5a514e44e3a8: Image successfully pushed
+24e607a9fc7d: Pushing
+24e607a9fc7d: Buffering to disk
+24e607a9fc7d: Image successfully pushed
+d309ca835650: Pushing
+d309ca835650: Buffering to disk
+d309ca835650: Image successfully pushed
+Pushing tag for rev [d309ca835650] on {http://136.187.101.80:5000/v1/repositories/gocd-base/tags/latest}
+
+real  160.70
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker pull 136.187.101.80:5000/gocd-base:latest
+Pulling repository 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base, endpoint: http://136.187.101.80:5000/v1/
+d309ca835650: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+e06fc63b2fb2: Pulling metadata
+e06fc63b2fb2: Pulling fs layer
+e06fc63b2fb2: Download complete
+5a514e44e3a8: Pulling metadata
+5a514e44e3a8: Pulling fs layer
+5a514e44e3a8: Download complete
+24e607a9fc7d: Pulling metadata
+24e607a9fc7d: Pulling fs layer
+24e607a9fc7d: Download complete
+d309ca835650: Pulling metadata
+d309ca835650: Pulling fs layer
+d309ca835650: Download complete
+d309ca835650: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-base:latest
+
+real  97.41
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-base:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+26ae0969ec54        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+
+docker rm -f docker_registry
+
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 gocd-base
+
+docker images
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker tag kiwenlau/gocd-base:latest 136.187.101.80:5000/gocd-base:latest
+
+docker images
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+kiwenlau/gocd-base              latest              d309ca835650        12 months ago       1.017 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1616fb9e6a3b        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gocd-base:latest
+The push refers to a repository [136.187.101.80:5000/gocd-base] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gocd-base (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d7ac5e4f1812: Pushing
+d7ac5e4f1812: Buffering to disk
+d7ac5e4f1812: Image successfully pushed
+2f4b4d6a4a06: Pushing
+2f4b4d6a4a06: Buffering to disk
+2f4b4d6a4a06: Image successfully pushed
+83ff768040a0: Pushing
+83ff768040a0: Buffering to disk
+83ff768040a0: Image successfully pushed
+6c37f792ddac: Pushing
+6c37f792ddac: Buffering to disk
+6c37f792ddac: Image successfully pushed
+e54ca5efa2e9: Pushing
+e54ca5efa2e9: Buffering to disk
+e54ca5efa2e9: Image successfully pushed
+8d8858d9ae05: Pushing
+8d8858d9ae05: Buffering to disk
+8d8858d9ae05: Image successfully pushed
+850b5e6cfe58: Pushing
+850b5e6cfe58: Buffering to disk
+850b5e6cfe58: Image successfully pushed
+66a08ad2904f: Pushing
+66a08ad2904f: Buffering to disk
+66a08ad2904f: Image successfully pushed
+55116292b253: Pushing
+55116292b253: Buffering to disk
+55116292b253: Image successfully pushed
+dcd01c67be9d: Pushing
+dcd01c67be9d: Buffering to disk
+dcd01c67be9d: Image successfully pushed
+767cb0646bac: Pushing
+767cb0646bac: Buffering to disk
+767cb0646bac: Image successfully pushed
+215d8e5c3afa: Pushing
+215d8e5c3afa: Buffering to disk
+215d8e5c3afa: Image successfully pushed
+97faf481e0ef: Pushing
+97faf481e0ef: Buffering to disk
+97faf481e0ef: Image successfully pushed
+e06fc63b2fb2: Pushing
+e06fc63b2fb2: Buffering to disk
+e06fc63b2fb2: Image successfully pushed
+5a514e44e3a8: Pushing
+5a514e44e3a8: Buffering to disk
+5a514e44e3a8: Image successfully pushed
+24e607a9fc7d: Pushing
+24e607a9fc7d: Buffering to disk
+24e607a9fc7d: Image successfully pushed
+d309ca835650: Pushing
+d309ca835650: Buffering to disk
+d309ca835650: Image successfully pushed
+Pushing tag for rev [d309ca835650] on {http://136.187.101.80:5000/v1/repositories/gocd-base/tags/latest}
+
+real  162.07
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker pull 136.187.101.80:5000/gocd-base:latest
+Pulling repository 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base
+d309ca835650: Pulling image (latest) from 136.187.101.80:5000/gocd-base, endpoint: http://136.187.101.80:5000/v1/
+d309ca835650: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d7ac5e4f1812: Pulling metadata
+d7ac5e4f1812: Pulling fs layer
+d7ac5e4f1812: Download complete
+2f4b4d6a4a06: Pulling metadata
+2f4b4d6a4a06: Pulling fs layer
+2f4b4d6a4a06: Download complete
+83ff768040a0: Pulling metadata
+83ff768040a0: Pulling fs layer
+83ff768040a0: Download complete
+6c37f792ddac: Pulling metadata
+6c37f792ddac: Pulling fs layer
+6c37f792ddac: Download complete
+e54ca5efa2e9: Pulling metadata
+e54ca5efa2e9: Pulling fs layer
+e54ca5efa2e9: Download complete
+8d8858d9ae05: Pulling metadata
+8d8858d9ae05: Pulling fs layer
+8d8858d9ae05: Download complete
+850b5e6cfe58: Pulling metadata
+850b5e6cfe58: Pulling fs layer
+850b5e6cfe58: Download complete
+66a08ad2904f: Pulling metadata
+66a08ad2904f: Pulling fs layer
+66a08ad2904f: Download complete
+55116292b253: Pulling metadata
+55116292b253: Pulling fs layer
+55116292b253: Download complete
+dcd01c67be9d: Pulling metadata
+dcd01c67be9d: Pulling fs layer
+dcd01c67be9d: Download complete
+767cb0646bac: Pulling metadata
+767cb0646bac: Pulling fs layer
+767cb0646bac: Download complete
+215d8e5c3afa: Pulling metadata
+215d8e5c3afa: Pulling fs layer
+215d8e5c3afa: Download complete
+97faf481e0ef: Pulling metadata
+97faf481e0ef: Pulling fs layer
+97faf481e0ef: Download complete
+e06fc63b2fb2: Pulling metadata
+e06fc63b2fb2: Pulling fs layer
+e06fc63b2fb2: Download complete
+5a514e44e3a8: Pulling metadata
+5a514e44e3a8: Pulling fs layer
+5a514e44e3a8: Download complete
+24e607a9fc7d: Pulling metadata
+24e607a9fc7d: Pulling fs layer
+24e607a9fc7d: Download complete
+d309ca835650: Pulling metadata
+d309ca835650: Pulling fs layer
+d309ca835650: Download complete
+d309ca835650: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gocd-base:latest
+
+real  95.54
+
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+136.187.101.80:5000/gocd-base   latest              d309ca835650        12 months ago       1.017 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gocd-base:latest"
+ssh kai@54.225.249.141 "docker images | grep gocd-base"
+
+docker rm -f docker_registry
+
+end date: Thu Aug 13 10:32:56 JST 2015
+
+

@@ -1,0 +1,1885 @@
+
+pullpush benchmark: transfer node-metrics image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Thu Aug 13 00:57:40 JST 2015
+
+sudo docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+sudo docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a9312723db3f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/node-metrics (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+cbde4a8607af: Pushing
+cbde4a8607af: Buffering to disk
+cbde4a8607af: Image successfully pushed
+2131eb65d199: Pushing
+2131eb65d199: Buffering to disk
+2131eb65d199: Image successfully pushed
+39b5dfd5ab2c: Pushing
+39b5dfd5ab2c: Buffering to disk
+39b5dfd5ab2c: Image successfully pushed
+ba933affd0ef: Pushing
+ba933affd0ef: Buffering to disk
+ba933affd0ef: Image successfully pushed
+99ad7e013c7b: Pushing
+99ad7e013c7b: Buffering to disk
+99ad7e013c7b: Image successfully pushed
+c55100fa2500: Pushing
+c55100fa2500: Buffering to disk
+c55100fa2500: Image successfully pushed
+2359073bd686: Pushing
+2359073bd686: Buffering to disk
+2359073bd686: Image successfully pushed
+b47bc23be934: Pushing
+b47bc23be934: Buffering to disk
+b47bc23be934: Image successfully pushed
+7fe552c5ef2d: Pushing
+7fe552c5ef2d: Buffering to disk
+7fe552c5ef2d: Image successfully pushed
+b1e034123947: Pushing
+b1e034123947: Buffering to disk
+b1e034123947: Image successfully pushed
+eb6f69d21a16: Pushing
+eb6f69d21a16: Buffering to disk
+eb6f69d21a16: Image successfully pushed
+748f9c1f90d4: Pushing
+748f9c1f90d4: Buffering to disk
+748f9c1f90d4: Image successfully pushed
+679d506110e5: Pushing
+679d506110e5: Buffering to disk
+679d506110e5: Image successfully pushed
+1ede65333e1a: Pushing
+1ede65333e1a: Buffering to disk
+1ede65333e1a: Image successfully pushed
+fbea10a205ee: Pushing
+fbea10a205ee: Buffering to disk
+fbea10a205ee: Image successfully pushed
+54995768f022: Pushing
+54995768f022: Buffering to disk
+54995768f022: Image successfully pushed
+Pushing tag for rev [54995768f022] on {http://136.187.101.80:5000/v1/repositories/node-metrics/tags/latest}
+
+real  39.04
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker pull 136.187.101.80:5000/node-metrics:latest
+Pulling repository 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics, endpoint: http://136.187.101.80:5000/v1/
+54995768f022: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+cbde4a8607af: Pulling metadata
+cbde4a8607af: Pulling fs layer
+cbde4a8607af: Download complete
+2131eb65d199: Pulling metadata
+2131eb65d199: Pulling fs layer
+2131eb65d199: Download complete
+39b5dfd5ab2c: Pulling metadata
+39b5dfd5ab2c: Pulling fs layer
+39b5dfd5ab2c: Download complete
+ba933affd0ef: Pulling metadata
+ba933affd0ef: Pulling fs layer
+ba933affd0ef: Download complete
+99ad7e013c7b: Pulling metadata
+99ad7e013c7b: Pulling fs layer
+99ad7e013c7b: Download complete
+c55100fa2500: Pulling metadata
+c55100fa2500: Pulling fs layer
+c55100fa2500: Download complete
+2359073bd686: Pulling metadata
+2359073bd686: Pulling fs layer
+2359073bd686: Download complete
+b47bc23be934: Pulling metadata
+b47bc23be934: Pulling fs layer
+b47bc23be934: Download complete
+7fe552c5ef2d: Pulling metadata
+7fe552c5ef2d: Pulling fs layer
+7fe552c5ef2d: Download complete
+b1e034123947: Pulling metadata
+b1e034123947: Pulling fs layer
+b1e034123947: Download complete
+eb6f69d21a16: Pulling metadata
+eb6f69d21a16: Pulling fs layer
+eb6f69d21a16: Download complete
+748f9c1f90d4: Pulling metadata
+748f9c1f90d4: Pulling fs layer
+748f9c1f90d4: Download complete
+679d506110e5: Pulling metadata
+679d506110e5: Pulling fs layer
+679d506110e5: Download complete
+1ede65333e1a: Pulling metadata
+1ede65333e1a: Pulling fs layer
+1ede65333e1a: Download complete
+fbea10a205ee: Pulling metadata
+fbea10a205ee: Pulling fs layer
+fbea10a205ee: Download complete
+54995768f022: Pulling metadata
+54995768f022: Pulling fs layer
+54995768f022: Download complete
+54995768f022: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
+
+real  57.52
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/node-metrics:latest"
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+04d60bf638db        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+
+docker rm -f docker_registry
+
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+30cc32ef03e8        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/node-metrics (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+cbde4a8607af: Pushing
+cbde4a8607af: Buffering to disk
+cbde4a8607af: Image successfully pushed
+2131eb65d199: Pushing
+2131eb65d199: Buffering to disk
+2131eb65d199: Image successfully pushed
+39b5dfd5ab2c: Pushing
+39b5dfd5ab2c: Buffering to disk
+39b5dfd5ab2c: Image successfully pushed
+ba933affd0ef: Pushing
+ba933affd0ef: Buffering to disk
+ba933affd0ef: Image successfully pushed
+99ad7e013c7b: Pushing
+99ad7e013c7b: Buffering to disk
+99ad7e013c7b: Image successfully pushed
+c55100fa2500: Pushing
+c55100fa2500: Buffering to disk
+c55100fa2500: Image successfully pushed
+2359073bd686: Pushing
+2359073bd686: Buffering to disk
+2359073bd686: Image successfully pushed
+b47bc23be934: Pushing
+b47bc23be934: Buffering to disk
+b47bc23be934: Image successfully pushed
+7fe552c5ef2d: Pushing
+7fe552c5ef2d: Buffering to disk
+7fe552c5ef2d: Image successfully pushed
+b1e034123947: Pushing
+b1e034123947: Buffering to disk
+b1e034123947: Image successfully pushed
+eb6f69d21a16: Pushing
+eb6f69d21a16: Buffering to disk
+eb6f69d21a16: Image successfully pushed
+748f9c1f90d4: Pushing
+748f9c1f90d4: Buffering to disk
+748f9c1f90d4: Image successfully pushed
+679d506110e5: Pushing
+679d506110e5: Buffering to disk
+679d506110e5: Image successfully pushed
+1ede65333e1a: Pushing
+1ede65333e1a: Buffering to disk
+1ede65333e1a: Image successfully pushed
+fbea10a205ee: Pushing
+fbea10a205ee: Buffering to disk
+fbea10a205ee: Image successfully pushed
+54995768f022: Pushing
+54995768f022: Buffering to disk
+54995768f022: Image successfully pushed
+Pushing tag for rev [54995768f022] on {http://136.187.101.80:5000/v1/repositories/node-metrics/tags/latest}
+
+real  38.20
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker pull 136.187.101.80:5000/node-metrics:latest
+Pulling repository 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics, endpoint: http://136.187.101.80:5000/v1/
+54995768f022: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+cbde4a8607af: Pulling metadata
+cbde4a8607af: Pulling fs layer
+cbde4a8607af: Download complete
+2131eb65d199: Pulling metadata
+2131eb65d199: Pulling fs layer
+2131eb65d199: Download complete
+39b5dfd5ab2c: Pulling metadata
+39b5dfd5ab2c: Pulling fs layer
+39b5dfd5ab2c: Download complete
+ba933affd0ef: Pulling metadata
+ba933affd0ef: Pulling fs layer
+ba933affd0ef: Download complete
+99ad7e013c7b: Pulling metadata
+99ad7e013c7b: Pulling fs layer
+99ad7e013c7b: Download complete
+c55100fa2500: Pulling metadata
+c55100fa2500: Pulling fs layer
+c55100fa2500: Download complete
+2359073bd686: Pulling metadata
+2359073bd686: Pulling fs layer
+2359073bd686: Download complete
+b47bc23be934: Pulling metadata
+b47bc23be934: Pulling fs layer
+b47bc23be934: Download complete
+7fe552c5ef2d: Pulling metadata
+7fe552c5ef2d: Pulling fs layer
+7fe552c5ef2d: Download complete
+b1e034123947: Pulling metadata
+b1e034123947: Pulling fs layer
+b1e034123947: Download complete
+eb6f69d21a16: Pulling metadata
+eb6f69d21a16: Pulling fs layer
+eb6f69d21a16: Download complete
+748f9c1f90d4: Pulling metadata
+748f9c1f90d4: Pulling fs layer
+748f9c1f90d4: Download complete
+679d506110e5: Pulling metadata
+679d506110e5: Pulling fs layer
+679d506110e5: Download complete
+1ede65333e1a: Pulling metadata
+1ede65333e1a: Pulling fs layer
+1ede65333e1a: Download complete
+fbea10a205ee: Pulling metadata
+fbea10a205ee: Pulling fs layer
+fbea10a205ee: Download complete
+54995768f022: Pulling metadata
+54995768f022: Pulling fs layer
+54995768f022: Download complete
+54995768f022: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
+
+real  45.86
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/node-metrics:latest"
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+2855019c2678        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/node-metrics (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+cbde4a8607af: Pushing
+cbde4a8607af: Buffering to disk
+cbde4a8607af: Image successfully pushed
+2131eb65d199: Pushing
+2131eb65d199: Buffering to disk
+2131eb65d199: Image successfully pushed
+39b5dfd5ab2c: Pushing
+39b5dfd5ab2c: Buffering to disk
+39b5dfd5ab2c: Image successfully pushed
+ba933affd0ef: Pushing
+ba933affd0ef: Buffering to disk
+ba933affd0ef: Image successfully pushed
+99ad7e013c7b: Pushing
+99ad7e013c7b: Buffering to disk
+99ad7e013c7b: Image successfully pushed
+c55100fa2500: Pushing
+c55100fa2500: Buffering to disk
+c55100fa2500: Image successfully pushed
+2359073bd686: Pushing
+2359073bd686: Buffering to disk
+2359073bd686: Image successfully pushed
+b47bc23be934: Pushing
+b47bc23be934: Buffering to disk
+b47bc23be934: Image successfully pushed
+7fe552c5ef2d: Pushing
+7fe552c5ef2d: Buffering to disk
+7fe552c5ef2d: Image successfully pushed
+b1e034123947: Pushing
+b1e034123947: Buffering to disk
+b1e034123947: Image successfully pushed
+eb6f69d21a16: Pushing
+eb6f69d21a16: Buffering to disk
+eb6f69d21a16: Image successfully pushed
+748f9c1f90d4: Pushing
+748f9c1f90d4: Buffering to disk
+748f9c1f90d4: Image successfully pushed
+679d506110e5: Pushing
+679d506110e5: Buffering to disk
+679d506110e5: Image successfully pushed
+1ede65333e1a: Pushing
+1ede65333e1a: Buffering to disk
+1ede65333e1a: Image successfully pushed
+fbea10a205ee: Pushing
+fbea10a205ee: Buffering to disk
+fbea10a205ee: Image successfully pushed
+54995768f022: Pushing
+54995768f022: Buffering to disk
+54995768f022: Image successfully pushed
+Pushing tag for rev [54995768f022] on {http://136.187.101.80:5000/v1/repositories/node-metrics/tags/latest}
+
+real  40.04
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker pull 136.187.101.80:5000/node-metrics:latest
+Pulling repository 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics, endpoint: http://136.187.101.80:5000/v1/
+54995768f022: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+cbde4a8607af: Pulling metadata
+cbde4a8607af: Pulling fs layer
+cbde4a8607af: Download complete
+2131eb65d199: Pulling metadata
+2131eb65d199: Pulling fs layer
+2131eb65d199: Download complete
+39b5dfd5ab2c: Pulling metadata
+39b5dfd5ab2c: Pulling fs layer
+39b5dfd5ab2c: Download complete
+ba933affd0ef: Pulling metadata
+ba933affd0ef: Pulling fs layer
+ba933affd0ef: Download complete
+99ad7e013c7b: Pulling metadata
+99ad7e013c7b: Pulling fs layer
+99ad7e013c7b: Download complete
+c55100fa2500: Pulling metadata
+c55100fa2500: Pulling fs layer
+c55100fa2500: Download complete
+2359073bd686: Pulling metadata
+2359073bd686: Pulling fs layer
+2359073bd686: Download complete
+b47bc23be934: Pulling metadata
+b47bc23be934: Pulling fs layer
+b47bc23be934: Download complete
+7fe552c5ef2d: Pulling metadata
+7fe552c5ef2d: Pulling fs layer
+7fe552c5ef2d: Download complete
+b1e034123947: Pulling metadata
+b1e034123947: Pulling fs layer
+b1e034123947: Download complete
+eb6f69d21a16: Pulling metadata
+eb6f69d21a16: Pulling fs layer
+eb6f69d21a16: Download complete
+748f9c1f90d4: Pulling metadata
+748f9c1f90d4: Pulling fs layer
+748f9c1f90d4: Download complete
+679d506110e5: Pulling metadata
+679d506110e5: Pulling fs layer
+679d506110e5: Download complete
+1ede65333e1a: Pulling metadata
+1ede65333e1a: Pulling fs layer
+1ede65333e1a: Download complete
+fbea10a205ee: Pulling metadata
+fbea10a205ee: Pulling fs layer
+fbea10a205ee: Download complete
+54995768f022: Pulling metadata
+54995768f022: Pulling fs layer
+54995768f022: Download complete
+54995768f022: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
+
+real  46.19
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/node-metrics:latest"
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+5226d8e11d78        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/node-metrics (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+cbde4a8607af: Pushing
+cbde4a8607af: Buffering to disk
+cbde4a8607af: Image successfully pushed
+2131eb65d199: Pushing
+2131eb65d199: Buffering to disk
+2131eb65d199: Image successfully pushed
+39b5dfd5ab2c: Pushing
+39b5dfd5ab2c: Buffering to disk
+39b5dfd5ab2c: Image successfully pushed
+ba933affd0ef: Pushing
+ba933affd0ef: Buffering to disk
+ba933affd0ef: Image successfully pushed
+99ad7e013c7b: Pushing
+99ad7e013c7b: Buffering to disk
+99ad7e013c7b: Image successfully pushed
+c55100fa2500: Pushing
+c55100fa2500: Buffering to disk
+c55100fa2500: Image successfully pushed
+2359073bd686: Pushing
+2359073bd686: Buffering to disk
+2359073bd686: Image successfully pushed
+b47bc23be934: Pushing
+b47bc23be934: Buffering to disk
+b47bc23be934: Image successfully pushed
+7fe552c5ef2d: Pushing
+7fe552c5ef2d: Buffering to disk
+7fe552c5ef2d: Image successfully pushed
+b1e034123947: Pushing
+b1e034123947: Buffering to disk
+b1e034123947: Image successfully pushed
+eb6f69d21a16: Pushing
+eb6f69d21a16: Buffering to disk
+eb6f69d21a16: Image successfully pushed
+748f9c1f90d4: Pushing
+748f9c1f90d4: Buffering to disk
+748f9c1f90d4: Image successfully pushed
+679d506110e5: Pushing
+679d506110e5: Buffering to disk
+679d506110e5: Image successfully pushed
+1ede65333e1a: Pushing
+1ede65333e1a: Buffering to disk
+1ede65333e1a: Image successfully pushed
+fbea10a205ee: Pushing
+fbea10a205ee: Buffering to disk
+fbea10a205ee: Image successfully pushed
+54995768f022: Pushing
+54995768f022: Buffering to disk
+54995768f022: Image successfully pushed
+Pushing tag for rev [54995768f022] on {http://136.187.101.80:5000/v1/repositories/node-metrics/tags/latest}
+
+real  39.19
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker pull 136.187.101.80:5000/node-metrics:latest
+Pulling repository 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics, endpoint: http://136.187.101.80:5000/v1/
+54995768f022: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+cbde4a8607af: Pulling metadata
+cbde4a8607af: Pulling fs layer
+cbde4a8607af: Download complete
+2131eb65d199: Pulling metadata
+2131eb65d199: Pulling fs layer
+2131eb65d199: Download complete
+39b5dfd5ab2c: Pulling metadata
+39b5dfd5ab2c: Pulling fs layer
+39b5dfd5ab2c: Download complete
+ba933affd0ef: Pulling metadata
+ba933affd0ef: Pulling fs layer
+ba933affd0ef: Download complete
+99ad7e013c7b: Pulling metadata
+99ad7e013c7b: Pulling fs layer
+99ad7e013c7b: Download complete
+c55100fa2500: Pulling metadata
+c55100fa2500: Pulling fs layer
+c55100fa2500: Download complete
+2359073bd686: Pulling metadata
+2359073bd686: Pulling fs layer
+2359073bd686: Download complete
+b47bc23be934: Pulling metadata
+b47bc23be934: Pulling fs layer
+b47bc23be934: Download complete
+7fe552c5ef2d: Pulling metadata
+7fe552c5ef2d: Pulling fs layer
+7fe552c5ef2d: Download complete
+b1e034123947: Pulling metadata
+b1e034123947: Pulling fs layer
+b1e034123947: Download complete
+eb6f69d21a16: Pulling metadata
+eb6f69d21a16: Pulling fs layer
+eb6f69d21a16: Download complete
+748f9c1f90d4: Pulling metadata
+748f9c1f90d4: Pulling fs layer
+748f9c1f90d4: Download complete
+679d506110e5: Pulling metadata
+679d506110e5: Pulling fs layer
+679d506110e5: Download complete
+1ede65333e1a: Pulling metadata
+1ede65333e1a: Pulling fs layer
+1ede65333e1a: Download complete
+fbea10a205ee: Pulling metadata
+fbea10a205ee: Pulling fs layer
+fbea10a205ee: Download complete
+54995768f022: Pulling metadata
+54995768f022: Pulling fs layer
+54995768f022: Download complete
+54995768f022: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
+
+real  47.49
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/node-metrics:latest"
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+d18fe85617b9        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/node-metrics (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+cbde4a8607af: Pushing
+cbde4a8607af: Buffering to disk
+cbde4a8607af: Image successfully pushed
+2131eb65d199: Pushing
+2131eb65d199: Buffering to disk
+2131eb65d199: Image successfully pushed
+39b5dfd5ab2c: Pushing
+39b5dfd5ab2c: Buffering to disk
+39b5dfd5ab2c: Image successfully pushed
+ba933affd0ef: Pushing
+ba933affd0ef: Buffering to disk
+ba933affd0ef: Image successfully pushed
+99ad7e013c7b: Pushing
+99ad7e013c7b: Buffering to disk
+99ad7e013c7b: Image successfully pushed
+c55100fa2500: Pushing
+c55100fa2500: Buffering to disk
+c55100fa2500: Image successfully pushed
+2359073bd686: Pushing
+2359073bd686: Buffering to disk
+2359073bd686: Image successfully pushed
+b47bc23be934: Pushing
+b47bc23be934: Buffering to disk
+b47bc23be934: Image successfully pushed
+7fe552c5ef2d: Pushing
+7fe552c5ef2d: Buffering to disk
+7fe552c5ef2d: Image successfully pushed
+b1e034123947: Pushing
+b1e034123947: Buffering to disk
+b1e034123947: Image successfully pushed
+eb6f69d21a16: Pushing
+eb6f69d21a16: Buffering to disk
+eb6f69d21a16: Image successfully pushed
+748f9c1f90d4: Pushing
+748f9c1f90d4: Buffering to disk
+748f9c1f90d4: Image successfully pushed
+679d506110e5: Pushing
+679d506110e5: Buffering to disk
+679d506110e5: Image successfully pushed
+1ede65333e1a: Pushing
+1ede65333e1a: Buffering to disk
+1ede65333e1a: Image successfully pushed
+fbea10a205ee: Pushing
+fbea10a205ee: Buffering to disk
+fbea10a205ee: Image successfully pushed
+54995768f022: Pushing
+54995768f022: Buffering to disk
+54995768f022: Image successfully pushed
+Pushing tag for rev [54995768f022] on {http://136.187.101.80:5000/v1/repositories/node-metrics/tags/latest}
+
+real  40.08
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker pull 136.187.101.80:5000/node-metrics:latest
+Pulling repository 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics, endpoint: http://136.187.101.80:5000/v1/
+54995768f022: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+cbde4a8607af: Pulling metadata
+cbde4a8607af: Pulling fs layer
+cbde4a8607af: Download complete
+2131eb65d199: Pulling metadata
+2131eb65d199: Pulling fs layer
+2131eb65d199: Download complete
+39b5dfd5ab2c: Pulling metadata
+39b5dfd5ab2c: Pulling fs layer
+39b5dfd5ab2c: Download complete
+ba933affd0ef: Pulling metadata
+ba933affd0ef: Pulling fs layer
+ba933affd0ef: Download complete
+99ad7e013c7b: Pulling metadata
+99ad7e013c7b: Pulling fs layer
+99ad7e013c7b: Download complete
+c55100fa2500: Pulling metadata
+c55100fa2500: Pulling fs layer
+c55100fa2500: Download complete
+2359073bd686: Pulling metadata
+2359073bd686: Pulling fs layer
+2359073bd686: Download complete
+b47bc23be934: Pulling metadata
+b47bc23be934: Pulling fs layer
+b47bc23be934: Download complete
+7fe552c5ef2d: Pulling metadata
+7fe552c5ef2d: Pulling fs layer
+7fe552c5ef2d: Download complete
+b1e034123947: Pulling metadata
+b1e034123947: Pulling fs layer
+b1e034123947: Download complete
+eb6f69d21a16: Pulling metadata
+eb6f69d21a16: Pulling fs layer
+eb6f69d21a16: Download complete
+748f9c1f90d4: Pulling metadata
+748f9c1f90d4: Pulling fs layer
+748f9c1f90d4: Download complete
+679d506110e5: Pulling metadata
+679d506110e5: Pulling fs layer
+679d506110e5: Download complete
+1ede65333e1a: Pulling metadata
+1ede65333e1a: Pulling fs layer
+1ede65333e1a: Download complete
+fbea10a205ee: Pulling metadata
+fbea10a205ee: Pulling fs layer
+fbea10a205ee: Download complete
+54995768f022: Pulling metadata
+54995768f022: Pulling fs layer
+54995768f022: Download complete
+54995768f022: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
+
+real  46.04
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/node-metrics:latest"
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+0b62c7c1aa6e        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+
+docker rm -f docker_registry
+
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+443f4740452e        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/node-metrics (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+cbde4a8607af: Pushing
+cbde4a8607af: Buffering to disk
+cbde4a8607af: Image successfully pushed
+2131eb65d199: Pushing
+2131eb65d199: Buffering to disk
+2131eb65d199: Image successfully pushed
+39b5dfd5ab2c: Pushing
+39b5dfd5ab2c: Buffering to disk
+39b5dfd5ab2c: Image successfully pushed
+ba933affd0ef: Pushing
+ba933affd0ef: Buffering to disk
+ba933affd0ef: Image successfully pushed
+99ad7e013c7b: Pushing
+99ad7e013c7b: Buffering to disk
+99ad7e013c7b: Image successfully pushed
+c55100fa2500: Pushing
+c55100fa2500: Buffering to disk
+c55100fa2500: Image successfully pushed
+2359073bd686: Pushing
+2359073bd686: Buffering to disk
+2359073bd686: Image successfully pushed
+b47bc23be934: Pushing
+b47bc23be934: Buffering to disk
+b47bc23be934: Image successfully pushed
+7fe552c5ef2d: Pushing
+7fe552c5ef2d: Buffering to disk
+7fe552c5ef2d: Image successfully pushed
+b1e034123947: Pushing
+b1e034123947: Buffering to disk
+b1e034123947: Image successfully pushed
+eb6f69d21a16: Pushing
+eb6f69d21a16: Buffering to disk
+eb6f69d21a16: Image successfully pushed
+748f9c1f90d4: Pushing
+748f9c1f90d4: Buffering to disk
+748f9c1f90d4: Image successfully pushed
+679d506110e5: Pushing
+679d506110e5: Buffering to disk
+679d506110e5: Image successfully pushed
+1ede65333e1a: Pushing
+1ede65333e1a: Buffering to disk
+1ede65333e1a: Image successfully pushed
+fbea10a205ee: Pushing
+fbea10a205ee: Buffering to disk
+fbea10a205ee: Image successfully pushed
+54995768f022: Pushing
+54995768f022: Buffering to disk
+54995768f022: Image successfully pushed
+Pushing tag for rev [54995768f022] on {http://136.187.101.80:5000/v1/repositories/node-metrics/tags/latest}
+
+real  39.47
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker pull 136.187.101.80:5000/node-metrics:latest
+Pulling repository 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics, endpoint: http://136.187.101.80:5000/v1/
+54995768f022: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+cbde4a8607af: Pulling metadata
+cbde4a8607af: Pulling fs layer
+cbde4a8607af: Download complete
+2131eb65d199: Pulling metadata
+2131eb65d199: Pulling fs layer
+2131eb65d199: Download complete
+39b5dfd5ab2c: Pulling metadata
+39b5dfd5ab2c: Pulling fs layer
+39b5dfd5ab2c: Download complete
+ba933affd0ef: Pulling metadata
+ba933affd0ef: Pulling fs layer
+ba933affd0ef: Download complete
+99ad7e013c7b: Pulling metadata
+99ad7e013c7b: Pulling fs layer
+99ad7e013c7b: Download complete
+c55100fa2500: Pulling metadata
+c55100fa2500: Pulling fs layer
+c55100fa2500: Download complete
+2359073bd686: Pulling metadata
+2359073bd686: Pulling fs layer
+2359073bd686: Download complete
+b47bc23be934: Pulling metadata
+b47bc23be934: Pulling fs layer
+b47bc23be934: Download complete
+7fe552c5ef2d: Pulling metadata
+7fe552c5ef2d: Pulling fs layer
+7fe552c5ef2d: Download complete
+b1e034123947: Pulling metadata
+b1e034123947: Pulling fs layer
+b1e034123947: Download complete
+eb6f69d21a16: Pulling metadata
+eb6f69d21a16: Pulling fs layer
+eb6f69d21a16: Download complete
+748f9c1f90d4: Pulling metadata
+748f9c1f90d4: Pulling fs layer
+748f9c1f90d4: Download complete
+679d506110e5: Pulling metadata
+679d506110e5: Pulling fs layer
+679d506110e5: Download complete
+1ede65333e1a: Pulling metadata
+1ede65333e1a: Pulling fs layer
+1ede65333e1a: Download complete
+fbea10a205ee: Pulling metadata
+fbea10a205ee: Pulling fs layer
+fbea10a205ee: Download complete
+54995768f022: Pulling metadata
+54995768f022: Pulling fs layer
+54995768f022: Download complete
+54995768f022: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
+
+real  45.91
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/node-metrics:latest"
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+d64fd5e7c65c        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/node-metrics (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+cbde4a8607af: Pushing
+cbde4a8607af: Buffering to disk
+cbde4a8607af: Image successfully pushed
+2131eb65d199: Pushing
+2131eb65d199: Buffering to disk
+2131eb65d199: Image successfully pushed
+39b5dfd5ab2c: Pushing
+39b5dfd5ab2c: Buffering to disk
+39b5dfd5ab2c: Image successfully pushed
+ba933affd0ef: Pushing
+ba933affd0ef: Buffering to disk
+ba933affd0ef: Image successfully pushed
+99ad7e013c7b: Pushing
+99ad7e013c7b: Buffering to disk
+99ad7e013c7b: Image successfully pushed
+c55100fa2500: Pushing
+c55100fa2500: Buffering to disk
+c55100fa2500: Image successfully pushed
+2359073bd686: Pushing
+2359073bd686: Buffering to disk
+2359073bd686: Image successfully pushed
+b47bc23be934: Pushing
+b47bc23be934: Buffering to disk
+b47bc23be934: Image successfully pushed
+7fe552c5ef2d: Pushing
+7fe552c5ef2d: Buffering to disk
+7fe552c5ef2d: Image successfully pushed
+b1e034123947: Pushing
+b1e034123947: Buffering to disk
+b1e034123947: Image successfully pushed
+eb6f69d21a16: Pushing
+eb6f69d21a16: Buffering to disk
+eb6f69d21a16: Image successfully pushed
+748f9c1f90d4: Pushing
+748f9c1f90d4: Buffering to disk
+748f9c1f90d4: Image successfully pushed
+679d506110e5: Pushing
+679d506110e5: Buffering to disk
+679d506110e5: Image successfully pushed
+1ede65333e1a: Pushing
+1ede65333e1a: Buffering to disk
+1ede65333e1a: Image successfully pushed
+fbea10a205ee: Pushing
+fbea10a205ee: Buffering to disk
+fbea10a205ee: Image successfully pushed
+54995768f022: Pushing
+54995768f022: Buffering to disk
+54995768f022: Image successfully pushed
+Pushing tag for rev [54995768f022] on {http://136.187.101.80:5000/v1/repositories/node-metrics/tags/latest}
+
+real  39.71
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker pull 136.187.101.80:5000/node-metrics:latest
+Pulling repository 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics, endpoint: http://136.187.101.80:5000/v1/
+54995768f022: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+cbde4a8607af: Pulling metadata
+cbde4a8607af: Pulling fs layer
+cbde4a8607af: Download complete
+2131eb65d199: Pulling metadata
+2131eb65d199: Pulling fs layer
+2131eb65d199: Download complete
+39b5dfd5ab2c: Pulling metadata
+39b5dfd5ab2c: Pulling fs layer
+39b5dfd5ab2c: Download complete
+ba933affd0ef: Pulling metadata
+ba933affd0ef: Pulling fs layer
+ba933affd0ef: Download complete
+99ad7e013c7b: Pulling metadata
+99ad7e013c7b: Pulling fs layer
+99ad7e013c7b: Download complete
+c55100fa2500: Pulling metadata
+c55100fa2500: Pulling fs layer
+c55100fa2500: Download complete
+2359073bd686: Pulling metadata
+2359073bd686: Pulling fs layer
+2359073bd686: Download complete
+b47bc23be934: Pulling metadata
+b47bc23be934: Pulling fs layer
+b47bc23be934: Download complete
+7fe552c5ef2d: Pulling metadata
+7fe552c5ef2d: Pulling fs layer
+7fe552c5ef2d: Download complete
+b1e034123947: Pulling metadata
+b1e034123947: Pulling fs layer
+b1e034123947: Download complete
+eb6f69d21a16: Pulling metadata
+eb6f69d21a16: Pulling fs layer
+eb6f69d21a16: Download complete
+748f9c1f90d4: Pulling metadata
+748f9c1f90d4: Pulling fs layer
+748f9c1f90d4: Download complete
+679d506110e5: Pulling metadata
+679d506110e5: Pulling fs layer
+679d506110e5: Download complete
+1ede65333e1a: Pulling metadata
+1ede65333e1a: Pulling fs layer
+1ede65333e1a: Download complete
+fbea10a205ee: Pulling metadata
+fbea10a205ee: Pulling fs layer
+fbea10a205ee: Download complete
+54995768f022: Pulling metadata
+54995768f022: Pulling fs layer
+54995768f022: Download complete
+54995768f022: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
+
+real  45.43
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/node-metrics:latest"
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b2816b417f55        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/node-metrics (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+cbde4a8607af: Pushing
+cbde4a8607af: Buffering to disk
+cbde4a8607af: Image successfully pushed
+2131eb65d199: Pushing
+2131eb65d199: Buffering to disk
+2131eb65d199: Image successfully pushed
+39b5dfd5ab2c: Pushing
+39b5dfd5ab2c: Buffering to disk
+39b5dfd5ab2c: Image successfully pushed
+ba933affd0ef: Pushing
+ba933affd0ef: Buffering to disk
+ba933affd0ef: Image successfully pushed
+99ad7e013c7b: Pushing
+99ad7e013c7b: Buffering to disk
+99ad7e013c7b: Image successfully pushed
+c55100fa2500: Pushing
+c55100fa2500: Buffering to disk
+c55100fa2500: Image successfully pushed
+2359073bd686: Pushing
+2359073bd686: Buffering to disk
+2359073bd686: Image successfully pushed
+b47bc23be934: Pushing
+b47bc23be934: Buffering to disk
+b47bc23be934: Image successfully pushed
+7fe552c5ef2d: Pushing
+7fe552c5ef2d: Buffering to disk
+7fe552c5ef2d: Image successfully pushed
+b1e034123947: Pushing
+b1e034123947: Buffering to disk
+b1e034123947: Image successfully pushed
+eb6f69d21a16: Pushing
+eb6f69d21a16: Buffering to disk
+eb6f69d21a16: Image successfully pushed
+748f9c1f90d4: Pushing
+748f9c1f90d4: Buffering to disk
+748f9c1f90d4: Image successfully pushed
+679d506110e5: Pushing
+679d506110e5: Buffering to disk
+679d506110e5: Image successfully pushed
+1ede65333e1a: Pushing
+1ede65333e1a: Buffering to disk
+1ede65333e1a: Image successfully pushed
+fbea10a205ee: Pushing
+fbea10a205ee: Buffering to disk
+fbea10a205ee: Image successfully pushed
+54995768f022: Pushing
+54995768f022: Buffering to disk
+54995768f022: Image successfully pushed
+Pushing tag for rev [54995768f022] on {http://136.187.101.80:5000/v1/repositories/node-metrics/tags/latest}
+
+real  39.39
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker pull 136.187.101.80:5000/node-metrics:latest
+Pulling repository 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics, endpoint: http://136.187.101.80:5000/v1/
+54995768f022: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+cbde4a8607af: Pulling metadata
+cbde4a8607af: Pulling fs layer
+cbde4a8607af: Download complete
+2131eb65d199: Pulling metadata
+2131eb65d199: Pulling fs layer
+2131eb65d199: Download complete
+39b5dfd5ab2c: Pulling metadata
+39b5dfd5ab2c: Pulling fs layer
+39b5dfd5ab2c: Download complete
+ba933affd0ef: Pulling metadata
+ba933affd0ef: Pulling fs layer
+ba933affd0ef: Download complete
+99ad7e013c7b: Pulling metadata
+99ad7e013c7b: Pulling fs layer
+99ad7e013c7b: Download complete
+c55100fa2500: Pulling metadata
+c55100fa2500: Pulling fs layer
+c55100fa2500: Download complete
+2359073bd686: Pulling metadata
+2359073bd686: Pulling fs layer
+2359073bd686: Download complete
+b47bc23be934: Pulling metadata
+b47bc23be934: Pulling fs layer
+b47bc23be934: Download complete
+7fe552c5ef2d: Pulling metadata
+7fe552c5ef2d: Pulling fs layer
+7fe552c5ef2d: Download complete
+b1e034123947: Pulling metadata
+b1e034123947: Pulling fs layer
+b1e034123947: Download complete
+eb6f69d21a16: Pulling metadata
+eb6f69d21a16: Pulling fs layer
+eb6f69d21a16: Download complete
+748f9c1f90d4: Pulling metadata
+748f9c1f90d4: Pulling fs layer
+748f9c1f90d4: Download complete
+679d506110e5: Pulling metadata
+679d506110e5: Pulling fs layer
+679d506110e5: Download complete
+1ede65333e1a: Pulling metadata
+1ede65333e1a: Pulling fs layer
+1ede65333e1a: Download complete
+fbea10a205ee: Pulling metadata
+fbea10a205ee: Pulling fs layer
+fbea10a205ee: Download complete
+54995768f022: Pulling metadata
+54995768f022: Pulling fs layer
+54995768f022: Download complete
+54995768f022: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
+
+real  46.27
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/node-metrics:latest"
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a9aef64f0a27        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/node-metrics (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+cbde4a8607af: Pushing
+cbde4a8607af: Buffering to disk
+cbde4a8607af: Image successfully pushed
+2131eb65d199: Pushing
+2131eb65d199: Buffering to disk
+2131eb65d199: Image successfully pushed
+39b5dfd5ab2c: Pushing
+39b5dfd5ab2c: Buffering to disk
+39b5dfd5ab2c: Image successfully pushed
+ba933affd0ef: Pushing
+ba933affd0ef: Buffering to disk
+ba933affd0ef: Image successfully pushed
+99ad7e013c7b: Pushing
+99ad7e013c7b: Buffering to disk
+99ad7e013c7b: Image successfully pushed
+c55100fa2500: Pushing
+c55100fa2500: Buffering to disk
+c55100fa2500: Image successfully pushed
+2359073bd686: Pushing
+2359073bd686: Buffering to disk
+2359073bd686: Image successfully pushed
+b47bc23be934: Pushing
+b47bc23be934: Buffering to disk
+b47bc23be934: Image successfully pushed
+7fe552c5ef2d: Pushing
+7fe552c5ef2d: Buffering to disk
+7fe552c5ef2d: Image successfully pushed
+b1e034123947: Pushing
+b1e034123947: Buffering to disk
+b1e034123947: Image successfully pushed
+eb6f69d21a16: Pushing
+eb6f69d21a16: Buffering to disk
+eb6f69d21a16: Image successfully pushed
+748f9c1f90d4: Pushing
+748f9c1f90d4: Buffering to disk
+748f9c1f90d4: Image successfully pushed
+679d506110e5: Pushing
+679d506110e5: Buffering to disk
+679d506110e5: Image successfully pushed
+1ede65333e1a: Pushing
+1ede65333e1a: Buffering to disk
+1ede65333e1a: Image successfully pushed
+fbea10a205ee: Pushing
+fbea10a205ee: Buffering to disk
+fbea10a205ee: Image successfully pushed
+54995768f022: Pushing
+54995768f022: Buffering to disk
+54995768f022: Image successfully pushed
+Pushing tag for rev [54995768f022] on {http://136.187.101.80:5000/v1/repositories/node-metrics/tags/latest}
+
+real  39.17
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker pull 136.187.101.80:5000/node-metrics:latest
+Pulling repository 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics, endpoint: http://136.187.101.80:5000/v1/
+54995768f022: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+cbde4a8607af: Pulling metadata
+cbde4a8607af: Pulling fs layer
+cbde4a8607af: Download complete
+2131eb65d199: Pulling metadata
+2131eb65d199: Pulling fs layer
+2131eb65d199: Download complete
+39b5dfd5ab2c: Pulling metadata
+39b5dfd5ab2c: Pulling fs layer
+39b5dfd5ab2c: Download complete
+ba933affd0ef: Pulling metadata
+ba933affd0ef: Pulling fs layer
+ba933affd0ef: Download complete
+99ad7e013c7b: Pulling metadata
+99ad7e013c7b: Pulling fs layer
+99ad7e013c7b: Download complete
+c55100fa2500: Pulling metadata
+c55100fa2500: Pulling fs layer
+c55100fa2500: Download complete
+2359073bd686: Pulling metadata
+2359073bd686: Pulling fs layer
+2359073bd686: Download complete
+b47bc23be934: Pulling metadata
+b47bc23be934: Pulling fs layer
+b47bc23be934: Download complete
+7fe552c5ef2d: Pulling metadata
+7fe552c5ef2d: Pulling fs layer
+7fe552c5ef2d: Download complete
+b1e034123947: Pulling metadata
+b1e034123947: Pulling fs layer
+b1e034123947: Download complete
+eb6f69d21a16: Pulling metadata
+eb6f69d21a16: Pulling fs layer
+eb6f69d21a16: Download complete
+748f9c1f90d4: Pulling metadata
+748f9c1f90d4: Pulling fs layer
+748f9c1f90d4: Download complete
+679d506110e5: Pulling metadata
+679d506110e5: Pulling fs layer
+679d506110e5: Download complete
+1ede65333e1a: Pulling metadata
+1ede65333e1a: Pulling fs layer
+1ede65333e1a: Download complete
+fbea10a205ee: Pulling metadata
+fbea10a205ee: Pulling fs layer
+fbea10a205ee: Download complete
+54995768f022: Pulling metadata
+54995768f022: Pulling fs layer
+54995768f022: Download complete
+54995768f022: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
+
+real  46.19
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/node-metrics:latest"
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+22281a2371ba        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+
+docker rm -f docker_registry
+
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 node-metrics
+
+docker images
+kiwenlau/node-metrics           latest              54995768f022        5 months ago        249.8 MB
+
+docker tag kiwenlau/node-metrics:latest 136.187.101.80:5000/node-metrics:latest
+
+docker images
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+kiwenlau/node-metrics              latest              54995768f022        5 months ago        249.8 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c2cc3d18b334        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/node-metrics:latest
+The push refers to a repository [136.187.101.80:5000/node-metrics] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/node-metrics (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+1c9383292a8f: Pushing
+1c9383292a8f: Buffering to disk
+1c9383292a8f: Image successfully pushed
+9942dd43ff21: Pushing
+9942dd43ff21: Buffering to disk
+9942dd43ff21: Image successfully pushed
+d92c3c92fa73: Pushing
+d92c3c92fa73: Buffering to disk
+d92c3c92fa73: Image successfully pushed
+0ea0d582fd90: Pushing
+0ea0d582fd90: Buffering to disk
+0ea0d582fd90: Image successfully pushed
+cc58e55aa5a5: Pushing
+cc58e55aa5a5: Buffering to disk
+cc58e55aa5a5: Image successfully pushed
+c4ff7513909d: Pushing
+c4ff7513909d: Buffering to disk
+c4ff7513909d: Image successfully pushed
+cbde4a8607af: Pushing
+cbde4a8607af: Buffering to disk
+cbde4a8607af: Image successfully pushed
+2131eb65d199: Pushing
+2131eb65d199: Buffering to disk
+2131eb65d199: Image successfully pushed
+39b5dfd5ab2c: Pushing
+39b5dfd5ab2c: Buffering to disk
+39b5dfd5ab2c: Image successfully pushed
+ba933affd0ef: Pushing
+ba933affd0ef: Buffering to disk
+ba933affd0ef: Image successfully pushed
+99ad7e013c7b: Pushing
+99ad7e013c7b: Buffering to disk
+99ad7e013c7b: Image successfully pushed
+c55100fa2500: Pushing
+c55100fa2500: Buffering to disk
+c55100fa2500: Image successfully pushed
+2359073bd686: Pushing
+2359073bd686: Buffering to disk
+2359073bd686: Image successfully pushed
+b47bc23be934: Pushing
+b47bc23be934: Buffering to disk
+b47bc23be934: Image successfully pushed
+7fe552c5ef2d: Pushing
+7fe552c5ef2d: Buffering to disk
+7fe552c5ef2d: Image successfully pushed
+b1e034123947: Pushing
+b1e034123947: Buffering to disk
+b1e034123947: Image successfully pushed
+eb6f69d21a16: Pushing
+eb6f69d21a16: Buffering to disk
+eb6f69d21a16: Image successfully pushed
+748f9c1f90d4: Pushing
+748f9c1f90d4: Buffering to disk
+748f9c1f90d4: Image successfully pushed
+679d506110e5: Pushing
+679d506110e5: Buffering to disk
+679d506110e5: Image successfully pushed
+1ede65333e1a: Pushing
+1ede65333e1a: Buffering to disk
+1ede65333e1a: Image successfully pushed
+fbea10a205ee: Pushing
+fbea10a205ee: Buffering to disk
+fbea10a205ee: Image successfully pushed
+54995768f022: Pushing
+54995768f022: Buffering to disk
+54995768f022: Image successfully pushed
+Pushing tag for rev [54995768f022] on {http://136.187.101.80:5000/v1/repositories/node-metrics/tags/latest}
+
+real  40.44
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker pull 136.187.101.80:5000/node-metrics:latest
+Pulling repository 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics
+54995768f022: Pulling image (latest) from 136.187.101.80:5000/node-metrics, endpoint: http://136.187.101.80:5000/v1/
+54995768f022: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+1c9383292a8f: Pulling metadata
+1c9383292a8f: Pulling fs layer
+1c9383292a8f: Download complete
+9942dd43ff21: Pulling metadata
+9942dd43ff21: Pulling fs layer
+9942dd43ff21: Download complete
+d92c3c92fa73: Pulling metadata
+d92c3c92fa73: Pulling fs layer
+d92c3c92fa73: Download complete
+0ea0d582fd90: Pulling metadata
+0ea0d582fd90: Pulling fs layer
+0ea0d582fd90: Download complete
+cc58e55aa5a5: Pulling metadata
+cc58e55aa5a5: Pulling fs layer
+cc58e55aa5a5: Download complete
+c4ff7513909d: Pulling metadata
+c4ff7513909d: Pulling fs layer
+c4ff7513909d: Download complete
+cbde4a8607af: Pulling metadata
+cbde4a8607af: Pulling fs layer
+cbde4a8607af: Download complete
+2131eb65d199: Pulling metadata
+2131eb65d199: Pulling fs layer
+2131eb65d199: Download complete
+39b5dfd5ab2c: Pulling metadata
+39b5dfd5ab2c: Pulling fs layer
+39b5dfd5ab2c: Download complete
+ba933affd0ef: Pulling metadata
+ba933affd0ef: Pulling fs layer
+ba933affd0ef: Download complete
+99ad7e013c7b: Pulling metadata
+99ad7e013c7b: Pulling fs layer
+99ad7e013c7b: Download complete
+c55100fa2500: Pulling metadata
+c55100fa2500: Pulling fs layer
+c55100fa2500: Download complete
+2359073bd686: Pulling metadata
+2359073bd686: Pulling fs layer
+2359073bd686: Download complete
+b47bc23be934: Pulling metadata
+b47bc23be934: Pulling fs layer
+b47bc23be934: Download complete
+7fe552c5ef2d: Pulling metadata
+7fe552c5ef2d: Pulling fs layer
+7fe552c5ef2d: Download complete
+b1e034123947: Pulling metadata
+b1e034123947: Pulling fs layer
+b1e034123947: Download complete
+eb6f69d21a16: Pulling metadata
+eb6f69d21a16: Pulling fs layer
+eb6f69d21a16: Download complete
+748f9c1f90d4: Pulling metadata
+748f9c1f90d4: Pulling fs layer
+748f9c1f90d4: Download complete
+679d506110e5: Pulling metadata
+679d506110e5: Pulling fs layer
+679d506110e5: Download complete
+1ede65333e1a: Pulling metadata
+1ede65333e1a: Pulling fs layer
+1ede65333e1a: Download complete
+fbea10a205ee: Pulling metadata
+fbea10a205ee: Pulling fs layer
+fbea10a205ee: Download complete
+54995768f022: Pulling metadata
+54995768f022: Pulling fs layer
+54995768f022: Download complete
+54995768f022: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/node-metrics:latest
+
+real  45.68
+
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+136.187.101.80:5000/node-metrics   latest              54995768f022        5 months ago        249.8 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/node-metrics:latest"
+ssh kai@54.225.249.141 "docker images | grep node-metrics"
+
+docker rm -f docker_registry
+
+end date: Thu Aug 13 01:16:17 JST 2015
+
+

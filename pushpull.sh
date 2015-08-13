@@ -15,8 +15,8 @@ remoteip=$2
 imagename=$3
 
 # set registry version
-#registryversion=0.9.1
-registryversion=2.0.1
+registryversion=0.9.1
+#registryversion=2.0.1
 
 # set image tag
 imagetag=latest
