@@ -1,0 +1,1945 @@
+
+pullpush benchmark: transfer multilevel image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Fri Aug 14 02:12:56 JST 2015
+
+sudo docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+sudo docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+8a843973e432        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+The push refers to a repository [136.187.101.80:5000/multilevel] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/multilevel (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+848d84b4b2ab: Pushing
+848d84b4b2ab: Buffering to disk
+848d84b4b2ab: Image successfully pushed
+71d9d77ae89e: Pushing
+71d9d77ae89e: Buffering to disk
+71d9d77ae89e: Image successfully pushed
+fb42cf21d5c1: Pushing
+fb42cf21d5c1: Buffering to disk
+fb42cf21d5c1: Image successfully pushed
+1bf6265ac0c9: Pushing
+1bf6265ac0c9: Buffering to disk
+1bf6265ac0c9: Image successfully pushed
+813921ad49c7: Pushing
+813921ad49c7: Buffering to disk
+813921ad49c7: Image successfully pushed
+fc183b81cd8a: Pushing
+fc183b81cd8a: Buffering to disk
+fc183b81cd8a: Image successfully pushed
+1edc7d40fb01: Pushing
+1edc7d40fb01: Buffering to disk
+1edc7d40fb01: Image successfully pushed
+69667ea51ce9: Pushing
+69667ea51ce9: Buffering to disk
+69667ea51ce9: Image successfully pushed
+dad131381a54: Pushing
+dad131381a54: Buffering to disk
+dad131381a54: Image successfully pushed
+3dacd6758f14: Pushing
+3dacd6758f14: Buffering to disk
+3dacd6758f14: Image successfully pushed
+7d4bad739229: Pushing
+7d4bad739229: Buffering to disk
+7d4bad739229: Image successfully pushed
+763c0a69bca6: Pushing
+763c0a69bca6: Buffering to disk
+763c0a69bca6: Image successfully pushed
+4fff97e3b983: Pushing
+4fff97e3b983: Buffering to disk
+4fff97e3b983: Image successfully pushed
+98f274d6ad68: Pushing
+98f274d6ad68: Buffering to disk
+98f274d6ad68: Image successfully pushed
+8c41351f802d: Pushing
+8c41351f802d: Buffering to disk
+8c41351f802d: Image successfully pushed
+c543de9fa973: Pushing
+c543de9fa973: Buffering to disk
+c543de9fa973: Image successfully pushed
+1675cb5623b7: Pushing
+1675cb5623b7: Buffering to disk
+1675cb5623b7: Image successfully pushed
+d7683dce04c0: Pushing
+d7683dce04c0: Buffering to disk
+d7683dce04c0: Image successfully pushed
+a23c4b097a25: Pushing
+a23c4b097a25: Buffering to disk
+a23c4b097a25: Image successfully pushed
+732f95431f4f: Pushing
+732f95431f4f: Buffering to disk
+732f95431f4f: Image successfully pushed
+c243118e72a4: Pushing
+c243118e72a4: Buffering to disk
+c243118e72a4: Image successfully pushed
+a2fb88a60a2a: Pushing
+a2fb88a60a2a: Buffering to disk
+a2fb88a60a2a: Image successfully pushed
+ec168b54c5e5: Pushing
+ec168b54c5e5: Buffering to disk
+ec168b54c5e5: Image successfully pushed
+Pushing tag for rev [ec168b54c5e5] on {http://136.187.101.80:5000/v1/repositories/multilevel/tags/latest}
+
+real  66.31
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker pull 136.187.101.80:5000/multilevel:latest
+Pulling repository 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel, endpoint: http://136.187.101.80:5000/v1/
+ec168b54c5e5: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+848d84b4b2ab: Pulling metadata
+848d84b4b2ab: Pulling fs layer
+848d84b4b2ab: Download complete
+71d9d77ae89e: Pulling metadata
+71d9d77ae89e: Pulling fs layer
+71d9d77ae89e: Download complete
+fb42cf21d5c1: Pulling metadata
+fb42cf21d5c1: Pulling fs layer
+fb42cf21d5c1: Download complete
+1bf6265ac0c9: Pulling metadata
+1bf6265ac0c9: Pulling fs layer
+1bf6265ac0c9: Download complete
+813921ad49c7: Pulling metadata
+813921ad49c7: Pulling fs layer
+813921ad49c7: Download complete
+fc183b81cd8a: Pulling metadata
+fc183b81cd8a: Pulling fs layer
+fc183b81cd8a: Download complete
+1edc7d40fb01: Pulling metadata
+1edc7d40fb01: Pulling fs layer
+1edc7d40fb01: Download complete
+69667ea51ce9: Pulling metadata
+69667ea51ce9: Pulling fs layer
+69667ea51ce9: Download complete
+dad131381a54: Pulling metadata
+dad131381a54: Pulling fs layer
+dad131381a54: Download complete
+3dacd6758f14: Pulling metadata
+3dacd6758f14: Pulling fs layer
+3dacd6758f14: Download complete
+7d4bad739229: Pulling metadata
+7d4bad739229: Pulling fs layer
+7d4bad739229: Download complete
+763c0a69bca6: Pulling metadata
+763c0a69bca6: Pulling fs layer
+763c0a69bca6: Download complete
+4fff97e3b983: Pulling metadata
+4fff97e3b983: Pulling fs layer
+4fff97e3b983: Download complete
+98f274d6ad68: Pulling metadata
+98f274d6ad68: Pulling fs layer
+98f274d6ad68: Download complete
+8c41351f802d: Pulling metadata
+8c41351f802d: Pulling fs layer
+8c41351f802d: Download complete
+c543de9fa973: Pulling metadata
+c543de9fa973: Pulling fs layer
+c543de9fa973: Download complete
+1675cb5623b7: Pulling metadata
+1675cb5623b7: Pulling fs layer
+1675cb5623b7: Download complete
+d7683dce04c0: Pulling metadata
+d7683dce04c0: Pulling fs layer
+d7683dce04c0: Download complete
+a23c4b097a25: Pulling metadata
+a23c4b097a25: Pulling fs layer
+a23c4b097a25: Download complete
+732f95431f4f: Pulling metadata
+732f95431f4f: Pulling fs layer
+732f95431f4f: Download complete
+c243118e72a4: Pulling metadata
+c243118e72a4: Pulling fs layer
+c243118e72a4: Download complete
+a2fb88a60a2a: Pulling metadata
+a2fb88a60a2a: Pulling fs layer
+a2fb88a60a2a: Download complete
+ec168b54c5e5: Pulling metadata
+ec168b54c5e5: Pulling fs layer
+ec168b54c5e5: Download complete
+ec168b54c5e5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/multilevel:latest
+
+real  61.52
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/multilevel:latest"
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+32f0e02847a1        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+
+docker rm -f docker_registry
+
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+195d72c7fc49        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+The push refers to a repository [136.187.101.80:5000/multilevel] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/multilevel (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+848d84b4b2ab: Pushing
+848d84b4b2ab: Buffering to disk
+848d84b4b2ab: Image successfully pushed
+71d9d77ae89e: Pushing
+71d9d77ae89e: Buffering to disk
+71d9d77ae89e: Image successfully pushed
+fb42cf21d5c1: Pushing
+fb42cf21d5c1: Buffering to disk
+fb42cf21d5c1: Image successfully pushed
+1bf6265ac0c9: Pushing
+1bf6265ac0c9: Buffering to disk
+1bf6265ac0c9: Image successfully pushed
+813921ad49c7: Pushing
+813921ad49c7: Buffering to disk
+813921ad49c7: Image successfully pushed
+fc183b81cd8a: Pushing
+fc183b81cd8a: Buffering to disk
+fc183b81cd8a: Image successfully pushed
+1edc7d40fb01: Pushing
+1edc7d40fb01: Buffering to disk
+1edc7d40fb01: Image successfully pushed
+69667ea51ce9: Pushing
+69667ea51ce9: Buffering to disk
+69667ea51ce9: Image successfully pushed
+dad131381a54: Pushing
+dad131381a54: Buffering to disk
+dad131381a54: Image successfully pushed
+3dacd6758f14: Pushing
+3dacd6758f14: Buffering to disk
+3dacd6758f14: Image successfully pushed
+7d4bad739229: Pushing
+7d4bad739229: Buffering to disk
+7d4bad739229: Image successfully pushed
+763c0a69bca6: Pushing
+763c0a69bca6: Buffering to disk
+763c0a69bca6: Image successfully pushed
+4fff97e3b983: Pushing
+4fff97e3b983: Buffering to disk
+4fff97e3b983: Image successfully pushed
+98f274d6ad68: Pushing
+98f274d6ad68: Buffering to disk
+98f274d6ad68: Image successfully pushed
+8c41351f802d: Pushing
+8c41351f802d: Buffering to disk
+8c41351f802d: Image successfully pushed
+c543de9fa973: Pushing
+c543de9fa973: Buffering to disk
+c543de9fa973: Image successfully pushed
+1675cb5623b7: Pushing
+1675cb5623b7: Buffering to disk
+1675cb5623b7: Image successfully pushed
+d7683dce04c0: Pushing
+d7683dce04c0: Buffering to disk
+d7683dce04c0: Image successfully pushed
+a23c4b097a25: Pushing
+a23c4b097a25: Buffering to disk
+a23c4b097a25: Image successfully pushed
+732f95431f4f: Pushing
+732f95431f4f: Buffering to disk
+732f95431f4f: Image successfully pushed
+c243118e72a4: Pushing
+c243118e72a4: Buffering to disk
+c243118e72a4: Image successfully pushed
+a2fb88a60a2a: Pushing
+a2fb88a60a2a: Buffering to disk
+a2fb88a60a2a: Image successfully pushed
+ec168b54c5e5: Pushing
+ec168b54c5e5: Buffering to disk
+ec168b54c5e5: Image successfully pushed
+Pushing tag for rev [ec168b54c5e5] on {http://136.187.101.80:5000/v1/repositories/multilevel/tags/latest}
+
+real  67.50
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker pull 136.187.101.80:5000/multilevel:latest
+Pulling repository 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel, endpoint: http://136.187.101.80:5000/v1/
+ec168b54c5e5: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+848d84b4b2ab: Pulling metadata
+848d84b4b2ab: Pulling fs layer
+848d84b4b2ab: Download complete
+71d9d77ae89e: Pulling metadata
+71d9d77ae89e: Pulling fs layer
+71d9d77ae89e: Download complete
+fb42cf21d5c1: Pulling metadata
+fb42cf21d5c1: Pulling fs layer
+fb42cf21d5c1: Download complete
+1bf6265ac0c9: Pulling metadata
+1bf6265ac0c9: Pulling fs layer
+1bf6265ac0c9: Download complete
+813921ad49c7: Pulling metadata
+813921ad49c7: Pulling fs layer
+813921ad49c7: Download complete
+fc183b81cd8a: Pulling metadata
+fc183b81cd8a: Pulling fs layer
+fc183b81cd8a: Download complete
+1edc7d40fb01: Pulling metadata
+1edc7d40fb01: Pulling fs layer
+1edc7d40fb01: Download complete
+69667ea51ce9: Pulling metadata
+69667ea51ce9: Pulling fs layer
+69667ea51ce9: Download complete
+dad131381a54: Pulling metadata
+dad131381a54: Pulling fs layer
+dad131381a54: Download complete
+3dacd6758f14: Pulling metadata
+3dacd6758f14: Pulling fs layer
+3dacd6758f14: Download complete
+7d4bad739229: Pulling metadata
+7d4bad739229: Pulling fs layer
+7d4bad739229: Download complete
+763c0a69bca6: Pulling metadata
+763c0a69bca6: Pulling fs layer
+763c0a69bca6: Download complete
+4fff97e3b983: Pulling metadata
+4fff97e3b983: Pulling fs layer
+4fff97e3b983: Download complete
+98f274d6ad68: Pulling metadata
+98f274d6ad68: Pulling fs layer
+98f274d6ad68: Download complete
+8c41351f802d: Pulling metadata
+8c41351f802d: Pulling fs layer
+8c41351f802d: Download complete
+c543de9fa973: Pulling metadata
+c543de9fa973: Pulling fs layer
+c543de9fa973: Download complete
+1675cb5623b7: Pulling metadata
+1675cb5623b7: Pulling fs layer
+1675cb5623b7: Download complete
+d7683dce04c0: Pulling metadata
+d7683dce04c0: Pulling fs layer
+d7683dce04c0: Download complete
+a23c4b097a25: Pulling metadata
+a23c4b097a25: Pulling fs layer
+a23c4b097a25: Download complete
+732f95431f4f: Pulling metadata
+732f95431f4f: Pulling fs layer
+732f95431f4f: Download complete
+c243118e72a4: Pulling metadata
+c243118e72a4: Pulling fs layer
+c243118e72a4: Download complete
+a2fb88a60a2a: Pulling metadata
+a2fb88a60a2a: Pulling fs layer
+a2fb88a60a2a: Download complete
+ec168b54c5e5: Pulling metadata
+ec168b54c5e5: Pulling fs layer
+ec168b54c5e5: Download complete
+ec168b54c5e5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/multilevel:latest
+
+real  62.20
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/multilevel:latest"
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1ed5a089ff32        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+The push refers to a repository [136.187.101.80:5000/multilevel] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/multilevel (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+848d84b4b2ab: Pushing
+848d84b4b2ab: Buffering to disk
+848d84b4b2ab: Image successfully pushed
+71d9d77ae89e: Pushing
+71d9d77ae89e: Buffering to disk
+71d9d77ae89e: Image successfully pushed
+fb42cf21d5c1: Pushing
+fb42cf21d5c1: Buffering to disk
+fb42cf21d5c1: Image successfully pushed
+1bf6265ac0c9: Pushing
+1bf6265ac0c9: Buffering to disk
+1bf6265ac0c9: Image successfully pushed
+813921ad49c7: Pushing
+813921ad49c7: Buffering to disk
+813921ad49c7: Image successfully pushed
+fc183b81cd8a: Pushing
+fc183b81cd8a: Buffering to disk
+fc183b81cd8a: Image successfully pushed
+1edc7d40fb01: Pushing
+1edc7d40fb01: Buffering to disk
+1edc7d40fb01: Image successfully pushed
+69667ea51ce9: Pushing
+69667ea51ce9: Buffering to disk
+69667ea51ce9: Image successfully pushed
+dad131381a54: Pushing
+dad131381a54: Buffering to disk
+dad131381a54: Image successfully pushed
+3dacd6758f14: Pushing
+3dacd6758f14: Buffering to disk
+3dacd6758f14: Image successfully pushed
+7d4bad739229: Pushing
+7d4bad739229: Buffering to disk
+7d4bad739229: Image successfully pushed
+763c0a69bca6: Pushing
+763c0a69bca6: Buffering to disk
+763c0a69bca6: Image successfully pushed
+4fff97e3b983: Pushing
+4fff97e3b983: Buffering to disk
+4fff97e3b983: Image successfully pushed
+98f274d6ad68: Pushing
+98f274d6ad68: Buffering to disk
+98f274d6ad68: Image successfully pushed
+8c41351f802d: Pushing
+8c41351f802d: Buffering to disk
+8c41351f802d: Image successfully pushed
+c543de9fa973: Pushing
+c543de9fa973: Buffering to disk
+c543de9fa973: Image successfully pushed
+1675cb5623b7: Pushing
+1675cb5623b7: Buffering to disk
+1675cb5623b7: Image successfully pushed
+d7683dce04c0: Pushing
+d7683dce04c0: Buffering to disk
+d7683dce04c0: Image successfully pushed
+a23c4b097a25: Pushing
+a23c4b097a25: Buffering to disk
+a23c4b097a25: Image successfully pushed
+732f95431f4f: Pushing
+732f95431f4f: Buffering to disk
+732f95431f4f: Image successfully pushed
+c243118e72a4: Pushing
+c243118e72a4: Buffering to disk
+c243118e72a4: Image successfully pushed
+a2fb88a60a2a: Pushing
+a2fb88a60a2a: Buffering to disk
+a2fb88a60a2a: Image successfully pushed
+ec168b54c5e5: Pushing
+ec168b54c5e5: Buffering to disk
+ec168b54c5e5: Image successfully pushed
+Pushing tag for rev [ec168b54c5e5] on {http://136.187.101.80:5000/v1/repositories/multilevel/tags/latest}
+
+real  66.77
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker pull 136.187.101.80:5000/multilevel:latest
+Pulling repository 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel, endpoint: http://136.187.101.80:5000/v1/
+ec168b54c5e5: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+848d84b4b2ab: Pulling metadata
+848d84b4b2ab: Pulling fs layer
+848d84b4b2ab: Download complete
+71d9d77ae89e: Pulling metadata
+71d9d77ae89e: Pulling fs layer
+71d9d77ae89e: Download complete
+fb42cf21d5c1: Pulling metadata
+fb42cf21d5c1: Pulling fs layer
+fb42cf21d5c1: Download complete
+1bf6265ac0c9: Pulling metadata
+1bf6265ac0c9: Pulling fs layer
+1bf6265ac0c9: Download complete
+813921ad49c7: Pulling metadata
+813921ad49c7: Pulling fs layer
+813921ad49c7: Download complete
+fc183b81cd8a: Pulling metadata
+fc183b81cd8a: Pulling fs layer
+fc183b81cd8a: Download complete
+1edc7d40fb01: Pulling metadata
+1edc7d40fb01: Pulling fs layer
+1edc7d40fb01: Download complete
+69667ea51ce9: Pulling metadata
+69667ea51ce9: Pulling fs layer
+69667ea51ce9: Download complete
+dad131381a54: Pulling metadata
+dad131381a54: Pulling fs layer
+dad131381a54: Download complete
+3dacd6758f14: Pulling metadata
+3dacd6758f14: Pulling fs layer
+3dacd6758f14: Download complete
+7d4bad739229: Pulling metadata
+7d4bad739229: Pulling fs layer
+7d4bad739229: Download complete
+763c0a69bca6: Pulling metadata
+763c0a69bca6: Pulling fs layer
+763c0a69bca6: Download complete
+4fff97e3b983: Pulling metadata
+4fff97e3b983: Pulling fs layer
+4fff97e3b983: Download complete
+98f274d6ad68: Pulling metadata
+98f274d6ad68: Pulling fs layer
+98f274d6ad68: Download complete
+8c41351f802d: Pulling metadata
+8c41351f802d: Pulling fs layer
+8c41351f802d: Download complete
+c543de9fa973: Pulling metadata
+c543de9fa973: Pulling fs layer
+c543de9fa973: Download complete
+1675cb5623b7: Pulling metadata
+1675cb5623b7: Pulling fs layer
+1675cb5623b7: Download complete
+d7683dce04c0: Pulling metadata
+d7683dce04c0: Pulling fs layer
+d7683dce04c0: Download complete
+a23c4b097a25: Pulling metadata
+a23c4b097a25: Pulling fs layer
+a23c4b097a25: Download complete
+732f95431f4f: Pulling metadata
+732f95431f4f: Pulling fs layer
+732f95431f4f: Download complete
+c243118e72a4: Pulling metadata
+c243118e72a4: Pulling fs layer
+c243118e72a4: Download complete
+a2fb88a60a2a: Pulling metadata
+a2fb88a60a2a: Pulling fs layer
+a2fb88a60a2a: Download complete
+ec168b54c5e5: Pulling metadata
+ec168b54c5e5: Pulling fs layer
+ec168b54c5e5: Download complete
+ec168b54c5e5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/multilevel:latest
+
+real  61.47
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/multilevel:latest"
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a3a0aaca71a1        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+The push refers to a repository [136.187.101.80:5000/multilevel] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/multilevel (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+848d84b4b2ab: Pushing
+848d84b4b2ab: Buffering to disk
+848d84b4b2ab: Image successfully pushed
+71d9d77ae89e: Pushing
+71d9d77ae89e: Buffering to disk
+71d9d77ae89e: Image successfully pushed
+fb42cf21d5c1: Pushing
+fb42cf21d5c1: Buffering to disk
+fb42cf21d5c1: Image successfully pushed
+1bf6265ac0c9: Pushing
+1bf6265ac0c9: Buffering to disk
+1bf6265ac0c9: Image successfully pushed
+813921ad49c7: Pushing
+813921ad49c7: Buffering to disk
+813921ad49c7: Image successfully pushed
+fc183b81cd8a: Pushing
+fc183b81cd8a: Buffering to disk
+fc183b81cd8a: Image successfully pushed
+1edc7d40fb01: Pushing
+1edc7d40fb01: Buffering to disk
+1edc7d40fb01: Image successfully pushed
+69667ea51ce9: Pushing
+69667ea51ce9: Buffering to disk
+69667ea51ce9: Image successfully pushed
+dad131381a54: Pushing
+dad131381a54: Buffering to disk
+dad131381a54: Image successfully pushed
+3dacd6758f14: Pushing
+3dacd6758f14: Buffering to disk
+3dacd6758f14: Image successfully pushed
+7d4bad739229: Pushing
+7d4bad739229: Buffering to disk
+7d4bad739229: Image successfully pushed
+763c0a69bca6: Pushing
+763c0a69bca6: Buffering to disk
+763c0a69bca6: Image successfully pushed
+4fff97e3b983: Pushing
+4fff97e3b983: Buffering to disk
+4fff97e3b983: Image successfully pushed
+98f274d6ad68: Pushing
+98f274d6ad68: Buffering to disk
+98f274d6ad68: Image successfully pushed
+8c41351f802d: Pushing
+8c41351f802d: Buffering to disk
+8c41351f802d: Image successfully pushed
+c543de9fa973: Pushing
+c543de9fa973: Buffering to disk
+c543de9fa973: Image successfully pushed
+1675cb5623b7: Pushing
+1675cb5623b7: Buffering to disk
+1675cb5623b7: Image successfully pushed
+d7683dce04c0: Pushing
+d7683dce04c0: Buffering to disk
+d7683dce04c0: Image successfully pushed
+a23c4b097a25: Pushing
+a23c4b097a25: Buffering to disk
+a23c4b097a25: Image successfully pushed
+732f95431f4f: Pushing
+732f95431f4f: Buffering to disk
+732f95431f4f: Image successfully pushed
+c243118e72a4: Pushing
+c243118e72a4: Buffering to disk
+c243118e72a4: Image successfully pushed
+a2fb88a60a2a: Pushing
+a2fb88a60a2a: Buffering to disk
+a2fb88a60a2a: Image successfully pushed
+ec168b54c5e5: Pushing
+ec168b54c5e5: Buffering to disk
+ec168b54c5e5: Image successfully pushed
+Pushing tag for rev [ec168b54c5e5] on {http://136.187.101.80:5000/v1/repositories/multilevel/tags/latest}
+
+real  66.69
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker pull 136.187.101.80:5000/multilevel:latest
+Pulling repository 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel, endpoint: http://136.187.101.80:5000/v1/
+ec168b54c5e5: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+848d84b4b2ab: Pulling metadata
+848d84b4b2ab: Pulling fs layer
+848d84b4b2ab: Download complete
+71d9d77ae89e: Pulling metadata
+71d9d77ae89e: Pulling fs layer
+71d9d77ae89e: Download complete
+fb42cf21d5c1: Pulling metadata
+fb42cf21d5c1: Pulling fs layer
+fb42cf21d5c1: Download complete
+1bf6265ac0c9: Pulling metadata
+1bf6265ac0c9: Pulling fs layer
+1bf6265ac0c9: Download complete
+813921ad49c7: Pulling metadata
+813921ad49c7: Pulling fs layer
+813921ad49c7: Download complete
+fc183b81cd8a: Pulling metadata
+fc183b81cd8a: Pulling fs layer
+fc183b81cd8a: Download complete
+1edc7d40fb01: Pulling metadata
+1edc7d40fb01: Pulling fs layer
+1edc7d40fb01: Download complete
+69667ea51ce9: Pulling metadata
+69667ea51ce9: Pulling fs layer
+69667ea51ce9: Download complete
+dad131381a54: Pulling metadata
+dad131381a54: Pulling fs layer
+dad131381a54: Download complete
+3dacd6758f14: Pulling metadata
+3dacd6758f14: Pulling fs layer
+3dacd6758f14: Download complete
+7d4bad739229: Pulling metadata
+7d4bad739229: Pulling fs layer
+7d4bad739229: Download complete
+763c0a69bca6: Pulling metadata
+763c0a69bca6: Pulling fs layer
+763c0a69bca6: Download complete
+4fff97e3b983: Pulling metadata
+4fff97e3b983: Pulling fs layer
+4fff97e3b983: Download complete
+98f274d6ad68: Pulling metadata
+98f274d6ad68: Pulling fs layer
+98f274d6ad68: Download complete
+8c41351f802d: Pulling metadata
+8c41351f802d: Pulling fs layer
+8c41351f802d: Download complete
+c543de9fa973: Pulling metadata
+c543de9fa973: Pulling fs layer
+c543de9fa973: Download complete
+1675cb5623b7: Pulling metadata
+1675cb5623b7: Pulling fs layer
+1675cb5623b7: Download complete
+d7683dce04c0: Pulling metadata
+d7683dce04c0: Pulling fs layer
+d7683dce04c0: Download complete
+a23c4b097a25: Pulling metadata
+a23c4b097a25: Pulling fs layer
+a23c4b097a25: Download complete
+732f95431f4f: Pulling metadata
+732f95431f4f: Pulling fs layer
+732f95431f4f: Download complete
+c243118e72a4: Pulling metadata
+c243118e72a4: Pulling fs layer
+c243118e72a4: Download complete
+a2fb88a60a2a: Pulling metadata
+a2fb88a60a2a: Pulling fs layer
+a2fb88a60a2a: Download complete
+ec168b54c5e5: Pulling metadata
+ec168b54c5e5: Pulling fs layer
+ec168b54c5e5: Download complete
+ec168b54c5e5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/multilevel:latest
+
+real  60.55
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/multilevel:latest"
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+e0f1063fa60a        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+The push refers to a repository [136.187.101.80:5000/multilevel] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/multilevel (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+848d84b4b2ab: Pushing
+848d84b4b2ab: Buffering to disk
+848d84b4b2ab: Image successfully pushed
+71d9d77ae89e: Pushing
+71d9d77ae89e: Buffering to disk
+71d9d77ae89e: Image successfully pushed
+fb42cf21d5c1: Pushing
+fb42cf21d5c1: Buffering to disk
+fb42cf21d5c1: Image successfully pushed
+1bf6265ac0c9: Pushing
+1bf6265ac0c9: Buffering to disk
+1bf6265ac0c9: Image successfully pushed
+813921ad49c7: Pushing
+813921ad49c7: Buffering to disk
+813921ad49c7: Image successfully pushed
+fc183b81cd8a: Pushing
+fc183b81cd8a: Buffering to disk
+fc183b81cd8a: Image successfully pushed
+1edc7d40fb01: Pushing
+1edc7d40fb01: Buffering to disk
+1edc7d40fb01: Image successfully pushed
+69667ea51ce9: Pushing
+69667ea51ce9: Buffering to disk
+69667ea51ce9: Image successfully pushed
+dad131381a54: Pushing
+dad131381a54: Buffering to disk
+dad131381a54: Image successfully pushed
+3dacd6758f14: Pushing
+3dacd6758f14: Buffering to disk
+3dacd6758f14: Image successfully pushed
+7d4bad739229: Pushing
+7d4bad739229: Buffering to disk
+7d4bad739229: Image successfully pushed
+763c0a69bca6: Pushing
+763c0a69bca6: Buffering to disk
+763c0a69bca6: Image successfully pushed
+4fff97e3b983: Pushing
+4fff97e3b983: Buffering to disk
+4fff97e3b983: Image successfully pushed
+98f274d6ad68: Pushing
+98f274d6ad68: Buffering to disk
+98f274d6ad68: Image successfully pushed
+8c41351f802d: Pushing
+8c41351f802d: Buffering to disk
+8c41351f802d: Image successfully pushed
+c543de9fa973: Pushing
+c543de9fa973: Buffering to disk
+c543de9fa973: Image successfully pushed
+1675cb5623b7: Pushing
+1675cb5623b7: Buffering to disk
+1675cb5623b7: Image successfully pushed
+d7683dce04c0: Pushing
+d7683dce04c0: Buffering to disk
+d7683dce04c0: Image successfully pushed
+a23c4b097a25: Pushing
+a23c4b097a25: Buffering to disk
+a23c4b097a25: Image successfully pushed
+732f95431f4f: Pushing
+732f95431f4f: Buffering to disk
+732f95431f4f: Image successfully pushed
+c243118e72a4: Pushing
+c243118e72a4: Buffering to disk
+c243118e72a4: Image successfully pushed
+a2fb88a60a2a: Pushing
+a2fb88a60a2a: Buffering to disk
+a2fb88a60a2a: Image successfully pushed
+ec168b54c5e5: Pushing
+ec168b54c5e5: Buffering to disk
+ec168b54c5e5: Image successfully pushed
+Pushing tag for rev [ec168b54c5e5] on {http://136.187.101.80:5000/v1/repositories/multilevel/tags/latest}
+
+real  65.89
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker pull 136.187.101.80:5000/multilevel:latest
+Pulling repository 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel, endpoint: http://136.187.101.80:5000/v1/
+ec168b54c5e5: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+848d84b4b2ab: Pulling metadata
+848d84b4b2ab: Pulling fs layer
+848d84b4b2ab: Download complete
+71d9d77ae89e: Pulling metadata
+71d9d77ae89e: Pulling fs layer
+71d9d77ae89e: Download complete
+fb42cf21d5c1: Pulling metadata
+fb42cf21d5c1: Pulling fs layer
+fb42cf21d5c1: Download complete
+1bf6265ac0c9: Pulling metadata
+1bf6265ac0c9: Pulling fs layer
+1bf6265ac0c9: Download complete
+813921ad49c7: Pulling metadata
+813921ad49c7: Pulling fs layer
+813921ad49c7: Download complete
+fc183b81cd8a: Pulling metadata
+fc183b81cd8a: Pulling fs layer
+fc183b81cd8a: Download complete
+1edc7d40fb01: Pulling metadata
+1edc7d40fb01: Pulling fs layer
+1edc7d40fb01: Download complete
+69667ea51ce9: Pulling metadata
+69667ea51ce9: Pulling fs layer
+69667ea51ce9: Download complete
+dad131381a54: Pulling metadata
+dad131381a54: Pulling fs layer
+dad131381a54: Download complete
+3dacd6758f14: Pulling metadata
+3dacd6758f14: Pulling fs layer
+3dacd6758f14: Download complete
+7d4bad739229: Pulling metadata
+7d4bad739229: Pulling fs layer
+7d4bad739229: Download complete
+763c0a69bca6: Pulling metadata
+763c0a69bca6: Pulling fs layer
+763c0a69bca6: Download complete
+4fff97e3b983: Pulling metadata
+4fff97e3b983: Pulling fs layer
+4fff97e3b983: Download complete
+98f274d6ad68: Pulling metadata
+98f274d6ad68: Pulling fs layer
+98f274d6ad68: Download complete
+8c41351f802d: Pulling metadata
+8c41351f802d: Pulling fs layer
+8c41351f802d: Download complete
+c543de9fa973: Pulling metadata
+c543de9fa973: Pulling fs layer
+c543de9fa973: Download complete
+1675cb5623b7: Pulling metadata
+1675cb5623b7: Pulling fs layer
+1675cb5623b7: Download complete
+d7683dce04c0: Pulling metadata
+d7683dce04c0: Pulling fs layer
+d7683dce04c0: Download complete
+a23c4b097a25: Pulling metadata
+a23c4b097a25: Pulling fs layer
+a23c4b097a25: Download complete
+732f95431f4f: Pulling metadata
+732f95431f4f: Pulling fs layer
+732f95431f4f: Download complete
+c243118e72a4: Pulling metadata
+c243118e72a4: Pulling fs layer
+c243118e72a4: Download complete
+a2fb88a60a2a: Pulling metadata
+a2fb88a60a2a: Pulling fs layer
+a2fb88a60a2a: Download complete
+ec168b54c5e5: Pulling metadata
+ec168b54c5e5: Pulling fs layer
+ec168b54c5e5: Download complete
+ec168b54c5e5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/multilevel:latest
+
+real  62.54
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/multilevel:latest"
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c89ed3576872        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+
+docker rm -f docker_registry
+
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+bdb9515e2fd3        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+The push refers to a repository [136.187.101.80:5000/multilevel] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/multilevel (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+848d84b4b2ab: Pushing
+848d84b4b2ab: Buffering to disk
+848d84b4b2ab: Image successfully pushed
+71d9d77ae89e: Pushing
+71d9d77ae89e: Buffering to disk
+71d9d77ae89e: Image successfully pushed
+fb42cf21d5c1: Pushing
+fb42cf21d5c1: Buffering to disk
+fb42cf21d5c1: Image successfully pushed
+1bf6265ac0c9: Pushing
+1bf6265ac0c9: Buffering to disk
+1bf6265ac0c9: Image successfully pushed
+813921ad49c7: Pushing
+813921ad49c7: Buffering to disk
+813921ad49c7: Image successfully pushed
+fc183b81cd8a: Pushing
+fc183b81cd8a: Buffering to disk
+fc183b81cd8a: Image successfully pushed
+1edc7d40fb01: Pushing
+1edc7d40fb01: Buffering to disk
+1edc7d40fb01: Image successfully pushed
+69667ea51ce9: Pushing
+69667ea51ce9: Buffering to disk
+69667ea51ce9: Image successfully pushed
+dad131381a54: Pushing
+dad131381a54: Buffering to disk
+dad131381a54: Image successfully pushed
+3dacd6758f14: Pushing
+3dacd6758f14: Buffering to disk
+3dacd6758f14: Image successfully pushed
+7d4bad739229: Pushing
+7d4bad739229: Buffering to disk
+7d4bad739229: Image successfully pushed
+763c0a69bca6: Pushing
+763c0a69bca6: Buffering to disk
+763c0a69bca6: Image successfully pushed
+4fff97e3b983: Pushing
+4fff97e3b983: Buffering to disk
+4fff97e3b983: Image successfully pushed
+98f274d6ad68: Pushing
+98f274d6ad68: Buffering to disk
+98f274d6ad68: Image successfully pushed
+8c41351f802d: Pushing
+8c41351f802d: Buffering to disk
+8c41351f802d: Image successfully pushed
+c543de9fa973: Pushing
+c543de9fa973: Buffering to disk
+c543de9fa973: Image successfully pushed
+1675cb5623b7: Pushing
+1675cb5623b7: Buffering to disk
+1675cb5623b7: Image successfully pushed
+d7683dce04c0: Pushing
+d7683dce04c0: Buffering to disk
+d7683dce04c0: Image successfully pushed
+a23c4b097a25: Pushing
+a23c4b097a25: Buffering to disk
+a23c4b097a25: Image successfully pushed
+732f95431f4f: Pushing
+732f95431f4f: Buffering to disk
+732f95431f4f: Image successfully pushed
+c243118e72a4: Pushing
+c243118e72a4: Buffering to disk
+c243118e72a4: Image successfully pushed
+a2fb88a60a2a: Pushing
+a2fb88a60a2a: Buffering to disk
+a2fb88a60a2a: Image successfully pushed
+ec168b54c5e5: Pushing
+ec168b54c5e5: Buffering to disk
+ec168b54c5e5: Image successfully pushed
+Pushing tag for rev [ec168b54c5e5] on {http://136.187.101.80:5000/v1/repositories/multilevel/tags/latest}
+
+real  67.23
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker pull 136.187.101.80:5000/multilevel:latest
+Pulling repository 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel, endpoint: http://136.187.101.80:5000/v1/
+ec168b54c5e5: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+848d84b4b2ab: Pulling metadata
+848d84b4b2ab: Pulling fs layer
+848d84b4b2ab: Download complete
+71d9d77ae89e: Pulling metadata
+71d9d77ae89e: Pulling fs layer
+71d9d77ae89e: Download complete
+fb42cf21d5c1: Pulling metadata
+fb42cf21d5c1: Pulling fs layer
+fb42cf21d5c1: Download complete
+1bf6265ac0c9: Pulling metadata
+1bf6265ac0c9: Pulling fs layer
+1bf6265ac0c9: Download complete
+813921ad49c7: Pulling metadata
+813921ad49c7: Pulling fs layer
+813921ad49c7: Download complete
+fc183b81cd8a: Pulling metadata
+fc183b81cd8a: Pulling fs layer
+fc183b81cd8a: Download complete
+1edc7d40fb01: Pulling metadata
+1edc7d40fb01: Pulling fs layer
+1edc7d40fb01: Download complete
+69667ea51ce9: Pulling metadata
+69667ea51ce9: Pulling fs layer
+69667ea51ce9: Download complete
+dad131381a54: Pulling metadata
+dad131381a54: Pulling fs layer
+dad131381a54: Download complete
+3dacd6758f14: Pulling metadata
+3dacd6758f14: Pulling fs layer
+3dacd6758f14: Download complete
+7d4bad739229: Pulling metadata
+7d4bad739229: Pulling fs layer
+7d4bad739229: Download complete
+763c0a69bca6: Pulling metadata
+763c0a69bca6: Pulling fs layer
+763c0a69bca6: Download complete
+4fff97e3b983: Pulling metadata
+4fff97e3b983: Pulling fs layer
+4fff97e3b983: Download complete
+98f274d6ad68: Pulling metadata
+98f274d6ad68: Pulling fs layer
+98f274d6ad68: Download complete
+8c41351f802d: Pulling metadata
+8c41351f802d: Pulling fs layer
+8c41351f802d: Download complete
+c543de9fa973: Pulling metadata
+c543de9fa973: Pulling fs layer
+c543de9fa973: Download complete
+1675cb5623b7: Pulling metadata
+1675cb5623b7: Pulling fs layer
+1675cb5623b7: Download complete
+d7683dce04c0: Pulling metadata
+d7683dce04c0: Pulling fs layer
+d7683dce04c0: Download complete
+a23c4b097a25: Pulling metadata
+a23c4b097a25: Pulling fs layer
+a23c4b097a25: Download complete
+732f95431f4f: Pulling metadata
+732f95431f4f: Pulling fs layer
+732f95431f4f: Download complete
+c243118e72a4: Pulling metadata
+c243118e72a4: Pulling fs layer
+c243118e72a4: Download complete
+a2fb88a60a2a: Pulling metadata
+a2fb88a60a2a: Pulling fs layer
+a2fb88a60a2a: Download complete
+ec168b54c5e5: Pulling metadata
+ec168b54c5e5: Pulling fs layer
+ec168b54c5e5: Download complete
+ec168b54c5e5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/multilevel:latest
+
+real  72.43
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/multilevel:latest"
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b2899f2b58f1        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+The push refers to a repository [136.187.101.80:5000/multilevel] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/multilevel (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+848d84b4b2ab: Pushing
+848d84b4b2ab: Buffering to disk
+848d84b4b2ab: Image successfully pushed
+71d9d77ae89e: Pushing
+71d9d77ae89e: Buffering to disk
+71d9d77ae89e: Image successfully pushed
+fb42cf21d5c1: Pushing
+fb42cf21d5c1: Buffering to disk
+fb42cf21d5c1: Image successfully pushed
+1bf6265ac0c9: Pushing
+1bf6265ac0c9: Buffering to disk
+1bf6265ac0c9: Image successfully pushed
+813921ad49c7: Pushing
+813921ad49c7: Buffering to disk
+813921ad49c7: Image successfully pushed
+fc183b81cd8a: Pushing
+fc183b81cd8a: Buffering to disk
+fc183b81cd8a: Image successfully pushed
+1edc7d40fb01: Pushing
+1edc7d40fb01: Buffering to disk
+1edc7d40fb01: Image successfully pushed
+69667ea51ce9: Pushing
+69667ea51ce9: Buffering to disk
+69667ea51ce9: Image successfully pushed
+dad131381a54: Pushing
+dad131381a54: Buffering to disk
+dad131381a54: Image successfully pushed
+3dacd6758f14: Pushing
+3dacd6758f14: Buffering to disk
+3dacd6758f14: Image successfully pushed
+7d4bad739229: Pushing
+7d4bad739229: Buffering to disk
+7d4bad739229: Image successfully pushed
+763c0a69bca6: Pushing
+763c0a69bca6: Buffering to disk
+763c0a69bca6: Image successfully pushed
+4fff97e3b983: Pushing
+4fff97e3b983: Buffering to disk
+4fff97e3b983: Image successfully pushed
+98f274d6ad68: Pushing
+98f274d6ad68: Buffering to disk
+98f274d6ad68: Image successfully pushed
+8c41351f802d: Pushing
+8c41351f802d: Buffering to disk
+8c41351f802d: Image successfully pushed
+c543de9fa973: Pushing
+c543de9fa973: Buffering to disk
+c543de9fa973: Image successfully pushed
+1675cb5623b7: Pushing
+1675cb5623b7: Buffering to disk
+1675cb5623b7: Image successfully pushed
+d7683dce04c0: Pushing
+d7683dce04c0: Buffering to disk
+d7683dce04c0: Image successfully pushed
+a23c4b097a25: Pushing
+a23c4b097a25: Buffering to disk
+a23c4b097a25: Image successfully pushed
+732f95431f4f: Pushing
+732f95431f4f: Buffering to disk
+732f95431f4f: Image successfully pushed
+c243118e72a4: Pushing
+c243118e72a4: Buffering to disk
+c243118e72a4: Image successfully pushed
+a2fb88a60a2a: Pushing
+a2fb88a60a2a: Buffering to disk
+a2fb88a60a2a: Image successfully pushed
+ec168b54c5e5: Pushing
+ec168b54c5e5: Buffering to disk
+ec168b54c5e5: Image successfully pushed
+Pushing tag for rev [ec168b54c5e5] on {http://136.187.101.80:5000/v1/repositories/multilevel/tags/latest}
+
+real  66.49
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker pull 136.187.101.80:5000/multilevel:latest
+Pulling repository 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel, endpoint: http://136.187.101.80:5000/v1/
+ec168b54c5e5: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+848d84b4b2ab: Pulling metadata
+848d84b4b2ab: Pulling fs layer
+848d84b4b2ab: Download complete
+71d9d77ae89e: Pulling metadata
+71d9d77ae89e: Pulling fs layer
+71d9d77ae89e: Download complete
+fb42cf21d5c1: Pulling metadata
+fb42cf21d5c1: Pulling fs layer
+fb42cf21d5c1: Download complete
+1bf6265ac0c9: Pulling metadata
+1bf6265ac0c9: Pulling fs layer
+1bf6265ac0c9: Download complete
+813921ad49c7: Pulling metadata
+813921ad49c7: Pulling fs layer
+813921ad49c7: Download complete
+fc183b81cd8a: Pulling metadata
+fc183b81cd8a: Pulling fs layer
+fc183b81cd8a: Download complete
+1edc7d40fb01: Pulling metadata
+1edc7d40fb01: Pulling fs layer
+1edc7d40fb01: Download complete
+69667ea51ce9: Pulling metadata
+69667ea51ce9: Pulling fs layer
+69667ea51ce9: Download complete
+dad131381a54: Pulling metadata
+dad131381a54: Pulling fs layer
+dad131381a54: Download complete
+3dacd6758f14: Pulling metadata
+3dacd6758f14: Pulling fs layer
+3dacd6758f14: Download complete
+7d4bad739229: Pulling metadata
+7d4bad739229: Pulling fs layer
+7d4bad739229: Download complete
+763c0a69bca6: Pulling metadata
+763c0a69bca6: Pulling fs layer
+763c0a69bca6: Download complete
+4fff97e3b983: Pulling metadata
+4fff97e3b983: Pulling fs layer
+4fff97e3b983: Download complete
+98f274d6ad68: Pulling metadata
+98f274d6ad68: Pulling fs layer
+98f274d6ad68: Download complete
+8c41351f802d: Pulling metadata
+8c41351f802d: Pulling fs layer
+8c41351f802d: Download complete
+c543de9fa973: Pulling metadata
+c543de9fa973: Pulling fs layer
+c543de9fa973: Download complete
+1675cb5623b7: Pulling metadata
+1675cb5623b7: Pulling fs layer
+1675cb5623b7: Download complete
+d7683dce04c0: Pulling metadata
+d7683dce04c0: Pulling fs layer
+d7683dce04c0: Download complete
+a23c4b097a25: Pulling metadata
+a23c4b097a25: Pulling fs layer
+a23c4b097a25: Download complete
+732f95431f4f: Pulling metadata
+732f95431f4f: Pulling fs layer
+732f95431f4f: Download complete
+c243118e72a4: Pulling metadata
+c243118e72a4: Pulling fs layer
+c243118e72a4: Download complete
+a2fb88a60a2a: Pulling metadata
+a2fb88a60a2a: Pulling fs layer
+a2fb88a60a2a: Download complete
+ec168b54c5e5: Pulling metadata
+ec168b54c5e5: Pulling fs layer
+ec168b54c5e5: Download complete
+ec168b54c5e5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/multilevel:latest
+
+real  61.20
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/multilevel:latest"
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+f96dda70bc43        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+The push refers to a repository [136.187.101.80:5000/multilevel] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/multilevel (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+848d84b4b2ab: Pushing
+848d84b4b2ab: Buffering to disk
+848d84b4b2ab: Image successfully pushed
+71d9d77ae89e: Pushing
+71d9d77ae89e: Buffering to disk
+71d9d77ae89e: Image successfully pushed
+fb42cf21d5c1: Pushing
+fb42cf21d5c1: Buffering to disk
+fb42cf21d5c1: Image successfully pushed
+1bf6265ac0c9: Pushing
+1bf6265ac0c9: Buffering to disk
+1bf6265ac0c9: Image successfully pushed
+813921ad49c7: Pushing
+813921ad49c7: Buffering to disk
+813921ad49c7: Image successfully pushed
+fc183b81cd8a: Pushing
+fc183b81cd8a: Buffering to disk
+fc183b81cd8a: Image successfully pushed
+1edc7d40fb01: Pushing
+1edc7d40fb01: Buffering to disk
+1edc7d40fb01: Image successfully pushed
+69667ea51ce9: Pushing
+69667ea51ce9: Buffering to disk
+69667ea51ce9: Image successfully pushed
+dad131381a54: Pushing
+dad131381a54: Buffering to disk
+dad131381a54: Image successfully pushed
+3dacd6758f14: Pushing
+3dacd6758f14: Buffering to disk
+3dacd6758f14: Image successfully pushed
+7d4bad739229: Pushing
+7d4bad739229: Buffering to disk
+7d4bad739229: Image successfully pushed
+763c0a69bca6: Pushing
+763c0a69bca6: Buffering to disk
+763c0a69bca6: Image successfully pushed
+4fff97e3b983: Pushing
+4fff97e3b983: Buffering to disk
+4fff97e3b983: Image successfully pushed
+98f274d6ad68: Pushing
+98f274d6ad68: Buffering to disk
+98f274d6ad68: Image successfully pushed
+8c41351f802d: Pushing
+8c41351f802d: Buffering to disk
+8c41351f802d: Image successfully pushed
+c543de9fa973: Pushing
+c543de9fa973: Buffering to disk
+c543de9fa973: Image successfully pushed
+1675cb5623b7: Pushing
+1675cb5623b7: Buffering to disk
+1675cb5623b7: Image successfully pushed
+d7683dce04c0: Pushing
+d7683dce04c0: Buffering to disk
+d7683dce04c0: Image successfully pushed
+a23c4b097a25: Pushing
+a23c4b097a25: Buffering to disk
+a23c4b097a25: Image successfully pushed
+732f95431f4f: Pushing
+732f95431f4f: Buffering to disk
+732f95431f4f: Image successfully pushed
+c243118e72a4: Pushing
+c243118e72a4: Buffering to disk
+c243118e72a4: Image successfully pushed
+a2fb88a60a2a: Pushing
+a2fb88a60a2a: Buffering to disk
+a2fb88a60a2a: Image successfully pushed
+ec168b54c5e5: Pushing
+ec168b54c5e5: Buffering to disk
+ec168b54c5e5: Image successfully pushed
+Pushing tag for rev [ec168b54c5e5] on {http://136.187.101.80:5000/v1/repositories/multilevel/tags/latest}
+
+real  67.63
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker pull 136.187.101.80:5000/multilevel:latest
+Pulling repository 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel, endpoint: http://136.187.101.80:5000/v1/
+ec168b54c5e5: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+848d84b4b2ab: Pulling metadata
+848d84b4b2ab: Pulling fs layer
+848d84b4b2ab: Download complete
+71d9d77ae89e: Pulling metadata
+71d9d77ae89e: Pulling fs layer
+71d9d77ae89e: Download complete
+fb42cf21d5c1: Pulling metadata
+fb42cf21d5c1: Pulling fs layer
+fb42cf21d5c1: Download complete
+1bf6265ac0c9: Pulling metadata
+1bf6265ac0c9: Pulling fs layer
+1bf6265ac0c9: Download complete
+813921ad49c7: Pulling metadata
+813921ad49c7: Pulling fs layer
+813921ad49c7: Download complete
+fc183b81cd8a: Pulling metadata
+fc183b81cd8a: Pulling fs layer
+fc183b81cd8a: Download complete
+1edc7d40fb01: Pulling metadata
+1edc7d40fb01: Pulling fs layer
+1edc7d40fb01: Download complete
+69667ea51ce9: Pulling metadata
+69667ea51ce9: Pulling fs layer
+69667ea51ce9: Download complete
+dad131381a54: Pulling metadata
+dad131381a54: Pulling fs layer
+dad131381a54: Download complete
+3dacd6758f14: Pulling metadata
+3dacd6758f14: Pulling fs layer
+3dacd6758f14: Download complete
+7d4bad739229: Pulling metadata
+7d4bad739229: Pulling fs layer
+7d4bad739229: Download complete
+763c0a69bca6: Pulling metadata
+763c0a69bca6: Pulling fs layer
+763c0a69bca6: Download complete
+4fff97e3b983: Pulling metadata
+4fff97e3b983: Pulling fs layer
+4fff97e3b983: Download complete
+98f274d6ad68: Pulling metadata
+98f274d6ad68: Pulling fs layer
+98f274d6ad68: Download complete
+8c41351f802d: Pulling metadata
+8c41351f802d: Pulling fs layer
+8c41351f802d: Download complete
+c543de9fa973: Pulling metadata
+c543de9fa973: Pulling fs layer
+c543de9fa973: Download complete
+1675cb5623b7: Pulling metadata
+1675cb5623b7: Pulling fs layer
+1675cb5623b7: Download complete
+d7683dce04c0: Pulling metadata
+d7683dce04c0: Pulling fs layer
+d7683dce04c0: Download complete
+a23c4b097a25: Pulling metadata
+a23c4b097a25: Pulling fs layer
+a23c4b097a25: Download complete
+732f95431f4f: Pulling metadata
+732f95431f4f: Pulling fs layer
+732f95431f4f: Download complete
+c243118e72a4: Pulling metadata
+c243118e72a4: Pulling fs layer
+c243118e72a4: Download complete
+a2fb88a60a2a: Pulling metadata
+a2fb88a60a2a: Pulling fs layer
+a2fb88a60a2a: Download complete
+ec168b54c5e5: Pulling metadata
+ec168b54c5e5: Pulling fs layer
+ec168b54c5e5: Download complete
+ec168b54c5e5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/multilevel:latest
+
+real  61.07
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/multilevel:latest"
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b05faf9f76be        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+The push refers to a repository [136.187.101.80:5000/multilevel] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/multilevel (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+848d84b4b2ab: Pushing
+848d84b4b2ab: Buffering to disk
+848d84b4b2ab: Image successfully pushed
+71d9d77ae89e: Pushing
+71d9d77ae89e: Buffering to disk
+71d9d77ae89e: Image successfully pushed
+fb42cf21d5c1: Pushing
+fb42cf21d5c1: Buffering to disk
+fb42cf21d5c1: Image successfully pushed
+1bf6265ac0c9: Pushing
+1bf6265ac0c9: Buffering to disk
+1bf6265ac0c9: Image successfully pushed
+813921ad49c7: Pushing
+813921ad49c7: Buffering to disk
+813921ad49c7: Image successfully pushed
+fc183b81cd8a: Pushing
+fc183b81cd8a: Buffering to disk
+fc183b81cd8a: Image successfully pushed
+1edc7d40fb01: Pushing
+1edc7d40fb01: Buffering to disk
+1edc7d40fb01: Image successfully pushed
+69667ea51ce9: Pushing
+69667ea51ce9: Buffering to disk
+69667ea51ce9: Image successfully pushed
+dad131381a54: Pushing
+dad131381a54: Buffering to disk
+dad131381a54: Image successfully pushed
+3dacd6758f14: Pushing
+3dacd6758f14: Buffering to disk
+3dacd6758f14: Image successfully pushed
+7d4bad739229: Pushing
+7d4bad739229: Buffering to disk
+7d4bad739229: Image successfully pushed
+763c0a69bca6: Pushing
+763c0a69bca6: Buffering to disk
+763c0a69bca6: Image successfully pushed
+4fff97e3b983: Pushing
+4fff97e3b983: Buffering to disk
+4fff97e3b983: Image successfully pushed
+98f274d6ad68: Pushing
+98f274d6ad68: Buffering to disk
+98f274d6ad68: Image successfully pushed
+8c41351f802d: Pushing
+8c41351f802d: Buffering to disk
+8c41351f802d: Image successfully pushed
+c543de9fa973: Pushing
+c543de9fa973: Buffering to disk
+c543de9fa973: Image successfully pushed
+1675cb5623b7: Pushing
+1675cb5623b7: Buffering to disk
+1675cb5623b7: Image successfully pushed
+d7683dce04c0: Pushing
+d7683dce04c0: Buffering to disk
+d7683dce04c0: Image successfully pushed
+a23c4b097a25: Pushing
+a23c4b097a25: Buffering to disk
+a23c4b097a25: Image successfully pushed
+732f95431f4f: Pushing
+732f95431f4f: Buffering to disk
+732f95431f4f: Image successfully pushed
+c243118e72a4: Pushing
+c243118e72a4: Buffering to disk
+c243118e72a4: Image successfully pushed
+a2fb88a60a2a: Pushing
+a2fb88a60a2a: Buffering to disk
+a2fb88a60a2a: Image successfully pushed
+ec168b54c5e5: Pushing
+ec168b54c5e5: Buffering to disk
+ec168b54c5e5: Image successfully pushed
+Pushing tag for rev [ec168b54c5e5] on {http://136.187.101.80:5000/v1/repositories/multilevel/tags/latest}
+
+real  66.09
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker pull 136.187.101.80:5000/multilevel:latest
+Pulling repository 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel, endpoint: http://136.187.101.80:5000/v1/
+ec168b54c5e5: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+848d84b4b2ab: Pulling metadata
+848d84b4b2ab: Pulling fs layer
+848d84b4b2ab: Download complete
+71d9d77ae89e: Pulling metadata
+71d9d77ae89e: Pulling fs layer
+71d9d77ae89e: Download complete
+fb42cf21d5c1: Pulling metadata
+fb42cf21d5c1: Pulling fs layer
+fb42cf21d5c1: Download complete
+1bf6265ac0c9: Pulling metadata
+1bf6265ac0c9: Pulling fs layer
+1bf6265ac0c9: Download complete
+813921ad49c7: Pulling metadata
+813921ad49c7: Pulling fs layer
+813921ad49c7: Download complete
+fc183b81cd8a: Pulling metadata
+fc183b81cd8a: Pulling fs layer
+fc183b81cd8a: Download complete
+1edc7d40fb01: Pulling metadata
+1edc7d40fb01: Pulling fs layer
+1edc7d40fb01: Download complete
+69667ea51ce9: Pulling metadata
+69667ea51ce9: Pulling fs layer
+69667ea51ce9: Download complete
+dad131381a54: Pulling metadata
+dad131381a54: Pulling fs layer
+dad131381a54: Download complete
+3dacd6758f14: Pulling metadata
+3dacd6758f14: Pulling fs layer
+3dacd6758f14: Download complete
+7d4bad739229: Pulling metadata
+7d4bad739229: Pulling fs layer
+7d4bad739229: Download complete
+763c0a69bca6: Pulling metadata
+763c0a69bca6: Pulling fs layer
+763c0a69bca6: Download complete
+4fff97e3b983: Pulling metadata
+4fff97e3b983: Pulling fs layer
+4fff97e3b983: Download complete
+98f274d6ad68: Pulling metadata
+98f274d6ad68: Pulling fs layer
+98f274d6ad68: Download complete
+8c41351f802d: Pulling metadata
+8c41351f802d: Pulling fs layer
+8c41351f802d: Download complete
+c543de9fa973: Pulling metadata
+c543de9fa973: Pulling fs layer
+c543de9fa973: Download complete
+1675cb5623b7: Pulling metadata
+1675cb5623b7: Pulling fs layer
+1675cb5623b7: Download complete
+d7683dce04c0: Pulling metadata
+d7683dce04c0: Pulling fs layer
+d7683dce04c0: Download complete
+a23c4b097a25: Pulling metadata
+a23c4b097a25: Pulling fs layer
+a23c4b097a25: Download complete
+732f95431f4f: Pulling metadata
+732f95431f4f: Pulling fs layer
+732f95431f4f: Download complete
+c243118e72a4: Pulling metadata
+c243118e72a4: Pulling fs layer
+c243118e72a4: Download complete
+a2fb88a60a2a: Pulling metadata
+a2fb88a60a2a: Pulling fs layer
+a2fb88a60a2a: Download complete
+ec168b54c5e5: Pulling metadata
+ec168b54c5e5: Pulling fs layer
+ec168b54c5e5: Download complete
+ec168b54c5e5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/multilevel:latest
+
+real  61.53
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/multilevel:latest"
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b3a2acc39394        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+
+docker rm -f docker_registry
+
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 multilevel
+
+docker images
+kiwenlau/multilevel             latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker tag kiwenlau/multilevel:latest 136.187.101.80:5000/multilevel:latest
+
+docker images
+kiwenlau/multilevel              latest              ec168b54c5e5        9 months ago        448.2 MB
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+dc0b3e2b4bef        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/multilevel:latest
+The push refers to a repository [136.187.101.80:5000/multilevel] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/multilevel (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+848d84b4b2ab: Pushing
+848d84b4b2ab: Buffering to disk
+848d84b4b2ab: Image successfully pushed
+71d9d77ae89e: Pushing
+71d9d77ae89e: Buffering to disk
+71d9d77ae89e: Image successfully pushed
+fb42cf21d5c1: Pushing
+fb42cf21d5c1: Buffering to disk
+fb42cf21d5c1: Image successfully pushed
+1bf6265ac0c9: Pushing
+1bf6265ac0c9: Buffering to disk
+1bf6265ac0c9: Image successfully pushed
+813921ad49c7: Pushing
+813921ad49c7: Buffering to disk
+813921ad49c7: Image successfully pushed
+fc183b81cd8a: Pushing
+fc183b81cd8a: Buffering to disk
+fc183b81cd8a: Image successfully pushed
+1edc7d40fb01: Pushing
+1edc7d40fb01: Buffering to disk
+1edc7d40fb01: Image successfully pushed
+69667ea51ce9: Pushing
+69667ea51ce9: Buffering to disk
+69667ea51ce9: Image successfully pushed
+dad131381a54: Pushing
+dad131381a54: Buffering to disk
+dad131381a54: Image successfully pushed
+3dacd6758f14: Pushing
+3dacd6758f14: Buffering to disk
+3dacd6758f14: Image successfully pushed
+7d4bad739229: Pushing
+7d4bad739229: Buffering to disk
+7d4bad739229: Image successfully pushed
+763c0a69bca6: Pushing
+763c0a69bca6: Buffering to disk
+763c0a69bca6: Image successfully pushed
+4fff97e3b983: Pushing
+4fff97e3b983: Buffering to disk
+4fff97e3b983: Image successfully pushed
+98f274d6ad68: Pushing
+98f274d6ad68: Buffering to disk
+98f274d6ad68: Image successfully pushed
+8c41351f802d: Pushing
+8c41351f802d: Buffering to disk
+8c41351f802d: Image successfully pushed
+c543de9fa973: Pushing
+c543de9fa973: Buffering to disk
+c543de9fa973: Image successfully pushed
+1675cb5623b7: Pushing
+1675cb5623b7: Buffering to disk
+1675cb5623b7: Image successfully pushed
+d7683dce04c0: Pushing
+d7683dce04c0: Buffering to disk
+d7683dce04c0: Image successfully pushed
+a23c4b097a25: Pushing
+a23c4b097a25: Buffering to disk
+a23c4b097a25: Image successfully pushed
+732f95431f4f: Pushing
+732f95431f4f: Buffering to disk
+732f95431f4f: Image successfully pushed
+c243118e72a4: Pushing
+c243118e72a4: Buffering to disk
+c243118e72a4: Image successfully pushed
+a2fb88a60a2a: Pushing
+a2fb88a60a2a: Buffering to disk
+a2fb88a60a2a: Image successfully pushed
+ec168b54c5e5: Pushing
+ec168b54c5e5: Buffering to disk
+ec168b54c5e5: Image successfully pushed
+Pushing tag for rev [ec168b54c5e5] on {http://136.187.101.80:5000/v1/repositories/multilevel/tags/latest}
+
+real  67.01
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker pull 136.187.101.80:5000/multilevel:latest
+Pulling repository 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel
+ec168b54c5e5: Pulling image (latest) from 136.187.101.80:5000/multilevel, endpoint: http://136.187.101.80:5000/v1/
+ec168b54c5e5: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+848d84b4b2ab: Pulling metadata
+848d84b4b2ab: Pulling fs layer
+848d84b4b2ab: Download complete
+71d9d77ae89e: Pulling metadata
+71d9d77ae89e: Pulling fs layer
+71d9d77ae89e: Download complete
+fb42cf21d5c1: Pulling metadata
+fb42cf21d5c1: Pulling fs layer
+fb42cf21d5c1: Download complete
+1bf6265ac0c9: Pulling metadata
+1bf6265ac0c9: Pulling fs layer
+1bf6265ac0c9: Download complete
+813921ad49c7: Pulling metadata
+813921ad49c7: Pulling fs layer
+813921ad49c7: Download complete
+fc183b81cd8a: Pulling metadata
+fc183b81cd8a: Pulling fs layer
+fc183b81cd8a: Download complete
+1edc7d40fb01: Pulling metadata
+1edc7d40fb01: Pulling fs layer
+1edc7d40fb01: Download complete
+69667ea51ce9: Pulling metadata
+69667ea51ce9: Pulling fs layer
+69667ea51ce9: Download complete
+dad131381a54: Pulling metadata
+dad131381a54: Pulling fs layer
+dad131381a54: Download complete
+3dacd6758f14: Pulling metadata
+3dacd6758f14: Pulling fs layer
+3dacd6758f14: Download complete
+7d4bad739229: Pulling metadata
+7d4bad739229: Pulling fs layer
+7d4bad739229: Download complete
+763c0a69bca6: Pulling metadata
+763c0a69bca6: Pulling fs layer
+763c0a69bca6: Download complete
+4fff97e3b983: Pulling metadata
+4fff97e3b983: Pulling fs layer
+4fff97e3b983: Download complete
+98f274d6ad68: Pulling metadata
+98f274d6ad68: Pulling fs layer
+98f274d6ad68: Download complete
+8c41351f802d: Pulling metadata
+8c41351f802d: Pulling fs layer
+8c41351f802d: Download complete
+c543de9fa973: Pulling metadata
+c543de9fa973: Pulling fs layer
+c543de9fa973: Download complete
+1675cb5623b7: Pulling metadata
+1675cb5623b7: Pulling fs layer
+1675cb5623b7: Download complete
+d7683dce04c0: Pulling metadata
+d7683dce04c0: Pulling fs layer
+d7683dce04c0: Download complete
+a23c4b097a25: Pulling metadata
+a23c4b097a25: Pulling fs layer
+a23c4b097a25: Download complete
+732f95431f4f: Pulling metadata
+732f95431f4f: Pulling fs layer
+732f95431f4f: Download complete
+c243118e72a4: Pulling metadata
+c243118e72a4: Pulling fs layer
+c243118e72a4: Download complete
+a2fb88a60a2a: Pulling metadata
+a2fb88a60a2a: Pulling fs layer
+a2fb88a60a2a: Download complete
+ec168b54c5e5: Pulling metadata
+ec168b54c5e5: Pulling fs layer
+ec168b54c5e5: Download complete
+ec168b54c5e5: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/multilevel:latest
+
+real  60.36
+
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+136.187.101.80:5000/multilevel   latest              ec168b54c5e5        9 months ago        448.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/multilevel:latest"
+ssh kai@54.225.249.141 "docker images | grep multilevel"
+
+docker rm -f docker_registry
+
+end date: Fri Aug 14 02:38:44 JST 2015
+
+

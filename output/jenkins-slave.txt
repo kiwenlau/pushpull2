@@ -1,0 +1,1945 @@
+
+pullpush benchmark: transfer jenkins-slave image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Fri Aug 14 05:08:23 JST 2015
+
+sudo docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+sudo docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+939957c14170        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jenkins-slave (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+f28bd98a35cb: Pushing
+f28bd98a35cb: Buffering to disk
+f28bd98a35cb: Image successfully pushed
+281e9b8e128d: Pushing
+281e9b8e128d: Buffering to disk
+281e9b8e128d: Image successfully pushed
+a7658dd62ea5: Pushing
+a7658dd62ea5: Buffering to disk
+a7658dd62ea5: Image successfully pushed
+65f0e408185e: Pushing
+65f0e408185e: Buffering to disk
+65f0e408185e: Image successfully pushed
+6031827f51a8: Pushing
+6031827f51a8: Buffering to disk
+6031827f51a8: Image successfully pushed
+54ad585afa4c: Pushing
+54ad585afa4c: Buffering to disk
+54ad585afa4c: Image successfully pushed
+035fd5d4db8b: Pushing
+035fd5d4db8b: Buffering to disk
+035fd5d4db8b: Image successfully pushed
+ae6453008610: Pushing
+ae6453008610: Buffering to disk
+ae6453008610: Image successfully pushed
+5d1fd5ac1357: Pushing
+5d1fd5ac1357: Buffering to disk
+5d1fd5ac1357: Image successfully pushed
+8213fdc36f44: Pushing
+8213fdc36f44: Buffering to disk
+8213fdc36f44: Image successfully pushed
+44b6e14e8001: Pushing
+44b6e14e8001: Buffering to disk
+44b6e14e8001: Image successfully pushed
+d7c8ae849249: Pushing
+d7c8ae849249: Buffering to disk
+d7c8ae849249: Image successfully pushed
+2e6452deaf7d: Pushing
+2e6452deaf7d: Buffering to disk
+2e6452deaf7d: Image successfully pushed
+822890bbd1e3: Pushing
+822890bbd1e3: Buffering to disk
+822890bbd1e3: Image successfully pushed
+c6a2963de830: Pushing
+c6a2963de830: Buffering to disk
+c6a2963de830: Image successfully pushed
+0e35932b1202: Pushing
+0e35932b1202: Buffering to disk
+0e35932b1202: Image successfully pushed
+91a70abafae7: Pushing
+91a70abafae7: Buffering to disk
+91a70abafae7: Image successfully pushed
+cac286e587e7: Pushing
+cac286e587e7: Buffering to disk
+cac286e587e7: Image successfully pushed
+e992aa39d970: Pushing
+e992aa39d970: Buffering to disk
+e992aa39d970: Image successfully pushed
+34e0323ef111: Pushing
+34e0323ef111: Buffering to disk
+34e0323ef111: Image successfully pushed
+Pushing tag for rev [34e0323ef111] on {http://136.187.101.80:5000/v1/repositories/jenkins-slave/tags/latest}
+
+real  126.64
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+Pulling repository 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave, endpoint: http://136.187.101.80:5000/v1/
+34e0323ef111: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+f28bd98a35cb: Pulling metadata
+f28bd98a35cb: Pulling fs layer
+f28bd98a35cb: Download complete
+281e9b8e128d: Pulling metadata
+281e9b8e128d: Pulling fs layer
+281e9b8e128d: Download complete
+a7658dd62ea5: Pulling metadata
+a7658dd62ea5: Pulling fs layer
+a7658dd62ea5: Download complete
+65f0e408185e: Pulling metadata
+65f0e408185e: Pulling fs layer
+65f0e408185e: Download complete
+6031827f51a8: Pulling metadata
+6031827f51a8: Pulling fs layer
+6031827f51a8: Download complete
+54ad585afa4c: Pulling metadata
+54ad585afa4c: Pulling fs layer
+54ad585afa4c: Download complete
+035fd5d4db8b: Pulling metadata
+035fd5d4db8b: Pulling fs layer
+035fd5d4db8b: Download complete
+ae6453008610: Pulling metadata
+ae6453008610: Pulling fs layer
+ae6453008610: Download complete
+5d1fd5ac1357: Pulling metadata
+5d1fd5ac1357: Pulling fs layer
+5d1fd5ac1357: Download complete
+8213fdc36f44: Pulling metadata
+8213fdc36f44: Pulling fs layer
+8213fdc36f44: Download complete
+44b6e14e8001: Pulling metadata
+44b6e14e8001: Pulling fs layer
+44b6e14e8001: Download complete
+d7c8ae849249: Pulling metadata
+d7c8ae849249: Pulling fs layer
+d7c8ae849249: Download complete
+2e6452deaf7d: Pulling metadata
+2e6452deaf7d: Pulling fs layer
+2e6452deaf7d: Download complete
+822890bbd1e3: Pulling metadata
+822890bbd1e3: Pulling fs layer
+822890bbd1e3: Download complete
+c6a2963de830: Pulling metadata
+c6a2963de830: Pulling fs layer
+c6a2963de830: Download complete
+0e35932b1202: Pulling metadata
+0e35932b1202: Pulling fs layer
+0e35932b1202: Download complete
+91a70abafae7: Pulling metadata
+91a70abafae7: Pulling fs layer
+91a70abafae7: Download complete
+cac286e587e7: Pulling metadata
+cac286e587e7: Pulling fs layer
+cac286e587e7: Download complete
+e992aa39d970: Pulling metadata
+e992aa39d970: Pulling fs layer
+e992aa39d970: Download complete
+34e0323ef111: Pulling metadata
+34e0323ef111: Pulling fs layer
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  80.40
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+41875ffdbb63        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jenkins-slave (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+f28bd98a35cb: Pushing
+f28bd98a35cb: Buffering to disk
+f28bd98a35cb: Image successfully pushed
+281e9b8e128d: Pushing
+281e9b8e128d: Buffering to disk
+281e9b8e128d: Image successfully pushed
+a7658dd62ea5: Pushing
+a7658dd62ea5: Buffering to disk
+a7658dd62ea5: Image successfully pushed
+65f0e408185e: Pushing
+65f0e408185e: Buffering to disk
+65f0e408185e: Image successfully pushed
+6031827f51a8: Pushing
+6031827f51a8: Buffering to disk
+6031827f51a8: Image successfully pushed
+54ad585afa4c: Pushing
+54ad585afa4c: Buffering to disk
+54ad585afa4c: Image successfully pushed
+035fd5d4db8b: Pushing
+035fd5d4db8b: Buffering to disk
+035fd5d4db8b: Image successfully pushed
+ae6453008610: Pushing
+ae6453008610: Buffering to disk
+ae6453008610: Image successfully pushed
+5d1fd5ac1357: Pushing
+5d1fd5ac1357: Buffering to disk
+5d1fd5ac1357: Image successfully pushed
+8213fdc36f44: Pushing
+8213fdc36f44: Buffering to disk
+8213fdc36f44: Image successfully pushed
+44b6e14e8001: Pushing
+44b6e14e8001: Buffering to disk
+44b6e14e8001: Image successfully pushed
+d7c8ae849249: Pushing
+d7c8ae849249: Buffering to disk
+d7c8ae849249: Image successfully pushed
+2e6452deaf7d: Pushing
+2e6452deaf7d: Buffering to disk
+2e6452deaf7d: Image successfully pushed
+822890bbd1e3: Pushing
+822890bbd1e3: Buffering to disk
+822890bbd1e3: Image successfully pushed
+c6a2963de830: Pushing
+c6a2963de830: Buffering to disk
+c6a2963de830: Image successfully pushed
+0e35932b1202: Pushing
+0e35932b1202: Buffering to disk
+0e35932b1202: Image successfully pushed
+91a70abafae7: Pushing
+91a70abafae7: Buffering to disk
+91a70abafae7: Image successfully pushed
+cac286e587e7: Pushing
+cac286e587e7: Buffering to disk
+cac286e587e7: Image successfully pushed
+e992aa39d970: Pushing
+e992aa39d970: Buffering to disk
+e992aa39d970: Image successfully pushed
+34e0323ef111: Pushing
+34e0323ef111: Buffering to disk
+34e0323ef111: Image successfully pushed
+Pushing tag for rev [34e0323ef111] on {http://136.187.101.80:5000/v1/repositories/jenkins-slave/tags/latest}
+
+real  123.90
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+Pulling repository 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave, endpoint: http://136.187.101.80:5000/v1/
+34e0323ef111: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+f28bd98a35cb: Pulling metadata
+f28bd98a35cb: Pulling fs layer
+f28bd98a35cb: Download complete
+281e9b8e128d: Pulling metadata
+281e9b8e128d: Pulling fs layer
+281e9b8e128d: Download complete
+a7658dd62ea5: Pulling metadata
+a7658dd62ea5: Pulling fs layer
+a7658dd62ea5: Download complete
+65f0e408185e: Pulling metadata
+65f0e408185e: Pulling fs layer
+65f0e408185e: Download complete
+6031827f51a8: Pulling metadata
+6031827f51a8: Pulling fs layer
+6031827f51a8: Download complete
+54ad585afa4c: Pulling metadata
+54ad585afa4c: Pulling fs layer
+54ad585afa4c: Download complete
+035fd5d4db8b: Pulling metadata
+035fd5d4db8b: Pulling fs layer
+035fd5d4db8b: Download complete
+ae6453008610: Pulling metadata
+ae6453008610: Pulling fs layer
+ae6453008610: Download complete
+5d1fd5ac1357: Pulling metadata
+5d1fd5ac1357: Pulling fs layer
+5d1fd5ac1357: Download complete
+8213fdc36f44: Pulling metadata
+8213fdc36f44: Pulling fs layer
+8213fdc36f44: Download complete
+44b6e14e8001: Pulling metadata
+44b6e14e8001: Pulling fs layer
+44b6e14e8001: Download complete
+d7c8ae849249: Pulling metadata
+d7c8ae849249: Pulling fs layer
+d7c8ae849249: Download complete
+2e6452deaf7d: Pulling metadata
+2e6452deaf7d: Pulling fs layer
+2e6452deaf7d: Download complete
+822890bbd1e3: Pulling metadata
+822890bbd1e3: Pulling fs layer
+822890bbd1e3: Download complete
+c6a2963de830: Pulling metadata
+c6a2963de830: Pulling fs layer
+c6a2963de830: Download complete
+0e35932b1202: Pulling metadata
+0e35932b1202: Pulling fs layer
+0e35932b1202: Download complete
+91a70abafae7: Pulling metadata
+91a70abafae7: Pulling fs layer
+91a70abafae7: Download complete
+cac286e587e7: Pulling metadata
+cac286e587e7: Pulling fs layer
+cac286e587e7: Download complete
+e992aa39d970: Pulling metadata
+e992aa39d970: Pulling fs layer
+e992aa39d970: Download complete
+34e0323ef111: Pulling metadata
+34e0323ef111: Pulling fs layer
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  77.67
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+ba673adb0aa6        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+
+docker rm -f docker_registry
+
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+e22159592563        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jenkins-slave (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+f28bd98a35cb: Pushing
+f28bd98a35cb: Buffering to disk
+f28bd98a35cb: Image successfully pushed
+281e9b8e128d: Pushing
+281e9b8e128d: Buffering to disk
+281e9b8e128d: Image successfully pushed
+a7658dd62ea5: Pushing
+a7658dd62ea5: Buffering to disk
+a7658dd62ea5: Image successfully pushed
+65f0e408185e: Pushing
+65f0e408185e: Buffering to disk
+65f0e408185e: Image successfully pushed
+6031827f51a8: Pushing
+6031827f51a8: Buffering to disk
+6031827f51a8: Image successfully pushed
+54ad585afa4c: Pushing
+54ad585afa4c: Buffering to disk
+54ad585afa4c: Image successfully pushed
+035fd5d4db8b: Pushing
+035fd5d4db8b: Buffering to disk
+035fd5d4db8b: Image successfully pushed
+ae6453008610: Pushing
+ae6453008610: Buffering to disk
+ae6453008610: Image successfully pushed
+5d1fd5ac1357: Pushing
+5d1fd5ac1357: Buffering to disk
+5d1fd5ac1357: Image successfully pushed
+8213fdc36f44: Pushing
+8213fdc36f44: Buffering to disk
+8213fdc36f44: Image successfully pushed
+44b6e14e8001: Pushing
+44b6e14e8001: Buffering to disk
+44b6e14e8001: Image successfully pushed
+d7c8ae849249: Pushing
+d7c8ae849249: Buffering to disk
+d7c8ae849249: Image successfully pushed
+2e6452deaf7d: Pushing
+2e6452deaf7d: Buffering to disk
+2e6452deaf7d: Image successfully pushed
+822890bbd1e3: Pushing
+822890bbd1e3: Buffering to disk
+822890bbd1e3: Image successfully pushed
+c6a2963de830: Pushing
+c6a2963de830: Buffering to disk
+c6a2963de830: Image successfully pushed
+0e35932b1202: Pushing
+0e35932b1202: Buffering to disk
+0e35932b1202: Image successfully pushed
+91a70abafae7: Pushing
+91a70abafae7: Buffering to disk
+91a70abafae7: Image successfully pushed
+cac286e587e7: Pushing
+cac286e587e7: Buffering to disk
+cac286e587e7: Image successfully pushed
+e992aa39d970: Pushing
+e992aa39d970: Buffering to disk
+e992aa39d970: Image successfully pushed
+34e0323ef111: Pushing
+34e0323ef111: Buffering to disk
+34e0323ef111: Image successfully pushed
+Pushing tag for rev [34e0323ef111] on {http://136.187.101.80:5000/v1/repositories/jenkins-slave/tags/latest}
+
+real  129.91
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+Pulling repository 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave, endpoint: http://136.187.101.80:5000/v1/
+34e0323ef111: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+f28bd98a35cb: Pulling metadata
+f28bd98a35cb: Pulling fs layer
+f28bd98a35cb: Download complete
+281e9b8e128d: Pulling metadata
+281e9b8e128d: Pulling fs layer
+281e9b8e128d: Download complete
+a7658dd62ea5: Pulling metadata
+a7658dd62ea5: Pulling fs layer
+a7658dd62ea5: Download complete
+65f0e408185e: Pulling metadata
+65f0e408185e: Pulling fs layer
+65f0e408185e: Download complete
+6031827f51a8: Pulling metadata
+6031827f51a8: Pulling fs layer
+6031827f51a8: Download complete
+54ad585afa4c: Pulling metadata
+54ad585afa4c: Pulling fs layer
+54ad585afa4c: Download complete
+035fd5d4db8b: Pulling metadata
+035fd5d4db8b: Pulling fs layer
+035fd5d4db8b: Download complete
+ae6453008610: Pulling metadata
+ae6453008610: Pulling fs layer
+ae6453008610: Download complete
+5d1fd5ac1357: Pulling metadata
+5d1fd5ac1357: Pulling fs layer
+5d1fd5ac1357: Download complete
+8213fdc36f44: Pulling metadata
+8213fdc36f44: Pulling fs layer
+8213fdc36f44: Download complete
+44b6e14e8001: Pulling metadata
+44b6e14e8001: Pulling fs layer
+44b6e14e8001: Download complete
+d7c8ae849249: Pulling metadata
+d7c8ae849249: Pulling fs layer
+d7c8ae849249: Download complete
+2e6452deaf7d: Pulling metadata
+2e6452deaf7d: Pulling fs layer
+2e6452deaf7d: Download complete
+822890bbd1e3: Pulling metadata
+822890bbd1e3: Pulling fs layer
+822890bbd1e3: Download complete
+c6a2963de830: Pulling metadata
+c6a2963de830: Pulling fs layer
+c6a2963de830: Download complete
+0e35932b1202: Pulling metadata
+0e35932b1202: Pulling fs layer
+0e35932b1202: Download complete
+91a70abafae7: Pulling metadata
+91a70abafae7: Pulling fs layer
+91a70abafae7: Download complete
+cac286e587e7: Pulling metadata
+cac286e587e7: Pulling fs layer
+cac286e587e7: Download complete
+e992aa39d970: Pulling metadata
+e992aa39d970: Pulling fs layer
+e992aa39d970: Download complete
+34e0323ef111: Pulling metadata
+34e0323ef111: Pulling fs layer
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  75.53
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1cb05cd96d8e        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jenkins-slave (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+f28bd98a35cb: Pushing
+f28bd98a35cb: Buffering to disk
+f28bd98a35cb: Image successfully pushed
+281e9b8e128d: Pushing
+281e9b8e128d: Buffering to disk
+281e9b8e128d: Image successfully pushed
+a7658dd62ea5: Pushing
+a7658dd62ea5: Buffering to disk
+a7658dd62ea5: Image successfully pushed
+65f0e408185e: Pushing
+65f0e408185e: Buffering to disk
+65f0e408185e: Image successfully pushed
+6031827f51a8: Pushing
+6031827f51a8: Buffering to disk
+6031827f51a8: Image successfully pushed
+54ad585afa4c: Pushing
+54ad585afa4c: Buffering to disk
+54ad585afa4c: Image successfully pushed
+035fd5d4db8b: Pushing
+035fd5d4db8b: Buffering to disk
+035fd5d4db8b: Image successfully pushed
+ae6453008610: Pushing
+ae6453008610: Buffering to disk
+ae6453008610: Image successfully pushed
+5d1fd5ac1357: Pushing
+5d1fd5ac1357: Buffering to disk
+5d1fd5ac1357: Image successfully pushed
+8213fdc36f44: Pushing
+8213fdc36f44: Buffering to disk
+8213fdc36f44: Image successfully pushed
+44b6e14e8001: Pushing
+44b6e14e8001: Buffering to disk
+44b6e14e8001: Image successfully pushed
+d7c8ae849249: Pushing
+d7c8ae849249: Buffering to disk
+d7c8ae849249: Image successfully pushed
+2e6452deaf7d: Pushing
+2e6452deaf7d: Buffering to disk
+2e6452deaf7d: Image successfully pushed
+822890bbd1e3: Pushing
+822890bbd1e3: Buffering to disk
+822890bbd1e3: Image successfully pushed
+c6a2963de830: Pushing
+c6a2963de830: Buffering to disk
+c6a2963de830: Image successfully pushed
+0e35932b1202: Pushing
+0e35932b1202: Buffering to disk
+0e35932b1202: Image successfully pushed
+91a70abafae7: Pushing
+91a70abafae7: Buffering to disk
+91a70abafae7: Image successfully pushed
+cac286e587e7: Pushing
+cac286e587e7: Buffering to disk
+cac286e587e7: Image successfully pushed
+e992aa39d970: Pushing
+e992aa39d970: Buffering to disk
+e992aa39d970: Image successfully pushed
+34e0323ef111: Pushing
+34e0323ef111: Buffering to disk
+34e0323ef111: Image successfully pushed
+Pushing tag for rev [34e0323ef111] on {http://136.187.101.80:5000/v1/repositories/jenkins-slave/tags/latest}
+
+real  127.23
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+Pulling repository 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave, endpoint: http://136.187.101.80:5000/v1/
+34e0323ef111: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+f28bd98a35cb: Pulling metadata
+f28bd98a35cb: Pulling fs layer
+f28bd98a35cb: Download complete
+281e9b8e128d: Pulling metadata
+281e9b8e128d: Pulling fs layer
+281e9b8e128d: Download complete
+a7658dd62ea5: Pulling metadata
+a7658dd62ea5: Pulling fs layer
+a7658dd62ea5: Download complete
+65f0e408185e: Pulling metadata
+65f0e408185e: Pulling fs layer
+65f0e408185e: Download complete
+6031827f51a8: Pulling metadata
+6031827f51a8: Pulling fs layer
+6031827f51a8: Download complete
+54ad585afa4c: Pulling metadata
+54ad585afa4c: Pulling fs layer
+54ad585afa4c: Download complete
+035fd5d4db8b: Pulling metadata
+035fd5d4db8b: Pulling fs layer
+035fd5d4db8b: Download complete
+ae6453008610: Pulling metadata
+ae6453008610: Pulling fs layer
+ae6453008610: Download complete
+5d1fd5ac1357: Pulling metadata
+5d1fd5ac1357: Pulling fs layer
+5d1fd5ac1357: Download complete
+8213fdc36f44: Pulling metadata
+8213fdc36f44: Pulling fs layer
+8213fdc36f44: Download complete
+44b6e14e8001: Pulling metadata
+44b6e14e8001: Pulling fs layer
+44b6e14e8001: Download complete
+d7c8ae849249: Pulling metadata
+d7c8ae849249: Pulling fs layer
+d7c8ae849249: Download complete
+2e6452deaf7d: Pulling metadata
+2e6452deaf7d: Pulling fs layer
+2e6452deaf7d: Download complete
+822890bbd1e3: Pulling metadata
+822890bbd1e3: Pulling fs layer
+822890bbd1e3: Download complete
+c6a2963de830: Pulling metadata
+c6a2963de830: Pulling fs layer
+c6a2963de830: Download complete
+0e35932b1202: Pulling metadata
+0e35932b1202: Pulling fs layer
+0e35932b1202: Download complete
+91a70abafae7: Pulling metadata
+91a70abafae7: Pulling fs layer
+91a70abafae7: Download complete
+cac286e587e7: Pulling metadata
+cac286e587e7: Pulling fs layer
+cac286e587e7: Download complete
+e992aa39d970: Pulling metadata
+e992aa39d970: Pulling fs layer
+e992aa39d970: Download complete
+34e0323ef111: Pulling metadata
+34e0323ef111: Pulling fs layer
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  76.90
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+e08834fe4994        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+
+docker rm -f docker_registry
+
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3a28102d5eb2        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+
+docker rm -f docker_registry
+
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+5afc25ddf4c6        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jenkins-slave (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+f28bd98a35cb: Pushing
+f28bd98a35cb: Buffering to disk
+f28bd98a35cb: Image successfully pushed
+281e9b8e128d: Pushing
+281e9b8e128d: Buffering to disk
+281e9b8e128d: Image successfully pushed
+a7658dd62ea5: Pushing
+a7658dd62ea5: Buffering to disk
+a7658dd62ea5: Image successfully pushed
+65f0e408185e: Pushing
+65f0e408185e: Buffering to disk
+65f0e408185e: Image successfully pushed
+6031827f51a8: Pushing
+6031827f51a8: Buffering to disk
+6031827f51a8: Image successfully pushed
+54ad585afa4c: Pushing
+54ad585afa4c: Buffering to disk
+54ad585afa4c: Image successfully pushed
+035fd5d4db8b: Pushing
+035fd5d4db8b: Buffering to disk
+035fd5d4db8b: Image successfully pushed
+ae6453008610: Pushing
+ae6453008610: Buffering to disk
+ae6453008610: Image successfully pushed
+5d1fd5ac1357: Pushing
+5d1fd5ac1357: Buffering to disk
+5d1fd5ac1357: Image successfully pushed
+8213fdc36f44: Pushing
+8213fdc36f44: Buffering to disk
+8213fdc36f44: Image successfully pushed
+44b6e14e8001: Pushing
+44b6e14e8001: Buffering to disk
+44b6e14e8001: Image successfully pushed
+d7c8ae849249: Pushing
+d7c8ae849249: Buffering to disk
+d7c8ae849249: Image successfully pushed
+2e6452deaf7d: Pushing
+2e6452deaf7d: Buffering to disk
+2e6452deaf7d: Image successfully pushed
+822890bbd1e3: Pushing
+822890bbd1e3: Buffering to disk
+822890bbd1e3: Image successfully pushed
+c6a2963de830: Pushing
+c6a2963de830: Buffering to disk
+c6a2963de830: Image successfully pushed
+0e35932b1202: Pushing
+0e35932b1202: Buffering to disk
+0e35932b1202: Image successfully pushed
+91a70abafae7: Pushing
+91a70abafae7: Buffering to disk
+91a70abafae7: Image successfully pushed
+cac286e587e7: Pushing
+cac286e587e7: Buffering to disk
+cac286e587e7: Image successfully pushed
+e992aa39d970: Pushing
+e992aa39d970: Buffering to disk
+e992aa39d970: Image successfully pushed
+34e0323ef111: Pushing
+34e0323ef111: Buffering to disk
+34e0323ef111: Image successfully pushed
+Pushing tag for rev [34e0323ef111] on {http://136.187.101.80:5000/v1/repositories/jenkins-slave/tags/latest}
+
+real  128.86
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+Pulling repository 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave, endpoint: http://136.187.101.80:5000/v1/
+34e0323ef111: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+f28bd98a35cb: Pulling metadata
+f28bd98a35cb: Pulling fs layer
+f28bd98a35cb: Download complete
+281e9b8e128d: Pulling metadata
+281e9b8e128d: Pulling fs layer
+281e9b8e128d: Download complete
+a7658dd62ea5: Pulling metadata
+a7658dd62ea5: Pulling fs layer
+a7658dd62ea5: Download complete
+65f0e408185e: Pulling metadata
+65f0e408185e: Pulling fs layer
+65f0e408185e: Download complete
+6031827f51a8: Pulling metadata
+6031827f51a8: Pulling fs layer
+6031827f51a8: Download complete
+54ad585afa4c: Pulling metadata
+54ad585afa4c: Pulling fs layer
+54ad585afa4c: Download complete
+035fd5d4db8b: Pulling metadata
+035fd5d4db8b: Pulling fs layer
+035fd5d4db8b: Download complete
+ae6453008610: Pulling metadata
+ae6453008610: Pulling fs layer
+ae6453008610: Download complete
+5d1fd5ac1357: Pulling metadata
+5d1fd5ac1357: Pulling fs layer
+5d1fd5ac1357: Download complete
+8213fdc36f44: Pulling metadata
+8213fdc36f44: Pulling fs layer
+8213fdc36f44: Download complete
+44b6e14e8001: Pulling metadata
+44b6e14e8001: Pulling fs layer
+44b6e14e8001: Download complete
+d7c8ae849249: Pulling metadata
+d7c8ae849249: Pulling fs layer
+d7c8ae849249: Download complete
+2e6452deaf7d: Pulling metadata
+2e6452deaf7d: Pulling fs layer
+2e6452deaf7d: Download complete
+822890bbd1e3: Pulling metadata
+822890bbd1e3: Pulling fs layer
+822890bbd1e3: Download complete
+c6a2963de830: Pulling metadata
+c6a2963de830: Pulling fs layer
+c6a2963de830: Download complete
+0e35932b1202: Pulling metadata
+0e35932b1202: Pulling fs layer
+0e35932b1202: Download complete
+91a70abafae7: Pulling metadata
+91a70abafae7: Pulling fs layer
+91a70abafae7: Download complete
+cac286e587e7: Pulling metadata
+cac286e587e7: Pulling fs layer
+cac286e587e7: Download complete
+e992aa39d970: Pulling metadata
+e992aa39d970: Pulling fs layer
+e992aa39d970: Download complete
+34e0323ef111: Pulling metadata
+34e0323ef111: Pulling fs layer
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  86.63
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+09cf486c64d8        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jenkins-slave (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+f28bd98a35cb: Pushing
+f28bd98a35cb: Buffering to disk
+f28bd98a35cb: Image successfully pushed
+281e9b8e128d: Pushing
+281e9b8e128d: Buffering to disk
+281e9b8e128d: Image successfully pushed
+a7658dd62ea5: Pushing
+a7658dd62ea5: Buffering to disk
+a7658dd62ea5: Image successfully pushed
+65f0e408185e: Pushing
+65f0e408185e: Buffering to disk
+65f0e408185e: Image successfully pushed
+6031827f51a8: Pushing
+6031827f51a8: Buffering to disk
+6031827f51a8: Image successfully pushed
+54ad585afa4c: Pushing
+54ad585afa4c: Buffering to disk
+54ad585afa4c: Image successfully pushed
+035fd5d4db8b: Pushing
+035fd5d4db8b: Buffering to disk
+035fd5d4db8b: Image successfully pushed
+ae6453008610: Pushing
+ae6453008610: Buffering to disk
+ae6453008610: Image successfully pushed
+5d1fd5ac1357: Pushing
+5d1fd5ac1357: Buffering to disk
+5d1fd5ac1357: Image successfully pushed
+8213fdc36f44: Pushing
+8213fdc36f44: Buffering to disk
+8213fdc36f44: Image successfully pushed
+44b6e14e8001: Pushing
+44b6e14e8001: Buffering to disk
+44b6e14e8001: Image successfully pushed
+d7c8ae849249: Pushing
+d7c8ae849249: Buffering to disk
+d7c8ae849249: Image successfully pushed
+2e6452deaf7d: Pushing
+2e6452deaf7d: Buffering to disk
+2e6452deaf7d: Image successfully pushed
+822890bbd1e3: Pushing
+822890bbd1e3: Buffering to disk
+822890bbd1e3: Image successfully pushed
+c6a2963de830: Pushing
+c6a2963de830: Buffering to disk
+c6a2963de830: Image successfully pushed
+0e35932b1202: Pushing
+0e35932b1202: Buffering to disk
+0e35932b1202: Image successfully pushed
+91a70abafae7: Pushing
+91a70abafae7: Buffering to disk
+91a70abafae7: Image successfully pushed
+cac286e587e7: Pushing
+cac286e587e7: Buffering to disk
+cac286e587e7: Image successfully pushed
+e992aa39d970: Pushing
+e992aa39d970: Buffering to disk
+e992aa39d970: Image successfully pushed
+34e0323ef111: Pushing
+34e0323ef111: Buffering to disk
+34e0323ef111: Image successfully pushed
+Pushing tag for rev [34e0323ef111] on {http://136.187.101.80:5000/v1/repositories/jenkins-slave/tags/latest}
+
+real  127.30
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+Pulling repository 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave, endpoint: http://136.187.101.80:5000/v1/
+34e0323ef111: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+f28bd98a35cb: Pulling metadata
+f28bd98a35cb: Pulling fs layer
+f28bd98a35cb: Download complete
+281e9b8e128d: Pulling metadata
+281e9b8e128d: Pulling fs layer
+281e9b8e128d: Download complete
+a7658dd62ea5: Pulling metadata
+a7658dd62ea5: Pulling fs layer
+a7658dd62ea5: Download complete
+65f0e408185e: Pulling metadata
+65f0e408185e: Pulling fs layer
+65f0e408185e: Download complete
+6031827f51a8: Pulling metadata
+6031827f51a8: Pulling fs layer
+6031827f51a8: Download complete
+54ad585afa4c: Pulling metadata
+54ad585afa4c: Pulling fs layer
+54ad585afa4c: Download complete
+035fd5d4db8b: Pulling metadata
+035fd5d4db8b: Pulling fs layer
+035fd5d4db8b: Download complete
+ae6453008610: Pulling metadata
+ae6453008610: Pulling fs layer
+ae6453008610: Download complete
+5d1fd5ac1357: Pulling metadata
+5d1fd5ac1357: Pulling fs layer
+5d1fd5ac1357: Download complete
+8213fdc36f44: Pulling metadata
+8213fdc36f44: Pulling fs layer
+8213fdc36f44: Download complete
+44b6e14e8001: Pulling metadata
+44b6e14e8001: Pulling fs layer
+44b6e14e8001: Download complete
+d7c8ae849249: Pulling metadata
+d7c8ae849249: Pulling fs layer
+d7c8ae849249: Download complete
+2e6452deaf7d: Pulling metadata
+2e6452deaf7d: Pulling fs layer
+2e6452deaf7d: Download complete
+822890bbd1e3: Pulling metadata
+822890bbd1e3: Pulling fs layer
+822890bbd1e3: Download complete
+c6a2963de830: Pulling metadata
+c6a2963de830: Pulling fs layer
+c6a2963de830: Download complete
+0e35932b1202: Pulling metadata
+0e35932b1202: Pulling fs layer
+0e35932b1202: Download complete
+91a70abafae7: Pulling metadata
+91a70abafae7: Pulling fs layer
+91a70abafae7: Download complete
+cac286e587e7: Pulling metadata
+cac286e587e7: Pulling fs layer
+cac286e587e7: Download complete
+e992aa39d970: Pulling metadata
+e992aa39d970: Pulling fs layer
+e992aa39d970: Download complete
+34e0323ef111: Pulling metadata
+34e0323ef111: Pulling fs layer
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  76.86
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+f16958ba2647        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jenkins-slave (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+f28bd98a35cb: Pushing
+f28bd98a35cb: Buffering to disk
+f28bd98a35cb: Image successfully pushed
+281e9b8e128d: Pushing
+281e9b8e128d: Buffering to disk
+281e9b8e128d: Image successfully pushed
+a7658dd62ea5: Pushing
+a7658dd62ea5: Buffering to disk
+a7658dd62ea5: Image successfully pushed
+65f0e408185e: Pushing
+65f0e408185e: Buffering to disk
+65f0e408185e: Image successfully pushed
+6031827f51a8: Pushing
+6031827f51a8: Buffering to disk
+6031827f51a8: Image successfully pushed
+54ad585afa4c: Pushing
+54ad585afa4c: Buffering to disk
+54ad585afa4c: Image successfully pushed
+035fd5d4db8b: Pushing
+035fd5d4db8b: Buffering to disk
+035fd5d4db8b: Image successfully pushed
+ae6453008610: Pushing
+ae6453008610: Buffering to disk
+ae6453008610: Image successfully pushed
+5d1fd5ac1357: Pushing
+5d1fd5ac1357: Buffering to disk
+5d1fd5ac1357: Image successfully pushed
+8213fdc36f44: Pushing
+8213fdc36f44: Buffering to disk
+8213fdc36f44: Image successfully pushed
+44b6e14e8001: Pushing
+44b6e14e8001: Buffering to disk
+44b6e14e8001: Image successfully pushed
+d7c8ae849249: Pushing
+d7c8ae849249: Buffering to disk
+d7c8ae849249: Image successfully pushed
+2e6452deaf7d: Pushing
+2e6452deaf7d: Buffering to disk
+2e6452deaf7d: Image successfully pushed
+822890bbd1e3: Pushing
+822890bbd1e3: Buffering to disk
+822890bbd1e3: Image successfully pushed
+c6a2963de830: Pushing
+c6a2963de830: Buffering to disk
+c6a2963de830: Image successfully pushed
+0e35932b1202: Pushing
+0e35932b1202: Buffering to disk
+0e35932b1202: Image successfully pushed
+91a70abafae7: Pushing
+91a70abafae7: Buffering to disk
+91a70abafae7: Image successfully pushed
+cac286e587e7: Pushing
+cac286e587e7: Buffering to disk
+cac286e587e7: Image successfully pushed
+e992aa39d970: Pushing
+e992aa39d970: Buffering to disk
+e992aa39d970: Image successfully pushed
+34e0323ef111: Pushing
+34e0323ef111: Buffering to disk
+34e0323ef111: Image successfully pushed
+Pushing tag for rev [34e0323ef111] on {http://136.187.101.80:5000/v1/repositories/jenkins-slave/tags/latest}
+
+real  124.82
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+Pulling repository 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave, endpoint: http://136.187.101.80:5000/v1/
+34e0323ef111: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+f28bd98a35cb: Pulling metadata
+f28bd98a35cb: Pulling fs layer
+f28bd98a35cb: Download complete
+281e9b8e128d: Pulling metadata
+281e9b8e128d: Pulling fs layer
+281e9b8e128d: Download complete
+a7658dd62ea5: Pulling metadata
+a7658dd62ea5: Pulling fs layer
+a7658dd62ea5: Download complete
+65f0e408185e: Pulling metadata
+65f0e408185e: Pulling fs layer
+65f0e408185e: Download complete
+6031827f51a8: Pulling metadata
+6031827f51a8: Pulling fs layer
+6031827f51a8: Download complete
+54ad585afa4c: Pulling metadata
+54ad585afa4c: Pulling fs layer
+54ad585afa4c: Download complete
+035fd5d4db8b: Pulling metadata
+035fd5d4db8b: Pulling fs layer
+035fd5d4db8b: Download complete
+ae6453008610: Pulling metadata
+ae6453008610: Pulling fs layer
+ae6453008610: Download complete
+5d1fd5ac1357: Pulling metadata
+5d1fd5ac1357: Pulling fs layer
+5d1fd5ac1357: Download complete
+8213fdc36f44: Pulling metadata
+8213fdc36f44: Pulling fs layer
+8213fdc36f44: Download complete
+44b6e14e8001: Pulling metadata
+44b6e14e8001: Pulling fs layer
+44b6e14e8001: Download complete
+d7c8ae849249: Pulling metadata
+d7c8ae849249: Pulling fs layer
+d7c8ae849249: Download complete
+2e6452deaf7d: Pulling metadata
+2e6452deaf7d: Pulling fs layer
+2e6452deaf7d: Download complete
+822890bbd1e3: Pulling metadata
+822890bbd1e3: Pulling fs layer
+822890bbd1e3: Download complete
+c6a2963de830: Pulling metadata
+c6a2963de830: Pulling fs layer
+c6a2963de830: Download complete
+0e35932b1202: Pulling metadata
+0e35932b1202: Pulling fs layer
+0e35932b1202: Download complete
+91a70abafae7: Pulling metadata
+91a70abafae7: Pulling fs layer
+91a70abafae7: Download complete
+cac286e587e7: Pulling metadata
+cac286e587e7: Pulling fs layer
+cac286e587e7: Download complete
+e992aa39d970: Pulling metadata
+e992aa39d970: Pulling fs layer
+e992aa39d970: Download complete
+34e0323ef111: Pulling metadata
+34e0323ef111: Pulling fs layer
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  77.26
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+27bc8a5b98f8        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jenkins-slave (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+f28bd98a35cb: Pushing
+f28bd98a35cb: Buffering to disk
+f28bd98a35cb: Image successfully pushed
+281e9b8e128d: Pushing
+281e9b8e128d: Buffering to disk
+281e9b8e128d: Image successfully pushed
+a7658dd62ea5: Pushing
+a7658dd62ea5: Buffering to disk
+a7658dd62ea5: Image successfully pushed
+65f0e408185e: Pushing
+65f0e408185e: Buffering to disk
+65f0e408185e: Image successfully pushed
+6031827f51a8: Pushing
+6031827f51a8: Buffering to disk
+6031827f51a8: Image successfully pushed
+54ad585afa4c: Pushing
+54ad585afa4c: Buffering to disk
+54ad585afa4c: Image successfully pushed
+035fd5d4db8b: Pushing
+035fd5d4db8b: Buffering to disk
+035fd5d4db8b: Image successfully pushed
+ae6453008610: Pushing
+ae6453008610: Buffering to disk
+ae6453008610: Image successfully pushed
+5d1fd5ac1357: Pushing
+5d1fd5ac1357: Buffering to disk
+5d1fd5ac1357: Image successfully pushed
+8213fdc36f44: Pushing
+8213fdc36f44: Buffering to disk
+8213fdc36f44: Image successfully pushed
+44b6e14e8001: Pushing
+44b6e14e8001: Buffering to disk
+44b6e14e8001: Image successfully pushed
+d7c8ae849249: Pushing
+d7c8ae849249: Buffering to disk
+d7c8ae849249: Image successfully pushed
+2e6452deaf7d: Pushing
+2e6452deaf7d: Buffering to disk
+2e6452deaf7d: Image successfully pushed
+822890bbd1e3: Pushing
+822890bbd1e3: Buffering to disk
+822890bbd1e3: Image successfully pushed
+c6a2963de830: Pushing
+c6a2963de830: Buffering to disk
+c6a2963de830: Image successfully pushed
+0e35932b1202: Pushing
+0e35932b1202: Buffering to disk
+0e35932b1202: Image successfully pushed
+91a70abafae7: Pushing
+91a70abafae7: Buffering to disk
+91a70abafae7: Image successfully pushed
+cac286e587e7: Pushing
+cac286e587e7: Buffering to disk
+cac286e587e7: Image successfully pushed
+e992aa39d970: Pushing
+e992aa39d970: Buffering to disk
+e992aa39d970: Image successfully pushed
+34e0323ef111: Pushing
+34e0323ef111: Buffering to disk
+34e0323ef111: Image successfully pushed
+Pushing tag for rev [34e0323ef111] on {http://136.187.101.80:5000/v1/repositories/jenkins-slave/tags/latest}
+
+real  129.36
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+Pulling repository 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave, endpoint: http://136.187.101.80:5000/v1/
+34e0323ef111: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+f28bd98a35cb: Pulling metadata
+f28bd98a35cb: Pulling fs layer
+f28bd98a35cb: Download complete
+281e9b8e128d: Pulling metadata
+281e9b8e128d: Pulling fs layer
+281e9b8e128d: Download complete
+a7658dd62ea5: Pulling metadata
+a7658dd62ea5: Pulling fs layer
+a7658dd62ea5: Download complete
+65f0e408185e: Pulling metadata
+65f0e408185e: Pulling fs layer
+65f0e408185e: Download complete
+6031827f51a8: Pulling metadata
+6031827f51a8: Pulling fs layer
+6031827f51a8: Download complete
+54ad585afa4c: Pulling metadata
+54ad585afa4c: Pulling fs layer
+54ad585afa4c: Download complete
+035fd5d4db8b: Pulling metadata
+035fd5d4db8b: Pulling fs layer
+035fd5d4db8b: Download complete
+ae6453008610: Pulling metadata
+ae6453008610: Pulling fs layer
+ae6453008610: Download complete
+5d1fd5ac1357: Pulling metadata
+5d1fd5ac1357: Pulling fs layer
+5d1fd5ac1357: Download complete
+8213fdc36f44: Pulling metadata
+8213fdc36f44: Pulling fs layer
+8213fdc36f44: Download complete
+44b6e14e8001: Pulling metadata
+44b6e14e8001: Pulling fs layer
+44b6e14e8001: Download complete
+d7c8ae849249: Pulling metadata
+d7c8ae849249: Pulling fs layer
+d7c8ae849249: Download complete
+2e6452deaf7d: Pulling metadata
+2e6452deaf7d: Pulling fs layer
+2e6452deaf7d: Download complete
+822890bbd1e3: Pulling metadata
+822890bbd1e3: Pulling fs layer
+822890bbd1e3: Download complete
+c6a2963de830: Pulling metadata
+c6a2963de830: Pulling fs layer
+c6a2963de830: Download complete
+0e35932b1202: Pulling metadata
+0e35932b1202: Pulling fs layer
+0e35932b1202: Download complete
+91a70abafae7: Pulling metadata
+91a70abafae7: Pulling fs layer
+91a70abafae7: Download complete
+cac286e587e7: Pulling metadata
+cac286e587e7: Pulling fs layer
+cac286e587e7: Download complete
+e992aa39d970: Pulling metadata
+e992aa39d970: Pulling fs layer
+e992aa39d970: Download complete
+34e0323ef111: Pulling metadata
+34e0323ef111: Pulling fs layer
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  76.96
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+80a780e420db        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jenkins-slave (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+f28bd98a35cb: Pushing
+f28bd98a35cb: Buffering to disk
+f28bd98a35cb: Image successfully pushed
+281e9b8e128d: Pushing
+281e9b8e128d: Buffering to disk
+281e9b8e128d: Image successfully pushed
+a7658dd62ea5: Pushing
+a7658dd62ea5: Buffering to disk
+a7658dd62ea5: Image successfully pushed
+65f0e408185e: Pushing
+65f0e408185e: Buffering to disk
+65f0e408185e: Image successfully pushed
+6031827f51a8: Pushing
+6031827f51a8: Buffering to disk
+6031827f51a8: Image successfully pushed
+54ad585afa4c: Pushing
+54ad585afa4c: Buffering to disk
+54ad585afa4c: Image successfully pushed
+035fd5d4db8b: Pushing
+035fd5d4db8b: Buffering to disk
+035fd5d4db8b: Image successfully pushed
+ae6453008610: Pushing
+ae6453008610: Buffering to disk
+ae6453008610: Image successfully pushed
+5d1fd5ac1357: Pushing
+5d1fd5ac1357: Buffering to disk
+5d1fd5ac1357: Image successfully pushed
+8213fdc36f44: Pushing
+8213fdc36f44: Buffering to disk
+8213fdc36f44: Image successfully pushed
+44b6e14e8001: Pushing
+44b6e14e8001: Buffering to disk
+44b6e14e8001: Image successfully pushed
+d7c8ae849249: Pushing
+d7c8ae849249: Buffering to disk
+d7c8ae849249: Image successfully pushed
+2e6452deaf7d: Pushing
+2e6452deaf7d: Buffering to disk
+2e6452deaf7d: Image successfully pushed
+822890bbd1e3: Pushing
+822890bbd1e3: Buffering to disk
+822890bbd1e3: Image successfully pushed
+c6a2963de830: Pushing
+c6a2963de830: Buffering to disk
+c6a2963de830: Image successfully pushed
+0e35932b1202: Pushing
+0e35932b1202: Buffering to disk
+0e35932b1202: Image successfully pushed
+91a70abafae7: Pushing
+91a70abafae7: Buffering to disk
+91a70abafae7: Image successfully pushed
+cac286e587e7: Pushing
+cac286e587e7: Buffering to disk
+cac286e587e7: Image successfully pushed
+e992aa39d970: Pushing
+e992aa39d970: Buffering to disk
+e992aa39d970: Image successfully pushed
+34e0323ef111: Pushing
+34e0323ef111: Buffering to disk
+34e0323ef111: Image successfully pushed
+Pushing tag for rev [34e0323ef111] on {http://136.187.101.80:5000/v1/repositories/jenkins-slave/tags/latest}
+
+real  121.14
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+Pulling repository 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave, endpoint: http://136.187.101.80:5000/v1/
+34e0323ef111: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+f28bd98a35cb: Pulling metadata
+f28bd98a35cb: Pulling fs layer
+f28bd98a35cb: Download complete
+281e9b8e128d: Pulling metadata
+281e9b8e128d: Pulling fs layer
+281e9b8e128d: Download complete
+a7658dd62ea5: Pulling metadata
+a7658dd62ea5: Pulling fs layer
+a7658dd62ea5: Download complete
+65f0e408185e: Pulling metadata
+65f0e408185e: Pulling fs layer
+65f0e408185e: Download complete
+6031827f51a8: Pulling metadata
+6031827f51a8: Pulling fs layer
+6031827f51a8: Download complete
+54ad585afa4c: Pulling metadata
+54ad585afa4c: Pulling fs layer
+54ad585afa4c: Download complete
+035fd5d4db8b: Pulling metadata
+035fd5d4db8b: Pulling fs layer
+035fd5d4db8b: Download complete
+ae6453008610: Pulling metadata
+ae6453008610: Pulling fs layer
+ae6453008610: Download complete
+5d1fd5ac1357: Pulling metadata
+5d1fd5ac1357: Pulling fs layer
+5d1fd5ac1357: Download complete
+8213fdc36f44: Pulling metadata
+8213fdc36f44: Pulling fs layer
+8213fdc36f44: Download complete
+44b6e14e8001: Pulling metadata
+44b6e14e8001: Pulling fs layer
+44b6e14e8001: Download complete
+d7c8ae849249: Pulling metadata
+d7c8ae849249: Pulling fs layer
+d7c8ae849249: Download complete
+2e6452deaf7d: Pulling metadata
+2e6452deaf7d: Pulling fs layer
+2e6452deaf7d: Download complete
+822890bbd1e3: Pulling metadata
+822890bbd1e3: Pulling fs layer
+822890bbd1e3: Download complete
+c6a2963de830: Pulling metadata
+c6a2963de830: Pulling fs layer
+c6a2963de830: Download complete
+0e35932b1202: Pulling metadata
+0e35932b1202: Pulling fs layer
+0e35932b1202: Download complete
+91a70abafae7: Pulling metadata
+91a70abafae7: Pulling fs layer
+91a70abafae7: Download complete
+cac286e587e7: Pulling metadata
+cac286e587e7: Pulling fs layer
+cac286e587e7: Download complete
+e992aa39d970: Pulling metadata
+e992aa39d970: Pulling fs layer
+e992aa39d970: Download complete
+34e0323ef111: Pulling metadata
+34e0323ef111: Pulling fs layer
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  81.27
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 jenkins-slave
+
+docker images
+kiwenlau/jenkins-slave          latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker tag kiwenlau/jenkins-slave:latest 136.187.101.80:5000/jenkins-slave:latest
+
+docker images
+kiwenlau/jenkins-slave              latest              34e0323ef111        10 weeks ago        698.2 MB
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.2 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+f7cc8319e0f8        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/jenkins-slave:latest
+The push refers to a repository [136.187.101.80:5000/jenkins-slave] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/jenkins-slave (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+f28bd98a35cb: Pushing
+f28bd98a35cb: Buffering to disk
+f28bd98a35cb: Image successfully pushed
+281e9b8e128d: Pushing
+281e9b8e128d: Buffering to disk
+281e9b8e128d: Image successfully pushed
+a7658dd62ea5: Pushing
+a7658dd62ea5: Buffering to disk
+a7658dd62ea5: Image successfully pushed
+65f0e408185e: Pushing
+65f0e408185e: Buffering to disk
+65f0e408185e: Image successfully pushed
+6031827f51a8: Pushing
+6031827f51a8: Buffering to disk
+6031827f51a8: Image successfully pushed
+54ad585afa4c: Pushing
+54ad585afa4c: Buffering to disk
+54ad585afa4c: Image successfully pushed
+035fd5d4db8b: Pushing
+035fd5d4db8b: Buffering to disk
+035fd5d4db8b: Image successfully pushed
+ae6453008610: Pushing
+ae6453008610: Buffering to disk
+ae6453008610: Image successfully pushed
+5d1fd5ac1357: Pushing
+5d1fd5ac1357: Buffering to disk
+5d1fd5ac1357: Image successfully pushed
+8213fdc36f44: Pushing
+8213fdc36f44: Buffering to disk
+8213fdc36f44: Image successfully pushed
+44b6e14e8001: Pushing
+44b6e14e8001: Buffering to disk
+44b6e14e8001: Image successfully pushed
+d7c8ae849249: Pushing
+d7c8ae849249: Buffering to disk
+d7c8ae849249: Image successfully pushed
+2e6452deaf7d: Pushing
+2e6452deaf7d: Buffering to disk
+2e6452deaf7d: Image successfully pushed
+822890bbd1e3: Pushing
+822890bbd1e3: Buffering to disk
+822890bbd1e3: Image successfully pushed
+c6a2963de830: Pushing
+c6a2963de830: Buffering to disk
+c6a2963de830: Image successfully pushed
+0e35932b1202: Pushing
+0e35932b1202: Buffering to disk
+0e35932b1202: Image successfully pushed
+91a70abafae7: Pushing
+91a70abafae7: Buffering to disk
+91a70abafae7: Image successfully pushed
+cac286e587e7: Pushing
+cac286e587e7: Buffering to disk
+cac286e587e7: Image successfully pushed
+e992aa39d970: Pushing
+e992aa39d970: Buffering to disk
+e992aa39d970: Image successfully pushed
+34e0323ef111: Pushing
+34e0323ef111: Buffering to disk
+34e0323ef111: Image successfully pushed
+Pushing tag for rev [34e0323ef111] on {http://136.187.101.80:5000/v1/repositories/jenkins-slave/tags/latest}
+
+real  112.65
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker pull 136.187.101.80:5000/jenkins-slave:latest
+Pulling repository 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave
+34e0323ef111: Pulling image (latest) from 136.187.101.80:5000/jenkins-slave, endpoint: http://136.187.101.80:5000/v1/
+34e0323ef111: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+f28bd98a35cb: Pulling metadata
+f28bd98a35cb: Pulling fs layer
+f28bd98a35cb: Download complete
+281e9b8e128d: Pulling metadata
+281e9b8e128d: Pulling fs layer
+281e9b8e128d: Download complete
+a7658dd62ea5: Pulling metadata
+a7658dd62ea5: Pulling fs layer
+a7658dd62ea5: Download complete
+65f0e408185e: Pulling metadata
+65f0e408185e: Pulling fs layer
+65f0e408185e: Download complete
+6031827f51a8: Pulling metadata
+6031827f51a8: Pulling fs layer
+6031827f51a8: Download complete
+54ad585afa4c: Pulling metadata
+54ad585afa4c: Pulling fs layer
+54ad585afa4c: Download complete
+035fd5d4db8b: Pulling metadata
+035fd5d4db8b: Pulling fs layer
+035fd5d4db8b: Download complete
+ae6453008610: Pulling metadata
+ae6453008610: Pulling fs layer
+ae6453008610: Download complete
+5d1fd5ac1357: Pulling metadata
+5d1fd5ac1357: Pulling fs layer
+5d1fd5ac1357: Download complete
+8213fdc36f44: Pulling metadata
+8213fdc36f44: Pulling fs layer
+8213fdc36f44: Download complete
+44b6e14e8001: Pulling metadata
+44b6e14e8001: Pulling fs layer
+44b6e14e8001: Download complete
+d7c8ae849249: Pulling metadata
+d7c8ae849249: Pulling fs layer
+d7c8ae849249: Download complete
+2e6452deaf7d: Pulling metadata
+2e6452deaf7d: Pulling fs layer
+2e6452deaf7d: Download complete
+822890bbd1e3: Pulling metadata
+822890bbd1e3: Pulling fs layer
+822890bbd1e3: Download complete
+c6a2963de830: Pulling metadata
+c6a2963de830: Pulling fs layer
+c6a2963de830: Download complete
+0e35932b1202: Pulling metadata
+0e35932b1202: Pulling fs layer
+0e35932b1202: Download complete
+91a70abafae7: Pulling metadata
+91a70abafae7: Pulling fs layer
+91a70abafae7: Download complete
+cac286e587e7: Pulling metadata
+cac286e587e7: Pulling fs layer
+cac286e587e7: Download complete
+e992aa39d970: Pulling metadata
+e992aa39d970: Pulling fs layer
+e992aa39d970: Download complete
+34e0323ef111: Pulling metadata
+34e0323ef111: Pulling fs layer
+34e0323ef111: Download complete
+34e0323ef111: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/jenkins-slave:latest
+
+real  77.72
+
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+136.187.101.80:5000/jenkins-slave   latest              34e0323ef111        10 weeks ago        698.1 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/jenkins-slave:latest"
+ssh kai@54.225.249.141 "docker images | grep jenkins-slave"
+
+docker rm -f docker_registry
+
+end date: Fri Aug 14 05:46:36 JST 2015
+
+

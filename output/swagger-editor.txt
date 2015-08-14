@@ -1,0 +1,1807 @@
+
+pullpush benchmark: transfer swagger-editor image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Fri Aug 14 07:39:17 JST 2015
+
+sudo docker images
+kiwenlau/swagger-editor         flat                82c4e72da24c        7 weeks ago         875.7 MB
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+sudo docker images
+kiwenlau/swagger-editor         flat                82c4e72da24c        7 weeks ago         875.7 MB
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1217c9cdba2f        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+e5ba92c266d9        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3c550b6a2e69        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b8ae41d865cb        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+7cf42a0c03a9        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/swagger-editor (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+27d47432a69b: Pushing
+27d47432a69b: Buffering to disk
+27d47432a69b: Image successfully pushed
+5f92234dcf1e: Pushing
+5f92234dcf1e: Buffering to disk
+5f92234dcf1e: Image successfully pushed
+51a9c7c1f8bb: Pushing
+51a9c7c1f8bb: Buffering to disk
+51a9c7c1f8bb: Image successfully pushed
+5ba9dab47459: Pushing
+5ba9dab47459: Buffering to disk
+5ba9dab47459: Image successfully pushed
+ca7a0d5de2eb: Pushing
+ca7a0d5de2eb: Buffering to disk
+ca7a0d5de2eb: Image successfully pushed
+b4bf25e902be: Pushing
+b4bf25e902be: Buffering to disk
+b4bf25e902be: Image successfully pushed
+f7d1a0c65297: Pushing
+f7d1a0c65297: Buffering to disk
+f7d1a0c65297: Image successfully pushed
+b20022aa994c: Pushing
+b20022aa994c: Buffering to disk
+b20022aa994c: Image successfully pushed
+6dad509e6e13: Pushing
+6dad509e6e13: Buffering to disk
+6dad509e6e13: Image successfully pushed
+8bfb10533ec2: Pushing
+8bfb10533ec2: Buffering to disk
+8bfb10533ec2: Image successfully pushed
+12589745597b: Pushing
+12589745597b: Buffering to disk
+12589745597b: Image successfully pushed
+a2bebd23e970: Pushing
+a2bebd23e970: Buffering to disk
+a2bebd23e970: Image successfully pushed
+289eb2919b18: Pushing
+289eb2919b18: Buffering to disk
+289eb2919b18: Image successfully pushed
+744a2173b7e7: Pushing
+744a2173b7e7: Buffering to disk
+744a2173b7e7: Image successfully pushed
+5aa3d2f00fa8: Pushing
+5aa3d2f00fa8: Buffering to disk
+5aa3d2f00fa8: Image successfully pushed
+8215a030e8ab: Pushing
+8215a030e8ab: Buffering to disk
+8215a030e8ab: Image successfully pushed
+3c5158733227: Pushing
+3c5158733227: Buffering to disk
+3c5158733227: Image successfully pushed
+ff61d7bfda17: Pushing
+ff61d7bfda17: Buffering to disk
+ff61d7bfda17: Image successfully pushed
+Pushing tag for rev [ff61d7bfda17] on {http://136.187.101.80:5000/v1/repositories/swagger-editor/tags/latest}
+
+real  122.64
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker pull 136.187.101.80:5000/swagger-editor:latest
+Pulling repository 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor, endpoint: http://136.187.101.80:5000/v1/
+ff61d7bfda17: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+27d47432a69b: Pulling metadata
+27d47432a69b: Pulling fs layer
+27d47432a69b: Download complete
+5f92234dcf1e: Pulling metadata
+5f92234dcf1e: Pulling fs layer
+5f92234dcf1e: Download complete
+51a9c7c1f8bb: Pulling metadata
+51a9c7c1f8bb: Pulling fs layer
+51a9c7c1f8bb: Download complete
+5ba9dab47459: Pulling metadata
+5ba9dab47459: Pulling fs layer
+5ba9dab47459: Download complete
+ca7a0d5de2eb: Pulling metadata
+ca7a0d5de2eb: Pulling fs layer
+ca7a0d5de2eb: Download complete
+b4bf25e902be: Pulling metadata
+b4bf25e902be: Pulling fs layer
+b4bf25e902be: Download complete
+f7d1a0c65297: Pulling metadata
+f7d1a0c65297: Pulling fs layer
+f7d1a0c65297: Download complete
+b20022aa994c: Pulling metadata
+b20022aa994c: Pulling fs layer
+b20022aa994c: Download complete
+6dad509e6e13: Pulling metadata
+6dad509e6e13: Pulling fs layer
+6dad509e6e13: Download complete
+8bfb10533ec2: Pulling metadata
+8bfb10533ec2: Pulling fs layer
+8bfb10533ec2: Download complete
+12589745597b: Pulling metadata
+12589745597b: Pulling fs layer
+12589745597b: Download complete
+a2bebd23e970: Pulling metadata
+a2bebd23e970: Pulling fs layer
+a2bebd23e970: Download complete
+289eb2919b18: Pulling metadata
+289eb2919b18: Pulling fs layer
+289eb2919b18: Download complete
+744a2173b7e7: Pulling metadata
+744a2173b7e7: Pulling fs layer
+744a2173b7e7: Download complete
+5aa3d2f00fa8: Pulling metadata
+5aa3d2f00fa8: Pulling fs layer
+5aa3d2f00fa8: Download complete
+8215a030e8ab: Pulling metadata
+8215a030e8ab: Pulling fs layer
+8215a030e8ab: Download complete
+3c5158733227: Pulling metadata
+3c5158733227: Pulling fs layer
+3c5158733227: Download complete
+ff61d7bfda17: Pulling metadata
+ff61d7bfda17: Pulling fs layer
+ff61d7bfda17: Download complete
+ff61d7bfda17: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
+
+real  85.55
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/swagger-editor:latest"
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+001a70a0caca        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+37e7325a6b39        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/swagger-editor (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+27d47432a69b: Pushing
+27d47432a69b: Buffering to disk
+27d47432a69b: Image successfully pushed
+5f92234dcf1e: Pushing
+5f92234dcf1e: Buffering to disk
+5f92234dcf1e: Image successfully pushed
+51a9c7c1f8bb: Pushing
+51a9c7c1f8bb: Buffering to disk
+51a9c7c1f8bb: Image successfully pushed
+5ba9dab47459: Pushing
+5ba9dab47459: Buffering to disk
+5ba9dab47459: Image successfully pushed
+ca7a0d5de2eb: Pushing
+ca7a0d5de2eb: Buffering to disk
+ca7a0d5de2eb: Image successfully pushed
+b4bf25e902be: Pushing
+b4bf25e902be: Buffering to disk
+b4bf25e902be: Image successfully pushed
+f7d1a0c65297: Pushing
+f7d1a0c65297: Buffering to disk
+f7d1a0c65297: Image successfully pushed
+b20022aa994c: Pushing
+b20022aa994c: Buffering to disk
+b20022aa994c: Image successfully pushed
+6dad509e6e13: Pushing
+6dad509e6e13: Buffering to disk
+6dad509e6e13: Image successfully pushed
+8bfb10533ec2: Pushing
+8bfb10533ec2: Buffering to disk
+8bfb10533ec2: Image successfully pushed
+12589745597b: Pushing
+12589745597b: Buffering to disk
+12589745597b: Image successfully pushed
+a2bebd23e970: Pushing
+a2bebd23e970: Buffering to disk
+a2bebd23e970: Image successfully pushed
+289eb2919b18: Pushing
+289eb2919b18: Buffering to disk
+289eb2919b18: Image successfully pushed
+744a2173b7e7: Pushing
+744a2173b7e7: Buffering to disk
+744a2173b7e7: Image successfully pushed
+5aa3d2f00fa8: Pushing
+5aa3d2f00fa8: Buffering to disk
+5aa3d2f00fa8: Image successfully pushed
+8215a030e8ab: Pushing
+8215a030e8ab: Buffering to disk
+8215a030e8ab: Image successfully pushed
+3c5158733227: Pushing
+3c5158733227: Buffering to disk
+3c5158733227: Image successfully pushed
+ff61d7bfda17: Pushing
+ff61d7bfda17: Buffering to disk
+ff61d7bfda17: Image successfully pushed
+Pushing tag for rev [ff61d7bfda17] on {http://136.187.101.80:5000/v1/repositories/swagger-editor/tags/latest}
+
+real  121.97
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker pull 136.187.101.80:5000/swagger-editor:latest
+Pulling repository 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor, endpoint: http://136.187.101.80:5000/v1/
+ff61d7bfda17: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+27d47432a69b: Pulling metadata
+27d47432a69b: Pulling fs layer
+27d47432a69b: Download complete
+5f92234dcf1e: Pulling metadata
+5f92234dcf1e: Pulling fs layer
+5f92234dcf1e: Download complete
+51a9c7c1f8bb: Pulling metadata
+51a9c7c1f8bb: Pulling fs layer
+51a9c7c1f8bb: Download complete
+5ba9dab47459: Pulling metadata
+5ba9dab47459: Pulling fs layer
+5ba9dab47459: Download complete
+ca7a0d5de2eb: Pulling metadata
+ca7a0d5de2eb: Pulling fs layer
+ca7a0d5de2eb: Download complete
+b4bf25e902be: Pulling metadata
+b4bf25e902be: Pulling fs layer
+b4bf25e902be: Download complete
+f7d1a0c65297: Pulling metadata
+f7d1a0c65297: Pulling fs layer
+f7d1a0c65297: Download complete
+b20022aa994c: Pulling metadata
+b20022aa994c: Pulling fs layer
+b20022aa994c: Download complete
+6dad509e6e13: Pulling metadata
+6dad509e6e13: Pulling fs layer
+6dad509e6e13: Download complete
+8bfb10533ec2: Pulling metadata
+8bfb10533ec2: Pulling fs layer
+8bfb10533ec2: Download complete
+12589745597b: Pulling metadata
+12589745597b: Pulling fs layer
+12589745597b: Download complete
+a2bebd23e970: Pulling metadata
+a2bebd23e970: Pulling fs layer
+a2bebd23e970: Download complete
+289eb2919b18: Pulling metadata
+289eb2919b18: Pulling fs layer
+289eb2919b18: Download complete
+744a2173b7e7: Pulling metadata
+744a2173b7e7: Pulling fs layer
+744a2173b7e7: Download complete
+5aa3d2f00fa8: Pulling metadata
+5aa3d2f00fa8: Pulling fs layer
+5aa3d2f00fa8: Download complete
+8215a030e8ab: Pulling metadata
+8215a030e8ab: Pulling fs layer
+8215a030e8ab: Download complete
+3c5158733227: Pulling metadata
+3c5158733227: Pulling fs layer
+3c5158733227: Download complete
+ff61d7bfda17: Pulling metadata
+ff61d7bfda17: Pulling fs layer
+ff61d7bfda17: Download complete
+ff61d7bfda17: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
+
+real  79.36
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/swagger-editor:latest"
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+964f83f43f3b        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/swagger-editor (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+27d47432a69b: Pushing
+27d47432a69b: Buffering to disk
+27d47432a69b: Image successfully pushed
+5f92234dcf1e: Pushing
+5f92234dcf1e: Buffering to disk
+5f92234dcf1e: Image successfully pushed
+51a9c7c1f8bb: Pushing
+51a9c7c1f8bb: Buffering to disk
+51a9c7c1f8bb: Image successfully pushed
+5ba9dab47459: Pushing
+5ba9dab47459: Buffering to disk
+5ba9dab47459: Image successfully pushed
+ca7a0d5de2eb: Pushing
+ca7a0d5de2eb: Buffering to disk
+ca7a0d5de2eb: Image successfully pushed
+b4bf25e902be: Pushing
+b4bf25e902be: Buffering to disk
+b4bf25e902be: Image successfully pushed
+f7d1a0c65297: Pushing
+f7d1a0c65297: Buffering to disk
+f7d1a0c65297: Image successfully pushed
+b20022aa994c: Pushing
+b20022aa994c: Buffering to disk
+b20022aa994c: Image successfully pushed
+6dad509e6e13: Pushing
+6dad509e6e13: Buffering to disk
+6dad509e6e13: Image successfully pushed
+8bfb10533ec2: Pushing
+8bfb10533ec2: Buffering to disk
+8bfb10533ec2: Image successfully pushed
+12589745597b: Pushing
+12589745597b: Buffering to disk
+12589745597b: Image successfully pushed
+a2bebd23e970: Pushing
+a2bebd23e970: Buffering to disk
+a2bebd23e970: Image successfully pushed
+289eb2919b18: Pushing
+289eb2919b18: Buffering to disk
+289eb2919b18: Image successfully pushed
+744a2173b7e7: Pushing
+744a2173b7e7: Buffering to disk
+744a2173b7e7: Image successfully pushed
+5aa3d2f00fa8: Pushing
+5aa3d2f00fa8: Buffering to disk
+5aa3d2f00fa8: Image successfully pushed
+8215a030e8ab: Pushing
+8215a030e8ab: Buffering to disk
+8215a030e8ab: Image successfully pushed
+3c5158733227: Pushing
+3c5158733227: Buffering to disk
+3c5158733227: Image successfully pushed
+ff61d7bfda17: Pushing
+ff61d7bfda17: Buffering to disk
+ff61d7bfda17: Image successfully pushed
+Pushing tag for rev [ff61d7bfda17] on {http://136.187.101.80:5000/v1/repositories/swagger-editor/tags/latest}
+
+real  119.83
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker pull 136.187.101.80:5000/swagger-editor:latest
+Pulling repository 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor, endpoint: http://136.187.101.80:5000/v1/
+ff61d7bfda17: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+27d47432a69b: Pulling metadata
+27d47432a69b: Pulling fs layer
+27d47432a69b: Download complete
+5f92234dcf1e: Pulling metadata
+5f92234dcf1e: Pulling fs layer
+5f92234dcf1e: Download complete
+51a9c7c1f8bb: Pulling metadata
+51a9c7c1f8bb: Pulling fs layer
+51a9c7c1f8bb: Download complete
+5ba9dab47459: Pulling metadata
+5ba9dab47459: Pulling fs layer
+5ba9dab47459: Download complete
+ca7a0d5de2eb: Pulling metadata
+ca7a0d5de2eb: Pulling fs layer
+ca7a0d5de2eb: Download complete
+b4bf25e902be: Pulling metadata
+b4bf25e902be: Pulling fs layer
+b4bf25e902be: Download complete
+f7d1a0c65297: Pulling metadata
+f7d1a0c65297: Pulling fs layer
+f7d1a0c65297: Download complete
+b20022aa994c: Pulling metadata
+b20022aa994c: Pulling fs layer
+b20022aa994c: Download complete
+6dad509e6e13: Pulling metadata
+6dad509e6e13: Pulling fs layer
+6dad509e6e13: Download complete
+8bfb10533ec2: Pulling metadata
+8bfb10533ec2: Pulling fs layer
+8bfb10533ec2: Download complete
+12589745597b: Pulling metadata
+12589745597b: Pulling fs layer
+12589745597b: Download complete
+a2bebd23e970: Pulling metadata
+a2bebd23e970: Pulling fs layer
+a2bebd23e970: Download complete
+289eb2919b18: Pulling metadata
+289eb2919b18: Pulling fs layer
+289eb2919b18: Download complete
+744a2173b7e7: Pulling metadata
+744a2173b7e7: Pulling fs layer
+744a2173b7e7: Download complete
+5aa3d2f00fa8: Pulling metadata
+5aa3d2f00fa8: Pulling fs layer
+5aa3d2f00fa8: Download complete
+8215a030e8ab: Pulling metadata
+8215a030e8ab: Pulling fs layer
+8215a030e8ab: Download complete
+3c5158733227: Pulling metadata
+3c5158733227: Pulling fs layer
+3c5158733227: Download complete
+ff61d7bfda17: Pulling metadata
+ff61d7bfda17: Pulling fs layer
+ff61d7bfda17: Download complete
+ff61d7bfda17: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
+
+real  78.01
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/swagger-editor:latest"
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+2221310949ef        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a80f7549dbfa        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+9d2c07a09a85        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+50c737852ef5        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/swagger-editor (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+27d47432a69b: Pushing
+27d47432a69b: Buffering to disk
+27d47432a69b: Image successfully pushed
+5f92234dcf1e: Pushing
+5f92234dcf1e: Buffering to disk
+5f92234dcf1e: Image successfully pushed
+51a9c7c1f8bb: Pushing
+51a9c7c1f8bb: Buffering to disk
+51a9c7c1f8bb: Image successfully pushed
+5ba9dab47459: Pushing
+5ba9dab47459: Buffering to disk
+5ba9dab47459: Image successfully pushed
+ca7a0d5de2eb: Pushing
+ca7a0d5de2eb: Buffering to disk
+ca7a0d5de2eb: Image successfully pushed
+b4bf25e902be: Pushing
+b4bf25e902be: Buffering to disk
+b4bf25e902be: Image successfully pushed
+f7d1a0c65297: Pushing
+f7d1a0c65297: Buffering to disk
+f7d1a0c65297: Image successfully pushed
+b20022aa994c: Pushing
+b20022aa994c: Buffering to disk
+b20022aa994c: Image successfully pushed
+6dad509e6e13: Pushing
+6dad509e6e13: Buffering to disk
+6dad509e6e13: Image successfully pushed
+8bfb10533ec2: Pushing
+8bfb10533ec2: Buffering to disk
+8bfb10533ec2: Image successfully pushed
+12589745597b: Pushing
+12589745597b: Buffering to disk
+12589745597b: Image successfully pushed
+a2bebd23e970: Pushing
+a2bebd23e970: Buffering to disk
+a2bebd23e970: Image successfully pushed
+289eb2919b18: Pushing
+289eb2919b18: Buffering to disk
+289eb2919b18: Image successfully pushed
+744a2173b7e7: Pushing
+744a2173b7e7: Buffering to disk
+744a2173b7e7: Image successfully pushed
+5aa3d2f00fa8: Pushing
+5aa3d2f00fa8: Buffering to disk
+5aa3d2f00fa8: Image successfully pushed
+8215a030e8ab: Pushing
+8215a030e8ab: Buffering to disk
+8215a030e8ab: Image successfully pushed
+3c5158733227: Pushing
+3c5158733227: Buffering to disk
+3c5158733227: Image successfully pushed
+ff61d7bfda17: Pushing
+ff61d7bfda17: Buffering to disk
+ff61d7bfda17: Image successfully pushed
+Pushing tag for rev [ff61d7bfda17] on {http://136.187.101.80:5000/v1/repositories/swagger-editor/tags/latest}
+
+real  121.38
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker pull 136.187.101.80:5000/swagger-editor:latest
+Pulling repository 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor, endpoint: http://136.187.101.80:5000/v1/
+ff61d7bfda17: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+27d47432a69b: Pulling metadata
+27d47432a69b: Pulling fs layer
+27d47432a69b: Download complete
+5f92234dcf1e: Pulling metadata
+5f92234dcf1e: Pulling fs layer
+5f92234dcf1e: Download complete
+51a9c7c1f8bb: Pulling metadata
+51a9c7c1f8bb: Pulling fs layer
+51a9c7c1f8bb: Download complete
+5ba9dab47459: Pulling metadata
+5ba9dab47459: Pulling fs layer
+5ba9dab47459: Download complete
+ca7a0d5de2eb: Pulling metadata
+ca7a0d5de2eb: Pulling fs layer
+ca7a0d5de2eb: Download complete
+b4bf25e902be: Pulling metadata
+b4bf25e902be: Pulling fs layer
+b4bf25e902be: Download complete
+f7d1a0c65297: Pulling metadata
+f7d1a0c65297: Pulling fs layer
+f7d1a0c65297: Download complete
+b20022aa994c: Pulling metadata
+b20022aa994c: Pulling fs layer
+b20022aa994c: Download complete
+6dad509e6e13: Pulling metadata
+6dad509e6e13: Pulling fs layer
+6dad509e6e13: Download complete
+8bfb10533ec2: Pulling metadata
+8bfb10533ec2: Pulling fs layer
+8bfb10533ec2: Download complete
+12589745597b: Pulling metadata
+12589745597b: Pulling fs layer
+12589745597b: Download complete
+a2bebd23e970: Pulling metadata
+a2bebd23e970: Pulling fs layer
+a2bebd23e970: Download complete
+289eb2919b18: Pulling metadata
+289eb2919b18: Pulling fs layer
+289eb2919b18: Download complete
+744a2173b7e7: Pulling metadata
+744a2173b7e7: Pulling fs layer
+744a2173b7e7: Download complete
+5aa3d2f00fa8: Pulling metadata
+5aa3d2f00fa8: Pulling fs layer
+5aa3d2f00fa8: Download complete
+8215a030e8ab: Pulling metadata
+8215a030e8ab: Pulling fs layer
+8215a030e8ab: Download complete
+3c5158733227: Pulling metadata
+3c5158733227: Pulling fs layer
+3c5158733227: Download complete
+ff61d7bfda17: Pulling metadata
+ff61d7bfda17: Pulling fs layer
+ff61d7bfda17: Download complete
+ff61d7bfda17: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
+
+real  78.66
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/swagger-editor:latest"
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+07937d8c3676        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+fc16f840f355        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/swagger-editor (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+27d47432a69b: Pushing
+27d47432a69b: Buffering to disk
+27d47432a69b: Image successfully pushed
+5f92234dcf1e: Pushing
+5f92234dcf1e: Buffering to disk
+5f92234dcf1e: Image successfully pushed
+51a9c7c1f8bb: Pushing
+51a9c7c1f8bb: Buffering to disk
+51a9c7c1f8bb: Image successfully pushed
+5ba9dab47459: Pushing
+5ba9dab47459: Buffering to disk
+5ba9dab47459: Image successfully pushed
+ca7a0d5de2eb: Pushing
+ca7a0d5de2eb: Buffering to disk
+ca7a0d5de2eb: Image successfully pushed
+b4bf25e902be: Pushing
+b4bf25e902be: Buffering to disk
+b4bf25e902be: Image successfully pushed
+f7d1a0c65297: Pushing
+f7d1a0c65297: Buffering to disk
+f7d1a0c65297: Image successfully pushed
+b20022aa994c: Pushing
+b20022aa994c: Buffering to disk
+b20022aa994c: Image successfully pushed
+6dad509e6e13: Pushing
+6dad509e6e13: Buffering to disk
+6dad509e6e13: Image successfully pushed
+8bfb10533ec2: Pushing
+8bfb10533ec2: Buffering to disk
+8bfb10533ec2: Image successfully pushed
+12589745597b: Pushing
+12589745597b: Buffering to disk
+12589745597b: Image successfully pushed
+a2bebd23e970: Pushing
+a2bebd23e970: Buffering to disk
+a2bebd23e970: Image successfully pushed
+289eb2919b18: Pushing
+289eb2919b18: Buffering to disk
+289eb2919b18: Image successfully pushed
+744a2173b7e7: Pushing
+744a2173b7e7: Buffering to disk
+744a2173b7e7: Image successfully pushed
+5aa3d2f00fa8: Pushing
+5aa3d2f00fa8: Buffering to disk
+5aa3d2f00fa8: Image successfully pushed
+8215a030e8ab: Pushing
+8215a030e8ab: Buffering to disk
+8215a030e8ab: Image successfully pushed
+3c5158733227: Pushing
+3c5158733227: Buffering to disk
+3c5158733227: Image successfully pushed
+ff61d7bfda17: Pushing
+ff61d7bfda17: Buffering to disk
+ff61d7bfda17: Image successfully pushed
+Pushing tag for rev [ff61d7bfda17] on {http://136.187.101.80:5000/v1/repositories/swagger-editor/tags/latest}
+
+real  122.98
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker pull 136.187.101.80:5000/swagger-editor:latest
+Pulling repository 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor, endpoint: http://136.187.101.80:5000/v1/
+ff61d7bfda17: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+27d47432a69b: Pulling metadata
+27d47432a69b: Pulling fs layer
+27d47432a69b: Download complete
+5f92234dcf1e: Pulling metadata
+5f92234dcf1e: Pulling fs layer
+5f92234dcf1e: Download complete
+51a9c7c1f8bb: Pulling metadata
+51a9c7c1f8bb: Pulling fs layer
+51a9c7c1f8bb: Download complete
+5ba9dab47459: Pulling metadata
+5ba9dab47459: Pulling fs layer
+5ba9dab47459: Download complete
+ca7a0d5de2eb: Pulling metadata
+ca7a0d5de2eb: Pulling fs layer
+ca7a0d5de2eb: Download complete
+b4bf25e902be: Pulling metadata
+b4bf25e902be: Pulling fs layer
+b4bf25e902be: Download complete
+f7d1a0c65297: Pulling metadata
+f7d1a0c65297: Pulling fs layer
+f7d1a0c65297: Download complete
+b20022aa994c: Pulling metadata
+b20022aa994c: Pulling fs layer
+b20022aa994c: Download complete
+6dad509e6e13: Pulling metadata
+6dad509e6e13: Pulling fs layer
+6dad509e6e13: Download complete
+8bfb10533ec2: Pulling metadata
+8bfb10533ec2: Pulling fs layer
+8bfb10533ec2: Download complete
+12589745597b: Pulling metadata
+12589745597b: Pulling fs layer
+12589745597b: Download complete
+a2bebd23e970: Pulling metadata
+a2bebd23e970: Pulling fs layer
+a2bebd23e970: Download complete
+289eb2919b18: Pulling metadata
+289eb2919b18: Pulling fs layer
+289eb2919b18: Download complete
+744a2173b7e7: Pulling metadata
+744a2173b7e7: Pulling fs layer
+744a2173b7e7: Download complete
+5aa3d2f00fa8: Pulling metadata
+5aa3d2f00fa8: Pulling fs layer
+5aa3d2f00fa8: Download complete
+8215a030e8ab: Pulling metadata
+8215a030e8ab: Pulling fs layer
+8215a030e8ab: Download complete
+3c5158733227: Pulling metadata
+3c5158733227: Pulling fs layer
+3c5158733227: Download complete
+ff61d7bfda17: Pulling metadata
+ff61d7bfda17: Pulling fs layer
+ff61d7bfda17: Download complete
+ff61d7bfda17: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
+
+real  77.89
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/swagger-editor:latest"
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+900fd194de22        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a4e67a84d100        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/swagger-editor (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+27d47432a69b: Pushing
+27d47432a69b: Buffering to disk
+27d47432a69b: Image successfully pushed
+5f92234dcf1e: Pushing
+5f92234dcf1e: Buffering to disk
+5f92234dcf1e: Image successfully pushed
+51a9c7c1f8bb: Pushing
+51a9c7c1f8bb: Buffering to disk
+51a9c7c1f8bb: Image successfully pushed
+5ba9dab47459: Pushing
+5ba9dab47459: Buffering to disk
+5ba9dab47459: Image successfully pushed
+ca7a0d5de2eb: Pushing
+ca7a0d5de2eb: Buffering to disk
+ca7a0d5de2eb: Image successfully pushed
+b4bf25e902be: Pushing
+b4bf25e902be: Buffering to disk
+b4bf25e902be: Image successfully pushed
+f7d1a0c65297: Pushing
+f7d1a0c65297: Buffering to disk
+f7d1a0c65297: Image successfully pushed
+b20022aa994c: Pushing
+b20022aa994c: Buffering to disk
+b20022aa994c: Image successfully pushed
+6dad509e6e13: Pushing
+6dad509e6e13: Buffering to disk
+6dad509e6e13: Image successfully pushed
+8bfb10533ec2: Pushing
+8bfb10533ec2: Buffering to disk
+8bfb10533ec2: Image successfully pushed
+12589745597b: Pushing
+12589745597b: Buffering to disk
+12589745597b: Image successfully pushed
+a2bebd23e970: Pushing
+a2bebd23e970: Buffering to disk
+a2bebd23e970: Image successfully pushed
+289eb2919b18: Pushing
+289eb2919b18: Buffering to disk
+289eb2919b18: Image successfully pushed
+744a2173b7e7: Pushing
+744a2173b7e7: Buffering to disk
+744a2173b7e7: Image successfully pushed
+5aa3d2f00fa8: Pushing
+5aa3d2f00fa8: Buffering to disk
+5aa3d2f00fa8: Image successfully pushed
+8215a030e8ab: Pushing
+8215a030e8ab: Buffering to disk
+8215a030e8ab: Image successfully pushed
+3c5158733227: Pushing
+3c5158733227: Buffering to disk
+3c5158733227: Image successfully pushed
+ff61d7bfda17: Pushing
+ff61d7bfda17: Buffering to disk
+ff61d7bfda17: Image successfully pushed
+Pushing tag for rev [ff61d7bfda17] on {http://136.187.101.80:5000/v1/repositories/swagger-editor/tags/latest}
+
+real  119.16
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker pull 136.187.101.80:5000/swagger-editor:latest
+Pulling repository 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor, endpoint: http://136.187.101.80:5000/v1/
+ff61d7bfda17: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+27d47432a69b: Pulling metadata
+27d47432a69b: Pulling fs layer
+27d47432a69b: Download complete
+5f92234dcf1e: Pulling metadata
+5f92234dcf1e: Pulling fs layer
+5f92234dcf1e: Download complete
+51a9c7c1f8bb: Pulling metadata
+51a9c7c1f8bb: Pulling fs layer
+51a9c7c1f8bb: Download complete
+5ba9dab47459: Pulling metadata
+5ba9dab47459: Pulling fs layer
+5ba9dab47459: Download complete
+ca7a0d5de2eb: Pulling metadata
+ca7a0d5de2eb: Pulling fs layer
+ca7a0d5de2eb: Download complete
+b4bf25e902be: Pulling metadata
+b4bf25e902be: Pulling fs layer
+b4bf25e902be: Download complete
+f7d1a0c65297: Pulling metadata
+f7d1a0c65297: Pulling fs layer
+f7d1a0c65297: Download complete
+b20022aa994c: Pulling metadata
+b20022aa994c: Pulling fs layer
+b20022aa994c: Download complete
+6dad509e6e13: Pulling metadata
+6dad509e6e13: Pulling fs layer
+6dad509e6e13: Download complete
+8bfb10533ec2: Pulling metadata
+8bfb10533ec2: Pulling fs layer
+8bfb10533ec2: Download complete
+12589745597b: Pulling metadata
+12589745597b: Pulling fs layer
+12589745597b: Download complete
+a2bebd23e970: Pulling metadata
+a2bebd23e970: Pulling fs layer
+a2bebd23e970: Download complete
+289eb2919b18: Pulling metadata
+289eb2919b18: Pulling fs layer
+289eb2919b18: Download complete
+744a2173b7e7: Pulling metadata
+744a2173b7e7: Pulling fs layer
+744a2173b7e7: Download complete
+5aa3d2f00fa8: Pulling metadata
+5aa3d2f00fa8: Pulling fs layer
+5aa3d2f00fa8: Download complete
+8215a030e8ab: Pulling metadata
+8215a030e8ab: Pulling fs layer
+8215a030e8ab: Download complete
+3c5158733227: Pulling metadata
+3c5158733227: Pulling fs layer
+3c5158733227: Download complete
+ff61d7bfda17: Pulling metadata
+ff61d7bfda17: Pulling fs layer
+ff61d7bfda17: Download complete
+ff61d7bfda17: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
+
+real  79.11
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/swagger-editor:latest"
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+83e7a09fb98c        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/swagger-editor (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+27d47432a69b: Pushing
+27d47432a69b: Buffering to disk
+27d47432a69b: Image successfully pushed
+5f92234dcf1e: Pushing
+5f92234dcf1e: Buffering to disk
+5f92234dcf1e: Image successfully pushed
+51a9c7c1f8bb: Pushing
+51a9c7c1f8bb: Buffering to disk
+51a9c7c1f8bb: Image successfully pushed
+5ba9dab47459: Pushing
+5ba9dab47459: Buffering to disk
+5ba9dab47459: Image successfully pushed
+ca7a0d5de2eb: Pushing
+ca7a0d5de2eb: Buffering to disk
+ca7a0d5de2eb: Image successfully pushed
+b4bf25e902be: Pushing
+b4bf25e902be: Buffering to disk
+b4bf25e902be: Image successfully pushed
+f7d1a0c65297: Pushing
+f7d1a0c65297: Buffering to disk
+f7d1a0c65297: Image successfully pushed
+b20022aa994c: Pushing
+b20022aa994c: Buffering to disk
+b20022aa994c: Image successfully pushed
+6dad509e6e13: Pushing
+6dad509e6e13: Buffering to disk
+6dad509e6e13: Image successfully pushed
+8bfb10533ec2: Pushing
+8bfb10533ec2: Buffering to disk
+8bfb10533ec2: Image successfully pushed
+12589745597b: Pushing
+12589745597b: Buffering to disk
+12589745597b: Image successfully pushed
+a2bebd23e970: Pushing
+a2bebd23e970: Buffering to disk
+a2bebd23e970: Image successfully pushed
+289eb2919b18: Pushing
+289eb2919b18: Buffering to disk
+289eb2919b18: Image successfully pushed
+744a2173b7e7: Pushing
+744a2173b7e7: Buffering to disk
+744a2173b7e7: Image successfully pushed
+5aa3d2f00fa8: Pushing
+5aa3d2f00fa8: Buffering to disk
+5aa3d2f00fa8: Image successfully pushed
+8215a030e8ab: Pushing
+8215a030e8ab: Buffering to disk
+8215a030e8ab: Image successfully pushed
+3c5158733227: Pushing
+3c5158733227: Buffering to disk
+3c5158733227: Image successfully pushed
+ff61d7bfda17: Pushing
+ff61d7bfda17: Buffering to disk
+ff61d7bfda17: Image successfully pushed
+Pushing tag for rev [ff61d7bfda17] on {http://136.187.101.80:5000/v1/repositories/swagger-editor/tags/latest}
+
+real  119.97
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker pull 136.187.101.80:5000/swagger-editor:latest
+Pulling repository 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor, endpoint: http://136.187.101.80:5000/v1/
+ff61d7bfda17: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+27d47432a69b: Pulling metadata
+27d47432a69b: Pulling fs layer
+27d47432a69b: Download complete
+5f92234dcf1e: Pulling metadata
+5f92234dcf1e: Pulling fs layer
+5f92234dcf1e: Download complete
+51a9c7c1f8bb: Pulling metadata
+51a9c7c1f8bb: Pulling fs layer
+51a9c7c1f8bb: Download complete
+5ba9dab47459: Pulling metadata
+5ba9dab47459: Pulling fs layer
+5ba9dab47459: Download complete
+ca7a0d5de2eb: Pulling metadata
+ca7a0d5de2eb: Pulling fs layer
+ca7a0d5de2eb: Download complete
+b4bf25e902be: Pulling metadata
+b4bf25e902be: Pulling fs layer
+b4bf25e902be: Download complete
+f7d1a0c65297: Pulling metadata
+f7d1a0c65297: Pulling fs layer
+f7d1a0c65297: Download complete
+b20022aa994c: Pulling metadata
+b20022aa994c: Pulling fs layer
+b20022aa994c: Download complete
+6dad509e6e13: Pulling metadata
+6dad509e6e13: Pulling fs layer
+6dad509e6e13: Download complete
+8bfb10533ec2: Pulling metadata
+8bfb10533ec2: Pulling fs layer
+8bfb10533ec2: Download complete
+12589745597b: Pulling metadata
+12589745597b: Pulling fs layer
+12589745597b: Download complete
+a2bebd23e970: Pulling metadata
+a2bebd23e970: Pulling fs layer
+a2bebd23e970: Download complete
+289eb2919b18: Pulling metadata
+289eb2919b18: Pulling fs layer
+289eb2919b18: Download complete
+744a2173b7e7: Pulling metadata
+744a2173b7e7: Pulling fs layer
+744a2173b7e7: Download complete
+5aa3d2f00fa8: Pulling metadata
+5aa3d2f00fa8: Pulling fs layer
+5aa3d2f00fa8: Download complete
+8215a030e8ab: Pulling metadata
+8215a030e8ab: Pulling fs layer
+8215a030e8ab: Download complete
+3c5158733227: Pulling metadata
+3c5158733227: Pulling fs layer
+3c5158733227: Download complete
+ff61d7bfda17: Pulling metadata
+ff61d7bfda17: Pulling fs layer
+ff61d7bfda17: Download complete
+ff61d7bfda17: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
+
+real  77.08
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/swagger-editor:latest"
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+9f00dd4c9624        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+
+docker rm -f docker_registry
+
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a3f4571d423d        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/swagger-editor (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+27d47432a69b: Pushing
+27d47432a69b: Buffering to disk
+27d47432a69b: Image successfully pushed
+5f92234dcf1e: Pushing
+5f92234dcf1e: Buffering to disk
+5f92234dcf1e: Image successfully pushed
+51a9c7c1f8bb: Pushing
+51a9c7c1f8bb: Buffering to disk
+51a9c7c1f8bb: Image successfully pushed
+5ba9dab47459: Pushing
+5ba9dab47459: Buffering to disk
+5ba9dab47459: Image successfully pushed
+ca7a0d5de2eb: Pushing
+ca7a0d5de2eb: Buffering to disk
+ca7a0d5de2eb: Image successfully pushed
+b4bf25e902be: Pushing
+b4bf25e902be: Buffering to disk
+b4bf25e902be: Image successfully pushed
+f7d1a0c65297: Pushing
+f7d1a0c65297: Buffering to disk
+f7d1a0c65297: Image successfully pushed
+b20022aa994c: Pushing
+b20022aa994c: Buffering to disk
+b20022aa994c: Image successfully pushed
+6dad509e6e13: Pushing
+6dad509e6e13: Buffering to disk
+6dad509e6e13: Image successfully pushed
+8bfb10533ec2: Pushing
+8bfb10533ec2: Buffering to disk
+8bfb10533ec2: Image successfully pushed
+12589745597b: Pushing
+12589745597b: Buffering to disk
+12589745597b: Image successfully pushed
+a2bebd23e970: Pushing
+a2bebd23e970: Buffering to disk
+a2bebd23e970: Image successfully pushed
+289eb2919b18: Pushing
+289eb2919b18: Buffering to disk
+289eb2919b18: Image successfully pushed
+744a2173b7e7: Pushing
+744a2173b7e7: Buffering to disk
+744a2173b7e7: Image successfully pushed
+5aa3d2f00fa8: Pushing
+5aa3d2f00fa8: Buffering to disk
+5aa3d2f00fa8: Image successfully pushed
+8215a030e8ab: Pushing
+8215a030e8ab: Buffering to disk
+8215a030e8ab: Image successfully pushed
+3c5158733227: Pushing
+3c5158733227: Buffering to disk
+3c5158733227: Image successfully pushed
+ff61d7bfda17: Pushing
+ff61d7bfda17: Buffering to disk
+ff61d7bfda17: Image successfully pushed
+Pushing tag for rev [ff61d7bfda17] on {http://136.187.101.80:5000/v1/repositories/swagger-editor/tags/latest}
+
+real  123.88
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker pull 136.187.101.80:5000/swagger-editor:latest
+Pulling repository 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor, endpoint: http://136.187.101.80:5000/v1/
+ff61d7bfda17: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+27d47432a69b: Pulling metadata
+27d47432a69b: Pulling fs layer
+27d47432a69b: Download complete
+5f92234dcf1e: Pulling metadata
+5f92234dcf1e: Pulling fs layer
+5f92234dcf1e: Download complete
+51a9c7c1f8bb: Pulling metadata
+51a9c7c1f8bb: Pulling fs layer
+51a9c7c1f8bb: Download complete
+5ba9dab47459: Pulling metadata
+5ba9dab47459: Pulling fs layer
+5ba9dab47459: Download complete
+ca7a0d5de2eb: Pulling metadata
+ca7a0d5de2eb: Pulling fs layer
+ca7a0d5de2eb: Download complete
+b4bf25e902be: Pulling metadata
+b4bf25e902be: Pulling fs layer
+b4bf25e902be: Download complete
+f7d1a0c65297: Pulling metadata
+f7d1a0c65297: Pulling fs layer
+f7d1a0c65297: Download complete
+b20022aa994c: Pulling metadata
+b20022aa994c: Pulling fs layer
+b20022aa994c: Download complete
+6dad509e6e13: Pulling metadata
+6dad509e6e13: Pulling fs layer
+6dad509e6e13: Download complete
+8bfb10533ec2: Pulling metadata
+8bfb10533ec2: Pulling fs layer
+8bfb10533ec2: Download complete
+12589745597b: Pulling metadata
+12589745597b: Pulling fs layer
+12589745597b: Download complete
+a2bebd23e970: Pulling metadata
+a2bebd23e970: Pulling fs layer
+a2bebd23e970: Download complete
+289eb2919b18: Pulling metadata
+289eb2919b18: Pulling fs layer
+289eb2919b18: Download complete
+744a2173b7e7: Pulling metadata
+744a2173b7e7: Pulling fs layer
+744a2173b7e7: Download complete
+5aa3d2f00fa8: Pulling metadata
+5aa3d2f00fa8: Pulling fs layer
+5aa3d2f00fa8: Download complete
+8215a030e8ab: Pulling metadata
+8215a030e8ab: Pulling fs layer
+8215a030e8ab: Download complete
+3c5158733227: Pulling metadata
+3c5158733227: Pulling fs layer
+3c5158733227: Download complete
+ff61d7bfda17: Pulling metadata
+ff61d7bfda17: Pulling fs layer
+ff61d7bfda17: Download complete
+ff61d7bfda17: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
+
+real  79.36
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/swagger-editor:latest"
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+8341b723197c        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/swagger-editor (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+27d47432a69b: Pushing
+27d47432a69b: Buffering to disk
+27d47432a69b: Image successfully pushed
+5f92234dcf1e: Pushing
+5f92234dcf1e: Buffering to disk
+5f92234dcf1e: Image successfully pushed
+51a9c7c1f8bb: Pushing
+51a9c7c1f8bb: Buffering to disk
+51a9c7c1f8bb: Image successfully pushed
+5ba9dab47459: Pushing
+5ba9dab47459: Buffering to disk
+5ba9dab47459: Image successfully pushed
+ca7a0d5de2eb: Pushing
+ca7a0d5de2eb: Buffering to disk
+ca7a0d5de2eb: Image successfully pushed
+b4bf25e902be: Pushing
+b4bf25e902be: Buffering to disk
+b4bf25e902be: Image successfully pushed
+f7d1a0c65297: Pushing
+f7d1a0c65297: Buffering to disk
+f7d1a0c65297: Image successfully pushed
+b20022aa994c: Pushing
+b20022aa994c: Buffering to disk
+b20022aa994c: Image successfully pushed
+6dad509e6e13: Pushing
+6dad509e6e13: Buffering to disk
+6dad509e6e13: Image successfully pushed
+8bfb10533ec2: Pushing
+8bfb10533ec2: Buffering to disk
+8bfb10533ec2: Image successfully pushed
+12589745597b: Pushing
+12589745597b: Buffering to disk
+12589745597b: Image successfully pushed
+a2bebd23e970: Pushing
+a2bebd23e970: Buffering to disk
+a2bebd23e970: Image successfully pushed
+289eb2919b18: Pushing
+289eb2919b18: Buffering to disk
+289eb2919b18: Image successfully pushed
+744a2173b7e7: Pushing
+744a2173b7e7: Buffering to disk
+744a2173b7e7: Image successfully pushed
+5aa3d2f00fa8: Pushing
+5aa3d2f00fa8: Buffering to disk
+5aa3d2f00fa8: Image successfully pushed
+8215a030e8ab: Pushing
+8215a030e8ab: Buffering to disk
+8215a030e8ab: Image successfully pushed
+3c5158733227: Pushing
+3c5158733227: Buffering to disk
+3c5158733227: Image successfully pushed
+ff61d7bfda17: Pushing
+ff61d7bfda17: Buffering to disk
+ff61d7bfda17: Image successfully pushed
+Pushing tag for rev [ff61d7bfda17] on {http://136.187.101.80:5000/v1/repositories/swagger-editor/tags/latest}
+
+real  117.94
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker pull 136.187.101.80:5000/swagger-editor:latest
+Pulling repository 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor, endpoint: http://136.187.101.80:5000/v1/
+ff61d7bfda17: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+27d47432a69b: Pulling metadata
+27d47432a69b: Pulling fs layer
+27d47432a69b: Download complete
+5f92234dcf1e: Pulling metadata
+5f92234dcf1e: Pulling fs layer
+5f92234dcf1e: Download complete
+51a9c7c1f8bb: Pulling metadata
+51a9c7c1f8bb: Pulling fs layer
+51a9c7c1f8bb: Download complete
+5ba9dab47459: Pulling metadata
+5ba9dab47459: Pulling fs layer
+5ba9dab47459: Download complete
+ca7a0d5de2eb: Pulling metadata
+ca7a0d5de2eb: Pulling fs layer
+ca7a0d5de2eb: Download complete
+b4bf25e902be: Pulling metadata
+b4bf25e902be: Pulling fs layer
+b4bf25e902be: Download complete
+f7d1a0c65297: Pulling metadata
+f7d1a0c65297: Pulling fs layer
+f7d1a0c65297: Download complete
+b20022aa994c: Pulling metadata
+b20022aa994c: Pulling fs layer
+b20022aa994c: Download complete
+6dad509e6e13: Pulling metadata
+6dad509e6e13: Pulling fs layer
+6dad509e6e13: Download complete
+8bfb10533ec2: Pulling metadata
+8bfb10533ec2: Pulling fs layer
+8bfb10533ec2: Download complete
+12589745597b: Pulling metadata
+12589745597b: Pulling fs layer
+12589745597b: Download complete
+a2bebd23e970: Pulling metadata
+a2bebd23e970: Pulling fs layer
+a2bebd23e970: Download complete
+289eb2919b18: Pulling metadata
+289eb2919b18: Pulling fs layer
+289eb2919b18: Download complete
+744a2173b7e7: Pulling metadata
+744a2173b7e7: Pulling fs layer
+744a2173b7e7: Download complete
+5aa3d2f00fa8: Pulling metadata
+5aa3d2f00fa8: Pulling fs layer
+5aa3d2f00fa8: Download complete
+8215a030e8ab: Pulling metadata
+8215a030e8ab: Pulling fs layer
+8215a030e8ab: Download complete
+3c5158733227: Pulling metadata
+3c5158733227: Pulling fs layer
+3c5158733227: Download complete
+ff61d7bfda17: Pulling metadata
+ff61d7bfda17: Pulling fs layer
+ff61d7bfda17: Download complete
+ff61d7bfda17: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
+
+real  76.74
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/swagger-editor:latest"
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 swagger-editor
+
+docker images
+kiwenlau/swagger-editor         latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker tag kiwenlau/swagger-editor:latest 136.187.101.80:5000/swagger-editor:latest
+
+docker images
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.6 MB
+kiwenlau/swagger-editor              latest              ff61d7bfda17        5 months ago        904.6 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+cba357bf3c53        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/swagger-editor:latest
+The push refers to a repository [136.187.101.80:5000/swagger-editor] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/swagger-editor (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+27d47432a69b: Pushing
+27d47432a69b: Buffering to disk
+27d47432a69b: Image successfully pushed
+5f92234dcf1e: Pushing
+5f92234dcf1e: Buffering to disk
+5f92234dcf1e: Image successfully pushed
+51a9c7c1f8bb: Pushing
+51a9c7c1f8bb: Buffering to disk
+51a9c7c1f8bb: Image successfully pushed
+5ba9dab47459: Pushing
+5ba9dab47459: Buffering to disk
+5ba9dab47459: Image successfully pushed
+ca7a0d5de2eb: Pushing
+ca7a0d5de2eb: Buffering to disk
+ca7a0d5de2eb: Image successfully pushed
+b4bf25e902be: Pushing
+b4bf25e902be: Buffering to disk
+b4bf25e902be: Image successfully pushed
+f7d1a0c65297: Pushing
+f7d1a0c65297: Buffering to disk
+f7d1a0c65297: Image successfully pushed
+b20022aa994c: Pushing
+b20022aa994c: Buffering to disk
+b20022aa994c: Image successfully pushed
+6dad509e6e13: Pushing
+6dad509e6e13: Buffering to disk
+6dad509e6e13: Image successfully pushed
+8bfb10533ec2: Pushing
+8bfb10533ec2: Buffering to disk
+8bfb10533ec2: Image successfully pushed
+12589745597b: Pushing
+12589745597b: Buffering to disk
+12589745597b: Image successfully pushed
+a2bebd23e970: Pushing
+a2bebd23e970: Buffering to disk
+a2bebd23e970: Image successfully pushed
+289eb2919b18: Pushing
+289eb2919b18: Buffering to disk
+289eb2919b18: Image successfully pushed
+744a2173b7e7: Pushing
+744a2173b7e7: Buffering to disk
+744a2173b7e7: Image successfully pushed
+5aa3d2f00fa8: Pushing
+5aa3d2f00fa8: Buffering to disk
+5aa3d2f00fa8: Image successfully pushed
+8215a030e8ab: Pushing
+8215a030e8ab: Buffering to disk
+8215a030e8ab: Image successfully pushed
+3c5158733227: Pushing
+3c5158733227: Buffering to disk
+3c5158733227: Image successfully pushed
+ff61d7bfda17: Pushing
+ff61d7bfda17: Buffering to disk
+ff61d7bfda17: Image successfully pushed
+Pushing tag for rev [ff61d7bfda17] on {http://136.187.101.80:5000/v1/repositories/swagger-editor/tags/latest}
+
+real  123.61
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker pull 136.187.101.80:5000/swagger-editor:latest
+Pulling repository 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor
+ff61d7bfda17: Pulling image (latest) from 136.187.101.80:5000/swagger-editor, endpoint: http://136.187.101.80:5000/v1/
+ff61d7bfda17: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+27d47432a69b: Pulling metadata
+27d47432a69b: Pulling fs layer
+27d47432a69b: Download complete
+5f92234dcf1e: Pulling metadata
+5f92234dcf1e: Pulling fs layer
+5f92234dcf1e: Download complete
+51a9c7c1f8bb: Pulling metadata
+51a9c7c1f8bb: Pulling fs layer
+51a9c7c1f8bb: Download complete
+5ba9dab47459: Pulling metadata
+5ba9dab47459: Pulling fs layer
+5ba9dab47459: Download complete
+ca7a0d5de2eb: Pulling metadata
+ca7a0d5de2eb: Pulling fs layer
+ca7a0d5de2eb: Download complete
+b4bf25e902be: Pulling metadata
+b4bf25e902be: Pulling fs layer
+b4bf25e902be: Download complete
+f7d1a0c65297: Pulling metadata
+f7d1a0c65297: Pulling fs layer
+f7d1a0c65297: Download complete
+b20022aa994c: Pulling metadata
+b20022aa994c: Pulling fs layer
+b20022aa994c: Download complete
+6dad509e6e13: Pulling metadata
+6dad509e6e13: Pulling fs layer
+6dad509e6e13: Download complete
+8bfb10533ec2: Pulling metadata
+8bfb10533ec2: Pulling fs layer
+8bfb10533ec2: Download complete
+12589745597b: Pulling metadata
+12589745597b: Pulling fs layer
+12589745597b: Download complete
+a2bebd23e970: Pulling metadata
+a2bebd23e970: Pulling fs layer
+a2bebd23e970: Download complete
+289eb2919b18: Pulling metadata
+289eb2919b18: Pulling fs layer
+289eb2919b18: Download complete
+744a2173b7e7: Pulling metadata
+744a2173b7e7: Pulling fs layer
+744a2173b7e7: Download complete
+5aa3d2f00fa8: Pulling metadata
+5aa3d2f00fa8: Pulling fs layer
+5aa3d2f00fa8: Download complete
+8215a030e8ab: Pulling metadata
+8215a030e8ab: Pulling fs layer
+8215a030e8ab: Download complete
+3c5158733227: Pulling metadata
+3c5158733227: Pulling fs layer
+3c5158733227: Download complete
+ff61d7bfda17: Pulling metadata
+ff61d7bfda17: Pulling fs layer
+ff61d7bfda17: Download complete
+ff61d7bfda17: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/swagger-editor:latest
+
+real  78.01
+
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+136.187.101.80:5000/swagger-editor   latest              ff61d7bfda17        5 months ago        904.5 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/swagger-editor:latest"
+ssh kai@54.225.249.141 "docker images | grep swagger-editor"
+
+docker rm -f docker_registry
+
+end date: Fri Aug 14 08:17:38 JST 2015
+
+

@@ -1,0 +1,1085 @@
+
+pullpush benchmark: transfer openjdk image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Fri Aug 14 03:37:11 JST 2015
+
+sudo docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+sudo docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+d0a49535b5df        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/openjdk (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+76cbde46c442: Pushing
+76cbde46c442: Buffering to disk
+76cbde46c442: Image successfully pushed
+ab412e1b2d66: Pushing
+ab412e1b2d66: Buffering to disk
+ab412e1b2d66: Image successfully pushed
+40eb9ff9ac4f: Pushing
+40eb9ff9ac4f: Buffering to disk
+40eb9ff9ac4f: Image successfully pushed
+a1932e8f0b0a: Pushing
+a1932e8f0b0a: Buffering to disk
+a1932e8f0b0a: Image successfully pushed
+8e309f1f5b82: Pushing
+8e309f1f5b82: Buffering to disk
+8e309f1f5b82: Image successfully pushed
+Pushing tag for rev [8e309f1f5b82] on {http://136.187.101.80:5000/v1/repositories/openjdk/tags/latest}
+
+real  89.98
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+Pulling repository 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk, endpoint: http://136.187.101.80:5000/v1/
+8e309f1f5b82: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+76cbde46c442: Pulling metadata
+76cbde46c442: Pulling fs layer
+76cbde46c442: Download complete
+ab412e1b2d66: Pulling metadata
+ab412e1b2d66: Pulling fs layer
+ab412e1b2d66: Download complete
+40eb9ff9ac4f: Pulling metadata
+40eb9ff9ac4f: Pulling fs layer
+40eb9ff9ac4f: Download complete
+a1932e8f0b0a: Pulling metadata
+a1932e8f0b0a: Pulling fs layer
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Pulling metadata
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  52.85
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+ee61dbb092f0        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+
+docker rm -f docker_registry
+
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+7699cf03154f        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/openjdk (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+76cbde46c442: Pushing
+76cbde46c442: Buffering to disk
+76cbde46c442: Image successfully pushed
+ab412e1b2d66: Pushing
+ab412e1b2d66: Buffering to disk
+ab412e1b2d66: Image successfully pushed
+40eb9ff9ac4f: Pushing
+40eb9ff9ac4f: Buffering to disk
+40eb9ff9ac4f: Image successfully pushed
+a1932e8f0b0a: Pushing
+a1932e8f0b0a: Buffering to disk
+a1932e8f0b0a: Image successfully pushed
+8e309f1f5b82: Pushing
+8e309f1f5b82: Buffering to disk
+8e309f1f5b82: Image successfully pushed
+Pushing tag for rev [8e309f1f5b82] on {http://136.187.101.80:5000/v1/repositories/openjdk/tags/latest}
+
+real  89.14
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+Pulling repository 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk, endpoint: http://136.187.101.80:5000/v1/
+8e309f1f5b82: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+76cbde46c442: Pulling metadata
+76cbde46c442: Pulling fs layer
+76cbde46c442: Download complete
+ab412e1b2d66: Pulling metadata
+ab412e1b2d66: Pulling fs layer
+ab412e1b2d66: Download complete
+40eb9ff9ac4f: Pulling metadata
+40eb9ff9ac4f: Pulling fs layer
+40eb9ff9ac4f: Download complete
+a1932e8f0b0a: Pulling metadata
+a1932e8f0b0a: Pulling fs layer
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Pulling metadata
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  54.50
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+27727fdf5646        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/openjdk (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+76cbde46c442: Pushing
+76cbde46c442: Buffering to disk
+76cbde46c442: Image successfully pushed
+ab412e1b2d66: Pushing
+ab412e1b2d66: Buffering to disk
+ab412e1b2d66: Image successfully pushed
+40eb9ff9ac4f: Pushing
+40eb9ff9ac4f: Buffering to disk
+40eb9ff9ac4f: Image successfully pushed
+a1932e8f0b0a: Pushing
+a1932e8f0b0a: Buffering to disk
+a1932e8f0b0a: Image successfully pushed
+8e309f1f5b82: Pushing
+8e309f1f5b82: Buffering to disk
+8e309f1f5b82: Image successfully pushed
+Pushing tag for rev [8e309f1f5b82] on {http://136.187.101.80:5000/v1/repositories/openjdk/tags/latest}
+
+real  88.60
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+Pulling repository 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk, endpoint: http://136.187.101.80:5000/v1/
+8e309f1f5b82: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+76cbde46c442: Pulling metadata
+76cbde46c442: Pulling fs layer
+76cbde46c442: Download complete
+ab412e1b2d66: Pulling metadata
+ab412e1b2d66: Pulling fs layer
+ab412e1b2d66: Download complete
+40eb9ff9ac4f: Pulling metadata
+40eb9ff9ac4f: Pulling fs layer
+40eb9ff9ac4f: Download complete
+a1932e8f0b0a: Pulling metadata
+a1932e8f0b0a: Pulling fs layer
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Pulling metadata
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  53.46
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+01e314d49012        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/openjdk (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+76cbde46c442: Pushing
+76cbde46c442: Buffering to disk
+76cbde46c442: Image successfully pushed
+ab412e1b2d66: Pushing
+ab412e1b2d66: Buffering to disk
+ab412e1b2d66: Image successfully pushed
+40eb9ff9ac4f: Pushing
+40eb9ff9ac4f: Buffering to disk
+40eb9ff9ac4f: Image successfully pushed
+a1932e8f0b0a: Pushing
+a1932e8f0b0a: Buffering to disk
+a1932e8f0b0a: Image successfully pushed
+8e309f1f5b82: Pushing
+8e309f1f5b82: Buffering to disk
+8e309f1f5b82: Image successfully pushed
+Pushing tag for rev [8e309f1f5b82] on {http://136.187.101.80:5000/v1/repositories/openjdk/tags/latest}
+
+real  93.19
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+Pulling repository 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk, endpoint: http://136.187.101.80:5000/v1/
+8e309f1f5b82: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+76cbde46c442: Pulling metadata
+76cbde46c442: Pulling fs layer
+76cbde46c442: Download complete
+ab412e1b2d66: Pulling metadata
+ab412e1b2d66: Pulling fs layer
+ab412e1b2d66: Download complete
+40eb9ff9ac4f: Pulling metadata
+40eb9ff9ac4f: Pulling fs layer
+40eb9ff9ac4f: Download complete
+a1932e8f0b0a: Pulling metadata
+a1932e8f0b0a: Pulling fs layer
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Pulling metadata
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  66.18
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+259e4b3fe9df        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+
+docker rm -f docker_registry
+
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+76cfbc426f68        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/openjdk (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+76cbde46c442: Pushing
+76cbde46c442: Buffering to disk
+76cbde46c442: Image successfully pushed
+ab412e1b2d66: Pushing
+ab412e1b2d66: Buffering to disk
+ab412e1b2d66: Image successfully pushed
+40eb9ff9ac4f: Pushing
+40eb9ff9ac4f: Buffering to disk
+40eb9ff9ac4f: Image successfully pushed
+a1932e8f0b0a: Pushing
+a1932e8f0b0a: Buffering to disk
+a1932e8f0b0a: Image successfully pushed
+8e309f1f5b82: Pushing
+8e309f1f5b82: Buffering to disk
+8e309f1f5b82: Image successfully pushed
+Pushing tag for rev [8e309f1f5b82] on {http://136.187.101.80:5000/v1/repositories/openjdk/tags/latest}
+
+real  87.33
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+Pulling repository 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk, endpoint: http://136.187.101.80:5000/v1/
+8e309f1f5b82: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+76cbde46c442: Pulling metadata
+76cbde46c442: Pulling fs layer
+76cbde46c442: Download complete
+ab412e1b2d66: Pulling metadata
+ab412e1b2d66: Pulling fs layer
+ab412e1b2d66: Download complete
+40eb9ff9ac4f: Pulling metadata
+40eb9ff9ac4f: Pulling fs layer
+40eb9ff9ac4f: Download complete
+a1932e8f0b0a: Pulling metadata
+a1932e8f0b0a: Pulling fs layer
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Pulling metadata
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  55.29
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+6a086ca44112        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/openjdk (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+76cbde46c442: Pushing
+76cbde46c442: Buffering to disk
+76cbde46c442: Image successfully pushed
+ab412e1b2d66: Pushing
+ab412e1b2d66: Buffering to disk
+ab412e1b2d66: Image successfully pushed
+40eb9ff9ac4f: Pushing
+40eb9ff9ac4f: Buffering to disk
+40eb9ff9ac4f: Image successfully pushed
+a1932e8f0b0a: Pushing
+a1932e8f0b0a: Buffering to disk
+a1932e8f0b0a: Image successfully pushed
+8e309f1f5b82: Pushing
+8e309f1f5b82: Buffering to disk
+8e309f1f5b82: Image successfully pushed
+Pushing tag for rev [8e309f1f5b82] on {http://136.187.101.80:5000/v1/repositories/openjdk/tags/latest}
+
+real  105.94
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+Pulling repository 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk, endpoint: http://136.187.101.80:5000/v1/
+8e309f1f5b82: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+76cbde46c442: Pulling metadata
+76cbde46c442: Pulling fs layer
+76cbde46c442: Download complete
+ab412e1b2d66: Pulling metadata
+ab412e1b2d66: Pulling fs layer
+ab412e1b2d66: Download complete
+40eb9ff9ac4f: Pulling metadata
+40eb9ff9ac4f: Pulling fs layer
+40eb9ff9ac4f: Download complete
+a1932e8f0b0a: Pulling metadata
+a1932e8f0b0a: Pulling fs layer
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Pulling metadata
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  53.38
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+2d3e29597d20        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/openjdk (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+76cbde46c442: Pushing
+76cbde46c442: Buffering to disk
+76cbde46c442: Image successfully pushed
+ab412e1b2d66: Pushing
+ab412e1b2d66: Buffering to disk
+ab412e1b2d66: Image successfully pushed
+40eb9ff9ac4f: Pushing
+40eb9ff9ac4f: Buffering to disk
+40eb9ff9ac4f: Image successfully pushed
+a1932e8f0b0a: Pushing
+a1932e8f0b0a: Buffering to disk
+a1932e8f0b0a: Image successfully pushed
+8e309f1f5b82: Pushing
+8e309f1f5b82: Buffering to disk
+8e309f1f5b82: Image successfully pushed
+Pushing tag for rev [8e309f1f5b82] on {http://136.187.101.80:5000/v1/repositories/openjdk/tags/latest}
+
+real  88.11
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+Pulling repository 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk, endpoint: http://136.187.101.80:5000/v1/
+8e309f1f5b82: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+76cbde46c442: Pulling metadata
+76cbde46c442: Pulling fs layer
+76cbde46c442: Download complete
+ab412e1b2d66: Pulling metadata
+ab412e1b2d66: Pulling fs layer
+ab412e1b2d66: Download complete
+40eb9ff9ac4f: Pulling metadata
+40eb9ff9ac4f: Pulling fs layer
+40eb9ff9ac4f: Download complete
+a1932e8f0b0a: Pulling metadata
+a1932e8f0b0a: Pulling fs layer
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Pulling metadata
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  55.32
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+0afecdfd7d73        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+
+docker rm -f docker_registry
+
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+81736cad2fd0        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/openjdk (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+76cbde46c442: Pushing
+76cbde46c442: Buffering to disk
+76cbde46c442: Image successfully pushed
+ab412e1b2d66: Pushing
+ab412e1b2d66: Buffering to disk
+ab412e1b2d66: Image successfully pushed
+40eb9ff9ac4f: Pushing
+40eb9ff9ac4f: Buffering to disk
+40eb9ff9ac4f: Image successfully pushed
+a1932e8f0b0a: Pushing
+a1932e8f0b0a: Buffering to disk
+a1932e8f0b0a: Image successfully pushed
+8e309f1f5b82: Pushing
+8e309f1f5b82: Buffering to disk
+8e309f1f5b82: Image successfully pushed
+Pushing tag for rev [8e309f1f5b82] on {http://136.187.101.80:5000/v1/repositories/openjdk/tags/latest}
+
+real  95.50
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+Pulling repository 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk, endpoint: http://136.187.101.80:5000/v1/
+8e309f1f5b82: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+76cbde46c442: Pulling metadata
+76cbde46c442: Pulling fs layer
+76cbde46c442: Download complete
+ab412e1b2d66: Pulling metadata
+ab412e1b2d66: Pulling fs layer
+ab412e1b2d66: Download complete
+40eb9ff9ac4f: Pulling metadata
+40eb9ff9ac4f: Pulling fs layer
+40eb9ff9ac4f: Download complete
+a1932e8f0b0a: Pulling metadata
+a1932e8f0b0a: Pulling fs layer
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Pulling metadata
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  52.78
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+952e7f435414        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+
+docker rm -f docker_registry
+
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+77e9021fbc93        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/openjdk (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+76cbde46c442: Pushing
+76cbde46c442: Buffering to disk
+76cbde46c442: Image successfully pushed
+ab412e1b2d66: Pushing
+ab412e1b2d66: Buffering to disk
+ab412e1b2d66: Image successfully pushed
+40eb9ff9ac4f: Pushing
+40eb9ff9ac4f: Buffering to disk
+40eb9ff9ac4f: Image successfully pushed
+a1932e8f0b0a: Pushing
+a1932e8f0b0a: Buffering to disk
+a1932e8f0b0a: Image successfully pushed
+8e309f1f5b82: Pushing
+8e309f1f5b82: Buffering to disk
+8e309f1f5b82: Image successfully pushed
+Pushing tag for rev [8e309f1f5b82] on {http://136.187.101.80:5000/v1/repositories/openjdk/tags/latest}
+
+real  105.60
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+Pulling repository 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk, endpoint: http://136.187.101.80:5000/v1/
+8e309f1f5b82: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+76cbde46c442: Pulling metadata
+76cbde46c442: Pulling fs layer
+76cbde46c442: Download complete
+ab412e1b2d66: Pulling metadata
+ab412e1b2d66: Pulling fs layer
+ab412e1b2d66: Download complete
+40eb9ff9ac4f: Pulling metadata
+40eb9ff9ac4f: Pulling fs layer
+40eb9ff9ac4f: Download complete
+a1932e8f0b0a: Pulling metadata
+a1932e8f0b0a: Pulling fs layer
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Pulling metadata
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  63.48
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+341ae9a0bc21        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+
+docker rm -f docker_registry
+
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 openjdk
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker tag kiwenlau/openjdk:latest 136.187.101.80:5000/openjdk:latest
+
+docker images
+kiwenlau/openjdk                latest              8e309f1f5b82        10 weeks ago        576.4 MB
+136.187.101.80:5000/openjdk     latest              8e309f1f5b82        10 weeks ago        576.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b395fbce69df        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/openjdk:latest
+The push refers to a repository [136.187.101.80:5000/openjdk] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/openjdk (1 tags)
+e118faab2e16: Pushing
+e118faab2e16: Buffering to disk
+e118faab2e16: Image successfully pushed
+7e2c5c55ef2c: Pushing
+7e2c5c55ef2c: Buffering to disk
+7e2c5c55ef2c: Image successfully pushed
+e04c66a223c4: Pushing
+e04c66a223c4: Buffering to disk
+e04c66a223c4: Image successfully pushed
+fa81ed084842: Pushing
+fa81ed084842: Buffering to disk
+fa81ed084842: Image successfully pushed
+76cbde46c442: Pushing
+76cbde46c442: Buffering to disk
+76cbde46c442: Image successfully pushed
+ab412e1b2d66: Pushing
+ab412e1b2d66: Buffering to disk
+ab412e1b2d66: Image successfully pushed
+40eb9ff9ac4f: Pushing
+40eb9ff9ac4f: Buffering to disk
+40eb9ff9ac4f: Image successfully pushed
+a1932e8f0b0a: Pushing
+a1932e8f0b0a: Buffering to disk
+a1932e8f0b0a: Image successfully pushed
+8e309f1f5b82: Pushing
+8e309f1f5b82: Buffering to disk
+8e309f1f5b82: Image successfully pushed
+Pushing tag for rev [8e309f1f5b82] on {http://136.187.101.80:5000/v1/repositories/openjdk/tags/latest}
+
+real  95.26
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker pull 136.187.101.80:5000/openjdk:latest
+Pulling repository 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk
+8e309f1f5b82: Pulling image (latest) from 136.187.101.80:5000/openjdk, endpoint: http://136.187.101.80:5000/v1/
+8e309f1f5b82: Pulling dependent layers
+e118faab2e16: Pulling metadata
+e118faab2e16: Pulling fs layer
+e118faab2e16: Download complete
+7e2c5c55ef2c: Pulling metadata
+7e2c5c55ef2c: Pulling fs layer
+7e2c5c55ef2c: Download complete
+e04c66a223c4: Pulling metadata
+e04c66a223c4: Pulling fs layer
+e04c66a223c4: Download complete
+fa81ed084842: Pulling metadata
+fa81ed084842: Pulling fs layer
+fa81ed084842: Download complete
+76cbde46c442: Pulling metadata
+76cbde46c442: Pulling fs layer
+76cbde46c442: Download complete
+ab412e1b2d66: Pulling metadata
+ab412e1b2d66: Pulling fs layer
+ab412e1b2d66: Download complete
+40eb9ff9ac4f: Pulling metadata
+40eb9ff9ac4f: Pulling fs layer
+40eb9ff9ac4f: Download complete
+a1932e8f0b0a: Pulling metadata
+a1932e8f0b0a: Pulling fs layer
+a1932e8f0b0a: Download complete
+8e309f1f5b82: Pulling metadata
+8e309f1f5b82: Pulling fs layer
+8e309f1f5b82: Download complete
+8e309f1f5b82: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/openjdk:latest
+
+real  57.76
+
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+136.187.101.80:5000/openjdk   latest              8e309f1f5b82        10 weeks ago        576.3 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/openjdk:latest"
+ssh kai@54.225.249.141 "docker images | grep openjdk"
+
+docker rm -f docker_registry
+
+end date: Fri Aug 14 04:05:55 JST 2015
+
+
