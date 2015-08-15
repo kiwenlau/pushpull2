@@ -1,0 +1,1505 @@
+
+pullpush benchmark: transfer ipsec image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Sat Aug 15 01:52:59 JST 2015
+
+sudo docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+sudo docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+267de4f73cb3        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1113d5e527af        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+49ebbba78834        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+The push refers to a repository [136.187.101.80:5000/ipsec] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ipsec (1 tags)
+39bb80489af7: Pushing
+39bb80489af7: Buffering to disk
+39bb80489af7: Image successfully pushed
+df2a0347c9d0: Pushing
+df2a0347c9d0: Buffering to disk
+df2a0347c9d0: Image successfully pushed
+b3efef31a908: Pushing
+b3efef31a908: Buffering to disk
+b3efef31a908: Image successfully pushed
+cbc6d853fefd: Pushing
+cbc6d853fefd: Buffering to disk
+cbc6d853fefd: Image successfully pushed
+f4c644f03f1a: Pushing
+f4c644f03f1a: Buffering to disk
+f4c644f03f1a: Image successfully pushed
+475a35e3ed6a: Pushing
+475a35e3ed6a: Buffering to disk
+475a35e3ed6a: Image successfully pushed
+e03a1f07d007: Pushing
+e03a1f07d007: Buffering to disk
+e03a1f07d007: Image successfully pushed
+e0d60ad30ded: Pushing
+e0d60ad30ded: Buffering to disk
+e0d60ad30ded: Image successfully pushed
+9f7bdfd1401a: Pushing
+9f7bdfd1401a: Buffering to disk
+9f7bdfd1401a: Image successfully pushed
+d1d698485365: Pushing
+d1d698485365: Buffering to disk
+d1d698485365: Image successfully pushed
+760fe34a74bb: Pushing
+760fe34a74bb: Buffering to disk
+760fe34a74bb: Image successfully pushed
+d5ffbba56c38: Pushing
+d5ffbba56c38: Buffering to disk
+d5ffbba56c38: Image successfully pushed
+0f81cffa338c: Pushing
+0f81cffa338c: Buffering to disk
+0f81cffa338c: Image successfully pushed
+417251377e08: Pushing
+417251377e08: Buffering to disk
+417251377e08: Image successfully pushed
+9dd386eb4afb: Pushing
+9dd386eb4afb: Buffering to disk
+9dd386eb4afb: Image successfully pushed
+Pushing tag for rev [9dd386eb4afb] on {http://136.187.101.80:5000/v1/repositories/ipsec/tags/latest}
+
+real  59.11
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker pull 136.187.101.80:5000/ipsec:latest
+Pulling repository 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec, endpoint: http://136.187.101.80:5000/v1/
+9dd386eb4afb: Pulling dependent layers
+39bb80489af7: Pulling metadata
+39bb80489af7: Pulling fs layer
+39bb80489af7: Download complete
+df2a0347c9d0: Pulling metadata
+df2a0347c9d0: Pulling fs layer
+df2a0347c9d0: Download complete
+b3efef31a908: Pulling metadata
+b3efef31a908: Pulling fs layer
+b3efef31a908: Download complete
+cbc6d853fefd: Pulling metadata
+cbc6d853fefd: Pulling fs layer
+cbc6d853fefd: Download complete
+f4c644f03f1a: Pulling metadata
+f4c644f03f1a: Pulling fs layer
+f4c644f03f1a: Download complete
+475a35e3ed6a: Pulling metadata
+475a35e3ed6a: Pulling fs layer
+475a35e3ed6a: Download complete
+e03a1f07d007: Pulling metadata
+e03a1f07d007: Pulling fs layer
+e03a1f07d007: Download complete
+e0d60ad30ded: Pulling metadata
+e0d60ad30ded: Pulling fs layer
+e0d60ad30ded: Download complete
+9f7bdfd1401a: Pulling metadata
+9f7bdfd1401a: Pulling fs layer
+9f7bdfd1401a: Download complete
+d1d698485365: Pulling metadata
+d1d698485365: Pulling fs layer
+d1d698485365: Download complete
+760fe34a74bb: Pulling metadata
+760fe34a74bb: Pulling fs layer
+760fe34a74bb: Download complete
+d5ffbba56c38: Pulling metadata
+d5ffbba56c38: Pulling fs layer
+d5ffbba56c38: Download complete
+0f81cffa338c: Pulling metadata
+0f81cffa338c: Pulling fs layer
+0f81cffa338c: Download complete
+417251377e08: Pulling metadata
+417251377e08: Pulling fs layer
+417251377e08: Download complete
+9dd386eb4afb: Pulling metadata
+9dd386eb4afb: Pulling fs layer
+9dd386eb4afb: Download complete
+9dd386eb4afb: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ipsec:latest
+
+real  47.56
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+136.187.101.80:5000/ipsec   latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/ipsec:latest"
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+17bfc0c630ec        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+The push refers to a repository [136.187.101.80:5000/ipsec] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ipsec (1 tags)
+39bb80489af7: Pushing
+39bb80489af7: Buffering to disk
+39bb80489af7: Image successfully pushed
+df2a0347c9d0: Pushing
+df2a0347c9d0: Buffering to disk
+df2a0347c9d0: Image successfully pushed
+b3efef31a908: Pushing
+b3efef31a908: Buffering to disk
+b3efef31a908: Image successfully pushed
+cbc6d853fefd: Pushing
+cbc6d853fefd: Buffering to disk
+cbc6d853fefd: Image successfully pushed
+f4c644f03f1a: Pushing
+f4c644f03f1a: Buffering to disk
+f4c644f03f1a: Image successfully pushed
+475a35e3ed6a: Pushing
+475a35e3ed6a: Buffering to disk
+475a35e3ed6a: Image successfully pushed
+e03a1f07d007: Pushing
+e03a1f07d007: Buffering to disk
+e03a1f07d007: Image successfully pushed
+e0d60ad30ded: Pushing
+e0d60ad30ded: Buffering to disk
+e0d60ad30ded: Image successfully pushed
+9f7bdfd1401a: Pushing
+9f7bdfd1401a: Buffering to disk
+9f7bdfd1401a: Image successfully pushed
+d1d698485365: Pushing
+d1d698485365: Buffering to disk
+d1d698485365: Image successfully pushed
+760fe34a74bb: Pushing
+760fe34a74bb: Buffering to disk
+760fe34a74bb: Image successfully pushed
+d5ffbba56c38: Pushing
+d5ffbba56c38: Buffering to disk
+d5ffbba56c38: Image successfully pushed
+0f81cffa338c: Pushing
+0f81cffa338c: Buffering to disk
+0f81cffa338c: Image successfully pushed
+417251377e08: Pushing
+417251377e08: Buffering to disk
+417251377e08: Image successfully pushed
+9dd386eb4afb: Pushing
+9dd386eb4afb: Buffering to disk
+9dd386eb4afb: Image successfully pushed
+Pushing tag for rev [9dd386eb4afb] on {http://136.187.101.80:5000/v1/repositories/ipsec/tags/latest}
+
+real  58.89
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker pull 136.187.101.80:5000/ipsec:latest
+Pulling repository 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec, endpoint: http://136.187.101.80:5000/v1/
+9dd386eb4afb: Pulling dependent layers
+39bb80489af7: Pulling metadata
+39bb80489af7: Pulling fs layer
+39bb80489af7: Download complete
+df2a0347c9d0: Pulling metadata
+df2a0347c9d0: Pulling fs layer
+df2a0347c9d0: Download complete
+b3efef31a908: Pulling metadata
+b3efef31a908: Pulling fs layer
+b3efef31a908: Download complete
+cbc6d853fefd: Pulling metadata
+cbc6d853fefd: Pulling fs layer
+cbc6d853fefd: Download complete
+f4c644f03f1a: Pulling metadata
+f4c644f03f1a: Pulling fs layer
+f4c644f03f1a: Download complete
+475a35e3ed6a: Pulling metadata
+475a35e3ed6a: Pulling fs layer
+475a35e3ed6a: Download complete
+e03a1f07d007: Pulling metadata
+e03a1f07d007: Pulling fs layer
+e03a1f07d007: Download complete
+e0d60ad30ded: Pulling metadata
+e0d60ad30ded: Pulling fs layer
+e0d60ad30ded: Download complete
+9f7bdfd1401a: Pulling metadata
+9f7bdfd1401a: Pulling fs layer
+9f7bdfd1401a: Download complete
+d1d698485365: Pulling metadata
+d1d698485365: Pulling fs layer
+d1d698485365: Download complete
+760fe34a74bb: Pulling metadata
+760fe34a74bb: Pulling fs layer
+760fe34a74bb: Download complete
+d5ffbba56c38: Pulling metadata
+d5ffbba56c38: Pulling fs layer
+d5ffbba56c38: Download complete
+0f81cffa338c: Pulling metadata
+0f81cffa338c: Pulling fs layer
+0f81cffa338c: Download complete
+417251377e08: Pulling metadata
+417251377e08: Pulling fs layer
+417251377e08: Download complete
+9dd386eb4afb: Pulling metadata
+9dd386eb4afb: Pulling fs layer
+9dd386eb4afb: Download complete
+9dd386eb4afb: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ipsec:latest
+
+real  47.46
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+136.187.101.80:5000/ipsec   latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/ipsec:latest"
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+478e425e64b6        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+
+docker rm -f docker_registry
+
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+9eeb14900c84        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+
+docker rm -f docker_registry
+
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+e3dde3e82c23        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+The push refers to a repository [136.187.101.80:5000/ipsec] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ipsec (1 tags)
+39bb80489af7: Pushing
+39bb80489af7: Buffering to disk
+39bb80489af7: Image successfully pushed
+df2a0347c9d0: Pushing
+df2a0347c9d0: Buffering to disk
+df2a0347c9d0: Image successfully pushed
+b3efef31a908: Pushing
+b3efef31a908: Buffering to disk
+b3efef31a908: Image successfully pushed
+cbc6d853fefd: Pushing
+cbc6d853fefd: Buffering to disk
+cbc6d853fefd: Image successfully pushed
+f4c644f03f1a: Pushing
+f4c644f03f1a: Buffering to disk
+f4c644f03f1a: Image successfully pushed
+475a35e3ed6a: Pushing
+475a35e3ed6a: Buffering to disk
+475a35e3ed6a: Image successfully pushed
+e03a1f07d007: Pushing
+e03a1f07d007: Buffering to disk
+e03a1f07d007: Image successfully pushed
+e0d60ad30ded: Pushing
+e0d60ad30ded: Buffering to disk
+e0d60ad30ded: Image successfully pushed
+9f7bdfd1401a: Pushing
+9f7bdfd1401a: Buffering to disk
+9f7bdfd1401a: Image successfully pushed
+d1d698485365: Pushing
+d1d698485365: Buffering to disk
+d1d698485365: Image successfully pushed
+760fe34a74bb: Pushing
+760fe34a74bb: Buffering to disk
+760fe34a74bb: Image successfully pushed
+d5ffbba56c38: Pushing
+d5ffbba56c38: Buffering to disk
+d5ffbba56c38: Image successfully pushed
+0f81cffa338c: Pushing
+0f81cffa338c: Buffering to disk
+0f81cffa338c: Image successfully pushed
+417251377e08: Pushing
+417251377e08: Buffering to disk
+417251377e08: Image successfully pushed
+9dd386eb4afb: Pushing
+9dd386eb4afb: Buffering to disk
+9dd386eb4afb: Image successfully pushed
+Pushing tag for rev [9dd386eb4afb] on {http://136.187.101.80:5000/v1/repositories/ipsec/tags/latest}
+
+real  60.81
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker pull 136.187.101.80:5000/ipsec:latest
+Pulling repository 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec, endpoint: http://136.187.101.80:5000/v1/
+9dd386eb4afb: Pulling dependent layers
+39bb80489af7: Pulling metadata
+39bb80489af7: Pulling fs layer
+39bb80489af7: Download complete
+df2a0347c9d0: Pulling metadata
+df2a0347c9d0: Pulling fs layer
+df2a0347c9d0: Download complete
+b3efef31a908: Pulling metadata
+b3efef31a908: Pulling fs layer
+b3efef31a908: Download complete
+cbc6d853fefd: Pulling metadata
+cbc6d853fefd: Pulling fs layer
+cbc6d853fefd: Download complete
+f4c644f03f1a: Pulling metadata
+f4c644f03f1a: Pulling fs layer
+f4c644f03f1a: Download complete
+475a35e3ed6a: Pulling metadata
+475a35e3ed6a: Pulling fs layer
+475a35e3ed6a: Download complete
+e03a1f07d007: Pulling metadata
+e03a1f07d007: Pulling fs layer
+e03a1f07d007: Download complete
+e0d60ad30ded: Pulling metadata
+e0d60ad30ded: Pulling fs layer
+e0d60ad30ded: Download complete
+9f7bdfd1401a: Pulling metadata
+9f7bdfd1401a: Pulling fs layer
+9f7bdfd1401a: Download complete
+d1d698485365: Pulling metadata
+d1d698485365: Pulling fs layer
+d1d698485365: Download complete
+760fe34a74bb: Pulling metadata
+760fe34a74bb: Pulling fs layer
+760fe34a74bb: Download complete
+d5ffbba56c38: Pulling metadata
+d5ffbba56c38: Pulling fs layer
+d5ffbba56c38: Download complete
+0f81cffa338c: Pulling metadata
+0f81cffa338c: Pulling fs layer
+0f81cffa338c: Download complete
+417251377e08: Pulling metadata
+417251377e08: Pulling fs layer
+417251377e08: Download complete
+9dd386eb4afb: Pulling metadata
+9dd386eb4afb: Pulling fs layer
+9dd386eb4afb: Download complete
+9dd386eb4afb: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ipsec:latest
+
+real  47.88
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+136.187.101.80:5000/ipsec   latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/ipsec:latest"
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+45c28fc3f363        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+311f2c86cdb3        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+The push refers to a repository [136.187.101.80:5000/ipsec] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ipsec (1 tags)
+39bb80489af7: Pushing
+39bb80489af7: Buffering to disk
+39bb80489af7: Image successfully pushed
+df2a0347c9d0: Pushing
+df2a0347c9d0: Buffering to disk
+df2a0347c9d0: Image successfully pushed
+b3efef31a908: Pushing
+b3efef31a908: Buffering to disk
+b3efef31a908: Image successfully pushed
+cbc6d853fefd: Pushing
+cbc6d853fefd: Buffering to disk
+cbc6d853fefd: Image successfully pushed
+f4c644f03f1a: Pushing
+f4c644f03f1a: Buffering to disk
+f4c644f03f1a: Image successfully pushed
+475a35e3ed6a: Pushing
+475a35e3ed6a: Buffering to disk
+475a35e3ed6a: Image successfully pushed
+e03a1f07d007: Pushing
+e03a1f07d007: Buffering to disk
+e03a1f07d007: Image successfully pushed
+e0d60ad30ded: Pushing
+e0d60ad30ded: Buffering to disk
+e0d60ad30ded: Image successfully pushed
+9f7bdfd1401a: Pushing
+9f7bdfd1401a: Buffering to disk
+9f7bdfd1401a: Image successfully pushed
+d1d698485365: Pushing
+d1d698485365: Buffering to disk
+d1d698485365: Image successfully pushed
+760fe34a74bb: Pushing
+760fe34a74bb: Buffering to disk
+760fe34a74bb: Image successfully pushed
+d5ffbba56c38: Pushing
+d5ffbba56c38: Buffering to disk
+d5ffbba56c38: Image successfully pushed
+0f81cffa338c: Pushing
+0f81cffa338c: Buffering to disk
+0f81cffa338c: Image successfully pushed
+417251377e08: Pushing
+417251377e08: Buffering to disk
+417251377e08: Image successfully pushed
+9dd386eb4afb: Pushing
+9dd386eb4afb: Buffering to disk
+9dd386eb4afb: Image successfully pushed
+Pushing tag for rev [9dd386eb4afb] on {http://136.187.101.80:5000/v1/repositories/ipsec/tags/latest}
+
+real  57.59
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker pull 136.187.101.80:5000/ipsec:latest
+Pulling repository 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec, endpoint: http://136.187.101.80:5000/v1/
+9dd386eb4afb: Pulling dependent layers
+39bb80489af7: Pulling metadata
+39bb80489af7: Pulling fs layer
+39bb80489af7: Download complete
+df2a0347c9d0: Pulling metadata
+df2a0347c9d0: Pulling fs layer
+df2a0347c9d0: Download complete
+b3efef31a908: Pulling metadata
+b3efef31a908: Pulling fs layer
+b3efef31a908: Download complete
+cbc6d853fefd: Pulling metadata
+cbc6d853fefd: Pulling fs layer
+cbc6d853fefd: Download complete
+f4c644f03f1a: Pulling metadata
+f4c644f03f1a: Pulling fs layer
+f4c644f03f1a: Download complete
+475a35e3ed6a: Pulling metadata
+475a35e3ed6a: Pulling fs layer
+475a35e3ed6a: Download complete
+e03a1f07d007: Pulling metadata
+e03a1f07d007: Pulling fs layer
+e03a1f07d007: Download complete
+e0d60ad30ded: Pulling metadata
+e0d60ad30ded: Pulling fs layer
+e0d60ad30ded: Download complete
+9f7bdfd1401a: Pulling metadata
+9f7bdfd1401a: Pulling fs layer
+9f7bdfd1401a: Download complete
+d1d698485365: Pulling metadata
+d1d698485365: Pulling fs layer
+d1d698485365: Download complete
+760fe34a74bb: Pulling metadata
+760fe34a74bb: Pulling fs layer
+760fe34a74bb: Download complete
+d5ffbba56c38: Pulling metadata
+d5ffbba56c38: Pulling fs layer
+d5ffbba56c38: Download complete
+0f81cffa338c: Pulling metadata
+0f81cffa338c: Pulling fs layer
+0f81cffa338c: Download complete
+417251377e08: Pulling metadata
+417251377e08: Pulling fs layer
+417251377e08: Download complete
+9dd386eb4afb: Pulling metadata
+9dd386eb4afb: Pulling fs layer
+9dd386eb4afb: Download complete
+9dd386eb4afb: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ipsec:latest
+
+real  48.35
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+136.187.101.80:5000/ipsec   latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/ipsec:latest"
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+cc4411afdc08        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+The push refers to a repository [136.187.101.80:5000/ipsec] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ipsec (1 tags)
+39bb80489af7: Pushing
+39bb80489af7: Buffering to disk
+39bb80489af7: Image successfully pushed
+df2a0347c9d0: Pushing
+df2a0347c9d0: Buffering to disk
+df2a0347c9d0: Image successfully pushed
+b3efef31a908: Pushing
+b3efef31a908: Buffering to disk
+b3efef31a908: Image successfully pushed
+cbc6d853fefd: Pushing
+cbc6d853fefd: Buffering to disk
+cbc6d853fefd: Image successfully pushed
+f4c644f03f1a: Pushing
+f4c644f03f1a: Buffering to disk
+f4c644f03f1a: Image successfully pushed
+475a35e3ed6a: Pushing
+475a35e3ed6a: Buffering to disk
+475a35e3ed6a: Image successfully pushed
+e03a1f07d007: Pushing
+e03a1f07d007: Buffering to disk
+e03a1f07d007: Image successfully pushed
+e0d60ad30ded: Pushing
+e0d60ad30ded: Buffering to disk
+e0d60ad30ded: Image successfully pushed
+9f7bdfd1401a: Pushing
+9f7bdfd1401a: Buffering to disk
+9f7bdfd1401a: Image successfully pushed
+d1d698485365: Pushing
+d1d698485365: Buffering to disk
+d1d698485365: Image successfully pushed
+760fe34a74bb: Pushing
+760fe34a74bb: Buffering to disk
+760fe34a74bb: Image successfully pushed
+d5ffbba56c38: Pushing
+d5ffbba56c38: Buffering to disk
+d5ffbba56c38: Image successfully pushed
+0f81cffa338c: Pushing
+0f81cffa338c: Buffering to disk
+0f81cffa338c: Image successfully pushed
+417251377e08: Pushing
+417251377e08: Buffering to disk
+417251377e08: Image successfully pushed
+9dd386eb4afb: Pushing
+9dd386eb4afb: Buffering to disk
+9dd386eb4afb: Image successfully pushed
+Pushing tag for rev [9dd386eb4afb] on {http://136.187.101.80:5000/v1/repositories/ipsec/tags/latest}
+
+real  57.59
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker pull 136.187.101.80:5000/ipsec:latest
+Pulling repository 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec, endpoint: http://136.187.101.80:5000/v1/
+9dd386eb4afb: Pulling dependent layers
+39bb80489af7: Pulling metadata
+39bb80489af7: Pulling fs layer
+39bb80489af7: Download complete
+df2a0347c9d0: Pulling metadata
+df2a0347c9d0: Pulling fs layer
+df2a0347c9d0: Download complete
+b3efef31a908: Pulling metadata
+b3efef31a908: Pulling fs layer
+b3efef31a908: Download complete
+cbc6d853fefd: Pulling metadata
+cbc6d853fefd: Pulling fs layer
+cbc6d853fefd: Download complete
+f4c644f03f1a: Pulling metadata
+f4c644f03f1a: Pulling fs layer
+f4c644f03f1a: Download complete
+475a35e3ed6a: Pulling metadata
+475a35e3ed6a: Pulling fs layer
+475a35e3ed6a: Download complete
+e03a1f07d007: Pulling metadata
+e03a1f07d007: Pulling fs layer
+e03a1f07d007: Download complete
+e0d60ad30ded: Pulling metadata
+e0d60ad30ded: Pulling fs layer
+e0d60ad30ded: Download complete
+9f7bdfd1401a: Pulling metadata
+9f7bdfd1401a: Pulling fs layer
+9f7bdfd1401a: Download complete
+d1d698485365: Pulling metadata
+d1d698485365: Pulling fs layer
+d1d698485365: Download complete
+760fe34a74bb: Pulling metadata
+760fe34a74bb: Pulling fs layer
+760fe34a74bb: Download complete
+d5ffbba56c38: Pulling metadata
+d5ffbba56c38: Pulling fs layer
+d5ffbba56c38: Download complete
+0f81cffa338c: Pulling metadata
+0f81cffa338c: Pulling fs layer
+0f81cffa338c: Download complete
+417251377e08: Pulling metadata
+417251377e08: Pulling fs layer
+417251377e08: Download complete
+9dd386eb4afb: Pulling metadata
+9dd386eb4afb: Pulling fs layer
+9dd386eb4afb: Download complete
+9dd386eb4afb: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ipsec:latest
+
+real  47.42
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+136.187.101.80:5000/ipsec   latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/ipsec:latest"
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1d42b71b8310        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+The push refers to a repository [136.187.101.80:5000/ipsec] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ipsec (1 tags)
+39bb80489af7: Pushing
+39bb80489af7: Buffering to disk
+39bb80489af7: Image successfully pushed
+df2a0347c9d0: Pushing
+df2a0347c9d0: Buffering to disk
+df2a0347c9d0: Image successfully pushed
+b3efef31a908: Pushing
+b3efef31a908: Buffering to disk
+b3efef31a908: Image successfully pushed
+cbc6d853fefd: Pushing
+cbc6d853fefd: Buffering to disk
+cbc6d853fefd: Image successfully pushed
+f4c644f03f1a: Pushing
+f4c644f03f1a: Buffering to disk
+f4c644f03f1a: Image successfully pushed
+475a35e3ed6a: Pushing
+475a35e3ed6a: Buffering to disk
+475a35e3ed6a: Image successfully pushed
+e03a1f07d007: Pushing
+e03a1f07d007: Buffering to disk
+e03a1f07d007: Image successfully pushed
+e0d60ad30ded: Pushing
+e0d60ad30ded: Buffering to disk
+e0d60ad30ded: Image successfully pushed
+9f7bdfd1401a: Pushing
+9f7bdfd1401a: Buffering to disk
+9f7bdfd1401a: Image successfully pushed
+d1d698485365: Pushing
+d1d698485365: Buffering to disk
+d1d698485365: Image successfully pushed
+760fe34a74bb: Pushing
+760fe34a74bb: Buffering to disk
+760fe34a74bb: Image successfully pushed
+d5ffbba56c38: Pushing
+d5ffbba56c38: Buffering to disk
+d5ffbba56c38: Image successfully pushed
+0f81cffa338c: Pushing
+0f81cffa338c: Buffering to disk
+0f81cffa338c: Image successfully pushed
+417251377e08: Pushing
+417251377e08: Buffering to disk
+417251377e08: Image successfully pushed
+9dd386eb4afb: Pushing
+9dd386eb4afb: Buffering to disk
+9dd386eb4afb: Image successfully pushed
+Pushing tag for rev [9dd386eb4afb] on {http://136.187.101.80:5000/v1/repositories/ipsec/tags/latest}
+
+real  58.29
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker pull 136.187.101.80:5000/ipsec:latest
+Pulling repository 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec, endpoint: http://136.187.101.80:5000/v1/
+9dd386eb4afb: Pulling dependent layers
+39bb80489af7: Pulling metadata
+39bb80489af7: Pulling fs layer
+39bb80489af7: Download complete
+df2a0347c9d0: Pulling metadata
+df2a0347c9d0: Pulling fs layer
+df2a0347c9d0: Download complete
+b3efef31a908: Pulling metadata
+b3efef31a908: Pulling fs layer
+b3efef31a908: Download complete
+cbc6d853fefd: Pulling metadata
+cbc6d853fefd: Pulling fs layer
+cbc6d853fefd: Download complete
+f4c644f03f1a: Pulling metadata
+f4c644f03f1a: Pulling fs layer
+f4c644f03f1a: Download complete
+475a35e3ed6a: Pulling metadata
+475a35e3ed6a: Pulling fs layer
+475a35e3ed6a: Download complete
+e03a1f07d007: Pulling metadata
+e03a1f07d007: Pulling fs layer
+e03a1f07d007: Download complete
+e0d60ad30ded: Pulling metadata
+e0d60ad30ded: Pulling fs layer
+e0d60ad30ded: Download complete
+9f7bdfd1401a: Pulling metadata
+9f7bdfd1401a: Pulling fs layer
+9f7bdfd1401a: Download complete
+d1d698485365: Pulling metadata
+d1d698485365: Pulling fs layer
+d1d698485365: Download complete
+760fe34a74bb: Pulling metadata
+760fe34a74bb: Pulling fs layer
+760fe34a74bb: Download complete
+d5ffbba56c38: Pulling metadata
+d5ffbba56c38: Pulling fs layer
+d5ffbba56c38: Download complete
+0f81cffa338c: Pulling metadata
+0f81cffa338c: Pulling fs layer
+0f81cffa338c: Download complete
+417251377e08: Pulling metadata
+417251377e08: Pulling fs layer
+417251377e08: Download complete
+9dd386eb4afb: Pulling metadata
+9dd386eb4afb: Pulling fs layer
+9dd386eb4afb: Download complete
+9dd386eb4afb: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ipsec:latest
+
+real  48.74
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+136.187.101.80:5000/ipsec   latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/ipsec:latest"
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+08c1e104cf89        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+
+docker rm -f docker_registry
+
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+4b5a05922098        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+The push refers to a repository [136.187.101.80:5000/ipsec] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ipsec (1 tags)
+39bb80489af7: Pushing
+39bb80489af7: Buffering to disk
+39bb80489af7: Image successfully pushed
+df2a0347c9d0: Pushing
+df2a0347c9d0: Buffering to disk
+df2a0347c9d0: Image successfully pushed
+b3efef31a908: Pushing
+b3efef31a908: Buffering to disk
+b3efef31a908: Image successfully pushed
+cbc6d853fefd: Pushing
+cbc6d853fefd: Buffering to disk
+cbc6d853fefd: Image successfully pushed
+f4c644f03f1a: Pushing
+f4c644f03f1a: Buffering to disk
+f4c644f03f1a: Image successfully pushed
+475a35e3ed6a: Pushing
+475a35e3ed6a: Buffering to disk
+475a35e3ed6a: Image successfully pushed
+e03a1f07d007: Pushing
+e03a1f07d007: Buffering to disk
+e03a1f07d007: Image successfully pushed
+e0d60ad30ded: Pushing
+e0d60ad30ded: Buffering to disk
+e0d60ad30ded: Image successfully pushed
+9f7bdfd1401a: Pushing
+9f7bdfd1401a: Buffering to disk
+9f7bdfd1401a: Image successfully pushed
+d1d698485365: Pushing
+d1d698485365: Buffering to disk
+d1d698485365: Image successfully pushed
+760fe34a74bb: Pushing
+760fe34a74bb: Buffering to disk
+760fe34a74bb: Image successfully pushed
+d5ffbba56c38: Pushing
+d5ffbba56c38: Buffering to disk
+d5ffbba56c38: Image successfully pushed
+0f81cffa338c: Pushing
+0f81cffa338c: Buffering to disk
+0f81cffa338c: Image successfully pushed
+417251377e08: Pushing
+417251377e08: Buffering to disk
+417251377e08: Image successfully pushed
+9dd386eb4afb: Pushing
+9dd386eb4afb: Buffering to disk
+9dd386eb4afb: Image successfully pushed
+Pushing tag for rev [9dd386eb4afb] on {http://136.187.101.80:5000/v1/repositories/ipsec/tags/latest}
+
+real  58.05
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker pull 136.187.101.80:5000/ipsec:latest
+Pulling repository 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec, endpoint: http://136.187.101.80:5000/v1/
+9dd386eb4afb: Pulling dependent layers
+39bb80489af7: Pulling metadata
+39bb80489af7: Pulling fs layer
+39bb80489af7: Download complete
+df2a0347c9d0: Pulling metadata
+df2a0347c9d0: Pulling fs layer
+df2a0347c9d0: Download complete
+b3efef31a908: Pulling metadata
+b3efef31a908: Pulling fs layer
+b3efef31a908: Download complete
+cbc6d853fefd: Pulling metadata
+cbc6d853fefd: Pulling fs layer
+cbc6d853fefd: Download complete
+f4c644f03f1a: Pulling metadata
+f4c644f03f1a: Pulling fs layer
+f4c644f03f1a: Download complete
+475a35e3ed6a: Pulling metadata
+475a35e3ed6a: Pulling fs layer
+475a35e3ed6a: Download complete
+e03a1f07d007: Pulling metadata
+e03a1f07d007: Pulling fs layer
+e03a1f07d007: Download complete
+e0d60ad30ded: Pulling metadata
+e0d60ad30ded: Pulling fs layer
+e0d60ad30ded: Download complete
+9f7bdfd1401a: Pulling metadata
+9f7bdfd1401a: Pulling fs layer
+9f7bdfd1401a: Download complete
+d1d698485365: Pulling metadata
+d1d698485365: Pulling fs layer
+d1d698485365: Download complete
+760fe34a74bb: Pulling metadata
+760fe34a74bb: Pulling fs layer
+760fe34a74bb: Download complete
+d5ffbba56c38: Pulling metadata
+d5ffbba56c38: Pulling fs layer
+d5ffbba56c38: Download complete
+0f81cffa338c: Pulling metadata
+0f81cffa338c: Pulling fs layer
+0f81cffa338c: Download complete
+417251377e08: Pulling metadata
+417251377e08: Pulling fs layer
+417251377e08: Download complete
+9dd386eb4afb: Pulling metadata
+9dd386eb4afb: Pulling fs layer
+9dd386eb4afb: Download complete
+9dd386eb4afb: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ipsec:latest
+
+real  49.68
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+136.187.101.80:5000/ipsec   latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/ipsec:latest"
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+d06ff82dc917        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+The push refers to a repository [136.187.101.80:5000/ipsec] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ipsec (1 tags)
+39bb80489af7: Pushing
+39bb80489af7: Buffering to disk
+39bb80489af7: Image successfully pushed
+df2a0347c9d0: Pushing
+df2a0347c9d0: Buffering to disk
+df2a0347c9d0: Image successfully pushed
+b3efef31a908: Pushing
+b3efef31a908: Buffering to disk
+b3efef31a908: Image successfully pushed
+cbc6d853fefd: Pushing
+cbc6d853fefd: Buffering to disk
+cbc6d853fefd: Image successfully pushed
+f4c644f03f1a: Pushing
+f4c644f03f1a: Buffering to disk
+f4c644f03f1a: Image successfully pushed
+475a35e3ed6a: Pushing
+475a35e3ed6a: Buffering to disk
+475a35e3ed6a: Image successfully pushed
+e03a1f07d007: Pushing
+e03a1f07d007: Buffering to disk
+e03a1f07d007: Image successfully pushed
+e0d60ad30ded: Pushing
+e0d60ad30ded: Buffering to disk
+e0d60ad30ded: Image successfully pushed
+9f7bdfd1401a: Pushing
+9f7bdfd1401a: Buffering to disk
+9f7bdfd1401a: Image successfully pushed
+d1d698485365: Pushing
+d1d698485365: Buffering to disk
+d1d698485365: Image successfully pushed
+760fe34a74bb: Pushing
+760fe34a74bb: Buffering to disk
+760fe34a74bb: Image successfully pushed
+d5ffbba56c38: Pushing
+d5ffbba56c38: Buffering to disk
+d5ffbba56c38: Image successfully pushed
+0f81cffa338c: Pushing
+0f81cffa338c: Buffering to disk
+0f81cffa338c: Image successfully pushed
+417251377e08: Pushing
+417251377e08: Buffering to disk
+417251377e08: Image successfully pushed
+9dd386eb4afb: Pushing
+9dd386eb4afb: Buffering to disk
+9dd386eb4afb: Image successfully pushed
+Pushing tag for rev [9dd386eb4afb] on {http://136.187.101.80:5000/v1/repositories/ipsec/tags/latest}
+
+real  57.99
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker pull 136.187.101.80:5000/ipsec:latest
+Pulling repository 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec, endpoint: http://136.187.101.80:5000/v1/
+9dd386eb4afb: Pulling dependent layers
+39bb80489af7: Pulling metadata
+39bb80489af7: Pulling fs layer
+39bb80489af7: Download complete
+df2a0347c9d0: Pulling metadata
+df2a0347c9d0: Pulling fs layer
+df2a0347c9d0: Download complete
+b3efef31a908: Pulling metadata
+b3efef31a908: Pulling fs layer
+b3efef31a908: Download complete
+cbc6d853fefd: Pulling metadata
+cbc6d853fefd: Pulling fs layer
+cbc6d853fefd: Download complete
+f4c644f03f1a: Pulling metadata
+f4c644f03f1a: Pulling fs layer
+f4c644f03f1a: Download complete
+475a35e3ed6a: Pulling metadata
+475a35e3ed6a: Pulling fs layer
+475a35e3ed6a: Download complete
+e03a1f07d007: Pulling metadata
+e03a1f07d007: Pulling fs layer
+e03a1f07d007: Download complete
+e0d60ad30ded: Pulling metadata
+e0d60ad30ded: Pulling fs layer
+e0d60ad30ded: Download complete
+9f7bdfd1401a: Pulling metadata
+9f7bdfd1401a: Pulling fs layer
+9f7bdfd1401a: Download complete
+d1d698485365: Pulling metadata
+d1d698485365: Pulling fs layer
+d1d698485365: Download complete
+760fe34a74bb: Pulling metadata
+760fe34a74bb: Pulling fs layer
+760fe34a74bb: Download complete
+d5ffbba56c38: Pulling metadata
+d5ffbba56c38: Pulling fs layer
+d5ffbba56c38: Download complete
+0f81cffa338c: Pulling metadata
+0f81cffa338c: Pulling fs layer
+0f81cffa338c: Download complete
+417251377e08: Pulling metadata
+417251377e08: Pulling fs layer
+417251377e08: Download complete
+9dd386eb4afb: Pulling metadata
+9dd386eb4afb: Pulling fs layer
+9dd386eb4afb: Download complete
+9dd386eb4afb: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ipsec:latest
+
+real  48.24
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+136.187.101.80:5000/ipsec   latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/ipsec:latest"
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+db61c8c56e9e        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+The push refers to a repository [136.187.101.80:5000/ipsec] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ipsec (1 tags)
+39bb80489af7: Pushing
+39bb80489af7: Buffering to disk
+39bb80489af7: Image successfully pushed
+df2a0347c9d0: Pushing
+df2a0347c9d0: Buffering to disk
+df2a0347c9d0: Image successfully pushed
+b3efef31a908: Pushing
+b3efef31a908: Buffering to disk
+b3efef31a908: Image successfully pushed
+cbc6d853fefd: Pushing
+cbc6d853fefd: Buffering to disk
+cbc6d853fefd: Image successfully pushed
+f4c644f03f1a: Pushing
+f4c644f03f1a: Buffering to disk
+f4c644f03f1a: Image successfully pushed
+475a35e3ed6a: Pushing
+475a35e3ed6a: Buffering to disk
+475a35e3ed6a: Image successfully pushed
+e03a1f07d007: Pushing
+e03a1f07d007: Buffering to disk
+e03a1f07d007: Image successfully pushed
+e0d60ad30ded: Pushing
+e0d60ad30ded: Buffering to disk
+e0d60ad30ded: Image successfully pushed
+9f7bdfd1401a: Pushing
+9f7bdfd1401a: Buffering to disk
+9f7bdfd1401a: Image successfully pushed
+d1d698485365: Pushing
+d1d698485365: Buffering to disk
+d1d698485365: Image successfully pushed
+760fe34a74bb: Pushing
+760fe34a74bb: Buffering to disk
+760fe34a74bb: Image successfully pushed
+d5ffbba56c38: Pushing
+d5ffbba56c38: Buffering to disk
+d5ffbba56c38: Image successfully pushed
+0f81cffa338c: Pushing
+0f81cffa338c: Buffering to disk
+0f81cffa338c: Image successfully pushed
+417251377e08: Pushing
+417251377e08: Buffering to disk
+417251377e08: Image successfully pushed
+9dd386eb4afb: Pushing
+9dd386eb4afb: Buffering to disk
+9dd386eb4afb: Image successfully pushed
+Pushing tag for rev [9dd386eb4afb] on {http://136.187.101.80:5000/v1/repositories/ipsec/tags/latest}
+
+real  57.05
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker pull 136.187.101.80:5000/ipsec:latest
+Pulling repository 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec, endpoint: http://136.187.101.80:5000/v1/
+9dd386eb4afb: Pulling dependent layers
+39bb80489af7: Pulling metadata
+39bb80489af7: Pulling fs layer
+39bb80489af7: Download complete
+df2a0347c9d0: Pulling metadata
+df2a0347c9d0: Pulling fs layer
+df2a0347c9d0: Download complete
+b3efef31a908: Pulling metadata
+b3efef31a908: Pulling fs layer
+b3efef31a908: Download complete
+cbc6d853fefd: Pulling metadata
+cbc6d853fefd: Pulling fs layer
+cbc6d853fefd: Download complete
+f4c644f03f1a: Pulling metadata
+f4c644f03f1a: Pulling fs layer
+f4c644f03f1a: Download complete
+475a35e3ed6a: Pulling metadata
+475a35e3ed6a: Pulling fs layer
+475a35e3ed6a: Download complete
+e03a1f07d007: Pulling metadata
+e03a1f07d007: Pulling fs layer
+e03a1f07d007: Download complete
+e0d60ad30ded: Pulling metadata
+e0d60ad30ded: Pulling fs layer
+e0d60ad30ded: Download complete
+9f7bdfd1401a: Pulling metadata
+9f7bdfd1401a: Pulling fs layer
+9f7bdfd1401a: Download complete
+d1d698485365: Pulling metadata
+d1d698485365: Pulling fs layer
+d1d698485365: Download complete
+760fe34a74bb: Pulling metadata
+760fe34a74bb: Pulling fs layer
+760fe34a74bb: Download complete
+d5ffbba56c38: Pulling metadata
+d5ffbba56c38: Pulling fs layer
+d5ffbba56c38: Download complete
+0f81cffa338c: Pulling metadata
+0f81cffa338c: Pulling fs layer
+0f81cffa338c: Download complete
+417251377e08: Pulling metadata
+417251377e08: Pulling fs layer
+417251377e08: Download complete
+9dd386eb4afb: Pulling metadata
+9dd386eb4afb: Pulling fs layer
+9dd386eb4afb: Download complete
+9dd386eb4afb: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ipsec:latest
+
+real  46.80
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+136.187.101.80:5000/ipsec   latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/ipsec:latest"
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+495052c24d1c        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+
+docker rm -f docker_registry
+
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+1fdfb38941d3        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+
+docker rm -f docker_registry
+
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 ipsec
+
+docker images
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker tag kiwenlau/ipsec:latest 136.187.101.80:5000/ipsec:latest
+
+docker images
+136.187.101.80:5000/ipsec       latest              9dd386eb4afb        10 weeks ago        394.4 MB
+kiwenlau/ipsec                  latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+18accb4e619e        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/ipsec:latest
+The push refers to a repository [136.187.101.80:5000/ipsec] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/ipsec (1 tags)
+39bb80489af7: Pushing
+39bb80489af7: Buffering to disk
+39bb80489af7: Image successfully pushed
+df2a0347c9d0: Pushing
+df2a0347c9d0: Buffering to disk
+df2a0347c9d0: Image successfully pushed
+b3efef31a908: Pushing
+b3efef31a908: Buffering to disk
+b3efef31a908: Image successfully pushed
+cbc6d853fefd: Pushing
+cbc6d853fefd: Buffering to disk
+cbc6d853fefd: Image successfully pushed
+f4c644f03f1a: Pushing
+f4c644f03f1a: Buffering to disk
+f4c644f03f1a: Image successfully pushed
+475a35e3ed6a: Pushing
+475a35e3ed6a: Buffering to disk
+475a35e3ed6a: Image successfully pushed
+e03a1f07d007: Pushing
+e03a1f07d007: Buffering to disk
+e03a1f07d007: Image successfully pushed
+e0d60ad30ded: Pushing
+e0d60ad30ded: Buffering to disk
+e0d60ad30ded: Image successfully pushed
+9f7bdfd1401a: Pushing
+9f7bdfd1401a: Buffering to disk
+9f7bdfd1401a: Image successfully pushed
+d1d698485365: Pushing
+d1d698485365: Buffering to disk
+d1d698485365: Image successfully pushed
+760fe34a74bb: Pushing
+760fe34a74bb: Buffering to disk
+760fe34a74bb: Image successfully pushed
+d5ffbba56c38: Pushing
+d5ffbba56c38: Buffering to disk
+d5ffbba56c38: Image successfully pushed
+0f81cffa338c: Pushing
+0f81cffa338c: Buffering to disk
+0f81cffa338c: Image successfully pushed
+417251377e08: Pushing
+417251377e08: Buffering to disk
+417251377e08: Image successfully pushed
+9dd386eb4afb: Pushing
+9dd386eb4afb: Buffering to disk
+9dd386eb4afb: Image successfully pushed
+Pushing tag for rev [9dd386eb4afb] on {http://136.187.101.80:5000/v1/repositories/ipsec/tags/latest}
+
+real  58.58
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker pull 136.187.101.80:5000/ipsec:latest
+Pulling repository 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec
+9dd386eb4afb: Pulling image (latest) from 136.187.101.80:5000/ipsec, endpoint: http://136.187.101.80:5000/v1/
+9dd386eb4afb: Pulling dependent layers
+39bb80489af7: Pulling metadata
+39bb80489af7: Pulling fs layer
+39bb80489af7: Download complete
+df2a0347c9d0: Pulling metadata
+df2a0347c9d0: Pulling fs layer
+df2a0347c9d0: Download complete
+b3efef31a908: Pulling metadata
+b3efef31a908: Pulling fs layer
+b3efef31a908: Download complete
+cbc6d853fefd: Pulling metadata
+cbc6d853fefd: Pulling fs layer
+cbc6d853fefd: Download complete
+f4c644f03f1a: Pulling metadata
+f4c644f03f1a: Pulling fs layer
+f4c644f03f1a: Download complete
+475a35e3ed6a: Pulling metadata
+475a35e3ed6a: Pulling fs layer
+475a35e3ed6a: Download complete
+e03a1f07d007: Pulling metadata
+e03a1f07d007: Pulling fs layer
+e03a1f07d007: Download complete
+e0d60ad30ded: Pulling metadata
+e0d60ad30ded: Pulling fs layer
+e0d60ad30ded: Download complete
+9f7bdfd1401a: Pulling metadata
+9f7bdfd1401a: Pulling fs layer
+9f7bdfd1401a: Download complete
+d1d698485365: Pulling metadata
+d1d698485365: Pulling fs layer
+d1d698485365: Download complete
+760fe34a74bb: Pulling metadata
+760fe34a74bb: Pulling fs layer
+760fe34a74bb: Download complete
+d5ffbba56c38: Pulling metadata
+d5ffbba56c38: Pulling fs layer
+d5ffbba56c38: Download complete
+0f81cffa338c: Pulling metadata
+0f81cffa338c: Pulling fs layer
+0f81cffa338c: Download complete
+417251377e08: Pulling metadata
+417251377e08: Pulling fs layer
+417251377e08: Download complete
+9dd386eb4afb: Pulling metadata
+9dd386eb4afb: Pulling fs layer
+9dd386eb4afb: Download complete
+9dd386eb4afb: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/ipsec:latest
+
+real  47.27
+
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+136.187.101.80:5000/ipsec   latest              9dd386eb4afb        10 weeks ago        394.4 MB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/ipsec:latest"
+ssh kai@54.225.249.141 "docker images | grep ipsec"
+
+docker rm -f docker_registry
+
+end date: Sat Aug 15 02:14:56 JST 2015
+
+

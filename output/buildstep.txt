@@ -1,0 +1,1465 @@
+
+pullpush benchmark: transfer buildstep image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Sat Aug 15 15:39:25 JST 2015
+
+sudo docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+sudo docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+6794f14c55a5        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+
+docker rm -f docker_registry
+
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+f473168aaa71        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildstep (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+5ca11046a9c8: Pushing
+5ca11046a9c8: Buffering to disk
+5ca11046a9c8: Image successfully pushed
+d7334489ac75: Pushing
+d7334489ac75: Buffering to disk
+d7334489ac75: Image successfully pushed
+d51ac450e2e2: Pushing
+d51ac450e2e2: Buffering to disk
+d51ac450e2e2: Image successfully pushed
+bbe66ecb4d53: Pushing
+bbe66ecb4d53: Buffering to disk
+bbe66ecb4d53: Image successfully pushed
+9367176b2225: Pushing
+9367176b2225: Buffering to disk
+9367176b2225: Image successfully pushed
+8ebdd2ed84cb: Pushing
+8ebdd2ed84cb: Buffering to disk
+8ebdd2ed84cb: Image successfully pushed
+326119951bea: Pushing
+326119951bea: Buffering to disk
+326119951bea: Image successfully pushed
+6de8149b4972: Pushing
+6de8149b4972: Buffering to disk
+6de8149b4972: Image successfully pushed
+e956f022f6a0: Pushing
+e956f022f6a0: Buffering to disk
+e956f022f6a0: Image successfully pushed
+903feea8cd22: Pushing
+903feea8cd22: Buffering to disk
+903feea8cd22: Image successfully pushed
+9fe50df1107a: Pushing
+9fe50df1107a: Buffering to disk
+9fe50df1107a: Image successfully pushed
+395647a621ca: Pushing
+395647a621ca: Buffering to disk
+395647a621ca: Image successfully pushed
+a483b7fbba73: Pushing
+a483b7fbba73: Buffering to disk
+a483b7fbba73: Image successfully pushed
+e20705b4ea1b: Pushing
+e20705b4ea1b: Buffering to disk
+e20705b4ea1b: Image successfully pushed
+Pushing tag for rev [e20705b4ea1b] on {http://136.187.101.80:5000/v1/repositories/buildstep/tags/latest}
+
+real  234.18
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+Pulling repository 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep, endpoint: http://136.187.101.80:5000/v1/
+e20705b4ea1b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+5ca11046a9c8: Pulling metadata
+5ca11046a9c8: Pulling fs layer
+5ca11046a9c8: Download complete
+d7334489ac75: Pulling metadata
+d7334489ac75: Pulling fs layer
+d7334489ac75: Download complete
+d51ac450e2e2: Pulling metadata
+d51ac450e2e2: Pulling fs layer
+d51ac450e2e2: Download complete
+bbe66ecb4d53: Pulling metadata
+bbe66ecb4d53: Pulling fs layer
+bbe66ecb4d53: Download complete
+9367176b2225: Pulling metadata
+9367176b2225: Pulling fs layer
+9367176b2225: Download complete
+8ebdd2ed84cb: Pulling metadata
+8ebdd2ed84cb: Pulling fs layer
+8ebdd2ed84cb: Download complete
+326119951bea: Pulling metadata
+326119951bea: Pulling fs layer
+326119951bea: Download complete
+6de8149b4972: Pulling metadata
+6de8149b4972: Pulling fs layer
+6de8149b4972: Download complete
+e956f022f6a0: Pulling metadata
+e956f022f6a0: Pulling fs layer
+e956f022f6a0: Download complete
+903feea8cd22: Pulling metadata
+903feea8cd22: Pulling fs layer
+903feea8cd22: Download complete
+9fe50df1107a: Pulling metadata
+9fe50df1107a: Pulling fs layer
+9fe50df1107a: Download complete
+395647a621ca: Pulling metadata
+395647a621ca: Pulling fs layer
+395647a621ca: Download complete
+a483b7fbba73: Pulling metadata
+a483b7fbba73: Pulling fs layer
+a483b7fbba73: Download complete
+e20705b4ea1b: Pulling metadata
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  94.08
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+55b5eb405767        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildstep (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+5ca11046a9c8: Pushing
+5ca11046a9c8: Buffering to disk
+5ca11046a9c8: Image successfully pushed
+d7334489ac75: Pushing
+d7334489ac75: Buffering to disk
+d7334489ac75: Image successfully pushed
+d51ac450e2e2: Pushing
+d51ac450e2e2: Buffering to disk
+d51ac450e2e2: Image successfully pushed
+bbe66ecb4d53: Pushing
+bbe66ecb4d53: Buffering to disk
+bbe66ecb4d53: Image successfully pushed
+9367176b2225: Pushing
+9367176b2225: Buffering to disk
+9367176b2225: Image successfully pushed
+8ebdd2ed84cb: Pushing
+8ebdd2ed84cb: Buffering to disk
+8ebdd2ed84cb: Image successfully pushed
+326119951bea: Pushing
+326119951bea: Buffering to disk
+326119951bea: Image successfully pushed
+6de8149b4972: Pushing
+6de8149b4972: Buffering to disk
+6de8149b4972: Image successfully pushed
+e956f022f6a0: Pushing
+e956f022f6a0: Buffering to disk
+e956f022f6a0: Image successfully pushed
+903feea8cd22: Pushing
+903feea8cd22: Buffering to disk
+903feea8cd22: Image successfully pushed
+9fe50df1107a: Pushing
+9fe50df1107a: Buffering to disk
+9fe50df1107a: Image successfully pushed
+395647a621ca: Pushing
+395647a621ca: Buffering to disk
+395647a621ca: Image successfully pushed
+a483b7fbba73: Pushing
+a483b7fbba73: Buffering to disk
+a483b7fbba73: Image successfully pushed
+e20705b4ea1b: Pushing
+e20705b4ea1b: Buffering to disk
+e20705b4ea1b: Image successfully pushed
+Pushing tag for rev [e20705b4ea1b] on {http://136.187.101.80:5000/v1/repositories/buildstep/tags/latest}
+
+real  237.72
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+Pulling repository 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep, endpoint: http://136.187.101.80:5000/v1/
+e20705b4ea1b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+5ca11046a9c8: Pulling metadata
+5ca11046a9c8: Pulling fs layer
+5ca11046a9c8: Download complete
+d7334489ac75: Pulling metadata
+d7334489ac75: Pulling fs layer
+d7334489ac75: Download complete
+d51ac450e2e2: Pulling metadata
+d51ac450e2e2: Pulling fs layer
+d51ac450e2e2: Download complete
+bbe66ecb4d53: Pulling metadata
+bbe66ecb4d53: Pulling fs layer
+bbe66ecb4d53: Download complete
+9367176b2225: Pulling metadata
+9367176b2225: Pulling fs layer
+9367176b2225: Download complete
+8ebdd2ed84cb: Pulling metadata
+8ebdd2ed84cb: Pulling fs layer
+8ebdd2ed84cb: Download complete
+326119951bea: Pulling metadata
+326119951bea: Pulling fs layer
+326119951bea: Download complete
+6de8149b4972: Pulling metadata
+6de8149b4972: Pulling fs layer
+6de8149b4972: Download complete
+e956f022f6a0: Pulling metadata
+e956f022f6a0: Pulling fs layer
+e956f022f6a0: Download complete
+903feea8cd22: Pulling metadata
+903feea8cd22: Pulling fs layer
+903feea8cd22: Download complete
+9fe50df1107a: Pulling metadata
+9fe50df1107a: Pulling fs layer
+9fe50df1107a: Download complete
+395647a621ca: Pulling metadata
+395647a621ca: Pulling fs layer
+395647a621ca: Download complete
+a483b7fbba73: Pulling metadata
+a483b7fbba73: Pulling fs layer
+a483b7fbba73: Download complete
+e20705b4ea1b: Pulling metadata
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  91.89
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+08b01ff14d16        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+
+docker rm -f docker_registry
+
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+f1c5a3584416        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+
+docker rm -f docker_registry
+
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3834b17551a4        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildstep (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+5ca11046a9c8: Pushing
+5ca11046a9c8: Buffering to disk
+5ca11046a9c8: Image successfully pushed
+d7334489ac75: Pushing
+d7334489ac75: Buffering to disk
+d7334489ac75: Image successfully pushed
+d51ac450e2e2: Pushing
+d51ac450e2e2: Buffering to disk
+d51ac450e2e2: Image successfully pushed
+bbe66ecb4d53: Pushing
+bbe66ecb4d53: Buffering to disk
+bbe66ecb4d53: Image successfully pushed
+9367176b2225: Pushing
+9367176b2225: Buffering to disk
+9367176b2225: Image successfully pushed
+8ebdd2ed84cb: Pushing
+8ebdd2ed84cb: Buffering to disk
+8ebdd2ed84cb: Image successfully pushed
+326119951bea: Pushing
+326119951bea: Buffering to disk
+326119951bea: Image successfully pushed
+6de8149b4972: Pushing
+6de8149b4972: Buffering to disk
+6de8149b4972: Image successfully pushed
+e956f022f6a0: Pushing
+e956f022f6a0: Buffering to disk
+e956f022f6a0: Image successfully pushed
+903feea8cd22: Pushing
+903feea8cd22: Buffering to disk
+903feea8cd22: Image successfully pushed
+9fe50df1107a: Pushing
+9fe50df1107a: Buffering to disk
+9fe50df1107a: Image successfully pushed
+395647a621ca: Pushing
+395647a621ca: Buffering to disk
+395647a621ca: Image successfully pushed
+a483b7fbba73: Pushing
+a483b7fbba73: Buffering to disk
+a483b7fbba73: Image successfully pushed
+e20705b4ea1b: Pushing
+e20705b4ea1b: Buffering to disk
+e20705b4ea1b: Image successfully pushed
+Pushing tag for rev [e20705b4ea1b] on {http://136.187.101.80:5000/v1/repositories/buildstep/tags/latest}
+
+real  235.21
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+Pulling repository 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep, endpoint: http://136.187.101.80:5000/v1/
+e20705b4ea1b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+5ca11046a9c8: Pulling metadata
+5ca11046a9c8: Pulling fs layer
+5ca11046a9c8: Download complete
+d7334489ac75: Pulling metadata
+d7334489ac75: Pulling fs layer
+d7334489ac75: Download complete
+d51ac450e2e2: Pulling metadata
+d51ac450e2e2: Pulling fs layer
+d51ac450e2e2: Download complete
+bbe66ecb4d53: Pulling metadata
+bbe66ecb4d53: Pulling fs layer
+bbe66ecb4d53: Download complete
+9367176b2225: Pulling metadata
+9367176b2225: Pulling fs layer
+9367176b2225: Download complete
+8ebdd2ed84cb: Pulling metadata
+8ebdd2ed84cb: Pulling fs layer
+8ebdd2ed84cb: Download complete
+326119951bea: Pulling metadata
+326119951bea: Pulling fs layer
+326119951bea: Download complete
+6de8149b4972: Pulling metadata
+6de8149b4972: Pulling fs layer
+6de8149b4972: Download complete
+e956f022f6a0: Pulling metadata
+e956f022f6a0: Pulling fs layer
+e956f022f6a0: Download complete
+903feea8cd22: Pulling metadata
+903feea8cd22: Pulling fs layer
+903feea8cd22: Download complete
+9fe50df1107a: Pulling metadata
+9fe50df1107a: Pulling fs layer
+9fe50df1107a: Download complete
+395647a621ca: Pulling metadata
+395647a621ca: Pulling fs layer
+395647a621ca: Download complete
+a483b7fbba73: Pulling metadata
+a483b7fbba73: Pulling fs layer
+a483b7fbba73: Download complete
+e20705b4ea1b: Pulling metadata
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  93.23
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+4dfa4bb4ed78        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildstep (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+5ca11046a9c8: Pushing
+5ca11046a9c8: Buffering to disk
+5ca11046a9c8: Image successfully pushed
+d7334489ac75: Pushing
+d7334489ac75: Buffering to disk
+d7334489ac75: Image successfully pushed
+d51ac450e2e2: Pushing
+d51ac450e2e2: Buffering to disk
+d51ac450e2e2: Image successfully pushed
+bbe66ecb4d53: Pushing
+bbe66ecb4d53: Buffering to disk
+bbe66ecb4d53: Image successfully pushed
+9367176b2225: Pushing
+9367176b2225: Buffering to disk
+9367176b2225: Image successfully pushed
+8ebdd2ed84cb: Pushing
+8ebdd2ed84cb: Buffering to disk
+8ebdd2ed84cb: Image successfully pushed
+326119951bea: Pushing
+326119951bea: Buffering to disk
+326119951bea: Image successfully pushed
+6de8149b4972: Pushing
+6de8149b4972: Buffering to disk
+6de8149b4972: Image successfully pushed
+e956f022f6a0: Pushing
+e956f022f6a0: Buffering to disk
+e956f022f6a0: Image successfully pushed
+903feea8cd22: Pushing
+903feea8cd22: Buffering to disk
+903feea8cd22: Image successfully pushed
+9fe50df1107a: Pushing
+9fe50df1107a: Buffering to disk
+9fe50df1107a: Image successfully pushed
+395647a621ca: Pushing
+395647a621ca: Buffering to disk
+395647a621ca: Image successfully pushed
+a483b7fbba73: Pushing
+a483b7fbba73: Buffering to disk
+a483b7fbba73: Image successfully pushed
+e20705b4ea1b: Pushing
+e20705b4ea1b: Buffering to disk
+e20705b4ea1b: Image successfully pushed
+Pushing tag for rev [e20705b4ea1b] on {http://136.187.101.80:5000/v1/repositories/buildstep/tags/latest}
+
+real  231.36
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+Pulling repository 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep, endpoint: http://136.187.101.80:5000/v1/
+e20705b4ea1b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+5ca11046a9c8: Pulling metadata
+5ca11046a9c8: Pulling fs layer
+5ca11046a9c8: Download complete
+d7334489ac75: Pulling metadata
+d7334489ac75: Pulling fs layer
+d7334489ac75: Download complete
+d51ac450e2e2: Pulling metadata
+d51ac450e2e2: Pulling fs layer
+d51ac450e2e2: Download complete
+bbe66ecb4d53: Pulling metadata
+bbe66ecb4d53: Pulling fs layer
+bbe66ecb4d53: Download complete
+9367176b2225: Pulling metadata
+9367176b2225: Pulling fs layer
+9367176b2225: Download complete
+8ebdd2ed84cb: Pulling metadata
+8ebdd2ed84cb: Pulling fs layer
+8ebdd2ed84cb: Download complete
+326119951bea: Pulling metadata
+326119951bea: Pulling fs layer
+326119951bea: Download complete
+6de8149b4972: Pulling metadata
+6de8149b4972: Pulling fs layer
+6de8149b4972: Download complete
+e956f022f6a0: Pulling metadata
+e956f022f6a0: Pulling fs layer
+e956f022f6a0: Download complete
+903feea8cd22: Pulling metadata
+903feea8cd22: Pulling fs layer
+903feea8cd22: Download complete
+9fe50df1107a: Pulling metadata
+9fe50df1107a: Pulling fs layer
+9fe50df1107a: Download complete
+395647a621ca: Pulling metadata
+395647a621ca: Pulling fs layer
+395647a621ca: Download complete
+a483b7fbba73: Pulling metadata
+a483b7fbba73: Pulling fs layer
+a483b7fbba73: Download complete
+e20705b4ea1b: Pulling metadata
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  94.46
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+a6b48aae3f21        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildstep (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+5ca11046a9c8: Pushing
+5ca11046a9c8: Buffering to disk
+5ca11046a9c8: Image successfully pushed
+d7334489ac75: Pushing
+d7334489ac75: Buffering to disk
+d7334489ac75: Image successfully pushed
+d51ac450e2e2: Pushing
+d51ac450e2e2: Buffering to disk
+d51ac450e2e2: Image successfully pushed
+bbe66ecb4d53: Pushing
+bbe66ecb4d53: Buffering to disk
+bbe66ecb4d53: Image successfully pushed
+9367176b2225: Pushing
+9367176b2225: Buffering to disk
+9367176b2225: Image successfully pushed
+8ebdd2ed84cb: Pushing
+8ebdd2ed84cb: Buffering to disk
+8ebdd2ed84cb: Image successfully pushed
+326119951bea: Pushing
+326119951bea: Buffering to disk
+326119951bea: Image successfully pushed
+6de8149b4972: Pushing
+6de8149b4972: Buffering to disk
+6de8149b4972: Image successfully pushed
+e956f022f6a0: Pushing
+e956f022f6a0: Buffering to disk
+e956f022f6a0: Image successfully pushed
+903feea8cd22: Pushing
+903feea8cd22: Buffering to disk
+903feea8cd22: Image successfully pushed
+9fe50df1107a: Pushing
+9fe50df1107a: Buffering to disk
+9fe50df1107a: Image successfully pushed
+395647a621ca: Pushing
+395647a621ca: Buffering to disk
+395647a621ca: Image successfully pushed
+a483b7fbba73: Pushing
+a483b7fbba73: Buffering to disk
+a483b7fbba73: Image successfully pushed
+e20705b4ea1b: Pushing
+e20705b4ea1b: Buffering to disk
+e20705b4ea1b: Image successfully pushed
+Pushing tag for rev [e20705b4ea1b] on {http://136.187.101.80:5000/v1/repositories/buildstep/tags/latest}
+
+real  232.85
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+Pulling repository 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep, endpoint: http://136.187.101.80:5000/v1/
+e20705b4ea1b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+5ca11046a9c8: Pulling metadata
+5ca11046a9c8: Pulling fs layer
+5ca11046a9c8: Download complete
+d7334489ac75: Pulling metadata
+d7334489ac75: Pulling fs layer
+d7334489ac75: Download complete
+d51ac450e2e2: Pulling metadata
+d51ac450e2e2: Pulling fs layer
+d51ac450e2e2: Download complete
+bbe66ecb4d53: Pulling metadata
+bbe66ecb4d53: Pulling fs layer
+bbe66ecb4d53: Download complete
+9367176b2225: Pulling metadata
+9367176b2225: Pulling fs layer
+9367176b2225: Download complete
+8ebdd2ed84cb: Pulling metadata
+8ebdd2ed84cb: Pulling fs layer
+8ebdd2ed84cb: Download complete
+326119951bea: Pulling metadata
+326119951bea: Pulling fs layer
+326119951bea: Download complete
+6de8149b4972: Pulling metadata
+6de8149b4972: Pulling fs layer
+6de8149b4972: Download complete
+e956f022f6a0: Pulling metadata
+e956f022f6a0: Pulling fs layer
+e956f022f6a0: Download complete
+903feea8cd22: Pulling metadata
+903feea8cd22: Pulling fs layer
+903feea8cd22: Download complete
+9fe50df1107a: Pulling metadata
+9fe50df1107a: Pulling fs layer
+9fe50df1107a: Download complete
+395647a621ca: Pulling metadata
+395647a621ca: Pulling fs layer
+395647a621ca: Download complete
+a483b7fbba73: Pulling metadata
+a483b7fbba73: Pulling fs layer
+a483b7fbba73: Download complete
+e20705b4ea1b: Pulling metadata
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  93.64
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+bb997fcf803c        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+
+docker rm -f docker_registry
+
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+2b2b8ff5f175        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildstep (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+5ca11046a9c8: Pushing
+5ca11046a9c8: Buffering to disk
+5ca11046a9c8: Image successfully pushed
+d7334489ac75: Pushing
+d7334489ac75: Buffering to disk
+d7334489ac75: Image successfully pushed
+d51ac450e2e2: Pushing
+d51ac450e2e2: Buffering to disk
+d51ac450e2e2: Image successfully pushed
+bbe66ecb4d53: Pushing
+bbe66ecb4d53: Buffering to disk
+bbe66ecb4d53: Image successfully pushed
+9367176b2225: Pushing
+9367176b2225: Buffering to disk
+9367176b2225: Image successfully pushed
+8ebdd2ed84cb: Pushing
+8ebdd2ed84cb: Buffering to disk
+8ebdd2ed84cb: Image successfully pushed
+326119951bea: Pushing
+326119951bea: Buffering to disk
+326119951bea: Image successfully pushed
+6de8149b4972: Pushing
+6de8149b4972: Buffering to disk
+6de8149b4972: Image successfully pushed
+e956f022f6a0: Pushing
+e956f022f6a0: Buffering to disk
+e956f022f6a0: Image successfully pushed
+903feea8cd22: Pushing
+903feea8cd22: Buffering to disk
+903feea8cd22: Image successfully pushed
+9fe50df1107a: Pushing
+9fe50df1107a: Buffering to disk
+9fe50df1107a: Image successfully pushed
+395647a621ca: Pushing
+395647a621ca: Buffering to disk
+395647a621ca: Image successfully pushed
+a483b7fbba73: Pushing
+a483b7fbba73: Buffering to disk
+a483b7fbba73: Image successfully pushed
+e20705b4ea1b: Pushing
+e20705b4ea1b: Buffering to disk
+e20705b4ea1b: Image successfully pushed
+Pushing tag for rev [e20705b4ea1b] on {http://136.187.101.80:5000/v1/repositories/buildstep/tags/latest}
+
+real  231.41
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+Pulling repository 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep, endpoint: http://136.187.101.80:5000/v1/
+e20705b4ea1b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+5ca11046a9c8: Pulling metadata
+5ca11046a9c8: Pulling fs layer
+5ca11046a9c8: Download complete
+d7334489ac75: Pulling metadata
+d7334489ac75: Pulling fs layer
+d7334489ac75: Download complete
+d51ac450e2e2: Pulling metadata
+d51ac450e2e2: Pulling fs layer
+d51ac450e2e2: Download complete
+bbe66ecb4d53: Pulling metadata
+bbe66ecb4d53: Pulling fs layer
+bbe66ecb4d53: Download complete
+9367176b2225: Pulling metadata
+9367176b2225: Pulling fs layer
+9367176b2225: Download complete
+8ebdd2ed84cb: Pulling metadata
+8ebdd2ed84cb: Pulling fs layer
+8ebdd2ed84cb: Download complete
+326119951bea: Pulling metadata
+326119951bea: Pulling fs layer
+326119951bea: Download complete
+6de8149b4972: Pulling metadata
+6de8149b4972: Pulling fs layer
+6de8149b4972: Download complete
+e956f022f6a0: Pulling metadata
+e956f022f6a0: Pulling fs layer
+e956f022f6a0: Download complete
+903feea8cd22: Pulling metadata
+903feea8cd22: Pulling fs layer
+903feea8cd22: Download complete
+9fe50df1107a: Pulling metadata
+9fe50df1107a: Pulling fs layer
+9fe50df1107a: Download complete
+395647a621ca: Pulling metadata
+395647a621ca: Pulling fs layer
+395647a621ca: Download complete
+a483b7fbba73: Pulling metadata
+a483b7fbba73: Pulling fs layer
+a483b7fbba73: Download complete
+e20705b4ea1b: Pulling metadata
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  91.34
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+cd70a03208db        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildstep (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+5ca11046a9c8: Pushing
+5ca11046a9c8: Buffering to disk
+5ca11046a9c8: Image successfully pushed
+d7334489ac75: Pushing
+d7334489ac75: Buffering to disk
+d7334489ac75: Image successfully pushed
+d51ac450e2e2: Pushing
+d51ac450e2e2: Buffering to disk
+d51ac450e2e2: Image successfully pushed
+bbe66ecb4d53: Pushing
+bbe66ecb4d53: Buffering to disk
+bbe66ecb4d53: Image successfully pushed
+9367176b2225: Pushing
+9367176b2225: Buffering to disk
+9367176b2225: Image successfully pushed
+8ebdd2ed84cb: Pushing
+8ebdd2ed84cb: Buffering to disk
+8ebdd2ed84cb: Image successfully pushed
+326119951bea: Pushing
+326119951bea: Buffering to disk
+326119951bea: Image successfully pushed
+6de8149b4972: Pushing
+6de8149b4972: Buffering to disk
+6de8149b4972: Image successfully pushed
+e956f022f6a0: Pushing
+e956f022f6a0: Buffering to disk
+e956f022f6a0: Image successfully pushed
+903feea8cd22: Pushing
+903feea8cd22: Buffering to disk
+903feea8cd22: Image successfully pushed
+9fe50df1107a: Pushing
+9fe50df1107a: Buffering to disk
+9fe50df1107a: Image successfully pushed
+395647a621ca: Pushing
+395647a621ca: Buffering to disk
+395647a621ca: Image successfully pushed
+a483b7fbba73: Pushing
+a483b7fbba73: Buffering to disk
+a483b7fbba73: Image successfully pushed
+e20705b4ea1b: Pushing
+e20705b4ea1b: Buffering to disk
+e20705b4ea1b: Image successfully pushed
+Pushing tag for rev [e20705b4ea1b] on {http://136.187.101.80:5000/v1/repositories/buildstep/tags/latest}
+
+real  236.69
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+Pulling repository 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep, endpoint: http://136.187.101.80:5000/v1/
+e20705b4ea1b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+5ca11046a9c8: Pulling metadata
+5ca11046a9c8: Pulling fs layer
+5ca11046a9c8: Download complete
+d7334489ac75: Pulling metadata
+d7334489ac75: Pulling fs layer
+d7334489ac75: Download complete
+d51ac450e2e2: Pulling metadata
+d51ac450e2e2: Pulling fs layer
+d51ac450e2e2: Download complete
+bbe66ecb4d53: Pulling metadata
+bbe66ecb4d53: Pulling fs layer
+bbe66ecb4d53: Download complete
+9367176b2225: Pulling metadata
+9367176b2225: Pulling fs layer
+9367176b2225: Download complete
+8ebdd2ed84cb: Pulling metadata
+8ebdd2ed84cb: Pulling fs layer
+8ebdd2ed84cb: Download complete
+326119951bea: Pulling metadata
+326119951bea: Pulling fs layer
+326119951bea: Download complete
+6de8149b4972: Pulling metadata
+6de8149b4972: Pulling fs layer
+6de8149b4972: Download complete
+e956f022f6a0: Pulling metadata
+e956f022f6a0: Pulling fs layer
+e956f022f6a0: Download complete
+903feea8cd22: Pulling metadata
+903feea8cd22: Pulling fs layer
+903feea8cd22: Download complete
+9fe50df1107a: Pulling metadata
+9fe50df1107a: Pulling fs layer
+9fe50df1107a: Download complete
+395647a621ca: Pulling metadata
+395647a621ca: Pulling fs layer
+395647a621ca: Download complete
+a483b7fbba73: Pulling metadata
+a483b7fbba73: Pulling fs layer
+a483b7fbba73: Download complete
+e20705b4ea1b: Pulling metadata
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  94.15
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+2ddfd93873c9        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+
+docker rm -f docker_registry
+
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+4ad6b1799327        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildstep (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+5ca11046a9c8: Pushing
+5ca11046a9c8: Buffering to disk
+5ca11046a9c8: Image successfully pushed
+d7334489ac75: Pushing
+d7334489ac75: Buffering to disk
+d7334489ac75: Image successfully pushed
+d51ac450e2e2: Pushing
+d51ac450e2e2: Buffering to disk
+d51ac450e2e2: Image successfully pushed
+bbe66ecb4d53: Pushing
+bbe66ecb4d53: Buffering to disk
+bbe66ecb4d53: Image successfully pushed
+9367176b2225: Pushing
+9367176b2225: Buffering to disk
+9367176b2225: Image successfully pushed
+8ebdd2ed84cb: Pushing
+8ebdd2ed84cb: Buffering to disk
+8ebdd2ed84cb: Image successfully pushed
+326119951bea: Pushing
+326119951bea: Buffering to disk
+326119951bea: Image successfully pushed
+6de8149b4972: Pushing
+6de8149b4972: Buffering to disk
+6de8149b4972: Image successfully pushed
+e956f022f6a0: Pushing
+e956f022f6a0: Buffering to disk
+e956f022f6a0: Image successfully pushed
+903feea8cd22: Pushing
+903feea8cd22: Buffering to disk
+903feea8cd22: Image successfully pushed
+9fe50df1107a: Pushing
+9fe50df1107a: Buffering to disk
+9fe50df1107a: Image successfully pushed
+395647a621ca: Pushing
+395647a621ca: Buffering to disk
+395647a621ca: Image successfully pushed
+a483b7fbba73: Pushing
+a483b7fbba73: Buffering to disk
+a483b7fbba73: Image successfully pushed
+e20705b4ea1b: Pushing
+e20705b4ea1b: Buffering to disk
+e20705b4ea1b: Image successfully pushed
+Pushing tag for rev [e20705b4ea1b] on {http://136.187.101.80:5000/v1/repositories/buildstep/tags/latest}
+
+real  231.85
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+Pulling repository 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep, endpoint: http://136.187.101.80:5000/v1/
+e20705b4ea1b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+5ca11046a9c8: Pulling metadata
+5ca11046a9c8: Pulling fs layer
+5ca11046a9c8: Download complete
+d7334489ac75: Pulling metadata
+d7334489ac75: Pulling fs layer
+d7334489ac75: Download complete
+d51ac450e2e2: Pulling metadata
+d51ac450e2e2: Pulling fs layer
+d51ac450e2e2: Download complete
+bbe66ecb4d53: Pulling metadata
+bbe66ecb4d53: Pulling fs layer
+bbe66ecb4d53: Download complete
+9367176b2225: Pulling metadata
+9367176b2225: Pulling fs layer
+9367176b2225: Download complete
+8ebdd2ed84cb: Pulling metadata
+8ebdd2ed84cb: Pulling fs layer
+8ebdd2ed84cb: Download complete
+326119951bea: Pulling metadata
+326119951bea: Pulling fs layer
+326119951bea: Download complete
+6de8149b4972: Pulling metadata
+6de8149b4972: Pulling fs layer
+6de8149b4972: Download complete
+e956f022f6a0: Pulling metadata
+e956f022f6a0: Pulling fs layer
+e956f022f6a0: Download complete
+903feea8cd22: Pulling metadata
+903feea8cd22: Pulling fs layer
+903feea8cd22: Download complete
+9fe50df1107a: Pulling metadata
+9fe50df1107a: Pulling fs layer
+9fe50df1107a: Download complete
+395647a621ca: Pulling metadata
+395647a621ca: Pulling fs layer
+395647a621ca: Download complete
+a483b7fbba73: Pulling metadata
+a483b7fbba73: Pulling fs layer
+a483b7fbba73: Download complete
+e20705b4ea1b: Pulling metadata
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  98.18
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+6a988adbb6cf        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+
+docker rm -f docker_registry
+
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3a33472b5abf        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildstep (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+5ca11046a9c8: Pushing
+5ca11046a9c8: Buffering to disk
+5ca11046a9c8: Image successfully pushed
+d7334489ac75: Pushing
+d7334489ac75: Buffering to disk
+d7334489ac75: Image successfully pushed
+d51ac450e2e2: Pushing
+d51ac450e2e2: Buffering to disk
+d51ac450e2e2: Image successfully pushed
+bbe66ecb4d53: Pushing
+bbe66ecb4d53: Buffering to disk
+bbe66ecb4d53: Image successfully pushed
+9367176b2225: Pushing
+9367176b2225: Buffering to disk
+9367176b2225: Image successfully pushed
+8ebdd2ed84cb: Pushing
+8ebdd2ed84cb: Buffering to disk
+8ebdd2ed84cb: Image successfully pushed
+326119951bea: Pushing
+326119951bea: Buffering to disk
+326119951bea: Image successfully pushed
+6de8149b4972: Pushing
+6de8149b4972: Buffering to disk
+6de8149b4972: Image successfully pushed
+e956f022f6a0: Pushing
+e956f022f6a0: Buffering to disk
+e956f022f6a0: Image successfully pushed
+903feea8cd22: Pushing
+903feea8cd22: Buffering to disk
+903feea8cd22: Image successfully pushed
+9fe50df1107a: Pushing
+9fe50df1107a: Buffering to disk
+9fe50df1107a: Image successfully pushed
+395647a621ca: Pushing
+395647a621ca: Buffering to disk
+395647a621ca: Image successfully pushed
+a483b7fbba73: Pushing
+a483b7fbba73: Buffering to disk
+a483b7fbba73: Image successfully pushed
+e20705b4ea1b: Pushing
+e20705b4ea1b: Buffering to disk
+e20705b4ea1b: Image successfully pushed
+Pushing tag for rev [e20705b4ea1b] on {http://136.187.101.80:5000/v1/repositories/buildstep/tags/latest}
+
+real  231.17
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+Pulling repository 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep, endpoint: http://136.187.101.80:5000/v1/
+e20705b4ea1b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+5ca11046a9c8: Pulling metadata
+5ca11046a9c8: Pulling fs layer
+5ca11046a9c8: Download complete
+d7334489ac75: Pulling metadata
+d7334489ac75: Pulling fs layer
+d7334489ac75: Download complete
+d51ac450e2e2: Pulling metadata
+d51ac450e2e2: Pulling fs layer
+d51ac450e2e2: Download complete
+bbe66ecb4d53: Pulling metadata
+bbe66ecb4d53: Pulling fs layer
+bbe66ecb4d53: Download complete
+9367176b2225: Pulling metadata
+9367176b2225: Pulling fs layer
+9367176b2225: Download complete
+8ebdd2ed84cb: Pulling metadata
+8ebdd2ed84cb: Pulling fs layer
+8ebdd2ed84cb: Download complete
+326119951bea: Pulling metadata
+326119951bea: Pulling fs layer
+326119951bea: Download complete
+6de8149b4972: Pulling metadata
+6de8149b4972: Pulling fs layer
+6de8149b4972: Download complete
+e956f022f6a0: Pulling metadata
+e956f022f6a0: Pulling fs layer
+e956f022f6a0: Download complete
+903feea8cd22: Pulling metadata
+903feea8cd22: Pulling fs layer
+903feea8cd22: Download complete
+9fe50df1107a: Pulling metadata
+9fe50df1107a: Pulling fs layer
+9fe50df1107a: Download complete
+395647a621ca: Pulling metadata
+395647a621ca: Pulling fs layer
+395647a621ca: Download complete
+a483b7fbba73: Pulling metadata
+a483b7fbba73: Pulling fs layer
+a483b7fbba73: Download complete
+e20705b4ea1b: Pulling metadata
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  92.99
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 buildstep
+
+docker images
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker tag kiwenlau/buildstep:latest 136.187.101.80:5000/buildstep:latest
+
+docker images
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+kiwenlau/buildstep              latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+2392f0869a21        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/buildstep:latest
+The push refers to a repository [136.187.101.80:5000/buildstep] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/buildstep (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+5ca11046a9c8: Pushing
+5ca11046a9c8: Buffering to disk
+5ca11046a9c8: Image successfully pushed
+d7334489ac75: Pushing
+d7334489ac75: Buffering to disk
+d7334489ac75: Image successfully pushed
+d51ac450e2e2: Pushing
+d51ac450e2e2: Buffering to disk
+d51ac450e2e2: Image successfully pushed
+bbe66ecb4d53: Pushing
+bbe66ecb4d53: Buffering to disk
+bbe66ecb4d53: Image successfully pushed
+9367176b2225: Pushing
+9367176b2225: Buffering to disk
+9367176b2225: Image successfully pushed
+8ebdd2ed84cb: Pushing
+8ebdd2ed84cb: Buffering to disk
+8ebdd2ed84cb: Image successfully pushed
+326119951bea: Pushing
+326119951bea: Buffering to disk
+326119951bea: Image successfully pushed
+6de8149b4972: Pushing
+6de8149b4972: Buffering to disk
+6de8149b4972: Image successfully pushed
+e956f022f6a0: Pushing
+e956f022f6a0: Buffering to disk
+e956f022f6a0: Image successfully pushed
+903feea8cd22: Pushing
+903feea8cd22: Buffering to disk
+903feea8cd22: Image successfully pushed
+9fe50df1107a: Pushing
+9fe50df1107a: Buffering to disk
+9fe50df1107a: Image successfully pushed
+395647a621ca: Pushing
+395647a621ca: Buffering to disk
+395647a621ca: Image successfully pushed
+a483b7fbba73: Pushing
+a483b7fbba73: Buffering to disk
+a483b7fbba73: Image successfully pushed
+e20705b4ea1b: Pushing
+e20705b4ea1b: Buffering to disk
+e20705b4ea1b: Image successfully pushed
+Pushing tag for rev [e20705b4ea1b] on {http://136.187.101.80:5000/v1/repositories/buildstep/tags/latest}
+
+real  233.24
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker pull 136.187.101.80:5000/buildstep:latest
+Pulling repository 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep
+e20705b4ea1b: Pulling image (latest) from 136.187.101.80:5000/buildstep, endpoint: http://136.187.101.80:5000/v1/
+e20705b4ea1b: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+5ca11046a9c8: Pulling metadata
+5ca11046a9c8: Pulling fs layer
+5ca11046a9c8: Download complete
+d7334489ac75: Pulling metadata
+d7334489ac75: Pulling fs layer
+d7334489ac75: Download complete
+d51ac450e2e2: Pulling metadata
+d51ac450e2e2: Pulling fs layer
+d51ac450e2e2: Download complete
+bbe66ecb4d53: Pulling metadata
+bbe66ecb4d53: Pulling fs layer
+bbe66ecb4d53: Download complete
+9367176b2225: Pulling metadata
+9367176b2225: Pulling fs layer
+9367176b2225: Download complete
+8ebdd2ed84cb: Pulling metadata
+8ebdd2ed84cb: Pulling fs layer
+8ebdd2ed84cb: Download complete
+326119951bea: Pulling metadata
+326119951bea: Pulling fs layer
+326119951bea: Download complete
+6de8149b4972: Pulling metadata
+6de8149b4972: Pulling fs layer
+6de8149b4972: Download complete
+e956f022f6a0: Pulling metadata
+e956f022f6a0: Pulling fs layer
+e956f022f6a0: Download complete
+903feea8cd22: Pulling metadata
+903feea8cd22: Pulling fs layer
+903feea8cd22: Download complete
+9fe50df1107a: Pulling metadata
+9fe50df1107a: Pulling fs layer
+9fe50df1107a: Download complete
+395647a621ca: Pulling metadata
+395647a621ca: Pulling fs layer
+395647a621ca: Download complete
+a483b7fbba73: Pulling metadata
+a483b7fbba73: Pulling fs layer
+a483b7fbba73: Download complete
+e20705b4ea1b: Pulling metadata
+e20705b4ea1b: Pulling fs layer
+e20705b4ea1b: Download complete
+e20705b4ea1b: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/buildstep:latest
+
+real  94.22
+
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+136.187.101.80:5000/buildstep   latest              e20705b4ea1b        10 weeks ago        1.27 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/buildstep:latest"
+ssh kai@54.225.249.141 "docker images | grep buildstep"
+
+docker rm -f docker_registry
+
+end date: Sat Aug 15 16:38:24 JST 2015
+
+

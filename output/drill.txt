@@ -1,0 +1,2107 @@
+
+pullpush benchmark: transfer drill image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Sat Aug 15 11:30:09 JST 2015
+
+sudo docker images
+kiwenlau/drill                  flat                a621038e53d7        7 weeks ago         993.5 MB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+sudo docker images
+kiwenlau/drill                  flat                a621038e53d7        7 weeks ago         993.5 MB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+00a6e8cf0585        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+The push refers to a repository [136.187.101.80:5000/drill] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drill (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d497ad3926c8: Pushing
+d497ad3926c8: Buffering to disk
+d497ad3926c8: Image successfully pushed
+ccb62158e970: Pushing
+ccb62158e970: Buffering to disk
+ccb62158e970: Image successfully pushed
+e791be0477f2: Pushing
+e791be0477f2: Buffering to disk
+e791be0477f2: Image successfully pushed
+3680052c0f5c: Pushing
+3680052c0f5c: Buffering to disk
+3680052c0f5c: Image successfully pushed
+22093c35d77b: Pushing
+22093c35d77b: Buffering to disk
+22093c35d77b: Image successfully pushed
+5506de2b643b: Pushing
+5506de2b643b: Buffering to disk
+5506de2b643b: Image successfully pushed
+b08854b89605: Pushing
+b08854b89605: Buffering to disk
+b08854b89605: Image successfully pushed
+d0ca2a3c0233: Pushing
+d0ca2a3c0233: Buffering to disk
+d0ca2a3c0233: Image successfully pushed
+1716e82f74f0: Pushing
+1716e82f74f0: Buffering to disk
+1716e82f74f0: Image successfully pushed
+b41d25703535: Pushing
+b41d25703535: Buffering to disk
+b41d25703535: Image successfully pushed
+e95dbc5735e1: Pushing
+e95dbc5735e1: Buffering to disk
+e95dbc5735e1: Image successfully pushed
+5992007b07de: Pushing
+5992007b07de: Buffering to disk
+5992007b07de: Image successfully pushed
+b4e54ddfb2af: Pushing
+b4e54ddfb2af: Buffering to disk
+b4e54ddfb2af: Image successfully pushed
+d930870169cc: Pushing
+d930870169cc: Buffering to disk
+d930870169cc: Image successfully pushed
+ee4e426e0340: Pushing
+ee4e426e0340: Buffering to disk
+ee4e426e0340: Image successfully pushed
+0fa8761db6d4: Pushing
+0fa8761db6d4: Buffering to disk
+0fa8761db6d4: Image successfully pushed
+cdc2d366b5e1: Pushing
+cdc2d366b5e1: Buffering to disk
+cdc2d366b5e1: Image successfully pushed
+77f0ef6de36a: Pushing
+77f0ef6de36a: Buffering to disk
+77f0ef6de36a: Image successfully pushed
+21724ad58054: Pushing
+21724ad58054: Buffering to disk
+21724ad58054: Image successfully pushed
+f10d361f33ac: Pushing
+f10d361f33ac: Buffering to disk
+f10d361f33ac: Image successfully pushed
+6d88dd9503cf: Pushing
+6d88dd9503cf: Buffering to disk
+6d88dd9503cf: Image successfully pushed
+7a0f333df985: Pushing
+7a0f333df985: Buffering to disk
+7a0f333df985: Image successfully pushed
+08655d789741: Pushing
+08655d789741: Buffering to disk
+08655d789741: Image successfully pushed
+c4f7b4e5dd7e: Pushing
+c4f7b4e5dd7e: Buffering to disk
+c4f7b4e5dd7e: Image successfully pushed
+cfac0b2468f0: Pushing
+cfac0b2468f0: Buffering to disk
+cfac0b2468f0: Image successfully pushed
+f137cc783132: Pushing
+f137cc783132: Buffering to disk
+f137cc783132: Image successfully pushed
+Pushing tag for rev [f137cc783132] on {http://136.187.101.80:5000/v1/repositories/drill/tags/latest}
+
+real  132.84
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker pull 136.187.101.80:5000/drill:latest
+Pulling repository 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill, endpoint: http://136.187.101.80:5000/v1/
+f137cc783132: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d497ad3926c8: Pulling metadata
+d497ad3926c8: Pulling fs layer
+d497ad3926c8: Download complete
+ccb62158e970: Pulling metadata
+ccb62158e970: Pulling fs layer
+ccb62158e970: Download complete
+e791be0477f2: Pulling metadata
+e791be0477f2: Pulling fs layer
+e791be0477f2: Download complete
+3680052c0f5c: Pulling metadata
+3680052c0f5c: Pulling fs layer
+3680052c0f5c: Download complete
+22093c35d77b: Pulling metadata
+22093c35d77b: Pulling fs layer
+22093c35d77b: Download complete
+5506de2b643b: Pulling metadata
+5506de2b643b: Pulling fs layer
+5506de2b643b: Download complete
+b08854b89605: Pulling metadata
+b08854b89605: Pulling fs layer
+b08854b89605: Download complete
+d0ca2a3c0233: Pulling metadata
+d0ca2a3c0233: Pulling fs layer
+d0ca2a3c0233: Download complete
+1716e82f74f0: Pulling metadata
+1716e82f74f0: Pulling fs layer
+1716e82f74f0: Download complete
+b41d25703535: Pulling metadata
+b41d25703535: Pulling fs layer
+b41d25703535: Download complete
+e95dbc5735e1: Pulling metadata
+e95dbc5735e1: Pulling fs layer
+e95dbc5735e1: Download complete
+5992007b07de: Pulling metadata
+5992007b07de: Pulling fs layer
+5992007b07de: Download complete
+b4e54ddfb2af: Pulling metadata
+b4e54ddfb2af: Pulling fs layer
+b4e54ddfb2af: Download complete
+d930870169cc: Pulling metadata
+d930870169cc: Pulling fs layer
+d930870169cc: Download complete
+ee4e426e0340: Pulling metadata
+ee4e426e0340: Pulling fs layer
+ee4e426e0340: Download complete
+0fa8761db6d4: Pulling metadata
+0fa8761db6d4: Pulling fs layer
+0fa8761db6d4: Download complete
+cdc2d366b5e1: Pulling metadata
+cdc2d366b5e1: Pulling fs layer
+cdc2d366b5e1: Download complete
+77f0ef6de36a: Pulling metadata
+77f0ef6de36a: Pulling fs layer
+77f0ef6de36a: Download complete
+21724ad58054: Pulling metadata
+21724ad58054: Pulling fs layer
+21724ad58054: Download complete
+f10d361f33ac: Pulling metadata
+f10d361f33ac: Pulling fs layer
+f10d361f33ac: Download complete
+6d88dd9503cf: Pulling metadata
+6d88dd9503cf: Pulling fs layer
+6d88dd9503cf: Download complete
+7a0f333df985: Pulling metadata
+7a0f333df985: Pulling fs layer
+7a0f333df985: Download complete
+08655d789741: Pulling metadata
+08655d789741: Pulling fs layer
+08655d789741: Download complete
+c4f7b4e5dd7e: Pulling metadata
+c4f7b4e5dd7e: Pulling fs layer
+c4f7b4e5dd7e: Download complete
+cfac0b2468f0: Pulling metadata
+cfac0b2468f0: Pulling fs layer
+cfac0b2468f0: Download complete
+f137cc783132: Pulling metadata
+f137cc783132: Pulling fs layer
+f137cc783132: Download complete
+f137cc783132: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drill:latest
+
+real  118.44
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+136.187.101.80:5000/drill   latest              f137cc783132        9 months ago        1.031 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drill:latest"
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+afef889ce006        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+The push refers to a repository [136.187.101.80:5000/drill] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drill (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d497ad3926c8: Pushing
+d497ad3926c8: Buffering to disk
+d497ad3926c8: Image successfully pushed
+ccb62158e970: Pushing
+ccb62158e970: Buffering to disk
+ccb62158e970: Image successfully pushed
+e791be0477f2: Pushing
+e791be0477f2: Buffering to disk
+e791be0477f2: Image successfully pushed
+3680052c0f5c: Pushing
+3680052c0f5c: Buffering to disk
+3680052c0f5c: Image successfully pushed
+22093c35d77b: Pushing
+22093c35d77b: Buffering to disk
+22093c35d77b: Image successfully pushed
+5506de2b643b: Pushing
+5506de2b643b: Buffering to disk
+5506de2b643b: Image successfully pushed
+b08854b89605: Pushing
+b08854b89605: Buffering to disk
+b08854b89605: Image successfully pushed
+d0ca2a3c0233: Pushing
+d0ca2a3c0233: Buffering to disk
+d0ca2a3c0233: Image successfully pushed
+1716e82f74f0: Pushing
+1716e82f74f0: Buffering to disk
+1716e82f74f0: Image successfully pushed
+b41d25703535: Pushing
+b41d25703535: Buffering to disk
+b41d25703535: Image successfully pushed
+e95dbc5735e1: Pushing
+e95dbc5735e1: Buffering to disk
+e95dbc5735e1: Image successfully pushed
+5992007b07de: Pushing
+5992007b07de: Buffering to disk
+5992007b07de: Image successfully pushed
+b4e54ddfb2af: Pushing
+b4e54ddfb2af: Buffering to disk
+b4e54ddfb2af: Image successfully pushed
+d930870169cc: Pushing
+d930870169cc: Buffering to disk
+d930870169cc: Image successfully pushed
+ee4e426e0340: Pushing
+ee4e426e0340: Buffering to disk
+ee4e426e0340: Image successfully pushed
+0fa8761db6d4: Pushing
+0fa8761db6d4: Buffering to disk
+0fa8761db6d4: Image successfully pushed
+cdc2d366b5e1: Pushing
+cdc2d366b5e1: Buffering to disk
+cdc2d366b5e1: Image successfully pushed
+77f0ef6de36a: Pushing
+77f0ef6de36a: Buffering to disk
+77f0ef6de36a: Image successfully pushed
+21724ad58054: Pushing
+21724ad58054: Buffering to disk
+21724ad58054: Image successfully pushed
+f10d361f33ac: Pushing
+f10d361f33ac: Buffering to disk
+f10d361f33ac: Image successfully pushed
+6d88dd9503cf: Pushing
+6d88dd9503cf: Buffering to disk
+6d88dd9503cf: Image successfully pushed
+7a0f333df985: Pushing
+7a0f333df985: Buffering to disk
+7a0f333df985: Image successfully pushed
+08655d789741: Pushing
+08655d789741: Buffering to disk
+08655d789741: Image successfully pushed
+c4f7b4e5dd7e: Pushing
+c4f7b4e5dd7e: Buffering to disk
+c4f7b4e5dd7e: Image successfully pushed
+cfac0b2468f0: Pushing
+cfac0b2468f0: Buffering to disk
+cfac0b2468f0: Image successfully pushed
+f137cc783132: Pushing
+f137cc783132: Buffering to disk
+f137cc783132: Image successfully pushed
+Pushing tag for rev [f137cc783132] on {http://136.187.101.80:5000/v1/repositories/drill/tags/latest}
+
+real  133.78
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker pull 136.187.101.80:5000/drill:latest
+Pulling repository 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill, endpoint: http://136.187.101.80:5000/v1/
+f137cc783132: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d497ad3926c8: Pulling metadata
+d497ad3926c8: Pulling fs layer
+d497ad3926c8: Download complete
+ccb62158e970: Pulling metadata
+ccb62158e970: Pulling fs layer
+ccb62158e970: Download complete
+e791be0477f2: Pulling metadata
+e791be0477f2: Pulling fs layer
+e791be0477f2: Download complete
+3680052c0f5c: Pulling metadata
+3680052c0f5c: Pulling fs layer
+3680052c0f5c: Download complete
+22093c35d77b: Pulling metadata
+22093c35d77b: Pulling fs layer
+22093c35d77b: Download complete
+5506de2b643b: Pulling metadata
+5506de2b643b: Pulling fs layer
+5506de2b643b: Download complete
+b08854b89605: Pulling metadata
+b08854b89605: Pulling fs layer
+b08854b89605: Download complete
+d0ca2a3c0233: Pulling metadata
+d0ca2a3c0233: Pulling fs layer
+d0ca2a3c0233: Download complete
+1716e82f74f0: Pulling metadata
+1716e82f74f0: Pulling fs layer
+1716e82f74f0: Download complete
+b41d25703535: Pulling metadata
+b41d25703535: Pulling fs layer
+b41d25703535: Download complete
+e95dbc5735e1: Pulling metadata
+e95dbc5735e1: Pulling fs layer
+e95dbc5735e1: Download complete
+5992007b07de: Pulling metadata
+5992007b07de: Pulling fs layer
+5992007b07de: Download complete
+b4e54ddfb2af: Pulling metadata
+b4e54ddfb2af: Pulling fs layer
+b4e54ddfb2af: Download complete
+d930870169cc: Pulling metadata
+d930870169cc: Pulling fs layer
+d930870169cc: Download complete
+ee4e426e0340: Pulling metadata
+ee4e426e0340: Pulling fs layer
+ee4e426e0340: Download complete
+0fa8761db6d4: Pulling metadata
+0fa8761db6d4: Pulling fs layer
+0fa8761db6d4: Download complete
+cdc2d366b5e1: Pulling metadata
+cdc2d366b5e1: Pulling fs layer
+cdc2d366b5e1: Download complete
+77f0ef6de36a: Pulling metadata
+77f0ef6de36a: Pulling fs layer
+77f0ef6de36a: Download complete
+21724ad58054: Pulling metadata
+21724ad58054: Pulling fs layer
+21724ad58054: Download complete
+f10d361f33ac: Pulling metadata
+f10d361f33ac: Pulling fs layer
+f10d361f33ac: Download complete
+6d88dd9503cf: Pulling metadata
+6d88dd9503cf: Pulling fs layer
+6d88dd9503cf: Download complete
+7a0f333df985: Pulling metadata
+7a0f333df985: Pulling fs layer
+7a0f333df985: Download complete
+08655d789741: Pulling metadata
+08655d789741: Pulling fs layer
+08655d789741: Download complete
+c4f7b4e5dd7e: Pulling metadata
+c4f7b4e5dd7e: Pulling fs layer
+c4f7b4e5dd7e: Download complete
+cfac0b2468f0: Pulling metadata
+cfac0b2468f0: Pulling fs layer
+cfac0b2468f0: Download complete
+f137cc783132: Pulling metadata
+f137cc783132: Pulling fs layer
+f137cc783132: Download complete
+f137cc783132: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drill:latest
+
+real  119.15
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+136.187.101.80:5000/drill   latest              f137cc783132        9 months ago        1.031 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drill:latest"
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+2d1c8586d6e0        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+The push refers to a repository [136.187.101.80:5000/drill] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drill (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d497ad3926c8: Pushing
+d497ad3926c8: Buffering to disk
+d497ad3926c8: Image successfully pushed
+ccb62158e970: Pushing
+ccb62158e970: Buffering to disk
+ccb62158e970: Image successfully pushed
+e791be0477f2: Pushing
+e791be0477f2: Buffering to disk
+e791be0477f2: Image successfully pushed
+3680052c0f5c: Pushing
+3680052c0f5c: Buffering to disk
+3680052c0f5c: Image successfully pushed
+22093c35d77b: Pushing
+22093c35d77b: Buffering to disk
+22093c35d77b: Image successfully pushed
+5506de2b643b: Pushing
+5506de2b643b: Buffering to disk
+5506de2b643b: Image successfully pushed
+b08854b89605: Pushing
+b08854b89605: Buffering to disk
+b08854b89605: Image successfully pushed
+d0ca2a3c0233: Pushing
+d0ca2a3c0233: Buffering to disk
+d0ca2a3c0233: Image successfully pushed
+1716e82f74f0: Pushing
+1716e82f74f0: Buffering to disk
+1716e82f74f0: Image successfully pushed
+b41d25703535: Pushing
+b41d25703535: Buffering to disk
+b41d25703535: Image successfully pushed
+e95dbc5735e1: Pushing
+e95dbc5735e1: Buffering to disk
+e95dbc5735e1: Image successfully pushed
+5992007b07de: Pushing
+5992007b07de: Buffering to disk
+5992007b07de: Image successfully pushed
+b4e54ddfb2af: Pushing
+b4e54ddfb2af: Buffering to disk
+b4e54ddfb2af: Image successfully pushed
+d930870169cc: Pushing
+d930870169cc: Buffering to disk
+d930870169cc: Image successfully pushed
+ee4e426e0340: Pushing
+ee4e426e0340: Buffering to disk
+ee4e426e0340: Image successfully pushed
+0fa8761db6d4: Pushing
+0fa8761db6d4: Buffering to disk
+0fa8761db6d4: Image successfully pushed
+cdc2d366b5e1: Pushing
+cdc2d366b5e1: Buffering to disk
+cdc2d366b5e1: Image successfully pushed
+77f0ef6de36a: Pushing
+77f0ef6de36a: Buffering to disk
+77f0ef6de36a: Image successfully pushed
+21724ad58054: Pushing
+21724ad58054: Buffering to disk
+21724ad58054: Image successfully pushed
+f10d361f33ac: Pushing
+f10d361f33ac: Buffering to disk
+f10d361f33ac: Image successfully pushed
+6d88dd9503cf: Pushing
+6d88dd9503cf: Buffering to disk
+6d88dd9503cf: Image successfully pushed
+7a0f333df985: Pushing
+7a0f333df985: Buffering to disk
+7a0f333df985: Image successfully pushed
+08655d789741: Pushing
+08655d789741: Buffering to disk
+08655d789741: Image successfully pushed
+c4f7b4e5dd7e: Pushing
+c4f7b4e5dd7e: Buffering to disk
+c4f7b4e5dd7e: Image successfully pushed
+cfac0b2468f0: Pushing
+cfac0b2468f0: Buffering to disk
+cfac0b2468f0: Image successfully pushed
+f137cc783132: Pushing
+f137cc783132: Buffering to disk
+f137cc783132: Image successfully pushed
+Pushing tag for rev [f137cc783132] on {http://136.187.101.80:5000/v1/repositories/drill/tags/latest}
+
+real  132.56
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker pull 136.187.101.80:5000/drill:latest
+Pulling repository 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill, endpoint: http://136.187.101.80:5000/v1/
+f137cc783132: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d497ad3926c8: Pulling metadata
+d497ad3926c8: Pulling fs layer
+d497ad3926c8: Download complete
+ccb62158e970: Pulling metadata
+ccb62158e970: Pulling fs layer
+ccb62158e970: Download complete
+e791be0477f2: Pulling metadata
+e791be0477f2: Pulling fs layer
+e791be0477f2: Download complete
+3680052c0f5c: Pulling metadata
+3680052c0f5c: Pulling fs layer
+3680052c0f5c: Download complete
+22093c35d77b: Pulling metadata
+22093c35d77b: Pulling fs layer
+22093c35d77b: Download complete
+5506de2b643b: Pulling metadata
+5506de2b643b: Pulling fs layer
+5506de2b643b: Download complete
+b08854b89605: Pulling metadata
+b08854b89605: Pulling fs layer
+b08854b89605: Download complete
+d0ca2a3c0233: Pulling metadata
+d0ca2a3c0233: Pulling fs layer
+d0ca2a3c0233: Download complete
+1716e82f74f0: Pulling metadata
+1716e82f74f0: Pulling fs layer
+1716e82f74f0: Download complete
+b41d25703535: Pulling metadata
+b41d25703535: Pulling fs layer
+b41d25703535: Download complete
+e95dbc5735e1: Pulling metadata
+e95dbc5735e1: Pulling fs layer
+e95dbc5735e1: Download complete
+5992007b07de: Pulling metadata
+5992007b07de: Pulling fs layer
+5992007b07de: Download complete
+b4e54ddfb2af: Pulling metadata
+b4e54ddfb2af: Pulling fs layer
+b4e54ddfb2af: Download complete
+d930870169cc: Pulling metadata
+d930870169cc: Pulling fs layer
+d930870169cc: Download complete
+ee4e426e0340: Pulling metadata
+ee4e426e0340: Pulling fs layer
+ee4e426e0340: Download complete
+0fa8761db6d4: Pulling metadata
+0fa8761db6d4: Pulling fs layer
+0fa8761db6d4: Download complete
+cdc2d366b5e1: Pulling metadata
+cdc2d366b5e1: Pulling fs layer
+cdc2d366b5e1: Download complete
+77f0ef6de36a: Pulling metadata
+77f0ef6de36a: Pulling fs layer
+77f0ef6de36a: Download complete
+21724ad58054: Pulling metadata
+21724ad58054: Pulling fs layer
+21724ad58054: Download complete
+f10d361f33ac: Pulling metadata
+f10d361f33ac: Pulling fs layer
+f10d361f33ac: Download complete
+6d88dd9503cf: Pulling metadata
+6d88dd9503cf: Pulling fs layer
+6d88dd9503cf: Download complete
+7a0f333df985: Pulling metadata
+7a0f333df985: Pulling fs layer
+7a0f333df985: Download complete
+08655d789741: Pulling metadata
+08655d789741: Pulling fs layer
+08655d789741: Download complete
+c4f7b4e5dd7e: Pulling metadata
+c4f7b4e5dd7e: Pulling fs layer
+c4f7b4e5dd7e: Download complete
+cfac0b2468f0: Pulling metadata
+cfac0b2468f0: Pulling fs layer
+cfac0b2468f0: Download complete
+f137cc783132: Pulling metadata
+f137cc783132: Pulling fs layer
+f137cc783132: Download complete
+f137cc783132: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drill:latest
+
+real  118.57
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+136.187.101.80:5000/drill   latest              f137cc783132        9 months ago        1.031 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drill:latest"
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c6b301c2f0fb        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+The push refers to a repository [136.187.101.80:5000/drill] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drill (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d497ad3926c8: Pushing
+d497ad3926c8: Buffering to disk
+d497ad3926c8: Image successfully pushed
+ccb62158e970: Pushing
+ccb62158e970: Buffering to disk
+ccb62158e970: Image successfully pushed
+e791be0477f2: Pushing
+e791be0477f2: Buffering to disk
+e791be0477f2: Image successfully pushed
+3680052c0f5c: Pushing
+3680052c0f5c: Buffering to disk
+3680052c0f5c: Image successfully pushed
+22093c35d77b: Pushing
+22093c35d77b: Buffering to disk
+22093c35d77b: Image successfully pushed
+5506de2b643b: Pushing
+5506de2b643b: Buffering to disk
+5506de2b643b: Image successfully pushed
+b08854b89605: Pushing
+b08854b89605: Buffering to disk
+b08854b89605: Image successfully pushed
+d0ca2a3c0233: Pushing
+d0ca2a3c0233: Buffering to disk
+d0ca2a3c0233: Image successfully pushed
+1716e82f74f0: Pushing
+1716e82f74f0: Buffering to disk
+1716e82f74f0: Image successfully pushed
+b41d25703535: Pushing
+b41d25703535: Buffering to disk
+b41d25703535: Image successfully pushed
+e95dbc5735e1: Pushing
+e95dbc5735e1: Buffering to disk
+e95dbc5735e1: Image successfully pushed
+5992007b07de: Pushing
+5992007b07de: Buffering to disk
+5992007b07de: Image successfully pushed
+b4e54ddfb2af: Pushing
+b4e54ddfb2af: Buffering to disk
+b4e54ddfb2af: Image successfully pushed
+d930870169cc: Pushing
+d930870169cc: Buffering to disk
+d930870169cc: Image successfully pushed
+ee4e426e0340: Pushing
+ee4e426e0340: Buffering to disk
+ee4e426e0340: Image successfully pushed
+0fa8761db6d4: Pushing
+0fa8761db6d4: Buffering to disk
+0fa8761db6d4: Image successfully pushed
+cdc2d366b5e1: Pushing
+cdc2d366b5e1: Buffering to disk
+cdc2d366b5e1: Image successfully pushed
+77f0ef6de36a: Pushing
+77f0ef6de36a: Buffering to disk
+77f0ef6de36a: Image successfully pushed
+21724ad58054: Pushing
+21724ad58054: Buffering to disk
+21724ad58054: Image successfully pushed
+f10d361f33ac: Pushing
+f10d361f33ac: Buffering to disk
+f10d361f33ac: Image successfully pushed
+6d88dd9503cf: Pushing
+6d88dd9503cf: Buffering to disk
+6d88dd9503cf: Image successfully pushed
+7a0f333df985: Pushing
+7a0f333df985: Buffering to disk
+7a0f333df985: Image successfully pushed
+08655d789741: Pushing
+08655d789741: Buffering to disk
+08655d789741: Image successfully pushed
+c4f7b4e5dd7e: Pushing
+c4f7b4e5dd7e: Buffering to disk
+c4f7b4e5dd7e: Image successfully pushed
+cfac0b2468f0: Pushing
+cfac0b2468f0: Buffering to disk
+cfac0b2468f0: Image successfully pushed
+f137cc783132: Pushing
+f137cc783132: Buffering to disk
+f137cc783132: Image successfully pushed
+Pushing tag for rev [f137cc783132] on {http://136.187.101.80:5000/v1/repositories/drill/tags/latest}
+
+real  131.40
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker pull 136.187.101.80:5000/drill:latest
+Pulling repository 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill, endpoint: http://136.187.101.80:5000/v1/
+f137cc783132: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d497ad3926c8: Pulling metadata
+d497ad3926c8: Pulling fs layer
+d497ad3926c8: Download complete
+ccb62158e970: Pulling metadata
+ccb62158e970: Pulling fs layer
+ccb62158e970: Download complete
+e791be0477f2: Pulling metadata
+e791be0477f2: Pulling fs layer
+e791be0477f2: Download complete
+3680052c0f5c: Pulling metadata
+3680052c0f5c: Pulling fs layer
+3680052c0f5c: Download complete
+22093c35d77b: Pulling metadata
+22093c35d77b: Pulling fs layer
+22093c35d77b: Download complete
+5506de2b643b: Pulling metadata
+5506de2b643b: Pulling fs layer
+5506de2b643b: Download complete
+b08854b89605: Pulling metadata
+b08854b89605: Pulling fs layer
+b08854b89605: Download complete
+d0ca2a3c0233: Pulling metadata
+d0ca2a3c0233: Pulling fs layer
+d0ca2a3c0233: Download complete
+1716e82f74f0: Pulling metadata
+1716e82f74f0: Pulling fs layer
+1716e82f74f0: Download complete
+b41d25703535: Pulling metadata
+b41d25703535: Pulling fs layer
+b41d25703535: Download complete
+e95dbc5735e1: Pulling metadata
+e95dbc5735e1: Pulling fs layer
+e95dbc5735e1: Download complete
+5992007b07de: Pulling metadata
+5992007b07de: Pulling fs layer
+5992007b07de: Download complete
+b4e54ddfb2af: Pulling metadata
+b4e54ddfb2af: Pulling fs layer
+b4e54ddfb2af: Download complete
+d930870169cc: Pulling metadata
+d930870169cc: Pulling fs layer
+d930870169cc: Download complete
+ee4e426e0340: Pulling metadata
+ee4e426e0340: Pulling fs layer
+ee4e426e0340: Download complete
+0fa8761db6d4: Pulling metadata
+0fa8761db6d4: Pulling fs layer
+0fa8761db6d4: Download complete
+cdc2d366b5e1: Pulling metadata
+cdc2d366b5e1: Pulling fs layer
+cdc2d366b5e1: Download complete
+77f0ef6de36a: Pulling metadata
+77f0ef6de36a: Pulling fs layer
+77f0ef6de36a: Download complete
+21724ad58054: Pulling metadata
+21724ad58054: Pulling fs layer
+21724ad58054: Download complete
+f10d361f33ac: Pulling metadata
+f10d361f33ac: Pulling fs layer
+f10d361f33ac: Download complete
+6d88dd9503cf: Pulling metadata
+6d88dd9503cf: Pulling fs layer
+6d88dd9503cf: Download complete
+7a0f333df985: Pulling metadata
+7a0f333df985: Pulling fs layer
+7a0f333df985: Download complete
+08655d789741: Pulling metadata
+08655d789741: Pulling fs layer
+08655d789741: Download complete
+c4f7b4e5dd7e: Pulling metadata
+c4f7b4e5dd7e: Pulling fs layer
+c4f7b4e5dd7e: Download complete
+cfac0b2468f0: Pulling metadata
+cfac0b2468f0: Pulling fs layer
+cfac0b2468f0: Download complete
+f137cc783132: Pulling metadata
+f137cc783132: Pulling fs layer
+f137cc783132: Download complete
+f137cc783132: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drill:latest
+
+real  117.26
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+136.187.101.80:5000/drill   latest              f137cc783132        9 months ago        1.031 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drill:latest"
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+ddeafa862ddd        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+The push refers to a repository [136.187.101.80:5000/drill] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drill (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d497ad3926c8: Pushing
+d497ad3926c8: Buffering to disk
+d497ad3926c8: Image successfully pushed
+ccb62158e970: Pushing
+ccb62158e970: Buffering to disk
+ccb62158e970: Image successfully pushed
+e791be0477f2: Pushing
+e791be0477f2: Buffering to disk
+e791be0477f2: Image successfully pushed
+3680052c0f5c: Pushing
+3680052c0f5c: Buffering to disk
+3680052c0f5c: Image successfully pushed
+22093c35d77b: Pushing
+22093c35d77b: Buffering to disk
+22093c35d77b: Image successfully pushed
+5506de2b643b: Pushing
+5506de2b643b: Buffering to disk
+5506de2b643b: Image successfully pushed
+b08854b89605: Pushing
+b08854b89605: Buffering to disk
+b08854b89605: Image successfully pushed
+d0ca2a3c0233: Pushing
+d0ca2a3c0233: Buffering to disk
+d0ca2a3c0233: Image successfully pushed
+1716e82f74f0: Pushing
+1716e82f74f0: Buffering to disk
+1716e82f74f0: Image successfully pushed
+b41d25703535: Pushing
+b41d25703535: Buffering to disk
+b41d25703535: Image successfully pushed
+e95dbc5735e1: Pushing
+e95dbc5735e1: Buffering to disk
+e95dbc5735e1: Image successfully pushed
+5992007b07de: Pushing
+5992007b07de: Buffering to disk
+5992007b07de: Image successfully pushed
+b4e54ddfb2af: Pushing
+b4e54ddfb2af: Buffering to disk
+b4e54ddfb2af: Image successfully pushed
+d930870169cc: Pushing
+d930870169cc: Buffering to disk
+d930870169cc: Image successfully pushed
+ee4e426e0340: Pushing
+ee4e426e0340: Buffering to disk
+ee4e426e0340: Image successfully pushed
+0fa8761db6d4: Pushing
+0fa8761db6d4: Buffering to disk
+0fa8761db6d4: Image successfully pushed
+cdc2d366b5e1: Pushing
+cdc2d366b5e1: Buffering to disk
+cdc2d366b5e1: Image successfully pushed
+77f0ef6de36a: Pushing
+77f0ef6de36a: Buffering to disk
+77f0ef6de36a: Image successfully pushed
+21724ad58054: Pushing
+21724ad58054: Buffering to disk
+21724ad58054: Image successfully pushed
+f10d361f33ac: Pushing
+f10d361f33ac: Buffering to disk
+f10d361f33ac: Image successfully pushed
+6d88dd9503cf: Pushing
+6d88dd9503cf: Buffering to disk
+6d88dd9503cf: Image successfully pushed
+7a0f333df985: Pushing
+7a0f333df985: Buffering to disk
+7a0f333df985: Image successfully pushed
+08655d789741: Pushing
+08655d789741: Buffering to disk
+08655d789741: Image successfully pushed
+c4f7b4e5dd7e: Pushing
+c4f7b4e5dd7e: Buffering to disk
+c4f7b4e5dd7e: Image successfully pushed
+cfac0b2468f0: Pushing
+cfac0b2468f0: Buffering to disk
+cfac0b2468f0: Image successfully pushed
+f137cc783132: Pushing
+f137cc783132: Buffering to disk
+f137cc783132: Image successfully pushed
+Pushing tag for rev [f137cc783132] on {http://136.187.101.80:5000/v1/repositories/drill/tags/latest}
+
+real  133.30
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker pull 136.187.101.80:5000/drill:latest
+Pulling repository 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill, endpoint: http://136.187.101.80:5000/v1/
+f137cc783132: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d497ad3926c8: Pulling metadata
+d497ad3926c8: Pulling fs layer
+d497ad3926c8: Download complete
+ccb62158e970: Pulling metadata
+ccb62158e970: Pulling fs layer
+ccb62158e970: Download complete
+e791be0477f2: Pulling metadata
+e791be0477f2: Pulling fs layer
+e791be0477f2: Download complete
+3680052c0f5c: Pulling metadata
+3680052c0f5c: Pulling fs layer
+3680052c0f5c: Download complete
+22093c35d77b: Pulling metadata
+22093c35d77b: Pulling fs layer
+22093c35d77b: Download complete
+5506de2b643b: Pulling metadata
+5506de2b643b: Pulling fs layer
+5506de2b643b: Download complete
+b08854b89605: Pulling metadata
+b08854b89605: Pulling fs layer
+b08854b89605: Download complete
+d0ca2a3c0233: Pulling metadata
+d0ca2a3c0233: Pulling fs layer
+d0ca2a3c0233: Download complete
+1716e82f74f0: Pulling metadata
+1716e82f74f0: Pulling fs layer
+1716e82f74f0: Download complete
+b41d25703535: Pulling metadata
+b41d25703535: Pulling fs layer
+b41d25703535: Download complete
+e95dbc5735e1: Pulling metadata
+e95dbc5735e1: Pulling fs layer
+e95dbc5735e1: Download complete
+5992007b07de: Pulling metadata
+5992007b07de: Pulling fs layer
+5992007b07de: Download complete
+b4e54ddfb2af: Pulling metadata
+b4e54ddfb2af: Pulling fs layer
+b4e54ddfb2af: Download complete
+d930870169cc: Pulling metadata
+d930870169cc: Pulling fs layer
+d930870169cc: Download complete
+ee4e426e0340: Pulling metadata
+ee4e426e0340: Pulling fs layer
+ee4e426e0340: Download complete
+0fa8761db6d4: Pulling metadata
+0fa8761db6d4: Pulling fs layer
+0fa8761db6d4: Download complete
+cdc2d366b5e1: Pulling metadata
+cdc2d366b5e1: Pulling fs layer
+cdc2d366b5e1: Download complete
+77f0ef6de36a: Pulling metadata
+77f0ef6de36a: Pulling fs layer
+77f0ef6de36a: Download complete
+21724ad58054: Pulling metadata
+21724ad58054: Pulling fs layer
+21724ad58054: Download complete
+f10d361f33ac: Pulling metadata
+f10d361f33ac: Pulling fs layer
+f10d361f33ac: Download complete
+6d88dd9503cf: Pulling metadata
+6d88dd9503cf: Pulling fs layer
+6d88dd9503cf: Download complete
+7a0f333df985: Pulling metadata
+7a0f333df985: Pulling fs layer
+7a0f333df985: Download complete
+08655d789741: Pulling metadata
+08655d789741: Pulling fs layer
+08655d789741: Download complete
+c4f7b4e5dd7e: Pulling metadata
+c4f7b4e5dd7e: Pulling fs layer
+c4f7b4e5dd7e: Download complete
+cfac0b2468f0: Pulling metadata
+cfac0b2468f0: Pulling fs layer
+cfac0b2468f0: Download complete
+f137cc783132: Pulling metadata
+f137cc783132: Pulling fs layer
+f137cc783132: Download complete
+f137cc783132: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drill:latest
+
+real  123.54
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+136.187.101.80:5000/drill   latest              f137cc783132        9 months ago        1.031 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drill:latest"
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+5c1f5d84628e        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+The push refers to a repository [136.187.101.80:5000/drill] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drill (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d497ad3926c8: Pushing
+d497ad3926c8: Buffering to disk
+d497ad3926c8: Image successfully pushed
+ccb62158e970: Pushing
+ccb62158e970: Buffering to disk
+ccb62158e970: Image successfully pushed
+e791be0477f2: Pushing
+e791be0477f2: Buffering to disk
+e791be0477f2: Image successfully pushed
+3680052c0f5c: Pushing
+3680052c0f5c: Buffering to disk
+3680052c0f5c: Image successfully pushed
+22093c35d77b: Pushing
+22093c35d77b: Buffering to disk
+22093c35d77b: Image successfully pushed
+5506de2b643b: Pushing
+5506de2b643b: Buffering to disk
+5506de2b643b: Image successfully pushed
+b08854b89605: Pushing
+b08854b89605: Buffering to disk
+b08854b89605: Image successfully pushed
+d0ca2a3c0233: Pushing
+d0ca2a3c0233: Buffering to disk
+d0ca2a3c0233: Image successfully pushed
+1716e82f74f0: Pushing
+1716e82f74f0: Buffering to disk
+1716e82f74f0: Image successfully pushed
+b41d25703535: Pushing
+b41d25703535: Buffering to disk
+b41d25703535: Image successfully pushed
+e95dbc5735e1: Pushing
+e95dbc5735e1: Buffering to disk
+e95dbc5735e1: Image successfully pushed
+5992007b07de: Pushing
+5992007b07de: Buffering to disk
+5992007b07de: Image successfully pushed
+b4e54ddfb2af: Pushing
+b4e54ddfb2af: Buffering to disk
+b4e54ddfb2af: Image successfully pushed
+d930870169cc: Pushing
+d930870169cc: Buffering to disk
+d930870169cc: Image successfully pushed
+ee4e426e0340: Pushing
+ee4e426e0340: Buffering to disk
+ee4e426e0340: Image successfully pushed
+0fa8761db6d4: Pushing
+0fa8761db6d4: Buffering to disk
+0fa8761db6d4: Image successfully pushed
+cdc2d366b5e1: Pushing
+cdc2d366b5e1: Buffering to disk
+cdc2d366b5e1: Image successfully pushed
+77f0ef6de36a: Pushing
+77f0ef6de36a: Buffering to disk
+77f0ef6de36a: Image successfully pushed
+21724ad58054: Pushing
+21724ad58054: Buffering to disk
+21724ad58054: Image successfully pushed
+f10d361f33ac: Pushing
+f10d361f33ac: Buffering to disk
+f10d361f33ac: Image successfully pushed
+6d88dd9503cf: Pushing
+6d88dd9503cf: Buffering to disk
+6d88dd9503cf: Image successfully pushed
+7a0f333df985: Pushing
+7a0f333df985: Buffering to disk
+7a0f333df985: Image successfully pushed
+08655d789741: Pushing
+08655d789741: Buffering to disk
+08655d789741: Image successfully pushed
+c4f7b4e5dd7e: Pushing
+c4f7b4e5dd7e: Buffering to disk
+c4f7b4e5dd7e: Image successfully pushed
+cfac0b2468f0: Pushing
+cfac0b2468f0: Buffering to disk
+cfac0b2468f0: Image successfully pushed
+f137cc783132: Pushing
+f137cc783132: Buffering to disk
+f137cc783132: Image successfully pushed
+Pushing tag for rev [f137cc783132] on {http://136.187.101.80:5000/v1/repositories/drill/tags/latest}
+
+real  131.10
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker pull 136.187.101.80:5000/drill:latest
+Pulling repository 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill, endpoint: http://136.187.101.80:5000/v1/
+f137cc783132: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d497ad3926c8: Pulling metadata
+d497ad3926c8: Pulling fs layer
+d497ad3926c8: Download complete
+ccb62158e970: Pulling metadata
+ccb62158e970: Pulling fs layer
+ccb62158e970: Download complete
+e791be0477f2: Pulling metadata
+e791be0477f2: Pulling fs layer
+e791be0477f2: Download complete
+3680052c0f5c: Pulling metadata
+3680052c0f5c: Pulling fs layer
+3680052c0f5c: Download complete
+22093c35d77b: Pulling metadata
+22093c35d77b: Pulling fs layer
+22093c35d77b: Download complete
+5506de2b643b: Pulling metadata
+5506de2b643b: Pulling fs layer
+5506de2b643b: Download complete
+b08854b89605: Pulling metadata
+b08854b89605: Pulling fs layer
+b08854b89605: Download complete
+d0ca2a3c0233: Pulling metadata
+d0ca2a3c0233: Pulling fs layer
+d0ca2a3c0233: Download complete
+1716e82f74f0: Pulling metadata
+1716e82f74f0: Pulling fs layer
+1716e82f74f0: Download complete
+b41d25703535: Pulling metadata
+b41d25703535: Pulling fs layer
+b41d25703535: Download complete
+e95dbc5735e1: Pulling metadata
+e95dbc5735e1: Pulling fs layer
+e95dbc5735e1: Download complete
+5992007b07de: Pulling metadata
+5992007b07de: Pulling fs layer
+5992007b07de: Download complete
+b4e54ddfb2af: Pulling metadata
+b4e54ddfb2af: Pulling fs layer
+b4e54ddfb2af: Download complete
+d930870169cc: Pulling metadata
+d930870169cc: Pulling fs layer
+d930870169cc: Download complete
+ee4e426e0340: Pulling metadata
+ee4e426e0340: Pulling fs layer
+ee4e426e0340: Download complete
+0fa8761db6d4: Pulling metadata
+0fa8761db6d4: Pulling fs layer
+0fa8761db6d4: Download complete
+cdc2d366b5e1: Pulling metadata
+cdc2d366b5e1: Pulling fs layer
+cdc2d366b5e1: Download complete
+77f0ef6de36a: Pulling metadata
+77f0ef6de36a: Pulling fs layer
+77f0ef6de36a: Download complete
+21724ad58054: Pulling metadata
+21724ad58054: Pulling fs layer
+21724ad58054: Download complete
+f10d361f33ac: Pulling metadata
+f10d361f33ac: Pulling fs layer
+f10d361f33ac: Download complete
+6d88dd9503cf: Pulling metadata
+6d88dd9503cf: Pulling fs layer
+6d88dd9503cf: Download complete
+7a0f333df985: Pulling metadata
+7a0f333df985: Pulling fs layer
+7a0f333df985: Download complete
+08655d789741: Pulling metadata
+08655d789741: Pulling fs layer
+08655d789741: Download complete
+c4f7b4e5dd7e: Pulling metadata
+c4f7b4e5dd7e: Pulling fs layer
+c4f7b4e5dd7e: Download complete
+cfac0b2468f0: Pulling metadata
+cfac0b2468f0: Pulling fs layer
+cfac0b2468f0: Download complete
+f137cc783132: Pulling metadata
+f137cc783132: Pulling fs layer
+f137cc783132: Download complete
+f137cc783132: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drill:latest
+
+real  121.17
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+136.187.101.80:5000/drill   latest              f137cc783132        9 months ago        1.031 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drill:latest"
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+79fac92b4ed1        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+The push refers to a repository [136.187.101.80:5000/drill] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drill (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d497ad3926c8: Pushing
+d497ad3926c8: Buffering to disk
+d497ad3926c8: Image successfully pushed
+ccb62158e970: Pushing
+ccb62158e970: Buffering to disk
+ccb62158e970: Image successfully pushed
+e791be0477f2: Pushing
+e791be0477f2: Buffering to disk
+e791be0477f2: Image successfully pushed
+3680052c0f5c: Pushing
+3680052c0f5c: Buffering to disk
+3680052c0f5c: Image successfully pushed
+22093c35d77b: Pushing
+22093c35d77b: Buffering to disk
+22093c35d77b: Image successfully pushed
+5506de2b643b: Pushing
+5506de2b643b: Buffering to disk
+5506de2b643b: Image successfully pushed
+b08854b89605: Pushing
+b08854b89605: Buffering to disk
+b08854b89605: Image successfully pushed
+d0ca2a3c0233: Pushing
+d0ca2a3c0233: Buffering to disk
+d0ca2a3c0233: Image successfully pushed
+1716e82f74f0: Pushing
+1716e82f74f0: Buffering to disk
+1716e82f74f0: Image successfully pushed
+b41d25703535: Pushing
+b41d25703535: Buffering to disk
+b41d25703535: Image successfully pushed
+e95dbc5735e1: Pushing
+e95dbc5735e1: Buffering to disk
+e95dbc5735e1: Image successfully pushed
+5992007b07de: Pushing
+5992007b07de: Buffering to disk
+5992007b07de: Image successfully pushed
+b4e54ddfb2af: Pushing
+b4e54ddfb2af: Buffering to disk
+b4e54ddfb2af: Image successfully pushed
+d930870169cc: Pushing
+d930870169cc: Buffering to disk
+d930870169cc: Image successfully pushed
+ee4e426e0340: Pushing
+ee4e426e0340: Buffering to disk
+ee4e426e0340: Image successfully pushed
+0fa8761db6d4: Pushing
+0fa8761db6d4: Buffering to disk
+0fa8761db6d4: Image successfully pushed
+cdc2d366b5e1: Pushing
+cdc2d366b5e1: Buffering to disk
+cdc2d366b5e1: Image successfully pushed
+77f0ef6de36a: Pushing
+77f0ef6de36a: Buffering to disk
+77f0ef6de36a: Image successfully pushed
+21724ad58054: Pushing
+21724ad58054: Buffering to disk
+21724ad58054: Image successfully pushed
+f10d361f33ac: Pushing
+f10d361f33ac: Buffering to disk
+f10d361f33ac: Image successfully pushed
+6d88dd9503cf: Pushing
+6d88dd9503cf: Buffering to disk
+6d88dd9503cf: Image successfully pushed
+7a0f333df985: Pushing
+7a0f333df985: Buffering to disk
+7a0f333df985: Image successfully pushed
+08655d789741: Pushing
+08655d789741: Buffering to disk
+08655d789741: Image successfully pushed
+c4f7b4e5dd7e: Pushing
+c4f7b4e5dd7e: Buffering to disk
+c4f7b4e5dd7e: Image successfully pushed
+cfac0b2468f0: Pushing
+cfac0b2468f0: Buffering to disk
+cfac0b2468f0: Image successfully pushed
+f137cc783132: Pushing
+f137cc783132: Buffering to disk
+f137cc783132: Image successfully pushed
+Pushing tag for rev [f137cc783132] on {http://136.187.101.80:5000/v1/repositories/drill/tags/latest}
+
+real  128.78
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker pull 136.187.101.80:5000/drill:latest
+Pulling repository 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill, endpoint: http://136.187.101.80:5000/v1/
+f137cc783132: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d497ad3926c8: Pulling metadata
+d497ad3926c8: Pulling fs layer
+d497ad3926c8: Download complete
+ccb62158e970: Pulling metadata
+ccb62158e970: Pulling fs layer
+ccb62158e970: Download complete
+e791be0477f2: Pulling metadata
+e791be0477f2: Pulling fs layer
+e791be0477f2: Download complete
+3680052c0f5c: Pulling metadata
+3680052c0f5c: Pulling fs layer
+3680052c0f5c: Download complete
+22093c35d77b: Pulling metadata
+22093c35d77b: Pulling fs layer
+22093c35d77b: Download complete
+5506de2b643b: Pulling metadata
+5506de2b643b: Pulling fs layer
+5506de2b643b: Download complete
+b08854b89605: Pulling metadata
+b08854b89605: Pulling fs layer
+b08854b89605: Download complete
+d0ca2a3c0233: Pulling metadata
+d0ca2a3c0233: Pulling fs layer
+d0ca2a3c0233: Download complete
+1716e82f74f0: Pulling metadata
+1716e82f74f0: Pulling fs layer
+1716e82f74f0: Download complete
+b41d25703535: Pulling metadata
+b41d25703535: Pulling fs layer
+b41d25703535: Download complete
+e95dbc5735e1: Pulling metadata
+e95dbc5735e1: Pulling fs layer
+e95dbc5735e1: Download complete
+5992007b07de: Pulling metadata
+5992007b07de: Pulling fs layer
+5992007b07de: Download complete
+b4e54ddfb2af: Pulling metadata
+b4e54ddfb2af: Pulling fs layer
+b4e54ddfb2af: Download complete
+d930870169cc: Pulling metadata
+d930870169cc: Pulling fs layer
+d930870169cc: Download complete
+ee4e426e0340: Pulling metadata
+ee4e426e0340: Pulling fs layer
+ee4e426e0340: Download complete
+0fa8761db6d4: Pulling metadata
+0fa8761db6d4: Pulling fs layer
+0fa8761db6d4: Download complete
+cdc2d366b5e1: Pulling metadata
+cdc2d366b5e1: Pulling fs layer
+cdc2d366b5e1: Download complete
+77f0ef6de36a: Pulling metadata
+77f0ef6de36a: Pulling fs layer
+77f0ef6de36a: Download complete
+21724ad58054: Pulling metadata
+21724ad58054: Pulling fs layer
+21724ad58054: Download complete
+f10d361f33ac: Pulling metadata
+f10d361f33ac: Pulling fs layer
+f10d361f33ac: Download complete
+6d88dd9503cf: Pulling metadata
+6d88dd9503cf: Pulling fs layer
+6d88dd9503cf: Download complete
+7a0f333df985: Pulling metadata
+7a0f333df985: Pulling fs layer
+7a0f333df985: Download complete
+08655d789741: Pulling metadata
+08655d789741: Pulling fs layer
+08655d789741: Download complete
+c4f7b4e5dd7e: Pulling metadata
+c4f7b4e5dd7e: Pulling fs layer
+c4f7b4e5dd7e: Download complete
+cfac0b2468f0: Pulling metadata
+cfac0b2468f0: Pulling fs layer
+cfac0b2468f0: Download complete
+f137cc783132: Pulling metadata
+f137cc783132: Pulling fs layer
+f137cc783132: Download complete
+f137cc783132: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drill:latest
+
+real  120.26
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+136.187.101.80:5000/drill   latest              f137cc783132        9 months ago        1.031 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drill:latest"
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+664484f847f0        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+
+docker rm -f docker_registry
+
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+d038f12059ab        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+The push refers to a repository [136.187.101.80:5000/drill] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drill (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d497ad3926c8: Pushing
+d497ad3926c8: Buffering to disk
+d497ad3926c8: Image successfully pushed
+ccb62158e970: Pushing
+ccb62158e970: Buffering to disk
+ccb62158e970: Image successfully pushed
+e791be0477f2: Pushing
+e791be0477f2: Buffering to disk
+e791be0477f2: Image successfully pushed
+3680052c0f5c: Pushing
+3680052c0f5c: Buffering to disk
+3680052c0f5c: Image successfully pushed
+22093c35d77b: Pushing
+22093c35d77b: Buffering to disk
+22093c35d77b: Image successfully pushed
+5506de2b643b: Pushing
+5506de2b643b: Buffering to disk
+5506de2b643b: Image successfully pushed
+b08854b89605: Pushing
+b08854b89605: Buffering to disk
+b08854b89605: Image successfully pushed
+d0ca2a3c0233: Pushing
+d0ca2a3c0233: Buffering to disk
+d0ca2a3c0233: Image successfully pushed
+1716e82f74f0: Pushing
+1716e82f74f0: Buffering to disk
+1716e82f74f0: Image successfully pushed
+b41d25703535: Pushing
+b41d25703535: Buffering to disk
+b41d25703535: Image successfully pushed
+e95dbc5735e1: Pushing
+e95dbc5735e1: Buffering to disk
+e95dbc5735e1: Image successfully pushed
+5992007b07de: Pushing
+5992007b07de: Buffering to disk
+5992007b07de: Image successfully pushed
+b4e54ddfb2af: Pushing
+b4e54ddfb2af: Buffering to disk
+b4e54ddfb2af: Image successfully pushed
+d930870169cc: Pushing
+d930870169cc: Buffering to disk
+d930870169cc: Image successfully pushed
+ee4e426e0340: Pushing
+ee4e426e0340: Buffering to disk
+ee4e426e0340: Image successfully pushed
+0fa8761db6d4: Pushing
+0fa8761db6d4: Buffering to disk
+0fa8761db6d4: Image successfully pushed
+cdc2d366b5e1: Pushing
+cdc2d366b5e1: Buffering to disk
+cdc2d366b5e1: Image successfully pushed
+77f0ef6de36a: Pushing
+77f0ef6de36a: Buffering to disk
+77f0ef6de36a: Image successfully pushed
+21724ad58054: Pushing
+21724ad58054: Buffering to disk
+21724ad58054: Image successfully pushed
+f10d361f33ac: Pushing
+f10d361f33ac: Buffering to disk
+f10d361f33ac: Image successfully pushed
+6d88dd9503cf: Pushing
+6d88dd9503cf: Buffering to disk
+6d88dd9503cf: Image successfully pushed
+7a0f333df985: Pushing
+7a0f333df985: Buffering to disk
+7a0f333df985: Image successfully pushed
+08655d789741: Pushing
+08655d789741: Buffering to disk
+08655d789741: Image successfully pushed
+c4f7b4e5dd7e: Pushing
+c4f7b4e5dd7e: Buffering to disk
+c4f7b4e5dd7e: Image successfully pushed
+cfac0b2468f0: Pushing
+cfac0b2468f0: Buffering to disk
+cfac0b2468f0: Image successfully pushed
+f137cc783132: Pushing
+f137cc783132: Buffering to disk
+f137cc783132: Image successfully pushed
+Pushing tag for rev [f137cc783132] on {http://136.187.101.80:5000/v1/repositories/drill/tags/latest}
+
+real  127.78
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker pull 136.187.101.80:5000/drill:latest
+Pulling repository 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill, endpoint: http://136.187.101.80:5000/v1/
+f137cc783132: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d497ad3926c8: Pulling metadata
+d497ad3926c8: Pulling fs layer
+d497ad3926c8: Download complete
+ccb62158e970: Pulling metadata
+ccb62158e970: Pulling fs layer
+ccb62158e970: Download complete
+e791be0477f2: Pulling metadata
+e791be0477f2: Pulling fs layer
+e791be0477f2: Download complete
+3680052c0f5c: Pulling metadata
+3680052c0f5c: Pulling fs layer
+3680052c0f5c: Download complete
+22093c35d77b: Pulling metadata
+22093c35d77b: Pulling fs layer
+22093c35d77b: Download complete
+5506de2b643b: Pulling metadata
+5506de2b643b: Pulling fs layer
+5506de2b643b: Download complete
+b08854b89605: Pulling metadata
+b08854b89605: Pulling fs layer
+b08854b89605: Download complete
+d0ca2a3c0233: Pulling metadata
+d0ca2a3c0233: Pulling fs layer
+d0ca2a3c0233: Download complete
+1716e82f74f0: Pulling metadata
+1716e82f74f0: Pulling fs layer
+1716e82f74f0: Download complete
+b41d25703535: Pulling metadata
+b41d25703535: Pulling fs layer
+b41d25703535: Download complete
+e95dbc5735e1: Pulling metadata
+e95dbc5735e1: Pulling fs layer
+e95dbc5735e1: Download complete
+5992007b07de: Pulling metadata
+5992007b07de: Pulling fs layer
+5992007b07de: Download complete
+b4e54ddfb2af: Pulling metadata
+b4e54ddfb2af: Pulling fs layer
+b4e54ddfb2af: Download complete
+d930870169cc: Pulling metadata
+d930870169cc: Pulling fs layer
+d930870169cc: Download complete
+ee4e426e0340: Pulling metadata
+ee4e426e0340: Pulling fs layer
+ee4e426e0340: Download complete
+0fa8761db6d4: Pulling metadata
+0fa8761db6d4: Pulling fs layer
+0fa8761db6d4: Download complete
+cdc2d366b5e1: Pulling metadata
+cdc2d366b5e1: Pulling fs layer
+cdc2d366b5e1: Download complete
+77f0ef6de36a: Pulling metadata
+77f0ef6de36a: Pulling fs layer
+77f0ef6de36a: Download complete
+21724ad58054: Pulling metadata
+21724ad58054: Pulling fs layer
+21724ad58054: Download complete
+f10d361f33ac: Pulling metadata
+f10d361f33ac: Pulling fs layer
+f10d361f33ac: Download complete
+6d88dd9503cf: Pulling metadata
+6d88dd9503cf: Pulling fs layer
+6d88dd9503cf: Download complete
+7a0f333df985: Pulling metadata
+7a0f333df985: Pulling fs layer
+7a0f333df985: Download complete
+08655d789741: Pulling metadata
+08655d789741: Pulling fs layer
+08655d789741: Download complete
+c4f7b4e5dd7e: Pulling metadata
+c4f7b4e5dd7e: Pulling fs layer
+c4f7b4e5dd7e: Download complete
+cfac0b2468f0: Pulling metadata
+cfac0b2468f0: Pulling fs layer
+cfac0b2468f0: Download complete
+f137cc783132: Pulling metadata
+f137cc783132: Pulling fs layer
+f137cc783132: Download complete
+f137cc783132: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drill:latest
+
+real  120.02
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+136.187.101.80:5000/drill   latest              f137cc783132        9 months ago        1.031 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drill:latest"
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+4495a65462f3        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+The push refers to a repository [136.187.101.80:5000/drill] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drill (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d497ad3926c8: Pushing
+d497ad3926c8: Buffering to disk
+d497ad3926c8: Image successfully pushed
+ccb62158e970: Pushing
+ccb62158e970: Buffering to disk
+ccb62158e970: Image successfully pushed
+e791be0477f2: Pushing
+e791be0477f2: Buffering to disk
+e791be0477f2: Image successfully pushed
+3680052c0f5c: Pushing
+3680052c0f5c: Buffering to disk
+3680052c0f5c: Image successfully pushed
+22093c35d77b: Pushing
+22093c35d77b: Buffering to disk
+22093c35d77b: Image successfully pushed
+5506de2b643b: Pushing
+5506de2b643b: Buffering to disk
+5506de2b643b: Image successfully pushed
+b08854b89605: Pushing
+b08854b89605: Buffering to disk
+b08854b89605: Image successfully pushed
+d0ca2a3c0233: Pushing
+d0ca2a3c0233: Buffering to disk
+d0ca2a3c0233: Image successfully pushed
+1716e82f74f0: Pushing
+1716e82f74f0: Buffering to disk
+1716e82f74f0: Image successfully pushed
+b41d25703535: Pushing
+b41d25703535: Buffering to disk
+b41d25703535: Image successfully pushed
+e95dbc5735e1: Pushing
+e95dbc5735e1: Buffering to disk
+e95dbc5735e1: Image successfully pushed
+5992007b07de: Pushing
+5992007b07de: Buffering to disk
+5992007b07de: Image successfully pushed
+b4e54ddfb2af: Pushing
+b4e54ddfb2af: Buffering to disk
+b4e54ddfb2af: Image successfully pushed
+d930870169cc: Pushing
+d930870169cc: Buffering to disk
+d930870169cc: Image successfully pushed
+ee4e426e0340: Pushing
+ee4e426e0340: Buffering to disk
+ee4e426e0340: Image successfully pushed
+0fa8761db6d4: Pushing
+0fa8761db6d4: Buffering to disk
+0fa8761db6d4: Image successfully pushed
+cdc2d366b5e1: Pushing
+cdc2d366b5e1: Buffering to disk
+cdc2d366b5e1: Image successfully pushed
+77f0ef6de36a: Pushing
+77f0ef6de36a: Buffering to disk
+77f0ef6de36a: Image successfully pushed
+21724ad58054: Pushing
+21724ad58054: Buffering to disk
+21724ad58054: Image successfully pushed
+f10d361f33ac: Pushing
+f10d361f33ac: Buffering to disk
+f10d361f33ac: Image successfully pushed
+6d88dd9503cf: Pushing
+6d88dd9503cf: Buffering to disk
+6d88dd9503cf: Image successfully pushed
+7a0f333df985: Pushing
+7a0f333df985: Buffering to disk
+7a0f333df985: Image successfully pushed
+08655d789741: Pushing
+08655d789741: Buffering to disk
+08655d789741: Image successfully pushed
+c4f7b4e5dd7e: Pushing
+c4f7b4e5dd7e: Buffering to disk
+c4f7b4e5dd7e: Image successfully pushed
+cfac0b2468f0: Pushing
+cfac0b2468f0: Buffering to disk
+cfac0b2468f0: Image successfully pushed
+f137cc783132: Pushing
+f137cc783132: Buffering to disk
+f137cc783132: Image successfully pushed
+Pushing tag for rev [f137cc783132] on {http://136.187.101.80:5000/v1/repositories/drill/tags/latest}
+
+real  124.87
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker pull 136.187.101.80:5000/drill:latest
+Pulling repository 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill, endpoint: http://136.187.101.80:5000/v1/
+f137cc783132: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d497ad3926c8: Pulling metadata
+d497ad3926c8: Pulling fs layer
+d497ad3926c8: Download complete
+ccb62158e970: Pulling metadata
+ccb62158e970: Pulling fs layer
+ccb62158e970: Download complete
+e791be0477f2: Pulling metadata
+e791be0477f2: Pulling fs layer
+e791be0477f2: Download complete
+3680052c0f5c: Pulling metadata
+3680052c0f5c: Pulling fs layer
+3680052c0f5c: Download complete
+22093c35d77b: Pulling metadata
+22093c35d77b: Pulling fs layer
+22093c35d77b: Download complete
+5506de2b643b: Pulling metadata
+5506de2b643b: Pulling fs layer
+5506de2b643b: Download complete
+b08854b89605: Pulling metadata
+b08854b89605: Pulling fs layer
+b08854b89605: Download complete
+d0ca2a3c0233: Pulling metadata
+d0ca2a3c0233: Pulling fs layer
+d0ca2a3c0233: Download complete
+1716e82f74f0: Pulling metadata
+1716e82f74f0: Pulling fs layer
+1716e82f74f0: Download complete
+b41d25703535: Pulling metadata
+b41d25703535: Pulling fs layer
+b41d25703535: Download complete
+e95dbc5735e1: Pulling metadata
+e95dbc5735e1: Pulling fs layer
+e95dbc5735e1: Download complete
+5992007b07de: Pulling metadata
+5992007b07de: Pulling fs layer
+5992007b07de: Download complete
+b4e54ddfb2af: Pulling metadata
+b4e54ddfb2af: Pulling fs layer
+b4e54ddfb2af: Download complete
+d930870169cc: Pulling metadata
+d930870169cc: Pulling fs layer
+d930870169cc: Download complete
+ee4e426e0340: Pulling metadata
+ee4e426e0340: Pulling fs layer
+ee4e426e0340: Download complete
+0fa8761db6d4: Pulling metadata
+0fa8761db6d4: Pulling fs layer
+0fa8761db6d4: Download complete
+cdc2d366b5e1: Pulling metadata
+cdc2d366b5e1: Pulling fs layer
+cdc2d366b5e1: Download complete
+77f0ef6de36a: Pulling metadata
+77f0ef6de36a: Pulling fs layer
+77f0ef6de36a: Download complete
+21724ad58054: Pulling metadata
+21724ad58054: Pulling fs layer
+21724ad58054: Download complete
+f10d361f33ac: Pulling metadata
+f10d361f33ac: Pulling fs layer
+f10d361f33ac: Download complete
+6d88dd9503cf: Pulling metadata
+6d88dd9503cf: Pulling fs layer
+6d88dd9503cf: Download complete
+7a0f333df985: Pulling metadata
+7a0f333df985: Pulling fs layer
+7a0f333df985: Download complete
+08655d789741: Pulling metadata
+08655d789741: Pulling fs layer
+08655d789741: Download complete
+c4f7b4e5dd7e: Pulling metadata
+c4f7b4e5dd7e: Pulling fs layer
+c4f7b4e5dd7e: Download complete
+cfac0b2468f0: Pulling metadata
+cfac0b2468f0: Pulling fs layer
+cfac0b2468f0: Download complete
+f137cc783132: Pulling metadata
+f137cc783132: Pulling fs layer
+f137cc783132: Download complete
+f137cc783132: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drill:latest
+
+real  121.25
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+136.187.101.80:5000/drill   latest              f137cc783132        9 months ago        1.031 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drill:latest"
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+caa60cd89332        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+
+docker rm -f docker_registry
+
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 drill
+
+docker images
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker tag kiwenlau/drill:latest 136.187.101.80:5000/drill:latest
+
+docker images
+136.187.101.80:5000/drill       latest              f137cc783132        9 months ago        1.031 GB
+kiwenlau/drill                  latest              f137cc783132        9 months ago        1.031 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+c404cf97e9aa        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/drill:latest
+The push refers to a repository [136.187.101.80:5000/drill] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/drill (1 tags)
+511136ea3c5a: Pushing
+511136ea3c5a: Buffering to disk
+511136ea3c5a: Image successfully pushed
+d497ad3926c8: Pushing
+d497ad3926c8: Buffering to disk
+d497ad3926c8: Image successfully pushed
+ccb62158e970: Pushing
+ccb62158e970: Buffering to disk
+ccb62158e970: Image successfully pushed
+e791be0477f2: Pushing
+e791be0477f2: Buffering to disk
+e791be0477f2: Image successfully pushed
+3680052c0f5c: Pushing
+3680052c0f5c: Buffering to disk
+3680052c0f5c: Image successfully pushed
+22093c35d77b: Pushing
+22093c35d77b: Buffering to disk
+22093c35d77b: Image successfully pushed
+5506de2b643b: Pushing
+5506de2b643b: Buffering to disk
+5506de2b643b: Image successfully pushed
+b08854b89605: Pushing
+b08854b89605: Buffering to disk
+b08854b89605: Image successfully pushed
+d0ca2a3c0233: Pushing
+d0ca2a3c0233: Buffering to disk
+d0ca2a3c0233: Image successfully pushed
+1716e82f74f0: Pushing
+1716e82f74f0: Buffering to disk
+1716e82f74f0: Image successfully pushed
+b41d25703535: Pushing
+b41d25703535: Buffering to disk
+b41d25703535: Image successfully pushed
+e95dbc5735e1: Pushing
+e95dbc5735e1: Buffering to disk
+e95dbc5735e1: Image successfully pushed
+5992007b07de: Pushing
+5992007b07de: Buffering to disk
+5992007b07de: Image successfully pushed
+b4e54ddfb2af: Pushing
+b4e54ddfb2af: Buffering to disk
+b4e54ddfb2af: Image successfully pushed
+d930870169cc: Pushing
+d930870169cc: Buffering to disk
+d930870169cc: Image successfully pushed
+ee4e426e0340: Pushing
+ee4e426e0340: Buffering to disk
+ee4e426e0340: Image successfully pushed
+0fa8761db6d4: Pushing
+0fa8761db6d4: Buffering to disk
+0fa8761db6d4: Image successfully pushed
+cdc2d366b5e1: Pushing
+cdc2d366b5e1: Buffering to disk
+cdc2d366b5e1: Image successfully pushed
+77f0ef6de36a: Pushing
+77f0ef6de36a: Buffering to disk
+77f0ef6de36a: Image successfully pushed
+21724ad58054: Pushing
+21724ad58054: Buffering to disk
+21724ad58054: Image successfully pushed
+f10d361f33ac: Pushing
+f10d361f33ac: Buffering to disk
+f10d361f33ac: Image successfully pushed
+6d88dd9503cf: Pushing
+6d88dd9503cf: Buffering to disk
+6d88dd9503cf: Image successfully pushed
+7a0f333df985: Pushing
+7a0f333df985: Buffering to disk
+7a0f333df985: Image successfully pushed
+08655d789741: Pushing
+08655d789741: Buffering to disk
+08655d789741: Image successfully pushed
+c4f7b4e5dd7e: Pushing
+c4f7b4e5dd7e: Buffering to disk
+c4f7b4e5dd7e: Image successfully pushed
+cfac0b2468f0: Pushing
+cfac0b2468f0: Buffering to disk
+cfac0b2468f0: Image successfully pushed
+f137cc783132: Pushing
+f137cc783132: Buffering to disk
+f137cc783132: Image successfully pushed
+Pushing tag for rev [f137cc783132] on {http://136.187.101.80:5000/v1/repositories/drill/tags/latest}
+
+real  129.83
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker pull 136.187.101.80:5000/drill:latest
+Pulling repository 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill
+f137cc783132: Pulling image (latest) from 136.187.101.80:5000/drill, endpoint: http://136.187.101.80:5000/v1/
+f137cc783132: Pulling dependent layers
+511136ea3c5a: Pulling metadata
+511136ea3c5a: Pulling fs layer
+511136ea3c5a: Download complete
+d497ad3926c8: Pulling metadata
+d497ad3926c8: Pulling fs layer
+d497ad3926c8: Download complete
+ccb62158e970: Pulling metadata
+ccb62158e970: Pulling fs layer
+ccb62158e970: Download complete
+e791be0477f2: Pulling metadata
+e791be0477f2: Pulling fs layer
+e791be0477f2: Download complete
+3680052c0f5c: Pulling metadata
+3680052c0f5c: Pulling fs layer
+3680052c0f5c: Download complete
+22093c35d77b: Pulling metadata
+22093c35d77b: Pulling fs layer
+22093c35d77b: Download complete
+5506de2b643b: Pulling metadata
+5506de2b643b: Pulling fs layer
+5506de2b643b: Download complete
+b08854b89605: Pulling metadata
+b08854b89605: Pulling fs layer
+b08854b89605: Download complete
+d0ca2a3c0233: Pulling metadata
+d0ca2a3c0233: Pulling fs layer
+d0ca2a3c0233: Download complete
+1716e82f74f0: Pulling metadata
+1716e82f74f0: Pulling fs layer
+1716e82f74f0: Download complete
+b41d25703535: Pulling metadata
+b41d25703535: Pulling fs layer
+b41d25703535: Download complete
+e95dbc5735e1: Pulling metadata
+e95dbc5735e1: Pulling fs layer
+e95dbc5735e1: Download complete
+5992007b07de: Pulling metadata
+5992007b07de: Pulling fs layer
+5992007b07de: Download complete
+b4e54ddfb2af: Pulling metadata
+b4e54ddfb2af: Pulling fs layer
+b4e54ddfb2af: Download complete
+d930870169cc: Pulling metadata
+d930870169cc: Pulling fs layer
+d930870169cc: Download complete
+ee4e426e0340: Pulling metadata
+ee4e426e0340: Pulling fs layer
+ee4e426e0340: Download complete
+0fa8761db6d4: Pulling metadata
+0fa8761db6d4: Pulling fs layer
+0fa8761db6d4: Download complete
+cdc2d366b5e1: Pulling metadata
+cdc2d366b5e1: Pulling fs layer
+cdc2d366b5e1: Download complete
+77f0ef6de36a: Pulling metadata
+77f0ef6de36a: Pulling fs layer
+77f0ef6de36a: Download complete
+21724ad58054: Pulling metadata
+21724ad58054: Pulling fs layer
+21724ad58054: Download complete
+f10d361f33ac: Pulling metadata
+f10d361f33ac: Pulling fs layer
+f10d361f33ac: Download complete
+6d88dd9503cf: Pulling metadata
+6d88dd9503cf: Pulling fs layer
+6d88dd9503cf: Download complete
+7a0f333df985: Pulling metadata
+7a0f333df985: Pulling fs layer
+7a0f333df985: Download complete
+08655d789741: Pulling metadata
+08655d789741: Pulling fs layer
+08655d789741: Download complete
+c4f7b4e5dd7e: Pulling metadata
+c4f7b4e5dd7e: Pulling fs layer
+c4f7b4e5dd7e: Download complete
+cfac0b2468f0: Pulling metadata
+cfac0b2468f0: Pulling fs layer
+cfac0b2468f0: Download complete
+f137cc783132: Pulling metadata
+f137cc783132: Pulling fs layer
+f137cc783132: Download complete
+f137cc783132: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/drill:latest
+
+real  128.09
+
+ssh kai@54.225.249.141 "docker images | grep drill"
+136.187.101.80:5000/drill   latest              f137cc783132        9 months ago        1.031 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/drill:latest"
+ssh kai@54.225.249.141 "docker images | grep drill"
+
+docker rm -f docker_registry
+
+end date: Sat Aug 15 12:16:35 JST 2015
+
+

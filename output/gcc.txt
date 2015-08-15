@@ -1,0 +1,1127 @@
+
+pullpush benchmark: transfer gcc image to 54.225.249.141 host
+ 
+hostname: kuruwa-gw
+begin date: Sat Aug 15 14:45:42 JST 2015
+
+sudo docker images
+kiwenlau/gcc                    flat                4b87fb3b763a        7 weeks ago         1.22 GB
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+sudo docker images
+kiwenlau/gcc                    flat                4b87fb3b763a        7 weeks ago         1.22 GB
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+
+Test 1: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+28fb41ad19fd        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gcc (1 tags)
+21e4345e9035: Pushing
+21e4345e9035: Buffering to disk
+21e4345e9035: Image successfully pushed
+b3d362b23ec1: Pushing
+b3d362b23ec1: Buffering to disk
+b3d362b23ec1: Image successfully pushed
+e643220f0daf: Pushing
+e643220f0daf: Buffering to disk
+e643220f0daf: Image successfully pushed
+c1df00e49ae2: Pushing
+c1df00e49ae2: Buffering to disk
+c1df00e49ae2: Image successfully pushed
+d6f4448a9e30: Pushing
+d6f4448a9e30: Buffering to disk
+d6f4448a9e30: Image successfully pushed
+5f3d03981149: Pushing
+5f3d03981149: Buffering to disk
+5f3d03981149: Image successfully pushed
+64dcaa4f1350: Pushing
+64dcaa4f1350: Buffering to disk
+64dcaa4f1350: Image successfully pushed
+0f76e21b13f4: Pushing
+0f76e21b13f4: Buffering to disk
+0f76e21b13f4: Image successfully pushed
+0b193172e277: Pushing
+0b193172e277: Buffering to disk
+0b193172e277: Image successfully pushed
+f3c63362be4d: Pushing
+f3c63362be4d: Buffering to disk
+f3c63362be4d: Image successfully pushed
+b063030b23b8: Pushing
+b063030b23b8: Buffering to disk
+b063030b23b8: Image successfully pushed
+Pushing tag for rev [b063030b23b8] on {http://136.187.101.80:5000/v1/repositories/gcc/tags/latest}
+
+real  216.78
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+Pulling repository 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc, endpoint: http://136.187.101.80:5000/v1/
+b063030b23b8: Pulling dependent layers
+21e4345e9035: Pulling metadata
+21e4345e9035: Pulling fs layer
+21e4345e9035: Download complete
+b3d362b23ec1: Pulling metadata
+b3d362b23ec1: Pulling fs layer
+b3d362b23ec1: Download complete
+e643220f0daf: Pulling metadata
+e643220f0daf: Pulling fs layer
+e643220f0daf: Download complete
+c1df00e49ae2: Pulling metadata
+c1df00e49ae2: Pulling fs layer
+c1df00e49ae2: Download complete
+d6f4448a9e30: Pulling metadata
+d6f4448a9e30: Pulling fs layer
+d6f4448a9e30: Download complete
+5f3d03981149: Pulling metadata
+5f3d03981149: Pulling fs layer
+5f3d03981149: Download complete
+64dcaa4f1350: Pulling metadata
+64dcaa4f1350: Pulling fs layer
+64dcaa4f1350: Download complete
+0f76e21b13f4: Pulling metadata
+0f76e21b13f4: Pulling fs layer
+0f76e21b13f4: Download complete
+0b193172e277: Pulling metadata
+0b193172e277: Pulling fs layer
+0b193172e277: Download complete
+f3c63362be4d: Pulling metadata
+f3c63362be4d: Pulling fs layer
+f3c63362be4d: Download complete
+b063030b23b8: Pulling metadata
+b063030b23b8: Pulling fs layer
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  82.82
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 2: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+b1ec341c9dcc        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gcc (1 tags)
+21e4345e9035: Pushing
+21e4345e9035: Buffering to disk
+21e4345e9035: Image successfully pushed
+b3d362b23ec1: Pushing
+b3d362b23ec1: Buffering to disk
+b3d362b23ec1: Image successfully pushed
+e643220f0daf: Pushing
+e643220f0daf: Buffering to disk
+e643220f0daf: Image successfully pushed
+c1df00e49ae2: Pushing
+c1df00e49ae2: Buffering to disk
+c1df00e49ae2: Image successfully pushed
+d6f4448a9e30: Pushing
+d6f4448a9e30: Buffering to disk
+d6f4448a9e30: Image successfully pushed
+5f3d03981149: Pushing
+5f3d03981149: Buffering to disk
+5f3d03981149: Image successfully pushed
+64dcaa4f1350: Pushing
+64dcaa4f1350: Buffering to disk
+64dcaa4f1350: Image successfully pushed
+0f76e21b13f4: Pushing
+0f76e21b13f4: Buffering to disk
+0f76e21b13f4: Image successfully pushed
+0b193172e277: Pushing
+0b193172e277: Buffering to disk
+0b193172e277: Image successfully pushed
+f3c63362be4d: Pushing
+f3c63362be4d: Buffering to disk
+f3c63362be4d: Image successfully pushed
+b063030b23b8: Pushing
+b063030b23b8: Buffering to disk
+b063030b23b8: Image successfully pushed
+Pushing tag for rev [b063030b23b8] on {http://136.187.101.80:5000/v1/repositories/gcc/tags/latest}
+
+real  216.89
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+Pulling repository 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc, endpoint: http://136.187.101.80:5000/v1/
+b063030b23b8: Pulling dependent layers
+21e4345e9035: Pulling metadata
+21e4345e9035: Pulling fs layer
+21e4345e9035: Download complete
+b3d362b23ec1: Pulling metadata
+b3d362b23ec1: Pulling fs layer
+b3d362b23ec1: Download complete
+e643220f0daf: Pulling metadata
+e643220f0daf: Pulling fs layer
+e643220f0daf: Download complete
+c1df00e49ae2: Pulling metadata
+c1df00e49ae2: Pulling fs layer
+c1df00e49ae2: Download complete
+d6f4448a9e30: Pulling metadata
+d6f4448a9e30: Pulling fs layer
+d6f4448a9e30: Download complete
+5f3d03981149: Pulling metadata
+5f3d03981149: Pulling fs layer
+5f3d03981149: Download complete
+64dcaa4f1350: Pulling metadata
+64dcaa4f1350: Pulling fs layer
+64dcaa4f1350: Download complete
+0f76e21b13f4: Pulling metadata
+0f76e21b13f4: Pulling fs layer
+0f76e21b13f4: Download complete
+0b193172e277: Pulling metadata
+0b193172e277: Pulling fs layer
+0b193172e277: Download complete
+f3c63362be4d: Pulling metadata
+f3c63362be4d: Pulling fs layer
+f3c63362be4d: Download complete
+b063030b23b8: Pulling metadata
+b063030b23b8: Pulling fs layer
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  83.23
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 3: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+0e74e145c580        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gcc (1 tags)
+21e4345e9035: Pushing
+21e4345e9035: Buffering to disk
+21e4345e9035: Image successfully pushed
+b3d362b23ec1: Pushing
+b3d362b23ec1: Buffering to disk
+b3d362b23ec1: Image successfully pushed
+e643220f0daf: Pushing
+e643220f0daf: Buffering to disk
+e643220f0daf: Image successfully pushed
+c1df00e49ae2: Pushing
+c1df00e49ae2: Buffering to disk
+c1df00e49ae2: Image successfully pushed
+d6f4448a9e30: Pushing
+d6f4448a9e30: Buffering to disk
+d6f4448a9e30: Image successfully pushed
+5f3d03981149: Pushing
+5f3d03981149: Buffering to disk
+5f3d03981149: Image successfully pushed
+64dcaa4f1350: Pushing
+64dcaa4f1350: Buffering to disk
+64dcaa4f1350: Image successfully pushed
+0f76e21b13f4: Pushing
+0f76e21b13f4: Buffering to disk
+0f76e21b13f4: Image successfully pushed
+0b193172e277: Pushing
+0b193172e277: Buffering to disk
+0b193172e277: Image successfully pushed
+f3c63362be4d: Pushing
+f3c63362be4d: Buffering to disk
+f3c63362be4d: Image successfully pushed
+b063030b23b8: Pushing
+b063030b23b8: Buffering to disk
+b063030b23b8: Image successfully pushed
+Pushing tag for rev [b063030b23b8] on {http://136.187.101.80:5000/v1/repositories/gcc/tags/latest}
+
+real  212.00
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+Pulling repository 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc, endpoint: http://136.187.101.80:5000/v1/
+b063030b23b8: Pulling dependent layers
+21e4345e9035: Pulling metadata
+21e4345e9035: Pulling fs layer
+21e4345e9035: Download complete
+b3d362b23ec1: Pulling metadata
+b3d362b23ec1: Pulling fs layer
+b3d362b23ec1: Download complete
+e643220f0daf: Pulling metadata
+e643220f0daf: Pulling fs layer
+e643220f0daf: Download complete
+c1df00e49ae2: Pulling metadata
+c1df00e49ae2: Pulling fs layer
+c1df00e49ae2: Download complete
+d6f4448a9e30: Pulling metadata
+d6f4448a9e30: Pulling fs layer
+d6f4448a9e30: Download complete
+5f3d03981149: Pulling metadata
+5f3d03981149: Pulling fs layer
+5f3d03981149: Download complete
+64dcaa4f1350: Pulling metadata
+64dcaa4f1350: Pulling fs layer
+64dcaa4f1350: Download complete
+0f76e21b13f4: Pulling metadata
+0f76e21b13f4: Pulling fs layer
+0f76e21b13f4: Download complete
+0b193172e277: Pulling metadata
+0b193172e277: Pulling fs layer
+0b193172e277: Download complete
+f3c63362be4d: Pulling metadata
+f3c63362be4d: Pulling fs layer
+f3c63362be4d: Download complete
+b063030b23b8: Pulling metadata
+b063030b23b8: Pulling fs layer
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  96.03
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+28097734189e        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+
+docker rm -f docker_registry
+
+
+
+Test 4: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+f4928aa445ac        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gcc (1 tags)
+21e4345e9035: Pushing
+21e4345e9035: Buffering to disk
+21e4345e9035: Image successfully pushed
+b3d362b23ec1: Pushing
+b3d362b23ec1: Buffering to disk
+b3d362b23ec1: Image successfully pushed
+e643220f0daf: Pushing
+e643220f0daf: Buffering to disk
+e643220f0daf: Image successfully pushed
+c1df00e49ae2: Pushing
+c1df00e49ae2: Buffering to disk
+c1df00e49ae2: Image successfully pushed
+d6f4448a9e30: Pushing
+d6f4448a9e30: Buffering to disk
+d6f4448a9e30: Image successfully pushed
+5f3d03981149: Pushing
+5f3d03981149: Buffering to disk
+5f3d03981149: Image successfully pushed
+64dcaa4f1350: Pushing
+64dcaa4f1350: Buffering to disk
+64dcaa4f1350: Image successfully pushed
+0f76e21b13f4: Pushing
+0f76e21b13f4: Buffering to disk
+0f76e21b13f4: Image successfully pushed
+0b193172e277: Pushing
+0b193172e277: Buffering to disk
+0b193172e277: Image successfully pushed
+f3c63362be4d: Pushing
+f3c63362be4d: Buffering to disk
+f3c63362be4d: Image successfully pushed
+b063030b23b8: Pushing
+b063030b23b8: Buffering to disk
+b063030b23b8: Image successfully pushed
+Pushing tag for rev [b063030b23b8] on {http://136.187.101.80:5000/v1/repositories/gcc/tags/latest}
+
+real  216.16
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+Pulling repository 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc, endpoint: http://136.187.101.80:5000/v1/
+b063030b23b8: Pulling dependent layers
+21e4345e9035: Pulling metadata
+21e4345e9035: Pulling fs layer
+21e4345e9035: Download complete
+b3d362b23ec1: Pulling metadata
+b3d362b23ec1: Pulling fs layer
+b3d362b23ec1: Download complete
+e643220f0daf: Pulling metadata
+e643220f0daf: Pulling fs layer
+e643220f0daf: Download complete
+c1df00e49ae2: Pulling metadata
+c1df00e49ae2: Pulling fs layer
+c1df00e49ae2: Download complete
+d6f4448a9e30: Pulling metadata
+d6f4448a9e30: Pulling fs layer
+d6f4448a9e30: Download complete
+5f3d03981149: Pulling metadata
+5f3d03981149: Pulling fs layer
+5f3d03981149: Download complete
+64dcaa4f1350: Pulling metadata
+64dcaa4f1350: Pulling fs layer
+64dcaa4f1350: Download complete
+0f76e21b13f4: Pulling metadata
+0f76e21b13f4: Pulling fs layer
+0f76e21b13f4: Download complete
+0b193172e277: Pulling metadata
+0b193172e277: Pulling fs layer
+0b193172e277: Download complete
+f3c63362be4d: Pulling metadata
+f3c63362be4d: Pulling fs layer
+f3c63362be4d: Download complete
+b063030b23b8: Pulling metadata
+b063030b23b8: Pulling fs layer
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  86.30
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 5: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3cbd16c425ce        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gcc (1 tags)
+21e4345e9035: Pushing
+21e4345e9035: Buffering to disk
+21e4345e9035: Image successfully pushed
+b3d362b23ec1: Pushing
+b3d362b23ec1: Buffering to disk
+b3d362b23ec1: Image successfully pushed
+e643220f0daf: Pushing
+e643220f0daf: Buffering to disk
+e643220f0daf: Image successfully pushed
+c1df00e49ae2: Pushing
+c1df00e49ae2: Buffering to disk
+c1df00e49ae2: Image successfully pushed
+d6f4448a9e30: Pushing
+d6f4448a9e30: Buffering to disk
+d6f4448a9e30: Image successfully pushed
+5f3d03981149: Pushing
+5f3d03981149: Buffering to disk
+5f3d03981149: Image successfully pushed
+64dcaa4f1350: Pushing
+64dcaa4f1350: Buffering to disk
+64dcaa4f1350: Image successfully pushed
+0f76e21b13f4: Pushing
+0f76e21b13f4: Buffering to disk
+0f76e21b13f4: Image successfully pushed
+0b193172e277: Pushing
+0b193172e277: Buffering to disk
+0b193172e277: Image successfully pushed
+f3c63362be4d: Pushing
+f3c63362be4d: Buffering to disk
+f3c63362be4d: Image successfully pushed
+b063030b23b8: Pushing
+b063030b23b8: Buffering to disk
+b063030b23b8: Image successfully pushed
+Pushing tag for rev [b063030b23b8] on {http://136.187.101.80:5000/v1/repositories/gcc/tags/latest}
+
+real  214.72
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+Pulling repository 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc, endpoint: http://136.187.101.80:5000/v1/
+b063030b23b8: Pulling dependent layers
+21e4345e9035: Pulling metadata
+21e4345e9035: Pulling fs layer
+21e4345e9035: Download complete
+b3d362b23ec1: Pulling metadata
+b3d362b23ec1: Pulling fs layer
+b3d362b23ec1: Download complete
+e643220f0daf: Pulling metadata
+e643220f0daf: Pulling fs layer
+e643220f0daf: Download complete
+c1df00e49ae2: Pulling metadata
+c1df00e49ae2: Pulling fs layer
+c1df00e49ae2: Download complete
+d6f4448a9e30: Pulling metadata
+d6f4448a9e30: Pulling fs layer
+d6f4448a9e30: Download complete
+5f3d03981149: Pulling metadata
+5f3d03981149: Pulling fs layer
+5f3d03981149: Download complete
+64dcaa4f1350: Pulling metadata
+64dcaa4f1350: Pulling fs layer
+64dcaa4f1350: Download complete
+0f76e21b13f4: Pulling metadata
+0f76e21b13f4: Pulling fs layer
+0f76e21b13f4: Download complete
+0b193172e277: Pulling metadata
+0b193172e277: Pulling fs layer
+0b193172e277: Download complete
+f3c63362be4d: Pulling metadata
+f3c63362be4d: Pulling fs layer
+f3c63362be4d: Download complete
+b063030b23b8: Pulling metadata
+b063030b23b8: Pulling fs layer
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  84.29
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 6: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+080ca41576d2        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gcc (1 tags)
+21e4345e9035: Pushing
+21e4345e9035: Buffering to disk
+21e4345e9035: Image successfully pushed
+b3d362b23ec1: Pushing
+b3d362b23ec1: Buffering to disk
+b3d362b23ec1: Image successfully pushed
+e643220f0daf: Pushing
+e643220f0daf: Buffering to disk
+e643220f0daf: Image successfully pushed
+c1df00e49ae2: Pushing
+c1df00e49ae2: Buffering to disk
+c1df00e49ae2: Image successfully pushed
+d6f4448a9e30: Pushing
+d6f4448a9e30: Buffering to disk
+d6f4448a9e30: Image successfully pushed
+5f3d03981149: Pushing
+5f3d03981149: Buffering to disk
+5f3d03981149: Image successfully pushed
+64dcaa4f1350: Pushing
+64dcaa4f1350: Buffering to disk
+64dcaa4f1350: Image successfully pushed
+0f76e21b13f4: Pushing
+0f76e21b13f4: Buffering to disk
+0f76e21b13f4: Image successfully pushed
+0b193172e277: Pushing
+0b193172e277: Buffering to disk
+0b193172e277: Image successfully pushed
+f3c63362be4d: Pushing
+f3c63362be4d: Buffering to disk
+f3c63362be4d: Image successfully pushed
+b063030b23b8: Pushing
+b063030b23b8: Buffering to disk
+b063030b23b8: Image successfully pushed
+Pushing tag for rev [b063030b23b8] on {http://136.187.101.80:5000/v1/repositories/gcc/tags/latest}
+
+real  211.78
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+Pulling repository 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc, endpoint: http://136.187.101.80:5000/v1/
+b063030b23b8: Pulling dependent layers
+21e4345e9035: Pulling metadata
+21e4345e9035: Pulling fs layer
+21e4345e9035: Download complete
+b3d362b23ec1: Pulling metadata
+b3d362b23ec1: Pulling fs layer
+b3d362b23ec1: Download complete
+e643220f0daf: Pulling metadata
+e643220f0daf: Pulling fs layer
+e643220f0daf: Download complete
+c1df00e49ae2: Pulling metadata
+c1df00e49ae2: Pulling fs layer
+c1df00e49ae2: Download complete
+d6f4448a9e30: Pulling metadata
+d6f4448a9e30: Pulling fs layer
+d6f4448a9e30: Download complete
+5f3d03981149: Pulling metadata
+5f3d03981149: Pulling fs layer
+5f3d03981149: Download complete
+64dcaa4f1350: Pulling metadata
+64dcaa4f1350: Pulling fs layer
+64dcaa4f1350: Download complete
+0f76e21b13f4: Pulling metadata
+0f76e21b13f4: Pulling fs layer
+0f76e21b13f4: Download complete
+0b193172e277: Pulling metadata
+0b193172e277: Pulling fs layer
+0b193172e277: Download complete
+f3c63362be4d: Pulling metadata
+f3c63362be4d: Pulling fs layer
+f3c63362be4d: Download complete
+b063030b23b8: Pulling metadata
+b063030b23b8: Pulling fs layer
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  84.63
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 7: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+3a493380f8ba        kiwenlau/registry:0.9.1   "docker-registry"   1 seconds ago       Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gcc (1 tags)
+21e4345e9035: Pushing
+21e4345e9035: Buffering to disk
+21e4345e9035: Image successfully pushed
+b3d362b23ec1: Pushing
+b3d362b23ec1: Buffering to disk
+b3d362b23ec1: Image successfully pushed
+e643220f0daf: Pushing
+e643220f0daf: Buffering to disk
+e643220f0daf: Image successfully pushed
+c1df00e49ae2: Pushing
+c1df00e49ae2: Buffering to disk
+c1df00e49ae2: Image successfully pushed
+d6f4448a9e30: Pushing
+d6f4448a9e30: Buffering to disk
+d6f4448a9e30: Image successfully pushed
+5f3d03981149: Pushing
+5f3d03981149: Buffering to disk
+5f3d03981149: Image successfully pushed
+64dcaa4f1350: Pushing
+64dcaa4f1350: Buffering to disk
+64dcaa4f1350: Image successfully pushed
+0f76e21b13f4: Pushing
+0f76e21b13f4: Buffering to disk
+0f76e21b13f4: Image successfully pushed
+0b193172e277: Pushing
+0b193172e277: Buffering to disk
+0b193172e277: Image successfully pushed
+f3c63362be4d: Pushing
+f3c63362be4d: Buffering to disk
+f3c63362be4d: Image successfully pushed
+b063030b23b8: Pushing
+b063030b23b8: Buffering to disk
+b063030b23b8: Image successfully pushed
+Pushing tag for rev [b063030b23b8] on {http://136.187.101.80:5000/v1/repositories/gcc/tags/latest}
+
+real  212.63
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+Pulling repository 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc, endpoint: http://136.187.101.80:5000/v1/
+b063030b23b8: Pulling dependent layers
+21e4345e9035: Pulling metadata
+21e4345e9035: Pulling fs layer
+21e4345e9035: Download complete
+b3d362b23ec1: Pulling metadata
+b3d362b23ec1: Pulling fs layer
+b3d362b23ec1: Download complete
+e643220f0daf: Pulling metadata
+e643220f0daf: Pulling fs layer
+e643220f0daf: Download complete
+c1df00e49ae2: Pulling metadata
+c1df00e49ae2: Pulling fs layer
+c1df00e49ae2: Download complete
+d6f4448a9e30: Pulling metadata
+d6f4448a9e30: Pulling fs layer
+d6f4448a9e30: Download complete
+5f3d03981149: Pulling metadata
+5f3d03981149: Pulling fs layer
+5f3d03981149: Download complete
+64dcaa4f1350: Pulling metadata
+64dcaa4f1350: Pulling fs layer
+64dcaa4f1350: Download complete
+0f76e21b13f4: Pulling metadata
+0f76e21b13f4: Pulling fs layer
+0f76e21b13f4: Download complete
+0b193172e277: Pulling metadata
+0b193172e277: Pulling fs layer
+0b193172e277: Download complete
+f3c63362be4d: Pulling metadata
+f3c63362be4d: Pulling fs layer
+f3c63362be4d: Download complete
+b063030b23b8: Pulling metadata
+b063030b23b8: Pulling fs layer
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  83.91
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 8: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+ae1e7bdc7e47        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gcc (1 tags)
+21e4345e9035: Pushing
+21e4345e9035: Buffering to disk
+21e4345e9035: Image successfully pushed
+b3d362b23ec1: Pushing
+b3d362b23ec1: Buffering to disk
+b3d362b23ec1: Image successfully pushed
+e643220f0daf: Pushing
+e643220f0daf: Buffering to disk
+e643220f0daf: Image successfully pushed
+c1df00e49ae2: Pushing
+c1df00e49ae2: Buffering to disk
+c1df00e49ae2: Image successfully pushed
+d6f4448a9e30: Pushing
+d6f4448a9e30: Buffering to disk
+d6f4448a9e30: Image successfully pushed
+5f3d03981149: Pushing
+5f3d03981149: Buffering to disk
+5f3d03981149: Image successfully pushed
+64dcaa4f1350: Pushing
+64dcaa4f1350: Buffering to disk
+64dcaa4f1350: Image successfully pushed
+0f76e21b13f4: Pushing
+0f76e21b13f4: Buffering to disk
+0f76e21b13f4: Image successfully pushed
+0b193172e277: Pushing
+0b193172e277: Buffering to disk
+0b193172e277: Image successfully pushed
+f3c63362be4d: Pushing
+f3c63362be4d: Buffering to disk
+f3c63362be4d: Image successfully pushed
+b063030b23b8: Pushing
+b063030b23b8: Buffering to disk
+b063030b23b8: Image successfully pushed
+Pushing tag for rev [b063030b23b8] on {http://136.187.101.80:5000/v1/repositories/gcc/tags/latest}
+
+real  215.13
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+Pulling repository 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc, endpoint: http://136.187.101.80:5000/v1/
+b063030b23b8: Pulling dependent layers
+21e4345e9035: Pulling metadata
+21e4345e9035: Pulling fs layer
+21e4345e9035: Download complete
+b3d362b23ec1: Pulling metadata
+b3d362b23ec1: Pulling fs layer
+b3d362b23ec1: Download complete
+e643220f0daf: Pulling metadata
+e643220f0daf: Pulling fs layer
+e643220f0daf: Download complete
+c1df00e49ae2: Pulling metadata
+c1df00e49ae2: Pulling fs layer
+c1df00e49ae2: Download complete
+d6f4448a9e30: Pulling metadata
+d6f4448a9e30: Pulling fs layer
+d6f4448a9e30: Download complete
+5f3d03981149: Pulling metadata
+5f3d03981149: Pulling fs layer
+5f3d03981149: Download complete
+64dcaa4f1350: Pulling metadata
+64dcaa4f1350: Pulling fs layer
+64dcaa4f1350: Download complete
+0f76e21b13f4: Pulling metadata
+0f76e21b13f4: Pulling fs layer
+0f76e21b13f4: Download complete
+0b193172e277: Pulling metadata
+0b193172e277: Pulling fs layer
+0b193172e277: Download complete
+f3c63362be4d: Pulling metadata
+f3c63362be4d: Pulling fs layer
+f3c63362be4d: Download complete
+b063030b23b8: Pulling metadata
+b063030b23b8: Pulling fs layer
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  83.27
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 9: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+5016f9464868        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gcc (1 tags)
+21e4345e9035: Pushing
+21e4345e9035: Buffering to disk
+21e4345e9035: Image successfully pushed
+b3d362b23ec1: Pushing
+b3d362b23ec1: Buffering to disk
+b3d362b23ec1: Image successfully pushed
+e643220f0daf: Pushing
+e643220f0daf: Buffering to disk
+e643220f0daf: Image successfully pushed
+c1df00e49ae2: Pushing
+c1df00e49ae2: Buffering to disk
+c1df00e49ae2: Image successfully pushed
+d6f4448a9e30: Pushing
+d6f4448a9e30: Buffering to disk
+d6f4448a9e30: Image successfully pushed
+5f3d03981149: Pushing
+5f3d03981149: Buffering to disk
+5f3d03981149: Image successfully pushed
+64dcaa4f1350: Pushing
+64dcaa4f1350: Buffering to disk
+64dcaa4f1350: Image successfully pushed
+0f76e21b13f4: Pushing
+0f76e21b13f4: Buffering to disk
+0f76e21b13f4: Image successfully pushed
+0b193172e277: Pushing
+0b193172e277: Buffering to disk
+0b193172e277: Image successfully pushed
+f3c63362be4d: Pushing
+f3c63362be4d: Buffering to disk
+f3c63362be4d: Image successfully pushed
+b063030b23b8: Pushing
+b063030b23b8: Buffering to disk
+b063030b23b8: Image successfully pushed
+Pushing tag for rev [b063030b23b8] on {http://136.187.101.80:5000/v1/repositories/gcc/tags/latest}
+
+real  217.15
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+Pulling repository 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc, endpoint: http://136.187.101.80:5000/v1/
+b063030b23b8: Pulling dependent layers
+21e4345e9035: Pulling metadata
+21e4345e9035: Pulling fs layer
+21e4345e9035: Download complete
+b3d362b23ec1: Pulling metadata
+b3d362b23ec1: Pulling fs layer
+b3d362b23ec1: Download complete
+e643220f0daf: Pulling metadata
+e643220f0daf: Pulling fs layer
+e643220f0daf: Download complete
+c1df00e49ae2: Pulling metadata
+c1df00e49ae2: Pulling fs layer
+c1df00e49ae2: Download complete
+d6f4448a9e30: Pulling metadata
+d6f4448a9e30: Pulling fs layer
+d6f4448a9e30: Download complete
+5f3d03981149: Pulling metadata
+5f3d03981149: Pulling fs layer
+5f3d03981149: Download complete
+64dcaa4f1350: Pulling metadata
+64dcaa4f1350: Pulling fs layer
+64dcaa4f1350: Download complete
+0f76e21b13f4: Pulling metadata
+0f76e21b13f4: Pulling fs layer
+0f76e21b13f4: Download complete
+0b193172e277: Pulling metadata
+0b193172e277: Pulling fs layer
+0b193172e277: Download complete
+f3c63362be4d: Pulling metadata
+f3c63362be4d: Pulling fs layer
+f3c63362be4d: Download complete
+b063030b23b8: Pulling metadata
+b063030b23b8: Pulling fs layer
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  91.21
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+
+Test 10: ./pushpull.sh kai 54.225.249.141 gcc
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+
+docker tag kiwenlau/gcc:latest 136.187.101.80:5000/gcc:latest
+
+docker images
+kiwenlau/gcc                    latest              b063030b23b8        3 months ago        1.225 GB
+136.187.101.80:5000/gcc         latest              b063030b23b8        3 months ago        1.225 GB
+
+docker run --name="docker_registry" -p 5000:5000 -v /etc/localtime:/etc/localtime:ro -v ~/registry:/tmp/registry -d kiwenlau/registry:0.9.1
+d025904ad92b        kiwenlau/registry:0.9.1   "docker-registry"   Less than a second ago   Up Less than a second   0.0.0.0:5000->5000/tcp   docker_registry     
+
+docker push 136.187.101.80:5000/gcc:latest
+The push refers to a repository [136.187.101.80:5000/gcc] (len: 1)
+Sending image list
+Pushing repository 136.187.101.80:5000/gcc (1 tags)
+21e4345e9035: Pushing
+21e4345e9035: Buffering to disk
+21e4345e9035: Image successfully pushed
+b3d362b23ec1: Pushing
+b3d362b23ec1: Buffering to disk
+b3d362b23ec1: Image successfully pushed
+e643220f0daf: Pushing
+e643220f0daf: Buffering to disk
+e643220f0daf: Image successfully pushed
+c1df00e49ae2: Pushing
+c1df00e49ae2: Buffering to disk
+c1df00e49ae2: Image successfully pushed
+d6f4448a9e30: Pushing
+d6f4448a9e30: Buffering to disk
+d6f4448a9e30: Image successfully pushed
+5f3d03981149: Pushing
+5f3d03981149: Buffering to disk
+5f3d03981149: Image successfully pushed
+64dcaa4f1350: Pushing
+64dcaa4f1350: Buffering to disk
+64dcaa4f1350: Image successfully pushed
+0f76e21b13f4: Pushing
+0f76e21b13f4: Buffering to disk
+0f76e21b13f4: Image successfully pushed
+0b193172e277: Pushing
+0b193172e277: Buffering to disk
+0b193172e277: Image successfully pushed
+f3c63362be4d: Pushing
+f3c63362be4d: Buffering to disk
+f3c63362be4d: Image successfully pushed
+b063030b23b8: Pushing
+b063030b23b8: Buffering to disk
+b063030b23b8: Image successfully pushed
+Pushing tag for rev [b063030b23b8] on {http://136.187.101.80:5000/v1/repositories/gcc/tags/latest}
+
+real  217.11
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker pull 136.187.101.80:5000/gcc:latest
+Pulling repository 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc
+b063030b23b8: Pulling image (latest) from 136.187.101.80:5000/gcc, endpoint: http://136.187.101.80:5000/v1/
+b063030b23b8: Pulling dependent layers
+21e4345e9035: Pulling metadata
+21e4345e9035: Pulling fs layer
+21e4345e9035: Download complete
+b3d362b23ec1: Pulling metadata
+b3d362b23ec1: Pulling fs layer
+b3d362b23ec1: Download complete
+e643220f0daf: Pulling metadata
+e643220f0daf: Pulling fs layer
+e643220f0daf: Download complete
+c1df00e49ae2: Pulling metadata
+c1df00e49ae2: Pulling fs layer
+c1df00e49ae2: Download complete
+d6f4448a9e30: Pulling metadata
+d6f4448a9e30: Pulling fs layer
+d6f4448a9e30: Download complete
+5f3d03981149: Pulling metadata
+5f3d03981149: Pulling fs layer
+5f3d03981149: Download complete
+64dcaa4f1350: Pulling metadata
+64dcaa4f1350: Pulling fs layer
+64dcaa4f1350: Download complete
+0f76e21b13f4: Pulling metadata
+0f76e21b13f4: Pulling fs layer
+0f76e21b13f4: Download complete
+0b193172e277: Pulling metadata
+0b193172e277: Pulling fs layer
+0b193172e277: Download complete
+f3c63362be4d: Pulling metadata
+f3c63362be4d: Pulling fs layer
+f3c63362be4d: Download complete
+b063030b23b8: Pulling metadata
+b063030b23b8: Pulling fs layer
+b063030b23b8: Download complete
+b063030b23b8: Download complete
+Status: Downloaded newer image for 136.187.101.80:5000/gcc:latest
+
+real  83.43
+
+ssh kai@54.225.249.141 "docker images | grep gcc"
+136.187.101.80:5000/gcc   latest              b063030b23b8        3 months ago        1.225 GB
+
+ssh kai@54.225.249.141 "docker rmi 136.187.101.80:5000/gcc:latest"
+ssh kai@54.225.249.141 "docker images | grep gcc"
+
+docker rm -f docker_registry
+
+end date: Sat Aug 15 15:39:25 JST 2015
+
+
